@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import AuthLayout from './layouts/AuthLayout';
+import NoMatch from './pages/NoMatch';
+import { CircularProgress } from '@mui/material';
 
-function App() {
+const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path="/" element={<AuthLayout />}>
+          <Route
+            path="dashboard"
+            element={
+              <React.Suspense fallback={<CircularProgress />}>
+                <Dashboard />
+              </React.Suspense>
+            }
+          />
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
-
-export default App;
