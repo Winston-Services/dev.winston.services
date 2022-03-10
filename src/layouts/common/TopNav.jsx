@@ -163,7 +163,7 @@ function TopNav() {
               spacing={1}
             >
               <Grid item xs="auto" alignItems="flex-start">
-                <Avatar {...stringAvatar('Bhavesh Modi')} />
+                <Avatar {...stringAvatar('Michael Dennis')} />
               </Grid>
               <Grid
                 item
