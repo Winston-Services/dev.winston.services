@@ -22,8 +22,8 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: 'hidden',
-  height: 'calc(100vh - 56px)',
-  top: '56px',
+  height: 'calc(100vh - 86px)',
+  top: '86px',
   borderWidth: '0px',
 });
 
@@ -34,8 +34,8 @@ const closedMixin = (theme) => ({
   }),
   overflowX: 'hidden',
   width: `86px`,
-  height: 'calc(100vh - 56px)',
-  top: '56px',
+  height: 'calc(100vh - 86px)',
+  top: '86px',
   borderWidth: '0px',
 });
 

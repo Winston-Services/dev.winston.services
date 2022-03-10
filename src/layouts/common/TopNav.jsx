@@ -33,7 +33,7 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  height: '56px',
+  height: '86px',
   justifyContent: 'center',
   boxShadow: 'none',
   backgroundImage: 'none',
@@ -167,8 +167,7 @@ function TopNav() {
               </Grid>
               <Grid
                 item
-                xs={12}
-                sm
+                xs
                 container
                 direction="column"
                 alignItems="flex-start"
