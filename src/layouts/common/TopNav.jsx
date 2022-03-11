@@ -167,7 +167,8 @@ function TopNav() {
               </Grid>
               <Grid
                 item
-                xs
+                sx={{ display: { xs: 'none', sm: 'flex' } }}
+                sm
                 container
                 direction="column"
                 alignItems="flex-start"

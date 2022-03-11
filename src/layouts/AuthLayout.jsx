@@ -13,10 +13,12 @@ function Layout() {
   return (
     <>
       {/* TODO: Need to update once we have redux state for error {state.errors ? <Toast message={state.errors} /> : null} */}
-      <Box sx={{ display: 'flex' }}>
+      <Box
+        sx={{ display: 'flex', height: '100%', maxHeight: 'calc(100% - 86px)' }}
+      >
         <TopNav />
         <SideBar />
-        <Box sx={{ display: 'flex', width: '100%' }}>
+        <Box sx={{ display: 'flex', width: '100%', marginTop: '86px' }}>
           <Outlet />
         </Box>
       </Box>

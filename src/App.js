@@ -8,20 +8,18 @@ const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 
 export default function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<AuthLayout />}>
-          <Route
-            path="dashboard"
-            element={
-              <React.Suspense fallback={<CircularProgress />}>
-                <Dashboard />
-              </React.Suspense>
-            }
-          />
-          <Route path="*" element={<NoMatch />} />
-        </Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<AuthLayout />}>
+        <Route
+          path="dashboard"
+          element={
+            <React.Suspense fallback={<CircularProgress />}>
+              <Dashboard />
+            </React.Suspense>
+          }
+        />
+        <Route path="*" element={<NoMatch />} />
+      </Route>
+    </Routes>
   );
 }

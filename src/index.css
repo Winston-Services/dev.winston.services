@@ -6,19 +6,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+html,
+body,
+#root {
+  height: 100%;
+}
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #e4e4e4;
+  background-color: transparent;
   border-radius: 5px;
 }
-
 ::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+*:hover::-webkit-scrollbar-thumb,
+*:focus::-webkit-scrollbar-thumb {
+  background-color: #00000040;
   border-radius: 5px;
   border: 2px solid transparent;
   background-clip: content-box;
-  background-color: #999999;
 }
