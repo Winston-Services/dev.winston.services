@@ -7,14 +7,17 @@ import ThemeLoader from './components/theme-loader';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Box } from '@mui/material';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeLoader>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <Box sx={{ display: 'flex' }}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </Box>
       </ThemeLoader>
     </Provider>
   </React.StrictMode>,
