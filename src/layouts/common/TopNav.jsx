@@ -23,6 +23,7 @@ import {
 } from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
+import useAuth from '../../context/authContext';
 import logoLight from '../../assets/logo.svg';
 import logoDark from '../../assets/logoDark.svg';
 import { stringAvatar } from '../../services/wallet/utils';
@@ -40,6 +41,7 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 function TopNav() {
+  const auth = useAuth();
   const dispatch = useDispatch();
   const isSideBarOpen = useSelector(sideBarStateSelector);
   const themeMode = useSelector(themeModeSelector);
@@ -98,7 +100,7 @@ function TopNav() {
         </IconButton>
         Profile
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={() => auth.removeAuth()}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"

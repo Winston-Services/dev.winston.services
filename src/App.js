@@ -1,53 +1,65 @@
 import * as React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Navigate, useRoutes } from 'react-router-dom';
 import AuthLayout from './layouts/AuthLayout';
-import NoMatch from './pages/NoMatch';
+import useAuth, { AuthRedirect } from './context/authContext';
 import { CircularProgress } from '@mui/material';
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const Counter = React.lazy(() => import('./pages/Counter'));
 const Home = React.lazy(() => import('./pages/Home'));
 const About = React.lazy(() => import('./pages/About'));
+import LandingLayout from './layouts/LandingLayout';
 
 export default function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<AuthLayout />}>
-        <Route
-          path="/"
-          element={
-            <React.Suspense fallback={<CircularProgress />}>
-              <Dashboard />
-            </React.Suspense>
-          }
-        />
-        <Route
-          path="/counter"
-          element={
-            <React.Suspense fallback={<CircularProgress />}>
-              <Counter />
-            </React.Suspense>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <React.Suspense fallback={<CircularProgress />}>
-              <Home />
-            </React.Suspense>
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            <React.Suspense fallback={<CircularProgress />}>
-              <About />
-            </React.Suspense>
-          }
-        />
-
-        <Route path="*" element={<NoMatch />} />
-      </Route>
-    </Routes>
-  );
+  const auth = useAuth();
+  const getRouteWrapper = (component, authRoute = true) => {
+    return (
+      <AuthRedirect authenticatedRoute={authRoute}>
+        <React.Suspense fallback={<CircularProgress />}>
+          {component}
+        </React.Suspense>
+      </AuthRedirect>
+    );
+  };
+  const routes = [
+    {
+      path: '/dashboard',
+      element: getRouteWrapper(<AuthLayout />),
+      children: [
+        {
+          index: true,
+          element: getRouteWrapper(<Dashboard />),
+        },
+        {
+          path: '/dashboard/counter',
+          element: getRouteWrapper(<Counter />),
+        },
+      ],
+    },
+    {
+      path: '/',
+      element: getRouteWrapper(<LandingLayout />, false),
+      children: [
+        {
+          path: '/login',
+          element: getRouteWrapper(<Home />, false),
+        },
+        {
+          path: '/about',
+          element: getRouteWrapper(<About />, false),
+        },
+        {
+          path: '/',
+          element: (
+            <Navigate to={auth?.authenticated ? '/dashboard' : '/login'} />
+          ),
+        },
+      ],
+    },
+    {
+      path: '*',
+      element: <Navigate to={auth?.authenticated ? '/dashboard' : '/login'} />,
+    },
+  ];
+  return useRoutes(routes);
 }

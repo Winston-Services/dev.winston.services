@@ -73,6 +73,13 @@ const createThemeVariable = (mode) => {
           },
         },
       },
+      MuiCard: {
+        styleOverrides: {
+          root: {
+            backgroundImage: 'none',
+          },
+        },
+      },
     },
   };
 };

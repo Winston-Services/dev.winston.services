@@ -8,16 +8,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Box } from '@mui/material';
+import { AuthProvider } from './context/authContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeLoader>
-        <Box sx={{ display: 'flex' }}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </Box>
+        <BrowserRouter>
+          <AuthProvider>
+            <Box sx={{ display: 'flex' }}>
+              <App />
+            </Box>
+          </AuthProvider>
+        </BrowserRouter>
       </ThemeLoader>
     </Provider>
   </React.StrictMode>,
