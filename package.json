@@ -16,8 +16,6 @@
     "electron": "wait-on tcp:3000 && electron ."
   },
   "dependencies": {
-    "@emotion/react": "^11.8.1",
-    "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.5.0",
     "@mui/material": "^5.5.0",
     "@mui/styles": "^5.5.0",
