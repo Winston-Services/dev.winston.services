@@ -10,6 +10,7 @@ html,
 body,
 #root {
   height: 100%;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -28,4 +29,242 @@ body,
   border-radius: 5px;
   border: 2px solid transparent;
   background-clip: content-box;
+}
+
+.signInGradient {
+  background: linear-gradient(269deg, #ed8ef3 24.22%, #7968ff 100%);
+  position: absolute;
+  width: 58%;
+  left: 52%;
+  height: 100%;
+  transform: skewX(-15deg);
+  z-index: -1;
+}
+
+.mh100vh {
+  min-height: 100vh;
+}
+.w50p {
+  width: 50%;
+}
+
+.w60p {
+  width: 60% !important;
+}
+
+.w100p {
+  width: 100%;
+}
+.w125p {
+  width: 125%;
+}
+.cursorPointer {
+  cursor: pointer;
+}
+
+/* Margin spacing */
+
+.mr25 {
+  margin-right: 25px;
+}
+
+.mt25 {
+  margin-top: 25px !important;
+}
+
+.mt20 {
+  margin-top: 20px !important;
+}
+
+.mt30 {
+  margin-top: 30px !important;
+}
+
+.mt50 {
+  margin-top: 50px !important;
+}
+
+.mt80 {
+  margin-top: 80px !important;
+}
+
+.mt70 {
+  margin-top: 70px !important;
+}
+
+.mt90 {
+  margin-top: 90px !important;
+}
+
+.mt100 {
+  margin-top: 100px !important;
+}
+
+.mb50 {
+  margin-bottom: 50px !important;
+}
+
+.mb80 {
+  margin-bottom: 80px !important;
+}
+
+.lh78 {
+  line-height: 78px !important;
+}
+
+.fs14 {
+  font-size: 14px !important;
+}
+
+.fs16 {
+  font-size: 16px !important;
+}
+
+.fs35 {
+  font-size: 35px !important;
+}
+
+.fs40 {
+  font-size: 40px !important;
+}
+
+.fs50 {
+  font-size: 50px !important;
+}
+
+.fs60 {
+  font-size: 60px !important;
+}
+
+.fw300 {
+  font-weight: 300 !important;
+}
+
+.fw400 {
+  font-weight: 400 !important;
+}
+
+.fw500 {
+  font-weight: 500 !important;
+}
+
+.fw600 {
+  font-weight: 600 !important;
+}
+
+.fw700 {
+  font-weight: 700 !important;
+}
+
+.fw800 {
+  font-weight: 800 !important;
+}
+
+.dFlex {
+  display: flex;
+}
+
+.justifyContentSpaceBetween {
+  justify-content: space-between;
+}
+
+.justifyContentCenter {
+  justify-content: center;
+}
+
+.alignItemsCenter {
+  align-items: center;
+}
+
+.flex-grow-100 {
+  flex-grow: 100;
+}
+
+.borderWhite {
+  border: 1px solid white !important;
+}
+
+.mr10 {
+  margin-right: 10px !important;
+}
+
+.mr20 {
+  margin-right: 20px !important;
+}
+
+.ml10 {
+  margin-left: 10px !important;
+}
+
+.bgGradient {
+  background: linear-gradient(92.44deg, #ea7a8f 3.93%, #e452c8 98.71%);
+}
+
+.colorYellow {
+  color: #ffd215;
+}
+
+.textDecorationUnderline {
+  text-decoration: underline;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.disableColor {
+  background-color: #8a82af !important;
+}
+
+.colorWhite {
+  color: white !important;
+}
+
+.p14 {
+  padding: 14px !important;
+}
+
+.p30 {
+  padding: 30px;
+}
+
+.pb20 {
+  padding-bottom: 20px;
+}
+
+.p15-25 {
+  padding: 15px 25px !important;
+}
+
+.br5 {
+  border-radius: 5px !important;
+}
+
+.br10 {
+  border-radius: 10px !important;
+}
+
+.br15 {
+  border-radius: 15px !important;
+}
+
+.br20 {
+  border-radius: 20px !important;
+}
+
+.br25 {
+  border-radius: 25px !important;
+}
+
+.bgBlue {
+  background-color: #312470;
+}
+
+.nft_button {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border-radius: 25px !important;
+  text-transform: inherit !important;
+  padding: 14px 32px !important;
+  line-height: normal !important;
 }
