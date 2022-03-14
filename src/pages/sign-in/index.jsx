@@ -2,25 +2,11 @@ import React from 'react';
 import { Typography, Button, Input, useMediaQuery } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import LockIcon from '@mui/icons-material/Lock';
-import { makeStyles } from '@mui/styles';
 import TextBox from './../../components/common/TextBox';
 
-const useStyles = makeStyles({
-  button: {
-    fontSize: 15,
-    fontWeight: 500,
-    borderRadius: 25,
-    textTransform: 'inherit',
-    padding: '14px 32px',
-    color: 'white',
-    lineHeight: 'normal',
-  },
-});
-
 function SignIn() {
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery('(min-width:768px)');
   const navigate = useNavigate();
-  const classes = useStyles();
   return (
     <div className={`mb80`}>
       <div className={`${matches ? 'mt100' : 'mt50'}`}>
@@ -43,14 +29,16 @@ function SignIn() {
 
       <div className={`${matches ? 'mt50' : 'mt30 dFlex'}`}>
         <Button
-          className={`${classes.button} borderWhite mr20
-          ${matches ? '' : 'w50'}`}
+          fullWidth
+          variant="outlined"
+          sx={{ mr: { xs: 2, md: 4 } }}
           // onClick={loadKeyFromLocalStorage}
         >
           Browser Login
         </Button>
         <Button
-          className={`${classes.button} bgGradient  ${matches ? '' : 'w50'}`}
+          variant="contained"
+          color="secondary"
           startIcon={<LockIcon />}
           // onClick={handleUploadClick}
         >

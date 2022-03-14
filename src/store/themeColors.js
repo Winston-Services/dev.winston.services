@@ -33,7 +33,66 @@ const altColor = {
 const errorColor = {
   500: '#F44336',
 };
-const createThemeVariable = (mode) => {
+const publicPageColors = {
+  typography: {
+    fontFamily: ['Lato', 'sans-serif'].join(','),
+  },
+  palette: {
+    type: 'dark',
+    mode: 'dark',
+    primary: {
+      main: '#ffffff',
+      dark: '#281e5c',
+      light: '#47379e',
+    },
+    secondary: {
+      main: 'rgba(0,0,0,0)',
+    },
+    alt: {
+      main: altColor[500],
+      dark: altColor[900],
+      light: altColor[100],
+    },
+    errorColor: {
+      main: errorColor[500],
+    },
+    background: {
+      default: '#271D5A',
+      paper: '#2e2368',
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          borderRadius: '50px',
+          padding: '16px 32px',
+          boxSizing: 'border-box',
+        },
+      },
+      variants: [
+        {
+          props: { block: true },
+          style: {
+            width: '100%',
+          },
+        },
+        {
+          props: { variant: 'contained', color: 'secondary' },
+          style: {
+            background:
+              'linear-gradient(92.44deg, #EA7A8F 3.93%, #E452C8 98.71%)',
+          },
+        },
+      ],
+    },
+  },
+};
+const createThemeVariable = (mode, landing) => {
+  if (landing) {
+    return publicPageColors;
+  }
   return {
     typography: {
       fontFamily: ['Lato', 'sans-serif'].join(','),
@@ -83,7 +142,8 @@ const createThemeVariable = (mode) => {
     },
   };
 };
-const initialState = createThemeVariable('dark');
+
+const initialState = createThemeVariable('dark', true);
 
 export const themeColors = createSlice({
   name: 'themeColors',
@@ -91,7 +151,8 @@ export const themeColors = createSlice({
   reducers: {
     toggleTheme: (state) => {
       state = createThemeVariable(
-        state.palette.type === 'light' ? 'dark' : 'light'
+        state.palette.type === 'light' ? 'dark' : 'light',
+        false
       );
       return state;
     },

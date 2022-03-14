@@ -1,8 +1,8 @@
 import React from 'react';
 import { Typography, Button, useMediaQuery } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import TextBox from './../../components/common/TextBox';
 import { makeStyles } from '@mui/styles';
+import TextBox from './../../components/common/TextBox';
 
 const useStyles = makeStyles({
   button: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
 function Create() {
   const navigate = useNavigate();
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery('(min-width:768px)');
   const [created, setCreated] = React.useState(false);
   const [saveToBrowser, setSaveToBrowser] = React.useState(false);
   const classes = useStyles();
