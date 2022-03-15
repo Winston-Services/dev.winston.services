@@ -1,26 +1,13 @@
 import * as React from 'react';
-import { Grid, Button, Container, Box } from '@mui/material';
+import { Grid, Container, Box, Chip } from '@mui/material';
 import { ReactComponent as CryptoImg } from '../assets/Crypto.svg';
 import Logo from '../assets/logo.svg';
 import { useNavigate, Outlet } from 'react-router-dom';
 import { Twitter, YouTube } from '@mui/icons-material';
 import { ReactComponent as Discord } from '../assets/discord.svg';
-import { makeStyles } from '@mui/styles';
-
-const useStyles = makeStyles({
-  button: {
-    color: 'white',
-    textTransform: 'inherit',
-    border: '1px solid white',
-    borderRadius: 25,
-    padding: '16px 32px',
-    lineHeight: 'normal',
-  },
-});
 
 function SignInLayout() {
   const navigate = useNavigate();
-  const classes = useStyles();
   return (
     <>
       <Box
@@ -28,7 +15,7 @@ function SignInLayout() {
         component={'div'}
         sx={{ display: { xs: 'none', lg: 'block' } }}
       />
-      <Container maxWidth="xl" alignItems="center" sx={{ margin: 'auto' }}>
+      <Container maxWidth="xl" sx={{ margin: 'auto' }}>
         <Grid container justifyContent={'center'} alignItems="center">
           <Grid item sm={12} lg={4}>
             <Box
@@ -63,8 +50,8 @@ function SignInLayout() {
             justifyContent="center"
           >
             <CryptoImg width="100%" />
-            <Grid display="flex" justifyContent="end">
-              <Button className={classes.button}>Security starts here</Button>
+            <Grid display="flex" justifyContent="flex-end">
+              <Chip label="Security starts here" variant="outlined" />
             </Grid>
           </Grid>
         </Grid>

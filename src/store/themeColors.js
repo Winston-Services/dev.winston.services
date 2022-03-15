@@ -69,6 +69,7 @@ const publicPageColors = {
           borderRadius: '50px',
           padding: '16px 32px',
           boxSizing: 'border-box',
+          height: '50px',
         },
       },
       variants: [
@@ -89,12 +90,15 @@ const publicPageColors = {
         },
       },
     },
-    MuiTypography: {
+    MuiChip: {
       variants: [
         {
-          props: { bold: true },
+          props: { variant: 'outlined' },
           style: {
-            fontWeight: '600',
+            borderColor: '#fff',
+            padding: '16px 32px',
+            height: '50px',
+            borderRadius: '50px',
           },
         },
       ],

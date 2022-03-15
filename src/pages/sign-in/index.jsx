@@ -24,7 +24,7 @@ function SignIn() {
   return (
     <Box component="form" onSubmit={handleSubmit} noValidate>
       <Typography variant="h3">Sign in to</Typography>
-      <Typography variant="h2" bold sx={{ mt: 2 }}>
+      <Typography variant="h2" sx={{ mt: 2, fontWeight: '600' }}>
         Your Wallet
       </Typography>
       <Typography variant="subtitle2" sx={{ my: 5 }}>
