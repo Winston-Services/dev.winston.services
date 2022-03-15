@@ -10,7 +10,6 @@ html,
 body,
 #root {
   height: 100%;
-  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -31,14 +30,17 @@ body,
   background-clip: content-box;
 }
 
-.signInGradient {
+.signInGradient:after {
+  content: '';
   background: linear-gradient(269deg, #ed8ef3 24.22%, #7968ff 100%);
-  position: absolute;
-  width: 58%;
-  left: 52%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: calc(50% - 50px);
   height: 100%;
-  transform: skewX(-15deg);
+  transform: skewX(-10deg);
   z-index: -1;
+  border-left: 50px solid #2d2169;
 }
 
 .mh100vh {

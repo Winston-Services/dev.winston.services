@@ -1,37 +1,48 @@
 import React from 'react';
-import { Typography, Button, Input, useMediaQuery } from '@mui/material';
+import {
+  Typography,
+  Button,
+  Input,
+  useMediaQuery,
+  Box,
+  Link,
+  // Grid,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import LockIcon from '@mui/icons-material/Lock';
 import TextBox from './../../components/common/TextBox';
+import useAuth from '../../context/authContext';
 
 function SignIn() {
   const matches = useMediaQuery('(min-width:768px)');
   const navigate = useNavigate();
+  const auth = useAuth();
+  const handleSubmit = () => {
+    auth.setAuth(true);
+    navigate('/dashboard');
+  };
   return (
-    <div className={`mb80`}>
-      <div className={`${matches ? 'mt100' : 'mt50'}`}>
-        <Typography className={`${'lh78'} ${matches ? 'fs60' : 'fs35'}`}>
-          Sign in to <br />
-          <span className={`fw700`}>Your Wallet</span>
-        </Typography>
-        <Typography className={`fs14 fw400 mt30`}>
-          Note : Don&apos;t lo se your wallet key! you want to store your
-          private key in safe place for accessing your wallet
-        </Typography>
-      </div>
-      <div className={`${matches ? 'mt50' : 'mt70'}`}>
-        <TextBox
-          label={'Password'}
-          placeholder={'Enter your password'}
-          // errorMsg={state.errors}
-        />
-      </div>
-
+    <Box component="form" onSubmit={handleSubmit} noValidate>
+      <Typography variant="h3">Sign in to</Typography>
+      <Typography variant="h2" bold sx={{ mt: 2 }}>
+        Your Wallet
+      </Typography>
+      <Typography variant="subtitle2" sx={{ my: 5 }}>
+        Note : Don&apos;t lo se your wallet key! you want to store your private
+        key in safe place for accessing your wallet
+      </Typography>
+      <TextBox
+        label={'Password'}
+        required
+        placeholder={'Enter your password'}
+        fullWidth
+        // errorMsg={state.errors}
+      />
       <div className={`${matches ? 'mt50' : 'mt30 dFlex'}`}>
         <Button
-          fullWidth
           variant="outlined"
-          sx={{ mr: { xs: 2, md: 4 } }}
+          sx={{ mr: { xs: 2, md: 3 } }}
+          type="submit"
           // onClick={loadKeyFromLocalStorage}
         >
           Browser Login
@@ -45,29 +56,20 @@ function SignIn() {
           Private Key
         </Button>
         <Input
-          color="primary"
-          size="medium"
           // onChange={handleUploadFile}
           name="privateKeyFile"
           // ref={hiddenFileInput}
           type="file"
-          style={{ display: 'none' }}
+          sx={{ display: 'none' }}
         />
       </div>
-
-      <div className={` dFlex ${matches ? 'mt50' : 'mt100'}`}>
-        <Typography className={`fs16 fw500 mr10`}>
-          Don’t have an wallet?
-        </Typography>
-
-        <Typography
-          className={`colorYellow fs16 fw600 textDecorationUnderline cursorPointer`}
-          onClick={() => navigate('/wallet/create')}
-        >
+      <Typography sx={{ mt: 5 }}>
+        Don’t have an wallet?
+        <Link onClick={() => navigate('/sign-up')} sx={{ ml: 1 }}>
           Let’s create your wallet
-        </Typography>
-      </div>
-    </div>
+        </Link>
+      </Typography>
+    </Box>
   );
 }
 

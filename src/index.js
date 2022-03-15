@@ -16,7 +16,7 @@ ReactDOM.render(
       <ThemeLoader>
         <BrowserRouter>
           <AuthProvider>
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex', height: '100%' }}>
               <App />
             </Box>
           </AuthProvider>

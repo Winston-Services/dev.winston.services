@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Button, useMediaQuery, Container } from '@mui/material';
+import { Grid, Button, Container, Box } from '@mui/material';
 import { ReactComponent as CryptoImg } from '../assets/Crypto.svg';
 import Logo from '../assets/logo.svg';
 import { useNavigate, Outlet } from 'react-router-dom';
@@ -19,61 +19,57 @@ const useStyles = makeStyles({
 });
 
 function SignInLayout() {
-  const matches = useMediaQuery('(min-width:600px)');
   const navigate = useNavigate();
   const classes = useStyles();
   return (
-    <div className={`w100p`}>
-      {matches ? <div className={`signInGradient`} /> : null}
-      <Container className={`mt50 mb50`}>
-        <Grid container>
-          <Grid
-            item
-            sm={12}
-            lg={5}
-            display="flex"
-            direction="column"
-            justifyContent="center"
-          >
-            <img
+    <>
+      <Box
+        className={`signInGradient`}
+        component={'div'}
+        sx={{ display: { xs: 'none', lg: 'block' } }}
+      />
+      <Container maxWidth="xl" alignItems="center" sx={{ margin: 'auto' }}>
+        <Grid container justifyContent={'center'} alignItems="center">
+          <Grid item sm={12} lg={4}>
+            <Box
+              component="img"
               src={Logo}
               alt="crypto"
               onClick={() => {
                 navigate('/');
               }}
-              className={`cursorPointer w50p`}
+              sx={{ mb: '100px', height: '72px' }}
             />
             <Outlet />
-            <div>
-              <Discord className={`mr25`} />
-              <Twitter className={`mr25`} />
-              <YouTube />
-            </div>
-          </Grid>
-          {matches ? (
-            <>
-              <Grid item sm={12} lg={2}></Grid>
-              <Grid
-                item
-                sm={12}
-                lg={5}
-                display="flex"
-                direction="column"
-                justifyContent="center"
-                className={`mh100vh`}
-              >
-                <CryptoImg className={`w125p`} />
-                <Grid display="flex" justifyContent="end">
-                  <Button className={classes.button}>
-                    Security starts here
-                  </Button>
-                </Grid>
+            <Grid container spacing={2} sx={{ mt: '85px' }}>
+              <Grid item>
+                <Discord />
               </Grid>
-            </>
-          ) : null}
+              <Grid item>
+                <Twitter />
+              </Grid>
+              <Grid item>
+                <YouTube />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item sm={0} lg={2}></Grid>
+          <Grid
+            item
+            sx={{ display: { xs: 'none', lg: 'block' } }}
+            lg={5}
+            container
+            direction="column"
+            justifyContent="center"
+          >
+            <CryptoImg width="100%" />
+            <Grid display="flex" justifyContent="end">
+              <Button className={classes.button}>Security starts here</Button>
+            </Grid>
+          </Grid>
         </Grid>
       </Container>
-    </div>
+    </>
   );
 }
 

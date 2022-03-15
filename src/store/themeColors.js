@@ -57,7 +57,7 @@ const publicPageColors = {
       main: errorColor[500],
     },
     background: {
-      default: '#271D5A',
+      default: '#312470',
       paper: '#2e2368',
     },
   },
@@ -73,16 +73,28 @@ const publicPageColors = {
       },
       variants: [
         {
-          props: { block: true },
-          style: {
-            width: '100%',
-          },
-        },
-        {
           props: { variant: 'contained', color: 'secondary' },
           style: {
             background:
               'linear-gradient(92.44deg, #EA7A8F 3.93%, #E452C8 98.71%)',
+          },
+        },
+      ],
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: '#FFD215',
+          cursor: 'pointer',
+        },
+      },
+    },
+    MuiTypography: {
+      variants: [
+        {
+          props: { bold: true },
+          style: {
+            fontWeight: '600',
           },
         },
       ],

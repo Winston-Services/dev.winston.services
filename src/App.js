@@ -6,12 +6,11 @@ import { CircularProgress } from '@mui/material';
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const Counter = React.lazy(() => import('./pages/Counter'));
-const Home = React.lazy(() => import('./pages/Home'));
 const About = React.lazy(() => import('./pages/About'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
 
 const SignIn = React.lazy(() => import('./pages/sign-in'));
-const Create = React.lazy(() => import('./pages/sign-in/Create'));
+const SignUp = React.lazy(() => import('./pages/sign-up'));
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 
@@ -43,12 +42,22 @@ export default function App() {
     },
     {
       path: '/',
-      element: getRouteWrapper(<LandingLayout />, false),
+      element: getRouteWrapper(<SignInLayout />, false),
       children: [
         {
-          path: '/login',
-          element: getRouteWrapper(<Home />, false),
+          path: '/sign-in',
+          element: getRouteWrapper(<SignIn />, false),
         },
+        {
+          path: '/sign-up',
+          element: getRouteWrapper(<SignUp />, false),
+        },
+      ],
+    },
+    {
+      path: '/',
+      element: getRouteWrapper(<LandingLayout />, false),
+      children: [
         {
           path: '/about',
           element: getRouteWrapper(<About />, false),
@@ -60,18 +69,8 @@ export default function App() {
         {
           path: '/',
           element: (
-            <Navigate to={auth?.authenticated ? '/dashboard' : '/login'} />
+            <Navigate to={auth?.authenticated ? '/dashboard' : '/sign-in'} />
           ),
-        },
-      ],
-    },
-    {
-      path: '/sign-in',
-      element: getRouteWrapper(<SignInLayout />, false),
-      children: [
-        {
-          index: true,
-          element: getRouteWrapper(<SignIn />, false),
         },
       ],
     },
@@ -81,13 +80,15 @@ export default function App() {
       children: [
         {
           path: '/wallet/create',
-          element: getRouteWrapper(<Create />, false),
+          element: getRouteWrapper(<SignUp />, false),
         },
       ],
     },
     {
       path: '*',
-      element: <Navigate to={auth?.authenticated ? '/dashboard' : '/login'} />,
+      element: (
+        <Navigate to={auth?.authenticated ? '/dashboard' : '/sign-in'} />
+      ),
     },
   ];
   return useRoutes(routes);

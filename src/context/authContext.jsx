@@ -5,19 +5,24 @@ import { Navigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import { userInfoSelector } from '../store/user';
 import { PropTypes } from 'prop-types';
-
-const AuthContext = React.createContext(null);
+const oldToken = localStorage.getItem('token');
+const AuthContext = React.createContext(oldToken);
 
 export function AuthProvider({ children }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(null);
+  const [auth, setAuth] = useState(oldToken);
   const removeAuth = () => {
     dispatch({ type: 'logout' });
+    localStorage.removeItem('token', false);
     setAuth(undefined);
-    navigate('/');
+    navigate('/sign-in');
   };
-  const value = { authenticated: auth, setAuth, removeAuth };
+  const addAuth = (...arg) => {
+    localStorage.setItem('token', true);
+    setAuth(...arg);
+  };
+  const value = { authenticated: auth, setAuth: addAuth, removeAuth };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 AuthProvider.propTypes = {
@@ -33,7 +38,7 @@ export function AuthRedirect({ children, authenticatedRoute = true }) {
   let location = useLocation();
   const user = useSelector(userInfoSelector);
   if (!auth?.authenticated && authenticatedRoute) {
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to="/sign-in" state={{ from: location }} />;
   } else if (auth?.authenticated && !authenticatedRoute) {
     return <Navigate to="/dashboard" state={{ from: location }} />;
   }
