@@ -6,6 +6,9 @@ import { CircularProgress } from '@mui/material';
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
+const ProductDetails = React.lazy(() =>
+  import('./pages/marketplace/ProductDetails')
+);
 
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
@@ -60,6 +63,16 @@ export default function App() {
         {
           path: '/marketplace',
           element: getRouteWrapper(<Marketplace />, false),
+        },
+        {
+          path: '/marketplace/product-details',
+          element: getRouteWrapper(<ProductDetails />, false),
+        },
+        {
+          path: '/',
+          element: (
+            <Navigate to={auth?.authenticated ? '/dashboard' : '/sign-in'} />
+          ),
         },
       ],
     },

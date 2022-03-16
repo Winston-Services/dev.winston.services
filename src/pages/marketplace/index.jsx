@@ -426,7 +426,7 @@ export default function Index() {
                     <Button
                       startIcon={<BidBuyIcon />}
                       onClick={() => {
-                        navigate('marketplace/product-details');
+                        navigate('/marketplace/product-details');
                       }}
                     >
                       Bid | Buy

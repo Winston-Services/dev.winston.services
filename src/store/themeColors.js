@@ -99,7 +99,6 @@ const publicPageColors = {
           borderRadius: '50px',
           padding: '16px 32px',
           boxSizing: 'border-box',
-          height: '45px',
         },
       },
       variants: [
@@ -129,6 +128,14 @@ const publicPageColors = {
             padding: '16px 32px',
             height: '45px',
             borderRadius: '50px',
+          },
+        },
+        {
+          props: { variant: 'filled' },
+          style: {
+            background: '#4F409A',
+            padding: '10px 8px',
+            borderRadius: '17px',
           },
         },
       ],
