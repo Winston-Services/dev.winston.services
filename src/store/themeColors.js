@@ -77,6 +77,14 @@ const publicPageColors = {
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: `#31256C`,
+          padding: `50px`,
+        },
+      },
+    },
     MuiAccordion: {
       styleOverrides: {
         root: {

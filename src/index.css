@@ -6,11 +6,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 html,
 body,
 #root {
   height: 100%;
 }
+
 ::-webkit-scrollbar {
   /* width: 10px; */
 }
@@ -19,9 +21,11 @@ body,
   background-color: transparent;
   border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
+
 *:hover::-webkit-scrollbar-thumb,
 *:focus::-webkit-scrollbar-thumb {
   background-color: #00000080;
@@ -46,6 +50,7 @@ body,
 .mh100vh {
   min-height: 100vh;
 }
+
 .w50p {
   width: 50%;
 }
@@ -61,9 +66,11 @@ body,
 .w100p {
   width: 100%;
 }
+
 .w125p {
   width: 125%;
 }
+
 .cursorPointer {
   cursor: pointer;
 }
@@ -353,6 +360,7 @@ body,
 .buyButton button:hover {
   background-color: white;
 }
+
 .buyButton button {
   font-size: 12px;
   font-weight: 700;
@@ -389,6 +397,7 @@ body,
 .categories-filter-button:hover {
   background: linear-gradient(92.44deg, #ea7a8f 3.93%, #e452c8 98.71%);
 }
+
 /* 
 .MuiSwitch-switchBase {
   color: white !important;

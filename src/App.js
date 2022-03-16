@@ -11,7 +11,7 @@ const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
-
+import WhitelabelWinston from './layouts/whitelabelWinston/index.js';
 export default function App() {
   const auth = useAuth();
   const getRouteWrapper = (component, authRoute = true) => {
@@ -55,6 +55,10 @@ export default function App() {
         {
           path: '/marketplace',
           element: getRouteWrapper(<Marketplace />, false),
+        },
+        {
+          path: '/whitelabel-winston',
+          element: getRouteWrapper(<WhitelabelWinston />, false),
         },
         {
           path: '/',
