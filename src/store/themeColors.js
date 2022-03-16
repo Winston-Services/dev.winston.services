@@ -162,12 +162,9 @@ const layout = window.location.pathname.includes('dashboard')
   ? 'dashboard'
   : 'landing';
 const initialState = {
-  colors: createThemeVariable(
-    localStorage.getItem('theme') || 'dark',
-    layout === 'dashboard'
-  ),
+  colors: createThemeVariable('dark', layout === 'dashboard'),
   oldLayout: layout,
-  oldMode: localStorage.getItem('theme') || 'dark',
+  oldMode: 'dark',
 };
 console.log('layout', layout);
 
@@ -176,9 +173,8 @@ export const themeColors = createSlice({
   initialState,
   reducers: {
     toggleTheme: (state, action) => {
-      const newMode = state.oldMode  === 'light' ? 'dark' : 'light';
+      const newMode = state.oldMode === 'light' ? 'dark' : 'light';
       state.oldMode = newMode;
-      localStorage.setItem('theme', state.oldMode);
       state.oldLayout = action.payload;
       state.colors = createThemeVariable(newMode, true);
       return state;
