@@ -105,8 +105,8 @@ const publicPageColors = {
     },
   },
 };
-const createThemeVariable = (mode, landing) => {
-  if (landing) {
+const createThemeVariable = (mode, dashboard) => {
+  if (!dashboard) {
     return publicPageColors;
   }
   return {
@@ -158,17 +158,35 @@ const createThemeVariable = (mode, landing) => {
     },
   };
 };
-
-const initialState = createThemeVariable('dark', true);
+const layout = window.location.pathname.includes('dashboard')
+  ? 'dashboard'
+  : 'landing';
+const initialState = {
+  colors: createThemeVariable(
+    localStorage.getItem('theme') || 'dark',
+    layout === 'dashboard'
+  ),
+  oldLayout: layout,
+  oldMode: localStorage.getItem('theme') || 'dark',
+};
+console.log('layout', layout);
 
 export const themeColors = createSlice({
   name: 'themeColors',
   initialState,
   reducers: {
-    toggleTheme: (state) => {
-      state = createThemeVariable(
-        state.palette.type === 'light' ? 'dark' : 'light',
-        false
+    toggleTheme: (state, action) => {
+      const newMode = state.oldMode  === 'light' ? 'dark' : 'light';
+      state.oldMode = newMode;
+      localStorage.setItem('theme', state.oldMode);
+      state.oldLayout = action.payload;
+      state.colors = createThemeVariable(newMode, true);
+      return state;
+    },
+    setTheme: (state, action) => {
+      state.colors = createThemeVariable(
+        state.oldMode,
+        action.payload === 'dashboard'
       );
       return state;
     },
@@ -176,7 +194,8 @@ export const themeColors = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleTheme } = themeColors.actions;
-export const themeModeSelector = (state) => state.themeColors.palette.type;
-export const themeSelector = (state) => state.themeColors;
+export const { toggleTheme, setTheme } = themeColors.actions;
+export const themeModeSelector = (state) =>
+  state.themeColors.colors.palette.type;
+export const themeSelector = (state) => state.themeColors.colors;
 export default themeColors.reducer;

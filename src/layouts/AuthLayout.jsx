@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import SideBar from './common/SideBar';
 import TopNav from './common/TopNav';
 import { Box, Container } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { setTheme } from '../store/themeColors';
 
 function Layout() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setTheme('dashboard'));
+  }, [dispatch]);
   return (
     <>
       {/* TODO: Need to update once we have redux state for error {state.errors ? <Toast message={state.errors} /> : null} */}

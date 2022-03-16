@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
 });
 const reducer = (state, action) => {
   if (action.type === 'logout') {
-    state = {};
+    state = { themeColors: state.themeColors };
   }
   return rootReducer(state, action);
 };

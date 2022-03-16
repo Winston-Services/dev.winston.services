@@ -74,7 +74,7 @@ function TopNav() {
     >
       <MenuItem
         sx={{ display: { xs: 'flex', md: 'none' } }}
-        onClick={() => dispatch(toggleTheme())}
+        onClick={() => dispatch(toggleTheme('dashboard'))}
       >
         <IconButton aria-label="show 17 new notifications" color="inherit">
           {themeMode === 'dark' ? <Brightness7 /> : <Brightness4 />}
@@ -137,7 +137,7 @@ function TopNav() {
         <Box>
           <IconButton
             sx={{ display: { xs: 'none', md: 'inline-flex' }, mr: 2 }}
-            onClick={() => dispatch(toggleTheme())}
+            onClick={() => dispatch(toggleTheme('dashboard'))}
             color="inherit"
           >
             {themeMode === 'dark' ? <Brightness7 /> : <Brightness4 />}

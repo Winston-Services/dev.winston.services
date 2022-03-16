@@ -18,11 +18,13 @@ function SignIn() {
   const navigate = useNavigate();
   const auth = useAuth();
   const handleSubmit = () => {
+    // event.preventDefault();
+    console.log('event', event);
     auth.setAuth(true);
     navigate('/dashboard');
   };
   return (
-    <Box component="form" onSubmit={handleSubmit} noValidate>
+    <Box>
       <Typography variant="h3">Sign in to</Typography>
       <Typography variant="h2" sx={{ mt: 2, fontWeight: '600' }}>
         Your Wallet
@@ -42,8 +44,7 @@ function SignIn() {
         <Button
           variant="outlined"
           sx={{ mr: { xs: 2, md: 3 } }}
-          type="submit"
-          // onClick={loadKeyFromLocalStorage}
+          onClick={handleSubmit}
         >
           Browser Login
         </Button>

@@ -5,9 +5,15 @@ import Logo from '../assets/logo.svg';
 import { useNavigate, Outlet } from 'react-router-dom';
 import { Twitter, YouTube } from '@mui/icons-material';
 import { ReactComponent as Discord } from '../assets/discord.svg';
+import { useDispatch } from 'react-redux';
+import { setTheme } from '../store/themeColors';
 
 function SignInLayout() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(setTheme('landing'));
+  }, [dispatch]);
   return (
     <>
       <Box
