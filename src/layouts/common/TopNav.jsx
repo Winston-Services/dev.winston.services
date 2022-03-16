@@ -25,7 +25,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import useAuth from '../../context/authContext';
 import logoLight from '../../assets/logo.svg';
-import logoDark from '../../assets/logoDark.svg';
+import logoDark from '../../assets/logo_dark.svg';
 import { stringAvatar } from '../../services/wallet/utils';
 import { themeModeSelector, toggleTheme } from './../../store/themeColors';
 import { sideBarStateSelector, toggleSideBar } from './../../store/sideBar';

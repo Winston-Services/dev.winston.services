@@ -1,127 +1,114 @@
 import React from 'react';
-import { Typography, Button, useMediaQuery } from '@mui/material';
+import { Typography, Button, Box, Link, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { makeStyles } from '@mui/styles';
-import TextBox from '../../components/common/TextBox';
-
-const useStyles = makeStyles({
-  button: {
-    fontSize: 15,
-    fontWeight: 500,
-    borderRadius: 25,
-    textTransform: 'inherit',
-    padding: '14px 32px',
-    color: 'white',
-    lineHeight: 'normal',
-  },
-});
+import { LoadingButton } from '@mui/lab';
 
 function SignUp() {
   const navigate = useNavigate();
-  const matches = useMediaQuery('(min-width:768px)');
   const [created, setCreated] = React.useState(false);
   const [saveToBrowser, setSaveToBrowser] = React.useState(false);
-  const classes = useStyles();
   if (created) {
     return (
-      <div>
-        <div className={`${matches ? 'mt100' : 'mt50'}`}>
-          <Typography className={`lh78 ${matches ? 'fs60' : 'fs35'}`}>
-            Your new wallet
-            <span className="fw700"> Created</span>
+      <>
+        <Box>
+          <Typography variant="h3">Your new wallet</Typography>
+          <Typography variant="h2" sx={{ mt: 2, fontWeight: '600' }}>
+            Created
           </Typography>
-          <Typography className="fs14 fw400 mt50">
+          <Typography variant="subtitle2" sx={{ my: 6 }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu
             dui tincidunt, accumsan ligula sit amet, dignissim tortor. Curabitur
-            tincidunt nulla mi, sit amet accumsan elit porttitor vitae. Mauris
-            vehicula tempus risus, non sollicitudin mi semper in. Quisque
-            vehicula, erat tempor mattis suscipit, diam metus viverra augue,
-            auctor mattis libero ante at
+            tincidunt nulla mi, sit amet accumsan elit porttitor vitae.
           </Typography>
-        </div>
-        <div className={`${matches ? 'mt50' : 'mt30'}`}>
-          <Button
-            disabled={saveToBrowser ? true : false}
-            className={`${classes.button} mr20 ${
-              saveToBrowser ? 'disableColor colorWhite' : 'borderWhite'
-            }`}
-            onClick={() => setSaveToBrowser(!saveToBrowser)}
-          >
-            {saveToBrowser ? 'Saved' : 'Save to Browser'}
-          </Button>
-          <Button className={`${classes.button} bgGradient `}>
-            Download Key
-          </Button>
-        </div>
+          <TextField
+            fullWidth
+            variant="outlined"
+            label={'Password'}
+            required
+            placeholder={'Enter your password'}
+            // error={state.errors ? true : false}
+            // color={state.errors ? 'red' : ''}
+            // helperText={state.errors}
+          />
 
-        {saveToBrowser && (
-          <div className="mt30 dFlex">
-            <Typography className="fontSize16 fw500">
+          <Box component="div" sx={{ mt: 5 }}>
+            <LoadingButton
+              loading={saveToBrowser}
+              variant="outlined"
+              sx={{ mr: { xs: 2, md: 3 } }}
+              onClick={() => setSaveToBrowser(!saveToBrowser)}
+            >
+              {saveToBrowser ? 'Saved' : 'Save to Browser'}
+            </LoadingButton>
+            <Button
+              variant="contained"
+              color="secondary"
+              // startIcon={<LockIcon />}
+              // onClick={handleUploadClick}
+            >
+              Download Key
+            </Button>
+          </Box>
+          {saveToBrowser && (
+            <Typography sx={{ mt: 5 }}>
               Your key is saved successfully.
-              <span
-                className="colorYellow fs16 fw600 ml10 textDecorationUnderline cursorPointer"
-                onClick={() => navigate('/sign-in')}
-              >
-                Click here
-              </span>{' '}
-              to login
+              <Link onClick={() => navigate('/sign-in')} sx={{ ml: 1 }}>
+                Click here to login
+              </Link>
             </Typography>
-          </div>
-        )}
-
-        <div className={`mb50 ${matches ? 'mt70' : 'mt30'}`}>
-          <Typography className="colorYellow fs14">
+          )}
+          <Typography variant="subtitle2" sx={{ my: 6 }}>
             Note : Don&apos;t lose your wallet key! you want to store your
             private key in safe place for accessing your wallet
           </Typography>
-        </div>
-      </div>
+        </Box>
+      </>
     );
   } else {
     return (
-      <div>
-        <div className={`${matches ? 'mt100' : 'mt50'}`}>
-          <Typography className={`lh78 ${matches ? 'fs60' : 'fs35'}`}>
-            Create your new
-            <span className="fw700"> Wallet</span>
+      <>
+        <Box>
+          <Typography variant="h3">Create your new</Typography>
+          <Typography variant="h2" sx={{ mt: 2, mb: 6, fontWeight: '600' }}>
+            Wallet
           </Typography>
-        </div>
-        <div className="mt50">
-          <TextBox label={'Password'} placeholder={'Enter your password'} />
-        </div>
-        <div className="mt30">
-          <TextBox
+          <TextField
+            variant="outlined"
+            label={'Password'}
+            required
+            fullWidth
+            placeholder={'Enter your password'}
+            // error={true}
+            // helperText={'Your invalid password'}
+          />
+          <TextField
+            sx={{ mt: 5 }}
+            variant="outlined"
             label={'Confirm Password'}
             placeholder={'Enter your confirm password'}
+            fullWidth
+            required
+            // error={state.errors ? true : false}
+            // color={state.errors ? 'red' : ''}
+            // helperText={state.errors}
           />
-        </div>
-        <div>
-          <Button
-            className={`${classes.button} bgGradient  ${
-              matches ? 'mt50' : 'mt30 w100p'
-            }`}
-            onClick={() => setCreated(true)}
-          >
-            Create your wallet
-          </Button>
-        </div>
-        <div
-          className={`dFlex mb50 ${
-            matches ? 'mt50' : 'mt90 justifyContentCenter'
-          }`}
-        >
-          <Typography className="fs16 fw500 mr10">
+          <Box component="div" sx={{ mt: 5 }}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => setCreated(true)}
+            >
+              Create your wallet
+            </Button>
+          </Box>
+          <Typography sx={{ mt: 5 }}>
             Already have an wallet?
+            <Link onClick={() => navigate('/sign-in')} sx={{ ml: 1 }}>
+              Login to your wallet
+            </Link>
           </Typography>
-
-          <Typography
-            className="colorYellow fs16 fw600 textDecorationUnderline cursorPointer"
-            onClick={() => navigate('/sign-in')}
-          >
-            Login to your wallet
-          </Typography>
-        </div>
-      </div>
+        </Box>
+      </>
     );
   }
 }

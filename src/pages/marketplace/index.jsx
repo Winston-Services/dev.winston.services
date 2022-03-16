@@ -12,12 +12,12 @@ import {
   Grid,
 } from '@mui/material';
 
-import NftMarketPlace1 from '../../assets/NftMarketPlace1.png';
-import NftMarketPlace2 from '../../assets/NftMarketPlace2.png';
-import NftMarketPlace3 from '../../assets/NftMarketPlace3.png';
-import NftMarketPlace4 from '../../assets/NftMarketPlace4.png';
-import NftMarketPlace5 from '../../assets/NftMarketPlace5.png';
-import { ReactComponent as BidBuyIcon } from '../../assets/BidBuyIcon.svg';
+import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
+import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
+import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
+import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
+import NftMarketPlace5 from '../../assets/nft_marketplace_5.png';
+import { ReactComponent as BidBuyIcon } from '../../assets/bid_buy.svg';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';

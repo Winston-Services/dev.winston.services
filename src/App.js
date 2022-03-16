@@ -5,8 +5,6 @@ import useAuth, { AuthRedirect } from './context/authContext';
 import { CircularProgress } from '@mui/material';
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
-const Counter = React.lazy(() => import('./pages/Counter'));
-const About = React.lazy(() => import('./pages/About'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
 
 const SignIn = React.lazy(() => import('./pages/sign-in'));
@@ -34,10 +32,6 @@ export default function App() {
           index: true,
           element: getRouteWrapper(<Dashboard />),
         },
-        {
-          path: '/dashboard/counter',
-          element: getRouteWrapper(<Counter />),
-        },
       ],
     },
     {
@@ -59,10 +53,6 @@ export default function App() {
       element: getRouteWrapper(<LandingLayout />, false),
       children: [
         {
-          path: '/about',
-          element: getRouteWrapper(<About />, false),
-        },
-        {
           path: '/marketplace',
           element: getRouteWrapper(<Marketplace />, false),
         },
@@ -71,16 +61,6 @@ export default function App() {
           element: (
             <Navigate to={auth?.authenticated ? '/dashboard' : '/sign-in'} />
           ),
-        },
-      ],
-    },
-    {
-      path: '/wallet',
-      element: getRouteWrapper(<SignInLayout />, false),
-      children: [
-        {
-          path: '/wallet/create',
-          element: getRouteWrapper(<SignUp />, false),
         },
       ],
     },

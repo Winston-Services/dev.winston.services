@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Grid, Container, Box, Chip } from '@mui/material';
-import { ReactComponent as CryptoImg } from '../assets/Crypto.svg';
-import Logo from '../assets/logo.svg';
+import { ReactComponent as CryptoImg } from './../assets/crypto_landing.svg';
+import Logo from './../assets/logo.svg';
 import { useNavigate, Outlet } from 'react-router-dom';
 import { Twitter, YouTube } from '@mui/icons-material';
-import { ReactComponent as Discord } from '../assets/discord.svg';
+import { ReactComponent as Discord } from './../assets/discord_brands.svg';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/themeColors';
 
@@ -31,10 +31,12 @@ function SignInLayout() {
               onClick={() => {
                 navigate('/');
               }}
-              sx={{ mb: '100px', height: '72px' }}
+              sx={{ mb: 8, mt: 14, height: '72px' }}
             />
-            <Outlet />
-            <Grid container spacing={2} sx={{ mt: '85px' }}>
+            <Box minHeight={'500px'}>
+              <Outlet />
+            </Box>
+            <Grid container spacing={2} sx={{ my: 8 }}>
               <Grid item>
                 <Discord />
               </Grid>
