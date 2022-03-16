@@ -92,6 +92,13 @@ const publicPageColors = {
         },
       ],
     },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          textTransform: 'capitalize',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -99,7 +106,6 @@ const publicPageColors = {
           borderRadius: '50px',
           padding: '16px 32px',
           boxSizing: 'border-box',
-          height: '50px',
         },
       },
       variants: [
@@ -129,6 +135,14 @@ const publicPageColors = {
             padding: '16px 32px',
             height: '50px',
             borderRadius: '50px',
+          },
+        },
+        {
+          props: { variant: 'filled' },
+          style: {
+            background: '#4F409A',
+            padding: '10px 8px',
+            borderRadius: '17px',
           },
         },
       ],
