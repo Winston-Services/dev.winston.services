@@ -13,10 +13,7 @@ function LandingLayout() {
     <>
       {/* TODO: Need to update once we have redux state for error {state.errors ? <Toast message={state.errors} /> : null} */}
       <Box sx={{ display: 'flex', width: '100%' }}>
-        <Container
-          maxWidth="false"
-          style={{ marginTop: '86px', padding: '30px' }}
-        >
+        <Container>
           <Outlet />
         </Container>
       </Box>

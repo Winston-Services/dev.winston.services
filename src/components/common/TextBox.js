@@ -5,34 +5,6 @@ import { TextField } from '@mui/material';
 const useStyles = makeStyles({
   root: {
     width: '100%',
-    // '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-    //   borderColor: '#483996',
-    //   color: 'white',
-    // },
-    // '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
-    //   borderColor: 'white',
-    // },
-    // '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-    //   borderColor: 'white',
-    // },
-    // '& .MuiOutlinedInput-input': {
-    //   color: 'white',
-    // },
-    // '&:hover .MuiOutlinedInput-input': {
-    //   color: 'white',
-    // },
-    // '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input': {
-    //   color: 'white',
-    // },
-    // '& .MuiInputLabel-outlined': {
-    //   color: 'white',
-    // },
-    // '&:hover .MuiInputLabel-outlined': {
-    //   color: 'white',
-    // },
-    // '& .MuiInputLabel-outlined.Mui-focused': {
-    //   color: 'white',
-    // },
   },
   error: {
     width: '100%',

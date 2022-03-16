@@ -27,7 +27,6 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import ListIcon from '@mui/icons-material/List';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 
-import { makeStyles } from '@mui/styles';
 import { styled } from '@mui/material/styles';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
@@ -44,7 +43,6 @@ const categoriesFilter = [
   'Photography',
   'Sports',
   'Trading Cards',
-  'Utility',
   'Utility',
 ];
 
@@ -110,48 +108,15 @@ const items = [
     endBidIn: 5,
   },
 ];
-const useStyles = makeStyles({
-  root: {
-    '& .MuiInput-root .MuiInput-notchedOutline': {
-      borderColor: '#483996',
-      color: 'white',
-    },
-    '&:hover .MuiInput-root .MuiInput-notchedOutline': {
-      borderColor: 'white',
-    },
-    '& .MuiInput-root.Mui-focused .MuiInput-notchedOutline': {
-      borderColor: 'white',
-    },
-    '& .MuiInput-input': {
-      color: 'white',
-    },
-    '&:hover .MuiInput-input': {
-      color: 'white',
-    },
-    '& .MuiInput-root.Mui-focused .MuiInput-input': {
-      color: 'white',
-    },
-    '& .MuiInputLabel-outlined': {
-      color: 'white',
-    },
-    '&:hover .MuiInputLabel-outlined': {
-      color: 'white',
-    },
-    '& .MuiInputLabel-outlined.Mui-focused': {
-      color: 'white',
-    },
-  },
-});
-
 const StyledBadge = styled(Badge)(() => ({
   '& .MuiBadge-badge': {
     background: 'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
     color: 'white',
-    fontSize: 14,
-    fontWeight: 800,
-    width: 30,
-    height: 30,
+    fontSize: 12,
+    width: 25,
+    height: 25,
     borderRadius: 25,
+    left: 0,
   },
 }));
 const StyledBadgeWhite = styled(Badge)(() => ({
@@ -167,7 +132,6 @@ const StyledBadgeWhite = styled(Badge)(() => ({
 
 export default function Index() {
   const matches = useMediaQuery('(min-width:600px)');
-  const classes = useStyles();
   const navigate = useNavigate();
   const [expanded, setExpanded] = React.useState('panel1');
   const [openDrawer, setOpenDrawer] = React.useState(false);
@@ -183,65 +147,38 @@ export default function Index() {
     },
   }));
 
-  const AccordionSummary = matches
-    ? styled((props) => (
-        <MuiAccordionSummary
-          expandIcon={
-            <ArrowForwardIosSharpIcon
-              sx={{ fontSize: '0.9rem', color: 'white' }}
-            />
-          }
-          {...props}
-        />
-      ))(() => ({
-        backgroundColor: '#31256C',
-        borderTop: '1px solid #483996',
-        padding: '8px 30px 8px 30px',
-        color: 'white',
-        '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-          transform: 'rotate(90deg)',
-        },
-        '&.MuiAccordionSummary-root.Mui-expanded': {
-          backgroundColor: '#382b78 !important',
-        },
-      }))
-    : styled((props) => (
-        <MuiAccordionSummary
-          expandIcon={
-            <ArrowForwardIosSharpIcon
-              sx={{ fontSize: '0.9rem', color: 'white' }}
-            />
-          }
-          {...props}
-        />
-      ))(() => ({
-        backgroundColor: '#271D5A',
-        borderTop: '1px solid #483996',
-        padding: '8px 30px 8px 30px',
-        color: 'white',
-        '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-          transform: 'rotate(90deg)',
-        },
-        '&.MuiAccordionSummary-root.Mui-expanded': {
-          backgroundColor: '#382b78 !important',
-        },
-      }));
+  const AccordionSummary = styled((props) => (
+    <MuiAccordionSummary
+      expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+      {...props}
+    />
+  ))(() => ({
+    borderTop: '1px solid #483996',
+    padding: '8px 30px 8px 30px',
+    '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+      transform: 'rotate(90deg)',
+    },
+    '&.MuiAccordionSummary-root.Mui-expanded': {},
+  }));
 
   const AccordionDetails = styled(MuiAccordionDetails)(() => ({
     padding: '0px 20px 20px 30px',
-    backgroundColor: '#382B78',
-    color: 'white',
   }));
 
   const filter = () => {
     return (
       <>
-        <div
-          className={`p30 ${
-            matches ? '' : 'dFlex justifyContentSpaceBetween alignItemsCenter'
-          }`}
+        <Grid
+          sx={{
+            padding: '30px',
+            display: { xs: 'flex' },
+            justifyContent: { xs: 'space-between' },
+            alignItems: { xs: 'center' },
+          }}
         >
-          <Typography className="colorWhite fs18 fw500">Filter</Typography>
+          <Typography sx={{ fontSize: '18px', fontWeight: '500' }}>
+            Filter
+          </Typography>
           {matches ? (
             ''
           ) : (
@@ -254,7 +191,7 @@ export default function Index() {
               <CloseIcon />
             </IconButton>
           )}
-        </div>
+        </Grid>
         <div>
           <Accordion
             expanded={expanded === 'panel1'}
@@ -264,10 +201,10 @@ export default function Index() {
               aria-controls="panel1d-content"
               id="panel1d-header"
             >
-              <div className="alignItemsCenter dFlex">
-                <Typography className="mr25">Price</Typography>
+              <Grid display={'flex'} alignItems={'center'}>
+                <Typography>Price</Typography>
                 <StyledBadge badgeContent={2} />
-              </div>
+              </Grid>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>Price Filter Coming Soon...!</Typography>
@@ -281,10 +218,10 @@ export default function Index() {
               aria-controls="panel2d-content"
               id="panel2d-header"
             >
-              <div className="alignItemsCenter dFlex">
-                <Typography className="mr25">Collection</Typography>
+              <Grid display={'flex'} alignItems={'center'}>
+                <Typography>Collection</Typography>
                 <StyledBadge badgeContent={1} />
-              </div>
+              </Grid>
             </AccordionSummary>
             <AccordionDetails>
               <Typography>Collection Filter Coming Soon...!</Typography>
@@ -330,42 +267,47 @@ export default function Index() {
               aria-controls="panel5d-content"
               id="panel5d-header"
             >
-              <div className="alignItemsCenter dFlex">
-                <Typography className="mr25">On sale in</Typography>
+              <Grid display={'flex'} alignItems={'center'}>
+                <Typography>On sale in</Typography>
                 <StyledBadge badgeContent={5} />
-              </div>
+              </Grid>
             </AccordionSummary>
             <AccordionDetails>
               {onSaleInFilter.map((item, index) => (
-                <div
+                <Grid
                   key={item + index}
-                  className="dFlex justifyContentSpaceBetween alignItemsCenter"
+                  display="flex"
+                  justifyContent="space-between"
+                  alignItems="center"
                 >
                   <Typography>{item}</Typography>
                   <Switch />
-                </div>
+                </Grid>
               ))}
             </AccordionDetails>
           </Accordion>
         </div>
-        <div className={`textAlignCenter ${matches ? 'mt20' : 'dFlex p20'}`}>
+        <Grid
+          display="flex"
+          justifyContent="center"
+          sx={{ mt: '20px', padding: '20px' }}
+        >
           <Button
-            className={`nft_button gradientButton colorWhite mr20 ${
-              matches ? '' : 'w50'
-            }`}
+            variant="contained"
+            color="secondary"
+            sx={{ mr: '20px', width: { xs: '50%', sm: 'max-content' } }}
             onClick={toggleDrawer(false)}
           >
             Apply Filter
           </Button>
           <Button
-            className={`nft_button borderWhite colorWhite ${
-              matches ? '' : 'w50'
-            }`}
+            variant="outlined"
+            sx={{ width: { xs: '50%', sm: 'max-content' } }}
             onClick={toggleDrawer(false)}
           >
             Clear
           </Button>
-        </div>
+        </Grid>
       </>
     );
   };
@@ -390,53 +332,53 @@ export default function Index() {
       container
       rowSpacing={2}
       columnSpacing={{ xs: 2, md: 2, lg: 4 }}
-      className={`${matches ? 'mt80' : 'mt20'}`}
+      sx={{ mt: { xs: '20px', lg: '80px' } }}
     >
       <Grid item lg={4}>
-        <Typography className={`${matches ? 'fs50 fw800' : 'fs40 fw700'}`}>
+        <Typography
+          sx={{
+            fontSize: { xs: '40px', lg: '50px' },
+            fontWeight: { xs: '700', lg: '800' },
+          }}
+        >
           Marketplace
         </Typography>
 
         {matches && (
-          <div className="mt50">
-            <Paper
-              elevation={0}
-              className={`w100p br20 pb20`}
-              style={{
-                background: '#31256C',
-              }}
-            >
+          <Grid sx={{ mt: '50px' }}>
+            <Paper elevation={0} sx={{ borderRadius: '20px' }}>
               {filter()}
             </Paper>
-          </div>
+          </Grid>
         )}
       </Grid>
       <Grid item lg={8}>
-        <div
-          className={`${
-            matches ? 'mt25 dFlex justifyContentSpaceBetween' : ''
-          }`}
+        <Grid
+          display="flex"
+          sx={{ display: { sm: 'flex' }, mt: { sm: '25px' } }}
         >
           <Box
-            className={`dFlex alignItemsCenter flex-grow-100 p15-25 bgBlue br25  ${
-              matches ? 'mr20' : ''
-            }`}
+            display="flex"
+            alignItems="center"
+            flexGrow="100"
+            sx={{ p: '10px 25px', borderRadius: '25px', mr: { sm: '20px' } }}
+            className="bgBlue"
           >
-            <SearchIcon style={{ color: '#ACA8C0' }} />
+            <SearchIcon />
 
             <TextField
               placeholder="Search"
               variant="standard"
-              className={`${classes.root} ml10`}
               InputProps={{ disableUnderline: true }}
+              sx={{ ml: '10px' }}
             />
           </Box>
-          <div className="dFlex">
+          <Grid display={'flex'} sx={{ mt: { xs: '20px', sm: '0px' } }}>
             <Button
-              className={`nft_button bgGradient colorWhite mr20 ${
-                matches ? '' : 'mt20 w60p p14'
-              }`}
+              variant="contained"
+              color="secondary"
               startIcon={<ListIcon />}
+              sx={{ mr: { xs: '10px', sm: '0px' }, flexGrow: { xs: '100' } }}
               endIcon={<ArrowDropDownIcon />}
             >
               Recently Listed
@@ -444,9 +386,8 @@ export default function Index() {
             {matches ? null : (
               <>
                 <Button
-                  className={`nft_button gradientButton colorWhite ${
-                    matches ? '' : 'mt20 w40 p14'
-                  }`}
+                  variant="contained"
+                  color="secondary"
                   onClick={toggleDrawer(true)}
                   startIcon={<FilterListIcon />}
                   endIcon={<StyledBadgeWhite badgeContent={5} />}
@@ -463,46 +404,27 @@ export default function Index() {
                 </Drawer>
               </>
             )}
-          </div>
-        </div>
+          </Grid>
+        </Grid>
         <Grid
           container
           rowSpacing={4}
           columnSpacing={{ xs: 2, md: 2, lg: 4 }}
-          className="mt10"
+          sx={{ mt: '10px' }}
         >
           {items.map((item, index) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={4}
-              key={item + index}
-              className="w100"
-            >
-              <Paper
-                elevation={0}
-                className={`w100 bRadius20`}
-                style={{
-                  background: '#31256C',
-                }}
-              >
+            <Grid item xs={12} sm={6} md={4} lg={4} key={item + index}>
+              <Paper elevation={0} sx={{ borderRadius: '20px' }}>
                 <div className="ftpContainer">
                   <img
                     src={item.image}
-                    className="w100 h320 brTop20 objectFitCover"
+                    style={{ width: '100%', height: '300px' }}
+                    className="brTop20 objectFitCover"
                   />
                   <div className="overlay"></div>
                   <div className="buyButton">
                     <Button
-                      className=" fs12 fw700 br25 p10-42"
                       startIcon={<BidBuyIcon />}
-                      style={{
-                        background: 'white',
-                        color: '#271D5A',
-                        textTransform: 'inherit',
-                      }}
                       onClick={() => {
                         navigate('marketplace/product-details');
                       }}
@@ -511,42 +433,58 @@ export default function Index() {
                     </Button>
                   </div>
                 </div>
-                <div className="p0-20 pb30">
-                  <div className="pt10 dFlex justifyContentSpaceBetween">
-                    <Typography className="colorWhite fontSize14 fw300">
+                <Grid sx={{ p: '0px 20px' }}>
+                  <Grid
+                    display="flex"
+                    justifyContent="space-between"
+                    sx={{ pt: '10px' }}
+                  >
+                    <Typography variant="subtitle2" sx={{ fontWeight: '300' }}>
                       #{item.id}
                     </Typography>
-                    <div className="hover-cursor-pointer">
-                      <FavoriteBorderIcon
-                        style={{ width: 18, color: 'white' }}
-                      />
-                    </div>
-                  </div>
-                  <div className="pt10 dFlex justifyContentSpaceBetween">
-                    <Typography className="colorWhite fontSize18 fw600">
+                    <FavoriteBorderIcon
+                      sx={{ width: '16px', cursor: 'pointer' }}
+                    />
+                  </Grid>
+                  <Grid
+                    display="flex"
+                    justifyContent="space-between"
+                    sx={{ pt: '10px' }}
+                  >
+                    <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
                       {item.name}
                     </Typography>
-                    <Typography className="colorWhite fs22 fw700">
+                    <Typography sx={{ fontSize: '22px', fontWeight: '700' }}>
                       ${item.price}
                     </Typography>
-                  </div>
-                  <div className="pt16 dFlex justifyContentSpaceBetween">
-                    <Typography className="colorWhite fs14 fw400">
-                      Start BID
-                      <br />
-                      <span className="colorWhite fontSize16 fw600">
+                  </Grid>
+                  <Grid
+                    display="flex"
+                    justifyContent="space-between"
+                    sx={{ pt: '16px', pb: '30px' }}
+                  >
+                    <div>
+                      <Typography sx={{ fontSize: '12px', fontWeight: '400' }}>
+                        Start BID
+                      </Typography>
+                      <Typography
+                        sx={{ mt: '-5px', fontSize: '16px', fontWeight: '600' }}
+                      >
                         {item.startBid}
-                      </span>
-                    </Typography>
-                    <Typography className="colorWhite fs14 fw400">
-                      End BID in
-                      <br />
-                      <span className="colorWhite fontSize16 fw600">
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography sx={{ fontSize: '12px', fontWeight: '400' }}>
+                        End BID in
+                      </Typography>
+                      <Typography
+                        sx={{ mt: '-5px', fontSize: '16px', fontWeight: '600' }}
+                      >
                         {item.endBidIn} Days
-                      </span>
-                    </Typography>
-                  </div>
-                </div>
+                      </Typography>
+                    </div>
+                  </Grid>
+                </Grid>
               </Paper>
             </Grid>
           ))}

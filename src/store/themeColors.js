@@ -57,11 +57,41 @@ const publicPageColors = {
       main: errorColor[500],
     },
     background: {
-      default: '#312470',
-      paper: '#2e2368',
+      default: '#271D5A',
+      paper: '#31256C',
     },
   },
   components: {
+    MuiSwitch: {
+      styleOverrides: {
+        switchBase: {
+          color: '#00a3ff',
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: '#31256c',
+          backgroundImage: 'none',
+        },
+      },
+    },
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          backgroundColor: `#31256C`,
+        },
+      },
+      variants: [
+        {
+          props: { expanded: true },
+          style: {
+            backgroundColor: '#382B78',
+          },
+        },
+      ],
+    },
     MuiButton: {
       styleOverrides: {
         root: {
