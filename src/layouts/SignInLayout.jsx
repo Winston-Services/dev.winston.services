@@ -15,7 +15,7 @@ function SignInLayout() {
     dispatch(setTheme('landing'));
   }, [dispatch]);
   return (
-    <>
+    <Box sx={{ display: 'flex', height: '100%' }}>
       <Box
         className={`signInGradient`}
         component={'div'}
@@ -64,7 +64,7 @@ function SignInLayout() {
           </Grid>
         </Grid>
       </Container>
-    </>
+    </Box>
   );
 }
 

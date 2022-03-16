@@ -99,7 +99,7 @@ const publicPageColors = {
           borderRadius: '50px',
           padding: '16px 32px',
           boxSizing: 'border-box',
-          height: '50px',
+          height: '45px',
         },
       },
       variants: [
@@ -127,11 +127,18 @@ const publicPageColors = {
           style: {
             borderColor: '#fff',
             padding: '16px 32px',
-            height: '50px',
+            height: '45px',
             borderRadius: '50px',
           },
         },
       ],
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          textTransform: 'capitalize',
+        },
+      },
     },
   },
 };
@@ -182,6 +189,13 @@ const createThemeVariable = (mode, dashboard) => {
         styleOverrides: {
           root: {
             backgroundImage: 'none',
+          },
+        },
+      },
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            textTransform: 'capitalize',
           },
         },
       },

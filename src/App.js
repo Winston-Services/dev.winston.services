@@ -9,6 +9,7 @@ const Marketplace = React.lazy(() => import('./pages/marketplace'));
 
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
+const Landing = React.lazy(() => import('./pages/landing'));
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 
@@ -53,14 +54,12 @@ export default function App() {
       element: getRouteWrapper(<LandingLayout />, false),
       children: [
         {
-          path: '/marketplace',
-          element: getRouteWrapper(<Marketplace />, false),
+          index: true,
+          element: getRouteWrapper(<Landing />, false),
         },
         {
-          path: '/',
-          element: (
-            <Navigate to={auth?.authenticated ? '/dashboard' : '/sign-in'} />
-          ),
+          path: '/marketplace',
+          element: getRouteWrapper(<Marketplace />, false),
         },
       ],
     },

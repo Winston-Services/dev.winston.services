@@ -7,7 +7,6 @@ import ThemeLoader from './components/theme-loader';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Box } from '@mui/material';
 import { AuthProvider } from './context/authContext';
 
 ReactDOM.render(
@@ -16,9 +15,7 @@ ReactDOM.render(
       <ThemeLoader>
         <BrowserRouter>
           <AuthProvider>
-            <Box sx={{ display: 'flex', height: '100%' }}>
-              <App />
-            </Box>
+            <App />
           </AuthProvider>
         </BrowserRouter>
       </ThemeLoader>
