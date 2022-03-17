@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import SideBar from './common/SideBar';
-import TopNav from './common/TopNav';
+import SideBar from './auth-common/SideBar';
+import TopNav from './auth-common/TopNav';
 import { Box, Container } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/themeColors';

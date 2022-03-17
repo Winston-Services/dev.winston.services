@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Box, Container } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/themeColors';
+import LandingTopNav from './common/LandingTopNav';
 
 function LandingLayout() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function LandingLayout() {
   }, [dispatch]);
   return (
     <Box>
+      <LandingTopNav />
       <Box className={`landingInGradient bannerSkewY`} component={'div'}>
         <Box className={`landingInGradientShades`} component={'div'}></Box>
       </Box>

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Box, Container, AppBar } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/themeColors';
-import ElevationScroll from './../components/elevated-scroll/index';
+import LandingTopNav from './common/LandingTopNav';
 
 function PublicPageLayout() {
   const dispatch = useDispatch();
@@ -12,16 +12,8 @@ function PublicPageLayout() {
   }, [dispatch]);
   return (
     <Box>
-      <ElevationScroll>
-        <AppBar>
-          <Box className={`landingInGradient bannerSkewY`} component={'div'}>
-            <Box className={`landingInGradientShades`} component={'div'}>
-              Winston
-            </Box>
-          </Box>
-        </AppBar>
-      </ElevationScroll>
-      <Container maxWidth="lg" sx={{ margin: 'auto' }}>
+      <LandingTopNav />
+      <Container maxWidth="lg" sx={{ margin: 'auto', mt: 20 }}>
         <Outlet />
       </Container>
     </Box>

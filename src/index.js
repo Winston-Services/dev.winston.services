@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import ThemeLoader from './components/theme-loader';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/authContext';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

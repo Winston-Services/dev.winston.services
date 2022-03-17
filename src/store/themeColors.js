@@ -75,22 +75,27 @@ const publicPageColors = {
     MuiPaper: {
       variants: [
         {
-          props: { fullHeight: true },
-          style: {
-            height: '100vh!important',
-          },
-        },
-        {
           props: { gradient: true },
           style: {
             backgroundColor: 'transparent',
-            height: '100vh',
+            height: '100vh!important',
             backgroundImage:
               'linear-gradient(162deg, #f75385 20%, #ea7c8f, #9e65e8 100%)',
           },
         },
         {
-          props: { rounded: true },
+          props: { className: 'rounded' },
+          style: {
+            borderRadius: '20px',
+            overflow: 'hidden',
+          },
+        },
+      ],
+    },
+    MuiCard: {
+      variants: [
+        {
+          props: { className: 'rounded' },
           style: {
             borderRadius: '20px',
             overflow: 'hidden',
@@ -116,7 +121,7 @@ const publicPageColors = {
     MuiTypography: {
       variants: [
         {
-          props: { bold: true },
+          props: { variant: 'h2' },
           style: {
             fontWeight: '700',
           },
@@ -126,18 +131,13 @@ const publicPageColors = {
     MuiTextField: {
       variants: [
         {
-          props: { rounded: true },
-          style: {
-            borderRadius: '50px',
-            overflow: 'hidden',
-          },
-        },
-        {
-          props: { filled: true },
+          props: { color: 'filled' },
           style: {
             backgroundImage: 'none',
             backgroundColor: '#31256C',
             padding: '8px 25px',
+            borderRadius: '50px',
+            overflow: 'hidden',
             height: '45px',
           },
         },

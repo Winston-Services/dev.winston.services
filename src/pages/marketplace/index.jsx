@@ -321,9 +321,7 @@ export default function Index() {
   return (
     <Grid container rowSpacing={5} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
       <Grid item lg={4}>
-        <Typography variant="h2" bold>
-          Marketplace
-        </Typography>
+        <Typography variant="h2">Marketplace</Typography>
       </Grid>
       <Grid item lg={8} display="flex" alignItems="center">
         <Grid container alignItems={'center'} spacing={3}>
@@ -331,8 +329,8 @@ export default function Index() {
             <TextField
               variant="standard"
               hiddenLabel
-              filled
               fullWidth
+              color="filled"
               placeholder="Search"
               InputProps={{
                 startAdornment: (
@@ -342,7 +340,6 @@ export default function Index() {
                 ),
                 disableUnderline: true,
               }}
-              rounded
             />
           </Grid>
           <Grid item xs="auto">
@@ -358,7 +355,7 @@ export default function Index() {
         </Grid>
       </Grid>
       <Grid item lg={4}>
-        <Paper elevation={0} rounded>
+        <Paper elevation={0} className="rounded">
           {filter()}
         </Paper>
       </Grid>
@@ -366,7 +363,7 @@ export default function Index() {
         <Grid container rowSpacing={4} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
           {items.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} lg={4} key={item + index}>
-              <Card elevation={0} rounded>
+              <Card elevation={0} className="rounded">
                 <CardActionArea>
                   <CardMedia
                     component="img"
@@ -399,9 +396,9 @@ export default function Index() {
                         >
                           #{item.id}
                         </Typography>
-                        <IconButton aria-label="delete">
-                          <FavoriteBorderIcon />
-                        </IconButton>
+                        {/* <IconButton aria-label="delete"> */}
+                        <FavoriteBorderIcon />
+                        {/* </IconButton> */}
                       </Grid>
                       <Grid
                         item

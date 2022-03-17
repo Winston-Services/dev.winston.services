@@ -27,8 +27,8 @@ import useAuth from '../../context/authContext';
 import logoLight from '../../assets/logo.svg';
 import logoDark from '../../assets/logo_dark.svg';
 import { stringAvatar } from '../../services/wallet/utils';
-import { themeModeSelector, toggleTheme } from './../../store/themeColors';
-import { sideBarStateSelector, toggleSideBar } from './../../store/sideBar';
+import { themeModeSelector, toggleTheme } from '../../store/themeColors';
+import { sideBarStateSelector, toggleSideBar } from '../../store/sideBar';
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
