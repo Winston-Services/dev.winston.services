@@ -69,8 +69,29 @@ const publicPageColors = {
         },
       },
     },
-    MuiDrawer: {
-      variants: [],
+    MuiBadge: {
+      styleOverrides: {
+        colorPrimary: {
+          background:
+            'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
+          color: 'white',
+          fontSize: 14,
+          fontWeight: 800,
+          width: 30,
+          height: 30,
+          borderRadius: 25,
+          left: '-5px',
+        },
+        colorSecondary: {
+          background: 'white',
+          color: 'black',
+          fontSize: 12,
+          width: 18,
+          height: 18,
+          borderRadius: 25,
+          left: '-12px',
+        },
+      },
     },
     MuiPaper: {
       variants: [
@@ -81,6 +102,12 @@ const publicPageColors = {
             height: '100vh!important',
             backgroundImage:
               'linear-gradient(162deg, #f75385 20%, #ea7c8f, #9e65e8 100%)',
+          },
+        },
+        {
+          props: { gradient: false },
+          style: {
+            backgroundImage: 'none',
           },
         },
         {
