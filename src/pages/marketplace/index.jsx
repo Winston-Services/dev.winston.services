@@ -3,37 +3,37 @@ import {
   Typography,
   Paper,
   Button,
-  Box,
   TextField,
   Switch,
   Badge,
   useMediaQuery,
   IconButton,
   Grid,
+  Card,
+  InputAdornment,
+  CardActionArea,
+  CardMedia,
+  CardContent,
 } from '@mui/material';
-
+import ListIcon from '@mui/icons-material/List';
 import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
 import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
 import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
 import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
 import NftMarketPlace5 from '../../assets/nft_marketplace_5.png';
-import { ReactComponent as BidBuyIcon } from '../../assets/bid_buy.svg';
+// import { ReactComponent as BidBuyIcon } from '../../assets/bid_buy.svg';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CloseIcon from '@mui/icons-material/Close';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import ListIcon from '@mui/icons-material/List';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 
 import { styled } from '@mui/material/styles';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
-import { useNavigate } from 'react-router-dom';
-
-import Drawer from '@mui/material/Drawer';
+// import { useNavigate } from 'react-router-dom';
 
 const categoriesFilter = [
   'Art',
@@ -112,6 +112,7 @@ const StyledBadge = styled(Badge)(() => ({
   '& .MuiBadge-badge': {
     background: 'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
     color: 'white',
+
     fontSize: 12,
     width: 25,
     height: 25,
@@ -119,22 +120,12 @@ const StyledBadge = styled(Badge)(() => ({
     left: 0,
   },
 }));
-const StyledBadgeWhite = styled(Badge)(() => ({
-  '& .MuiBadge-badge': {
-    background: 'white',
-    color: 'black',
-    fontSize: 12,
-    width: 18,
-    height: 18,
-    borderRadius: 25,
-  },
-}));
 
 export default function Index() {
   const matches = useMediaQuery('(min-width:600px)');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [expanded, setExpanded] = React.useState('panel1');
-  const [openDrawer, setOpenDrawer] = React.useState(false);
+  // const [openDrawer, setOpenDrawer] = React.useState(false);
 
   const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -311,7 +302,7 @@ export default function Index() {
       </>
     );
   };
-  const toggleDrawer = (open) => (event) => {
+  const toggleDrawer = () => (event) => {
     if (
       event.type === 'keydown' &&
       (event.key === 'Tab' || event.key === 'Shift')
@@ -319,110 +310,71 @@ export default function Index() {
       return;
     }
 
-    setOpenDrawer(open);
+    // setOpenDrawer(open);
   };
 
-  const list = () => <Box role="presentation">{filter()}</Box>;
+  // const list = () => <Box role="presentation">{filter()}</Box>;
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
   return (
-    <Grid
-      container
-      rowSpacing={2}
-      columnSpacing={{ xs: 2, md: 2, lg: 4 }}
-      sx={{ mt: { xs: '20px', lg: '80px' } }}
-    >
+    <Grid container rowSpacing={5} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
       <Grid item lg={4}>
-        <Typography
-          sx={{
-            fontSize: { xs: '40px', lg: '50px' },
-            fontWeight: { xs: '700', lg: '800' },
-          }}
-        >
+        <Typography variant="h2" bold>
           Marketplace
         </Typography>
-
-        {matches && (
-          <Grid sx={{ mt: '50px' }}>
-            <Paper elevation={0} sx={{ borderRadius: '20px' }}>
-              {filter()}
-            </Paper>
-          </Grid>
-        )}
       </Grid>
-      <Grid item lg={8}>
-        <Grid
-          display="flex"
-          sx={{ display: { sm: 'flex' }, mt: { sm: '25px' } }}
-        >
-          <Box
-            display="flex"
-            alignItems="center"
-            flexGrow="100"
-            sx={{ p: '10px 25px', borderRadius: '25px', mr: { sm: '20px' } }}
-            className="bgBlue"
-          >
-            <SearchIcon />
-
+      <Grid item lg={8} display="flex" alignItems="center">
+        <Grid container alignItems={'center'} spacing={3}>
+          <Grid item flexGrow={1}>
             <TextField
-              placeholder="Search"
               variant="standard"
-              InputProps={{ disableUnderline: true }}
-              sx={{ ml: '10px' }}
+              hiddenLabel
+              filled
+              fullWidth
+              placeholder="Search"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+                disableUnderline: true,
+              }}
+              rounded
             />
-          </Box>
-          <Grid display={'flex'} sx={{ mt: { xs: '20px', sm: '0px' } }}>
+          </Grid>
+          <Grid item xs="auto">
             <Button
               variant="contained"
               color="secondary"
               startIcon={<ListIcon />}
-              sx={{ mr: { xs: '10px', sm: '0px' }, flexGrow: { xs: '100' } }}
               endIcon={<ArrowDropDownIcon />}
             >
               Recently Listed
             </Button>
-            {matches ? null : (
-              <>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={toggleDrawer(true)}
-                  startIcon={<FilterListIcon />}
-                  endIcon={<StyledBadgeWhite badgeContent={5} />}
-                >
-                  Filter &nbsp;&nbsp;&nbsp;
-                </Button>
-                <Drawer
-                  anchor={'right'}
-                  open={openDrawer}
-                  onClose={toggleDrawer(false)}
-                  className="filterDrawer"
-                >
-                  {list()}
-                </Drawer>
-              </>
-            )}
           </Grid>
         </Grid>
-        <Grid
-          container
-          rowSpacing={4}
-          columnSpacing={{ xs: 2, md: 2, lg: 4 }}
-          sx={{ mt: '10px' }}
-        >
+      </Grid>
+      <Grid item lg={4}>
+        <Paper elevation={0} rounded>
+          {filter()}
+        </Paper>
+      </Grid>
+      <Grid item lg={8}>
+        <Grid container rowSpacing={4} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
           {items.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} lg={4} key={item + index}>
-              <Paper elevation={0} sx={{ borderRadius: '20px' }}>
-                <div className="ftpContainer">
-                  <img
-                    src={item.image}
-                    style={{ width: '100%', height: '300px' }}
-                    className="brTop20 objectFitCover"
+              <Card elevation={0} rounded>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="300px"
+                    image={item.image}
+                    alt="green iguana"
                   />
-                  <div className="overlay"></div>
-                  <div className="buyButton">
+                  {/* <div>
                     <Button
                       startIcon={<BidBuyIcon />}
                       onClick={() => {
@@ -431,61 +383,80 @@ export default function Index() {
                     >
                       Bid | Buy
                     </Button>
-                  </div>
-                </div>
-                <Grid sx={{ p: '0px 20px' }}>
-                  <Grid
-                    display="flex"
-                    justifyContent="space-between"
-                    sx={{ pt: '10px' }}
-                  >
-                    <Typography variant="subtitle2" sx={{ fontWeight: '300' }}>
-                      #{item.id}
-                    </Typography>
-                    <FavoriteBorderIcon
-                      sx={{ width: '16px', cursor: 'pointer' }}
-                    />
-                  </Grid>
-                  <Grid
-                    display="flex"
-                    justifyContent="space-between"
-                    sx={{ pt: '10px' }}
-                  >
-                    <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
-                      {item.name}
-                    </Typography>
-                    <Typography sx={{ fontSize: '22px', fontWeight: '700' }}>
-                      ${item.price}
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    display="flex"
-                    justifyContent="space-between"
-                    sx={{ pt: '16px', pb: '30px' }}
-                  >
-                    <div>
-                      <Typography sx={{ fontSize: '12px', fontWeight: '400' }}>
-                        Start BID
-                      </Typography>
-                      <Typography
-                        sx={{ mt: '-5px', fontSize: '16px', fontWeight: '600' }}
+                  </div> */}
+                  <CardContent sx={{ pb: 3 }}>
+                    <Grid container rowGap={1}>
+                      <Grid
+                        item
+                        xs
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems={'center'}
                       >
-                        {item.startBid}
-                      </Typography>
-                    </div>
-                    <div>
-                      <Typography sx={{ fontSize: '12px', fontWeight: '400' }}>
-                        End BID in
-                      </Typography>
-                      <Typography
-                        sx={{ mt: '-5px', fontSize: '16px', fontWeight: '600' }}
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ fontWeight: '300' }}
+                        >
+                          #{item.id}
+                        </Typography>
+                        <IconButton aria-label="delete">
+                          <FavoriteBorderIcon />
+                        </IconButton>
+                      </Grid>
+                      <Grid
+                        item
+                        xs
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems={'center'}
                       >
-                        {item.endBidIn} Days
-                      </Typography>
-                    </div>
-                  </Grid>
-                </Grid>
-              </Paper>
+                        <Typography variant="h6">{item.name}</Typography>
+                        <Typography variant="h5">${item.price}</Typography>
+                      </Grid>
+                      <Grid
+                        item
+                        xs
+                        display="flex"
+                        justifyContent="space-between"
+                        alignItems={'center'}
+                      >
+                        <div>
+                          <Typography
+                            variant="subtitle2"
+                            sx={{ fontWeight: '300' }}
+                          >
+                            Start BID
+                          </Typography>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{
+                              mt: '-5px',
+                            }}
+                          >
+                            ${item.startBid}
+                          </Typography>
+                        </div>
+                        <div>
+                          <Typography
+                            variant="subtitle2"
+                            sx={{ fontWeight: '300' }}
+                          >
+                            End BID in
+                          </Typography>
+                          <Typography
+                            variant="subtitle1"
+                            sx={{
+                              mt: '-5px',
+                            }}
+                          >
+                            {item.endBidIn} Days
+                          </Typography>
+                        </div>
+                      </Grid>
+                    </Grid>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
             </Grid>
           ))}
         </Grid>

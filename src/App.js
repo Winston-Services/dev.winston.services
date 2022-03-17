@@ -16,6 +16,7 @@ const Landing = React.lazy(() => import('./pages/landing'));
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 import WhitelabelWinston from './layouts/whitelabelWinston/index.js';
+import PublicPageLayout from './layouts/PublicPageLayout';
 export default function App() {
   const auth = useAuth();
   const getRouteWrapper = (component, authRoute = true) => {
@@ -54,23 +55,29 @@ export default function App() {
     },
     {
       path: '/',
-      element: getRouteWrapper(<LandingLayout />, false),
+      element: getRouteWrapper(<PublicPageLayout />, false),
       children: [
-        {
-          index: true,
-          element: getRouteWrapper(<Landing />, false),
-        },
         {
           path: '/marketplace',
           element: getRouteWrapper(<Marketplace />, false),
         },
         {
+          path: '/marketplace/product-details',
+          element: getRouteWrapper(<ProductDetails />, false),
+        },
+        {
           path: '/whitelabel-winston',
           element: getRouteWrapper(<WhitelabelWinston />, false),
         },
+      ],
+    },
+    {
+      path: '/',
+      element: getRouteWrapper(<LandingLayout />, false),
+      children: [
         {
-          path: '/marketplace/product-details',
-          element: getRouteWrapper(<ProductDetails />, false),
+          index: true,
+          element: getRouteWrapper(<Landing />, false),
         },
         {
           path: '/',

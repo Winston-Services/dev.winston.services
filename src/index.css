@@ -12,6 +12,7 @@ body,
   height: 100%;
   scroll-behavior: smooth;
 }
+/* Scroll style */
 ::-webkit-scrollbar {
   /* width: 10px; */
 }
@@ -30,11 +31,9 @@ body,
   border: 2px solid transparent;
   background-clip: content-box;
 }
+/* Scroll style */
 
-.bgBlue {
-  background-color: #312470;
-}
-
+/* Landing page and top nav gradient */
 .signInGradient:after {
   content: '';
   background: linear-gradient(269deg, #ed8ef3 24.22%, #7968ff 100%);
@@ -127,14 +126,7 @@ body,
     height: 1070px;
   }
 }
-
-.nft_button {
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  border-radius: 25px !important;
-  text-transform: inherit !important;
-  line-height: normal !important;
-}
+/* Landing page and top nav gradient */
 
 .ftpContainer {
   position: relative;

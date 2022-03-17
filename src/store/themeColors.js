@@ -79,11 +79,15 @@ const publicPageColors = {
       },
     },
     MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundColor: `#31256C`,
+      variants: [
+        {
+          props: { rounded: true },
+          style: {
+            borderRadius: '20px',
+            overflow: 'hidden',
+          },
         },
-      },
+      ],
     },
     MuiAccordion: {
       styleOverrides: {
@@ -96,6 +100,36 @@ const publicPageColors = {
           props: { expanded: true },
           style: {
             backgroundColor: '#382B78',
+          },
+        },
+      ],
+    },
+    MuiTypography: {
+      variants: [
+        {
+          props: { bold: true },
+          style: {
+            fontWeight: '700',
+          },
+        },
+      ],
+    },
+    MuiTextField: {
+      variants: [
+        {
+          props: { rounded: true },
+          style: {
+            borderRadius: '50px',
+            overflow: 'hidden',
+          },
+        },
+        {
+          props: { filled: true },
+          style: {
+            backgroundImage: 'none',
+            backgroundColor: '#31256C',
+            padding: '8px 25px',
+            height: '45px',
           },
         },
       ],
