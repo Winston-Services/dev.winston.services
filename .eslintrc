@@ -13,6 +13,6 @@
   },
   "plugins": ["react"],
   "rules": {
-    "no-debugger": false
+    "no-debugger": 0
   }
 }
