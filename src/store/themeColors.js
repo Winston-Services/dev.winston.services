@@ -72,8 +72,9 @@ const publicPageColors = {
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: '#31256c',
-          backgroundImage: 'none',
+          backgroundColor: 'transparent',
+          backgroundImage:
+            ' linear-gradient(92.44deg, #ea7a8f 3.93%, #e452c8 98.71%)',
         },
       },
     },
