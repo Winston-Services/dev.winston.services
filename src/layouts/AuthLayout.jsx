@@ -12,7 +12,7 @@ function Layout() {
     dispatch(setTheme('dashboard'));
   }, [dispatch]);
   return (
-    <>
+    <Box sx={{ display: 'flex', height: '100%' }}>
       {/* TODO: Need to update once we have redux state for error {state.errors ? <Toast message={state.errors} /> : null} */}
       <Box sx={{ display: 'flex', width: '100%' }}>
         <TopNav />
@@ -24,7 +24,7 @@ function Layout() {
           <Outlet />
         </Container>
       </Box>
-    </>
+    </Box>
   );
 }
 export default Layout;

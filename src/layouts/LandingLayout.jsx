@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Box, Container } from '@mui/material';
-import { setTheme } from '../store/themeColors';
 import { useDispatch } from 'react-redux';
+import { setTheme } from '../store/themeColors';
 
 function LandingLayout() {
   const dispatch = useDispatch();
@@ -10,14 +10,14 @@ function LandingLayout() {
     dispatch(setTheme('landing'));
   }, [dispatch]);
   return (
-    <>
-      {/* TODO: Need to update once we have redux state for error {state.errors ? <Toast message={state.errors} /> : null} */}
-      <Box sx={{ display: 'flex', width: '100%' }}>
-        <Container>
-          <Outlet />
-        </Container>
+    <Box>
+      <Box className={`landingInGradient`} component={'div'}>
+        <Box className={`landingInGradientShades`} component={'div'}></Box>
       </Box>
-    </>
+      <Container maxWidth="lg" sx={{ margin: 'auto' }}>
+        <Outlet />
+      </Container>
+    </Box>
   );
 }
 export default LandingLayout;

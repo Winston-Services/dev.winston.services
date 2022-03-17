@@ -6,9 +6,13 @@ import { CircularProgress } from '@mui/material';
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
+const ProductDetails = React.lazy(() =>
+  import('./pages/marketplace/ProductDetails')
+);
 
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
+const Landing = React.lazy(() => import('./pages/landing'));
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 import WhitelabelWinston from './layouts/whitelabelWinston/index.js';
@@ -53,12 +57,20 @@ export default function App() {
       element: getRouteWrapper(<LandingLayout />, false),
       children: [
         {
+          index: true,
+          element: getRouteWrapper(<Landing />, false),
+        },
+        {
           path: '/marketplace',
           element: getRouteWrapper(<Marketplace />, false),
         },
         {
           path: '/whitelabel-winston',
           element: getRouteWrapper(<WhitelabelWinston />, false),
+        },
+        {
+          path: '/marketplace/product-details',
+          element: getRouteWrapper(<ProductDetails />, false),
         },
         {
           path: '/',

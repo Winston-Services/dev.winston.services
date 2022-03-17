@@ -72,8 +72,9 @@ const publicPageColors = {
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: '#31256c',
-          backgroundImage: 'none',
+          backgroundColor: 'transparent',
+          backgroundImage:
+            ' linear-gradient(92.44deg, #ea7a8f 3.93%, #e452c8 98.71%)',
         },
       },
     },
@@ -81,7 +82,6 @@ const publicPageColors = {
       styleOverrides: {
         root: {
           backgroundColor: `#31256C`,
-          padding: `50px`,
         },
       },
     },
@@ -105,9 +105,8 @@ const publicPageColors = {
         root: {
           textTransform: 'none',
           borderRadius: '50px',
-          padding: '16px 32px',
+          padding: '9px 32px',
           boxSizing: 'border-box',
-          height: '50px',
         },
       },
       variants: [
@@ -135,11 +134,26 @@ const publicPageColors = {
           style: {
             borderColor: '#fff',
             padding: '16px 32px',
-            height: '50px',
+            height: '45px',
             borderRadius: '50px',
           },
         },
+        {
+          props: { variant: 'filled' },
+          style: {
+            background: '#4F409A',
+            padding: '10px 8px',
+            borderRadius: '17px',
+          },
+        },
       ],
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          textTransform: 'capitalize',
+        },
+      },
     },
   },
 };
@@ -190,6 +204,13 @@ const createThemeVariable = (mode, dashboard) => {
         styleOverrides: {
           root: {
             backgroundImage: 'none',
+          },
+        },
+      },
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            textTransform: 'capitalize',
           },
         },
       },
