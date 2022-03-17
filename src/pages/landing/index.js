@@ -11,7 +11,6 @@ import {
   IconButton,
   List,
   ListItem,
-  Divider,
   ListItemText,
   Drawer,
 } from '@mui/material';
@@ -19,7 +18,7 @@ import Logo from './../../assets/logo.svg';
 import ElevationScroll from '../../components/elevated-scroll';
 import { useNavigate } from 'react-router-dom';
 import Home from './components/Home';
-import { Menu as MenuIcon } from '@mui/icons-material';
+import { Close, Menu as MenuIcon } from '@mui/icons-material';
 
 const menuList = [
   {
@@ -83,6 +82,9 @@ export default function Landing() {
     <Box>
       <ElevationScroll>
         <AppBar>
+          <Box className={`landingInGradient bannerSkewY`} component={'div'}>
+            <Box className={`landingInGradientShades`} component={'div'}></Box>
+          </Box>
           <Container maxWidth="lg">
             <Toolbar>
               <Grid container justifyContent="space-between">
@@ -143,9 +145,35 @@ export default function Landing() {
                     anchor={'top'}
                     open={menuState}
                     onClose={toggleDrawer}
+                    PaperProps={{ gradient: true, fullHeight: true }}
                   >
+                    <Box className={`landingInGradient`} component={'div'}>
+                      <Box
+                        className={`landingInGradientShades`}
+                        component={'div'}
+                      ></Box>
+                    </Box>
+                    <Grid
+                      container
+                      justifyContent="space-between"
+                      sx={{ my: 4, px: 4 }}
+                    >
+                      <Grid item flexGrow={1}>
+                        <Box
+                          component="img"
+                          src={Logo}
+                          alt="crypto"
+                          sx={{ height: '47px' }}
+                        />
+                      </Grid>
+                      <Grid item xs="auto">
+                        <IconButton aria-label="delete" onClick={toggleDrawer}>
+                          <Close />
+                        </IconButton>
+                      </Grid>
+                    </Grid>
                     <Box
-                      sx={{ width: 'auto' }}
+                      sx={{ width: 'auto', px: 2, textAlign: 'center' }}
                       role="presentation"
                       onClick={toggleDrawer}
                       onKeyDown={toggleDrawer}
@@ -154,18 +182,16 @@ export default function Landing() {
                         {menuList.map((menu) => (
                           <ListItem button key={menu.href}>
                             <ListItemText
+                              sx={{ textAlign: 'center' }}
                               primary={menu.name}
                               onClick={(e) => handleChange(e, menu.href)}
                             />
                           </ListItem>
                         ))}
                       </List>
-                      <Divider />
-                      <List>
-                        <ListItem button>
-                          <ListItemText primary={'SignIn'} />
-                        </ListItem>
-                      </List>
+                      <Button variant="outlined" fullWidth sx={{ mb: 3 }}>
+                        Sign In
+                      </Button>
                     </Box>
                   </Drawer>
                 </Grid>

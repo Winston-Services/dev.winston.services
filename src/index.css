@@ -46,34 +46,27 @@ body,
   z-index: -1;
   border-left: 50px solid #2d2169;
 }
-.landingInGradient {
-  position: absolute;
-  bottom: calc(100% - 820px);
-  display: block;
-  width: 100%;
+.bannerSkewY {
   transform: translate(0px, -255px) skewY(-15deg);
-  overflow: hidden;
+  border-bottom: 50px solid #2d2169;
   height: 150%;
   min-height: 820px;
-  border-bottom: 50px solid #2d2169;
+  bottom: calc(100% - 820px);
+}
+.landingInGradient {
+  overflow: hidden;
+  position: absolute;
+  display: block;
+  width: 100%;
   z-index: -1;
-  background: #ea7c8f;
+  background: linear-gradient(180deg, #ea7c8f 50%, #9e65e8 100%);
 }
 .staticMenuGradient.MuiAppBar-root {
   overflow: hidden;
   z-index: 100;
   background: transparent;
 }
-.staticMenuGradient.active {
-  background-image: linear-gradient(
-    129deg,
-    #ea7c8f,
-    #dc408b 30%,
-    #e67cc1,
-    #9e65e8,
-    #9e65e8
-  );
-}
+
 .staticMenuGradient .MuiContainer-root .MuiToolbar-root {
   z-index: 100;
   padding: 15px 0;
@@ -116,7 +109,7 @@ body,
 }
 
 @media (max-width: 768px) {
-  .landingInGradient {
+  .landingInGradient.bannerSkewY {
     height: 1070px;
   }
   .landingInGradientShades::before,
@@ -127,79 +120,3 @@ body,
   }
 }
 /* Landing page and top nav gradient */
-
-.ftpContainer {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  cursor: pointer;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0);
-  transition: background 0.5s ease;
-}
-
-.ftpContainer:hover .overlay {
-  display: block;
-  background: #31256c80;
-}
-
-.buyButton {
-  position: absolute;
-  opacity: 0;
-  top: 140px;
-  width: 100%;
-  text-align: center;
-  transition: opacity 0.35s ease;
-}
-
-.buyButton button:hover {
-  background-color: white;
-}
-.buyButton button {
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 25px;
-  padding: 10px 42px;
-  background-color: white;
-  color: #271d5a;
-  text-transform: none;
-}
-
-.ftpContainer:hover .buyButton {
-  opacity: 1;
-}
-
-.categories-filter-button {
-  font-size: 12px !important;
-  font-weight: 600px !important;
-  padding: 10px 22px !important;
-  border-radius: 22px !important;
-  margin: 0px 13px 15px 0px !important;
-  text-transform: inherit !important;
-  color: white !important;
-  background-color: #4f409a !important;
-}
-
-.categories-filter-button:hover {
-  background: linear-gradient(92.44deg, #ea7a8f 3.93%, #e452c8 98.71%);
-}
-
-.buyNowContainer {
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-  position: relative;
-  box-shadow: 0px 0px 70px rgb(39 29 90) !important;
-}
-
-.buyNowContainerSticky {
-  position: fixed;
-  animation: transition 0.3s linear;
-}

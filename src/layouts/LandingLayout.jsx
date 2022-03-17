@@ -11,7 +11,7 @@ function LandingLayout() {
   }, [dispatch]);
   return (
     <Box>
-      <Box className={`landingInGradient`} component={'div'}>
+      <Box className={`landingInGradient bannerSkewY`} component={'div'}>
         <Box className={`landingInGradientShades`} component={'div'}></Box>
       </Box>
       <Container maxWidth="lg" sx={{ margin: 'auto' }}>

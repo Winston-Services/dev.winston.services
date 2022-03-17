@@ -70,16 +70,25 @@ const publicPageColors = {
       },
     },
     MuiDrawer: {
-      styleOverrides: {
-        paper: {
-          backgroundColor: 'transparent',
-          backgroundImage:
-            ' linear-gradient(92.44deg, #ea7a8f 3.93%, #e452c8 98.71%)',
-        },
-      },
+      variants: [],
     },
     MuiPaper: {
       variants: [
+        {
+          props: { fullHeight: true },
+          style: {
+            height: '100vh!important',
+          },
+        },
+        {
+          props: { gradient: true },
+          style: {
+            backgroundColor: 'transparent',
+            height: '100vh',
+            backgroundImage:
+              'linear-gradient(162deg, #f75385 20%, #ea7c8f, #9e65e8 100%)',
+          },
+        },
         {
           props: { rounded: true },
           style: {
