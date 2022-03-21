@@ -4,14 +4,15 @@ import CustomizeWinston from './CustomizeWinston';
 import BlockchainCommands from './BlockchainCommands';
 import ServerOwnerCommands from './ServerOwnerCommands';
 import GameCommands from './GameCommands';
+import { Grid } from '@mui/material';
 export default function Index() {
   return (
-    <div>
+    <Grid>
       <CustomizeWinston />
       <BasicCommands />
       <BlockchainCommands />
       <ServerOwnerCommands />
       <GameCommands />
-    </div>
+    </Grid>
   );
 }

@@ -14,7 +14,7 @@ const SignUp = React.lazy(() => import('./pages/sign-up'));
 const Landing = React.lazy(() => import('./pages/landing'));
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
-import WhitelabelWinston from './layouts/whitelabelWinston/index.js';
+import WhitelabelWinston from './pages/whitelabelWinston/index';
 import PublicPageLayout from './layouts/PublicPageLayout';
 
 import './App.css';

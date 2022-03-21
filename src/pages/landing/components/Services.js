@@ -4,8 +4,8 @@ import nodeHosting from '../../../assets/node_hosting.svg';
 import miningPool from '../../../assets/mining_pool_hosting.svg';
 import masterNode from '../../../assets/master_node_hosting.svg';
 import chainExplorer from '../../../assets/chain_explorer.svg';
-import SectionCard from './SectionCard';
-let services = [
+import InfoCard4 from '../../../components/info-cards/infoCard4';
+let data = [
   {
     title: 'Node hosting',
     description: 'Lorem Ipsum is simply dummy text of the printing.',
@@ -36,10 +36,6 @@ let services = [
   },
 ];
 export default function Services() {
-  const [open, setOpen] = React.useState({});
-  const setOpenCard = (index, value) => {
-    setOpen({ ...open, [index]: !!value });
-  };
   return (
     <Grid container sx={{ mt: { xs: 10, lg: 0 } }}>
       <Grid item xs={12}>
@@ -50,29 +46,7 @@ export default function Services() {
           Manage blockchain need and crypto in one location
         </Typography>
       </Grid>
-      <Grid item xs={12} container spacing={5} sx={{ mb: { xs: 20, sm: 20 } }}>
-        {services.map((service, index) => (
-          <Grid
-            className={
-              Object.values(open).includes(true)
-                ? 'serviceCardWrap active'
-                : 'serviceCardWrap'
-            }
-            key={service.title}
-            item
-            xs={12}
-            md={6}
-            lg={3}
-          >
-            <SectionCard
-              item={service}
-              index={index}
-              setOpen={setOpenCard}
-              isOpen={open[index]}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      <InfoCard4 data={data} />
     </Grid>
   );
 }

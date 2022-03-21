@@ -1,11 +1,11 @@
 import React from 'react';
-import { Typography, Grid, Button, Paper, TextField } from '@mui/material';
+import { Typography, Grid, Button, Card, TextField } from '@mui/material';
 export default function CustomizeWinston() {
   return (
     <div>
       <Grid container>
         <Grid item sm={12} md={7} lg={7}>
-          <Typography variant="h2" mt={15} sx={{ fontWeight: '700' }}>
+          <Typography mt={15} sx={{ fontWeight: '800', fontSize: '70px' }}>
             Customize Winston
           </Typography>
           <Typography
@@ -25,7 +25,7 @@ export default function CustomizeWinston() {
           </Button>
         </Grid>
         <Grid item sm={12} md={5} lg={5}>
-          <Paper
+          <Card
             variant="outlined"
             sx={{
               display: 'flex',
@@ -33,29 +33,34 @@ export default function CustomizeWinston() {
               marginTop: '70px',
               textAlign: 'center',
               borderRadius: '30px',
+              padding: '50px',
+              alignItems: 'center',
+              border: 'none',
             }}
           >
             <Typography variant="h5" sx={{ fontWeight: 400 }}>
               Whitelabel Winston with a bot
             </Typography>
             <TextField
+              fullWidth
               sx={{ marginTop: '50px' }}
               label={'Add Winston to Discord'}
               placeholder={'Add Winston to Discord'}
             />
             <TextField
+              fullWidth
               sx={{ marginTop: '20px' }}
               label={'Discord Bot API Key'}
               placeholder={'HKDIK$KS(S78da43ad86dsd86faedfa43fasdf'}
             />
             <Button
-              sx={{ marginTop: '50px' }}
+              sx={{ marginTop: '50px', width: 'fit-content' }}
               variant="contained"
               color="secondary"
             >
               Add on Discord
             </Button>
-          </Paper>
+          </Card>
         </Grid>
       </Grid>
     </div>

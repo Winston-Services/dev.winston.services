@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Paper } from '@mui/material';
+import { Grid, Typography, Card } from '@mui/material';
 import { PropTypes } from 'prop-types';
 
 function InfoCardCol4({ data }) {
@@ -13,17 +13,42 @@ function InfoCardCol4({ data }) {
     }
   };
   return (
-    <Grid container rowSpacing={2} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
+    <Grid
+      container
+      rowSpacing={2}
+      columnSpacing={{ xs: 2, md: 2, lg: 4 }}
+      mt={8}
+    >
       {data?.map((item, index) => {
         return (
-          <Grid item xs={12} sm={6} md={3} lg={3} key={index.toString()}>
-            <Paper
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            lg={3}
+            key={index.toString()}
+            sx={{
+              transition: '0.5s ease transform',
+              transform:
+                cardData !== ''
+                  ? index % 2 !== 0
+                    ? 'translateY(50px)'
+                    : index % 2 === 0
+                    ? 'translateY(-50px)'
+                    : ''
+                  : 'translateY(0%)',
+            }}
+          >
+            <Card
+              className={`${cardData.index === index && 'openCard'}`}
               elevation={10}
               sx={{
                 display: 'block',
                 background: `linear-gradient(133.68deg, #6151B0 1.19%, #42328C 50.1%)`,
                 cursor: 'pointer',
                 borderRadius: '20px',
+                padding: '30px',
               }}
               onClick={() => {
                 handelClick(item, index);
@@ -36,16 +61,22 @@ function InfoCardCol4({ data }) {
               <Typography mt={1} variant={'subtitle2'}>
                 {item.description}
               </Typography>
-            </Paper>
+            </Card>
 
             {cardData.index === index && cardData !== '' && (
-              // {true && (
-              <Paper
+              <Card
+                className={`noselect ${
+                  cardData.index === index && cardData !== ''
+                    ? 'showCard'
+                    : 'hideCard'
+                }`}
                 sx={{
                   display: 'block',
                   background: `linear-gradient(133.68deg, #6151B0 1.19%, #42328C 50.1%)`,
                   cursor: 'pointer',
                   borderRadius: '20px',
+                  marginTop: '40px',
+                  padding: '30px',
                 }}
                 onClick={() => {
                   handelClick(item, index);
@@ -58,24 +89,15 @@ function InfoCardCol4({ data }) {
                     justifyContent: 'center',
                   }}
                 >
-                  <img src={item.icon} style={{ width: '22%' }} />
-                  <Typography
-                    level={'h6'}
-                    className="colorWhite ml15"
-                    style={{
-                      fontSize: '18px',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {item.title}
-                  </Typography>
+                  <img src={item.icon} />
+                  <Typography variant={'subtitle1'}>{item.title}</Typography>
                 </Grid>
-                <Typography variant={'h6'} className="colorWhite mt10">
+                <Typography mt={1} variant={'subtitle2'}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Viverra amet adipiscing ipsum placerat nulla gravida elit,
                   non. Mauris neque egestas in.
                 </Typography>
-              </Paper>
+              </Card>
             )}
           </Grid>
         );
