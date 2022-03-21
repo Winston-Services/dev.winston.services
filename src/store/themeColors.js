@@ -152,6 +152,12 @@ const publicPageColors = {
     MuiTypography: {
       variants: [
         {
+          props: { variant: 'h1' },
+          style: {
+            fontWeight: '700',
+          },
+        },
+        {
           props: { variant: 'h2' },
           style: {
             fontWeight: '700',

@@ -4,7 +4,7 @@ import nodeHosting from '../../../assets/node_hosting.svg';
 import miningPool from '../../../assets/mining_pool_hosting.svg';
 import masterNode from '../../../assets/master_node_hosting.svg';
 import chainExplorer from '../../../assets/chain_explorer.svg';
-import InfoCard4 from '../../../components/info-cards/infoCard4';
+import InfoCardType1 from '../../../components/info-cards/InfoCardType1';
 let data = [
   {
     title: 'Node hosting',
@@ -37,7 +37,7 @@ let data = [
 ];
 export default function Services() {
   return (
-    <Grid container sx={{ mt: { xs: 10, lg: 0 } }}>
+    <Grid container sx={{ mt: { xs: 10, lg: 0 }, mb: { xs: 20, sm: 20 } }}>
       <Grid item xs={12}>
         <Typography id="servicesTitle" variant="h3" sx={{ mb: 3 }}>
           Services
@@ -46,7 +46,7 @@ export default function Services() {
           Manage blockchain need and crypto in one location
         </Typography>
       </Grid>
-      <InfoCard4 data={data} />
+      <InfoCardType1 data={data} />
     </Grid>
   );
 }

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Grid } from '@mui/material';
 import { PropTypes } from 'prop-types';
-import SectionCard from './../../pages/landing/components/SectionCard';
-export default function InfoCard4({ data }) {
+import CardType1 from './CardType1';
+export default function InfoCardType1({ data }) {
   const [open, setOpen] = React.useState({});
   const setOpenCard = (index, value) => {
     setOpen({ ...open, [index]: !!value });
   };
   return (
     <Grid container sx={{ mt: { xs: 10, lg: 0 } }}>
-      <Grid item xs={12} container spacing={5} sx={{ mb: { xs: 20, sm: 20 } }}>
+      <Grid item xs={12} container spacing={5}>
         {data.map((service, index) => (
           <Grid
             className={
@@ -23,7 +23,7 @@ export default function InfoCard4({ data }) {
             md={6}
             lg={3}
           >
-            <SectionCard
+            <CardType1
               item={service}
               index={index}
               setOpen={setOpenCard}
@@ -36,6 +36,6 @@ export default function InfoCard4({ data }) {
   );
 }
 
-InfoCard4.propTypes = {
-  data: PropTypes.element,
+InfoCardType1.propTypes = {
+  data: PropTypes.array,
 };

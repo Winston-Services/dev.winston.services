@@ -1,11 +1,11 @@
 import React from 'react';
-import { Grid, Typography } from '@mui/material';
-import Date from '../../assets/time_date.svg';
-import GetTrigger from '../../assets/get_trigger.svg';
-import Hello from '../../assets/hello_icon.svg';
-import Ping from '../../assets/ping_icon.svg';
-import InfoCard4 from './../../components/info-cards/infoCard4';
-export default function ServerOwnerCommands() {
+import Date from './../../../assets/time_date.svg';
+import GetTrigger from './../../../assets/get_trigger.svg';
+import Hello from './../../../assets/hello_icon.svg';
+import Ping from './../../../assets/ping_icon.svg';
+import InfoCard from './../../../components/info-cards';
+
+export default function BasicCommands() {
   const data = [
     {
       title: 'Get Trigger',
@@ -42,17 +42,14 @@ export default function ServerOwnerCommands() {
   ];
 
   return (
-    <Grid container sx={{ mt: { xs: 10, lg: 0 }, textAlign: 'center' }}>
-      <Grid item xs={12}>
-        <Typography id="servicesTitle" variant="h3" sx={{ mb: 3 }}>
-          Server Owner Commands
-        </Typography>
-        <Typography sx={{ mb: 8 }}>
-          Each service connection has a basic set of commands to help you
-          interact with Winston services.
-        </Typography>
-      </Grid>
-      <InfoCard4 data={data} />
-    </Grid>
+    <InfoCard
+      listData={data}
+      title={'Winston Commands'}
+      subTitle={'Basic Commands'}
+      description={
+        'Each service connection has a basic set of commands to help you interact with Winston services.'
+      }
+      listLayoutType={'col4'}
+    />
   );
 }
