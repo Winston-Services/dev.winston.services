@@ -4,11 +4,7 @@ import {
   Button,
   TextField,
   Grid,
-  Card,
   InputAdornment,
-  CardActionArea,
-  CardMedia,
-  CardContent,
   Badge,
 } from '@mui/material';
 import ListIcon from '@mui/icons-material/List';
@@ -17,14 +13,13 @@ import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
 import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
 import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
 import NftMarketPlace5 from '../../assets/nft_marketplace_5.png';
-// import { ReactComponent as BidBuyIcon } from '../../assets/bid_buy.svg';
 
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { useNavigate } from 'react-router-dom';
-import Filter from './Filter';
+
+import Filter from './components/Filter';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import ProductCard from './components/ProductCard';
 const items = [
   {
     image: NftMarketPlace1,
@@ -77,7 +72,6 @@ const items = [
 ];
 
 export default function Index() {
-  const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
   const toggleDrawer = () => {
@@ -85,11 +79,15 @@ export default function Index() {
   };
 
   return (
-    <Grid container rowSpacing={5} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
-      <Grid item lg={4}>
+    <Grid
+      container
+      rowSpacing={{ xs: 2, md: 5 }}
+      columnSpacing={{ xs: 2, md: 2, lg: 4 }}
+    >
+      <Grid item md={4}>
         <Typography variant="h2">Marketplace</Typography>
       </Grid>
-      <Grid item lg={8} display="flex" alignItems="center">
+      <Grid item sm={12} md={8} display="flex" alignItems="center">
         <Grid container alignItems={'center'} spacing={3}>
           <Grid item flexGrow={1}>
             <TextField
@@ -108,131 +106,41 @@ export default function Index() {
               }}
             />
           </Grid>
-          <Grid item xs="auto">
-            <Button
-              variant="contained"
-              color="secondary"
-              startIcon={<ListIcon />}
-              endIcon={<ArrowDropDownIcon />}
-            >
-              Recently Listed
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={toggleDrawer}
-              startIcon={<FilterListIcon />}
-              endIcon={<Badge color="secondary" badgeContent={5} />}
-            >
-              Filter
-            </Button>
+          <Grid item xs="12" md="auto">
+            <Grid container columnSpacing={2}>
+              <Grid item xs={7} md="auto">
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<ListIcon />}
+                  endIcon={<ArrowDropDownIcon />}
+                >
+                  Recently Listed
+                </Button>
+              </Grid>
+              <Grid item xs={5}>
+                <Button
+                  fullWidth
+                  sx={{ display: { xs: '', md: 'none' } }}
+                  variant="contained"
+                  color="secondary"
+                  onClick={toggleDrawer}
+                  startIcon={<FilterListIcon />}
+                  endIcon={<Badge color="secondary" badgeContent={5} />}
+                >
+                  Filter
+                </Button>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item lg={4}>
+      <Grid item md={4}>
         <Filter toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
       </Grid>
-      <Grid item lg={8}>
-        <Grid container rowSpacing={4} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
-          {items.map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={4} key={item + index}>
-              <Card elevation={0}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="300px"
-                    image={item.image}
-                    alt="green iguana"
-                    onClick={() => {
-                      navigate('/marketplace/product-details');
-                    }}
-                  />
-                  {/* <div>
-                    <Button
-                      startIcon={<BidBuyIcon />}
-                      onClick={() => {
-                        navigate('/marketplace/product-details');
-                      }}
-                    >
-                      Bid | Buy
-                    </Button>
-                  </div> */}
-                  <CardContent sx={{ pb: 3 }}>
-                    <Grid container rowGap={1}>
-                      <Grid
-                        item
-                        xs
-                        display="flex"
-                        justifyContent="space-between"
-                        alignItems={'center'}
-                      >
-                        <Typography
-                          variant="subtitle2"
-                          sx={{ fontWeight: '300' }}
-                        >
-                          #{item.id}
-                        </Typography>
-                        {/* <IconButton aria-label="delete"> */}
-                        <FavoriteBorderIcon />
-                        {/* </IconButton> */}
-                      </Grid>
-                      <Grid
-                        item
-                        xs
-                        display="flex"
-                        justifyContent="space-between"
-                        alignItems={'center'}
-                      >
-                        <Typography variant="h6">{item.name}</Typography>
-                        <Typography variant="h5">${item.price}</Typography>
-                      </Grid>
-                      <Grid
-                        item
-                        xs
-                        display="flex"
-                        justifyContent="space-between"
-                        alignItems={'center'}
-                      >
-                        <div>
-                          <Typography
-                            variant="subtitle2"
-                            sx={{ fontWeight: '300' }}
-                          >
-                            Start BID
-                          </Typography>
-                          <Typography
-                            variant="subtitle1"
-                            sx={{
-                              mt: '-5px',
-                            }}
-                          >
-                            ${item.startBid}
-                          </Typography>
-                        </div>
-                        <div>
-                          <Typography
-                            variant="subtitle2"
-                            sx={{ fontWeight: '300' }}
-                          >
-                            End BID in
-                          </Typography>
-                          <Typography
-                            variant="subtitle1"
-                            sx={{
-                              mt: '-5px',
-                            }}
-                          >
-                            {item.endBidIn} Days
-                          </Typography>
-                        </div>
-                      </Grid>
-                    </Grid>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+      <Grid item md={8}>
+        <ProductCard items={items} />
       </Grid>
     </Grid>
   );
