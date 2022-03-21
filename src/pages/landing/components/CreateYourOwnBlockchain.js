@@ -1,8 +1,10 @@
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
 import CreateYourOwnBlock from './../../../assets/create_blockchain.svg';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateYourOwnBlockchain() {
+  const navigate = useNavigate();
   return (
     <Grid
       container
@@ -33,6 +35,9 @@ export default function CreateYourOwnBlockchain() {
                 mr: { xs: 2, md: 3 },
                 mb: 3,
                 width: { xs: '100%', sm: 'auto' },
+              }}
+              onClick={() => {
+                navigate('/wizard');
               }}
             >
               Get started
