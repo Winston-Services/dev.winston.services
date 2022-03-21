@@ -50,7 +50,7 @@ body,
   transform: translate(0px, -255px) skewY(-15deg);
   border-bottom: 50px solid #2d2169;
   height: 150%;
-  min-height: 820px;
+  min-height: 1200px;
   bottom: calc(100% - 820px);
 }
 .landingInGradient {
@@ -58,7 +58,7 @@ body,
   position: absolute;
   display: block;
   width: 100%;
-  z-index: -1;
+  z-index: 0;
   background: linear-gradient(180deg, #ea7c8f 50%, #9e65e8 100%);
 }
 .staticMenuGradient.MuiAppBar-root {
@@ -111,6 +111,7 @@ body,
 @media (max-width: 768px) {
   .landingInGradient.bannerSkewY {
     height: 1070px;
+    bottom: calc(100% - 1030px);
   }
   .landingInGradientShades::before,
   .landingInGradientShades::after,
@@ -120,3 +121,64 @@ body,
   }
 }
 /* Landing page and top nav gradient */
+
+/* Card background */
+.blueGradientBG {
+  background-image: linear-gradient(
+    135.04deg,
+    #6151b0 -0.87%,
+    #42328c 46.6%
+  ) !important;
+  background-color: transparent !important;
+}
+/* Card background */
+
+.popper-card-arrow:before {
+  position: absolute;
+  content: '';
+  border: 15px solid #42328c;
+  display: block;
+  transform: translate(-50%, 0);
+  left: 50%;
+  z-index: 10;
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-color: transparent transparent #42328c transparent;
+  top: -30px;
+}
+
+.blueSectionLandingBg {
+  position: relative;
+}
+.blueSectionLandingBg:before {
+  content: '';
+  border-top: 50px solid #2d2169;
+  border-bottom: 50px solid #2d2169;
+  transform: skewY(-15deg);
+  position: absolute;
+  top: -200px;
+  height: calc(100% + 60px);
+  width: 100%;
+  background: #271d5a;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 726px) {
+  .blueSectionLandingBg:before {
+    top: -100px;
+    height: calc(100% + 0px);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .serviceCardWrap {
+    transform: translateY(0%);
+    transition: 0.5s ease transform;
+  }
+
+  .serviceCardWrap.active:nth-child(odd) {
+    transform: translateY(-50px);
+  }
+
+  .serviceCardWrap.active:nth-child(even) {
+    transform: translateY(50px);
+  }
+}

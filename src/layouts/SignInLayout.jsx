@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Grid, Container, Box, Chip } from '@mui/material';
-import { ReactComponent as CryptoImg } from './../assets/crypto_landing.svg';
+
 import Logo from './../assets/logo.svg';
 import { useNavigate, Outlet } from 'react-router-dom';
 import { Twitter, YouTube } from '@mui/icons-material';
 import { ReactComponent as Discord } from './../assets/discord_brands.svg';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/themeColors';
+import CryptoLandingImage from './../components/crypto-landing-image/index';
 
 function SignInLayout() {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function SignInLayout() {
             direction="column"
             justifyContent="center"
           >
-            <CryptoImg width="100%" />
+            <CryptoLandingImage width="100%" />
             <Grid display="flex" justifyContent="flex-end">
               <Chip label="Security starts here" variant="outlined" />
             </Grid>

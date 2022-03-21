@@ -37,6 +37,7 @@ const publicPageColors = {
   typography: {
     fontFamily: ['Lato', 'sans-serif'].join(','),
   },
+  shape: { borderRadius: '20px' },
   palette: {
     type: 'dark',
     mode: 'dark',
@@ -62,13 +63,6 @@ const publicPageColors = {
     },
   },
   components: {
-    MuiSwitch: {
-      styleOverrides: {
-        switchBase: {
-          color: '#00a3ff',
-        },
-      },
-    },
     MuiDrawer: {
       variants: [],
     },
@@ -81,24 +75,6 @@ const publicPageColors = {
             height: '100vh!important',
             backgroundImage:
               'linear-gradient(162deg, #f75385 20%, #ea7c8f, #9e65e8 100%)',
-          },
-        },
-        {
-          props: { className: 'rounded' },
-          style: {
-            borderRadius: '20px',
-            overflow: 'hidden',
-          },
-        },
-      ],
-    },
-    MuiCard: {
-      variants: [
-        {
-          props: { className: 'rounded' },
-          style: {
-            borderRadius: '20px',
-            overflow: 'hidden',
           },
         },
       ],
@@ -126,6 +102,12 @@ const publicPageColors = {
             fontWeight: '700',
           },
         },
+        {
+          props: { variant: 'h3' },
+          style: {
+            fontWeight: '700',
+          },
+        },
       ],
     },
     MuiTextField: {
@@ -137,7 +119,6 @@ const publicPageColors = {
             backgroundColor: '#31256C',
             padding: '8px 25px',
             borderRadius: '50px',
-            overflow: 'hidden',
             height: '45px',
           },
         },
@@ -148,7 +129,7 @@ const publicPageColors = {
         root: {
           textTransform: 'none',
           borderRadius: '50px',
-          padding: '9px 32px',
+          padding: '0.6em 2em',
           boxSizing: 'border-box',
         },
       },
@@ -163,12 +144,17 @@ const publicPageColors = {
       ],
     },
     MuiLink: {
-      styleOverrides: {
-        root: {
-          color: '#FFD215',
-          cursor: 'pointer',
+      variants: [
+        {
+          props: { color: 'primary' },
+          style: {
+            cursor: 'pointer',
+            '&:hover': {
+              color: '#FFD215',
+            },
+          },
         },
-      },
+      ],
     },
     MuiChip: {
       variants: [

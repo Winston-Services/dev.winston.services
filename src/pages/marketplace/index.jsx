@@ -272,7 +272,7 @@ export default function Index() {
                   alignItems="center"
                 >
                   <Typography>{item}</Typography>
-                  <Switch />
+                  <Switch defaultChecked color="info" />
                 </Grid>
               ))}
             </AccordionDetails>
@@ -355,15 +355,13 @@ export default function Index() {
         </Grid>
       </Grid>
       <Grid item lg={4}>
-        <Paper elevation={0} className="rounded">
-          {filter()}
-        </Paper>
+        <Paper elevation={0}>{filter()}</Paper>
       </Grid>
       <Grid item lg={8}>
         <Grid container rowSpacing={4} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
           {items.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} lg={4} key={item + index}>
-              <Card elevation={0} className="rounded">
+              <Card elevation={0}>
                 <CardActionArea>
                   <CardMedia
                     component="img"
