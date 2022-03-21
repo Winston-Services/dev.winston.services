@@ -4,6 +4,9 @@ import AuthLayout from './layouts/AuthLayout';
 import useAuth, { AuthRedirect } from './context/authContext';
 import { CircularProgress, Box } from '@mui/material';
 
+import LandingLayout from './layouts/LandingLayout';
+import SignInLayout from './layouts/SignInLayout';
+import PublicPageLayout from './layouts/PublicPageLayout';
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
 const ProductDetails = React.lazy(() =>
@@ -13,10 +16,9 @@ const Transaction = React.lazy(() => import('./pages/marketplace/Transaction'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
 const Landing = React.lazy(() => import('./pages/landing'));
-import LandingLayout from './layouts/LandingLayout';
-import SignInLayout from './layouts/SignInLayout';
-import WhitelabelWinston from './layouts/whitelabelWinston/index.js';
-import PublicPageLayout from './layouts/PublicPageLayout';
+const WhiteLabelWinston = React.lazy(() =>
+  import('./pages/white-label-winston')
+);
 
 import './App.css';
 export default function App() {
@@ -85,7 +87,7 @@ export default function App() {
         },
         {
           path: '/whitelabel-winston',
-          element: getRouteWrapper(<WhitelabelWinston />, false),
+          element: getRouteWrapper(<WhiteLabelWinston />, false),
         },
       ],
     },
@@ -96,12 +98,6 @@ export default function App() {
         {
           index: true,
           element: getRouteWrapper(<Landing />, false),
-        },
-        {
-          path: '/',
-          element: (
-            <Navigate to={auth?.authenticated ? '/dashboard' : '/sign-in'} />
-          ),
         },
       ],
     },

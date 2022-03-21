@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-export default function SectionCard({ item, index, setOpen }) {
+export default function CardType1({ item, index, setOpen }) {
   const [anchorEl, setAnchorEl] = React.useState(false);
 
   const handleClick = (event) => {
@@ -87,7 +87,7 @@ export default function SectionCard({ item, index, setOpen }) {
   );
 }
 
-SectionCard.propTypes = {
+CardType1.propTypes = {
   index: PropTypes.number,
   isOpen: PropTypes.bool,
   setOpen: PropTypes.func,
