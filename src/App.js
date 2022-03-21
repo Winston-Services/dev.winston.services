@@ -19,10 +19,14 @@ const Landing = React.lazy(() => import('./pages/landing'));
 const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
 );
+import useWizardHook from './layouts/wizard/useWizardHook';
 
 import './App.css';
+import Workshop from './layouts/wizard/workshop';
+import StepAlgorithmCoin from './layouts/wizard/stepAlgorithmCoin';
 export default function App() {
   const auth = useAuth();
+  const [wizardData, setWizardData] = useWizardHook();
   const getRouteWrapper = (component, authRoute = true) => {
     return (
       <AuthRedirect authenticatedRoute={authRoute}>
@@ -88,6 +92,23 @@ export default function App() {
         {
           path: '/whitelabel-winston',
           element: getRouteWrapper(<WhiteLabelWinston />, false),
+        },
+        {
+          path: '/wizard',
+          element: getRouteWrapper(
+            <Workshop wizardData={wizardData} setWizardData={setWizardData} />,
+            false
+          ),
+        },
+        {
+          path: '/wizard/step-coin-algorithm',
+          element: getRouteWrapper(
+            <StepAlgorithmCoin
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />,
+            false
+          ),
         },
       ],
     },
