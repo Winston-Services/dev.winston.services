@@ -6,12 +6,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 html,
 body,
 #root {
   height: 100%;
   scroll-behavior: smooth;
 }
+
 /* Scroll style */
 ::-webkit-scrollbar {
   width: 0px;
@@ -21,9 +23,11 @@ body,
   background-color: transparent;
   border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
+
 *:hover::-webkit-scrollbar-thumb,
 *:focus::-webkit-scrollbar-thumb {
   background-color: #00000080;
@@ -31,6 +35,7 @@ body,
   border: 2px solid transparent;
   background-clip: content-box;
 }
+
 /* Scroll style */
 
 /* Landing page and top nav gradient */
@@ -46,6 +51,7 @@ body,
   z-index: -1;
   border-left: 50px solid #2d2169;
 }
+
 .bannerSkewY {
   transform: translate(0px, -255px) skewY(-15deg);
   border-bottom: 50px solid #2d2169;
@@ -53,6 +59,7 @@ body,
   min-height: 1200px;
   bottom: calc(100% - 820px);
 }
+
 .landingInGradient {
   overflow: hidden;
   position: absolute;
@@ -61,6 +68,7 @@ body,
   z-index: 0;
   background: linear-gradient(180deg, #ea7c8f 50%, #9e65e8 100%);
 }
+
 .staticMenuGradient.MuiAppBar-root {
   overflow: hidden;
   z-index: 100;
@@ -74,19 +82,18 @@ body,
 
 .landingInGradient:after {
   content: '';
-  background-image: linear-gradient(
-    129deg,
-    #ea7c8f,
-    #ea7c8f,
-    #e67cc1,
-    #9e65e8,
-    #9e65e8
-  );
+  background-image: linear-gradient(129deg,
+      #ea7c8f,
+      #ea7c8f,
+      #e67cc1,
+      #9e65e8,
+      #9e65e8);
   position: absolute;
   width: 100%;
   height: 820px;
   bottom: 0;
 }
+
 .landingInGradient:before {
   content: '';
   background-image: radial-gradient(#db3a8a, transparent 60%);
@@ -97,6 +104,7 @@ body,
   bottom: 0;
   transform: translate(-180px, 60px);
 }
+
 .landingInGradientShades:before {
   content: '';
   background-image: linear-gradient(180deg, transparent 40%, #af77f7 90%);
@@ -113,6 +121,7 @@ body,
     height: 1070px;
     bottom: calc(100% - 1030px);
   }
+
   .landingInGradientShades::before,
   .landingInGradientShades::after,
   .landingInGradient::before,
@@ -120,17 +129,17 @@ body,
     height: 1070px;
   }
 }
+
 /* Landing page and top nav gradient */
 
 /* Card background */
 .blueGradientBG {
-  background-image: linear-gradient(
-    135.04deg,
-    #6151b0 -0.87%,
-    #42328c 46.6%
-  ) !important;
+  background-image: linear-gradient(135.04deg,
+      #6151b0 -0.87%,
+      #42328c 46.6%) !important;
   background-color: transparent !important;
 }
+
 /* Card background */
 
 .popper-card-arrow:before {
@@ -149,6 +158,7 @@ body,
 .blueSectionLandingBg {
   position: relative;
 }
+
 .blueSectionLandingBg:before {
   content: '';
   border-top: 50px solid #2d2169;
@@ -168,6 +178,7 @@ body,
     height: calc(100% + 0px);
   }
 }
+
 @media only screen and (min-width: 1200px) {
   .serviceCardWrap {
     transform: translateY(0%);
@@ -194,4 +205,10 @@ body,
 .buyNowContainerSticky {
   position: fixed;
   animation: transition 0.3s linear;
+}
+
+.wizardCard:hover {
+  background: linear-gradient(#e06479, #d34aa3) !important;
+  box-shadow: 0px 30px 70px rgb(0 0 0 / 10%) !important;
+  cursor: pointer;
 }

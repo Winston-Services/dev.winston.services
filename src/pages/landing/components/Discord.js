@@ -2,8 +2,10 @@ import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
 import WinstonRobot from './../../../assets/discord_winston_robot.svg';
 import DiscordLaptop from './../../../assets/discord_laptop.svg';
+import { useNavigate } from 'react-router-dom';
 
 export default function Discord() {
+  const navigate = useNavigate();
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -49,7 +51,13 @@ export default function Discord() {
             </Box>
           </Box>
           <Box component="div" sx={{ mt: 6 }}>
-            <Button variant="outlined" sx={{ mr: { xs: 1, md: 3 } }}>
+            <Button
+              variant="outlined"
+              sx={{ mr: { xs: 1, md: 3 } }}
+              onClick={() => {
+                navigate('/whitelabel-winston');
+              }}
+            >
               View more
             </Button>
             <Button
@@ -109,7 +117,9 @@ export default function Discord() {
                 width: { xs: '100%', sm: 'auto' },
               }}
               // startIcon={<LockIcon />}
-              // onClick={handleUploadClick}
+              onClick={() => {
+                navigate('/whitelabel-winston');
+              }}
             >
               Get on discord
             </Button>
