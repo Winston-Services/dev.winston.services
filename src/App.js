@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 import AuthLayout from './layouts/AuthLayout';
-import useAuth, { AuthRedirect } from './context/authContext';
+import useAuth, { AuthProvider, AuthRedirect } from './context/authContext';
 import { CircularProgress, Box } from '@mui/material';
 
 import LandingLayout from './layouts/LandingLayout';
@@ -21,6 +21,7 @@ const WhiteLabelWinston = React.lazy(() =>
 );
 
 import './App.css';
+import ScrollToTop from './components/scroll-to-top';
 export default function App() {
   const auth = useAuth();
   const getRouteWrapper = (component, authRoute = true) => {
@@ -104,9 +105,16 @@ export default function App() {
     {
       path: '*',
       element: (
-        <Navigate to={auth?.authenticated ? '/dashboard' : '/sign-in'} />
+        <Navigate to={auth?.authenticated ? './dashboard' : './sign-in'} />
       ),
     },
   ];
-  return useRoutes(routes);
+  return (
+    <AuthProvider>
+      <>
+        <ScrollToTop />
+        {useRoutes(routes)}
+      </>
+    </AuthProvider>
+  );
 }

@@ -1,26 +1,27 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import ThemeLoader from './components/theme-loader';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AuthProvider } from './context/authContext';
 import './index.css';
-import ScrollToTop from './components/scroll-to-top';
+
+import { isElectron } from './utils/commonFunctions';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeLoader>
-        <BrowserRouter>
-          <AuthProvider>
-            <>
-              <ScrollToTop />
-              <App />
-            </>
-          </AuthProvider>
-        </BrowserRouter>
+        {isElectron() ? (
+          <HashRouter>
+            <App />
+          </HashRouter>
+        ) : (
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        )}
       </ThemeLoader>
     </Provider>
   </React.StrictMode>,
