@@ -169,6 +169,18 @@ const publicPageColors = {
             fontWeight: '700',
           },
         },
+        {
+          props: { color: 'inActive' },
+          style: {
+            color: '#DEDEDE',
+          },
+        },
+        {
+          props: { color: 'link' },
+          style: {
+            color: '#3994E6',
+          },
+        },
       ],
     },
     MuiTextField: {
@@ -234,6 +246,18 @@ const publicPageColors = {
             background: '#4F409A',
             padding: '10px 8px',
             borderRadius: '17px',
+          },
+        },
+        {
+          props: { color: 'secondary' },
+          style: {
+            background:
+              'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
+            color: 'white',
+            fontSize: '14px',
+            padding: '10px 15px',
+            height: '36px',
+            borderRadius: '5px',
           },
         },
       ],

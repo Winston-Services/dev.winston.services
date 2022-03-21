@@ -6,11 +6,11 @@ import {
   Button,
   Switch,
   Badge,
-  useMediaQuery,
   IconButton,
   Grid,
   Box,
   Drawer,
+  Chip,
 } from '@mui/material';
 
 import CloseIcon from '@mui/icons-material/Close';
@@ -46,7 +46,6 @@ const onSaleInFilter = [
 ];
 
 function Filter({ toggleDrawer, openDrawer }) {
-  const matches = useMediaQuery('(min-width:600px)');
   const [expanded, setExpanded] = React.useState('panel1');
 
   const Accordion = styled((props) => (
@@ -94,21 +93,16 @@ function Filter({ toggleDrawer, openDrawer }) {
             alignItems: { xs: 'center' },
           }}
         >
-          <Typography sx={{ fontSize: '18px', fontWeight: '500' }}>
-            Filter
-          </Typography>
-          {matches ? (
-            ''
-          ) : (
-            <IconButton
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={toggleDrawer}
-              color="inherit"
-            >
-              <CloseIcon />
-            </IconButton>
-          )}
+          <Typography variant="h6">Filter</Typography>
+          <IconButton
+            sx={{ display: { xs: 'block', md: 'none' } }}
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={toggleDrawer}
+            color="inherit"
+          >
+            <CloseIcon />
+          </IconButton>
         </Grid>
         <div>
           <Accordion
@@ -157,9 +151,12 @@ function Filter({ toggleDrawer, openDrawer }) {
             </AccordionSummary>
             <AccordionDetails>
               {categoriesFilter.map((item, index) => (
-                <Button key={item + index} className="categories-filter-button">
-                  {item}
-                </Button>
+                <Chip
+                  variant="filled"
+                  key={item + index}
+                  label={item}
+                  sx={{ mr: 1.25, mt: 1.25 }}
+                />
               ))}
             </AccordionDetails>
           </Accordion>
@@ -241,7 +238,11 @@ function Filter({ toggleDrawer, openDrawer }) {
       >
         {list()}
       </Drawer>
-      <Paper elevation={0} className="rounded">
+      <Paper
+        elevation={0}
+        className="rounded"
+        sx={{ display: { xs: 'none', md: 'block' } }}
+      >
         {filter()}
       </Paper>
     </div>

@@ -12,6 +12,7 @@ const Marketplace = React.lazy(() => import('./pages/marketplace'));
 const ProductDetails = React.lazy(() =>
   import('./pages/marketplace/ProductDetails')
 );
+const Transaction = React.lazy(() => import('./pages/marketplace/Transaction'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
 const Landing = React.lazy(() => import('./pages/landing'));
@@ -83,6 +84,10 @@ export default function App() {
         {
           path: '/white-label-winston',
           element: getRouteWrapper(<WhiteLabelWinston />, false),
+        },
+        {
+          path: '/marketplace/product-details/transaction',
+          element: getRouteWrapper(<Transaction />, false),
         },
       ],
     },
