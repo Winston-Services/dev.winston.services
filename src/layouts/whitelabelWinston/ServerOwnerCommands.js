@@ -1,9 +1,9 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import Date from '../../assets/Date.svg';
-import GetTrigger from '../../assets/GetTrigger.svg';
-import Hello from '../../assets/Hello.svg';
-import Ping from '../../assets/Ping.svg';
+import Date from '../../assets/date.svg';
+import GetTrigger from '../../assets/get_trigger.svg';
+import Hello from '../../assets/hello.svg';
+import Ping from '../../assets/ping.svg';
 import InfoCardCol4 from './../../layouts/common/InfoCardCol4';
 export default function ServerOwnerCommands() {
   const data = [

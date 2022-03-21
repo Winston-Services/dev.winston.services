@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import nodeHosting from '../../../assets/node-hosting.svg';
-import miningPool from '../../../assets/mining-pool-hosting.svg';
-import masterNode from '../../../assets/master-node-hosting.svg';
-import chainExplorer from '../../../assets/chain-explorer.svg';
+import nodeHosting from '../../../assets/node_hosting.svg';
+import miningPool from '../../../assets/mining_pool_hosting.svg';
+import masterNode from '../../../assets/master_node_hosting.svg';
+import chainExplorer from '../../../assets/chain_explorer.svg';
 import SectionCard from './SectionCard';
 let services = [
   {

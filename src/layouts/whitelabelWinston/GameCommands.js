@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import Date from '../../assets/Date.svg';
-import GetTrigger from '../../assets/GetTrigger.svg';
+import Date from '../../assets/date.svg';
+import GetTrigger from '../../assets/get_trigger.svg';
 import InfoCardCol2 from './../../layouts/common/InfoCardCol2';
 
 export default function GameCommands() {

@@ -20,9 +20,9 @@ import RedoIcon from '@mui/icons-material/Redo';
 import LinkIcon from '@mui/icons-material/Link';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-import ProductImage from '../../assets/ProductImage.png';
-import HistoryImage from '../../assets/HistoryImage.png';
-import ProductDetailsEthereum from '../../assets/ProductDetailsEthereum.png';
+import ProductImage from '../../assets/product_image.png';
+import HistoryImage from '../../assets/history_image.png';
+import ProductDetailsEthereum from '../../assets/product_details_ethereum.svg';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
