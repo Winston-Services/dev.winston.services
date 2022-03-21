@@ -1,9 +1,9 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import Date from '../../assets/date.svg';
+import Date from '../../assets/time_date.svg';
 import GetTrigger from '../../assets/get_trigger.svg';
-import Hello from '../../assets/hello.svg';
-import Ping from '../../assets/ping.svg';
+import Hello from '../../assets/hello_icon.svg';
+import Ping from '../../assets/ping_icon.svg';
 import InfoCardCol4 from './../../layouts/common/InfoCardCol4';
 export default function BlockchainCommands() {
   const data = [

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import Date from '../../assets/date.svg';
+import Date from '../../assets/time_date.svg';
 import GetTrigger from '../../assets/get_trigger.svg';
 import InfoCardCol2 from './../../layouts/common/InfoCardCol2';
 
