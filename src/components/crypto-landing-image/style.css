@@ -1,0 +1,433 @@
+/* Start Winston mining animation */
+.ellipse {
+  animation: circleMovement 15s linear infinite;
+}
+
+.ellipse.second_ellipse {
+  animation-delay: 5s;
+  transform: translate(553px, 300px) scale(2);
+  opacity: 0;
+}
+
+.ellipse.third_ellipse {
+  animation-delay: 10s;
+  transform: translate(553px, 300px) scale(2);
+  opacity: 0;
+}
+
+@keyframes circleMovement {
+  0% {
+    transform: translate(553px, 300px) scale(2);
+    opacity: 1;
+  }
+
+  12% {
+    transform: translate(370px, 409px) scale(2);
+  }
+
+  22% {
+    transform: translate(507px, 489px) scale(2);
+  }
+
+  23% {
+    transform: translate(515px, 500px) scale(2);
+  }
+
+  25% {
+    transform: translate(510px, 515px) scale(2);
+  }
+
+  32% {
+    transform: translate(400px, 580px) scale(2);
+  }
+
+  36% {
+    transform: translate(400px, 580px) scale(2);
+  }
+
+  44% {
+    transform: translate(308px, 635px) scale(2);
+  }
+
+  45% {
+    transform: translate(278px, 644px) scale(2);
+  }
+
+  47% {
+    transform: translate(248px, 639px) scale(2);
+  }
+
+  53% {
+    transform: translate(150px, 583px) scale(2);
+  }
+
+  57% {
+    transform: translate(150px, 583px) scale(2);
+  }
+
+  66% {
+    transform: translate(45px, 522px) scale(2);
+  }
+
+  67% {
+    transform: translate(32px, 502px) scale(2);
+  }
+
+  69% {
+    transform: translate(46px, 485px) scale(2);
+  }
+
+  74% {
+    transform: translate(140px, 428px) scale(2);
+  }
+
+  78% {
+    transform: translate(140px, 428px) scale(2);
+  }
+
+  86% {
+    transform: translate(245px, 370px) scale(2);
+  }
+
+  87% {
+    transform: translate(272px, 364px) scale(2);
+  }
+
+  89% {
+    transform: translate(300px, 369px) scale(2);
+  }
+
+  96% {
+    transform: translate(370px, 410px) scale(2);
+  }
+
+  100% {
+    transform: translate(370px, 410px) scale(2);
+    opacity: 1;
+  }
+}
+
+.light_effect_bond_path_v2 {
+  transform: translate(140px, 390px) scale(0.1);
+  opacity: 0;
+  animation: bondMovement2 5s linear 10.8s infinite;
+}
+
+@keyframes bondMovement2 {
+  0% {
+    transform: translate(130px, 390px) scale(0.1);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translate(0px, -90px) scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0px, -90px) scale(1);
+    opacity: 0;
+  }
+}
+
+.light_effect_bond_path_v1 {
+  transform: translate(360px, 500px) scale(0.1);
+  opacity: 0;
+  animation: bondMovement1 5s linear 4.6s infinite;
+}
+
+@keyframes bondMovement1 {
+  0% {
+    transform: translate(360px, 500px) scale(0.1);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translate(0px, -90px) scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0px, -90px) scale(1);
+    opacity: 0;
+  }
+}
+
+.lock {
+  transform: translate(363px, 530px) scale(0.1);
+  opacity: 0;
+  animation: lockPopin 5s linear 4.6s infinite;
+}
+
+@keyframes lockPopin {
+  0% {
+    transform: translate(363px, 530px) scale(0.1);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translate(0, -90px) scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, -90px) scale(1);
+    opacity: 0;
+  }
+}
+
+.security {
+  transform: translate(112px, 371px) scale(0.1);
+  opacity: 0;
+  animation: lockPopin2 5s linear 10.8s infinite;
+}
+
+@keyframes lockPopin2 {
+  0% {
+    transform: translate(112px, 371px) scale(0.1);
+    opacity: 0;
+  }
+
+  20% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translate(0, -90px) scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, -90px) scale(1);
+    opacity: 0;
+  }
+}
+
+.white_light_strips {
+  transform: translate(0px, 340px) scaleY(0.1);
+  opacity: 0;
+  animation: whiteStripes 0.3s linear 15s forwards;
+}
+
+@keyframes whiteStripes {
+  0% {
+    transform: translate(0, 340px) scaleY(0.1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, 0) scaleY(1);
+    opacity: 1;
+  }
+}
+
+.coin {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  transform: translate(0px, 110px) scale(0.1) rotate(30deg);
+  animation: coinWinston 6s linear 18s infinite;
+}
+
+.bitcoin_coin {
+  animation-delay: 14s;
+}
+
+.etherium_coin {
+  animation-delay: 16s;
+}
+
+@keyframes coinWinston {
+  0% {
+    transform: translate(0px, 110px) scale(0.1) rotate(30deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translate(0, 10px) scale(0.9) rotate(0deg);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translate(0, -32px) scale(1.2) rotate(0deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(0, -32px) scale(1.2) rotate(0deg);
+    opacity: 0;
+  }
+}
+
+.ahwa_path {
+  transform: translate(650px, 240px);
+}
+
+.tail {
+  transform: translate(68px, 80px) rotateY(5deg);
+  animation: tailMovement 1s linear infinite;
+}
+
+@keyframes tailMovement {
+  0% {
+    transform: translate(68px, 80px) rotateY(5deg);
+  }
+
+  50% {
+    transform: translate(68px, 80px) rotateY(67deg);
+  }
+
+  100% {
+    transform: translate(68px, 80px) rotateY(5deg);
+  }
+}
+
+.Ahwa_shadow {
+  transform: translate(31px, 2px);
+}
+
+.tail_shadow {
+  transform: translate(85px, 85px) rotateY(5deg);
+  animation: tailShadownMovement 1s linear infinite;
+}
+
+@keyframes tailShadownMovement {
+  0% {
+    transform: translate(85px, 85px) rotateY(5deg);
+  }
+
+  50% {
+    transform: translate(85px, 85px) rotateY(-55deg);
+  }
+
+  100% {
+    transform: translate(85px, 85px) rotateY(5deg);
+  }
+}
+
+.clone_coin,
+.winston_coin.clone_coin {
+  animation: cloneCoin1 5s linear 12s infinite;
+  transform: translate(120px, 550px) scale(0.1);
+  opacity: 0;
+}
+
+.bitcoin_coin.clone_coin {
+  animation: cloneCoin2 5s linear 8s infinite;
+}
+
+@keyframes cloneCoin2 {
+  0% {
+    transform: translate(120px, 550px) scale(0.1);
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(-22px, 406px) scale(0.5);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translate(-200px, 229px) scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-200px, 229px) scale(1);
+    opacity: 0;
+  }
+}
+
+.etherium_coin.clone_coin {
+  animation: cloneCoin3 5s linear 10s infinite;
+}
+
+@keyframes cloneCoin3 {
+  0% {
+    transform: translate(120px, 550px) scale(0.1);
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(-61px, 421px) scale(0.5);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translate(-286px, 269px) scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-286px, 269px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes cloneCoin1 {
+  0% {
+    transform: translate(120px, 550px) scale(0.1);
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(-50px, 371px) scale(0.5);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translate(-260px, 160px) scale(1);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(-260px, 160px) scale(1);
+    opacity: 0;
+  }
+}
+
+.cryptoContainer .ahwa_path {
+  display: none;
+}
+
+.winston-animation {
+  transition: 0.2s;
+}
+
+/* End Winston mining animation */

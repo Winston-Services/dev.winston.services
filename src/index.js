@@ -8,14 +8,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/authContext';
 import './index.css';
-
+import ScrollToTop from './components/scroll-to-top';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeLoader>
         <BrowserRouter>
           <AuthProvider>
-            <App />
+            <>
+              <ScrollToTop />
+              <App />
+            </>
           </AuthProvider>
         </BrowserRouter>
       </ThemeLoader>

@@ -37,6 +37,7 @@ const publicPageColors = {
   typography: {
     fontFamily: ['Lato', 'sans-serif'].join(','),
   },
+  shape: { borderRadius: '20px' },
   palette: {
     type: 'dark',
     mode: 'dark',
@@ -92,6 +93,9 @@ const publicPageColors = {
           left: '-12px',
         },
       },
+    },
+    MuiDrawer: {
+      variants: [],
     },
     MuiPaper: {
       variants: [
@@ -153,6 +157,12 @@ const publicPageColors = {
             fontWeight: '700',
           },
         },
+        {
+          props: { variant: 'h3' },
+          style: {
+            fontWeight: '700',
+          },
+        },
       ],
     },
     MuiTextField: {
@@ -164,7 +174,6 @@ const publicPageColors = {
             backgroundColor: '#31256C',
             padding: '8px 25px',
             borderRadius: '50px',
-            overflow: 'hidden',
             height: '45px',
           },
         },
@@ -175,7 +184,7 @@ const publicPageColors = {
         root: {
           textTransform: 'none',
           borderRadius: '50px',
-          padding: '9px 32px',
+          padding: '0.6em 2em',
           boxSizing: 'border-box',
         },
       },
@@ -190,12 +199,17 @@ const publicPageColors = {
       ],
     },
     MuiLink: {
-      styleOverrides: {
-        root: {
-          color: '#FFD215',
-          cursor: 'pointer',
+      variants: [
+        {
+          props: { color: 'primary' },
+          style: {
+            cursor: 'pointer',
+            '&:hover': {
+              color: '#FFD215',
+            },
+          },
         },
-      },
+      ],
     },
     MuiChip: {
       variants: [

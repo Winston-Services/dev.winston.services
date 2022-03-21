@@ -52,7 +52,11 @@ function SignUp() {
           {saveToBrowser && (
             <Typography sx={{ mt: 5 }}>
               Your key is saved successfully.
-              <Link onClick={() => navigate('/sign-in')} sx={{ ml: 1 }}>
+              <Link
+                underline="none"
+                onClick={() => navigate('/sign-in')}
+                sx={{ ml: 1 }}
+              >
                 Click here to login
               </Link>
             </Typography>
@@ -103,7 +107,11 @@ function SignUp() {
           </Box>
           <Typography sx={{ mt: 5 }}>
             Already have an wallet?
-            <Link onClick={() => navigate('/sign-in')} sx={{ ml: 1 }}>
+            <Link
+              underline="none"
+              onClick={() => navigate('/sign-in')}
+              sx={{ ml: 1 }}
+            >
               Login to your wallet
             </Link>
           </Typography>

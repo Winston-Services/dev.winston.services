@@ -22,28 +22,28 @@ import { Close, Menu as MenuIcon } from '@mui/icons-material';
 const menuList = [
   {
     name: 'Home',
-    href: '#home',
+    key: 'home',
   },
   {
     name: 'Services',
-    href: `#service`,
+    key: 'services',
   },
   {
     name: 'Discord',
-    href: `#discord`,
+    key: 'discord',
   },
   {
     name: 'Create Your Own Blockchain',
-    href: `#createBlockchain`,
+    key: 'createBlockchain',
   },
   {
     name: 'Academy',
-    href: `#academy`,
+    key: 'academy',
   },
 ];
 const defaultActive =
   window.location.pathname === '/'
-    ? window.location.hash.replace('#', '') || menuList[0].href
+    ? window.location.hash.replace('#', '') || menuList[0].key
     : '';
 export default function LandingTopNav() {
   const [value, setValue] = React.useState(defaultActive);
@@ -56,13 +56,11 @@ export default function LandingTopNav() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const index = menuList.findIndex(
-        (menu) =>
-          document.getElementById(menu.href.replace('#', '')).offsetTop -
-            window.innerHeight / 2 >
-          window.pageYOffset
-      );
-      setValue(index > 1 ? menuList[index - 1]?.href : menuList[0].href);
+      const index = menuList.findIndex((menu) => {
+        const ele = document.getElementById(menu.key);
+        return ele && ele.offsetTop + ele.clientHeight > window.pageYOffset;
+      });
+      setValue(index ? menuList[index]?.key : menuList[0].key);
     };
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -71,7 +69,7 @@ export default function LandingTopNav() {
   }, []);
   const handleChange = (event, newValue) => {
     if (document.getElementById(newValue)) {
-      window.scrollTo(0, document.getElementById(newValue).offsetTop - 150);
+      window.scrollTo(0, document.getElementById(newValue).offsetTop);
     }
     navigate(`/#${newValue}`);
     setValue(newValue);
@@ -108,8 +106,8 @@ export default function LandingTopNav() {
                 >
                   {menuList.map((menu) => (
                     <Tab
-                      key={menu.href.replace('#', '')}
-                      value={menu.href.replace('#', '')}
+                      key={menu.key}
+                      value={menu.key}
                       label={menu.name}
                       disableRipple
                     />
@@ -121,7 +119,11 @@ export default function LandingTopNav() {
                 item
                 alignItems={'center'}
               >
-                <Button variant="outlined" sx={{ ml: 3 }}>
+                <Button
+                  variant="outlined"
+                  sx={{ ml: 3 }}
+                  onClick={() => navigate('/sign-in')}
+                >
                   Sign In
                 </Button>
               </Grid>
@@ -178,16 +180,21 @@ export default function LandingTopNav() {
                   >
                     <List>
                       {menuList.map((menu) => (
-                        <ListItem button key={menu.href}>
+                        <ListItem button key={menu.key}>
                           <ListItemText
                             sx={{ textAlign: 'center' }}
                             primary={menu.name}
-                            onClick={(e) => handleChange(e, menu.href)}
+                            onClick={(e) => handleChange(e, menu.key)}
                           />
                         </ListItem>
                       ))}
                     </List>
-                    <Button variant="outlined" fullWidth sx={{ mb: 3 }}>
+                    <Button
+                      variant="outlined"
+                      fullWidth
+                      sx={{ mb: 3 }}
+                      onClick={() => navigate('/sign-in')}
+                    >
                       Sign In
                     </Button>
                   </Box>

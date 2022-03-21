@@ -4,6 +4,7 @@ import { Box, Container } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/themeColors';
 import LandingTopNav from './common/LandingTopNav';
+import LandingFooter from './common/LandingFooter';
 
 function PublicPageLayout() {
   const dispatch = useDispatch();
@@ -13,9 +14,10 @@ function PublicPageLayout() {
   return (
     <Box>
       <LandingTopNav />
-      <Container maxWidth="lg" sx={{ margin: 'auto', mt: 20 }}>
+      <Container maxWidth="lg" sx={{ margin: 'auto', my: 20 }}>
         <Outlet />
       </Container>
+      <LandingFooter />
     </Box>
   );
 }

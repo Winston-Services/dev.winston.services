@@ -136,7 +136,7 @@ export default function Index() {
         <Grid container rowSpacing={4} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
           {items.map((item, index) => (
             <Grid item xs={12} sm={6} md={4} lg={4} key={item + index}>
-              <Card elevation={0} className="rounded">
+              <Card elevation={0}>
                 <CardActionArea>
                   <CardMedia
                     component="img"

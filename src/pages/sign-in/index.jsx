@@ -67,7 +67,7 @@ function SignIn() {
       </Box>
       <Typography sx={{ mt: 5 }}>
         Don’t have an wallet?
-        <Link onClick={() => navigate('/sign-up')} sx={{ ml: 1 }}>
+        <Link underline='none' onClick={() => navigate('/sign-up')} sx={{ ml: 1 }}>
           Let’s create your wallet
         </Link>
       </Typography>

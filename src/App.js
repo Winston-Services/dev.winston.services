@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 import AuthLayout from './layouts/AuthLayout';
 import useAuth, { AuthRedirect } from './context/authContext';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Box } from '@mui/material';
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
@@ -23,7 +23,19 @@ export default function App() {
   const getRouteWrapper = (component, authRoute = true) => {
     return (
       <AuthRedirect authenticatedRoute={authRoute}>
-        <React.Suspense fallback={<CircularProgress />}>
+        <React.Suspense
+          fallback={
+            <Box
+              display="flex"
+              justifyContent={'center'}
+              alignItems="center"
+              height={'100%'}
+              minHeight="100vh"
+            >
+              <CircularProgress />
+            </Box>
+          }
+        >
           {component}
         </React.Suspense>
       </AuthRedirect>

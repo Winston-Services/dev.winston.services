@@ -6,7 +6,11 @@
  * @version 0.0.1
  */
 import React from 'react';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {
+  ThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+} from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../../store/themeColors';
@@ -14,7 +18,7 @@ import { CssBaseline } from '@mui/material';
 
 export default function ThemeLoader(props) {
   const themeColor = useSelector(themeSelector);
-  const theme = createTheme(themeColor);
+  const theme = responsiveFontSizes(createTheme(themeColor));
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

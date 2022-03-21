@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Box } from '@mui/material';
-import { ReactComponent as CryptoImg } from './../../../assets/crypto_landing.svg';
+import CryptoLandingImage from './../../../components/crypto-landing-image/index';
 
 export default function Home() {
   return (
@@ -10,7 +10,12 @@ export default function Home() {
       sx={{ mt: 15, flexDirection: { sm: 'column', md: 'row' } }}
     >
       <Grid item md={5.5}>
-        <Typography variant="h2" fontWeight={'700'} sx={{ mb: 3 }}>
+        <Typography
+          id="homeTitle"
+          variant="h2"
+          fontWeight={'700'}
+          sx={{ mb: 3 }}
+        >
           Crypto
         </Typography>
         <Typography textAlign="justify" sx={{ mb: { lg: 25, md: 20, xs: 8 } }}>
@@ -24,12 +29,13 @@ export default function Home() {
       <Grid item md={0.5}></Grid>
       <Grid item xs={12} md={6}>
         <Box
+          className="cryptoContainer"
           sx={{
             width: { xs: '100%', lg: '125%' },
             height: { xs: '100%', sm: '425px', lg: '125%' },
           }}
         >
-          <CryptoImg width="100%" height="100%" />
+          <CryptoLandingImage />
         </Box>
       </Grid>
     </Grid>
