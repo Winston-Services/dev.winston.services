@@ -14,13 +14,13 @@ export function AuthProvider({ children }) {
   const [auth, setAuth] = useState(oldToken);
   const removeAuth = () => {
     dispatch({ type: 'logout' });
-    localStorage.removeItem('token', false);
+    localStorage.removeItem('token');
     setAuth(undefined);
     navigate('/sign-in');
   };
-  const addAuth = (...arg) => {
-    localStorage.setItem('token', true);
-    setAuth(...arg);
+  const addAuth = (wallet) => {
+    localStorage.setItem('token', wallet);
+    setAuth(wallet);
   };
   const value = { authenticated: auth, setAuth: addAuth, removeAuth };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
