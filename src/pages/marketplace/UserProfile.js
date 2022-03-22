@@ -6,7 +6,7 @@ import VerifiedIcon from '@mui/icons-material/Verified';
 
 function UserProfile() {
   return (
-    <div>
+    <Grid mt={'-100px'}>
       <div>
         <img
           src={user_profile_cover}
@@ -18,7 +18,7 @@ function UserProfile() {
       <Container>
         <Grid container>
           <Grid item md={6} display="flex">
-            <img src={user_profile} style={{ width: '15vw', height: '15vw' }} />
+            <img src={user_profile} style={{ width: '13vw', height: '13vw' }} />
             <div>
               <Typography variant="h4" fontWeight={800}>
                 Winston Art
@@ -33,7 +33,7 @@ function UserProfile() {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </Grid>
   );
 }
 

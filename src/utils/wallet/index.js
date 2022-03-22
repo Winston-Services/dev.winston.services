@@ -63,7 +63,7 @@ export default class Wallet {
       txPreviousHash: data.txPreviousHash,
     };
     console.log(trx);
-    return this.key.verify(trx, new Buffer(data.signature));
+    return this.key.verify(trx, new Buffer.from(data.signature));
   }
 
   signTransaction(
