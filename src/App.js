@@ -13,6 +13,7 @@ const ProductDetails = React.lazy(() =>
   import('./pages/marketplace/ProductDetails')
 );
 const Transaction = React.lazy(() => import('./pages/marketplace/Transaction'));
+const UserProfile = React.lazy(() => import('./pages/marketplace/UserProfile'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
 const Landing = React.lazy(() => import('./pages/landing'));
@@ -90,6 +91,10 @@ export default function App() {
         {
           path: '/marketplace/product-details/transaction',
           element: getRouteWrapper(<Transaction />, false),
+        },
+        {
+          path: '/user-profile',
+          element: getRouteWrapper(<UserProfile />, false),
         },
         {
           path: '/whitelabel-winston',

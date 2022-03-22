@@ -6,6 +6,7 @@ import {
   Grid,
   InputAdornment,
   Badge,
+  Container,
 } from '@mui/material';
 import ListIcon from '@mui/icons-material/List';
 import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
@@ -79,69 +80,71 @@ export default function Index() {
   };
 
   return (
-    <Grid
-      container
-      rowSpacing={{ xs: 2, md: 5 }}
-      columnSpacing={{ xs: 2, md: 2, lg: 4 }}
-    >
-      <Grid item md={4}>
-        <Typography variant="h2">Marketplace</Typography>
-      </Grid>
-      <Grid item sm={12} md={8} display="flex" alignItems="center">
-        <Grid container alignItems={'center'} spacing={3}>
-          <Grid item flexGrow={1}>
-            <TextField
-              variant="standard"
-              hiddenLabel
-              fullWidth
-              color="filled"
-              placeholder="Search"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-                disableUnderline: true,
-              }}
-            />
-          </Grid>
-          <Grid item xs="12" md="auto">
-            <Grid container columnSpacing={2}>
-              <Grid item xs={7} md="auto">
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="secondary"
-                  startIcon={<ListIcon />}
-                  endIcon={<ArrowDropDownIcon />}
-                >
-                  Recently Listed
-                </Button>
-              </Grid>
-              <Grid item xs={5}>
-                <Button
-                  fullWidth
-                  sx={{ display: { xs: '', md: 'none' } }}
-                  variant="contained"
-                  color="secondary"
-                  onClick={toggleDrawer}
-                  startIcon={<FilterListIcon />}
-                  endIcon={<Badge color="secondary" badgeContent={5} />}
-                >
-                  Filter
-                </Button>
+    <Container>
+      <Grid
+        container
+        rowSpacing={{ xs: 2, md: 5 }}
+        columnSpacing={{ xs: 2, md: 2, lg: 4 }}
+      >
+        <Grid item md={4}>
+          <Typography variant="h2">Marketplace</Typography>
+        </Grid>
+        <Grid item sm={12} md={8} display="flex" alignItems="center">
+          <Grid container alignItems={'center'} spacing={3}>
+            <Grid item flexGrow={1}>
+              <TextField
+                variant="standard"
+                hiddenLabel
+                fullWidth
+                color="filled"
+                placeholder="Search"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                  disableUnderline: true,
+                }}
+              />
+            </Grid>
+            <Grid item xs="12" md="auto">
+              <Grid container columnSpacing={2}>
+                <Grid item xs={7} md="auto">
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    color="secondary"
+                    startIcon={<ListIcon />}
+                    endIcon={<ArrowDropDownIcon />}
+                  >
+                    Recently Listed
+                  </Button>
+                </Grid>
+                <Grid item xs={5}>
+                  <Button
+                    fullWidth
+                    sx={{ display: { xs: '', md: 'none' } }}
+                    variant="contained"
+                    color="secondary"
+                    onClick={toggleDrawer}
+                    startIcon={<FilterListIcon />}
+                    endIcon={<Badge color="secondary" badgeContent={5} />}
+                  >
+                    Filter
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
+        <Grid item md={4}>
+          <Filter toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
+        </Grid>
+        <Grid item md={8}>
+          <ProductCard items={items} />
+        </Grid>
       </Grid>
-      <Grid item md={4}>
-        <Filter toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
-      </Grid>
-      <Grid item md={8}>
-        <ProductCard items={items} />
-      </Grid>
-    </Grid>
+    </Container>
   );
 }

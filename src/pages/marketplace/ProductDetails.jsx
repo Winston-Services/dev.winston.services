@@ -44,7 +44,7 @@ function ProductDetails() {
   }, []);
 
   return (
-    <div>
+    <Container>
       <Grid container sx={{ mt: { xs: 4, md: 12 } }}>
         <Grid item lg={12} sx={{ display: { xs: 'none', md: 'block' } }}>
           <Button
@@ -241,7 +241,7 @@ function ProductDetails() {
           </Grid>
         </Grid>
       </div>
-    </div>
+    </Container>
   );
 }
 export default ProductDetails;
