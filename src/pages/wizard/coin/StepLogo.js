@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import customLogo from '../../assets/customLogo.svg';
+import customLogo from './../../../assets/customLogo.svg';
 import { Typography, Button, Grid, Container, Card } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import WizardSteppers from './WizardSteppers';
-import ButtonNext from '../../components/common/ButtonNext';
-import ButtonPrev from '../../components/common/ButtonPrev';
+import WizardSteppers from './../WizardSteppers';
+import ButtonNext from './../../../components/common/ButtonNext';
+import ButtonPrev from './../../../components/common/ButtonPrev';
 import { PropTypes } from 'prop-types';
 
 function StepCoinCustomLogo({ wizardData }) {

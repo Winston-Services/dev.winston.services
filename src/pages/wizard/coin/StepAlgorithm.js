@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Grid, Card, Typography, Container, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import WizardSteppers from './WizardSteppers';
+import WizardSteppers from '../WizardSteppers';
 
-import DropDown from '../../components/common/DropDown';
-import ButtonNext from '../../components/common/ButtonNext';
-import ButtonPrev from '../../components/common/ButtonPrev';
+import DropDown from '../../../components/common/DropDown';
+import ButtonNext from '../../../components/common/ButtonNext';
+import ButtonPrev from '../../../components/common/ButtonPrev';
 import { PropTypes } from 'prop-types';
 
 function StepAlgorithmCoin({ wizardData }) {

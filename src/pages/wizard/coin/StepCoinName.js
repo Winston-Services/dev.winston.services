@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import WizardSteppers from './WizardSteppers';
-import DropDown from '../../components/common/DropDown';
-import ButtonNext from '../../components/common/ButtonNext';
-import ButtonPrev from '../../components/common/ButtonPrev';
+import WizardSteppers from './../WizardSteppers';
+import DropDown from './../../../components/common/DropDown';
+import ButtonNext from './../../../components/common/ButtonNext';
+import ButtonPrev from './../../../components/common/ButtonPrev';
 import { Grid, Typography, Container, TextField, Card } from '@mui/material';
 import { PropTypes } from 'prop-types';
 

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { Paper, Typography, Container } from '@mui/material';
 import { Grid } from '@mui/material';
-import binance from '../../assets/binance.svg';
-import ethereum from '../../assets/ethereum.svg';
-import ethereumBlue from '../../assets/ethereumBlue.svg';
-import polygonMatic from '../../assets/polygonMatic.svg';
-import xDai from '../../assets/xDai.svg';
 import { useNavigate } from 'react-router-dom';
-import ButtonNext from '../../components/common/ButtonNext';
-import ButtonPrev from '../../components/common/ButtonPrev';
 import { PropTypes } from 'prop-types';
+import binance from './../../../assets/binance.svg';
+import ethereum from './../../../assets/ethereum.svg';
+import ethereumBlue from './../../../assets/ethereumBlue.svg';
+import polygonMatic from './../../../assets/polygonMatic.svg';
+import xDai from './../../../assets/xDai.svg';
+import ButtonNext from './../../../components/common/ButtonNext';
+import ButtonPrev from './../../../components/common/ButtonPrev';
 
 function Network({ wizardData, setWizardData }) {
   wizardData = 'Smart Contract';

@@ -3,19 +3,19 @@ import {
   Typography,
   FormControlLabel,
   Checkbox,
+  Container,
   Grid,
   TextField,
-  Container,
   Card,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import WizardSteppers from './WizardSteppers';
-import DropDown from '../../components/common/DropDown';
-import ButtonNext from '../../components/common/ButtonNext';
-import ButtonPrev from '../../components/common/ButtonPrev';
+import WizardSteppers from '../WizardSteppers';
+import DropDown from '../../../components/common/DropDown';
+import ButtonNext from '../../../components/common/ButtonNext';
+import ButtonPrev from '../../../components/common/ButtonPrev';
 import { PropTypes } from 'prop-types';
 
-function StepCoinBlockReward({ wizardData }) {
+function StepCoinBlockConfirmation({ wizardData }) {
   let navigate = useNavigate();
   useEffect(() => {
     if (wizardData.workshop === '') {
@@ -48,7 +48,7 @@ function StepCoinBlockReward({ wizardData }) {
       )}
       <Grid container>
         <Grid mt={6} mb={6} lg={12} md={12} sm={12} xs={12}>
-          <WizardSteppers activeStepCount={2} from={'coin'} />
+          <WizardSteppers activeStepCount={3} from={'coin'} />
         </Grid>
 
         <Grid lg={12} md={12} sm={12} xs={12}>
@@ -57,7 +57,7 @@ function StepCoinBlockReward({ wizardData }) {
               <Grid item lg={12} md={12} sm={12} xs={12}>
                 <TextField
                   fullWidth
-                  label={'Block reward'}
+                  label={'Coinbase maturity'}
                   placeholder={
                     '50 (Number of coins received for mining a block with Proof of Work.)'
                   }
@@ -66,67 +66,75 @@ function StepCoinBlockReward({ wizardData }) {
               <Grid item lg={12} md={12} sm={12} xs={12}>
                 <TextField
                   fullWidth
-                  label={'Block halving'}
+                  label={'Number of confirmations'}
                   placeholder={
-                    '210000 (Block halving splits the block reward in half.)'
+                    '6 (Number of blocks before a transaction is confirmed.)'
                   }
                 />
               </Grid>
               <Grid item lg={12} md={12} sm={12} xs={12}>
                 <TextField
                   fullWidth
-                  label={'Coin Supply without premine'}
-                  placeholder={'21000000'}
+                  label={'Target spacing in minutes'}
+                  placeholder={
+                    '5 (Number of minutes it should take to mine a block.)'
+                  }
                 />
               </Grid>
               <Grid item lg={12} md={12} sm={12} xs={12}>
-                <DropDown label={'Premine'} options={['Yes', 'No']} />
+                <DropDown
+                  label={'Target timespan in minutes'}
+                  options={[10, 20, 30]}
+                  placeholder={
+                    'Number of minutes before difficulty of the network is re-adjusted.'
+                  }
+                />
               </Grid>
               <Grid item lg={12} md={12} sm={12} xs={12}>
                 <FormControlLabel
                   control={<Checkbox />}
-                  label="100% premine"
+                  label="Hardcoded node"
                   className="wrapperCheckBox"
                 />
               </Grid>
               <Grid item lg={12} md={12} sm={12} xs={12}>
                 <TextField
                   fullWidth
-                  label={'Premine amount'}
-                  placeholder={
-                    '1 (Number of coins that is available after the mining of block #1.)'
-                  }
+                  label={'Node 1'}
+                  placeholder={'Node2.winston.services'}
                 />
               </Grid>
               <Grid item lg={12} md={12} sm={12} xs={12}>
                 <TextField
                   fullWidth
-                  label={'Coin supply with premine'}
-                  placeholder={'21000000'}
+                  label={'Node 2'}
+                  placeholder={
+                    'Secondnode.winston.services (Hostname/IP of second server that will run a node for your coin.)'
+                  }
                 />
               </Grid>
             </Grid>
           </Card>
         </Grid>
-        <Grid
-          container
-          spacing={2}
-          mt={4}
-          display="flex"
-          justifyContent="flex-end"
-        >
-          <Grid item>
-            <ButtonPrev onClick={'/wizard/step-coin-name'} />
-          </Grid>
-          <Grid item>
-            <ButtonNext onClick={'/wizard/step-coin-block-confirmation'} />
-          </Grid>
+      </Grid>
+      <Grid
+        container
+        spacing={2}
+        mt={4}
+        display="flex"
+        justifyContent="flex-end"
+      >
+        <Grid item>
+          <ButtonPrev onClick={'/wizard/step-coin-block-reward'} />
+        </Grid>
+        <Grid item>
+          <ButtonNext onClick={'/wizard/step-coin-custom-logo'} />
         </Grid>
       </Grid>
     </Container>
   );
 }
-StepCoinBlockReward.propTypes = {
+StepCoinBlockConfirmation.propTypes = {
   wizardData: PropTypes.object,
 };
-export default StepCoinBlockReward;
+export default StepCoinBlockConfirmation;

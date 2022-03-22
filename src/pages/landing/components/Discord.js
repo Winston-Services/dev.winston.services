@@ -55,7 +55,7 @@ export default function Discord() {
               variant="outlined"
               sx={{ mr: { xs: 1, md: 3 } }}
               onClick={() => {
-                navigate('/whitelabel-winston');
+                navigate('/white-label-winston');
               }}
             >
               View more
@@ -118,7 +118,7 @@ export default function Discord() {
               }}
               // startIcon={<LockIcon />}
               onClick={() => {
-                navigate('/whitelabel-winston');
+                navigate('/white-label-winston');
               }}
             >
               Get on discord

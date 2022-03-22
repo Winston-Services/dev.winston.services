@@ -149,7 +149,7 @@ const footerMenu = [
 export default function LandingFooter() {
   const navigate = useNavigate();
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ mt: 15 }}>
       <Grid container sx={{ mt: 3 }}>
         <Grid item xs={12} md={4} container>
           <Grid item xs={3}>

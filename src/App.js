@@ -21,20 +21,12 @@ const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
 );
 
-import useWizardHook from './pages/wizard/UseWizardHook';
 import ScrollToTop from './components/scroll-to-top';
-import Workshop from './pages/wizard';
-import StepAlgorithmCoin from './pages/wizard/StepAlgorithmCoin';
-
 import './App.css';
-import Network from './pages/wizard/Network';
-import StepCoinName from './pages/wizard/StepCoinName';
-import StepCoinBlockReward from './pages/wizard/StepCoinBlockReward';
-import StepCoinBlockConfirmation from './pages/wizard/StepCoinBlockConfirmation';
-import StepCoinCustomLogo from './pages/wizard/StepCoinCustomLogo';
+import Wizard from './pages/wizard';
 export default function App() {
   const auth = useAuth();
-  const [wizardData, setWizardData] = useWizardHook();
+
   const getRouteWrapper = (component, authRoute = true) => {
     return (
       <AuthRedirect authenticatedRoute={authRoute}>
@@ -102,72 +94,12 @@ export default function App() {
           element: getRouteWrapper(<UserProfile />, false),
         },
         {
-          path: '/whitelabel-winston',
+          path: '/white-label-winston',
           element: getRouteWrapper(<WhiteLabelWinston />, false),
         },
         {
-          path: '/wizard',
-          element: getRouteWrapper(
-            <Workshop wizardData={wizardData} setWizardData={setWizardData} />,
-            false
-          ),
-        },
-        {
-          path: '/wizard/step-coin-algorithm',
-          element: getRouteWrapper(
-            <StepAlgorithmCoin
-              wizardData={wizardData}
-              setWizardData={setWizardData}
-            />,
-            false
-          ),
-        },
-        {
-          path: '/wizard/step-coin-name',
-          element: getRouteWrapper(
-            <StepCoinName
-              wizardData={wizardData}
-              setWizardData={setWizardData}
-            />,
-            false
-          ),
-        },
-        {
-          path: '/wizard/step-coin-block-reward',
-          element: getRouteWrapper(
-            <StepCoinBlockReward
-              wizardData={wizardData}
-              setWizardData={setWizardData}
-            />,
-            false
-          ),
-        },
-        {
-          path: '/wizard/step-coin-block-confirmation',
-          element: getRouteWrapper(
-            <StepCoinBlockConfirmation
-              wizardData={wizardData}
-              setWizardData={setWizardData}
-            />,
-            false
-          ),
-        },
-        {
-          path: '/wizard/step-coin-custom-logo',
-          element: getRouteWrapper(
-            <StepCoinCustomLogo
-              wizardData={wizardData}
-              setWizardData={setWizardData}
-            />,
-            false
-          ),
-        },
-        {
-          path: '/wizard/network',
-          element: getRouteWrapper(
-            <Network wizardData={wizardData} setWizardData={setWizardData} />,
-            false
-          ),
+          path: '/wizard/*',
+          element: getRouteWrapper(<Wizard />, false),
         },
       ],
     },

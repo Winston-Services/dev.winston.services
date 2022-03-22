@@ -1,84 +1,80 @@
 import React from 'react';
-import { Grid, Card, Typography, Container, CardContent } from '@mui/material';
-import coin from '../../assets/coin.svg';
-import smartContract from '../../assets/smartContract.svg';
-import custom from '../../assets/custom.svg';
-import { useNavigate } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
 
-function Workshop({ wizardData, setWizardData }) {
-  let navigate = useNavigate();
-  const workshopData = [
+import StepAlgorithmCoin from './coin/StepAlgorithm';
+
+import Network from './smart-contract/Network';
+import StepCoinName from './coin/StepCoinName';
+import StepCoinBlockReward from './coin/StepBlockReward';
+import StepCoinBlockConfirmation from './coin/StepBlockConfirmation';
+import StepLogo from './coin/StepLogo';
+import useWizardHook from './UseWizardHook';
+import Workshop from './Workshop';
+import NoMatch from './../NoMatch';
+import { useRoutes } from 'react-router-dom';
+export default function Wizard() {
+  const [wizardData, setWizardData] = useWizardHook();
+  const routes = [
     {
-      title: 'Coin',
-      icon: coin,
-      onClickUrl: '/wizard/step-coin-algorithm',
-    },
-    {
-      title: 'Smart Contract',
-      icon: smartContract,
-      onClickUrl: '/wizard/network',
-    },
-    {
-      title: 'Custom',
-      icon: custom,
-      onClickUrl: '/wizard/step-coin-algorithm',
+      path: '/',
+      children: [
+        {
+          index: true,
+          element: (
+            <Workshop wizardData={wizardData} setWizardData={setWizardData} />
+          ),
+        },
+        {
+          path: '/step-coin-algorithm',
+          element: (
+            <StepAlgorithmCoin
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />
+          ),
+        },
+        {
+          path: '/step-coin-name',
+          element: (
+            <StepCoinName
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />
+          ),
+        },
+        {
+          path: '/step-coin-block-reward',
+          element: (
+            <StepCoinBlockReward
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />
+          ),
+        },
+        {
+          path: '/step-coin-block-confirmation',
+          element: (
+            <StepCoinBlockConfirmation
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />
+          ),
+        },
+        {
+          path: '/step-coin-custom-logo',
+          element: (
+            <StepLogo wizardData={wizardData} setWizardData={setWizardData} />
+          ),
+        },
+        {
+          path: '/network',
+          element: (
+            <Network wizardData={wizardData} setWizardData={setWizardData} />
+          ),
+        },
+        { path: '*', element: <NoMatch /> },
+      ],
     },
   ];
-  return (
-    <Container>
-      <Grid container>
-        <Grid item sm={12} xs={12} lg={12}>
-          <Typography variant="h3">Workshop</Typography>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          spacing={5}
-          sx={{ mb: { xs: 2, sm: 2 }, mt: { xs: 2, sm: 2 } }}
-        >
-          {workshopData?.map((item) => {
-            return (
-              <Grid
-                key={item.title}
-                item
-                xs={12}
-                md={6}
-                lg={4}
-                textAlign={'-webkit-center'}
-              >
-                <Card
-                  className="wizardCard"
-                  onClick={() => {
-                    setWizardData({
-                      ...wizardData,
-                      workshop: item.title,
-                    });
-                    navigate(item.onClickUrl);
-                  }}
-                >
-                  <CardContent>
-                    <Grid item sm={12} xs={12} lg={3} mt={6}>
-                      <img src={item.icon} alt="icon" />
-                    </Grid>
-                    <Grid item sm={12} xs={12} lg={9} mt={3} mb={6}>
-                      <Typography variant={'h6'}>{item.title}</Typography>
-                    </Grid>
-                  </CardContent>
-                </Card>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Grid>
-    </Container>
-  );
+
+  return useRoutes(routes);
 }
-
-Workshop.propTypes = {
-  wizardData: PropTypes.object,
-  setWizardData: PropTypes.func,
-};
-
-export default Workshop;
