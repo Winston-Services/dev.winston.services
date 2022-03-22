@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../store/themeColors';
 import LandingTopNav from './common/LandingTopNav';
@@ -14,9 +14,9 @@ function PublicPageLayout() {
   return (
     <Box>
       <LandingTopNav />
-      <Container maxWidth="lg" sx={{ margin: 'auto', my: 20 }}>
+      <Box mt={'84px'}>
         <Outlet />
-      </Container>
+      </Box>
       <LandingFooter />
     </Box>
   );

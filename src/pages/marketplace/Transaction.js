@@ -1,12 +1,19 @@
 import React from 'react';
-import { Grid, Typography, Paper, IconButton, Chip } from '@mui/material';
+import {
+  Grid,
+  Typography,
+  Paper,
+  IconButton,
+  Chip,
+  Container,
+} from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CircleIcon from '@mui/icons-material/Circle';
 
 function Transaction() {
   return (
-    <div>
+    <Container>
       <Grid container rowSpacing={5} columnSpacing={3}>
         <Grid item xs={12}>
           <Typography variant="h2">Transaction</Typography>
@@ -85,7 +92,7 @@ function Transaction() {
               alignItems="center"
             >
               <Typography variant="h6">Block Hash</Typography>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" color="inActive">
                 FAD6B2E09C8D43ABA85
                 <br />
                 68E6E4D97D9DD55965
@@ -108,7 +115,7 @@ function Transaction() {
               alignItems="center"
             >
               <Typography variant="h6">TX Hash</Typography>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" color="inActive">
                 FAD6B2E09C8D43ABA85
                 <br />
                 68E6E4D97D9DD55965
@@ -156,7 +163,9 @@ function Transaction() {
               alignItems="center"
             >
               <Typography variant="h6">Fee </Typography>
-              <Typography variant="subtitle2">0.000125 CRO</Typography>
+              <Typography variant="subtitle2" color="inActive">
+                0.000125 CRO
+              </Typography>
             </Grid>
             <Grid
               sx={{ m: '20px 0px' }}
@@ -168,7 +177,9 @@ function Transaction() {
               alignItems="center"
             >
               <Typography variant="h6">Memo </Typography>
-              <Typography variant="subtitle2">-</Typography>
+              <Typography variant="subtitle2" color="inActive">
+                -
+              </Typography>
             </Grid>
           </Paper>
         </Grid>
@@ -188,7 +199,7 @@ function Transaction() {
               alignItems="center"
             >
               <Typography variant="h6">Denom Id</Typography>
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" color="inActive">
                 FAD6B2E09C8D43ABA85
                 <br />
                 68E6E4D97D9DD55965
@@ -236,12 +247,14 @@ function Transaction() {
               alignItems="center"
             >
               <Typography variant="h6">Recipent </Typography>
-              <Typography variant="subtitle2">0.000125 CRO</Typography>
+              <Typography variant="subtitle2" color="inActive">
+                0.000125 CRO
+              </Typography>
             </Grid>
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </Container>
   );
 }
 

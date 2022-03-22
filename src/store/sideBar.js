@@ -33,7 +33,11 @@ const initialState = {
         open: true,
       },
       items: [
-        { attr: { primary: 'BTC' }, icon: 'wallet' },
+        {
+          attr: { primary: 'BTC' },
+          // image: '/images/coins/comfy.png',
+          icon: 'wallet',
+        },
         { attr: { primary: 'BHY' }, icon: 'wallet' },
         { attr: { primary: 'LTC' }, icon: 'wallet' },
         { attr: { primary: 'DASH' }, icon: 'wallet' },
