@@ -27,6 +27,7 @@ import StepAlgorithmCoin from './layouts/wizard/stepAlgorithmCoin';
 
 import './App.css';
 import Network from './layouts/wizard/network';
+import StepCoinName from './layouts/wizard/stepCoinName';
 export default function App() {
   const auth = useAuth();
   const [wizardData, setWizardData] = useWizardHook();
@@ -107,6 +108,16 @@ export default function App() {
           path: '/wizard/step-coin-algorithm',
           element: getRouteWrapper(
             <StepAlgorithmCoin
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />,
+            false
+          ),
+        },
+        {
+          path: '/wizard/step-coin-name',
+          element: getRouteWrapper(
+            <StepCoinName
               wizardData={wizardData}
               setWizardData={setWizardData}
             />,

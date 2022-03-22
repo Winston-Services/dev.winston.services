@@ -7,8 +7,8 @@ import ethereumBlue from '../../assets/ethereumBlue.svg';
 import polygonMatic from '../../assets/polygonMatic.svg';
 import xDai from '../../assets/xDai.svg';
 import { useNavigate } from 'react-router-dom';
-import ButtonNext from '../common/ButtonNext';
-import ButtonPrev from '../common/ButtonPrev';
+import ButtonNext from '../../components/common/ButtonNext';
+import ButtonPrev from '../../components/common/ButtonPrev';
 import { PropTypes } from 'prop-types';
 
 function Network({ wizardData, setWizardData }) {
