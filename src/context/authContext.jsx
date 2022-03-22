@@ -5,7 +5,10 @@ import { Navigate } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 import { userInfoSelector } from '../store/user';
 import { PropTypes } from 'prop-types';
-const oldToken = localStorage.getItem('token');
+const oldToken = false;
+// const oldToken = localStorage.getItem('token')
+//   ? JSON.parse(localStorage.getItem('token'))
+//   : false;
 const AuthContext = React.createContext(oldToken);
 
 export function AuthProvider({ children }) {
@@ -14,12 +17,12 @@ export function AuthProvider({ children }) {
   const [auth, setAuth] = useState(oldToken);
   const removeAuth = () => {
     dispatch({ type: 'logout' });
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
     setAuth(undefined);
     navigate('/sign-in');
   };
   const addAuth = (wallet) => {
-    localStorage.setItem('token', wallet);
+    // localStorage.setItem('token', JSON.stringify(wallet));
     setAuth(wallet);
   };
   const value = { authenticated: auth, setAuth: addAuth, removeAuth };

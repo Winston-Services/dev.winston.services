@@ -11,15 +11,15 @@ import {
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../context/authContext';
 import Wallet from './../../utils/wallet';
-import { useDispatch } from 'react-redux';
-import { setUserWallet } from '../../store/user';
+// import { useDispatch } from 'react-redux';
+// import { setUserWallet } from '../../store/user';
 
 function SignIn() {
   const navigate = useNavigate();
   const auth = useAuth();
   const [error, setError] = useState({});
   const hiddenFileInput = React.useRef(null);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const login = (privateKey) => {
     let tempWallet = new Wallet();
     if (privateKey !== null) {
@@ -51,7 +51,7 @@ function SignIn() {
       if ('error' in loginResults) {
         setError(loginResults.error);
       } else {
-        dispatch(setUserWallet(loginResults.wallet));
+        // dispatch(setUserWallet(loginResults.wallet));
         auth.setAuth(loginResults.wallet);
         navigate('/dashboard');
       }
@@ -64,7 +64,7 @@ function SignIn() {
     if ('error' in loginResults) {
       setError(loginResults.error);
     } else {
-      dispatch(setUserWallet(loginResults.wallet));
+      // dispatch(setUserWallet(loginResults.wallet));
       auth.setAuth(loginResults.wallet);
       navigate('/dashboard');
     }

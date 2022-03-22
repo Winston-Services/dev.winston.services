@@ -110,7 +110,7 @@ function StepCoinCustomLogo({ wizardData }) {
   );
 }
 StepCoinCustomLogo.propTypes = {
-  wizardData: PropTypes.element,
-  setWizardData: PropTypes.element,
+  wizardData: PropTypes.object,
+  setwizardData: PropTypes.object,
 };
 export default StepCoinCustomLogo;

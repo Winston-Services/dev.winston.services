@@ -77,8 +77,8 @@ function Workshop({ wizardData, setWizardData }) {
 }
 
 Workshop.propTypes = {
-  wizardData: PropTypes.element,
-  setWizardData: PropTypes.element,
+  wizardData: PropTypes.object,
+  setWizardData: PropTypes.func,
 };
 
 export default Workshop;
