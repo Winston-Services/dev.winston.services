@@ -59,7 +59,7 @@ const ColorlibStepIconRoot = styled('div')(({ ownerState }) => ({
 }));
 
 function ColorlibStepIcon(props) {
-  const { active, completed, className } = props;
+  const { active, completed } = props;
 
   const icons = {
     1: stepperSmartContract,
@@ -68,17 +68,9 @@ function ColorlibStepIcon(props) {
     4: stepperAccess,
     5: stepperInfo,
   };
-  const matches = useMediaQuery('(min-width:535px)');
   return (
-    <ColorlibStepIconRoot
-      ownerState={{ completed, active }}
-      className={`${className} ${matches ? '' : 'stepper'}`}
-    >
-      <img
-        className={` ${matches ? '' : 'w100'}`}
-        src={icons[String(props.icon)]}
-        alt="icon"
-      />
+    <ColorlibStepIconRoot ownerState={{ completed, active }}>
+      <img src={icons[String(props.icon)]} alt="icon" />
     </ColorlibStepIconRoot>
   );
 }
@@ -120,14 +112,14 @@ export default function WizardSteppers({ activeStepCount, from = 'other' }) {
         ];
   const matches = useMediaQuery('(min-width:535px)');
   return (
-    <Stack sx={{ width: '100%' }} spacing={4}>
+    <Stack spacing={4}>
       <Stepper
         alternativeLabel
         activeStep={activeStepCount}
         connector={<ColorlibConnector />}
       >
         {steps.map((label) => (
-          <Step key={label} className={`${matches ? '' : 'steppersChild'}`}>
+          <Step key={label}>
             <StepLabel StepIconComponent={ColorlibStepIcon}>
               {matches ? label : ''}
             </StepLabel>

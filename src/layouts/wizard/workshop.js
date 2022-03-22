@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
 function Workshop({ wizardData, setWizardData }) {
-  console.log(wizardData, setWizardData);
   let navigate = useNavigate();
   const workshopData = [
     {
@@ -56,7 +55,7 @@ function Workshop({ wizardData, setWizardData }) {
                       ...wizardData,
                       workshop: item.title,
                     });
-                    navigate.push(item.onClickUrl);
+                    navigate(item.onClickUrl);
                   }}
                 >
                   <CardContent>
