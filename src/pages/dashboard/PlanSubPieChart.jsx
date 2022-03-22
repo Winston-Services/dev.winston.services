@@ -49,11 +49,11 @@ export default function PlanSubPieChart() {
     <React.Fragment>
       <Typography variant="h6">Server Plan Subscriptions</Typography>
 
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer>
         <PieChart width={500} height={500}>
           <Pie
             data={planSubs}
-            cx="30%"
+            cx="50%"
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}

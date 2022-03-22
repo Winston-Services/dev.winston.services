@@ -117,7 +117,7 @@ export default function SideBar() {
                         {item.icon ? (
                           <Icon {...item.iconAttr}>{item.icon}</Icon>
                         ) : (
-                          <img src={item.image} />
+                          <img src={item.image} width={'24px'} />
                         )}
                       </Tooltip>
                     </ListItemIcon>

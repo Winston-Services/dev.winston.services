@@ -7,7 +7,6 @@ import {
   ListItemText,
   Grid,
 } from '@mui/material';
-import BHYCurrencyIcon from '../../assets/icons/bhy.jpg';
 
 export default function Deposits() {
   return (
@@ -21,13 +20,13 @@ export default function Deposits() {
         <div>
           <ListItem button>
             <ListItemIcon>
-              <img src={BHYCurrencyIcon} height="36" width="36" />
+              <img src={'./assets/icons/btc.svg'} height="36" width="36" />
             </ListItemIcon>
             <ListItemText primary="BTC" secondary={' 0000000.00000000'} />
           </ListItem>
           <ListItem button>
             <ListItemIcon>
-              <img src={BHYCurrencyIcon} height="36" width="36" />
+              <img src={'./assets/icons/bhy.jpg'} height="36" width="36" />
             </ListItemIcon>
             <ListItemText primary="BHY" secondary={' 0000000.00000000'} />
           </ListItem>
