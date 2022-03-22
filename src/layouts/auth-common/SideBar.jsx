@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiDrawer from '@mui/material/Drawer';
 import Icon from '@mui/material/Icon';
-import { ListItemButton, ListItemText } from '@mui/material';
+import { ListItemButton, ListItemText, Tooltip } from '@mui/material';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { styled } from '@mui/material/styles';
 import {
@@ -109,7 +109,17 @@ export default function SideBar() {
                         justifyContent: 'center',
                       }}
                     >
-                      <Icon {...item.iconAttr}>{item.icon}</Icon>
+                      <Tooltip
+                        arrow={true}
+                        title={!isSideBarOpen ? item.attr.primary : ''}
+                        placement="right"
+                      >
+                        {item.icon ? (
+                          <Icon {...item.iconAttr}>{item.icon}</Icon>
+                        ) : (
+                          <img src={item.image} />
+                        )}
+                      </Tooltip>
                     </ListItemIcon>
                     <ListItemText
                       primary={item.attr.primary}
