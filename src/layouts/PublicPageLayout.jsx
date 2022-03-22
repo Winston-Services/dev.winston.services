@@ -14,7 +14,7 @@ function PublicPageLayout() {
   return (
     <Box>
       <LandingTopNav />
-      <Box mt={'84px'}>
+      <Box mt={12}>
         <Outlet />
       </Box>
       <LandingFooter />
