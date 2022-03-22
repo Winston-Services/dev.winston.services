@@ -337,7 +337,7 @@ const layout = window.location.pathname.includes('dashboard')
 const initialState = {
   colors: createThemeVariable('dark', layout === 'dashboard'),
   oldLayout: layout,
-  oldMode: 'dark',
+  oldMode: 'light',
 };
 console.log('layout', layout);
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 import AuthLayout from './layouts/AuthLayout';
-import useAuth, { AuthRedirect } from './context/authContext';
+import useAuth, { AuthProvider, AuthRedirect } from './context/authContext';
 import { CircularProgress, Box } from '@mui/material';
 
 import LandingLayout from './layouts/LandingLayout';
@@ -19,11 +19,13 @@ const Landing = React.lazy(() => import('./pages/landing'));
 const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
 );
+
+import ScrollToTop from './components/scroll-to-top';
 import useWizardHook from './layouts/wizard/useWizardHook';
 
-import './App.css';
 import Workshop from './layouts/wizard/workshop';
 import StepAlgorithmCoin from './layouts/wizard/stepAlgorithmCoin';
+import './App.css';
 export default function App() {
   const auth = useAuth();
   const [wizardData, setWizardData] = useWizardHook();
@@ -125,9 +127,16 @@ export default function App() {
     {
       path: '*',
       element: (
-        <Navigate to={auth?.authenticated ? '/dashboard' : '/sign-in'} />
+        <Navigate to={auth?.authenticated ? './dashboard' : './sign-in'} />
       ),
     },
   ];
-  return useRoutes(routes);
+  return (
+    <AuthProvider>
+      <>
+        <ScrollToTop />
+        {useRoutes(routes)}
+      </>
+    </AuthProvider>
+  );
 }
