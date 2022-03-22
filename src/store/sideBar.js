@@ -35,8 +35,8 @@ const initialState = {
       items: [
         {
           attr: { primary: 'BTC' },
-          // image: '/images/coins/comfy.png',
-          icon: 'wallet',
+          image: './assets/icons/bcci.png',
+          // icon: 'wallet',
         },
         { attr: { primary: 'BHY' }, icon: 'wallet' },
         { attr: { primary: 'LTC' }, icon: 'wallet' },
