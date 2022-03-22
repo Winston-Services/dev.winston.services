@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isSideBarOpen: false,
+  isSideBarOpen: true,
   sideBarItem: [
     {
       key: 'dashboard',
@@ -25,24 +25,24 @@ const initialState = {
         },
       ],
     },
-    // {
-    //   key: 'wallets',
-    //   attr: {
-    //     primary: 'Wallets',
-    //     secondary: 'BTC, BHY, LTC, DASH, DOGE, MSTR, ETH, SYS',
-    //     open: true,
-    //   },
-    //   items: [
-    //     { attr: { primary: 'BTC' }, icon: 'wallet' },
-    //     { attr: { primary: 'BHY' }, icon: 'send' },
-    //     { attr: { primary: 'LTC' }, icon: 'receive' },
-    //     { attr: { primary: 'DASH' }, icon: 'home' },
-    //     { attr: { primary: 'DOGE' }, icon: 'send' },
-    //     { attr: { primary: 'MSTR' }, icon: 'receive' },
-    //     { attr: { primary: 'ETH' }, icon: 'home' },
-    //     { attr: { primary: 'SYS' }, icon: 'send' },
-    //   ],
-    // },
+    {
+      key: 'wallets',
+      attr: {
+        primary: 'Wallets',
+        secondary: 'BTC, BHY, LTC, DASH, DOGE, MSTR, ETH, SYS',
+        open: true,
+      },
+      items: [
+        { attr: { primary: 'BTC' }, icon: 'wallet' },
+        { attr: { primary: 'BHY' }, icon: 'wallet' },
+        { attr: { primary: 'LTC' }, icon: 'wallet' },
+        { attr: { primary: 'DASH' }, icon: 'wallet' },
+        { attr: { primary: 'DOGE' }, icon: 'wallet' },
+        { attr: { primary: 'MSTR' }, icon: 'wallet' },
+        { attr: { primary: 'ETH' }, icon: 'wallet' },
+        { attr: { primary: 'SYS' }, icon: 'wallet' },
+      ],
+    },
     {
       key: 'reports',
       attr: {
@@ -51,9 +51,9 @@ const initialState = {
         open: true,
       },
       items: [
-        { attr: { primary: 'Current month' }, icon: 'home' },
-        { attr: { primary: 'Last quarter' }, icon: 'send' },
-        { attr: { primary: 'Yearly reports' }, icon: 'receive' },
+        { attr: { primary: 'Current month' }, icon: 'summarize' },
+        { attr: { primary: 'Last quarter' }, icon: 'summarize' },
+        { attr: { primary: 'Yearly reports' }, icon: 'summarize' },
       ],
     },
     {
@@ -64,9 +64,9 @@ const initialState = {
         open: true,
       },
       items: [
-        { attr: { primary: 'OpenCart' }, icon: 'home' },
-        { attr: { primary: 'Shopify' }, icon: 'send' },
-        { attr: { primary: 'QuickBooks' }, icon: 'receive' },
+        { attr: { primary: 'OpenCart' }, icon: 'extension' },
+        { attr: { primary: 'Shopify' }, icon: 'extension' },
+        { attr: { primary: 'QuickBooks' }, icon: 'extension' },
       ],
     },
   ],
