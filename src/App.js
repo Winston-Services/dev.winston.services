@@ -7,7 +7,7 @@ import { CircularProgress, Box } from '@mui/material';
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 import PublicPageLayout from './layouts/PublicPageLayout';
-const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const Dashboard = React.lazy(() => import('./pages/dashboard/Dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
 const ProductDetails = React.lazy(() =>
   import('./pages/marketplace/ProductDetails')
@@ -21,14 +21,17 @@ const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
 );
 
-import useWizardHook from './layouts/wizard/useWizardHook';
+import useWizardHook from './pages/wizard/useWizardHook';
 import ScrollToTop from './components/scroll-to-top';
-import Workshop from './layouts/wizard/workshop';
-import StepAlgorithmCoin from './layouts/wizard/stepAlgorithmCoin';
+import Workshop from './pages/wizard/workshop';
+import StepAlgorithmCoin from './pages/wizard/stepAlgorithmCoin';
 
 import './App.css';
-import Network from './layouts/wizard/network';
-import StepCoinName from './layouts/wizard/stepCoinName';
+import Network from './pages/wizard/network';
+import StepCoinName from './pages/wizard/stepCoinName';
+import StepCoinBlockReward from './pages/wizard/stepCoinBlockReward';
+import StepCoinBlockConfirmation from './pages/wizard/stepCoinBlockConfirmation';
+import StepCoinCustomLogo from './pages/wizard/stepCoinCustomLogo';
 export default function App() {
   const auth = useAuth();
   const [wizardData, setWizardData] = useWizardHook();
@@ -123,6 +126,36 @@ export default function App() {
           path: '/wizard/step-coin-name',
           element: getRouteWrapper(
             <StepCoinName
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />,
+            false
+          ),
+        },
+        {
+          path: '/wizard/step-coin-block-reward',
+          element: getRouteWrapper(
+            <StepCoinBlockReward
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />,
+            false
+          ),
+        },
+        {
+          path: '/wizard/step-coin-block-confirmation',
+          element: getRouteWrapper(
+            <StepCoinBlockConfirmation
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />,
+            false
+          ),
+        },
+        {
+          path: '/wizard/step-coin-custom-logo',
+          element: getRouteWrapper(
+            <StepCoinCustomLogo
               wizardData={wizardData}
               setWizardData={setWizardData}
             />,
