@@ -2,12 +2,31 @@ import React from 'react';
 import { Typography, Button, Box, Link, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { LoadingButton } from '@mui/lab';
+import Wallet from './../../utils/wallet';
+import fileDownload from 'js-file-download';
 
 function SignUp() {
   const navigate = useNavigate();
-  const [created, setCreated] = React.useState(false);
+  const [created, setCreated] = React.useState({ init: false, wallet: null });
   const [saveToBrowser, setSaveToBrowser] = React.useState(false);
-  if (created) {
+  const saveToLocalStorage = () => {
+    setSaveToBrowser(true);
+    localStorage.setItem('privateKey', created.wallet.walletPrivateKey);
+  };
+
+  const downloadFile = () => {
+    fileDownload(created.wallet.walletPrivateKey, 'Wallet.pem');
+  };
+
+  const createWallet = () => {
+    const newWallet = new Wallet();
+    newWallet.generateKeyPair();
+    setCreated({
+      wallet: newWallet,
+      init: true,
+    });
+  };
+  if (created.init) {
     return (
       <>
         <Box>
@@ -33,10 +52,10 @@ function SignUp() {
 
           <Box component="div" sx={{ mt: 5 }}>
             <LoadingButton
-              loading={saveToBrowser}
               variant="outlined"
               sx={{ mr: { xs: 2, md: 3 } }}
-              onClick={() => setSaveToBrowser(!saveToBrowser)}
+              onClick={saveToLocalStorage}
+              disabled={saveToBrowser}
             >
               {saveToBrowser ? 'Saved' : 'Save to Browser'}
             </LoadingButton>
@@ -44,7 +63,7 @@ function SignUp() {
               variant="contained"
               color="secondary"
               // startIcon={<LockIcon />}
-              // onClick={handleUploadClick}
+              onClick={downloadFile}
             >
               Download Key
             </Button>
@@ -100,7 +119,7 @@ function SignUp() {
             <Button
               variant="contained"
               color="secondary"
-              onClick={() => setCreated(true)}
+              onClick={createWallet}
             >
               Create your wallet
             </Button>

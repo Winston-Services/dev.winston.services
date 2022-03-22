@@ -15,10 +15,13 @@ export const user = createSlice({
     setUserInfo: (state, action) => {
       state.info = action.payload;
     },
+    setUserWallet: (state, action) => {
+      state.wallet = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleSideBar, openMenu } = user.actions;
+export const { setUserInfo, setUserWallet } = user.actions;
 export const userInfoSelector = (state) => state.user.info;
 export default user.reducer;
