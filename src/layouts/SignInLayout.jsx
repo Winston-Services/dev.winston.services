@@ -60,7 +60,11 @@ function SignInLayout() {
           >
             <CryptoLandingImage width="100%" />
             <Grid display="flex" justifyContent="flex-end">
-              <Chip label="Security starts here" variant="outlined" />
+              <Chip
+                label="Security starts here"
+                variant="outlined"
+                size="medium"
+              />
             </Grid>
           </Grid>
         </Grid>

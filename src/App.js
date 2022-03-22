@@ -20,11 +20,11 @@ const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
 );
 
-import ScrollToTop from './components/scroll-to-top';
 import useWizardHook from './layouts/wizard/useWizardHook';
-
+import ScrollToTop from './components/scroll-to-top';
 import Workshop from './layouts/wizard/workshop';
 import StepAlgorithmCoin from './layouts/wizard/stepAlgorithmCoin';
+
 import './App.css';
 export default function App() {
   const auth = useAuth();

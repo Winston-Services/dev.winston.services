@@ -37,7 +37,7 @@ const publicPageColors = {
   typography: {
     fontFamily: ['Lato', 'sans-serif'].join(','),
   },
-  shape: { borderRadius: '20px' },
+  // shape: { borderRadius: '20px' },
   palette: {
     type: 'dark',
     mode: 'dark',
@@ -76,21 +76,21 @@ const publicPageColors = {
           background:
             'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
           color: 'white',
-          fontSize: 14,
-          fontWeight: 800,
-          width: 30,
-          height: 30,
-          borderRadius: 25,
-          left: '-5px',
+          // fontSize: 14,
+          // fontWeight: 800,
+          // width: 30,
+          // height: 30,
+          // borderRadius: 25,
+          // left: '-5px',
         },
         colorSecondary: {
           background: 'white',
           color: 'black',
-          fontSize: 12,
-          width: 18,
-          height: 18,
-          borderRadius: 25,
-          left: '-12px',
+          // fontSize: 12,
+          // width: 18,
+          // height: 18,
+          // borderRadius: 25,
+          // left: '-12px',
         },
       },
     },
@@ -112,24 +112,6 @@ const publicPageColors = {
           props: { gradient: false },
           style: {
             backgroundImage: 'none',
-          },
-        },
-        {
-          props: { className: 'rounded' },
-          style: {
-            borderRadius: '20px',
-            overflow: 'hidden',
-          },
-        },
-      ],
-    },
-    MuiCard: {
-      variants: [
-        {
-          props: { className: 'rounded' },
-          style: {
-            borderRadius: '20px',
-            overflow: 'hidden',
           },
         },
       ],
@@ -183,27 +165,13 @@ const publicPageColors = {
         },
       ],
     },
-    MuiTextField: {
-      variants: [
-        {
-          props: { color: 'filled' },
-          style: {
-            backgroundImage: 'none',
-            backgroundColor: '#31256C',
-            padding: '8px 25px',
-            borderRadius: '50px',
-            height: '45px',
-          },
-        },
-      ],
-    },
     MuiButton: {
       styleOverrides: {
         root: {
           textTransform: 'none',
-          borderRadius: '50px',
-          padding: '0.6em 2em',
+          padding: '0.8em 2em',
           boxSizing: 'border-box',
+          borderRadius: '28px',
         },
       },
       variants: [
@@ -235,9 +203,9 @@ const publicPageColors = {
           props: { variant: 'outlined' },
           style: {
             borderColor: '#fff',
-            padding: '16px 32px',
-            height: '45px',
-            borderRadius: '50px',
+            padding: '1em 2em',
+            height: '50px',
+            borderRadius: '28px',
           },
         },
         {
@@ -245,7 +213,7 @@ const publicPageColors = {
           style: {
             background: '#4F409A',
             padding: '10px 8px',
-            borderRadius: '17px',
+            // borderRadius: '17px',
           },
         },
         {
@@ -257,7 +225,7 @@ const publicPageColors = {
             fontSize: '14px',
             padding: '10px 15px',
             height: '36px',
-            borderRadius: '5px',
+            // borderRadius: '5px',
           },
         },
       ],
@@ -267,6 +235,31 @@ const publicPageColors = {
         root: {
           textTransform: 'capitalize',
         },
+      },
+    },
+    MuiTextField: {
+      variants: [
+        {
+          props: { variant: 'outlined' },
+          style: {
+            fieldset: { borderRadius: '4px' },
+          },
+        },
+        {
+          props: { color: 'filled' },
+          style: {
+            backgroundImage: 'none',
+            backgroundColor: '#31256C',
+            padding: '8px 25px',
+            borderRadius: '50px',
+            height: '45px',
+          },
+        },
+      ],
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: { borderRadius: '20px' },
       },
     },
   },
