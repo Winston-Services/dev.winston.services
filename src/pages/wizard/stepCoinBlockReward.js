@@ -127,6 +127,6 @@ function StepCoinBlockReward({ wizardData }) {
   );
 }
 StepCoinBlockReward.propTypes = {
-  wizardData: PropTypes.element,
+  wizardData: PropTypes.object,
 };
 export default StepCoinBlockReward;

@@ -120,7 +120,7 @@ function StepCoinName({ wizardData }) {
 }
 
 StepCoinName.propTypes = {
-  wizardData: PropTypes.element,
+  wizardData: PropTypes.object,
 };
 
 export default StepCoinName;

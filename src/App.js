@@ -21,17 +21,17 @@ const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
 );
 
-import useWizardHook from './pages/wizard/useWizardHook';
+import useWizardHook from './pages/wizard/UseWizardHook';
 import ScrollToTop from './components/scroll-to-top';
-import Workshop from './pages/wizard/workshop';
-import StepAlgorithmCoin from './pages/wizard/stepAlgorithmCoin';
+import Workshop from './pages/wizard';
+import StepAlgorithmCoin from './pages/wizard/StepAlgorithmCoin';
 
 import './App.css';
-import Network from './pages/wizard/network';
-import StepCoinName from './pages/wizard/stepCoinName';
-import StepCoinBlockReward from './pages/wizard/stepCoinBlockReward';
-import StepCoinBlockConfirmation from './pages/wizard/stepCoinBlockConfirmation';
-import StepCoinCustomLogo from './pages/wizard/stepCoinCustomLogo';
+import Network from './pages/wizard/Network';
+import StepCoinName from './pages/wizard/StepCoinName';
+import StepCoinBlockReward from './pages/wizard/StepCoinBlockReward';
+import StepCoinBlockConfirmation from './pages/wizard/StepCoinBlockConfirmation';
+import StepCoinCustomLogo from './pages/wizard/StepCoinCustomLogo';
 export default function App() {
   const auth = useAuth();
   const [wizardData, setWizardData] = useWizardHook();

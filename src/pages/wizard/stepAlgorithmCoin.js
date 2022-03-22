@@ -80,8 +80,8 @@ function StepAlgorithmCoin({ wizardData }) {
 }
 
 StepAlgorithmCoin.propTypes = {
-  wizardData: PropTypes.element,
-  setWizardData: PropTypes.element,
+  wizardData: PropTypes.object,
+  setWizardData: PropTypes.func,
 };
 
 export default StepAlgorithmCoin;

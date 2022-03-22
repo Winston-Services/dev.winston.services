@@ -135,6 +135,6 @@ function StepCoinBlockConfirmation({ wizardData }) {
   );
 }
 StepCoinBlockConfirmation.propTypes = {
-  wizardData: PropTypes.element,
+  wizardData: PropTypes.object,
 };
 export default StepCoinBlockConfirmation;
