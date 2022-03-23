@@ -45,6 +45,7 @@ const defaultActive =
     ? window.location.hash.replace('#', '') || menuList[0].key
     : '';
 var timer;
+console.log(defaultActive, 'defaultActive');
 export default function LandingTopNav() {
   const [value, setValue] = React.useState(defaultActive);
   const navigate = useNavigate();
@@ -56,12 +57,12 @@ export default function LandingTopNav() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const index = menuList.findIndex((menu) => {
-        const ele = document.getElementById(menu.key);
-        return ele && ele.offsetTop + ele.clientHeight > window.pageYOffset;
-      });
       clearTimeout(timer);
       timer = setTimeout(() => {
+        const index = menuList.findIndex((menu) => {
+          const ele = document.getElementById(menu.key);
+          return ele && ele.offsetTop + ele.clientHeight > window.pageYOffset;
+        });
         setValue(index ? menuList[index]?.key : menuList[0].key);
       }, 50);
     };
