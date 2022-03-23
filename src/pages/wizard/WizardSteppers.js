@@ -131,6 +131,6 @@ export default function WizardSteppers({ activeStepCount, from = 'other' }) {
 }
 
 WizardSteppers.propTypes = {
-  activeStepCount: PropTypes.element,
-  from: PropTypes.element,
+  activeStepCount: PropTypes.number,
+  from: PropTypes.string,
 };

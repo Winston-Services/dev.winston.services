@@ -31,9 +31,9 @@ function DropDown({ label, options, placeholder = '' }) {
 }
 
 DropDown.propTypes = {
-  label: PropTypes.element,
-  options: PropTypes.element,
-  placeholder: PropTypes.element,
+  label: PropTypes.string,
+  options: PropTypes.array,
+  placeholder: PropTypes.string,
 };
 
 export default DropDown;

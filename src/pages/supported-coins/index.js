@@ -67,7 +67,7 @@ const SupportedCoins = () => {
         >
           Supported Coins
         </Typography>
-        <Grid sx={{ display: 'flex', flexWrap: 'wrap' }} lg={12}>
+        <Grid item sx={{ display: 'flex', flexWrap: 'wrap' }} lg={12}>
           {data.map((item, id) => {
             return (
               <Card

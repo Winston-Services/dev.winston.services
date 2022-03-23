@@ -2,9 +2,14 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WizardSteppers from './../WizardSteppers';
 import DropDown from './../../../components/common/DropDown';
-import ButtonNext from './../../../components/common/ButtonNext';
-import ButtonPrev from './../../../components/common/ButtonPrev';
-import { Grid, Typography, Container, TextField, Card } from '@mui/material';
+import {
+  Grid,
+  Typography,
+  Container,
+  TextField,
+  Card,
+  Button,
+} from '@mui/material';
 import { PropTypes } from 'prop-types';
 
 function StepCoinName({ wizardData }) {
@@ -27,10 +32,10 @@ function StepCoinName({ wizardData }) {
         </Typography>
       )}
       <Grid container>
-        <Grid mt={6} mb={6} lg={12} md={12} sm={12} xs={12}>
+        <Grid item mt={6} mb={6} lg={12} md={12} sm={12} xs={12}>
           <WizardSteppers activeStepCount={1} from={'coin'} />
         </Grid>
-        <Grid lg={12} md={12} sm={12} xs={12}>
+        <Grid item lg={12} md={12} sm={12} xs={12}>
           <Card sx={{ p: 6 }}>
             <Grid container spacing={4}>
               <Grid item lg={12} md={12} sm={12} xs={12}>
@@ -108,10 +113,18 @@ function StepCoinName({ wizardData }) {
           justifyContent="flex-end"
         >
           <Grid item>
-            <ButtonPrev onClick={'/wizard/'} />
+            <Button variant="outlined" onClick={() => navigate('/wizard/')}>
+              Previous
+            </Button>
           </Grid>
           <Grid item>
-            <ButtonNext onClick={'/wizard/step-coin-block-reward'} />
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => navigate('/wizard/step-coin-block-reward')}
+            >
+              Next
+            </Button>
           </Grid>
         </Grid>
       </Grid>
