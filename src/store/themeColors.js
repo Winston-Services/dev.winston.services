@@ -338,8 +338,21 @@ const initialState = {
   colors: createThemeVariable('dark', layout === 'dashboard'),
   oldLayout: layout,
   oldMode: 'light',
+  chartColors: {
+    tinyAreaChartColors: [
+      '#E9C46A',
+      '#FFF3B0',
+      '#F4A261',
+      '#E76F51',
+      '#FFBE0B',
+      '#F08080',
+      '#90EAE8',
+      '#D86732',
+    ],
+    bigAreaChartColor: '#2196F3',
+    barChartColor: [{ fill: '#00B4D8' }, { fill: '#318596' }],
+  },
 };
-console.log('layout', layout);
 
 export const themeColors = createSlice({
   name: 'themeColors',

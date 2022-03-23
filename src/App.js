@@ -7,7 +7,7 @@ import { CircularProgress, Box } from '@mui/material';
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 import PublicPageLayout from './layouts/PublicPageLayout';
-const Dashboard = React.lazy(() => import('./pages/dashboard/Dashboard'));
+const Dashboard = React.lazy(() => import('./pages/dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
 const ProductDetails = React.lazy(() =>
   import('./pages/marketplace/ProductDetails')

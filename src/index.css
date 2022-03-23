@@ -41,7 +41,7 @@ body,
 /* Landing page and top nav gradient */
 .signInGradient:after {
   content: '';
-  background: linear-gradient(269deg, #ed8ef3 24.22%, #7968ff 100%);
+  background: linear-gradient(269deg, #f448ab 24.22%, #7968ff 100%);
   position: fixed;
   width: 100%;
   top: 0;
