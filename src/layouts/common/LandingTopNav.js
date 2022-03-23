@@ -63,7 +63,7 @@ export default function LandingTopNav() {
       clearTimeout(timer);
       timer = setTimeout(() => {
         setValue(index ? menuList[index]?.key : menuList[0].key);
-      }, 10);
+      }, 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => {
