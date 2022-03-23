@@ -81,10 +81,12 @@ export const sideBar = createSlice({
   reducers: {
     toggleSideBar: (state) => {
       state.isSideBarOpen = !state.isSideBarOpen;
+      return state;
     },
     openMenu: (state, action) => {
       state.sideBarItem[action.payload.index].attr.open =
         !state.sideBarItem[action.payload.index].attr.open;
+      return state;
     },
   },
 });

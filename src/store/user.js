@@ -14,9 +14,11 @@ export const user = createSlice({
   reducers: {
     setUserInfo: (state, action) => {
       state.info = action.payload;
+      return state;
     },
     setUserWallet: (state, action) => {
       state.wallet = action.payload;
+      return state;
     },
   },
 });
