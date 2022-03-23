@@ -3,14 +3,15 @@ export function isElectron() {
   // Renderer process
   if (
     typeof window !== 'undefined' &&
-    typeof window.process === 'object' &&
-    window.process.type === 'renderer'
+    typeof window?.process === 'object' &&
+    window?.process.type === 'renderer'
   ) {
     return true;
   }
 
   // Main process
   if (
+    process &&
     typeof process !== 'undefined' &&
     typeof process.versions === 'object' &&
     !!process.versions.electron

@@ -195,6 +195,13 @@ const publicPageColors = {
             },
           },
         },
+        {
+          props: { color: 'nav' },
+          style: {
+            color: '#ffffff',
+            cursor: 'pointer',
+          },
+        },
       ],
     },
     MuiChip: {

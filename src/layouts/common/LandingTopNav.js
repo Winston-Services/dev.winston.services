@@ -4,8 +4,6 @@ import {
   Box,
   Toolbar,
   Container,
-  Tabs,
-  Tab,
   Grid,
   Button,
   IconButton,
@@ -13,6 +11,7 @@ import {
   ListItem,
   ListItemText,
   Drawer,
+  Link,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import Logo from './../../assets/logo.svg';
@@ -45,6 +44,7 @@ const defaultActive =
   window.location.pathname === '/'
     ? window.location.hash.replace('#', '') || menuList[0].key
     : '';
+var timer;
 export default function LandingTopNav() {
   const [value, setValue] = React.useState(defaultActive);
   const navigate = useNavigate();
@@ -60,14 +60,17 @@ export default function LandingTopNav() {
         const ele = document.getElementById(menu.key);
         return ele && ele.offsetTop + ele.clientHeight > window.pageYOffset;
       });
-      setValue(index ? menuList[index]?.key : menuList[0].key);
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        setValue(index ? menuList[index]?.key : menuList[0].key);
+      }, 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  const handleChange = (event, newValue) => {
+  const handleChange = (newValue) => {
     if (document.getElementById(newValue)) {
       window.scrollTo(0, document.getElementById(newValue).offsetTop);
     }
@@ -99,7 +102,21 @@ export default function LandingTopNav() {
                 justifyContent={'flex-end'}
                 alignItems="center"
               >
-                <Tabs
+                {menuList.map((menu) => (
+                  <Link
+                    key={menu.key}
+                    onClick={() => handleChange(menu.key)}
+                    sx={{ mx: 2 }}
+                    color={'nav'}
+                    underline={'none'}
+                    className={
+                      value === menu.key ? 'nav-link active' : 'nav-link'
+                    }
+                  >
+                    {menu.name}
+                  </Link>
+                ))}
+                {/* <Tabs
                   value={value}
                   onChange={handleChange}
                   aria-label="Navigation"
@@ -112,7 +129,7 @@ export default function LandingTopNav() {
                       disableRipple
                     />
                   ))}
-                </Tabs>
+                </Tabs> */}
               </Grid>
               <Grid
                 sx={{ display: { xs: 'none', md: 'flex' } }}
