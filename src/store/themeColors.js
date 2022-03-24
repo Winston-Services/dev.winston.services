@@ -189,6 +189,12 @@ const publicPageColors = {
               'linear-gradient(92.44deg, #EA7A8F 3.93%, #E452C8 98.71%)',
           },
         },
+        {
+          props: { variant: 'outlined', color: 'bgwhite' },
+          style: {
+            background: 'red',
+          },
+        },
       ],
     },
     MuiLink: {

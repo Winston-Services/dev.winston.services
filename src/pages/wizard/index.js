@@ -10,6 +10,10 @@ import StepLogo from './coin/StepLogo';
 import Workshop from './Workshop';
 import NoMatch from './../NoMatch';
 import { wizardDataSelector, updateWizardData } from './../../store/wizard';
+import StepSetting from './smart-contract/StepSetting';
+import StepFeature from './smart-contract/StepFeature';
+import StepAccessUpgrade from './smart-contract/StepAccessUpgrade';
+import StepInfo from './smart-contract/StepInfo';
 
 export default function Wizard() {
   const wizardData = useSelector(wizardDataSelector);
@@ -74,6 +78,39 @@ export default function Wizard() {
           path: '/network',
           element: (
             <Network wizardData={wizardData} setWizardData={setWizardData} />
+          ),
+        },
+        {
+          path: '/step-setting',
+          element: (
+            <StepSetting
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />
+          ),
+        },
+        {
+          path: '/step-feature',
+          element: (
+            <StepFeature
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />
+          ),
+        },
+        {
+          path: '/step-info',
+          element: (
+            <StepInfo wizardData={wizardData} setWizardData={setWizardData} />
+          ),
+        },
+        {
+          path: '/step-access-upgrade',
+          element: (
+            <StepAccessUpgrade
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />
           ),
         },
         { path: '*', element: <NoMatch /> },

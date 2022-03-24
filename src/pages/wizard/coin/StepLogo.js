@@ -3,8 +3,6 @@ import customLogo from './../../../assets/customLogo.svg';
 import { Typography, Button, Grid, Container, Card } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import WizardSteppers from './../WizardSteppers';
-import ButtonNext from './../../../components/common/ButtonNext';
-import ButtonPrev from './../../../components/common/ButtonPrev';
 import { PropTypes } from 'prop-types';
 
 function StepCoinCustomLogo({ wizardData }) {
@@ -27,11 +25,11 @@ function StepCoinCustomLogo({ wizardData }) {
         </Typography>
       )}
       <Grid container>
-        <Grid mt={6} mb={6} lg={12} md={12} sm={12} xs={12}>
+        <Grid item mt={6} mb={6} lg={12} md={12} sm={12} xs={12}>
           <WizardSteppers activeStepCount={3} from={'coin'} />
         </Grid>
 
-        <Grid lg={12} md={12} sm={12} xs={12}>
+        <Grid item lg={12} md={12} sm={12} xs={12}>
           <Card sx={{ p: 6 }}>
             <Grid container spacing={2}>
               <Grid item sm={6} xs={12} lg={6}>
@@ -88,11 +86,22 @@ function StepCoinCustomLogo({ wizardData }) {
           justifyContent="flex-end"
         >
           <Grid item>
-            <ButtonPrev onClick={'/wizard/step-coin-block-confirmation'} />
+            <Button
+              variant="outlined"
+              onClick={() => navigate('/wizard/step-coin-block-confirmation')}
+            >
+              Previous
+            </Button>
           </Grid>
           <Grid item>
             {wizardData.workshop === 'Custom' && (
-              <ButtonNext onClick={'/wizard/network'} />
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => navigate('/wizard/network')}
+              >
+                Next
+              </Button>
             )}
             {wizardData.workshop === 'Coin' && (
               <Button
