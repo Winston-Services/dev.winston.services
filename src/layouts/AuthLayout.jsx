@@ -24,7 +24,7 @@ function Layout() {
           style={{
             marginTop: '86px',
             padding: '30px',
-            animation: 'width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;',
+            transition: 'max-width  225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms',
             maxWidth: `calc(100% - ${isSideBarOpen ? '240px' : '86px'})`,
           }}
         >
