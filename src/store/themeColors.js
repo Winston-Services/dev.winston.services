@@ -337,14 +337,9 @@ const createThemeVariable = (mode, dashboard) => {
     },
   };
 };
-const layout = window.location.pathname.includes('dashboard')
-  ? 'dashboard'
-  : 'landing';
-const initialState = {
-  colors: createThemeVariable('dark', layout === 'dashboard'),
-  oldLayout: layout,
-  oldMode: 'light',
-  chartColors: {
+
+const createChartVariable = (mode) => {
+  return {
     tinyAreaChartColors: [
       '#E9C46A',
       '#FFF3B0',
@@ -356,8 +351,27 @@ const initialState = {
       '#D86732',
     ],
     bigAreaChartColor: '#2196F3',
-    barChartColor: [{ fill: '#00B4D8' }, { fill: '#318596' }],
-  },
+    inOutAreaChartColor: {
+      stroke: '#B0B9FF',
+      area:
+        mode === 'light'
+          ? ['rgba(0,26,255,0.4)', 'rgba(255,98,31,0.3)']
+          : ['rgba(126,123,255,0.7)', 'rgba(255,255,255,0.7)'],
+    },
+    serverBarChartColor: [{ fill: '#FFB08D' }, { fill: '#BF8DFF' }],
+    botBarChartColor: [{ fill: '#00B4D8' }, { fill: '#318596' }],
+  };
+};
+
+const layout = window.location.pathname.includes('dashboard')
+  ? 'dashboard'
+  : 'landing';
+
+const initialState = {
+  colors: createThemeVariable('dark', layout === 'dashboard'),
+  oldLayout: layout,
+  oldMode: 'light',
+  chartColors: createChartVariable('dark'),
 };
 
 export const themeColors = createSlice({
@@ -369,6 +383,7 @@ export const themeColors = createSlice({
       state.oldMode = newMode;
       state.oldLayout = action.payload;
       state.colors = createThemeVariable(newMode, true);
+      state.chartColors = createChartVariable(newMode);
       return state;
     },
     setTheme: (state, action) => {
@@ -376,6 +391,7 @@ export const themeColors = createSlice({
         state.oldMode,
         action.payload === 'dashboard'
       );
+      state.chartColors = createChartVariable(state.oldMode);
       return state;
     },
   },

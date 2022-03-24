@@ -175,7 +175,7 @@ function BalanceChart() {
                 />
               </AreaChart>
             </ResponsiveContainer>
-            <Typography variant="h6" fontWeight={700} sx={{ mt: -2 }}>
+            <Typography variant="h6" fontWeight={700} sx={{ mt: -1 }}>
               0000.0000
             </Typography>
             <Typography variant="subtitle1" fontWeight={500}>
