@@ -1,7 +1,14 @@
 import React from 'react';
-import { Grid, Card, Typography, Container, CardContent } from '@mui/material';
+import {
+  Grid,
+  Card,
+  Typography,
+  Container,
+  CardContent,
+  Box,
+} from '@mui/material';
 import coin from '../../assets/coin.svg';
-import smartContract from '../../assets/smartContract.svg';
+import smartContract from '../../assets/smart_contract.svg';
 import custom from '../../assets/custom.svg';
 import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
@@ -28,7 +35,7 @@ function Workshop({ wizardData, setWizardData }) {
   return (
     <Container>
       <Grid container>
-        <Grid item sm={12} xs={12} lg={12}>
+        <Grid item sm={12}>
           <Typography variant="h3">Workshop</Typography>
         </Grid>
         <Grid
@@ -40,14 +47,7 @@ function Workshop({ wizardData, setWizardData }) {
         >
           {workshopData?.map((item) => {
             return (
-              <Grid
-                key={item.title}
-                item
-                xs={12}
-                md={6}
-                lg={4}
-                textAlign={'-webkit-center'}
-              >
+              <Grid key={item.title} item xs={12} md={6} lg={4}>
                 <Card
                   className="wizardCard"
                   onClick={() => {
@@ -58,12 +58,19 @@ function Workshop({ wizardData, setWizardData }) {
                     navigate(item.onClickUrl);
                   }}
                 >
-                  <CardContent>
-                    <Grid item sm={12} xs={12} lg={3} mt={6}>
-                      <img src={item.icon} alt="icon" />
+                  <CardContent sx={{ my: 7 }}>
+                    <Grid item sm={12} display={'flex'} justifyContent="center">
+                      <Box
+                        component="img"
+                        sx={{ mb: 5 }}
+                        src={item.icon}
+                        alt="icon"
+                      />
                     </Grid>
-                    <Grid item sm={12} xs={12} lg={9} mt={3} mb={6}>
-                      <Typography variant={'h6'}>{item.title}</Typography>
+                    <Grid item sm={12}>
+                      <Typography textAlign={'center'} variant={'h6'}>
+                        {item.title}
+                      </Typography>
                     </Grid>
                   </CardContent>
                 </Card>

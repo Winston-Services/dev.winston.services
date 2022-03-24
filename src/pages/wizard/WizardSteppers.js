@@ -5,41 +5,46 @@ import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import stepperSmartContract from '../../assets/stepperSmartContract.svg';
-import stepperInfo from '../../assets/stepperInfo.svg';
-import stepperSetting from '../../assets/stepperSetting.svg';
-import stepperAccess from '../../assets/stepperAccess.svg';
-import stepperFeatures from '../../assets/stepperFeatures.svg';
+
 import StepConnector, {
   stepConnectorClasses,
 } from '@mui/material/StepConnector';
 import { useMediaQuery } from '@mui/material';
+import {
+  Info,
+  Memory,
+  PlaylistAddCheck,
+  Security,
+  Settings,
+} from '@mui/icons-material';
 
-const ColorlibConnector = styled(StepConnector)(() => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 40,
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        'linear-gradient(146.8deg, #6C73DF -21.41%, #3344D4 57.9%)',
+const ColorLibConnector = styled(StepConnector)(({ theme }) => {
+  debugger;
+  return {
+    [`&.${stepConnectorClasses.alternativeLabel}`]: {
+      top: 40,
     },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      background: '#23B000',
+    [`&.${stepConnectorClasses.active}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        backgroundImage: theme.palette.winston.reverseMain,
+      },
     },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 2,
-    border: 0,
-    backgroundColor: '#3A2C83',
-    borderRadius: 1,
-  },
-}));
+    [`&.${stepConnectorClasses.completed}`]: {
+      [`& .${stepConnectorClasses.line}`]: {
+        backgroundImage: theme.palette.winston.reverseMain,
+      },
+    },
+    [`& .${stepConnectorClasses.line}`]: {
+      height: 2,
+      border: 0,
+      backgroundColor: theme.palette.primary.light,
+      borderRadius: 1,
+    },
+  };
+});
 
-const ColorlibStepIconRoot = styled('div')(({ ownerState }) => ({
-  backgroundColor: '#3A2C83',
+const ColorLibStepIconRoot = styled('div')(({ ownerState, theme }) => ({
+  backgroundColor: theme.palette.primary.light,
   zIndex: 1,
   color: 'white',
   width: 84,
@@ -49,33 +54,32 @@ const ColorlibStepIconRoot = styled('div')(({ ownerState }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   ...(ownerState.active && {
-    backgroundImage:
-      'linear-gradient(146.8deg, #6C73DF -21.41%, #3344D4 57.9%)',
-    boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+    background: theme.palette.background.default,
+    border: `2px solid ${theme.palette.winston.dark}`,
   }),
   ...(ownerState.completed && {
-    background: '#23B000',
+    backgroundImage: theme.palette.winston.main,
   }),
 }));
 
-function ColorlibStepIcon(props) {
+function ColorLibStepIcon(props) {
   const { active, completed } = props;
 
   const icons = {
-    1: stepperSmartContract,
-    2: stepperSetting,
-    3: stepperFeatures,
-    4: stepperAccess,
-    5: stepperInfo,
+    1: <Memory fontSize="large" />,
+    2: <Settings fontSize="large" />,
+    3: <PlaylistAddCheck fontSize="large" />,
+    4: <Security fontSize="large" />,
+    5: <Info fontSize="large" />,
   };
   return (
-    <ColorlibStepIconRoot ownerState={{ completed, active }}>
-      <img src={icons[String(props.icon)]} alt="icon" />
-    </ColorlibStepIconRoot>
+    <ColorLibStepIconRoot ownerState={{ completed, active }}>
+      {icons[String(props.icon)]}
+    </ColorLibStepIconRoot>
   );
 }
 
-ColorlibStepIcon.propTypes = {
+ColorLibStepIcon.propTypes = {
   /**
    * Whether this step is active.
    * @default false
@@ -116,11 +120,11 @@ export default function WizardSteppers({ activeStepCount, from = 'other' }) {
       <Stepper
         alternativeLabel
         activeStep={activeStepCount}
-        connector={<ColorlibConnector />}
+        connector={<ColorLibConnector />}
       >
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>
+            <StepLabel StepIconComponent={ColorLibStepIcon}>
               {matches ? label : ''}
             </StepLabel>
           </Step>
