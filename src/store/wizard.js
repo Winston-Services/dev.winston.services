@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   workshop: '',
-  network: '',
-  typeOfContact: '',
+  network: { title: 'Ethereum', subTitle: 'ERC' },
+  typeOfContact: '20',
 };
 
 export const wizard = createSlice({

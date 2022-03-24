@@ -11,23 +11,26 @@ import xDai from './../../../assets/x_dai.svg';
 import WizardCard from './../components/WizardCard';
 
 function Network({ wizardData, setWizardData }) {
-  wizardData = 'Smart Contract';
   const navigate = useNavigate();
   const networkData = [
     {
       title: 'Ethereum',
+      subTitle: 'ERC',
       icon: ethereum,
     },
     {
       title: 'Binance',
+      subTitle: 'BRC',
       icon: binance,
     },
     {
       title: 'Polygon Matic',
+      subTitle: 'ERC',
       icon: polygonMatic,
     },
     {
       title: 'XDai',
+      subTitle: 'ERC',
       icon: xDai,
     },
   ];
@@ -51,21 +54,18 @@ function Network({ wizardData, setWizardData }) {
     if (wizardData.workshop === '') {
       navigate('/wizard');
     }
-    setWizardData({
-      ...wizardData,
-      network: 'Ethereum',
-      typeOfContact: '20',
-    });
   }, []);
   return (
     <Container>
       <Grid container>
-        <Grid item sm={12} xs={12} lg={12}>
+        <Grid item container spacing={4} sm={12} xs={12} lg={12} md={12}>
           {wizardData.workshop === 'Smart Contract' && (
-            <Typography variant="h2">Smart Contract Workshop</Typography>
+            <Grid item sm={12} xs={12} lg={12} md={12}>
+              <Typography variant="h3">Smart Contract Workshop</Typography>
+            </Grid>
           )}
           {wizardData.workshop === 'Custom' && (
-            <Grid>
+            <Grid sm={12} xs={12} lg={12} md={12}>
               <Typography variant="h4">
                 <span>1. Coin Workshop</span>
               </Typography>
@@ -73,7 +73,9 @@ function Network({ wizardData, setWizardData }) {
               <Typography variant="h2">2. Smart Contract Workshop</Typography>
             </Grid>
           )}
-          <Typography variant="h4">Network</Typography>
+          <Grid item sm={12} xs={12} lg={12} md={12}>
+            <Typography variant="h4">Network</Typography>
+          </Grid>
         </Grid>
         <Grid
           item
@@ -90,7 +92,6 @@ function Network({ wizardData, setWizardData }) {
                 xs={12}
                 md={4}
                 lg={3}
-                textAlign={'-webkit-center'}
                 key={index.toString()}
                 // order={{ xs: index + 1, md: index + 1 }}
               >
@@ -98,29 +99,22 @@ function Network({ wizardData, setWizardData }) {
                   onClick={() => {
                     setWizardData({
                       ...wizardData,
-                      network: item.title,
+                      network: item,
                     });
                   }}
                   item={item}
+                  activeNetwork={wizardData?.network?.title}
                 />
               </Grid>
             );
           })}
-          <Grid item sm={12} xs={12} lg={12}>
+          <Grid item sm={12} xs={12} lg={12} md={12}>
             <Typography variant="h4">Type of Contract</Typography>
           </Grid>
           <Grid item xs={12} container spacing={5}>
             {typeOfContract?.map((item, index) => {
               return (
-                <Grid
-                  item
-                  sm={6}
-                  xs={12}
-                  md={4}
-                  lg={4}
-                  textAlign={'-webkit-center'}
-                  key={index.toString()}
-                >
+                <Grid item sm={6} xs={12} md={4} lg={4} key={index.toString()}>
                   <WizardCard
                     onClick={() => {
                       setWizardData({
@@ -128,7 +122,10 @@ function Network({ wizardData, setWizardData }) {
                         typeOfContact: item.title,
                       });
                     }}
+                    title={wizardData.network.subTitle}
                     item={item}
+                    wizardData={wizardData}
+                    activeContract={wizardData?.typeOfContact}
                   />
                 </Grid>
               );
