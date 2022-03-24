@@ -14,6 +14,8 @@ import StepSetting from './smart-contract/StepSetting';
 import StepFeature from './smart-contract/StepFeature';
 import StepAccessUpgrade from './smart-contract/StepAccessUpgrade';
 import StepInfo from './smart-contract/StepInfo';
+import Certificate from './Certificate';
+import Checkout from './Checkout';
 
 export default function Wizard() {
   const wizardData = useSelector(wizardDataSelector);
@@ -108,6 +110,21 @@ export default function Wizard() {
           path: '/step-access-upgrade',
           element: (
             <StepAccessUpgrade
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+            />
+          ),
+        },
+        {
+          path: '/checkout',
+          element: (
+            <Checkout wizardData={wizardData} setWizardData={setWizardData} />
+          ),
+        },
+        {
+          path: '/certificate',
+          element: (
+            <Certificate
               wizardData={wizardData}
               setWizardData={setWizardData}
             />

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ethereumBlue from './../../../assets/ethereumBlue.svg';
+import ethereumBlue from './../../../assets/ethereum_blue.svg';
 import { PropTypes } from 'prop-types';
 import {
   Typography,
@@ -17,7 +17,8 @@ import {
 import WizardSteppers from './../WizardSteppers';
 
 function StepSetting({ wizardData }) {
-  let navigate = useNavigate();
+  console.log(wizardData);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (wizardData.workshop === '') {
@@ -63,8 +64,8 @@ function StepSetting({ wizardData }) {
                 <img width={'60%'} src={ethereumBlue} alt="icon" />
               </ListItemAvatar>
               <Typography variant={'h5'}>
-                {wizardData.network === 'Binance' ? 'BEP ' : 'ERC '}
-                {wizardData.typeOfContact}
+                {wizardData?.network === 'Binance' ? 'BEP ' : 'ERC '}
+                {wizardData?.typeOfContact}
               </Typography>
             </ListItem>
 
@@ -74,7 +75,11 @@ function StepSetting({ wizardData }) {
             <Grid container spacing={4}>
               {wizardData.typeOfContact === '1155' ? (
                 <Grid item lg={12} md={12} sm={12} xs={12}>
-                  <TextField label={'Name'} placeholder={'Enter your Name'} />
+                  <TextField
+                    fullWidth
+                    label={'Name'}
+                    placeholder={'Enter your Name'}
+                  />
                 </Grid>
               ) : (
                 <>

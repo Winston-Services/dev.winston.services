@@ -107,7 +107,7 @@ function StepCoinCustomLogo({ wizardData }) {
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={() => history.push('checkout')}
+                onClick={() => navigate('/wizard/checkout')}
               >
                 Checkout
               </Button>

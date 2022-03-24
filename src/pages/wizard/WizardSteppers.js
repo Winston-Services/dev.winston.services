@@ -19,7 +19,6 @@ import {
 } from '@mui/icons-material';
 
 const ColorLibConnector = styled(StepConnector)(({ theme }) => {
-  debugger;
   return {
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
       top: 40,

@@ -13,7 +13,7 @@ import {
   Divider,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import ethereumBlue from './../../../assets/ethereumBlue.svg';
+import ethereumBlue from './../../../assets/ethereum_blue.svg';
 import WizardSteppers from '../WizardSteppers';
 import { PropTypes } from 'prop-types';
 
