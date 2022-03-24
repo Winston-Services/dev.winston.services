@@ -1,82 +1,62 @@
 import React from 'react';
-import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { useSelector } from 'react-redux';
 
 const data = [
   {
+    month: 'Jan',
     uv: 90,
   },
   {
-    uv: 80,
+    month: 'Feb',
+    uv: 65,
   },
   {
+    month: 'Mar',
+    uv: 95,
+  },
+  {
+    month: 'Apr',
     uv: 60,
   },
   {
-    uv: 65,
+    month: 'May',
+    uv: 30,
   },
   {
-    uv: 45,
-  },
-  {
-    uv: 70,
-  },
-  {
-    uv: 55,
-  },
-  {
-    uv: 65,
-  },
-  {
-    uv: 45,
-  },
-  {
+    month: 'Jun',
     uv: 50,
   },
   {
+    month: 'Jul',
     uv: 30,
   },
   {
-    uv: 40,
-  },
-  {
-    uv: 55,
-  },
-  {
-    uv: 30,
-  },
-  {
-    uv: 40,
-  },
-  {
+    month: 'Aug',
     uv: 35,
   },
   {
-    uv: 60,
-  },
-  {
+    month: 'Sep',
     uv: 75,
   },
   {
-    uv: 50,
-  },
-  {
+    month: 'Oct',
     uv: 45,
   },
   {
-    uv: 50,
-  },
-  {
+    month: 'Nov',
     uv: 65,
   },
   {
-    uv: 70,
-  },
-  {
+    month: 'Dec',
     uv: 72,
-  },
-  {
-    uv: 75,
   },
 ];
 
@@ -93,7 +73,9 @@ function MonthlyTranChart() {
             <stop offset="70%" stopColor={color} stopOpacity={0} />
           </linearGradient>
         </defs>
-        <Tooltip cursor={{ stroke: '#2196F3', strokeDasharray: '3' }} />
+        <Tooltip cursor={{ stroke: `${color}`, strokeDasharray: '3' }} />
+        <XAxis dataKey={'month'} stroke={color} />
+        <YAxis tick={false} width={10} stroke={color} />
         <Area
           dataKey="uv"
           stroke={color}
