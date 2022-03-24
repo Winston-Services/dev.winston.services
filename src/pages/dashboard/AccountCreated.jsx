@@ -47,14 +47,13 @@ export default function AccountCreated() {
         <Typography variant="h6">Account Created</Typography>
         <Typography variant="subtitle1">09-03-2022</Typography>
       </Grid>
-      <List style={{ margin: 0, padding: 0 }}>
+      <List>
         <div>
           {users.map((user, index) => {
             return (
               <ListItem
                 key={user.name + index}
                 button
-                sx={{ px: 0 }}
                 secondaryAction={<Typography>{user.date}</Typography>}
               >
                 <ListItemIcon>

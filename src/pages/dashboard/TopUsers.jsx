@@ -61,32 +61,26 @@ export default function TopUsers() {
         <Typography variant="h6">Top 10 user rank</Typography>
         <Typography variant="subtitle1">View All</Typography>
       </Grid>
-      <List style={{ margin: 0, padding: 0 }}>
-        <div>
-          {users.map((user, index) => {
-            return (
-              <ListItem
-                key={user.name + index}
-                button
-                sx={{ px: 0 }}
-                secondaryAction={
-                  <Typography>
-                    {user.rank}
-                    <sup>{ordinal_suffix_of(user.rank)}</sup> Rank
-                  </Typography>
-                }
-              >
-                <ListItemIcon>
-                  <img src={'./assets/user.png'} height="36" width="36" />
-                </ListItemIcon>
-                <ListItemText
-                  primary={user.name}
-                  secondary={user.designation}
-                />
-              </ListItem>
-            );
-          })}
-        </div>
+      <List>
+        {users.map((user, index) => {
+          return (
+            <ListItem
+              key={user.name + index}
+              button
+              secondaryAction={
+                <Typography>
+                  {user.rank}
+                  <sup>{ordinal_suffix_of(user.rank)}</sup> Rank
+                </Typography>
+              }
+            >
+              <ListItemIcon>
+                <img src={'./assets/user.png'} height="50" width="50" />
+              </ListItemIcon>
+              <ListItemText primary={user.name} secondary={user.designation} />
+            </ListItem>
+          );
+        })}
       </List>
     </Grid>
   );

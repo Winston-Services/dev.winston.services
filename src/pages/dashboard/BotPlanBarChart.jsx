@@ -77,12 +77,15 @@ export default function BotPlanBarChart() {
   const color = useSelector(
     (state) => state.themeColors.chartColors.botBarChartColor
   );
+  const mainColor = useSelector(
+    (state) => state.themeColors.chartColors.primary.main
+  );
 
   return (
     <React.Fragment>
       <ResponsiveContainer>
-        <BarChart data={chartData} barGap={0} barSize={20}>
-          <XAxis dataKey="month" />
+        <BarChart data={chartData} barGap={0} barSize={12}>
+          <XAxis dataKey="month" stroke={mainColor} />
           <Tooltip cursor={{ fill: 'transparent' }} />
           <Legend iconType="circle" verticalAlign="top" align="right" />
           <Bar dataKey="Free" {...color[0]} />

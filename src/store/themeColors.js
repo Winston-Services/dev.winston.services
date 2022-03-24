@@ -341,12 +341,34 @@ const createThemeVariable = (mode, dashboard) => {
           },
         },
       },
+      MuiDataGrid: {
+        styleOverrides: {
+          root: {
+            border: 'none',
+          },
+          footerContainer: {
+            display: 'none',
+          },
+          columnSeparator: {
+            display: 'none',
+          },
+          cell: {
+            borderColor: mode === 'light' ? '#EEECFA' : '#564E7F',
+          },
+          columnHeaders: {
+            borderColor: mode === 'light' ? '#EEECFA' : '#564E7F',
+          },
+        },
+      },
     },
   };
 };
 
 const createChartVariable = (mode) => {
   return {
+    primary: {
+      main: mode === 'light' ? 'black' : 'white',
+    },
     tinyAreaChartColors: [
       '#E9C46A',
       '#FFF3B0',

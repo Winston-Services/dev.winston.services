@@ -66,7 +66,6 @@ function InOutAreaChart() {
   const color = useSelector(
     (state) => state.themeColors.chartColors.inOutAreaChartColor
   );
-  console.log(color);
   return (
     <ResponsiveContainer>
       <AreaChart data={data}>

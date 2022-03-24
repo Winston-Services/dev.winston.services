@@ -77,12 +77,15 @@ export default function ServerPlanBarChart() {
   const color = useSelector(
     (state) => state.themeColors.chartColors.serverBarChartColor
   );
+  const mainColor = useSelector(
+    (state) => state.themeColors.chartColors.primary.main
+  );
 
   return (
     <React.Fragment>
       <ResponsiveContainer>
         <BarChart data={chartData} barGap={0} barSize={12}>
-          <XAxis dataKey="month" />
+          <XAxis dataKey="month" stroke={mainColor} />
           <Tooltip cursor={{ fill: 'transparent' }} />
           <Legend iconType="circle" verticalAlign="top" align="right" />
           <Bar dataKey="Free" {...color[0]} />
