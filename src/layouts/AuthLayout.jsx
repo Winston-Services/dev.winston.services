@@ -3,11 +3,13 @@ import { Outlet } from 'react-router-dom';
 import SideBar from './auth-common/SideBar';
 import TopNav from './auth-common/TopNav';
 import { Box, Container } from '@mui/material';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from '../store/themeColors';
+import { sideBarStateSelector } from './../store/sideBar';
 
 function Layout() {
   const dispatch = useDispatch();
+  const isSideBarOpen = useSelector(sideBarStateSelector);
   useEffect(() => {
     dispatch(setTheme('dashboard'));
   }, [dispatch]);
@@ -19,7 +21,12 @@ function Layout() {
         <SideBar />
         <Container
           maxWidth="false"
-          style={{ marginTop: '86px', padding: '30px' }}
+          style={{
+            marginTop: '86px',
+            padding: '30px',
+            animation: 'width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;',
+            maxWidth: `calc(100% - ${isSideBarOpen ? '240px' : '86px'})`,
+          }}
         >
           <Outlet />
         </Container>
