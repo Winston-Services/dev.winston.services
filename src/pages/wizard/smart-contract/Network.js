@@ -65,14 +65,28 @@ function Network({ wizardData, setWizardData }) {
             </Grid>
           )}
           {wizardData.workshop === 'Custom' && (
-            <Grid sm={12} xs={12} lg={12} md={12}>
-              <Typography variant="h4">
-                <span>1. Coin Workshop</span>
-              </Typography>
-
-              <Typography variant="h2">2. Smart Contract Workshop</Typography>
+            <Grid container spacing={8}>
+              <Grid item>
+                <Typography variant="h3" sx={{ opacity: '0.5' }}>
+                  1. Coin Workshop
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography
+                  sx={{
+                    borderBottom: 'solid',
+                    borderImageSlice: 1,
+                    borderImageSource:
+                      'linear-gradient(90deg, #EA7A8F 0.64%, #E452C8 99.36%)',
+                  }}
+                  variant="h3"
+                >
+                  2. Smart Contract Workshop
+                </Typography>
+              </Grid>
             </Grid>
           )}
+
           <Grid item sm={12} xs={12} lg={12} md={12}>
             <Typography variant="h4">Network</Typography>
           </Grid>
@@ -140,11 +154,11 @@ function Network({ wizardData, setWizardData }) {
           justifyContent="flex-end"
         >
           <Grid item>
-            {/* {wizardData.workshop === 'Smart Contract' && ( */}
-            <Button variant="outlined" onClick={() => navigate('/wizard/')}>
-              Previous
-            </Button>
-            {/* )} */}
+            {wizardData.workshop === 'Smart Contract' && (
+              <Button variant="outlined" onClick={() => navigate('/wizard/')}>
+                Previous
+              </Button>
+            )}
             {wizardData.workshop === 'Custom' && (
               <Button
                 variant="outlined"

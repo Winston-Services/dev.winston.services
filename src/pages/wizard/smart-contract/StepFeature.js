@@ -27,16 +27,31 @@ function StepFeature({ wizardData }) {
 
   return (
     <Container>
-      {/* {wizardData.workshop === 'Smart Contract' && ( */}
-      <Typography variant="h3">Smart Contract Workshop</Typography>
-      {/* )} */}
+      {wizardData.workshop === 'Smart Contract' && (
+        <Typography variant="h3" sx={{ opacity: '0.5' }}>
+          Smart Contract Workshop
+        </Typography>
+      )}
       {wizardData.workshop === 'Custom' && (
-        <Grid>
-          <Typography variant="h3">
-            <span>1. Coin Workshop</span>
-          </Typography>
-
-          <Typography variant="h3">2. Smart Contract Workshop</Typography>
+        <Grid container spacing={8}>
+          <Grid item>
+            <Typography variant="h3" sx={{ opacity: '0.5' }}>
+              1. Coin Workshop
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography
+              sx={{
+                borderBottom: 'solid',
+                borderImageSlice: 1,
+                borderImageSource:
+                  'linear-gradient(90deg, #EA7A8F 0.64%, #E452C8 99.36%)',
+              }}
+              variant="h3"
+            >
+              2. Smart Contract Workshop
+            </Typography>
+          </Grid>
         </Grid>
       )}
       <Grid container>

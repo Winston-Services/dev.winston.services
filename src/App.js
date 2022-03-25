@@ -27,6 +27,7 @@ const WhiteLabelWinston = React.lazy(() =>
 import ScrollToTop from './components/scroll-to-top';
 import './App.css';
 import Wizard from './pages/wizard';
+import Faucet from './pages/Faucet/Faucet';
 export default function App() {
   const auth = useAuth();
 
@@ -103,6 +104,10 @@ export default function App() {
         {
           path: '/white-label-winston',
           element: getRouteWrapper(<WhiteLabelWinston />, false),
+        },
+        {
+          path: '/faucet',
+          element: getRouteWrapper(<Faucet />, false),
         },
         {
           path: '/wizard/*',

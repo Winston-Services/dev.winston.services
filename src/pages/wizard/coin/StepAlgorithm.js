@@ -29,10 +29,26 @@ function StepAlgorithmCoin({ wizardData }) {
         <Typography variant="h3">Coin Workshop</Typography>
       )}
       {wizardData.workshop === 'Custom' && (
-        <Typography variant="h4">
-          <span>1. Coin Workshop</span>
-          <span>2. Smart Contract Workshop</span>
-        </Typography>
+        <Grid container spacing={8}>
+          <Grid item>
+            <Typography
+              sx={{
+                borderBottom: 'solid',
+                borderImageSlice: 1,
+                borderImageSource:
+                  'linear-gradient(90deg, #EA7A8F 0.64%, #E452C8 99.36%)',
+              }}
+              variant="h3"
+            >
+              1. Coin Workshop
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="h3" sx={{ opacity: '0.5' }}>
+              2. Smart Contract Workshop
+            </Typography>
+          </Grid>
+        </Grid>
       )}
 
       <Grid container>

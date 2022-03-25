@@ -68,7 +68,7 @@ function checkout({ wizardData }) {
               </Grid>
             </Grid>
             <Grid item container lg={10} spacing={2} ml={1}>
-              <Grid item alignSelf={'center'} mt={2}>
+              <Grid item alignSelf={'center'}>
                 <Typography variant={'h3'}>Coin Name</Typography>
               </Grid>
               <Grid item>
@@ -86,14 +86,7 @@ function checkout({ wizardData }) {
             <Grid item container spacing={4}>
               {coinData?.map((item) => {
                 return (
-                  <Grid
-                    key={item.title}
-                    item
-                    xs={12}
-                    md={6}
-                    lg={6}
-                    display={'flex'}
-                  >
+                  <Grid key={item.title} item xs={12} md={6} lg={6}>
                     <Card
                       className="wizardCard"
                       sx={{
@@ -107,12 +100,17 @@ function checkout({ wizardData }) {
                         item.duration ? setImageIcon(verification) : ''
                       }
                     >
-                      <CardContent>
-                        <Grid container spacing={2} flexDirection={'column'}>
-                          <Grid item sm={12} xs={12} lg={12}>
+                      <CardContent sx={{ height: '100%' }}>
+                        <Grid
+                          container
+                          sx={{ height: '100%' }}
+                          direction="column"
+                          justifyContent="space-between"
+                        >
+                          <Grid item xs>
                             <Typography variant={'h5'}>{item.title}</Typography>
                           </Grid>
-                          <Grid item sm={12} xs={12} lg={12}>
+                          <Grid item xs>
                             <Typography variant={'h4'}>{item.price}</Typography>
                           </Grid>
 
@@ -129,17 +127,17 @@ function checkout({ wizardData }) {
                             </Grid>
                           ) : null}
 
-                          <Grid item flexGrow={1}>
+                          <Grid item xs>
                             <Typography variant={'subtitle2'}>
                               {item.text}
                             </Typography>
                           </Grid>
-
-                          <Grid item>
+                          <Grid item xs>
                             <Button
                               fullWidth
                               variant="contained"
                               color="secondary"
+                              className="purchase-button"
                               onClick={() => {
                                 // setPurchaseType('Smart Contract');
                                 navigate('/wizard/certificate');

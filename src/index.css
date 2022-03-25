@@ -270,3 +270,7 @@ body,
   position: absolute;
   bottom: 0;
 }
+
+.wizardCard:hover .purchase-button {
+  background: linear-gradient(92.44deg, #271d5a 3.93%, #271d5a 98.71%);
+}
