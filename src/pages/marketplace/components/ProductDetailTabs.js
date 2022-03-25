@@ -181,15 +181,16 @@ function ProductDetailTabs() {
         >
           <Grid display="flex" justifyContent="space-between">
             <Typography variant="subtitle1">Contract Address</Typography>
-            <Typography variant="subtitle1" sx={{ color: '#ffd215' }}>
-              0x495f...7b5e
-            </Typography>
+            <Link variant="subtitle1">0x495f...7b5e</Link>
           </Grid>
           <Grid display="flex" justifyContent="space-between" sx={{ mt: 2.5 }}>
             <Typography variant="subtitle1">Token ID</Typography>
-            <Typography variant="subtitle1" sx={{ color: '#ffd215' }}>
+            <Link
+              variant="subtitle1"
+              onClick={() => navigate('/marketplace/token-details/')}
+            >
               5546465704496319...
-            </Typography>
+            </Link>
           </Grid>
           <Grid display="flex" justifyContent="space-between" sx={{ mt: 2.5 }}>
             <Typography variant="subtitle1">Token Standard</Typography>

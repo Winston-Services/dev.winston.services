@@ -209,6 +209,7 @@ const publicPageColors = {
           props: { color: 'primary' },
           style: {
             cursor: 'pointer',
+            textDecoration: 'none',
             '&:hover': {
               color: '#FFD215',
             },
@@ -238,7 +239,7 @@ const publicPageColors = {
           props: { variant: 'filled' },
           style: {
             background: '#4F409A',
-            padding: '10px 8px',
+            padding: '6px',
             // borderRadius: '17px',
           },
         },
@@ -265,6 +266,13 @@ const publicPageColors = {
       tabIndicatorStyle: {
         style: {
           background: `linear-gradient(90deg, #EA7A8F 0%, #E452C8 99.4%)`,
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          borderColor: '#5A5189',
         },
       },
     },

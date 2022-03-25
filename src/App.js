@@ -13,6 +13,9 @@ const ProductDetails = React.lazy(() =>
   import('./pages/marketplace/ProductDetails')
 );
 const Transaction = React.lazy(() => import('./pages/marketplace/Transaction'));
+const TokenDetails = React.lazy(() =>
+  import('./pages/marketplace/TokenDetails')
+);
 const UserProfile = React.lazy(() => import('./pages/marketplace/UserProfile'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
@@ -88,6 +91,10 @@ export default function App() {
         {
           path: '/marketplace/product-details/transaction',
           element: getRouteWrapper(<Transaction />, false),
+        },
+        {
+          path: '/marketplace/token-details/',
+          element: getRouteWrapper(<TokenDetails />, false),
         },
         {
           path: '/user-profile',
