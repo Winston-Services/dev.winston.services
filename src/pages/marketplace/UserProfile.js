@@ -1,25 +1,94 @@
 import React from 'react';
 import user_profile_cover from '../../assets/user_profile_cover.png';
 import user_profile from '../../assets/user_profile.png';
-import { Grid, Container, Typography } from '@mui/material';
+import {
+  Grid,
+  Container,
+  Typography,
+  Divider,
+  Link,
+  IconButton,
+  Paper,
+} from '@mui/material';
 import VerifiedIcon from '@mui/icons-material/Verified';
+import { PropTypes } from 'prop-types';
+import UserProfileTabs from './components/UserProfileTabs';
+import { Facebook, Instagram, Twitter } from '@mui/icons-material';
+
+const userData = [
+  {
+    name: 'Likes',
+    number: '131.8K',
+  },
+  {
+    name: 'Views',
+    number: '2.6M',
+  },
+  {
+    name: 'Created',
+    number: '21K',
+  },
+  {
+    name: 'Minted',
+    number: '21.1K',
+  },
+];
+
+const ReadMore = ({ children }) => {
+  const text = children;
+  const [isReadMore, setIsReadMore] = React.useState(true);
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+  return (
+    <Typography>
+      {isReadMore ? text.slice(0, 280) + '... ' : text}
+      <Link variant="" onClick={() => toggleReadMore()}>
+        {isReadMore ? 'Read more' : 'Show less'}
+      </Link>
+    </Typography>
+  );
+};
+ReadMore.propTypes = {
+  children: PropTypes.string,
+};
 
 function UserProfile() {
   return (
     <Grid mt={'-100px'}>
-      <div>
+      <Grid>
         <img
           src={user_profile_cover}
           style={{
             width: '100%',
           }}
         />
-      </div>
+      </Grid>
       <Container>
-        <Grid container>
-          <Grid item md={6} display="flex">
-            <img src={user_profile} style={{ width: '13vw', height: '13vw' }} />
-            <div>
+        <Grid display={'flex'} justifyContent="end" mt={-10}>
+          <Paper opacity="50">
+            <IconButton>
+              <Instagram />
+            </IconButton>
+            <IconButton>
+              <Twitter />
+            </IconButton>
+            <IconButton>
+              <Facebook />
+            </IconButton>
+          </Paper>
+        </Grid>
+        <Grid container mt={5}>
+          <Grid item md={8} display="flex">
+            <img
+              src={user_profile}
+              style={{
+                border: '10px solid #271d5a',
+                borderRadius: '50%',
+                marginTop: '-20%',
+              }}
+            />
+            <Grid m={3}>
               <Typography variant="h4" fontWeight={800}>
                 Winston Art
               </Typography>
@@ -29,7 +98,46 @@ function UserProfile() {
                 </Typography>
                 <VerifiedIcon sx={{ color: '#3D96FF' }} />
               </Grid>
-            </div>
+            </Grid>
+          </Grid>
+          <Grid item md={4} display="flex" justifyContent={'end'} mt={5}>
+            {userData?.map((item, index) => {
+              return (
+                <>
+                  <Grid key={item.name + index} px={2.5}>
+                    <Typography variant="subtitle2">{item.name}</Typography>
+                    <Typography variant="subtitle1" fontWeight={700}>
+                      {item.number}
+                    </Typography>
+                  </Grid>
+                  {userData.length - 1 !== index ? (
+                    <Divider orientation="vertical" sx={{ height: '50px' }} />
+                  ) : null}
+                </>
+              );
+            })}
+          </Grid>
+
+          <Grid item md={12} mt={5}>
+            <ReadMore>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industrys standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged.Read More
+              GeeksforGeeks: A Computer Science portal for geeks. It contains
+              well written, well thought and well explained computer science,
+              programming articles and quizzes. It provides a variety of
+              services for you to learn, so thrive and also have fun! Free
+              Tutorials, Millions of Articles, Live, Online and Classroom
+              Courses ,Frequent Coding Competitions, Webinars by Industry
+              Experts, Internship opportunities, and Job Opportunities.
+              Knowledge is power!
+            </ReadMore>
+          </Grid>
+          <Grid item md={12} mt={2}>
+            <UserProfileTabs />
           </Grid>
         </Grid>
       </Container>

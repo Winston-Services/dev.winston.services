@@ -142,7 +142,17 @@ export default function Index() {
           <Filter toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
         </Grid>
         <Grid item md={8}>
-          <ProductCard items={items} />
+          <Grid
+            container
+            rowSpacing={4}
+            columnSpacing={{ xs: 2, md: 2, lg: 4 }}
+          >
+            {items.map((item, index) => (
+              <Grid item xs={12} sm={6} md={6} lg={4} key={item + index}>
+                <ProductCard item={item} />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
       </Grid>
     </Container>

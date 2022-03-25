@@ -14,6 +14,7 @@ import {
 
 import HistoryImage from '../../../assets/history_image.png';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -74,17 +75,16 @@ function ProductDetailTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const tabIndicatorStyle = useSelector(
+    (state) => state.themeColors.colors.components.MuiTab.tabIndicatorStyle
+  );
   return (
     <Box sx={{ width: '100%', mt: 2 }}>
       <Box>
         <Tabs
           value={value}
           onChange={handleChange}
-          TabIndicatorProps={{
-            style: {
-              background: `linear-gradient(90deg, #EA7A8F 0%, #E452C8 99.4%)`,
-            },
-          }}
+          TabIndicatorProps={{ ...tabIndicatorStyle }}
         >
           <Tab label="Properties" {...a11yProps(0)} />
           <Tab label="History" {...a11yProps(1)} />
@@ -140,7 +140,7 @@ function ProductDetailTabs() {
                       variant="subtitle1"
                       sx={{ color: 'white', textDecoration: 'none' }}
                       onClick={() => {
-                        navigate('/nft-user-profile');
+                        navigate('/user-profile');
                       }}
                     >
                       {item.user}

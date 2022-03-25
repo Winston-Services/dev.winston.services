@@ -121,6 +121,12 @@ const publicPageColors = {
             backgroundImage: 'none',
           },
         },
+        {
+          props: { opacity: '50' },
+          style: {
+            background: 'rgba(39, 29, 90, 0.5)',
+          },
+        },
       ],
     },
     MuiAccordion: {
@@ -256,6 +262,11 @@ const publicPageColors = {
           textTransform: 'capitalize',
         },
       },
+      tabIndicatorStyle: {
+        style: {
+          background: `linear-gradient(90deg, #EA7A8F 0%, #E452C8 99.4%)`,
+        },
+      },
     },
     MuiTextField: {
       variants: [
@@ -281,6 +292,18 @@ const publicPageColors = {
       styleOverrides: {
         root: { borderRadius: '20px' },
       },
+    },
+    MuiDivider: {
+      variants: [
+        {
+          props: { orientation: 'vertical' },
+          style: {
+            borderImageSlice: 1,
+            borderImageSource:
+              'linear-gradient(90deg, #EA7A8F 0.64%, #E452C8 99.36%)',
+          },
+        },
+      ],
     },
   },
 };

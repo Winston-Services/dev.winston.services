@@ -16,100 +16,94 @@ import { useNavigate } from 'react-router-dom';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
-function ProductCard({ items }) {
+function ProductCard({ item }) {
   const navigate = useNavigate();
   return (
-    <Grid container rowSpacing={4} columnSpacing={{ xs: 2, md: 2, lg: 4 }}>
-      {items.map((item, index) => (
-        <Grid item xs={12} sm={6} md={6} lg={4} key={item + index}>
-          <Card className="nft-container" elevation={0}>
-            {/* <CardActionArea> */}
-            <Box className="hover-nft-button-container">
-              <CardMedia
-                component="img"
-                height="300px"
-                image={item.image}
-                alt="green iguana"
-              />
-              <Button
-                fullWidth
-                className="hover-nft-button"
-                variant="contained"
-                color="secondary"
-                sx={{ borderRadius: 0 }}
-                onClick={() => {
-                  navigate('/marketplace/product-details');
+    <Card className="nft-container" elevation={0}>
+      {/* <CardActionArea> */}
+      <Box className="hover-nft-button-container">
+        <CardMedia
+          component="img"
+          height="300px"
+          image={item.image}
+          alt="green iguana"
+        />
+        <Button
+          fullWidth
+          className="hover-nft-button"
+          variant="contained"
+          color="secondary"
+          sx={{ borderRadius: 0 }}
+          onClick={() => {
+            navigate('/marketplace/product-details');
+          }}
+        >
+          Buy
+        </Button>
+      </Box>
+
+      <CardContent sx={{ pb: 3 }}>
+        <Grid container rowGap={1}>
+          <Grid
+            item
+            xs={12}
+            display="flex"
+            justifyContent="space-between"
+            alignItems={'center'}
+          >
+            <Typography variant="subtitle2">#{item.id}</Typography>
+            <IconButton>
+              <FavoriteBorderIcon />
+            </IconButton>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            display="flex"
+            justifyContent="space-between"
+            alignItems={'center'}
+          >
+            <Typography variant="h6">{item.name}</Typography>
+            <Typography variant="h5">${item.price}</Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            display="flex"
+            justifyContent="space-between"
+            alignItems={'center'}
+          >
+            <div>
+              <Typography variant="subtitle2">Start BID</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  mt: '-5px',
                 }}
               >
-                Buy
-              </Button>
-            </Box>
-
-            <CardContent sx={{ pb: 3 }}>
-              <Grid container rowGap={1}>
-                <Grid
-                  item
-                  xs={12}
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems={'center'}
-                >
-                  <Typography variant="subtitle2">#{item.id}</Typography>
-                  <IconButton>
-                    <FavoriteBorderIcon />
-                  </IconButton>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems={'center'}
-                >
-                  <Typography variant="h6">{item.name}</Typography>
-                  <Typography variant="h5">${item.price}</Typography>
-                </Grid>
-                <Grid
-                  item
-                  xs={12}
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems={'center'}
-                >
-                  <div>
-                    <Typography variant="subtitle2">Start BID</Typography>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        mt: '-5px',
-                      }}
-                    >
-                      ${item.startBid}
-                    </Typography>
-                  </div>
-                  <div>
-                    <Typography variant="subtitle2">End BID in</Typography>
-                    <Typography
-                      variant="subtitle1"
-                      sx={{
-                        mt: '-5px',
-                      }}
-                    >
-                      {item.endBidIn} Days
-                    </Typography>
-                  </div>
-                </Grid>
-              </Grid>
-            </CardContent>
-            {/* </CardActionArea> */}
-          </Card>
+                ${item.startBid}
+              </Typography>
+            </div>
+            <div>
+              <Typography variant="subtitle2">End BID in</Typography>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  mt: '-5px',
+                }}
+              >
+                {item.endBidIn} Days
+              </Typography>
+            </div>
+          </Grid>
         </Grid>
-      ))}
-    </Grid>
+      </CardContent>
+      {/* </CardActionArea> */}
+    </Card>
   );
 }
 ProductCard.propTypes = {
-  items: PropTypes.node,
+  item: PropTypes.object,
 };
 
 export default ProductCard;
