@@ -44,7 +44,7 @@ export default function index() {
         </Grid>
         <Grid item sm={12} md={7} lg={7}>
           <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
-            <Typography variant="h6">Monthly subscriptions</Typography>
+            <Typography variant="h6">Recent transactions</Typography>
             <Grid sx={{ height: '340px', mt: 2.5 }}>
               <RecentTransactions />
             </Grid>

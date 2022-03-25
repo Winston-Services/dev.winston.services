@@ -30,9 +30,6 @@ function ProductCard({ items }) {
                 height="300px"
                 image={item.image}
                 alt="green iguana"
-                onClick={() => {
-                  navigate('/marketplace/product-details');
-                }}
               />
               <Button
                 fullWidth
@@ -40,6 +37,9 @@ function ProductCard({ items }) {
                 variant="contained"
                 color="secondary"
                 sx={{ borderRadius: 0 }}
+                onClick={() => {
+                  navigate('/marketplace/product-details');
+                }}
               >
                 Buy
               </Button>

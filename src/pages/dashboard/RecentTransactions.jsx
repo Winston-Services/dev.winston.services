@@ -94,7 +94,7 @@ const rows = [
 ];
 export default function RecentTransactions() {
   return (
-    <div style={{ height: '100%', width: '100%' }}>
+    <Grid height={'100%'}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -102,6 +102,6 @@ export default function RecentTransactions() {
         disableColumnMenu
         sortable={false}
       />
-    </div>
+    </Grid>
   );
 }
