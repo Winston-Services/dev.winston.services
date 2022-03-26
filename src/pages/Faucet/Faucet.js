@@ -99,7 +99,6 @@ export default function Faucet() {
             <img src={waterDrop} alt="crypto" />
           </Grid>
         </Grid>
-
         <Grid container item spacing={4}>
           <Grid item sm={12} lg={6}>
             <Card>
@@ -114,21 +113,30 @@ export default function Faucet() {
         </Grid>
         <Grid container item>
           <Grid item sm={12} lg={12}>
-            <Card>
-              <Grid>
-                <Typography>Faucet On Winston</Typography>
-                <Box>
-                  <SearchIcon />
-
-                  <TextField
-                    placeholder="Search coin or token"
-                    variant="standard"
-                    InputProps={{ disableUnderline: true }}
-                  />
-                </Box>
-              </Grid>
-              <Grid>
-                <FaucetTable rows={rowsFaucetOnnWinston} />
+            <Card sx={{ p: 5 }}>
+              <Grid container spacing={4}>
+                <Grid
+                  item
+                  display={'flex'}
+                  justifyContent={'space-between'}
+                  lg={12}
+                  sm={12}
+                  md={12}
+                  xs={12}
+                >
+                  <Typography>Faucet On Winston</Typography>
+                  <Box>
+                    <SearchIcon />
+                    <TextField
+                      placeholder="Search coin or token"
+                      variant="standard"
+                      InputProps={{ disableUnderline: true }}
+                    />
+                  </Box>
+                </Grid>
+                <Grid item lg={12} sm={12} md={12} xs={12}>
+                  <FaucetTable rows={rowsFaucetOnnWinston} />
+                </Grid>
               </Grid>
             </Card>
           </Grid>

@@ -8,37 +8,37 @@ const columns = [
     field: 'coin',
     headerName: 'Coin',
     headerClassName: 'super-app-theme--header',
-    width: 130,
+    width: 150,
   },
   {
     field: 'faucetTotal',
     headerName: 'Faucet Total',
     headerClassName: 'super-app-theme--header',
-    width: 175,
+    width: 170,
   },
   {
     field: 'totalGiveToday',
     headerName: 'Total Give Today',
     headerClassName: 'super-app-theme--header',
-    width: 203,
+    width: 190,
   },
   {
     field: 'memberDP',
     headerName: 'Member Drip Amount',
     headerClassName: 'super-app-theme--header',
-    width: 237,
+    width: 190,
   },
   {
     field: 'publicDP',
     headerName: 'Public Drip Amount',
     headerClassName: 'super-app-theme--header',
-    width: 237,
+    width: 190,
   },
   {
     field: 'totalDropped',
     headerName: 'Total Dropped',
     headerClassName: 'super-app-theme--header',
-    width: 170,
+    width: 160,
   },
 ];
 
@@ -73,6 +73,7 @@ export default function FaucetTable({ rows }) {
       }}
     >
       <DataGrid
+        sx={{ borderColor: 'transparent' }}
         rows={rows}
         columns={columns}
         pageSize={5}
