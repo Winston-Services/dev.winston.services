@@ -78,13 +78,13 @@ export default function Faucet() {
   return (
     <Container>
       <Grid container spacing={4}>
-        <Grid container item>
-          <Grid item sm={12} lg={7}>
+        <Grid container item spacing={6}>
+          <Grid item sm={12} lg={6}>
             <Grid container spacing={4}>
               <Grid item>
                 <Typography variant="h2">Faucet</Typography>
               </Grid>
-              <Grid item>
+              <Grid item >
                 <Typography variant="subtitle1">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industrys dummy
@@ -95,7 +95,7 @@ export default function Faucet() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item sm={12} lg={5}>
+          <Grid item sm={12} lg={6}>
             <img src={waterDrop} alt="crypto" />
           </Grid>
         </Grid>
