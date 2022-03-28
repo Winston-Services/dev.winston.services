@@ -82,14 +82,12 @@ body,
 
 .landingInGradient:after {
   content: '';
-  background-image: linear-gradient(
-    129deg,
-    #ea7c8f,
-    #ea7c8f,
-    #e67cc1,
-    #9e65e8,
-    #9e65e8
-  );
+  background-image: linear-gradient(129deg,
+      #ea7c8f,
+      #ea7c8f,
+      #e67cc1,
+      #9e65e8,
+      #9e65e8);
   position: absolute;
   width: 100%;
   height: 820px;
@@ -136,11 +134,9 @@ body,
 
 /* Card background */
 .blueGradientBG {
-  background-image: linear-gradient(
-    135.04deg,
-    #6151b0 -0.87%,
-    #42328c 46.6%
-  ) !important;
+  background-image: linear-gradient(135.04deg,
+      #6151b0 -0.87%,
+      #42328c 46.6%) !important;
   background-color: transparent !important;
 }
 
@@ -290,4 +286,8 @@ body,
   top: 30px;
   left: 30px;
   width: 100%;
+}
+
+.MuiDataGrid-cell:focus {
+  outline: none !important;
 }

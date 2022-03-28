@@ -38,6 +38,7 @@ import './App.css';
 import Wizard from './pages/wizard';
 import Faucet from './pages/faucet/Faucet';
 import Staking from './pages/staking/Staking';
+import Swaping from './pages/swaping/Swap';
 export default function App() {
   const auth = useAuth();
 
@@ -134,6 +135,10 @@ export default function App() {
         {
           path: '/staking',
           element: getRouteWrapper(<Staking />, false),
+        },
+        {
+          path: '/swaping',
+          element: getRouteWrapper(<Swaping />, false),
         },
         {
           path: '/wizard/*',
