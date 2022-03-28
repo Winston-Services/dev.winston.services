@@ -15,13 +15,25 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Chip, Grid, Link } from '@mui/material';
 
-function createData(transaction, blockAmt, blockTime, from, to) {
+function createData(
+  transaction,
+  from,
+  fromType,
+  to,
+  value,
+  fee,
+  blockAmt,
+  blockTime
+) {
   return {
     transaction,
+    from,
+    fromType,
+    to,
+    value,
+    fee,
     blockAmt,
     blockTime,
-    from,
-    to,
   };
 }
 
@@ -47,13 +59,34 @@ function Row(props) {
             )}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell>
           <Grid display={'flex'} direction="column">
             <Link>{row.transaction}</Link>
             <Grid mt={1}>
               <Chip variant="filled" label="Transfer NFT" />
             </Grid>
           </Grid>
+        </TableCell>
+        <TableCell>
+          <Grid display={'flex'} direction="column">
+            <Link>{row.from}</Link>
+            <Grid mt={1}>
+              <Chip
+                variant="filled"
+                color={row.fromType === 'IN' ? 'success' : 'error'}
+                label={row.fromType}
+              />
+            </Grid>
+          </Grid>
+        </TableCell>
+        <TableCell>
+          <Link>{row.to}</Link>
+        </TableCell>
+        <TableCell>
+          <Link>{row.value}</Link>
+        </TableCell>
+        <TableCell>
+          <Link>{row.fee}</Link>
         </TableCell>
         <TableCell>
           <Grid display={'flex'}>
@@ -63,12 +96,6 @@ function Row(props) {
               <Typography>{row.blockTime}</Typography>
             </Grid>
           </Grid>
-        </TableCell>
-        <TableCell>
-          <Link>{row.from}</Link>
-        </TableCell>
-        <TableCell>
-          <Link>{row.to}</Link>
         </TableCell>
       </TableRow>
       <TableRow>
@@ -89,52 +116,70 @@ function Row(props) {
 Row.propTypes = {
   row: PropTypes.shape({
     transaction: PropTypes.string.isRequired,
+    from: PropTypes.string.isRequired,
+    fromType: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    fee: PropTypes.string.isRequired,
     blockAmt: PropTypes.string.isRequired,
     blockTime: PropTypes.string.isRequired,
-    from: PropTypes.string.isRequired,
-    to: PropTypes.string.isRequired,
   }).isRequired,
 };
 
 const rows = [
   createData(
     '4B5DF2E88EA...',
-    '3,666,142',
-    '2021-12-17, 00:27:33 UTC',
     'crye3e4g89f5...',
-    'crye3e4g89f5...'
+    'IN',
+    'crye3e4g89f5...',
+    '- -',
+    '9625',
+    '3,666,142',
+    '2021-12'
   ),
   createData(
     '4B5DF2E88EA...',
-    '3,666,142',
-    '2021-12-17, 00:27:33 UTC',
     'crye3e4g89f5...',
-    'crye3e4g89f5...'
+    'OUT',
+    'crye3e4g89f5...',
+    '- -',
+    '9625',
+    '3,666,142',
+    '2021-12'
   ),
   createData(
     '4B5DF2E88EA...',
-    '3,666,142',
-    '2021-12-17, 00:27:33 UTC',
     'crye3e4g89f5...',
-    'crye3e4g89f5...'
+    'IN',
+    'crye3e4g89f5...',
+    '- -',
+    '9625',
+    '3,666,142',
+    '2021-12'
   ),
   createData(
     '4B5DF2E88EA...',
-    '3,666,142',
-    '2021-12-17, 00:27:33 UTC',
     'crye3e4g89f5...',
-    'crye3e4g89f5...'
+    'IN',
+    'crye3e4g89f5...',
+    '- -',
+    '9625',
+    '3,666,142',
+    '2021-12'
   ),
   createData(
     '4B5DF2E88EA...',
-    '3,666,142',
-    '2021-12-17, 00:27:33 UTC',
     'crye3e4g89f5...',
-    'crye3e4g89f5...'
+    'IN',
+    'crye3e4g89f5...',
+    '- -',
+    '9625',
+    '3,666,142',
+    '2021-12'
   ),
 ];
 
-export default function TokenDetailsTable() {
+export default function OwnerTransactionsTable() {
   return (
     <TableContainer>
       <Table aria-label="collapsible table">
@@ -142,9 +187,11 @@ export default function TokenDetailsTable() {
           <TableRow>
             <TableCell />
             <TableCell>Transaction</TableCell>
-            <TableCell>Block</TableCell>
             <TableCell>From</TableCell>
             <TableCell>To</TableCell>
+            <TableCell>Value</TableCell>
+            <TableCell>Fee</TableCell>
+            <TableCell>Block</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

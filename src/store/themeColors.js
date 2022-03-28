@@ -255,6 +255,22 @@ const publicPageColors = {
             // borderRadius: '5px',
           },
         },
+        {
+          props: { variant: 'filled', color: 'success' },
+          style: {
+            background: '#58A751',
+            color: 'white',
+            padding: '6',
+          },
+        },
+        {
+          props: { variant: 'filled', color: 'error' },
+          style: {
+            background: '#A75151',
+            color: 'white',
+            padding: '6',
+          },
+        },
       ],
     },
     MuiTab: {

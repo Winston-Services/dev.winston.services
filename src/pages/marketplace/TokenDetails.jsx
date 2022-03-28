@@ -82,7 +82,14 @@ function TokenDetails() {
           <Grid container mt={6.25} spacing={2.5}>
             {nftDetails.map((item, index) => {
               return (
-                <Grid item lg={3} key={item[0] + index}>
+                <Grid
+                  item
+                  xs={6}
+                  sm={4}
+                  md={3}
+                  key={item[0] + index}
+                  sx={{ width: '100%' }}
+                >
                   <Paper elevation={0} sx={{ p: 2.5, textAlign: 'center' }}>
                     <Typography>{item[0]}</Typography>
                     <Typography mt={2.5}>{item[1]}</Typography>
