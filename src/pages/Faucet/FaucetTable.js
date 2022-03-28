@@ -66,6 +66,10 @@ export default function FaucetTable({ rows }) {
     <Box
       sx={{
         height: 400,
+        width: 1,
+        '& .super-app-theme--header': {
+          color: '#fff',
+        },
       }}
     >
       <DataGrid

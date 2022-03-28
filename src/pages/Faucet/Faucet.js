@@ -84,7 +84,7 @@ export default function Faucet() {
               <Grid item>
                 <Typography variant="h2">Faucet</Typography>
               </Grid>
-              <Grid item >
+              <Grid item>
                 <Typography variant="subtitle1">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industrys dummy
@@ -113,7 +113,7 @@ export default function Faucet() {
         </Grid>
         <Grid container item>
           <Grid item sm={12} lg={12}>
-            <Card sx={{ p: 5 }}>
+            <Card sx={{ p: 5, height: '90%' }}>
               <Grid container spacing={4}>
                 <Grid
                   item

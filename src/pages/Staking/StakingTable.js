@@ -66,11 +66,7 @@ export default function StakingTable() {
       sx={{
         height: 400,
         width: 1,
-        '& .super-app-theme--header': {
-          color: '#fff',
-        },
       }}
-      className="faucet-custom-table"
     >
       <DataGrid
         rows={rows}
