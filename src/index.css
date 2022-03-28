@@ -82,12 +82,14 @@ body,
 
 .landingInGradient:after {
   content: '';
-  background-image: linear-gradient(129deg,
-      #ea7c8f,
-      #ea7c8f,
-      #e67cc1,
-      #9e65e8,
-      #9e65e8);
+  background-image: linear-gradient(
+    129deg,
+    #ea7c8f,
+    #ea7c8f,
+    #e67cc1,
+    #9e65e8,
+    #9e65e8
+  );
   position: absolute;
   width: 100%;
   height: 820px;
@@ -134,9 +136,11 @@ body,
 
 /* Card background */
 .blueGradientBG {
-  background-image: linear-gradient(135.04deg,
-      #6151b0 -0.87%,
-      #42328c 46.6%) !important;
+  background-image: linear-gradient(
+    135.04deg,
+    #6151b0 -0.87%,
+    #42328c 46.6%
+  ) !important;
   background-color: transparent !important;
 }
 
@@ -273,4 +277,17 @@ body,
 
 .wizardCard:hover .purchase-button {
   background: linear-gradient(92.44deg, #271d5a 3.93%, #271d5a 98.71%);
+}
+
+.academy-container {
+  position: relative;
+  width: 100%;
+  height: 260px;
+}
+
+.academy-level-chip {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 100%;
 }

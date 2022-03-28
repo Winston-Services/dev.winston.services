@@ -7,6 +7,7 @@ import { CircularProgress, Box } from '@mui/material';
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 import PublicPageLayout from './layouts/PublicPageLayout';
+
 const Dashboard = React.lazy(() => import('./pages/dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
 const ProductDetails = React.lazy(() =>
@@ -18,6 +19,11 @@ const TokenDetails = React.lazy(() =>
 );
 const OwnerTransactions = React.lazy(() =>
   import('./pages/marketplace/OwnerTransactions')
+);
+
+const Academy = React.lazy(() => import('./pages/academy'));
+const AcademyDetails = React.lazy(() =>
+  import('./pages/academy/AcademyDetails')
 );
 const UserProfile = React.lazy(() => import('./pages/marketplace/UserProfile'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
@@ -104,6 +110,14 @@ export default function App() {
         {
           path: '/marketplace/owner-transactions/',
           element: getRouteWrapper(<OwnerTransactions />, false),
+        },
+        {
+          path: '/academy/',
+          element: getRouteWrapper(<Academy />, false),
+        },
+        {
+          path: '/academy/details',
+          element: getRouteWrapper(<AcademyDetails />, false),
         },
         {
           path: '/user-profile',

@@ -105,6 +105,11 @@ const publicPageColors = {
       variants: [],
     },
     MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
+        },
+      },
       variants: [
         {
           props: { gradient: true },
@@ -196,9 +201,10 @@ const publicPageColors = {
           },
         },
         {
-          props: { variant: 'outlined', color: 'bgwhite' },
+          props: { variant: 'contained', color: 'primary' },
           style: {
-            background: 'red',
+            background: '#31256C',
+            color: 'white',
           },
         },
       ],
@@ -248,11 +254,7 @@ const publicPageColors = {
           style: {
             background:
               'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
-            color: 'white',
-            fontSize: '14px',
-            padding: '10px 15px',
-            height: '36px',
-            // borderRadius: '5px',
+            padding: '6px',
           },
         },
         {
