@@ -329,6 +329,25 @@ const publicPageColors = {
         },
       ],
     },
+    MuiDataGrid: {
+      styleOverrides: {
+        root: {
+          border: 'none',
+        },
+        footerContainer: {
+          display: 'none',
+        },
+        columnSeparator: {
+          display: 'none',
+        },
+        cell: {
+          borderColor: '#564E7F',
+        },
+        columnHeaders: {
+          borderColor: '#564E7F',
+        },
+      },
+    },
   },
 };
 const createThemeVariable = (mode, dashboard) => {

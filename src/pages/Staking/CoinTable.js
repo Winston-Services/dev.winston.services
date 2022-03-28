@@ -1,21 +1,20 @@
 import * as React from 'react';
 import {
+  styled,
+  Table,
   TableBody,
   TableCell,
   TableContainer,
   TableRow,
+  Typography,
   Paper,
   tableCellClasses,
-  Typography,
-  Table,
   Container,
+  Grid,
 } from '@mui/material';
 import TotalTokens from '../../assets/total_tokens.svg';
 import TotalTokensGiven from '../../assets/total_tokens_given.svg';
 import { PropTypes } from 'prop-types';
-import { Grid } from '@mui/material';
-import { styled } from '@mui/styles';
-// import { DataGrid } from '@mui/x-data-grid';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -30,7 +29,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-export default function TokenTable({ name, rows }) {
+export default function CoinTable({ name, rows }) {
   return (
     <Container>
       <TableContainer component={Paper} sx={{ p: 2 }}>
@@ -38,21 +37,32 @@ export default function TokenTable({ name, rows }) {
           <TableBody>
             <TableRow>
               <StyledTableCell>
-                <Typography>{name}</Typography>
+                <Typography>Stack and {name}</Typography>
               </StyledTableCell>
               <StyledTableCell>
                 <Grid>
                   <img src={TotalTokens} alt="icon" />
-                  <Typography>Total Tokens</Typography>
+                  <Typography>Amount {name}</Typography>
                 </Grid>
                 <Typography>00000</Typography>
               </StyledTableCell>
               <StyledTableCell>
                 <Grid>
                   <img src={TotalTokensGiven} alt="icon" />
-                  <Typography>Total Tokens Given</Typography>
+                  <Typography>Balance</Typography>
                 </Grid>
                 <Typography>00000</Typography>
+              </StyledTableCell>
+            </TableRow>
+            <TableRow>
+              <StyledTableCell>
+                <Typography>Coin</Typography>
+              </StyledTableCell>
+              <StyledTableCell>
+                <Typography>Amount {name}</Typography>
+              </StyledTableCell>
+              <StyledTableCell>
+                <Typography>Balance</Typography>
               </StyledTableCell>
             </TableRow>
             {rows?.map((row) => (
@@ -62,11 +72,9 @@ export default function TokenTable({ name, rows }) {
                   <Typography>{row.name}</Typography>
                 </StyledTableCell>
                 <StyledTableCell>
-                  <Typography>Tokens</Typography>
                   <Typography>{row.tokens}</Typography>
                 </StyledTableCell>
                 <StyledTableCell>
-                  <Typography>Given Away</Typography>
                   <Typography>{row.givenAway}</Typography>
                 </StyledTableCell>
               </TableRow>
@@ -78,7 +86,7 @@ export default function TokenTable({ name, rows }) {
   );
 }
 
-TokenTable.propTypes = {
+CoinTable.propTypes = {
   name: PropTypes.string,
   rows: PropTypes.array,
 };

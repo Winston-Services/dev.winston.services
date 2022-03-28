@@ -78,13 +78,13 @@ export default function Faucet() {
   return (
     <Container>
       <Grid container spacing={4}>
-        <Grid container item>
-          <Grid item sm={12} lg={7}>
+        <Grid container item spacing={6}>
+          <Grid item sm={12} lg={6}>
             <Grid container spacing={4}>
               <Grid item>
                 <Typography variant="h2">Faucet</Typography>
               </Grid>
-              <Grid item>
+              <Grid item >
                 <Typography variant="subtitle1">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industrys dummy
@@ -95,11 +95,10 @@ export default function Faucet() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item sm={12} lg={5}>
+          <Grid item sm={12} lg={6}>
             <img src={waterDrop} alt="crypto" />
           </Grid>
         </Grid>
-
         <Grid container item spacing={4}>
           <Grid item sm={12} lg={6}>
             <Card>
@@ -114,21 +113,30 @@ export default function Faucet() {
         </Grid>
         <Grid container item>
           <Grid item sm={12} lg={12}>
-            <Card>
-              <Grid>
-                <Typography>Faucet On Winston</Typography>
-                <Box>
-                  <SearchIcon />
-
-                  <TextField
-                    placeholder="Search coin or token"
-                    variant="standard"
-                    InputProps={{ disableUnderline: true }}
-                  />
-                </Box>
-              </Grid>
-              <Grid>
-                <FaucetTable rows={rowsFaucetOnnWinston} />
+            <Card sx={{ p: 5 }}>
+              <Grid container spacing={4}>
+                <Grid
+                  item
+                  display={'flex'}
+                  justifyContent={'space-between'}
+                  lg={12}
+                  sm={12}
+                  md={12}
+                  xs={12}
+                >
+                  <Typography>Faucet On Winston</Typography>
+                  <Box>
+                    <SearchIcon />
+                    <TextField
+                      placeholder="Search coin or token"
+                      variant="standard"
+                      InputProps={{ disableUnderline: true }}
+                    />
+                  </Box>
+                </Grid>
+                <Grid item lg={12} sm={12} md={12} xs={12}>
+                  <FaucetTable rows={rowsFaucetOnnWinston} />
+                </Grid>
               </Grid>
             </Card>
           </Grid>

@@ -31,6 +31,7 @@ import ScrollToTop from './components/scroll-to-top';
 import './App.css';
 import Wizard from './pages/wizard';
 import Faucet from './pages/Faucet/Faucet';
+import Staking from './pages/Staking/Staking';
 export default function App() {
   const auth = useAuth();
 
@@ -115,6 +116,10 @@ export default function App() {
         {
           path: '/faucet',
           element: getRouteWrapper(<Faucet />, false),
+        },
+        {
+          path: '/staking',
+          element: getRouteWrapper(<Staking />, false),
         },
         {
           path: '/wizard/*',
