@@ -348,6 +348,16 @@ const publicPageColors = {
         },
       },
     },
+    MuiGrid: {
+      variants: [
+        {
+          props: { variant: 'bottomBorder' },
+          style: {
+            borderBottom: '1px solid #5A5189',
+          },
+        },
+      ],
+    },
   },
 };
 const createThemeVariable = (mode, dashboard) => {

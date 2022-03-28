@@ -1,123 +1,156 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import { Link } from '@mui/material';
+import React from 'react';
+import { DataGrid } from '@mui/x-data-grid';
+import { Grid, Link } from '@mui/material';
 
-function createData(tokenId, denomId, nftName, creator, mintTime) {
-  return {
-    tokenId,
-    denomId,
-    nftName,
-    creator,
-    mintTime,
-  };
-}
-
-function Row(props) {
-  const { row } = props;
-
-  return (
-    <React.Fragment>
-      <TableRow>
-        <TableCell>
-          <Link>{row.tokenId}</Link>
-        </TableCell>
-        <TableCell>
-          <Link>{row.denomId}</Link>
-        </TableCell>
-        <TableCell>
-          <Link>{row.nftName}</Link>
-        </TableCell>
-        <TableCell>
-          <Link>{row.creator}</Link>
-        </TableCell>
-        <TableCell>
-          <Link>{row.mintTime}</Link>
-        </TableCell>
-      </TableRow>
-    </React.Fragment>
-  );
-}
-
-Row.propTypes = {
-  row: PropTypes.shape({
-    tokenId: PropTypes.string.isRequired,
-    denomId: PropTypes.string.isRequired,
-    nftName: PropTypes.string.isRequired,
-    creator: PropTypes.string.isRequired,
-    mintTime: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
-const rows = [
-  createData(
-    'editions599',
-    'crye3e4g89f5...',
-    'The Pawfect',
-    'crye3e4g89f5...',
-    '2021-12-17, 00:27:33 UTC'
-  ),
-  createData(
-    'editions599',
-    'crye3e4g89f5...',
-    'The Pawfect',
-    'crye3e4g89f5...',
-    '2021-12-17, 00:27:33 UTC'
-  ),
-  createData(
-    'editions599',
-    'crye3e4g89f5...',
-    'The Pawfect',
-    'crye3e4g89f5...',
-    '2021-12-17, 00:27:33 UTC'
-  ),
-  createData(
-    'editions599',
-    'crye3e4g89f5...',
-    'The Pawfect',
-    'crye3e4g89f5...',
-    '2021-12-17, 00:27:33 UTC'
-  ),
-  createData(
-    'editions599',
-    'crye3e4g89f5...',
-    'The Pawfect',
-    'crye3e4g89f5...',
-    '2021-12-17, 00:27:33 UTC'
-  ),
-  createData(
-    'editions599',
-    'crye3e4g89f5...',
-    'The Pawfect',
-    'crye3e4g89f5...',
-    '2021-12-17, 00:27:33 UTC'
-  ),
+const columns = [
+  { field: 'id', headerName: 'ID', sortable: false, hide: true },
+  {
+    field: 'tokenId',
+    headerName: 'Token ID',
+    sortable: false,
+    width: 90,
+    renderCell: (param) => {
+      return <Link>{param.row.tokenId}</Link>;
+    },
+  },
+  {
+    field: 'denomId',
+    headerName: 'Denom ID',
+    sortable: false,
+    width: 120,
+    renderCell: (param) => {
+      return <Link>{param.row.denomId}</Link>;
+    },
+  },
+  { field: 'nftName', headerName: 'NFT Name', sortable: false, width: 180 },
+  { field: 'creator', headerName: 'Creator', sortable: false, width: 120 },
+  {
+    field: 'mintTime',
+    headerName: 'Mint Time',
+    sortable: false,
+    width: 200,
+    renderCell: (param) => {
+      return <Link>{param.row.mintTime}</Link>;
+    },
+  },
 ];
 
+const rows = [
+  {
+    id: '1',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '2',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '3',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '4',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '5',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '6',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '7',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '8',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '9',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '10',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '11',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '12',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+  {
+    id: '13',
+    tokenId: 'edition599',
+    denomId: 'cro1vaye3e4gn89f5...',
+    nftName: 'The Pawfect Mystery Box',
+    creator: 'cro1wdxhq45... ',
+    mintTime: '2021-07-15, 13:10:18 UTC',
+  },
+];
 export default function OwnerNftsTable() {
   return (
-    <TableContainer>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Token ID</TableCell>
-            <TableCell>Denom ID</TableCell>
-            <TableCell>NFT Name</TableCell>
-            <TableCell>Creator</TableCell>
-            <TableCell>Mint Time</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Grid height={'765px'}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        rowsPerPageOptions={[]}
+        disableColumnMenu
+        sortable={false}
+      />
+    </Grid>
   );
 }
