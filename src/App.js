@@ -30,8 +30,8 @@ const WhiteLabelWinston = React.lazy(() =>
 import ScrollToTop from './components/scroll-to-top';
 import './App.css';
 import Wizard from './pages/wizard';
-import Faucet from './pages/Faucet/Faucet';
-import Staking from './pages/Staking/Staking';
+import Faucet from './pages/faucet/Faucet';
+import Staking from './pages/staking/Staking';
 export default function App() {
   const auth = useAuth();
 

@@ -8,10 +8,10 @@
   "license": "ISC",
   "homepage": "./",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
     "lint": "eslint src/**/*.js src/**/*.jsx",
     "electron:start": "concurrently -k \"cross-env BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electronmon .\"",
     "electron:package:mac": "npm run build && electron-builder -m -c.extraMetadata.main=build/electron.js",
@@ -37,7 +37,7 @@
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^5.0.0",
     "recharts": "^2.1.9",
     "web-vitals": "^2.1.4"
   },
@@ -62,8 +62,12 @@
     ]
   },
   "devDependencies": {
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
     "concurrently": "^7.0.0",
+    "constants-browserify": "^1.0.0",
     "cross-env": "^7.0.3",
+    "crypto-browserify": "^3.12.0",
     "electron": "^17.1.2",
     "electron-builder": "^22.14.13",
     "electron-is-dev": "^2.0.0",
@@ -74,7 +78,14 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.29.3",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
     "prettier": "^2.5.1",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0",
     "wait-on": "^6.0.1"
   },
   "build": {
