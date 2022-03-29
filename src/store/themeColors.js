@@ -190,6 +190,7 @@ const publicPageColors = {
           padding: '0.8em 2em',
           boxSizing: 'border-box',
           borderRadius: '28px',
+          boxShadow: 'none',
         },
       },
       variants: [
@@ -205,6 +206,10 @@ const publicPageColors = {
           style: {
             background: '#31256C',
             color: 'white',
+            '&:hover': {
+              background:
+                'linear-gradient(266.09deg, #E452C8 6.16%, #EA7A8F 94.97%)',
+            },
           },
         },
       ],
@@ -262,7 +267,7 @@ const publicPageColors = {
           style: {
             background: '#58A751',
             color: 'white',
-            padding: '6',
+            padding: '6px',
           },
         },
         {
@@ -270,7 +275,7 @@ const publicPageColors = {
           style: {
             background: '#A75151',
             color: 'white',
-            padding: '6',
+            padding: '6px',
           },
         },
       ],

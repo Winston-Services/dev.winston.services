@@ -1,12 +1,13 @@
 import React from 'react';
 import { Button, Container, Grid, Typography } from '@mui/material';
 import DropDown2 from './../../components/common/DropDown2';
-import AcademyImage from '../../assets/academy-image.svg';
+import AcademyImage from './../../assets/academy-image.svg';
 import { ReactComponent as AcademyIcon } from './../../assets/academy-icon.svg';
-import { ReactComponent as BeginnerIcon } from '../../assets/beginner-icon.svg';
-import { ReactComponent as IntermediateIcon } from '../../assets/intermediate-icon.svg';
-import { ReactComponent as ExpertIcon } from '../../assets/expert-icon.svg';
+import { ReactComponent as BeginnerIcon } from './../../assets/beginner-icon.svg';
+import { ReactComponent as IntermediateIcon } from './../../assets/intermediate-icon.svg';
+import { ReactComponent as ExpertIcon } from './../../assets/expert-icon.svg';
 import AcademyCard from './components/AcademyCard';
+import { useNavigate } from 'react-router';
 
 const academyData = [
   {
@@ -72,6 +73,7 @@ const academyData = [
 ];
 
 function index() {
+  const navigate = useNavigate();
   return (
     <Container>
       <Grid
@@ -88,7 +90,12 @@ function index() {
             sollicitudin venenatis feugiat magna feugiat urna cursus turpis.
             Consectetur arcu quis vel nec, nibh id nisl praesent ac. Neque.
           </Typography>
-          <Button variant="contained" color="secondary" sx={{ mt: 12.5 }}>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{ mt: 12.5 }}
+            onClick={() => navigate('/academy/add-course')}
+          >
             Start uploading video
           </Button>
         </Grid>

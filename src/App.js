@@ -7,6 +7,7 @@ import { CircularProgress, Box } from '@mui/material';
 import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 import PublicPageLayout from './layouts/PublicPageLayout';
+import SuccessLayout from './layouts/SuccessLayout';
 
 const Dashboard = React.lazy(() => import('./pages/dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
@@ -25,6 +26,13 @@ const Academy = React.lazy(() => import('./pages/academy'));
 const AcademyDetails = React.lazy(() =>
   import('./pages/academy/AcademyDetails')
 );
+const Voting = React.lazy(() => import('./pages/academy/Voting'));
+const TeacherProfile = React.lazy(() =>
+  import('./pages/academy/TeacherProfile')
+);
+const AddCourse = React.lazy(() => import('./pages/academy/AddCourse'));
+const UploadVideo = React.lazy(() => import('./pages/academy/UploadVideo'));
+const SuccessUpload = React.lazy(() => import('./pages/academy/SuccessUpload'));
 const UserProfile = React.lazy(() => import('./pages/marketplace/UserProfile'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
@@ -32,13 +40,13 @@ const Landing = React.lazy(() => import('./pages/landing'));
 const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
 );
+const Wizard = React.lazy(() => import('./pages/wizard'));
+const Faucet = React.lazy(() => import('./pages/faucet/Faucet'));
+const Staking = React.lazy(() => import('./pages/staking/Staking'));
+const Swaping = React.lazy(() => import('./pages/swaping/Swap'));
 
 import ScrollToTop from './components/scroll-to-top';
 import './App.css';
-import Wizard from './pages/wizard';
-import Faucet from './pages/faucet/Faucet';
-import Staking from './pages/staking/Staking';
-import Swaping from './pages/swaping/Swap';
 export default function App() {
   const auth = useAuth();
 
@@ -90,6 +98,16 @@ export default function App() {
     },
     {
       path: '/',
+      element: getRouteWrapper(<SuccessLayout />, false),
+      children: [
+        {
+          path: '/academy/add-course/upload-video/succuss-upload',
+          element: getRouteWrapper(<SuccessUpload />, false),
+        },
+      ],
+    },
+    {
+      path: '/',
       element: getRouteWrapper(<PublicPageLayout />, false),
       children: [
         {
@@ -119,6 +137,22 @@ export default function App() {
         {
           path: '/academy/details',
           element: getRouteWrapper(<AcademyDetails />, false),
+        },
+        {
+          path: '/academy/voting',
+          element: getRouteWrapper(<Voting />, false),
+        },
+        {
+          path: '/academy/add-course',
+          element: getRouteWrapper(<AddCourse />, false),
+        },
+        {
+          path: '/academy/add-course/upload-video',
+          element: getRouteWrapper(<UploadVideo />, false),
+        },
+        {
+          path: '/academy/teacher-profile',
+          element: getRouteWrapper(<TeacherProfile />, false),
         },
         {
           path: '/user-profile',

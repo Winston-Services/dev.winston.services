@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import ThemeLoader from './components/theme-loader';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import './index.css';
 
 import { isElectron } from './utils/commonFunctions';

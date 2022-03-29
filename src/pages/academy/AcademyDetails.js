@@ -6,6 +6,7 @@ import {
   Rating,
   Chip,
   Avatar,
+  Link,
 } from '@mui/material';
 import AcademyDetailsImage from '../../assets/academy-details-image.svg';
 import AuthorAvatar from '../../assets/author-avatar.svg';
@@ -13,8 +14,12 @@ import CircleIcon from '@mui/icons-material/Circle';
 import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import AcademyAccordion from './components/AcademyAccordion';
+import AcademySlider from './components/AcademySlider';
+import { useNavigate } from 'react-router';
 
 function AcademyDetails() {
+  const navigate = useNavigate();
   return (
     <Grid mt={'-100px'}>
       <Grid>
@@ -41,7 +46,7 @@ function AcademyDetails() {
             </Typography>
           </Grid>
           <Grid item md={2} display="flex" justifyContent={'end'}>
-            <Rating name="half-rating" />
+            <Rating size="large" />
           </Grid>
         </Grid>
         <Grid container mt={4}>
@@ -90,8 +95,21 @@ function AcademyDetails() {
             sx={{ width: 58, height: 58, mr: 2.5 }}
           />
           <Grid>
-            <Typography variant="h5">Hattie H. Moore</Typography>
+            <Link
+              variant="h5"
+              onClick={() => navigate('/academy/teacher-profile')}
+            >
+              Hattie H. Moore
+            </Link>
             <Typography variant="subtitle2">Hattie H. Moore</Typography>
+          </Grid>
+        </Grid>
+        <Grid mt={4}>
+          <AcademyAccordion />
+        </Grid>
+        <Grid mt={10} height="440px">
+          <Grid position="absolute" left={0} p={2.5}>
+            <AcademySlider />
           </Grid>
         </Grid>
       </Container>
