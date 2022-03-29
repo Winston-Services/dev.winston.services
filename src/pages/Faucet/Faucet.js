@@ -3,9 +3,9 @@ import {
   Typography,
   Grid,
   Card,
-  Box,
   TextField,
   Container,
+  InputAdornment,
 } from '@mui/material';
 import waterDrop from '../../assets/water_drop.svg';
 import FaucetTable from './FaucetTable';
@@ -113,10 +113,11 @@ export default function Faucet() {
         </Grid>
         <Grid container item>
           <Grid item sm={12} lg={12}>
-            <Card sx={{ p: 5, height: '90%' }}>
+            <Card sx={{ p: 5, height: '90%', boxShadow: 'none' }}>
               <Grid container spacing={4}>
                 <Grid
                   item
+                  container
                   display={'flex'}
                   justifyContent={'space-between'}
                   lg={12}
@@ -124,15 +125,27 @@ export default function Faucet() {
                   md={12}
                   xs={12}
                 >
-                  <Typography>Faucet On Winston</Typography>
-                  <Box>
-                    <SearchIcon />
+                  <Grid item>
+                    <Typography>Faucet On Winston</Typography>
+                  </Grid>
+                  <Grid item>
                     <TextField
-                      placeholder="Search coin or token"
+                      sx={{ backgroundColor: '#271D5A' }}
                       variant="standard"
-                      InputProps={{ disableUnderline: true }}
+                      hiddenLabel
+                      fullWidth
+                      color="filled"
+                      placeholder="Search"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <SearchIcon />
+                          </InputAdornment>
+                        ),
+                        disableUnderline: true,
+                      }}
                     />
-                  </Box>
+                  </Grid>
                 </Grid>
                 <Grid item lg={12} sm={12} md={12} xs={12}>
                   <FaucetTable rows={rowsFaucetOnnWinston} />

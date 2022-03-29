@@ -9,16 +9,7 @@ import ProofOfStake3 from './../../assets/proof_of_stake3.svg';
 import ProofOfWork1 from './../../assets/proof_of_work1.svg';
 import ProofOfWork2 from './../../assets/proof_of_work2.svg';
 import ProofOfWork3 from './../../assets/proof_of_work3.svg';
-import SearchIcon from '@mui/icons-material/Search';
-import {
-  Typography,
-  Grid,
-  Card,
-  Container,
-  Divider,
-  Box,
-  TextField,
-} from '@mui/material';
+import { Typography, Grid, Card, Container, Divider } from '@mui/material';
 
 const proofOfWork = [
   {
@@ -79,15 +70,14 @@ export default function Staking() {
                   md={4}
                   lg={4}
                   justifyContent={'center'}
+                  textAlign={'center'}
                   spacing={6}
                 >
                   <Grid item>
                     <img src={item.icon} />
                   </Grid>
                   <Grid item>
-                    <Typography textAlign={'center'} variant="h6">
-                      {item.des}
-                    </Typography>
+                    <Typography variant="h6">{item.des}</Typography>
                   </Grid>
                 </Grid>
               );
@@ -112,15 +102,14 @@ export default function Staking() {
                   md={4}
                   lg={4}
                   justifyContent={'center'}
+                  textAlign={'center'}
                   spacing={6}
                 >
-                  <Grid item>
+                  <Grid item xs={12}>
                     <img src={item.icon} />
                   </Grid>
                   <Grid item>
-                    <Typography textAlign={'center'} variant="h6">
-                      {item.des}
-                    </Typography>
+                    <Typography variant="h6">{item.des}</Typography>
                   </Grid>
                 </Grid>
               );
@@ -128,12 +117,12 @@ export default function Staking() {
           </Grid>
         </Grid>
         <Grid item container spacing={4}>
-          <Grid item sm={12} lg={6}>
+          <Grid item sm={12} xs={12} md={12} lg={6}>
             <Card>
               <CoinTable name={'Pending'} rows={rows} />
             </Card>
           </Grid>
-          <Grid item sm={12} lg={6}>
+          <Grid item sm={12} xs={12} md={12} lg={6}>
             <Card>
               <CoinTable name={'Vested'} rows={rows} />
             </Card>
@@ -143,24 +132,30 @@ export default function Staking() {
           <Grid item sm={12} lg={12}>
             <Card sx={{ p: 5, height: '80%' }}>
               <Grid container spacing={4}>
-                <Grid
-                  item
-                  display={'flex'}
-                  justifyContent={'space-between'}
-                  lg={12}
-                  sm={12}
-                  md={12}
-                  xs={12}
-                >
-                  <Typography>Faucet On Winston</Typography>
-                  <Box>
-                    <SearchIcon />
-                    <TextField
-                      placeholder="Search coin or token"
-                      variant="standard"
-                      InputProps={{ disableUnderline: true }}
-                    />
-                  </Box>
+                <Grid item container justifyContent={'space-between'}>
+                  <Grid item lg={9} md={9} sm={6} xs={6}>
+                    <Typography variant="h6">Staking Pools</Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    container
+                    lg={3}
+                    md={3}
+                    sm={6}
+                    xs={6}
+                    justifyContent={'space-between'}
+                  >
+                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                      <Typography variant="subtitle2">
+                        Amount Pending
+                      </Typography>
+                      <Typography variant="subtitle2">00000</Typography>
+                    </Grid>
+                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                      <Typography variant="subtitle2">Total Vested</Typography>
+                      <Typography variant="subtitle2">00000</Typography>
+                    </Grid>
+                  </Grid>
                 </Grid>
                 <Grid item lg={12} sm={12} md={12} xs={12}>
                   <StakingTable />

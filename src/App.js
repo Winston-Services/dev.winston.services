@@ -44,6 +44,7 @@ const Wizard = React.lazy(() => import('./pages/wizard'));
 const Faucet = React.lazy(() => import('./pages/faucet/Faucet'));
 const Staking = React.lazy(() => import('./pages/staking/Staking'));
 const Swaping = React.lazy(() => import('./pages/swaping/Swap'));
+const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
 
 import ScrollToTop from './components/scroll-to-top';
 import './App.css';
@@ -173,6 +174,10 @@ export default function App() {
         {
           path: '/swaping',
           element: getRouteWrapper(<Swaping />, false),
+        },
+        {
+          path: '/supported-coins',
+          element: getRouteWrapper(<SupportedCoins />, false),
         },
         {
           path: '/wizard/*',
