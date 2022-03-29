@@ -1,94 +1,91 @@
 import Container from '@mui/material/Container';
-import { Grid, Typography, Card } from '@mui/material';
-import antsCoin from '../../assets/coins/ants-coin.svg';
-import botcoin from '../../assets/coins/botcoin.svg';
-import btt from '../../assets/coins/btt.svg';
-import comfy from '../../assets/coins/comfy.png';
-import lottocoin from '../../assets/coins/lottocoin.svg';
-import rblue from '../../assets/coins/rblue.png';
-import skillcoin from '../../assets/coins/skillcoin.svg';
-import usdc from '../../assets/coins/usdc.svg';
+import { Grid, Typography } from '@mui/material';
+// import antsCoin from '../../assets/coins/ants-coin.svg';
+// import botcoin from '../../assets/coins/botcoin.svg';
+// import btt from '../../assets/coins/btt.svg';
+// import comfy from '../../assets/coins/comfy.png';
+// import lottocoin from '../../assets/coins/lottocoin.svg';
+// import rblue from '../../assets/coins/rblue.png';
+// import skillcoin from '../../assets/coins/skillcoin.svg';
+// import usdc from '../../assets/coins/usdc.svg';
+import cryptoCurrency from './../../assets/crypto_currency.svg';
 import React from 'react';
 
 const SupportedCoins = () => {
   const data = [
     {
-      image: usdc,
+      image: cryptoCurrency,
       title: 'USDC',
       subTitle: 'USDC',
     },
     {
-      image: antsCoin,
+      image: cryptoCurrency,
       title: 'AntsCoin',
       subTitle: 'ANT',
     },
     {
-      image: comfy,
+      image: cryptoCurrency,
       title: 'ComfyToken',
       subTitle: 'COMFY',
     },
     {
-      image: rblue,
+      image: cryptoCurrency,
       title: 'REVIVAL',
       subTitle: 'RVL',
     },
     {
-      image: lottocoin,
+      image: cryptoCurrency,
       title: 'LottoCoin ',
       subTitle: 'LOT',
     },
     {
-      image: btt,
+      image: cryptoCurrency,
       title: 'btt',
       subTitle: 'BTT',
     },
     {
-      image: botcoin,
+      image: cryptoCurrency,
       title: 'Botcoin ',
       subTitle: 'BOT',
     },
     {
-      image: skillcoin,
+      image: cryptoCurrency,
       title: 'SKILLCOIN',
       subTitle: 'SKILL',
     },
     {
-      image: skillcoin,
+      image: cryptoCurrency,
       title: 'SKILLCOIN',
       subTitle: 'SKILL',
     },
   ];
   return (
-    <Grid container>
-      <Container>
-        <Typography
-          variant={'h3'}
-          sx={{ textAlign: 'center', fontWeight: '700' }}
-        >
-          Supported Coins
-        </Typography>
-        <Grid item sx={{ display: 'flex', flexWrap: 'wrap' }} lg={12}>
+    <Container>
+      <Grid container spacing={12} justifyContent={'center'}>
+        <Grid item>
+          <Typography variant={'h3'}>Supported Coins</Typography>
+        </Grid>
+        <Grid container item lg={12} display={'flex'} rowSpacing={8}>
           {data.map((item, id) => {
             return (
-              <Card
-                elevation={0}
+              <Grid
                 key={id}
-                sx={{
-                  margin: '40px',
-                  textAlign: 'center',
-                  background: 'transparent',
-                  inlineSize: 'fin-content',
-                }}
+                item
+                lg={1.5}
+                md={3}
+                sm={3}
+                xs={6}
+                textAlign={'center'}
               >
-                <img src={item.image} style={{ width: 50 }} />
-                <Typography level={'h6'}>{item.title}</Typography>
-                <Typography level={'h6'}>({item.subTitle})</Typography>
-              </Card>
+                <img src={item.image} />
+                <Typography variant={'subtitle1'}>{item.title}</Typography>
+                <Typography variant={'subtitle2'}>({item.subTitle})</Typography>
+              </Grid>
             );
           })}
         </Grid>
-      </Container>
-    </Grid>
+      </Grid>
+    </Container>
   );
 };
 export default SupportedCoins;

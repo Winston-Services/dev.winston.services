@@ -39,6 +39,7 @@ import Wizard from './pages/wizard';
 import Faucet from './pages/faucet/Faucet';
 import Staking from './pages/staking/Staking';
 import Swaping from './pages/swaping/Swap';
+import SupportedCoins from './pages/supported-coins';
 export default function App() {
   const auth = useAuth();
 
@@ -139,6 +140,10 @@ export default function App() {
         {
           path: '/swaping',
           element: getRouteWrapper(<Swaping />, false),
+        },
+        {
+          path: '/supported-coins',
+          element: getRouteWrapper(<SupportedCoins />, false),
         },
         {
           path: '/wizard/*',

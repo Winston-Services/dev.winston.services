@@ -3,7 +3,6 @@ import {
   Typography,
   Grid,
   Card,
-  Box,
   TextField,
   Button,
   Container,
@@ -139,7 +138,7 @@ export default function SwapPublic() {
           <Grid item sm={12} lg={12}>
             <Card sx={{ p: 5, height: '90%' }}>
               <Grid container lg={12}>
-                <Grid item lg={7} md={7} sm={7} xs={12}>
+                <Grid item lg={7} md={7} sm={6} xs={12}>
                   <Typography variant="h5">Swap</Typography>
                 </Grid>
                 <Grid
@@ -147,50 +146,48 @@ export default function SwapPublic() {
                   container
                   lg={5}
                   md={5}
-                  sm={5}
+                  sm={6}
                   xs={12}
                   alignItems={'center'}
                 >
-                  <Grid item lg={2} sm={2} md={2} xs={2}>
+                  <Grid item lg={1.5} md={2} sm={2} xs={3}>
                     <Typography>Filter:</Typography>
                   </Grid>
                   <Grid
                     item
                     container
-                    lg={10}
-                    sm={10}
-                    md={10}
-                    xs={10}
                     justifyContent={'space-between'}
+                    lg={10.5}
+                    md={10}
+                    sm={10}
+                    xs={9}
+                    spacing={2}
                   >
-                    <Grid item lg={6} md={6} xs={6} sm={6}>
-                      <Box>
-                        <TextField
-                          sx={{
-                            justifyContent: 'center',
-                            borderRadius: '5px',
-                            backgroundColor: '#271D5A',
-                            label: { ml: '10px' },
-                          }}
-                          placeholder="From"
-                          variant="standard"
-                          InputProps={{ disableUnderline: true }}
-                        />
-                      </Box>
+                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                      <TextField
+                        sx={{ backgroundColor: '#271D5A' }}
+                        variant="standard"
+                        hiddenLabel
+                        fullWidth
+                        color="filled"
+                        placeholder="From"
+                        InputProps={{
+                          disableUnderline: true,
+                        }}
+                      />
                     </Grid>
-                    <Grid item lg={6} md={6} xs={6} sm={6}>
-                      <Box>
-                        <TextField
-                          sx={{
-                            justifyContent: 'center',
-                            borderRadius: '5px',
-                            backgroundColor: '#271D5A',
-                          }}
-                          placeholder="To"
-                          variant="standard"
-                          InputProps={{ disableUnderline: true }}
-                        />
-                      </Box>
+                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                      <TextField
+                        sx={{ backgroundColor: '#271D5A' }}
+                        variant="standard"
+                        hiddenLabel
+                        fullWidth
+                        color="filled"
+                        placeholder="To"
+                        InputProps={{
+                          disableUnderline: true,
+                        }}
+                      />
                     </Grid>
                   </Grid>
                 </Grid>

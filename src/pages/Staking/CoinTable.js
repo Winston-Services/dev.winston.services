@@ -11,6 +11,7 @@ import {
   tableCellClasses,
   Container,
   Grid,
+  Divider,
 } from '@mui/material';
 import TotalTokens from '../../assets/total_tokens.svg';
 import TotalTokensGiven from '../../assets/total_tokens_given.svg';
@@ -32,28 +33,31 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 export default function CoinTable({ name, rows }) {
   return (
     <Container>
-      <TableContainer component={Paper} sx={{ p: 2 }}>
+      <TableContainer component={Paper} sx={{ p: 4, boxShadow: 'none' }}>
         <Table aria-label="customized table">
           <TableBody>
             <TableRow>
               <StyledTableCell>
-                <Typography>Stack and {name}</Typography>
+                <Typography variant="h6">Stack and {name}</Typography>
               </StyledTableCell>
               <StyledTableCell>
-                <Grid>
+                <Grid container item xs={12}>
                   <img src={TotalTokens} alt="icon" />
-                  <Typography>Amount {name}</Typography>
+                  <Typography sx={{ fontSize: '0.725rem' }}>
+                    Amount {name}
+                  </Typography>
                 </Grid>
                 <Typography>00000</Typography>
               </StyledTableCell>
               <StyledTableCell>
-                <Grid>
+                <Grid container item xs={12}>
                   <img src={TotalTokensGiven} alt="icon" />
-                  <Typography>Balance</Typography>
+                  <Typography sx={{ fontSize: '0.725rem' }}>Balance</Typography>
                 </Grid>
                 <Typography>00000</Typography>
               </StyledTableCell>
             </TableRow>
+            <Divider sx={{ width: '220%' }} />
             <TableRow>
               <StyledTableCell>
                 <Typography>Coin</Typography>
@@ -65,19 +69,27 @@ export default function CoinTable({ name, rows }) {
                 <Typography>Balance</Typography>
               </StyledTableCell>
             </TableRow>
+            <Divider sx={{ width: '220%' }} />
             {rows?.map((row) => (
-              <TableRow key={row.name}>
-                <StyledTableCell>
-                  <img src={row.icon} alt="icon" />
-                  <Typography>{row.name}</Typography>
-                </StyledTableCell>
-                <StyledTableCell>
-                  <Typography>{row.tokens}</Typography>
-                </StyledTableCell>
-                <StyledTableCell>
-                  <Typography>{row.givenAway}</Typography>
-                </StyledTableCell>
-              </TableRow>
+              <>
+                <TableRow key={row.name}>
+                  <StyledTableCell>
+                    <Grid container spacing={1}>
+                      <img src={row.icon} alt="icon" />
+                      <Typography>{row.name}</Typography>
+                    </Grid>
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    <Typography variant="subtitle2">Tokens</Typography>
+                    <Typography variant="h6">{row.tokens}</Typography>
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    <Typography variant="subtitle2">Given Away</Typography>
+                    <Typography variant="h6">{row.givenAway}</Typography>
+                  </StyledTableCell>
+                </TableRow>
+                <Divider sx={{ width: '220%' }} />
+              </>
             ))}
           </TableBody>
         </Table>
