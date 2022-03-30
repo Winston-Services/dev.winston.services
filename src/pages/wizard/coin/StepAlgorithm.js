@@ -14,7 +14,6 @@ import DropDown from '../../../components/common/DropDown';
 import { PropTypes } from 'prop-types';
 
 function StepAlgorithmCoin({ wizardData }) {
-  console.log(wizardData);
   let navigate = useNavigate();
 
   return (

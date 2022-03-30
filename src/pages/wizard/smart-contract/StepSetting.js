@@ -17,7 +17,6 @@ import {
 import WizardSteppers from './../WizardSteppers';
 
 function StepSetting({ wizardData }) {
-  console.log(wizardData);
   const navigate = useNavigate();
 
   return (

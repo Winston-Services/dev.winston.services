@@ -45,7 +45,6 @@ const defaultActive =
     ? window.location.hash.replace('#', '') || menuList[0].key
     : '';
 var timer;
-console.log(defaultActive, 'defaultActive');
 export default function LandingTopNav() {
   const [value, setValue] = React.useState(defaultActive);
   const navigate = useNavigate();
