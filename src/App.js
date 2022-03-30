@@ -8,6 +8,7 @@ import LandingLayout from './layouts/LandingLayout';
 import SignInLayout from './layouts/SignInLayout';
 import PublicPageLayout from './layouts/PublicPageLayout';
 import SuccessLayout from './layouts/SuccessLayout';
+import PlaneLayout from './layouts/PlaneLayout';
 
 const Dashboard = React.lazy(() => import('./pages/dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
@@ -49,6 +50,7 @@ const CommunityFunding = React.lazy(() => import('./pages/community-funding'));
 
 import ScrollToTop from './components/scroll-to-top';
 import './App.css';
+import Certificate from './pages/certificate/Certificate';
 export default function App() {
   const auth = useAuth();
 
@@ -105,6 +107,16 @@ export default function App() {
         {
           path: '/academy/add-course/upload-video/succuss-upload',
           element: getRouteWrapper(<SuccessUpload />, false),
+        },
+      ],
+    },
+    {
+      path: '/',
+      element: getRouteWrapper(<PlaneLayout />, false),
+      children: [
+        {
+          path: '/certificate',
+          element: getRouteWrapper(<Certificate />, false),
         },
       ],
     },
