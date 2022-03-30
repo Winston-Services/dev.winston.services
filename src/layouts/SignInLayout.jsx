@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Grid, Container, Box, Chip } from '@mui/material';
-
 import Logo from './../assets/logo.svg';
 import { useNavigate, Outlet } from 'react-router-dom';
 import { Twitter, YouTube } from '@mui/icons-material';
