@@ -45,6 +45,7 @@ const Faucet = React.lazy(() => import('./pages/faucet/Faucet'));
 const Staking = React.lazy(() => import('./pages/staking/Staking'));
 const Swaping = React.lazy(() => import('./pages/swaping/Swap'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
+const CommunityFunding = React.lazy(() => import('./pages/community-funding'));
 
 import ScrollToTop from './components/scroll-to-top';
 import './App.css';
@@ -182,6 +183,10 @@ export default function App() {
         {
           path: '/wizard/*',
           element: getRouteWrapper(<Wizard />, false),
+        },
+        {
+          path: '/community-funding',
+          element: getRouteWrapper(<CommunityFunding />, false),
         },
       ],
     },
