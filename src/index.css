@@ -291,3 +291,43 @@ body,
 .MuiDataGrid-cell:focus {
   outline: none !important;
 }
+
+.border-line-top::before {
+  content: '';
+  padding: 5px;
+  background: linear-gradient(269deg, #f448ab 24.22%, #7968ff 100%);
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  width: 100vw;
+}
+
+.border-line-left::before {
+  content: '';
+  padding: 5px;
+  background: linear-gradient(269deg, #f448ab 24.22%, #7968ff 100%);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  height: 150vh;
+}
+
+.border-line-left::after {
+  content: '';
+  padding: 5px;
+  background: linear-gradient(269deg, #f448ab 24.22%, #7968ff 100%);
+  position: absolute;
+  bottom: 10px;
+  right: 0px;
+  width: 100vw;
+}
+
+.border-line-top::after {
+  content: '';
+  padding: 5px;
+  background: linear-gradient(269deg, #f448ab 24.22%, #7968ff 100%);
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  height: 150vh;
+}

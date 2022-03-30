@@ -1,39 +1,43 @@
 import React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { TextField, MenuItem } from '@mui/material';
+import { useField, useFormikContext } from 'formik';
 import { PropTypes } from 'prop-types';
 
-function DropDown({ label, options, placeholder = '' }) {
+const SelectWrapper = ({ name, options, ...otherProps }) => {
+  const { setFieldValue } = useFormikContext();
+  const [field, mata] = useField(name);
+  const handleChange = (evt) => {
+    const { value } = evt.target;
+    setFieldValue(name, value);
+  };
+  const configSelect = {
+    ...field,
+    ...otherProps,
+    select: true,
+    variant: 'outlined',
+    fullWidth: true,
+    onChange: handleChange,
+  };
+  if (mata && mata.touched && mata.error) {
+    configSelect.error = true;
+    configSelect.helperText = mata.error;
+  }
   return (
-    <FormControl fullWidth>
-      <InputLabel>{label}</InputLabel>
-      <Select
-        label={label}
-        inputProps={{ MenuProps: { disableScrollLock: true } }}
-      >
-        {placeholder !== '' && (
-          <MenuItem disabled value="">
-            <em>{placeholder}</em>
+    <TextField {...configSelect}>
+      {options?.map((value) => {
+        return (
+          <MenuItem key={value} value={value}>
+            {value}
           </MenuItem>
-        )}
-        {options?.map((value) => {
-          return (
-            <MenuItem key={value} value={value}>
-              {value}
-            </MenuItem>
-          );
-        })}
-      </Select>
-    </FormControl>
+        );
+      })}
+    </TextField>
   );
-}
-
-DropDown.propTypes = {
-  label: PropTypes.string,
-  options: PropTypes.array,
-  placeholder: PropTypes.string,
 };
 
-export default DropDown;
+SelectWrapper.propTypes = {
+  name: PropTypes.string,
+  options: PropTypes.array,
+};
+
+export default SelectWrapper;
