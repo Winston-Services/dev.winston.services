@@ -1,7 +1,7 @@
 import React from 'react';
 import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts';
 import { Typography, Grid } from '@mui/material';
-import { ReactComponent as ChartIcon } from './../../assets/chart-icon.svg';
+import { ReactComponent as ChartIcon } from './../../assets/chart_icon.svg';
 import { useSelector } from 'react-redux';
 
 const data = [

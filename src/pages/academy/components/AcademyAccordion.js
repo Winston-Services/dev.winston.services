@@ -9,7 +9,7 @@ import {
   Link,
 } from '@mui/material';
 
-import { ReactComponent as PlayCircleIcon } from './../../../assets/play-circle.svg';
+import { ReactComponent as PlayCircleIcon } from './../../../assets/play_circle.svg';
 import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { ExpandMore } from '@mui/icons-material';

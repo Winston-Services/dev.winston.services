@@ -8,8 +8,8 @@ import {
   Avatar,
   Link,
 } from '@mui/material';
-import AcademyDetailsImage from '../../assets/academy-details-image.svg';
-import AuthorAvatar from '../../assets/author-avatar.svg';
+import AcademyDetailsImage from '../../assets/academy_details_image.svg';
+import AuthorAvatar from '../../assets/author_avatar.svg';
 import CircleIcon from '@mui/icons-material/Circle';
 import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';

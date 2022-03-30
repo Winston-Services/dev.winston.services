@@ -1,11 +1,11 @@
 import { Container, Grid, Button, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { ReactComponent as AddCourseIcon } from './../../assets/add-course-icon.svg';
+import { ReactComponent as AddCourseIcon } from './../../assets/add_course_icon.svg';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { ReactComponent as BeginnerIcon } from './../../assets/beginner-icon.svg';
-import { ReactComponent as IntermediateIcon } from './../../assets/intermediate-icon.svg';
-import { ReactComponent as ExpertIcon } from './../../assets/expert-icon.svg';
+import { ReactComponent as BeginnerIcon } from './../../assets/beginner_icon.svg';
+import { ReactComponent as IntermediateIcon } from './../../assets/intermediate_icon.svg';
+import { ReactComponent as ExpertIcon } from './../../assets/expert_icon.svg';
 import { useNavigate } from 'react-router';
 
 const topics = [

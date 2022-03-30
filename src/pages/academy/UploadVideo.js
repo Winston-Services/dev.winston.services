@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { ReactComponent as UploadIcon } from './../../assets/upload-icon.svg';
+import { ReactComponent as UploadIcon } from './../../assets/upload_icon.svg';
 import { useNavigate } from 'react-router';
 
 function UploadVideo() {
