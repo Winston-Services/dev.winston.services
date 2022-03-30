@@ -17,16 +17,16 @@ const INITIAL_FORM_STATE = {
 };
 
 const FORM_VALIDATION = Yup.object().shape({
-  // email: Yup.string().email('Invalid email id').required('Email is required'),
-  // coinType: Yup.string().required('Select coin type'),
-  // coinAlgorithm: Yup.string().required('Select coin algorithm'),
+  email: Yup.string().email('Invalid email id').required('Email is required'),
+  coinType: Yup.string().required('Select coin type'),
+  coinAlgorithm: Yup.string().required('Select coin algorithm'),
 });
 
 function StepAlgorithmCoin({ wizardData }) {
   let navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    console.log(values);
     navigate('/wizard/step-coin-name');
   };
 

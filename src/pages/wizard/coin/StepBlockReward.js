@@ -29,22 +29,22 @@ const INITIAL_FORM_STATE = {
 };
 
 const FORM_VALIDATION = Yup.object().shape({
-  // blockReward: Yup.string().required('Block reward is required'),
-  // blockHalving: Yup.string().required('Block halving is required'),
-  // coinSupplyWithoutPremine: Yup.string().required(
-  //   'Coin supply without premine is required'
-  // ),
-  // premine: Yup.string().required('Premine is required'),
-  // premineAmount: Yup.string().required('Premine amount is required'),
-  // coinSupplyWithPremine: Yup.string().required(
-  //   'Coin supply with premine is required'
-  // ),
+  blockReward: Yup.string().required('Block reward is required'),
+  blockHalving: Yup.string().required('Block halving is required'),
+  coinSupplyWithoutPremine: Yup.string().required(
+    'Coin supply without premine is required'
+  ),
+  premine: Yup.string().required('Premine is required'),
+  premineAmount: Yup.string().required('Premine amount is required'),
+  coinSupplyWithPremine: Yup.string().required(
+    'Coin supply with premine is required'
+  ),
 });
 function StepCoinBlockReward({ wizardData }) {
   let navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    console.log(values);
     navigate('/wizard/step-coin-block-confirmation');
   };
 
@@ -118,7 +118,6 @@ function StepCoinBlockReward({ wizardData }) {
                     <FormControlLabel
                       control={<Checkbox />}
                       label="100% premine"
-                      className="wrapperCheckBox"
                     />
                     <FormHelperText>
                       (Your total coin supply is available after the mining of
