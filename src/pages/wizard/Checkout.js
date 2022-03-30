@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Grid,
   Card,
@@ -6,223 +6,154 @@ import {
   Button,
   Container,
   CardContent,
+  Box,
 } from '@mui/material';
 import verification from './../../assets/verification.svg';
 // import verification1 from '../../assets/verification1.png';
 import coin from './../../assets/coin.svg';
 import smartContract from './../../assets/smart_contract.svg';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { wizardDataSelector } from './../../store/wizard';
+import { useSelector } from 'react-redux';
+import { PropTypes } from 'prop-types';
+const CheckoutCard = ({ data }) => {
+  // let navigate = useNavigate();
+  return (
+    <Card
+      className="wizardCard"
+      sx={{
+        p: 6,
+        height: '100%',
+      }}
+      elevation={0}
+    >
+      <CardContent sx={{ height: '100%' }}>
+        <Box
+          display={'flex'}
+          sx={{ height: '100%' }}
+          flexDirection="column"
+          gap={3}
+        >
+          <Typography variant={'h5'}>{data.title}</Typography>
+          <Typography variant={'h4'} sx={{ mb: 3 }}>
+            {data.price}
+          </Typography>
 
-function checkout({ wizardData }) {
-  let navigate = useNavigate();
-  const [imageIcon, setImageIcon] = React.useState(verification);
-  const purchaseType = 'Coin';
-  // const [purchaseType, setPurchaseType] = React.useState(wizardData.workshop);
+          {data?.duration ? (
+            <Typography variant={'h6'} display={'flex'} alignItems={'center'}>
+              <Box component={'img'} sx={{ mr: 1 }} src={verification} />
+              {data.duration}
+            </Typography>
+          ) : null}
 
-  const coinData = [
+          <Typography variant={'subtitle2'} sx={{ flexGrow: 1 }}>
+            {data.text}
+          </Typography>
+          <Button
+            fullWidth
+            variant="contained"
+            color="secondary"
+            className="purchase-button"
+            // onClick={() => {
+            //   // setPurchaseType('Smart Contract');
+            //   navigate('/wizard/certificate');
+            // }}
+          >
+            {data.buttonText}
+          </Button>
+        </Box>
+      </CardContent>
+    </Card>
+  );
+};
+
+CheckoutCard.propTypes = {
+  data: PropTypes.object,
+};
+
+function Checkout() {
+  const wizardData = useSelector(wizardDataSelector);
+  const checkoutData = [
     {
-      title: 'Monthly Hosting',
-      price: '$XX/mo',
-      duration: 'First 1 month free',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim lorem a purus semper volutpat. Nam non nulla augue. Curabitur dignissim velit a tortor blandit, at vehicula libero gravida. Proin faucibus, nisl vel condimentum fringilla, arcu neque gravida nulla, id euismod tortor dolor eu sem. Sed blandit tincidunt velit ac vulputate. Mauris consequat efficitur lobortis. Sed nec congue est',
-      buttonText: 'Subscribe',
+      title: 'Coin name',
+      icon: coin,
+      isActive: () => {
+        wizardData.workshop === 'Coin' || wizardData.workshop === 'custom';
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim lorem a purus semper volutpat. Nam non nulla augue. Curabitur dignissim velit a tortor blandit, at vehicula libero gravida. Proin faucibus, nisl vel condimentum fringilla, arcu neque gravida nulla, id euismod tortor dolor eu sem. Sed blandit tincidunt velit ac vulputate. Mauris consequat efficitur lobortis. Sed nec congue est',
+      items: [
+        {
+          title: 'Monthly Hosting',
+          price: '$XX/month',
+          duration: 'First 1 month free',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim lorem a purus semper volutpat. Nam non nulla augue. Curabitur dignissim velit a tortor blandit, at vehicula libero gravida. Proin faucibus, nisl vel condimentum fringilla, arcu neque gravida nulla, id euismod tortor dolor eu sem. Sed blandit tincidunt velit ac vulputate. Mauris consequat efficitur lobortis. Sed nec congue est',
+          buttonText: 'Subscribe',
+        },
+        {
+          title: 'Purchase Coin',
+          price: '$XX/one time',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Praesent dignissim lorem a purus semper volutpat. Nam nonnulla augue. Curabitur dignissim velit a tortor blandit.',
+          buttonText: 'Purchase Coin $99',
+        },
+      ],
     },
     {
-      title: 'Purchase Coin',
-      price: '$XX/one time',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Praesent dignissim lorem a purus semper volutpat. Nam nonnulla augue. Curabitur dignissim velit a tortor blandit.',
-      buttonText: 'Purchase Coin $99',
+      title: 'Smart contract',
+      icon: smartContract,
+      isActive: () => {
+        wizardData.workshop === 'Smart Contract' ||
+          wizardData.workshop === 'custom';
+      },
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent dignissim lorem a purus semper volutpat. Nam non nulla augue. Curabitur dignissim velit a tortor blandit, at vehicula libero gravida. Proin faucibus, nisl vel condimentum fringilla, arcu neque gravida nulla, id euismod tortor dolor eu sem. Sed blandit tincidunt velit ac vulputate. Mauris consequat efficitur lobortis. Sed nec congue est',
+
+      items: [
+        {
+          title: 'Download it’s free',
+          price: '$XX/month',
+          duration: 'First 1 month free',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Praesent dignissim lorem a purus semper volutpat. Nam nonnulla augue. Curabitur dignissim velit a tortor blandit.',
+          buttonText: 'Download it’s free',
+        },
+        {
+          title: 'Launch to Network',
+          price: '$XX/one time',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Praesent dignissim lorem a purus semper volutpat. Nam nonnulla augue. Curabitur dignissim velit a tortor blandit.',
+          buttonText: 'Purchase',
+        },
+      ],
     },
   ];
-
-  const smartContractData = [
-    {
-      title: 'Download it’s free',
-      price: '$XX/mo',
-      duration: 'First 1 month free',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Praesent dignissim lorem a purus semper volutpat. Nam nonnulla augue. Curabitur dignissim velit a tortor blandit.',
-      buttonText: 'Download it’s free',
-    },
-    {
-      title: 'Launch to Network',
-      price: '$XX/one time',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Praesent dignissim lorem a purus semper volutpat. Nam nonnulla augue. Curabitur dignissim velit a tortor blandit.',
-      buttonText: 'Purchase',
-    },
-  ];
-
-  useEffect(() => {
-    if (wizardData.workshop === '') {
-      // navigate('/wizard');
-    }
-  }, []);
 
   return (
-    <>
-      {purchaseType === 'Coin' || purchaseType === 'Custom' ? (
-        <Container>
-          <Grid container spacing={8}>
-            <Grid item lg={1}>
-              <Grid item>
-                <img src={coin} alt="icon" />
-              </Grid>
-            </Grid>
-            <Grid item container lg={10} spacing={2} ml={1}>
-              <Grid item alignSelf={'center'}>
-                <Typography variant={'h3'}>Coin Name</Typography>
-              </Grid>
-              <Grid item>
-                <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Praesent dignissim lorem a purus semper volutpat. Nam non
-                  nulla augue. Curabitur dignissim velit a tortor blandit, at
-                  vehicula libero gravida. Proin faucibus, nisl vel condimentum
-                  fringilla, arcu neque gravida nulla, id euismod tortor dolor
-                  eu sem. Sed blandit tincidunt velit ac vulputate. Mauris
-                  consequat efficitur lobortis. Sed nec congue est
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid item container spacing={4}>
-              {coinData?.map((item) => {
-                return (
-                  <Grid key={item.title} item xs={12} md={6} lg={6}>
-                    <Card
-                      className="wizardCard"
-                      sx={{
-                        p: 6,
-                        height: '100%',
-                      }}
-                      onMouseOver={() =>
-                        item.duration ? setImageIcon(verification) : ''
-                      }
-                      onMouseOut={() =>
-                        item.duration ? setImageIcon(verification) : ''
-                      }
-                    >
-                      <CardContent sx={{ height: '100%' }}>
-                        <Grid
-                          container
-                          sx={{ height: '100%' }}
-                          direction="column"
-                          justifyContent="space-between"
-                        >
-                          <Grid item xs>
-                            <Typography variant={'h5'}>{item.title}</Typography>
-                          </Grid>
-                          <Grid item xs>
-                            <Typography variant={'h4'}>{item.price}</Typography>
-                          </Grid>
-
-                          {item?.duration ? (
-                            <Grid item container spacing={2}>
-                              <Grid item>
-                                <img src={imageIcon} />
-                              </Grid>
-                              <Grid item>
-                                <Typography variant={'h5'}>
-                                  {item?.duration}
-                                </Typography>
-                              </Grid>
-                            </Grid>
-                          ) : null}
-
-                          <Grid item xs>
-                            <Typography variant={'subtitle2'}>
-                              {item.text}
-                            </Typography>
-                          </Grid>
-                          <Grid item xs>
-                            <Button
-                              fullWidth
-                              variant="contained"
-                              color="secondary"
-                              className="purchase-button"
-                              onClick={() => {
-                                // setPurchaseType('Smart Contract');
-                                navigate('/wizard/certificate');
-                              }}
-                            >
-                              {item.buttonText}
-                            </Button>
-                          </Grid>
-                        </Grid>
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </Grid>
-        </Container>
-      ) : null}
-
-      {purchaseType === 'Smart Contract' ? (
-        <Container>
-          <Grid container>
-            <Grid item>
-              <img src={smartContract} alt="icon" />
-            </Grid>
-            <Grid item>
-              <Typography>Smartcontract</Typography>
-            </Grid>
-            <Grid item>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Praesent dignissim lorem a purus semper volutpat. Nam non nulla
-                augue. Curabitur dignissim velit a tortor blandit, at vehicula
-                libero gravida. Proin faucibus, nisl vel condimentum fringilla,
-                arcu neque gravida nulla, id euismod tortor dolor eu sem. Sed
-                blandit tincidunt velit ac vulputate. Mauris consequat efficitur
-                lobortis. Sed nec congue est
+    <Container>
+      {checkoutData.map((obj) =>
+        obj.isActive ? (
+          <Grid key={obj.title} container spacing={4} sx={{ mb: 10 }}>
+            <Grid item xs={12} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Box component={'img'} sx={{ mr: 3 }} src={obj.icon} alt="icon" />
+              <Typography variant={'h3'} sx={{ flexGrow: 1 }}>
+                {obj.title}
               </Typography>
             </Grid>
-
-            <Grid container spacing={6}>
-              {smartContractData?.map((item, index) => {
+            <Grid item container xs={12}>
+              <Typography>{obj.description}</Typography>
+            </Grid>
+            <Grid item container spacing={4}>
+              {obj.items?.map((itemObj) => {
                 return (
-                  <Grid item sm={6} xs={12} lg={6} key={index.toString()}>
-                    <Card
-                      onMouseOver={() =>
-                        item.duration ? setImageIcon(verification) : ''
-                      }
-                      onMouseOut={() =>
-                        item.duration ? setImageIcon(verification) : ''
-                      }
-                    >
-                      <Grid>
-                        <Typography variant={'h6'}>{item.title}</Typography>
-                        <Typography variant={'h6'}>{item.price}</Typography>
-                        {item?.duration ? (
-                          <Grid>
-                            <img src={imageIcon} />
-
-                            <Typography variant={'h6'}>
-                              {item?.duration}
-                            </Typography>
-                          </Grid>
-                        ) : null}
-                        <Typography variant={'h6'}>{item.text}</Typography>
-                      </Grid>
-                      <Grid>
-                        <Button
-                          onClick={() => {
-                            navigate('/wizard/certificate');
-                          }}
-                        >
-                          Subscribe
-                        </Button>
-                      </Grid>
-                    </Card>
+                  <Grid key={itemObj.title} item xs={12} md={6} lg={6}>
+                    <CheckoutCard data={itemObj} />
                   </Grid>
                 );
               })}
             </Grid>
           </Grid>
-        </Container>
-      ) : null}
-    </>
+        ) : null
+      )}
+    </Container>
   );
 }
 
-export default checkout;
+export default Checkout;

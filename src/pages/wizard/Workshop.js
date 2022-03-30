@@ -49,6 +49,7 @@ function Workshop({ wizardData, setWizardData }) {
             return (
               <Grid key={item.title} item xs={12} md={6} lg={4}>
                 <Card
+                  elevation={0}
                   className="wizardCard"
                   onClick={() => {
                     setWizardData({

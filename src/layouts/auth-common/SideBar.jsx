@@ -75,7 +75,9 @@ export default function SideBar() {
                 >
                   <ListItemText
                     primary={menuItem.attr.primary}
-                    secondary={menuItem.attr.secondary}
+                    secondary={
+                      menuItem.attr.open ? '' : menuItem.attr.secondary
+                    }
                     sx={{ my: 0 }}
                   />
                   <KeyboardArrowDown

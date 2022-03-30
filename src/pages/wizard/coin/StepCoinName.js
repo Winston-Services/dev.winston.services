@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import WizardSteppers from './../WizardSteppers';
 import DropDown from './../../../components/common/DropDown';
@@ -14,11 +14,6 @@ import { PropTypes } from 'prop-types';
 
 function StepCoinName({ wizardData }) {
   let navigate = useNavigate();
-  useEffect(() => {
-    if (wizardData.workshop === '') {
-      navigate('/wizard');
-    }
-  }, []);
 
   return (
     <Container>
@@ -53,7 +48,7 @@ function StepCoinName({ wizardData }) {
           <WizardSteppers activeStepCount={1} from={'coin'} />
         </Grid>
         <Grid item lg={12} md={12} sm={12} xs={12}>
-          <Card sx={{ p: 6 }}>
+          <Card sx={{ p: 6 }} elevation={0}>
             <Grid container spacing={4}>
               <Grid item lg={12} md={12} sm={12} xs={12}>
                 <TextField

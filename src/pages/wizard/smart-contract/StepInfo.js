@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Typography,
   Button,
@@ -17,11 +17,6 @@ import WizardSteppers from '../WizardSteppers';
 
 function StepInfo({ wizardData }) {
   let navigate = useNavigate();
-  useEffect(() => {
-    if (wizardData.workshop === '') {
-      navigate('/wizard');
-    }
-  }, []);
 
   return (
     <Container>
@@ -55,7 +50,7 @@ function StepInfo({ wizardData }) {
           <WizardSteppers activeStepCount={4} />
         </Grid>
         <Grid item lg={12} md={12} sm={12} xs={12}>
-          <Card sx={{ p: 6 }}>
+          <Card sx={{ p: 6 }} elevation={0}>
             <ListItem>
               <ListItemAvatar>
                 <img width={'60%'} src={ethereumBlue} alt="icon" />

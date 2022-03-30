@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import customLogo from './../../../assets/customLogo.svg';
 import { Typography, Button, Grid, Container, Card } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -7,11 +7,6 @@ import { PropTypes } from 'prop-types';
 
 function StepCoinCustomLogo({ wizardData }) {
   let navigate = useNavigate();
-  useEffect(() => {
-    if (wizardData.workshop === '') {
-      navigate('/wizard');
-    }
-  }, []);
 
   return (
     <Container>
@@ -47,7 +42,7 @@ function StepCoinCustomLogo({ wizardData }) {
         </Grid>
 
         <Grid item lg={12} md={12} sm={12} xs={12}>
-          <Card sx={{ p: 6 }}>
+          <Card sx={{ p: 6 }} elevation={0}>
             <Grid container spacing={2}>
               <Grid item sm={6} xs={12} lg={6}>
                 <Typography>Wallet icon</Typography>

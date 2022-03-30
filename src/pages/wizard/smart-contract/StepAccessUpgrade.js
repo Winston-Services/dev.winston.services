@@ -67,7 +67,7 @@ function stepAccessUpgrade({ wizardData }) {
         </Grid>
 
         <Grid item lg={12} md={12} sm={12} xs={12}>
-          <Card sx={{ p: 6 }}>
+          <Card sx={{ p: 6 }} elevation={0}>
             <ListItem>
               <ListItemAvatar>
                 <img width={'60%'} src={ethereumBlue} alt="icon" />

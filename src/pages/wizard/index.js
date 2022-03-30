@@ -1,5 +1,5 @@
-import React from 'react';
-import { useRoutes } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useRoutes, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import StepAlgorithmCoin from './coin/StepAlgorithm';
 import Network from './smart-contract/Network';
@@ -19,10 +19,15 @@ import Checkout from './Checkout';
 
 export default function Wizard() {
   const wizardData = useSelector(wizardDataSelector);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const setWizardData = (data) => {
     dispatch(updateWizardData(data));
   };
+
+  useEffect(() => {
+    navigate('/wizard');
+  }, []);
 
   const routes = [
     {

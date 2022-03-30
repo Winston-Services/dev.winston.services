@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ethereumBlue from './../../../assets/ethereum_blue.svg';
 import { PropTypes } from 'prop-types';
@@ -19,12 +19,6 @@ import WizardSteppers from './../WizardSteppers';
 function StepSetting({ wizardData }) {
   console.log(wizardData);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (wizardData.workshop === '') {
-      navigate('/wizard');
-    }
-  }, []);
 
   return (
     <Container>
@@ -59,7 +53,7 @@ function StepSetting({ wizardData }) {
         </Grid>
 
         <Grid item lg={12} md={12} sm={12} xs={12}>
-          <Card sx={{ p: 6 }}>
+          <Card sx={{ p: 6 }} elevation={0}>
             {/* <Grid container>
               <Grid item lg={1} md={12} sm={12} xs={12}>
                 <img src={ethereumBlue} alt="icon" />
