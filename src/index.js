@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
-import * as ReactDOMClient from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { store } from './store';
 import { Provider } from 'react-redux';
 import ThemeLoader from './components/theme-loader';
@@ -12,8 +12,8 @@ import './index.css';
 
 import { isElectron } from './utils/commonFunctions';
 
-const root = ReactDOMClient.createRoot(document.getElementById('root'));
-root.render(
+const rootNode = document.getElementById('root');
+ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeLoader>
@@ -28,7 +28,8 @@ root.render(
         )}
       </ThemeLoader>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  rootNode
 );
 
 // If you want to start measuring performance in your app, pass a function
