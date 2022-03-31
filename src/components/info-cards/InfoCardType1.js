@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { Grid } from '@mui/material';
 import { PropTypes } from 'prop-types';
+
 import CardType1 from './CardType1';
 export default function InfoCardType1({ data }) {
   const [open, setOpen] = React.useState({});

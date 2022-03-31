@@ -1,5 +1,7 @@
-import { Container, Grid, Paper, Typography } from '@mui/material';
 import React from 'react';
+
+import { Container, Grid, Paper, Typography } from '@mui/material';
+
 import OwnerTransactionsTabs from './components/OwnerTransactionsTabs';
 
 function OwnerTransactions() {

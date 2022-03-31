@@ -1,9 +1,11 @@
 import React from 'react';
+
 import { Grid, Typography } from '@mui/material';
-import nodeHosting from '../../../assets/node_hosting.svg';
-import miningPool from '../../../assets/mining_pool_hosting.svg';
-import masterNode from '../../../assets/master_node_hosting.svg';
+
 import chainExplorer from '../../../assets/chain_explorer.svg';
+import masterNode from '../../../assets/master_node_hosting.svg';
+import miningPool from '../../../assets/mining_pool_hosting.svg';
+import nodeHosting from '../../../assets/node_hosting.svg';
 import InfoCardType1 from '../../../components/info-cards/InfoCardType1';
 let data = [
   {

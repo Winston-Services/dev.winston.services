@@ -1,15 +1,5 @@
 import * as React from 'react';
-import { PropTypes } from 'prop-types';
-import { styled } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
 
-import StepConnector, {
-  stepConnectorClasses,
-} from '@mui/material/StepConnector';
-import { useMediaQuery } from '@mui/material';
 import {
   Info,
   Memory,
@@ -17,6 +7,16 @@ import {
   Security,
   Settings,
 } from '@mui/icons-material';
+import { useMediaQuery } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import Step from '@mui/material/Step';
+import StepConnector, {
+  stepConnectorClasses,
+} from '@mui/material/StepConnector';
+import StepLabel from '@mui/material/StepLabel';
+import Stepper from '@mui/material/Stepper';
+import { styled } from '@mui/material/styles';
+import { PropTypes } from 'prop-types';
 
 const ColorLibConnector = styled(StepConnector)(({ theme }) => {
   return {
@@ -100,19 +100,19 @@ export default function WizardSteppers({ activeStepCount, from = 'other' }) {
   const steps =
     from === 'coin'
       ? [
-          'Algorithm',
-          'Coin Name',
-          'Block  Reward',
-          'Block Confirmation',
-          'Custom Logo',
-        ]
+        'Algorithm',
+        'Coin Name',
+        'Block  Reward',
+        'Block Confirmation',
+        'Custom Logo',
+      ]
       : [
-          'Smart Contract Type',
-          'Settings',
-          'Features',
-          'Access and Upgradeability',
-          'Info',
-        ];
+        'Smart Contract Type',
+        'Settings',
+        'Features',
+        'Access and Upgradeability',
+        'Info',
+      ];
   const matches = useMediaQuery('(min-width:535px)');
   return (
     <Stack spacing={4}>

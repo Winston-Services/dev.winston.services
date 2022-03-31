@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { Grid, Typography, Button, Box } from '@mui/material';
-import WinstonRobot from './../../../assets/discord_winston_robot.svg';
-import DiscordLaptop from './../../../assets/discord_laptop.svg';
 import { useNavigate } from 'react-router-dom';
+
+import DiscordLaptop from './../../../assets/discord_laptop.svg';
+import WinstonRobot from './../../../assets/discord_winston_robot.svg';
 
 export default function Discord() {
   const navigate = useNavigate();

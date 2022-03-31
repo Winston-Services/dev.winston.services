@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Grid,
   Card,
@@ -8,14 +9,16 @@ import {
   CardContent,
   Box,
 } from '@mui/material';
-import verification from './../../assets/verification.svg';
-// import verification1 from '../../assets/verification1.png';
+import { PropTypes } from 'prop-types';
+import { useSelector } from 'react-redux';
+
 import coin from './../../assets/coin.svg';
 import smartContract from './../../assets/smart_contract.svg';
+import verification from './../../assets/verification.svg';
+// import verification1 from '../../assets/verification1.png';
 // import { useNavigate } from 'react-router-dom';
 import { wizardDataSelector } from './../../store/wizard';
-import { useSelector } from 'react-redux';
-import { PropTypes } from 'prop-types';
+
 const CheckoutCard = ({ data }) => {
   // let navigate = useNavigate();
   return (

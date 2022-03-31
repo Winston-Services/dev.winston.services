@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Grid, Typography, Box } from '@mui/material';
+
 import CryptoLandingImage from './../../../components/crypto-landing-image/index';
 
 export default function Home() {

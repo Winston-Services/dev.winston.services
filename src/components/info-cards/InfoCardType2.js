@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { Grid } from '@mui/material';
 import { PropTypes } from 'prop-types';
+
 import CardType2 from './CardType2';
 export default function InfoCardType2({ data }) {
   return (

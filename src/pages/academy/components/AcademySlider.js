@@ -1,9 +1,11 @@
 import React from 'react';
+
 import Slider from 'react-slick';
+
 import AcademyImage from './../../../assets/academy_image.svg';
 import { ReactComponent as BeginnerIcon } from './../../../assets/beginner_icon.svg';
-import { ReactComponent as IntermediateIcon } from './../../../assets/intermediate_icon.svg';
 import { ReactComponent as ExpertIcon } from './../../../assets/expert_icon.svg';
+import { ReactComponent as IntermediateIcon } from './../../../assets/intermediate_icon.svg';
 import AcademyCard from './AcademyCard';
 
 export default function AcademySlider() {

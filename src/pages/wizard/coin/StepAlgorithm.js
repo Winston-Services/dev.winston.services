@@ -1,32 +1,26 @@
 import React from 'react';
+
 import { Grid, Card, Typography, Container, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import WizardSteppers from '../WizardSteppers';
-import { PropTypes } from 'prop-types';
-
-import TextField from './../../../components/common/TextField';
-import DropDown from './../../../components/common/DropDown';
-
 import { Formik, Form } from 'formik';
+import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-const INITIAL_FORM_STATE = {
-  email: '',
-  coinType: 'Paid',
-  coinAlgorithm: 'Scrpt - proof of work1',
-};
+import WizardSteppers from '../WizardSteppers';
+import DropDown from './../../../components/common/DropDown';
+import TextField from './../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
-  email: Yup.string().email('Invalid email id').required('Email is required'),
-  coinType: Yup.string().required('Select coin type'),
-  coinAlgorithm: Yup.string().required('Select coin algorithm'),
+  // email: Yup.string().email('Invalid email id').required('Email is required'),
+  // coinType: Yup.string().required('Select coin type'),
+  // coinAlgorithm: Yup.string().required('Select coin algorithm'),
 });
 
-function StepAlgorithmCoin({ wizardData }) {
+function StepAlgorithmCoin({ wizardData, wizardFormData, setWizardFormData }) {
   let navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    console.log(values);
+    setWizardFormData(values);
     navigate('/wizard/step-coin-name');
   };
 
@@ -65,7 +59,7 @@ function StepAlgorithmCoin({ wizardData }) {
 
         <Grid item xs={12}>
           <Formik
-            initialValues={{ ...INITIAL_FORM_STATE }}
+            initialValues={{ ...wizardFormData }}
             validationSchema={FORM_VALIDATION}
             onSubmit={handleSubmit}
           >
@@ -116,6 +110,8 @@ function StepAlgorithmCoin({ wizardData }) {
 StepAlgorithmCoin.propTypes = {
   wizardData: PropTypes.object,
   setWizardData: PropTypes.func,
+  wizardFormData: PropTypes.object,
+  setWizardFormData: PropTypes.func,
 };
 
 export default StepAlgorithmCoin;

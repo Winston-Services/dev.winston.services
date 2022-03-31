@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { Grid, Typography, Button, Box } from '@mui/material';
-import AcademyBooks from './../../../assets/academy.svg';
 import { useNavigate } from 'react-router-dom';
+
+import AcademyBooks from './../../../assets/academy.svg';
 
 export default function Academy() {
   const navigate = useNavigate();

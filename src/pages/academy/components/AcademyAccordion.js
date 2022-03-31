@@ -1,4 +1,8 @@
 import React from 'react';
+
+import { ExpandMore } from '@mui/icons-material';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import StarIcon from '@mui/icons-material/Star';
 import {
   Accordion,
   AccordionDetails,
@@ -8,12 +12,9 @@ import {
   Grid,
   Link,
 } from '@mui/material';
+import { useNavigate } from 'react-router';
 
 import { ReactComponent as PlayCircleIcon } from './../../../assets/play_circle.svg';
-import StarIcon from '@mui/icons-material/Star';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import { ExpandMore } from '@mui/icons-material';
-import { useNavigate } from 'react-router';
 
 function AcademyAccordion() {
   const navigate = useNavigate();

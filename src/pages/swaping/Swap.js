@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Typography,
   Grid,
@@ -7,8 +8,9 @@ import {
   Button,
   Container,
 } from '@mui/material';
-import SwapTable from './SwapTable';
+
 import DropDown from '../../components/common/DropDown';
+import SwapTable from './SwapTable';
 
 export default function SwapPublic() {
   const rowsFaucetOnnWinston = [

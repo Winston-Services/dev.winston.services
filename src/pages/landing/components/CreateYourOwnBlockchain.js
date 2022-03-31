@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { Grid, Typography, Button, Box } from '@mui/material';
-import CreateYourOwnBlock from './../../../assets/create_blockchain.svg';
 import { useNavigate } from 'react-router-dom';
+
+import CreateYourOwnBlock from './../../../assets/create_blockchain.svg';
 
 export default function CreateYourOwnBlockchain() {
   const navigate = useNavigate();

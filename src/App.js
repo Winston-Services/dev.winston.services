@@ -1,14 +1,18 @@
 import * as React from 'react';
-import { Navigate, useRoutes } from 'react-router-dom';
-import AuthLayout from './layouts/AuthLayout';
-import useAuth, { AuthProvider, AuthRedirect } from './context/authContext';
-import { CircularProgress, Box } from '@mui/material';
 
+import { CircularProgress, Box } from '@mui/material';
+import { Navigate, useRoutes } from 'react-router-dom';
+
+import ScrollToTop from './components/scroll-to-top';
+import useAuth, { AuthProvider, AuthRedirect } from './context/authContext';
+import AuthLayout from './layouts/AuthLayout';
 import LandingLayout from './layouts/LandingLayout';
-import SignInLayout from './layouts/SignInLayout';
-import PublicPageLayout from './layouts/PublicPageLayout';
-import SuccessLayout from './layouts/SuccessLayout';
 import PlaneLayout from './layouts/PlaneLayout';
+import PublicPageLayout from './layouts/PublicPageLayout';
+import SignInLayout from './layouts/SignInLayout';
+import SuccessLayout from './layouts/SuccessLayout';
+import Certificate from './pages/certificate/Certificate';
+import './App.css';
 
 const Dashboard = React.lazy(() => import('./pages/dashboard'));
 const Marketplace = React.lazy(() => import('./pages/marketplace'));
@@ -48,9 +52,6 @@ const Swaping = React.lazy(() => import('./pages/swaping/Swap'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
 const CommunityFunding = React.lazy(() => import('./pages/community-funding'));
 
-import ScrollToTop from './components/scroll-to-top';
-import './App.css';
-import Certificate from './pages/certificate/Certificate';
 export default function App() {
   const auth = useAuth();
 

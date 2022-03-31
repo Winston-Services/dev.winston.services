@@ -1,5 +1,8 @@
-import Container from '@mui/material/Container';
+import React from 'react';
+
 import { Grid, Typography } from '@mui/material';
+import Container from '@mui/material/Container';
+
 // import antsCoin from '../../assets/coins/ants-coin.svg';
 // import botcoin from '../../assets/coins/botcoin.svg';
 // import btt from '../../assets/coins/btt.svg';
@@ -9,7 +12,7 @@ import { Grid, Typography } from '@mui/material';
 // import skillcoin from '../../assets/coins/skillcoin.svg';
 // import usdc from '../../assets/coins/usdc.svg';
 import cryptoCurrency from './../../assets/crypto_currency.svg';
-import React from 'react';
+
 
 const SupportedCoins = () => {
   const data = [

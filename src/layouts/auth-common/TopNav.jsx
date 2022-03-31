@@ -1,4 +1,14 @@
 import React from 'react';
+
+import {
+  AccountCircle,
+  Notifications as NotificationsIcon,
+  Brightness4,
+  Brightness7,
+  ExitToApp,
+  Menu as MenuIcon,
+  KeyboardArrowDown,
+} from '@mui/icons-material';
 import {
   Menu,
   Box,
@@ -12,22 +22,14 @@ import {
   Grid,
   Button,
 } from '@mui/material';
-import {
-  AccountCircle,
-  Notifications as NotificationsIcon,
-  Brightness4,
-  Brightness7,
-  ExitToApp,
-  Menu as MenuIcon,
-  KeyboardArrowDown,
-} from '@mui/icons-material';
-import { useSelector, useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
-import useAuth from '../../context/authContext';
+import { useSelector, useDispatch } from 'react-redux';
+
 import logoLight from '../../assets/logo.svg';
 import logoDark from '../../assets/logo_dark.svg';
-import { themeModeSelector, toggleTheme } from '../../store/themeColors';
+import useAuth from '../../context/authContext';
 import { sideBarStateSelector, toggleSideBar } from '../../store/sideBar';
+import { themeModeSelector, toggleTheme } from '../../store/themeColors';
 import { stringAvatar } from '../../utils/commonFunctions';
 
 const AppBar = styled(MuiAppBar, {

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ExpandMore } from '@mui/icons-material';
+import CloseIcon from '@mui/icons-material/Close';
 import {
   Typography,
   Button,
@@ -16,10 +18,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from '@mui/material';
-
-import CloseIcon from '@mui/icons-material/Close';
 import { PropTypes } from 'prop-types';
-import { ExpandMore } from '@mui/icons-material';
 
 const categoriesFilter = [
   'Art',

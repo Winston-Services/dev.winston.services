@@ -1,9 +1,12 @@
 import React from 'react';
-import customLogo from './../../../assets/customLogo.svg';
+
 import { Typography, Button, Grid, Container, Card } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import WizardSteppers from './../WizardSteppers';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
+import customLogo from './../../../assets/customLogo.svg';
+import WizardSteppers from './../WizardSteppers';
+
 
 function StepCoinCustomLogo({ wizardData }) {
   let navigate = useNavigate();

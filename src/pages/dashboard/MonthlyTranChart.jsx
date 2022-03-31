@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { useSelector } from 'react-redux';
 import {
   AreaChart,
   Area,
@@ -7,7 +9,6 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import { useSelector } from 'react-redux';
 
 const data = [
   {

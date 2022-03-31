@@ -1,28 +1,39 @@
 import React, { useEffect } from 'react';
-import { useRoutes, useNavigate } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
-import StepAlgorithmCoin from './coin/StepAlgorithm';
-import Network from './smart-contract/Network';
-import StepCoinName from './coin/StepCoinName';
-import StepCoinBlockReward from './coin/StepBlockReward';
-import StepCoinBlockConfirmation from './coin/StepBlockConfirmation';
-import StepLogo from './coin/StepLogo';
-import Workshop from './Workshop';
+import { useRoutes, useNavigate } from 'react-router-dom';
+
+import {
+  wizardDataSelector,
+  wizardFormDataSelector,
+  updateWizardData,
+  updateWizardFormData,
+} from './../../store/wizard';
 import NoMatch from './../NoMatch';
-import { wizardDataSelector, updateWizardData } from './../../store/wizard';
-import StepSetting from './smart-contract/StepSetting';
-import StepFeature from './smart-contract/StepFeature';
-import StepAccessUpgrade from './smart-contract/StepAccessUpgrade';
-import StepInfo from './smart-contract/StepInfo';
 import Certificate from './Certificate';
 import Checkout from './Checkout';
+import StepAlgorithmCoin from './coin/StepAlgorithm';
+import StepCoinBlockConfirmation from './coin/StepBlockConfirmation';
+import StepCoinBlockReward from './coin/StepBlockReward';
+import StepCoinName from './coin/StepCoinName';
+import StepLogo from './coin/StepLogo';
+import Network from './smart-contract/Network';
+import StepAccessUpgrade from './smart-contract/StepAccessUpgrade';
+import StepFeature from './smart-contract/StepFeature';
+import StepInfo from './smart-contract/StepInfo';
+import StepSetting from './smart-contract/StepSetting';
+import Workshop from './Workshop';
 
 export default function Wizard() {
   const wizardData = useSelector(wizardDataSelector);
+  const wizardFormData = useSelector(wizardFormDataSelector);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const setWizardData = (data) => {
     dispatch(updateWizardData(data));
+  };
+  const setWizardFormData = (data) => {
+    dispatch(updateWizardFormData(data));
   };
 
   useEffect(() => {
@@ -45,6 +56,8 @@ export default function Wizard() {
             <StepAlgorithmCoin
               wizardData={wizardData}
               setWizardData={setWizardData}
+              wizardFormData={wizardFormData}
+              setWizardFormData={setWizardFormData}
             />
           ),
         },
@@ -54,6 +67,8 @@ export default function Wizard() {
             <StepCoinName
               wizardData={wizardData}
               setWizardData={setWizardData}
+              wizardFormData={wizardFormData}
+              setWizardFormData={setWizardFormData}
             />
           ),
         },
@@ -63,6 +78,8 @@ export default function Wizard() {
             <StepCoinBlockReward
               wizardData={wizardData}
               setWizardData={setWizardData}
+              wizardFormData={wizardFormData}
+              setWizardFormData={setWizardFormData}
             />
           ),
         },
@@ -72,6 +89,8 @@ export default function Wizard() {
             <StepCoinBlockConfirmation
               wizardData={wizardData}
               setWizardData={setWizardData}
+              wizardFormData={wizardFormData}
+              setWizardFormData={setWizardFormData}
             />
           ),
         },

@@ -1,46 +1,35 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import WizardSteppers from './../WizardSteppers';
+
 import { Grid, Typography, Container, Card, Button } from '@mui/material';
-import { PropTypes } from 'prop-types';
-
-import TextField from './../../../components/common/TextField';
-import DropDown from './../../../components/common/DropDown';
-
 import { Formik, Form } from 'formik';
+import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-const INITIAL_FORM_STATE = {
-  coinName: '',
-  coinAbbreviation: '',
-  addressLetter: '1',
-  addressLetterTestnet: 'A',
-  coinUnit: '',
-  timestamp: '',
-  websiteUrl: '',
-  githubUrl: '',
-};
+import DropDown from './../../../components/common/DropDown';
+import TextField from './../../../components/common/TextField';
+import WizardSteppers from './../WizardSteppers';
 
 const FORM_VALIDATION = Yup.object().shape({
-  coinName: Yup.string().required('Coin name is required'),
-  coinAbbreviation: Yup.string().required('Coin abbreviation is required'),
-  addressLetter: Yup.string().required('Address letter is required'),
-  addressLetterTestnet: Yup.string().required(
-    'Address letter testnet is required'
-  ),
-  coinUnit: Yup.string().required('Coin unit is required'),
-  timestamp: Yup.string().required('Timestamp is required'),
-  websiteUrl: Yup.string()
-    .required('Website URL is required')
-    .url('Invalid URL'),
-  githubUrl: Yup.string().required('Github URL is required').url('Invalid URL'),
+  // coinName: Yup.string().required('Coin name is required'),
+  // coinAbbreviation: Yup.string().required('Coin abbreviation is required'),
+  // addressLetter: Yup.string().required('Address letter is required'),
+  // addressLetterTestnet: Yup.string().required(
+  //   'Address letter testnet is required'
+  // ),
+  // coinUnit: Yup.string().required('Coin unit is required'),
+  // timestamp: Yup.string().required('Timestamp is required'),
+  // websiteUrl: Yup.string()
+  //   .required('Website URL is required')
+  //   .url('Invalid URL'),
+  // githubUrl: Yup.string().required('Github URL is required').url('Invalid URL'),
 });
 
-function StepCoinName({ wizardData }) {
+function StepCoinName({ wizardData, wizardFormData, setWizardFormData }) {
   let navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    console.log(values);
+    setWizardFormData(values);
     navigate('/wizard/step-coin-block-reward');
   };
 
@@ -78,7 +67,7 @@ function StepCoinName({ wizardData }) {
         </Grid>
         <Grid item xs={12}>
           <Formik
-            initialValues={{ ...INITIAL_FORM_STATE }}
+            initialValues={{ ...wizardFormData }}
             validationSchema={FORM_VALIDATION}
             onSubmit={handleSubmit}
           >
@@ -155,6 +144,8 @@ function StepCoinName({ wizardData }) {
 
 StepCoinName.propTypes = {
   wizardData: PropTypes.object,
+  wizardFormData: PropTypes.object,
+  setWizardFormData: PropTypes.func,
 };
 
 export default StepCoinName;

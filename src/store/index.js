@@ -1,7 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import user from './user';
+
 import sideBar from './sideBar';
 import themeColors from './themeColors';
+import user from './user';
 import wizard from './wizard';
 const rootReducer = combineReducers({
   user,

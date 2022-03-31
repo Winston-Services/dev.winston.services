@@ -1,13 +1,15 @@
 import * as React from 'react';
+
 import { Grid, Paper, Typography } from '@mui/material';
-import TopUsers from './TopUsers';
-import ServerPlanBarChart from './ServerPlanBarChart';
-import BalanceChart from './BalanceChart';
-import MonthlyTranChart from './MonthlyTranChart';
-import InOutAreaChart from './InOutAreaChart';
+
 import AccountCreated from './AccountCreated';
+import BalanceChart from './BalanceChart';
 import BotPlanBarChart from './BotPlanBarChart';
+import InOutAreaChart from './InOutAreaChart';
+import MonthlyTranChart from './MonthlyTranChart';
 import RecentTransactions from './RecentTransactions';
+import ServerPlanBarChart from './ServerPlanBarChart';
+import TopUsers from './TopUsers';
 
 export default function index() {
   return (

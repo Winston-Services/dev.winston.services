@@ -1,4 +1,13 @@
 import React from 'react';
+
+
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FlagIcon from '@mui/icons-material/Flag';
+import LinkIcon from '@mui/icons-material/Link';
+import RedoIcon from '@mui/icons-material/Redo';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import {
   Typography,
   Paper,
@@ -8,18 +17,10 @@ import {
   Chip,
   IconButton,
 } from '@mui/material';
-
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import FlagIcon from '@mui/icons-material/Flag';
-import RedoIcon from '@mui/icons-material/Redo';
-import LinkIcon from '@mui/icons-material/Link';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-
-import ProductImage from '../../assets/product_image.png';
-import ProductDetailsEthereum from '../../assets/product_details_ethereum.svg';
 import { useNavigate } from 'react-router-dom';
+
+import ProductDetailsEthereum from '../../assets/product_details_ethereum.svg';
+import ProductImage from '../../assets/product_image.png';
 import ProductDetailTabs from './components/ProductDetailTabs';
 
 function ProductDetails() {

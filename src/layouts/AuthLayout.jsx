@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import SideBar from './auth-common/SideBar';
-import TopNav from './auth-common/TopNav';
+
 import { Box, Container } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+
 import { setTheme } from '../store/themeColors';
 import { sideBarStateSelector } from './../store/sideBar';
+import SideBar from './auth-common/SideBar';
+import TopNav from './auth-common/TopNav';
 
 function Layout() {
   const dispatch = useDispatch();

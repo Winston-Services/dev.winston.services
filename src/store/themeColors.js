@@ -137,7 +137,7 @@ const publicPageColors = {
     MuiAccordion: {
       styleOverrides: {
         root: {
-          backgroundColor: `#31256C`,
+          backgroundColor: '#31256C',
         },
       },
       variants: [
@@ -288,7 +288,7 @@ const publicPageColors = {
       },
       tabIndicatorStyle: {
         style: {
-          background: `linear-gradient(90deg, #EA7A8F 0%, #E452C8 99.4%)`,
+          background: 'linear-gradient(90deg, #EA7A8F 0%, #E452C8 99.4%)',
         },
       },
     },
@@ -486,7 +486,7 @@ const initialState = {
   chartColors: createChartVariable('dark'),
 };
 
-export const themeColors = createSlice({
+export const themeColorsSlice = createSlice({
   name: 'themeColors',
   initialState,
   reducers: {
@@ -510,8 +510,9 @@ export const themeColors = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleTheme, setTheme } = themeColors.actions;
+export const { toggleTheme, setTheme } = themeColorsSlice.actions;
 export const themeModeSelector = (state) =>
   state.themeColors.colors.palette.type;
 export const themeSelector = (state) => state.themeColors.colors;
-export default themeColors.reducer;
+const themeColors = themeColorsSlice.reducer;
+export default themeColors;

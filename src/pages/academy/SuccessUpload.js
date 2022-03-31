@@ -1,6 +1,8 @@
-import { Button, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
+
+import { Button, Container, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
 import CertificateStar from './../../assets/certificate_star.svg';
 
 export default function SuccessUpload() {

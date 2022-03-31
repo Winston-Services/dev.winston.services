@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
   TableBody,
   TableCell,
@@ -10,12 +11,13 @@ import {
   Table,
   Container,
   Divider,
-} from '@mui/material';
+  Grid } from '@mui/material';
+import { styled } from '@mui/styles';
+import { PropTypes } from 'prop-types';
+
 import TotalTokens from '../../assets/total_tokens.svg';
 import TotalTokensGiven from '../../assets/total_tokens_given.svg';
-import { PropTypes } from 'prop-types';
-import { Grid } from '@mui/material';
-import { styled } from '@mui/styles';
+
 // import { DataGrid } from '@mui/x-data-grid';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
   Typography,
@@ -11,10 +10,12 @@ import {
   Tabs,
   Tab,
 } from '@mui/material';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import HistoryImage from '../../../assets/history_image.png';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

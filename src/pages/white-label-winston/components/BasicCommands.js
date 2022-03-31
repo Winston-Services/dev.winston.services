@@ -1,8 +1,9 @@
 import React from 'react';
-import Date from './../../../assets/time_date.svg';
+
 import GetTrigger from './../../../assets/get_trigger.svg';
 import Hello from './../../../assets/hello_icon.svg';
 import Ping from './../../../assets/ping_icon.svg';
+import Date from './../../../assets/time_date.svg';
 import InfoCard from './../../../components/info-cards';
 
 export default function BasicCommands() {

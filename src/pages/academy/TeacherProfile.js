@@ -1,9 +1,11 @@
 import React from 'react';
-import { Container, Grid, IconButton, Paper, Typography } from '@mui/material';
+
 import { Twitter, YouTube } from '@mui/icons-material';
-import { ReactComponent as Discord } from './../../assets/discord_brands.svg';
-import { ReactComponent as EyeIcon } from '../../assets/eye_icon.svg';
+import { Container, Grid, IconButton, Paper, Typography } from '@mui/material';
+
 import { ReactComponent as Badge } from '../../assets/badge_icon.svg';
+import { ReactComponent as EyeIcon } from '../../assets/eye_icon.svg';
+import { ReactComponent as Discord } from './../../assets/discord_brands.svg';
 import TeacherProfileImage from './../../assets/teacher_image.png';
 import TeacherProfileTabs from './components/TeacherProfileTabs';
 

@@ -1,4 +1,9 @@
 import * as React from 'react';
+
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import ListIcon from '@mui/icons-material/List';
+import SearchIcon from '@mui/icons-material/Search';
 import {
   Typography,
   Button,
@@ -8,18 +13,13 @@ import {
   Badge,
   Container,
 } from '@mui/material';
-import ListIcon from '@mui/icons-material/List';
+
 import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
 import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
 import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
 import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
 import NftMarketPlace5 from '../../assets/nft_marketplace_5.png';
-
-import SearchIcon from '@mui/icons-material/Search';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
 import Filter from './components/Filter';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import ProductCard from './components/ProductCard';
 const items = [
   {

@@ -1,32 +1,15 @@
 import React from 'react';
-import {
-  Typography,
-  FormControlLabel,
-  Checkbox,
-  Container,
-  Grid,
-  Card,
-  Button,
-  FormHelperText,
-} from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import WizardSteppers from '../WizardSteppers';
-import { PropTypes } from 'prop-types';
 
-import TextField from './../../../components/common/TextField';
-import DropDown from './../../../components/common/DropDown';
-
+import { Typography, Container, Grid, Card, Button } from '@mui/material';
 import { Formik, Form } from 'formik';
+import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-const INITIAL_FORM_STATE = {
-  coinbaseMaturity: '',
-  numberOfConfirmations: '',
-  targetSpacingInMinutes: '',
-  targetTimespanInMinutes: '10',
-  node1: '',
-  node2: '',
-};
+import WizardSteppers from '../WizardSteppers';
+import CheckBox from './../../../components/common/CheckBox';
+import DropDown from './../../../components/common/DropDown';
+import TextField from './../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
   coinbaseMaturity: Yup.string().required('Coinbase maturity is required'),
@@ -39,13 +22,18 @@ const FORM_VALIDATION = Yup.object().shape({
   targetTimespanInMinutes: Yup.string().required(
     'Target timespan in minutes is required'
   ),
+  hardCodedNode: Yup.boolean().oneOf([true]),
   node1: Yup.string().required('Node 1 is required'),
   node2: Yup.string().required('Node 2 is required'),
 });
-function StepCoinBlockConfirmation({ wizardData }) {
+function StepCoinBlockConfirmation({
+  wizardData,
+  wizardFormData,
+  setWizardFormData,
+}) {
   let navigate = useNavigate();
   const handleSubmit = (values) => {
-    console.log(values);
+    setWizardFormData(values);
     navigate('/wizard/step-coin-custom-logo');
   };
 
@@ -84,7 +72,7 @@ function StepCoinBlockConfirmation({ wizardData }) {
 
         <Grid item xs={12}>
           <Formik
-            initialValues={{ ...INITIAL_FORM_STATE }}
+            initialValues={{ ...wizardFormData }}
             validationSchema={FORM_VALIDATION}
             onSubmit={handleSubmit}
           >
@@ -115,16 +103,12 @@ function StepCoinBlockConfirmation({ wizardData }) {
                     options={[10, 20, 30]}
                     helperText={'Target timespan in minutes'}
                   />
-                  <Grid display={'flex'} alignItems="center">
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Hardcoded node"
-                    />
-                    <FormHelperText>
-                      (Your wallet will automatically connect with a hardcoded
-                      node.)
-                    </FormHelperText>
-                  </Grid>
+                  <CheckBox
+                    name="hardCodedNode"
+                    label={'Hardcoded node'}
+                    helperText="Your wallet will automatically connect with a hardcoded
+                    node."
+                  />
                   <TextField
                     name={'node1'}
                     label={'Node 1'}
@@ -155,5 +139,7 @@ function StepCoinBlockConfirmation({ wizardData }) {
 }
 StepCoinBlockConfirmation.propTypes = {
   wizardData: PropTypes.object,
+  wizardFormData: PropTypes.object,
+  setWizardFormData: PropTypes.func,
 };
 export default StepCoinBlockConfirmation;

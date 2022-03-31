@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Grid,
   Card,
@@ -7,11 +8,12 @@ import {
   CardContent,
   Box,
 } from '@mui/material';
-import coin from '../../assets/coin.svg';
-import smartContract from '../../assets/smart_contract.svg';
-import custom from '../../assets/custom.svg';
-import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
+import coin from '../../assets/coin.svg';
+import custom from '../../assets/custom.svg';
+import smartContract from '../../assets/smart_contract.svg';
 
 function Workshop({ wizardData, setWizardData }) {
   let navigate = useNavigate();

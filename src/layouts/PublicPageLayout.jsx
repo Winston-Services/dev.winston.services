@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+
 import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+
 import { setTheme } from '../store/themeColors';
-import LandingTopNav from './common/LandingTopNav';
 import LandingFooter from './common/LandingFooter';
+import LandingTopNav from './common/LandingTopNav';
 
 function PublicPageLayout() {
   const dispatch = useDispatch();

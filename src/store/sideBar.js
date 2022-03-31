@@ -75,7 +75,7 @@ const initialState = {
   ],
 };
 
-export const sideBar = createSlice({
+export const sideBarSlice = createSlice({
   name: 'sideBar',
   initialState,
   reducers: {
@@ -92,7 +92,8 @@ export const sideBar = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleSideBar, openMenu } = sideBar.actions;
+export const { toggleSideBar, openMenu } = sideBarSlice.actions;
 export const sideBarStateSelector = (state) => state.sideBar.isSideBarOpen;
 export const sideBarItemSelector = (state) => state.sideBar.sideBarItem;
-export default sideBar.reducer;
+const sideBar = sideBarSlice.reducer;
+export default sideBar;

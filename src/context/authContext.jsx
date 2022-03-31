@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+
+import { CircularProgress } from '@mui/material';
+import { PropTypes } from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router';
 import { Navigate } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
+
 import { userInfoSelector } from '../store/user';
-import { PropTypes } from 'prop-types';
+
 const oldToken = false;
 // const oldToken = localStorage.getItem('token')
 //   ? JSON.parse(localStorage.getItem('token'))

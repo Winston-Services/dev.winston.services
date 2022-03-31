@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+
 import { Box, Container } from '@mui/material';
+
+import Academy from './components/Academy';
+import CreateYourOwnBlockchain from './components/CreateYourOwnBlockchain';
+import Discord from './components/Discord';
 import Home from './components/Home';
 import Services from './components/Services';
-import Discord from './components/Discord';
-import CreateYourOwnBlockchain from './components/CreateYourOwnBlockchain';
-import Academy from './components/Academy';
 
 export default function Landing() {
   useEffect(() => {

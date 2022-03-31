@@ -1,5 +1,9 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+
+import AddIcon from '@mui/icons-material/Add';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { Chip, Grid, Link } from '@mui/material';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
@@ -10,10 +14,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { Chip, Grid, Link } from '@mui/material';
+import PropTypes from 'prop-types';
 
 function createData(
   transaction,

@@ -1,4 +1,6 @@
 import React from 'react';
+
+import SearchIcon from '@mui/icons-material/Search';
 import {
   Typography,
   Grid,
@@ -7,13 +9,13 @@ import {
   Container,
   InputAdornment,
 } from '@mui/material';
-import waterDrop from '../../assets/water_drop.svg';
-import FaucetTable from './FaucetTable';
-import TokenTable from './TokenTable';
+
 import BinanceSmartChain from '../../assets/binance_smart_chain.svg';
 import EthereumSmall from '../../assets/ethereum_small.svg';
 import Litecoin from '../../assets/litecoin.svg';
-import SearchIcon from '@mui/icons-material/Search';
+import waterDrop from '../../assets/water_drop.svg';
+import FaucetTable from './FaucetTable';
+import TokenTable from './TokenTable';
 
 export default function Faucet() {
   const rows = [

@@ -1,8 +1,10 @@
 import React from 'react';
+
+import { Grid, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+
 import bitcoin from './../../assets/bitcoin.svg';
 import send from './../../assets/send.svg';
-import { Grid, Typography } from '@mui/material';
 
 const columns = [
   { field: 'id', headerName: 'ID', sortable: false, hide: true },

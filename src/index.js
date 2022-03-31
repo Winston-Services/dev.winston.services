@@ -1,16 +1,17 @@
 import React from 'react';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+
 import ReactDOM from 'react-dom';
-import { store } from './store';
 import { Provider } from 'react-redux';
-import ThemeLoader from './components/theme-loader';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
+
 import App from './App';
+import ThemeLoader from './components/theme-loader';
 import reportWebVitals from './reportWebVitals';
+import { store } from './store';
+import { isElectron } from './utils/commonFunctions';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './index.css';
-
-import { isElectron } from './utils/commonFunctions';
 
 const rootNode = document.getElementById('root');
 ReactDOM.render(

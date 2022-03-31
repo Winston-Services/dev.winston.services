@@ -1,50 +1,38 @@
 import React from 'react';
-import {
-  Typography,
-  FormControlLabel,
-  Checkbox,
-  Grid,
-  Container,
-  Card,
-  Button,
-  FormHelperText,
-} from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import WizardSteppers from '../WizardSteppers';
-import { PropTypes } from 'prop-types';
 
-import TextField from './../../../components/common/TextField';
-import DropDown from './../../../components/common/DropDown';
-
+import { Typography, Grid, Container, Card, Button } from '@mui/material';
 import { Formik, Form } from 'formik';
+import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-const INITIAL_FORM_STATE = {
-  blockReward: '',
-  blockHalving: '',
-  coinSupplyWithoutPremine: '',
-  premine: 'Yes',
-  premineAmount: '',
-  coinSupplyWithPremine: '',
-};
+import WizardSteppers from '../WizardSteppers';
+import CheckBox from './../../../components/common/CheckBox';
+import DropDown from './../../../components/common/DropDown';
+import TextField from './../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
-  blockReward: Yup.string().required('Block reward is required'),
-  blockHalving: Yup.string().required('Block halving is required'),
-  coinSupplyWithoutPremine: Yup.string().required(
-    'Coin supply without premine is required'
-  ),
-  premine: Yup.string().required('Premine is required'),
-  premineAmount: Yup.string().required('Premine amount is required'),
-  coinSupplyWithPremine: Yup.string().required(
-    'Coin supply with premine is required'
-  ),
+  // blockReward: Yup.string().required('Block reward is required'),
+  // blockHalving: Yup.string().required('Block halving is required'),
+  // coinSupplyWithoutPremine: Yup.string().required(
+  //   'Coin supply without premine is required'
+  // ),
+  // fullPremine: Yup.boolean().oneOf([true], '100% premine must be accepted.'),
+  // premine: Yup.string().required('Premine is required'),
+  // premineAmount: Yup.string().required('Premine amount is required'),
+  // coinSupplyWithPremine: Yup.string().required(
+  //   'Coin supply with premine is required'
+  // ),
 });
-function StepCoinBlockReward({ wizardData }) {
+function StepCoinBlockReward({
+  wizardData,
+  wizardFormData,
+  setWizardFormData,
+}) {
   let navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    console.log(values);
+    setWizardFormData(values);
     navigate('/wizard/step-coin-block-confirmation');
   };
 
@@ -83,7 +71,7 @@ function StepCoinBlockReward({ wizardData }) {
 
         <Grid item xs={12}>
           <Formik
-            initialValues={{ ...INITIAL_FORM_STATE }}
+            initialValues={{ ...wizardFormData }}
             validationSchema={FORM_VALIDATION}
             onSubmit={handleSubmit}
           >
@@ -114,16 +102,13 @@ function StepCoinBlockReward({ wizardData }) {
                     options={['Yes', 'No']}
                     helperText="Premine"
                   />
-                  <Grid display={'flex'} alignItems="center">
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="100% premine"
-                    />
-                    <FormHelperText>
-                      (Your total coin supply is available after the mining of
-                      block #1.)
-                    </FormHelperText>
-                  </Grid>
+
+                  <CheckBox
+                    name="fullPremine"
+                    label={'100% premine'}
+                    helperText="Your total coin supply is available after the mining of
+                      block #1."
+                  />
                   <TextField
                     name="premineAmount"
                     label={'Premine amount'}
@@ -155,5 +140,7 @@ function StepCoinBlockReward({ wizardData }) {
 }
 StepCoinBlockReward.propTypes = {
   wizardData: PropTypes.object,
+  wizardFormData: PropTypes.object,
+  setWizardFormData: PropTypes.func,
 };
 export default StepCoinBlockReward;

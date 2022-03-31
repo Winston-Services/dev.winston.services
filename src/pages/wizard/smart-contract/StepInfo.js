@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Typography,
   Button,
@@ -10,10 +11,11 @@ import {
   ListItemAvatar,
   Divider,
 } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import ethereumBlue from './../../../assets/ethereum_blue.svg';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
 import WizardSteppers from '../WizardSteppers';
+import ethereumBlue from './../../../assets/ethereum_blue.svg';
 
 function StepInfo({ wizardData }) {
   let navigate = useNavigate();

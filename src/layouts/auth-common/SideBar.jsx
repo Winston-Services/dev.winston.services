@@ -1,17 +1,19 @@
 import React from 'react';
+
+import { KeyboardArrowDown } from '@mui/icons-material';
+import { ListItemButton, ListItemText, Tooltip } from '@mui/material';
+import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import Icon from '@mui/material/Icon';
-import { ListItemButton, ListItemText, Tooltip } from '@mui/material';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { styled } from '@mui/material/styles';
+import { useSelector, useDispatch } from 'react-redux';
+
 import {
   openMenu,
   sideBarItemSelector,
   sideBarStateSelector,
 } from '../../store/sideBar';
-import { useSelector, useDispatch } from 'react-redux';
-import Box from '@mui/material/Box';
-import { KeyboardArrowDown } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -33,7 +35,7 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  width: `86px`,
+  width: '86px',
   height: 'calc(100vh - 86px)',
   top: '86px',
   borderWidth: '0px',

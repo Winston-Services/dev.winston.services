@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { Typography, Container, Button } from '@mui/material';
-import { Grid } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+
+import { Typography, Container, Button , Grid } from '@mui/material';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
 import binance from './../../../assets/binance.svg';
-import ethereum from './../../../assets/ethereum_white.svg';
 import ethereumBlue from './../../../assets/ethereum_blue.svg';
+import ethereum from './../../../assets/ethereum_white.svg';
 import polygonMatic from './../../../assets/polygon_matic.svg';
 import xDai from './../../../assets/x_dai.svg';
 import WizardCard from './../components/WizardCard';

@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Grid, Container, Box, Chip } from '@mui/material';
-import Logo from './../assets/logo.svg';
-import { useNavigate, Outlet } from 'react-router-dom';
+
 import { Twitter, YouTube } from '@mui/icons-material';
-import { ReactComponent as Discord } from './../assets/discord_brands.svg';
+import { Grid, Container, Box, Chip } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { useNavigate, Outlet } from 'react-router-dom';
+
 import { setTheme } from '../store/themeColors';
+import { ReactComponent as Discord } from './../assets/discord_brands.svg';
+import Logo from './../assets/logo.svg';
 import CryptoLandingImage from './../components/crypto-landing-image/index';
 
 function SignInLayout() {
@@ -17,7 +19,7 @@ function SignInLayout() {
   return (
     <Box sx={{ display: 'flex', height: '100%' }}>
       <Box
-        className={`signInGradient`}
+        className={'signInGradient'}
         component={'div'}
         sx={{ display: { xs: 'none', lg: 'block' } }}
       />

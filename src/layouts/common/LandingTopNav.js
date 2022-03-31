@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { Close, Menu as MenuIcon } from '@mui/icons-material';
 import {
   AppBar,
   Box,
@@ -14,9 +16,9 @@ import {
   Link,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
 import Logo from './../../assets/logo.svg';
 import ElevationScroll from './../../components/elevated-scroll/index';
-import { Close, Menu as MenuIcon } from '@mui/icons-material';
 
 const menuList = [
   {
@@ -80,8 +82,8 @@ export default function LandingTopNav() {
   return (
     <ElevationScroll>
       <AppBar>
-        <Box className={`landingInGradient bannerSkewY`} component={'div'}>
-          <Box className={`landingInGradientShades`} component={'div'}></Box>
+        <Box className={'landingInGradient bannerSkewY'} component={'div'}>
+          <Box className={'landingInGradientShades'} component={'div'}></Box>
         </Box>
         <Container maxWidth="lg">
           <Toolbar>
@@ -164,9 +166,9 @@ export default function LandingTopNav() {
                   onClose={toggleDrawer}
                   PaperProps={{ gradient: true }}
                 >
-                  <Box className={`landingInGradient`} component={'div'}>
+                  <Box className={'landingInGradient'} component={'div'}>
                     <Box
-                      className={`landingInGradientShades`}
+                      className={'landingInGradientShades'}
                       component={'div'}
                     ></Box>
                   </Box>

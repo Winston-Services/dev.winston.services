@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import ethereumBlue from './../../../assets/ethereum_blue.svg';
-import WizardSteppers from '../WizardSteppers';
+
 import {
   Typography,
   FormGroup,
@@ -19,6 +17,10 @@ import {
   ListItem,
   ListItemAvatar,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+import WizardSteppers from '../WizardSteppers';
+import ethereumBlue from './../../../assets/ethereum_blue.svg';
 
 function stepAccessUpgrade({ wizardData }) {
   let navigate = useNavigate();

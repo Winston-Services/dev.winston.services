@@ -1,12 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { Typography, Box, Tabs, Tab, Grid } from '@mui/material';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+
 import AcademyImage from './../../../assets/academy_image.svg';
 import { ReactComponent as BeginnerIcon } from './../../../assets/beginner_icon.svg';
-import { ReactComponent as IntermediateIcon } from './../../../assets/intermediate_icon.svg';
 import { ReactComponent as ExpertIcon } from './../../../assets/expert_icon.svg';
-
-import { useSelector } from 'react-redux';
+import { ReactComponent as IntermediateIcon } from './../../../assets/intermediate_icon.svg';
 import AcademyCard from './AcademyCard';
 
 const academyData = [

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+
 import { Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
+
 import { setTheme } from '../store/themeColors';
 
 function PlaneLayout() {

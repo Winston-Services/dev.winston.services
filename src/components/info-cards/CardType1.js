@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   Card,
   CardActionArea,
@@ -6,7 +8,6 @@ import {
   Typography,
   Collapse,
 } from '@mui/material';
-import React from 'react';
 import { PropTypes } from 'prop-types';
 
 export default function CardType1({ item, index, setOpen }) {

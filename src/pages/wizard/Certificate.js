@@ -1,8 +1,11 @@
-import { Button, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import CertificateStar from './../../assets/certificate_star.svg';
+
+import { Button, Container, Grid, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+
+import CertificateStar from './../../assets/certificate_star.svg';
+
 
 export default function Certificate({ wizardData, setWizardData }) {
   const navigate = useNavigate();

@@ -1,13 +1,16 @@
 import React from 'react';
+
 import { Button, Container, Grid, Typography } from '@mui/material';
-import DropDown2 from './../../components/common/DropDown2';
-import AcademyImage from './../../assets/academy_image.svg';
-import { ReactComponent as AcademyIcon } from './../../assets/academy_icon.svg';
-import { ReactComponent as BeginnerIcon } from './../../assets/beginner_icon.svg';
-import { ReactComponent as IntermediateIcon } from './../../assets/intermediate_icon.svg';
-import { ReactComponent as ExpertIcon } from './../../assets/expert_icon.svg';
-import AcademyCard from './components/AcademyCard';
 import { useNavigate } from 'react-router';
+
+import { ReactComponent as AcademyIcon } from './../../assets/academy_icon.svg';
+import AcademyImage from './../../assets/academy_image.svg';
+import { ReactComponent as BeginnerIcon } from './../../assets/beginner_icon.svg';
+import { ReactComponent as ExpertIcon } from './../../assets/expert_icon.svg';
+import { ReactComponent as IntermediateIcon } from './../../assets/intermediate_icon.svg';
+import DropDown2 from './../../components/common/DropDown2';
+import AcademyCard from './components/AcademyCard';
+
 
 const academyData = [
   {

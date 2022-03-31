@@ -1,4 +1,7 @@
 import React from 'react';
+
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import {
   Container,
   Grid,
@@ -10,11 +13,10 @@ import {
   Collapse,
   Box,
 } from '@mui/material';
-import TokenDetailsTable from './components/TokenDetailsTable';
 
 import ProductImage from '../../assets/product_image.png';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import TokenDetailsTable from './components/TokenDetailsTable';
+
 
 const nftDetails = [
   ['Background', 'Purple'],

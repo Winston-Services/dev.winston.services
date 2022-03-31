@@ -1,9 +1,12 @@
 import React from 'react';
-import { Typography, Button, Box, Link, TextField } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+
 import { LoadingButton } from '@mui/lab';
-import Wallet from './../../utils/wallet';
+import { Typography, Button, Box, Link, TextField } from '@mui/material';
 import fileDownload from 'js-file-download';
+import { useNavigate } from 'react-router-dom';
+
+import Wallet from './../../utils/wallet';
+
 
 function SignUp() {
   const navigate = useNavigate();

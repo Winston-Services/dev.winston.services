@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Button,
   Container,
@@ -7,8 +8,9 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { ReactComponent as UploadIcon } from './../../assets/upload_icon.svg';
 import { useNavigate } from 'react-router';
+
+import { ReactComponent as UploadIcon } from './../../assets/upload_icon.svg';
 
 function UploadVideo() {
   const navigate = useNavigate();

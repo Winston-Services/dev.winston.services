@@ -1,4 +1,9 @@
 import React from 'react';
+
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import CircleIcon from '@mui/icons-material/Circle';
+import StarIcon from '@mui/icons-material/Star';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import {
   Grid,
   Container,
@@ -8,15 +13,13 @@ import {
   Avatar,
   Link,
 } from '@mui/material';
+import { useNavigate } from 'react-router';
+
 import AcademyDetailsImage from '../../assets/academy_details_image.svg';
 import AuthorAvatar from '../../assets/author_avatar.svg';
-import CircleIcon from '@mui/icons-material/Circle';
-import StarIcon from '@mui/icons-material/Star';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import AcademyAccordion from './components/AcademyAccordion';
 import AcademySlider from './components/AcademySlider';
-import { useNavigate } from 'react-router';
+
 
 function AcademyDetails() {
   const navigate = useNavigate();

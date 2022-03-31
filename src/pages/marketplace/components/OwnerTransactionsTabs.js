@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Typography, Box, Tabs, Tab, Paper } from '@mui/material';
-
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import OwnerTransactionsTable from './OwnerTransactionsTable';
+
 import OwnerNftsTable from './OwnerNftsTable';
+import OwnerTransactionsTable from './OwnerTransactionsTable';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

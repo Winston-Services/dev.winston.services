@@ -1,13 +1,15 @@
 import React from 'react';
+
+import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { Button, Container, Grid, Typography } from '@mui/material';
-import { ReactComponent as CommunityFundingIcon } from './../../assets/community_funding_icon.svg';
+
 
 import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
 import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
 import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
 import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
+import { ReactComponent as CommunityFundingIcon } from './../../assets/community_funding_icon.svg';
 import ProductCard from './../marketplace/components/ProductCard';
-import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 function index() {
   const trendingItems = [
     {

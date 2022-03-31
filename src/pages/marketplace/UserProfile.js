@@ -1,6 +1,7 @@
 import React from 'react';
-import user_profile_cover from '../../assets/user_profile_cover.png';
-import user_profile from '../../assets/user_profile.png';
+
+import { Facebook, Instagram, Twitter } from '@mui/icons-material';
+import VerifiedIcon from '@mui/icons-material/Verified';
 import {
   Grid,
   Container,
@@ -10,10 +11,12 @@ import {
   IconButton,
   Paper,
 } from '@mui/material';
-import VerifiedIcon from '@mui/icons-material/Verified';
 import { PropTypes } from 'prop-types';
+
+import user_profile from '../../assets/user_profile.png';
+import user_profile_cover from '../../assets/user_profile_cover.png';
 import UserProfileTabs from './components/UserProfileTabs';
-import { Facebook, Instagram, Twitter } from '@mui/icons-material';
+
 
 const userData = [
   {

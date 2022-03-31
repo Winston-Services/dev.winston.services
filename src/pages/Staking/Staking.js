@@ -1,6 +1,7 @@
 import React from 'react';
-import StakingTable from './StakingTable';
-import CoinTable from './CoinTable';
+
+import { Typography, Grid, Card, Container, Divider } from '@mui/material';
+
 import BinanceSmartChain from '../../assets/binance_smart_chain.svg';
 import EthereumSmall from './../../assets/ethereum_small.svg';
 import ProofOfStake1 from './../../assets/proof_of_stake1.svg';
@@ -9,7 +10,9 @@ import ProofOfStake3 from './../../assets/proof_of_stake3.svg';
 import ProofOfWork1 from './../../assets/proof_of_work1.svg';
 import ProofOfWork2 from './../../assets/proof_of_work2.svg';
 import ProofOfWork3 from './../../assets/proof_of_work3.svg';
-import { Typography, Grid, Card, Container, Divider } from '@mui/material';
+import CoinTable from './CoinTable';
+import StakingTable from './StakingTable';
+
 
 const proofOfWork = [
   {

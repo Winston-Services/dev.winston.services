@@ -8,7 +8,7 @@ const initialState = {
   wallet: {},
 };
 
-export const user = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -24,6 +24,7 @@ export const user = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setUserInfo, setUserWallet } = user.actions;
+export const { setUserInfo, setUserWallet } = userSlice.actions;
 export const userInfoSelector = (state) => state.user.info;
-export default user.reducer;
+const user = userSlice.reducer;
+export default user;

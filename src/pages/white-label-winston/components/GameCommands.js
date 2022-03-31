@@ -1,6 +1,7 @@
 import React from 'react';
-import Date from './../../../assets/time_date.svg';
+
 import GetTrigger from './../../../assets/get_trigger.svg';
+import Date from './../../../assets/time_date.svg';
 import InfoCard from './../../../components/info-cards/index';
 
 export default function GameCommands() {
