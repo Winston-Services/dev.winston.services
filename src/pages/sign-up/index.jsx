@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 import Wallet from './../../utils/wallet';
 
-
 function SignUp() {
   const navigate = useNavigate();
   const [created, setCreated] = React.useState({ init: false, wallet: null });
@@ -34,13 +33,13 @@ function SignUp() {
       <>
         <Box>
           <Typography variant="h3">Your new wallet</Typography>
-          <Typography variant="h2" sx={{ mt: 2, fontWeight: '600' }}>
+          <Typography variant="h2" sx={{ mt: 2 }}>
             Created
           </Typography>
           <Typography variant="subtitle2" sx={{ my: 6 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu
-            dui tincidunt, accumsan ligula sit amet, dignissim tortor. Curabitur
-            tincidunt nulla mi, sit amet accumsan elit porttitor vitae.
+            Your wallet is the key to accessing the platform. We want you to
+            experience a new way to access the platform with a more secure way
+            then before.
           </Typography>
           <TextField
             fullWidth
@@ -95,7 +94,7 @@ function SignUp() {
       <>
         <Box>
           <Typography variant="h3">Create your new</Typography>
-          <Typography variant="h2" sx={{ mt: 2, mb: 6, fontWeight: '600' }}>
+          <Typography variant="h2" sx={{ mt: 2, mb: 6 }}>
             Wallet
           </Typography>
           <TextField

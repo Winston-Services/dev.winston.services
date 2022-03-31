@@ -87,12 +87,27 @@ export default function Faucet() {
                 <Typography variant="h2">Faucet</Typography>
               </Grid>
               <Grid item>
-                <Typography variant="subtitle1">
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industrys dummy
-                  text ever since the 1500s, when an unknown printer took a
-                  galley of type and scrambled it to make a type specimen book.
-                  It has survived not only five centuries.
+                <Typography
+                  variant="subtitle1"
+                  sx={{ textAlign: 'justify', mb: 2 }}
+                >
+                  Winston has a community funded faucet feature. A faucet in the
+                  crypto world means a place where you can get crypto for free.
+                  They have crypto pools as a bank account and the faucet to pay
+                  out those who support the Winston project.
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  sx={{ textAlign: 'justify', mb: 2 }}
+                >
+                  Paid members will be able to have more access to the faucets
+                  to obtain more free crypto. We want the community to be able
+                  to have access to cryptocurrency with the support of the
+                  Winston project.
+                </Typography>
+                <Typography variant="subtitle1" sx={{ textAlign: 'justify' }}>
+                  We are able to give away $100’s of dollars a year to help
+                  spread the use of Crypto.
                 </Typography>
               </Grid>
             </Grid>

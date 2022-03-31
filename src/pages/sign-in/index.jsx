@@ -79,7 +79,7 @@ function SignIn() {
   return (
     <Box>
       <Typography variant="h3">Sign in to</Typography>
-      <Typography variant="h2" sx={{ mt: 2, fontWeight: '600' }}>
+      <Typography variant="h2" sx={{ mt: 2 }}>
         Your Wallet
       </Typography>
       <Typography variant="subtitle2" sx={{ my: 6 }}>

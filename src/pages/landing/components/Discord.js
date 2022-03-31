@@ -15,9 +15,10 @@ export default function Discord() {
           Discord
         </Typography>
         <Typography textAlign="justify" sx={{ mb: 6 }}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.Lorem Ipsum has been the industry`s standard dummy text ever
-          since the 1500s
+          We are currently running Winston on several servers with in the
+          Discord community. With over 1200 users, and 42 Paid Membership. You
+          too can add Winston to your server and have him fully setup for under
+          $500 year.
         </Typography>
       </Grid>
       <Grid item xs={12}>
