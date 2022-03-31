@@ -22,6 +22,7 @@ const CheckboxWrapper = ({ name, label, helperText = '' }) => {
 
   const configCheckbox = {
     ...field,
+    checked: field.value,
     onChange: handleChange,
   };
 

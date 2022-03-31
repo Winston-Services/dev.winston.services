@@ -365,6 +365,18 @@ const publicPageColors = {
         },
       ],
     },
+    MuiTooltip: {
+      styleOverrides: {
+        arrow: {
+          color: '#f5f5f9',
+        },
+        tooltip: {
+          background: '#f5f5f9',
+          maxWidth: 220,
+          color: 'black',
+        },
+      },
+    },
   },
 };
 const createThemeVariable = (mode, dashboard) => {

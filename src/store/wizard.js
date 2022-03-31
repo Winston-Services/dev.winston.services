@@ -38,6 +38,23 @@ const initialState = {
     hardCodedNode: false,
     node1: '',
     node2: '',
+
+    //Smart contract type
+    smartContractName: '',
+    smartContractSymbol: 'Symbol',
+    smartContractPremine: 'Premine',
+
+    //Smart contract feature
+    mintable: true,
+    burnable: false,
+    pausable: false,
+    premit: false,
+    votes: false,
+    flashMinting: false,
+    snapshots: false,
+    enumerable: false,
+    uriStorage: false,
+    supplyTracking: false,
   },
 };
 
@@ -46,7 +63,7 @@ export const wizardSlice = createSlice({
   initialState,
   reducers: {
     updateWizardData: (state, action) => {
-      state = action.payload;
+      state = { ...state, ...action.payload };
       return state;
     },
     updateWizardFormData: (state, action) => {

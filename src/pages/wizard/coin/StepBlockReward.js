@@ -17,7 +17,7 @@ const FORM_VALIDATION = Yup.object().shape({
   // coinSupplyWithoutPremine: Yup.string().required(
   //   'Coin supply without premine is required'
   // ),
-  // fullPremine: Yup.boolean().oneOf([true], '100% premine must be accepted.'),
+  // fullPremine: Yup.boolean().oneOf([true]),
   // premine: Yup.string().required('Premine is required'),
   // premineAmount: Yup.string().required('Premine amount is required'),
   // coinSupplyWithPremine: Yup.string().required(
@@ -124,7 +124,10 @@ function StepCoinBlockReward({
                 </Grid>
               </Card>
               <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>
-                <Button variant="outlined" onClick={() => navigate(-1)}>
+                <Button
+                  variant="outlined"
+                  onClick={() => navigate('/wizard/step-coin-name')}
+                >
                   Previous
                 </Button>
                 <Button variant="contained" color="secondary" type="submit">

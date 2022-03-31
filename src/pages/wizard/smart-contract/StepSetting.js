@@ -4,22 +4,31 @@ import {
   Typography,
   Container,
   Grid,
-  TextField,
   Button,
   Card,
   Divider,
   ListItem,
   ListItemAvatar,
-  // Avatar,
 } from '@mui/material';
+import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
 
 import ethereumBlue from './../../../assets/ethereum_blue.svg';
+import TextField from './../../../components/common/TextField';
 import WizardSteppers from './../WizardSteppers';
 
-function StepSetting({ wizardData }) {
+const FORM_VALIDATION = Yup.object().shape({
+  // smartContractName: Yup.string().required('Name is required'),
+});
+function StepSetting({ wizardData, wizardFormData, setWizardFormData }) {
   const navigate = useNavigate();
+
+  const handleSubmit = (values) => {
+    setWizardFormData(values);
+    navigate('/wizard/step-feature');
+  };
 
   return (
     <Container>
@@ -49,98 +58,69 @@ function StepSetting({ wizardData }) {
         </Grid>
       )}
       <Grid container>
-        <Grid item mt={6} mb={6} lg={12} md={12} sm={12} xs={12}>
+        <Grid item mt={6} mb={6} xs={12}>
           <WizardSteppers activeStepCount={1} />
         </Grid>
 
-        <Grid item lg={12} md={12} sm={12} xs={12}>
-          <Card sx={{ p: 6 }} elevation={0}>
-            {/* <Grid container>
-              <Grid item lg={1} md={12} sm={12} xs={12}>
-                <img src={ethereumBlue} alt="icon" />
-              </Grid>
-              <Grid item lg={1} md={12} sm={12} xs={12}>
-                <Typography variant={'h6'}>
-                  {wizardData.network === 'Binance' ? 'BEP ' : 'ERC '}
-                  {wizardData.typeOfContact}
-                </Typography>
-              </Grid>
-            </Grid> */}
+        <Grid item xs={12}>
+          <Formik
+            initialValues={{ ...wizardFormData }}
+            validationSchema={FORM_VALIDATION}
+            onSubmit={handleSubmit}
+          >
+            <Form>
+              <Card sx={{ p: 6 }} elevation={0}>
+                <ListItem>
+                  <ListItemAvatar>
+                    <img width={'60%'} src={ethereumBlue} alt="icon" />
+                  </ListItemAvatar>
+                  <Typography variant={'h5'}>
+                    {wizardData?.network === 'Binance' ? 'BEP ' : 'ERC '}
+                    {wizardData?.typeOfContact}
+                  </Typography>
+                </ListItem>
 
-            <ListItem>
-              <ListItemAvatar>
-                <img width={'60%'} src={ethereumBlue} alt="icon" />
-              </ListItemAvatar>
-              <Typography variant={'h5'}>
-                {wizardData?.network === 'Binance' ? 'BEP ' : 'ERC '}
-                {wizardData?.typeOfContact}
-              </Typography>
-            </ListItem>
-
-            <Grid mb={3}>
-              <Divider />
-            </Grid>
-            <Grid container spacing={4}>
-              {wizardData.typeOfContact === '1155' ? (
-                <Grid item lg={12} md={12} sm={12} xs={12}>
+                <Grid mb={3}>
+                  <Divider />
+                </Grid>
+                <Grid display={'flex'} flexDirection="column" gap={3}>
                   <TextField
-                    fullWidth
+                    name="smartContractName"
                     label={'Name'}
                     placeholder={'Enter your Name'}
+                    helperText={'Please Enter your Full Name'}
                   />
+                  {wizardData.typeOfContact !== '1155' ? (
+                    <>
+                      <TextField
+                        disabled
+                        name="smartContractSymbol"
+                        label={'Symbol'}
+                        placeholder={'Symbol'}
+                      />
+                      <TextField
+                        disabled
+                        name="smartContractPremine"
+                        label={'Premine'}
+                        placeholder={'Premine'}
+                      />
+                    </>
+                  ) : null}
                 </Grid>
-              ) : (
-                <>
-                  <Grid item lg={12} md={12} sm={12} xs={12}>
-                    <TextField
-                      fullWidth
-                      label={'Name'}
-                      placeholder={'Enter your Name'}
-                    />
-                  </Grid>
-                  <Grid item lg={12} md={12} sm={12} xs={12}>
-                    <TextField
-                      fullWidth
-                      label={'Symbol'}
-                      placeholder={'Symbol'}
-                    />
-                  </Grid>
-                  <Grid item lg={12} md={12} sm={12} xs={12}>
-                    <TextField
-                      fullWidth
-                      label={'Premine'}
-                      placeholder={'Premine'}
-                    />
-                  </Grid>
-                </>
-              )}
-            </Grid>
-          </Card>
-        </Grid>
-        <Grid
-          container
-          spacing={2}
-          mt={4}
-          display="flex"
-          justifyContent="flex-end"
-        >
-          <Grid item>
-            <Button
-              variant="outlined"
-              onClick={() => navigate('/wizard/network')}
-            >
-              Previous
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => navigate('/wizard/step-feature')}
-            >
-              Next
-            </Button>
-          </Grid>
+              </Card>
+              <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>
+                <Button
+                  variant="outlined"
+                  onClick={() => navigate('/wizard/network')}
+                >
+                  Previous
+                </Button>
+                <Button variant="contained" color="secondary" type="submit">
+                  Next
+                </Button>
+              </Grid>
+            </Form>
+          </Formik>
         </Grid>
       </Grid>
     </Container>
@@ -149,6 +129,8 @@ function StepSetting({ wizardData }) {
 
 StepSetting.propTypes = {
   wizardData: PropTypes.object,
+  wizardFormData: PropTypes.object,
+  setWizardFormData: PropTypes.func,
 };
 
 export default StepSetting;

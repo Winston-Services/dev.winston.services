@@ -13,9 +13,9 @@ export default function SuccessUpload() {
       <Grid textAlign={'center'}>
         <img src={CertificateStar} />
         <Typography variant="h4" mt={5}>
-          Successfully subscribe Monthly Hosting!
+          Congratulations! your video uploaded successfully
         </Typography>
-        <Typography mt={1} mb={10}>
+        <Typography mt={2} mb={10}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur
           sapien consectetur leo duis arcu. Justo, habitant sit a enim tincidunt
           urna risus porttitor dignissim. Tristique egestas ipsum nam commodo,

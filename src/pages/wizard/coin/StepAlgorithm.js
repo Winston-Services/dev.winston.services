@@ -92,7 +92,7 @@ function StepAlgorithmCoin({ wizardData, wizardFormData, setWizardFormData }) {
                 </Grid>
               </Card>
               <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>
-                <Button variant="outlined" onClick={() => navigate(-1)}>
+                <Button variant="outlined" onClick={() => navigate('/wizard')}>
                   Previous
                 </Button>
                 <Button variant="contained" color="secondary" type="submit">

@@ -13,9 +13,7 @@ function PlaneLayout() {
   }, [dispatch]);
   return (
     <Box>
-      <Box>
-        <Outlet />
-      </Box>
+      <Outlet />
     </Box>
   );
 }

@@ -112,6 +112,8 @@ export default function Wizard() {
             <StepSetting
               wizardData={wizardData}
               setWizardData={setWizardData}
+              wizardFormData={wizardFormData}
+              setWizardFormData={setWizardFormData}
             />
           ),
         },
@@ -121,6 +123,8 @@ export default function Wizard() {
             <StepFeature
               wizardData={wizardData}
               setWizardData={setWizardData}
+              wizardFormData={wizardFormData}
+              setWizardFormData={setWizardFormData}
             />
           ),
         },

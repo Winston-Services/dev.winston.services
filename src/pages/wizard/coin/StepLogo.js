@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import customLogo from './../../../assets/customLogo.svg';
 import WizardSteppers from './../WizardSteppers';
 
-
 function StepCoinCustomLogo({ wizardData }) {
   let navigate = useNavigate();
 
@@ -41,7 +40,7 @@ function StepCoinCustomLogo({ wizardData }) {
 
       <Grid container>
         <Grid item mt={6} mb={6} lg={12} md={12} sm={12} xs={12}>
-          <WizardSteppers activeStepCount={3} from={'coin'} />
+          <WizardSteppers activeStepCount={4} from={'coin'} />
         </Grid>
 
         <Grid item lg={12} md={12} sm={12} xs={12}>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Typography, Container, Button , Grid } from '@mui/material';
+import { Typography, Container, Button, Grid } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ function Network({ wizardData, setWizardData }) {
     },
     {
       title: 'Binance',
-      subTitle: 'BRC',
+      subTitle: 'BEP',
       icon: binance,
     },
     {
@@ -113,7 +113,6 @@ function Network({ wizardData, setWizardData }) {
                 <WizardCard
                   onClick={() => {
                     setWizardData({
-                      ...wizardData,
                       network: item,
                     });
                   }}
@@ -133,7 +132,6 @@ function Network({ wizardData, setWizardData }) {
                   <WizardCard
                     onClick={() => {
                       setWizardData({
-                        ...wizardData,
                         typeOfContact: item.title,
                       });
                     }}

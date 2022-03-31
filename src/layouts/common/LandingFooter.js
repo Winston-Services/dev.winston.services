@@ -9,7 +9,6 @@ import { ReactComponent as Twitter } from './../../assets/twitter_brands.svg';
 import winston from './../../assets/winston_ahwa_footer.svg';
 import { ReactComponent as Youtube } from './../../assets/youtube_brands.svg';
 
-
 const footerMenu = [
   {
     name: 'Services',
@@ -73,7 +72,7 @@ const footerMenu = [
     name: 'Connect',
     menuItems: [
       {
-        name: 'Login',
+        name: 'Sign In',
         url: '/sign-in',
       },
       {

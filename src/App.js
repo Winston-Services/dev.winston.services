@@ -10,7 +10,6 @@ import LandingLayout from './layouts/LandingLayout';
 import PlaneLayout from './layouts/PlaneLayout';
 import PublicPageLayout from './layouts/PublicPageLayout';
 import SignInLayout from './layouts/SignInLayout';
-import SuccessLayout from './layouts/SuccessLayout';
 import Certificate from './pages/certificate/Certificate';
 import './App.css';
 
@@ -103,21 +102,15 @@ export default function App() {
     },
     {
       path: '/',
-      element: getRouteWrapper(<SuccessLayout />, false),
-      children: [
-        {
-          path: '/academy/add-course/upload-video/succuss-upload',
-          element: getRouteWrapper(<SuccessUpload />, false),
-        },
-      ],
-    },
-    {
-      path: '/',
       element: getRouteWrapper(<PlaneLayout />, false),
       children: [
         {
           path: '/certificate',
           element: getRouteWrapper(<Certificate />, false),
+        },
+        {
+          path: '/academy/add-course/upload-video/succuss-upload',
+          element: getRouteWrapper(<SuccessUpload />, false),
         },
       ],
     },
