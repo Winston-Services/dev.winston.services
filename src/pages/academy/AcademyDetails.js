@@ -20,7 +20,6 @@ import AuthorAvatar from '../../assets/author_avatar.svg';
 import AcademyAccordion from './components/AcademyAccordion';
 import AcademySlider from './components/AcademySlider';
 
-
 function AcademyDetails() {
   const navigate = useNavigate();
   return (

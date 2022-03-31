@@ -20,8 +20,6 @@ import doner1 from './../../../assets/doner1.svg';
 import doner2 from './../../../assets/doner2.svg';
 import doner3 from './../../../assets/doner3.svg';
 import doner4 from './../../../assets/doner4.svg';
-
-
 function ProductCard({ item }) {
   const navigate = useNavigate();
   return (
