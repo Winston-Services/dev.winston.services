@@ -3,24 +3,27 @@ import { PropTypes } from 'prop-types';
 import {
   Grid,
   Card,
-  // CardActionArea,
   CardMedia,
   CardContent,
   Typography,
   IconButton,
   Box,
   Button,
+  AvatarGroup,
+  Avatar,
 } from '@mui/material';
 
 import { useNavigate } from 'react-router-dom';
-
+import doner1 from './../../../assets/doner1.svg';
+import doner2 from './../../../assets/doner2.svg';
+import doner3 from './../../../assets/doner3.svg';
+import doner4 from './../../../assets/doner4.svg';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function ProductCard({ item }) {
   const navigate = useNavigate();
   return (
     <Card className="nft-container" elevation={0}>
-      {/* <CardActionArea> */}
       <Box className="hover-nft-button-container">
         <CardMedia
           component="img"
@@ -73,29 +76,28 @@ function ProductCard({ item }) {
             justifyContent="space-between"
             alignItems={'center'}
           >
-            <div>
+            <Grid>
               <Typography variant="subtitle2">Start BID</Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  mt: '-5px',
-                }}
-              >
+              <Typography mt={'-5px'} variant="subtitle1">
                 ${item.startBid}
               </Typography>
-            </div>
-            <div>
+            </Grid>
+            <Grid>
               <Typography variant="subtitle2">End BID in</Typography>
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  mt: '-5px',
-                }}
-              >
+              <Typography mt={'-5px'} variant="subtitle1">
                 {item.endBidIn} Days
               </Typography>
-            </div>
+            </Grid>
           </Grid>
+        </Grid>
+        <Grid>
+          <AvatarGroup>
+            <Avatar alt="Remy Sharp" src={doner1} />
+            <Avatar alt="Travis Howard" src={doner2} />
+            <Avatar alt="Agnes Walker" src={doner3} />
+            <Avatar alt="Trevor Henderson" src={doner4} />
+          </AvatarGroup>
+          <Typography>{item.doners}</Typography>
         </Grid>
       </CardContent>
       {/* </CardActionArea> */}

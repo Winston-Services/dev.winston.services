@@ -1,8 +1,10 @@
 import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
 import AcademyBooks from './../../../assets/academy.svg';
+import { useNavigate } from 'react-router-dom';
 
 export default function Academy() {
+  const navigate = useNavigate();
   return (
     <Grid
       container
@@ -43,6 +45,7 @@ export default function Academy() {
                 mb: 3,
                 width: { xs: '100%', sm: 'auto' },
               }}
+              onClick={() => navigate('/register')}
             >
               Register now
             </Button>

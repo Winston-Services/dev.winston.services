@@ -26,6 +26,11 @@ export default function Discord() {
             mb: 3,
             width: { xs: '100%', sm: 'auto' },
           }}
+          onClick={() =>
+            window.open(
+              'https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8'
+            )
+          }
         >
           Join us on discord
         </Button>
@@ -63,8 +68,11 @@ export default function Discord() {
             <Button
               variant="contained"
               color="secondary"
-              // startIcon={<LockIcon />}
-              // onClick={handleUploadClick}
+              onClick={() =>
+                window.open(
+                  'https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8'
+                )
+              }
             >
               Add on discord
             </Button>

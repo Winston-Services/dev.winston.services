@@ -18,7 +18,15 @@ export default function CustomizeWinston() {
           your bot credentials to have Winston spawn up your bot using the
           Winston network.
         </Typography>
-        <Button variant="outlined" sx={{ mt: 5 }}>
+        <Button
+          variant="outlined"
+          sx={{ mt: 5 }}
+          onClick={() =>
+            window.open(
+              'https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8'
+            )
+          }
+        >
           Add Winston to Discord
         </Button>
       </Grid>
