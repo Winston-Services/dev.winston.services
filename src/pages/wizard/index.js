@@ -131,7 +131,12 @@ export default function Wizard() {
         {
           path: '/step-info',
           element: (
-            <StepInfo wizardData={wizardData} setWizardData={setWizardData} />
+            <StepInfo
+              wizardData={wizardData}
+              setWizardData={setWizardData}
+              wizardFormData={wizardFormData}
+              setWizardFormData={setWizardFormData}
+            />
           ),
         },
         {
@@ -140,6 +145,8 @@ export default function Wizard() {
             <StepAccessUpgrade
               wizardData={wizardData}
               setWizardData={setWizardData}
+              wizardFormData={wizardFormData}
+              setWizardFormData={setWizardFormData}
             />
           ),
         },

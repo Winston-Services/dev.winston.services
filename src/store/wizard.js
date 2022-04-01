@@ -41,8 +41,8 @@ const initialState = {
 
     //Smart contract type
     smartContractName: '',
-    smartContractSymbol: 'Symbol',
-    smartContractPremine: 'Premine',
+    smartContractSymbol: '',
+    smartContractPremine: '',
 
     //Smart contract feature
     mintable: true,
@@ -55,6 +55,15 @@ const initialState = {
     enumerable: false,
     uriStorage: false,
     supplyTracking: false,
+
+    //Smart contract access and upgrade
+    access: 'Ownable',
+    upgradeability: false,
+    upgrade: 'Transparent',
+
+    //Smart contract info
+    securityContact: '',
+    license: '',
   },
 };
 

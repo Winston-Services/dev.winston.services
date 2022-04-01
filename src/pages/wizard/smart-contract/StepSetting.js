@@ -21,6 +21,8 @@ import WizardSteppers from './../WizardSteppers';
 
 const FORM_VALIDATION = Yup.object().shape({
   // smartContractName: Yup.string().required('Name is required'),
+  // smartContractSymbol: Yup.string().required('Symbol is required'),
+  // smartContractPremine: Yup.string().required('Premine is required'),
 });
 function StepSetting({ wizardData, wizardFormData, setWizardFormData }) {
   const navigate = useNavigate();
@@ -93,13 +95,11 @@ function StepSetting({ wizardData, wizardFormData, setWizardFormData }) {
                   {wizardData.typeOfContact !== '1155' ? (
                     <>
                       <TextField
-                        disabled
                         name="smartContractSymbol"
                         label={'Symbol'}
                         placeholder={'Symbol'}
                       />
                       <TextField
-                        disabled
                         name="smartContractPremine"
                         label={'Premine'}
                         placeholder={'Premine'}
