@@ -10,8 +10,8 @@ import {
   Typography,
   Table,
   Container,
-  Divider,
-  Grid } from '@mui/material';
+  Grid,
+} from '@mui/material';
 import { styled } from '@mui/styles';
 import { PropTypes } from 'prop-types';
 
@@ -62,31 +62,27 @@ export default function TokenTable({ name, rows }) {
                 <Typography>00000</Typography>
               </StyledTableCell>
             </TableRow>
-            <Divider sx={{ width: '220%' }} />
             {rows?.map((row) => (
-              <>
-                <TableRow key={row.name}>
-                  <StyledTableCell>
-                    <Grid container spacing={2}>
-                      <Grid item>
-                        <img src={row.icon} alt="icon" />
-                      </Grid>
-                      <Grid item>
-                        <Typography>{row.name}</Typography>
-                      </Grid>
+              <TableRow key={row.name}>
+                <StyledTableCell>
+                  <Grid container spacing={2}>
+                    <Grid item>
+                      <img src={row.icon} alt="icon" />
                     </Grid>
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    <Typography variant="subtitle2">Tokens</Typography>
-                    <Typography>{row.tokens}</Typography>
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    <Typography variant="subtitle2">Given Away</Typography>
-                    <Typography>{row.givenAway}</Typography>
-                  </StyledTableCell>
-                </TableRow>
-                <Divider sx={{ width: '220%' }} />
-              </>
+                    <Grid item>
+                      <Typography>{row.name}</Typography>
+                    </Grid>
+                  </Grid>
+                </StyledTableCell>
+                <StyledTableCell>
+                  <Typography variant="subtitle2">Tokens</Typography>
+                  <Typography>{row.tokens}</Typography>
+                </StyledTableCell>
+                <StyledTableCell>
+                  <Typography variant="subtitle2">Given Away</Typography>
+                  <Typography>{row.givenAway}</Typography>
+                </StyledTableCell>
+              </TableRow>
             ))}
           </TableBody>
         </Table>

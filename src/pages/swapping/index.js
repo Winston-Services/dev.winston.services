@@ -72,7 +72,7 @@ export default function Swapping() {
     <Container>
       <Grid container spacing={8} justifyContent={'center'}>
         <Grid item>
-          <Typography variant="h3">Swap public page</Typography>
+          <Typography variant="h3">Swapping</Typography>
         </Grid>
         <Grid item container spacing={4}>
           <Grid item sm={12} lg={6}>
