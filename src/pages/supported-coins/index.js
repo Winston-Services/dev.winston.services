@@ -3,63 +3,62 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 
-// import antsCoin from '../../assets/coins/ants-coin.svg';
-// import botcoin from '../../assets/coins/botcoin.svg';
-// import btt from '../../assets/coins/btt.svg';
-// import comfy from '../../assets/coins/comfy.png';
-// import lottocoin from '../../assets/coins/lottocoin.svg';
-// import rblue from '../../assets/coins/rblue.png';
-// import skillcoin from '../../assets/coins/skillcoin.svg';
-// import usdc from '../../assets/coins/usdc.svg';
-import cryptoCurrency from './../../assets/crypto_currency.svg';
-
-
 const SupportedCoins = () => {
   const data = [
     {
-      image: cryptoCurrency,
-      title: 'USDC',
-      subTitle: 'USDC',
+      image: './assets/icons/btc.svg',
+      title: 'CRYPTOCURRENCY',
+      subTitle: 'cryptoCurrency ',
     },
     {
-      image: cryptoCurrency,
-      title: 'AntsCoin',
-      subTitle: 'ANT',
+      image: './assets/icons/ltc.png',
+      title: 'LTC',
+      subTitle: 'Litecoin ',
     },
     {
-      image: cryptoCurrency,
-      title: 'ComfyToken',
-      subTitle: 'COMFY',
+      image: './assets/icons/bci.png',
+      title: 'BCI',
+      subTitle: 'Bitcoin Interest',
     },
     {
-      image: cryptoCurrency,
-      title: 'REVIVAL',
-      subTitle: 'RVL',
+      image: './assets/icons/bhy.jpg',
+      title: 'BHY',
+      subTitle: 'BHY',
     },
     {
-      image: cryptoCurrency,
-      title: 'LottoCoin ',
-      subTitle: 'LOT',
+      image: './assets/icons/dash.png',
+      title: 'DASH',
+      subTitle: 'Dash',
     },
     {
-      image: cryptoCurrency,
-      title: 'btt',
-      subTitle: 'BTT',
+      image: './assets/icons/doge.png',
+      title: 'DOGE',
+      subTitle: 'doge',
     },
     {
-      image: cryptoCurrency,
-      title: 'Botcoin ',
-      subTitle: 'BOT',
+      image: './assets/icons/sys.png',
+      title: 'SYS',
+      subTitle: 'syscoin',
     },
     {
-      image: cryptoCurrency,
-      title: 'SKILLCOIN',
-      subTitle: 'SKILL',
+      image: './assets/icons/shopify.png',
+      title: 'SHOPIFY ',
+      subTitle: 'shopify',
     },
     {
-      image: cryptoCurrency,
-      title: 'SKILLCOIN',
-      subTitle: 'SKILL',
+      image: './assets/icons/quickbooks.jpg',
+      title: 'QUICKBOOKS',
+      subTitle: 'quickbooks',
+    },
+    {
+      image: './assets/icons/opencart.jpg',
+      title: 'OOPENCART',
+      subTitle: 'opencart',
+    },
+    {
+      image: './assets/icons/mstr.png',
+      title: 'MSTR',
+      subTitle: 'mstr',
     },
   ];
   return (
@@ -80,7 +79,7 @@ const SupportedCoins = () => {
                 xs={6}
                 textAlign={'center'}
               >
-                <img src={item.image} />
+                <img src={item.image} width={'50px'} />
                 <Typography variant={'subtitle1'}>{item.title}</Typography>
                 <Typography variant={'subtitle2'}>({item.subTitle})</Typography>
               </Grid>

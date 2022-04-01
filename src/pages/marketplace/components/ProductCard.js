@@ -16,10 +16,11 @@ import {
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-import doner1 from './../../../assets/doner1.svg';
-import doner2 from './../../../assets/doner2.svg';
-import doner3 from './../../../assets/doner3.svg';
-import doner4 from './../../../assets/doner4.svg';
+// import donner1 from './../../../assets/donner1.svg';
+// import donner2 from './../../../assets/donner2.svg';
+// import donner3 from './../../../assets/donner3.svg';
+// import donner4 from './../../../assets/donner4.svg';
+
 function ProductCard({ item }) {
   const navigate = useNavigate();
   return (
@@ -90,15 +91,30 @@ function ProductCard({ item }) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid>
-          <AvatarGroup>
-            <Avatar alt="Remy Sharp" src={doner1} />
-            <Avatar alt="Travis Howard" src={doner2} />
-            <Avatar alt="Agnes Walker" src={doner3} />
-            <Avatar alt="Trevor Henderson" src={doner4} />
-          </AvatarGroup>
-          <Typography>{item.doners}</Typography>
-        </Grid>
+        {item.donners && (
+          <Grid
+            display={'flex'}
+            justifyContent={'space-between'}
+            alignItems={'center'}
+            mt={1}
+          >
+            <AvatarGroup>
+              {item.donners.map((donner) => (
+                <Avatar
+                  className="borderNone"
+                  key={donner.name}
+                  alt={donner.name}
+                  src={donner.avatar}
+                />
+              ))}
+              {/* <Avatar alt="Remy Sharp" src={donner1} />
+              <Avatar alt="Travis Howard" src={donner2} />
+              <Avatar alt="Agnes Walker" src={donner3} />
+              <Avatar alt="Trevor Henderson" src={donner4} /> */}
+            </AvatarGroup>
+            <Typography>{item.donners.length} donners</Typography>
+          </Grid>
+        )}
       </CardContent>
       {/* </CardActionArea> */}
     </Card>
