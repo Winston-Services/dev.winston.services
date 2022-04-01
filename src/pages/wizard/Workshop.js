@@ -21,7 +21,7 @@ function Workshop({ wizardData, setWizardData }) {
     {
       title: 'Coin',
       icon: coin,
-      onClickUrl: '/wizard/step-coin-algorithm',
+      onClickUrl: '/wizard/coin',
     },
     {
       title: 'Smart Contract',
@@ -31,7 +31,7 @@ function Workshop({ wizardData, setWizardData }) {
     {
       title: 'Custom',
       icon: custom,
-      onClickUrl: '/wizard/step-coin-algorithm',
+      onClickUrl: '/wizard/custom',
     },
   ];
   return (

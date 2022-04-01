@@ -33,7 +33,7 @@ export default function MarketPlaceRouting() {
           path: '/owner-transactions/',
           element: <OwnerTransactions />,
         },
-        { path: '/*', element: <Navigate to={'/'} /> },
+        { path: '*', element: <Navigate to={'/'} /> },
       ],
     },
   ];
