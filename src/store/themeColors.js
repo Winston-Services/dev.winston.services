@@ -365,6 +365,13 @@ const publicPageColors = {
         },
       ],
     },
+    MuiAvatar: {
+      styleOverrides: {
+        root: {
+          border: 'none',
+        },
+      },
+    },
   },
 };
 const createThemeVariable = (mode, dashboard) => {

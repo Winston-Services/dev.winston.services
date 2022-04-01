@@ -7,8 +7,12 @@ import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
 import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
 import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
 import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
+import ProductCard from '../marketplace/components/ProductCard';
 import { ReactComponent as CommunityFundingIcon } from './../../assets/community_funding_icon.svg';
-import ProductCard from './../marketplace/components/ProductCard';
+import donner1 from './../../assets/donner1.svg';
+import donner2 from './../../assets/donner2.svg';
+import donner3 from './../../assets/donner3.svg';
+import donner4 from './../../assets/donner4.svg';
 
 function index() {
   const trendingItems = [
@@ -19,6 +23,12 @@ function index() {
       price: 59,
       startBid: 15,
       endBidIn: 5,
+      donners: [
+        { name: 'Remy Sharp', avatar: donner1 },
+        { name: 'Travis Howard', avatar: donner2 },
+        { name: 'Agnes Walker', avatar: donner3 },
+        { name: 'Trevor Henderson', avatar: donner4 },
+      ],
     },
     {
       image: NftMarketPlace2,
@@ -27,6 +37,12 @@ function index() {
       price: 59,
       startBid: 15,
       endBidIn: 5,
+      donners: [
+        { name: 'Remy Sharp', avatar: donner1 },
+        { name: 'Travis Howard', avatar: donner2 },
+        { name: 'Agnes Walker', avatar: donner3 },
+        { name: 'Trevor Henderson', avatar: donner4 },
+      ],
     },
     {
       image: NftMarketPlace3,
@@ -35,6 +51,12 @@ function index() {
       price: 59,
       startBid: 15,
       endBidIn: 5,
+      donners: [
+        { name: 'Remy Sharp', avatar: donner1 },
+        { name: 'Travis Howard', avatar: donner2 },
+        { name: 'Agnes Walker', avatar: donner3 },
+        { name: 'Trevor Henderson', avatar: donner4 },
+      ],
     },
     {
       image: NftMarketPlace4,
@@ -43,6 +65,12 @@ function index() {
       price: 59,
       startBid: 15,
       endBidIn: 5,
+      donners: [
+        { name: 'Remy Sharp', avatar: donner1 },
+        { name: 'Travis Howard', avatar: donner2 },
+        { name: 'Agnes Walker', avatar: donner3 },
+        { name: 'Trevor Henderson', avatar: donner4 },
+      ],
     },
   ];
 
@@ -54,6 +82,12 @@ function index() {
       price: 59,
       startBid: 15,
       endBidIn: 5,
+      donners: [
+        { name: 'Remy Sharp', avatar: donner1 },
+        { name: 'Travis Howard', avatar: donner2 },
+        { name: 'Agnes Walker', avatar: donner3 },
+        { name: 'Trevor Henderson', avatar: donner4 },
+      ],
     },
     {
       image: NftMarketPlace2,
@@ -62,6 +96,12 @@ function index() {
       price: 59,
       startBid: 15,
       endBidIn: 5,
+      donners: [
+        { name: 'Remy Sharp', avatar: donner1 },
+        { name: 'Travis Howard', avatar: donner2 },
+        { name: 'Agnes Walker', avatar: donner3 },
+        { name: 'Trevor Henderson', avatar: donner4 },
+      ],
     },
     {
       image: NftMarketPlace3,
@@ -70,6 +110,12 @@ function index() {
       price: 59,
       startBid: 15,
       endBidIn: 5,
+      donners: [
+        { name: 'Remy Sharp', avatar: donner1 },
+        { name: 'Travis Howard', avatar: donner2 },
+        { name: 'Agnes Walker', avatar: donner3 },
+        { name: 'Trevor Henderson', avatar: donner4 },
+      ],
     },
     {
       image: NftMarketPlace4,
@@ -78,6 +124,12 @@ function index() {
       price: 59,
       startBid: 15,
       endBidIn: 5,
+      donners: [
+        { name: 'Remy Sharp', avatar: donner1 },
+        { name: 'Travis Howard', avatar: donner2 },
+        { name: 'Agnes Walker', avatar: donner3 },
+        { name: 'Trevor Henderson', avatar: donner4 },
+      ],
     },
   ];
   return (
