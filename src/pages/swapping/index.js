@@ -9,10 +9,10 @@ import {
   Container,
 } from '@mui/material';
 
-import DropDown from '../../components/common/DropDown';
+import DropDown2 from './../../components/common/DropDown2';
 import SwapTable from './SwapTable';
 
-export default function SwapPublic() {
+export default function Swapping() {
   const rowsFaucetOnnWinston = [
     {
       id: 1,
@@ -82,7 +82,7 @@ export default function SwapPublic() {
                   <Typography variant="h5">Swap From</Typography>
                 </Grid>
                 <Grid item lg={12} md={12} xs={12} sm={12}>
-                  <DropDown label="Network" option="" placeholder="Network" />
+                  <DropDown2 label="Network" option="" placeholder="Network" />
                 </Grid>
                 <Grid item lg={12} md={12} xs={12} sm={12}>
                   <TextField fullWidth label="Token" placeholder="Token" />
@@ -112,7 +112,7 @@ export default function SwapPublic() {
                   <Typography variant="h5">Swap To</Typography>
                 </Grid>
                 <Grid item lg={12} md={12} xs={12} sm={12}>
-                  <DropDown label="Network" option="" placeholder="Network" />
+                  <DropDown2 label="Network" option="" placeholder="Network" />
                 </Grid>
                 <Grid item lg={12} md={12} xs={12} sm={12}>
                   <TextField fullWidth label="Token" placeholder="Token" />
@@ -139,7 +139,7 @@ export default function SwapPublic() {
         <Grid container item>
           <Grid item sm={12} lg={12}>
             <Card sx={{ p: 5, height: '90%' }}>
-              <Grid container lg={12}>
+              <Grid container lg={12} item>
                 <Grid item lg={7} md={7} sm={6} xs={12}>
                   <Typography variant="h5">Swap</Typography>
                 </Grid>

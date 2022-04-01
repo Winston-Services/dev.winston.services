@@ -47,7 +47,7 @@ const WhiteLabelWinston = React.lazy(() =>
 const Wizard = React.lazy(() => import('./pages/wizard'));
 const Faucet = React.lazy(() => import('./pages/faucet/Faucet'));
 const Staking = React.lazy(() => import('./pages/staking/Staking'));
-const Swaping = React.lazy(() => import('./pages/swaping/Swap'));
+const Swapping = React.lazy(() => import('./pages/swapping'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
 const CommunityFunding = React.lazy(() => import('./pages/community-funding'));
 
@@ -179,8 +179,8 @@ export default function App() {
           element: getRouteWrapper(<Staking />, false),
         },
         {
-          path: '/swaping',
-          element: getRouteWrapper(<Swaping />, false),
+          path: '/swapping',
+          element: getRouteWrapper(<Swapping />, false),
         },
         {
           path: '/supported-coins',
