@@ -331,3 +331,20 @@ body,
   top: 0px;
   height: 150vh;
 }
+
+.borderNone {
+  border: 'none' !important
+}
+
+.buyNowContainerSticky {
+  position: fixed;
+  animation: transition 0.3s linear;
+}
+
+.buyNowContainer {
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  position: relative;
+  box-shadow: 0px 0px 70px rgb(39 29 90) !important;
+}
