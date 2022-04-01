@@ -72,7 +72,7 @@ const items = [
   },
 ];
 
-export default function Index() {
+export default function Marketplace() {
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
   const toggleDrawer = () => {

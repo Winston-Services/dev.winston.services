@@ -9,7 +9,7 @@ export default function SuccessUpload() {
   const navigate = useNavigate();
 
   return (
-    <Container sx={{ height: '100vh', display: 'flex', alignItems: 'center' }}>
+    <Container sx={{ display: 'flex', alignItems: 'center' }}>
       <Grid textAlign={'center'}>
         <img src={CertificateStar} />
         <Typography variant="h4" mt={5}>

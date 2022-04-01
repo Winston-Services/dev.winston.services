@@ -21,11 +21,12 @@ function UploadVideo() {
           <Paper
             elevation={0}
             sx={{
-              height: '465px',
+              height: '100%',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
               flexDirection: 'column',
+              padding: 2,
               border: '2px dashed #0969DC',
             }}
           >

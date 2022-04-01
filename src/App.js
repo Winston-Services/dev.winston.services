@@ -14,29 +14,8 @@ import Certificate from './pages/certificate/Certificate';
 import './App.css';
 
 const Dashboard = React.lazy(() => import('./pages/dashboard'));
-const Marketplace = React.lazy(() => import('./pages/marketplace'));
-const ProductDetails = React.lazy(() =>
-  import('./pages/marketplace/ProductDetails')
-);
-const Transaction = React.lazy(() => import('./pages/marketplace/Transaction'));
-const TokenDetails = React.lazy(() =>
-  import('./pages/marketplace/TokenDetails')
-);
-const OwnerTransactions = React.lazy(() =>
-  import('./pages/marketplace/OwnerTransactions')
-);
-
-const Academy = React.lazy(() => import('./pages/academy'));
-const AcademyDetails = React.lazy(() =>
-  import('./pages/academy/AcademyDetails')
-);
-const Voting = React.lazy(() => import('./pages/academy/Voting'));
-const TeacherProfile = React.lazy(() =>
-  import('./pages/academy/TeacherProfile')
-);
-const AddCourse = React.lazy(() => import('./pages/academy/AddCourse'));
-const UploadVideo = React.lazy(() => import('./pages/academy/UploadVideo'));
-const SuccessUpload = React.lazy(() => import('./pages/academy/SuccessUpload'));
+const MarketplaceRouting = React.lazy(() => import('./pages/marketplace'));
+const AcademyRouting = React.lazy(() => import('./pages/academy'));
 const UserProfile = React.lazy(() => import('./pages/marketplace/UserProfile'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
@@ -108,10 +87,6 @@ export default function App() {
           path: '/certificate',
           element: getRouteWrapper(<Certificate />, false),
         },
-        {
-          path: '/academy/add-course/upload-video/succuss-upload',
-          element: getRouteWrapper(<SuccessUpload />, false),
-        },
       ],
     },
     {
@@ -119,48 +94,12 @@ export default function App() {
       element: getRouteWrapper(<PublicPageLayout />, false),
       children: [
         {
-          path: '/marketplace',
-          element: getRouteWrapper(<Marketplace />, false),
+          path: '/marketplace/*',
+          element: getRouteWrapper(<MarketplaceRouting />, false),
         },
         {
-          path: '/marketplace/product-details',
-          element: getRouteWrapper(<ProductDetails />, false),
-        },
-        {
-          path: '/marketplace/product-details/transaction',
-          element: getRouteWrapper(<Transaction />, false),
-        },
-        {
-          path: '/marketplace/token-details/',
-          element: getRouteWrapper(<TokenDetails />, false),
-        },
-        {
-          path: '/marketplace/owner-transactions/',
-          element: getRouteWrapper(<OwnerTransactions />, false),
-        },
-        {
-          path: '/academy/',
-          element: getRouteWrapper(<Academy />, false),
-        },
-        {
-          path: '/academy/details',
-          element: getRouteWrapper(<AcademyDetails />, false),
-        },
-        {
-          path: '/academy/voting',
-          element: getRouteWrapper(<Voting />, false),
-        },
-        {
-          path: '/academy/add-course',
-          element: getRouteWrapper(<AddCourse />, false),
-        },
-        {
-          path: '/academy/add-course/upload-video',
-          element: getRouteWrapper(<UploadVideo />, false),
-        },
-        {
-          path: '/academy/teacher-profile',
-          element: getRouteWrapper(<TeacherProfile />, false),
+          path: '/academy/*',
+          element: getRouteWrapper(<AcademyRouting />, false),
         },
         {
           path: '/user-profile',
