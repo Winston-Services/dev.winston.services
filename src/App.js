@@ -28,7 +28,12 @@ const Faucet = React.lazy(() => import('./pages/faucet/Faucet'));
 const Staking = React.lazy(() => import('./pages/staking/Staking'));
 const Swapping = React.lazy(() => import('./pages/swapping'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
-const CommunityFunding = React.lazy(() => import('./pages/community-funding'));
+const CommunityDetails = React.lazy(() =>
+  import('./pages/community/CommunityDetails.js')
+);
+const CommunityFunding = React.lazy(() =>
+  import('./pages/community/CommunityFunding.js')
+);
 
 export default function App() {
   const auth = useAuth();
@@ -132,6 +137,10 @@ export default function App() {
         {
           path: '/community-funding',
           element: getRouteWrapper(<CommunityFunding />, false),
+        },
+        {
+          path: '/community-details',
+          element: getRouteWrapper(<CommunityDetails />, false),
         },
       ],
     },

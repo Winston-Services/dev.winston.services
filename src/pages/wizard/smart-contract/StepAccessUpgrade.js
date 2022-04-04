@@ -1,41 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import {
   Typography,
-  FormGroup,
-  FormControlLabel,
   Grid,
-  FormLabel,
-  RadioGroup,
-  Radio,
-  FormControl,
-  Switch,
   Container,
   Button,
   Card,
   Divider,
   ListItem,
   ListItemAvatar,
+  Switch,
 } from '@mui/material';
+import { Form, Formik } from 'formik';
+import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 import WizardSteppers from '../WizardSteppers';
 import ethereumBlue from './../../../assets/ethereum_blue.svg';
+import RadioGroup from './../../../components/common/RadioGroup';
 
-function stepAccessUpgrade({ wizardData }) {
-  let navigate = useNavigate();
+function stepAccessUpgrade({ wizardData, wizardFormData, setWizardFormData }) {
   const [switchValue, setSwitchValue] = useState(false);
+  let navigate = useNavigate();
+  const handleSubmit = (values) => {
+    setWizardFormData({ ...values, upgradeability: switchValue });
+    navigate('/wizard/step-info');
+  };
 
-  const handleChange = () => {
+  const handleSwitchChange = () => {
     setSwitchValue(!switchValue);
   };
 
-  useEffect(() => {
-    if (wizardData.workshop === '') {
-      navigate('/wizard');
-    }
-  }, []);
+  const accessOptions = [
+    {
+      label: 'Ownable',
+      tooltip:
+        'Simple mechanism with a single account authorized for all privileged actions.',
+    },
+    {
+      label: 'Roles',
+      tooltip:
+        'Flexible mechanism with a separate role for each privileged action. A role can have many authorized accounts.',
+    },
+  ];
 
+  const upgradeOptions = [
+    {
+      label: 'Transparent',
+      tooltip:
+        'Uses more complex proxy with higher overhead, requires less changes in your contract. Can also be used with beacons.',
+    },
+    {
+      label: 'UUPS',
+      tooltip:
+        'Uses simpler proxy with less overhead, requires including extra code in your contract. Allows flexibility for authorizing upgrades.',
+    },
+  ];
   return (
     <Container>
       {wizardData.workshop === 'Smart Contract' && (
@@ -64,126 +84,72 @@ function stepAccessUpgrade({ wizardData }) {
         </Grid>
       )}
       <Grid container>
-        <Grid item mt={6} mb={6} lg={12} md={12} sm={12} xs={12}>
+        <Grid item mt={6} mb={6} xs={12}>
           <WizardSteppers activeStepCount={3} />
         </Grid>
 
-        <Grid item lg={12} md={12} sm={12} xs={12}>
-          <Card sx={{ p: 6 }} elevation={0}>
-            <ListItem>
-              <ListItemAvatar>
-                <img width={'60%'} src={ethereumBlue} alt="icon" />
-              </ListItemAvatar>
-              <Typography variant={'h5'}>
-                {wizardData.network === 'Binance' ? 'BEP ' : 'ERC '}
-                {wizardData.typeOfContact}
-              </Typography>
-            </ListItem>
-            <Grid mb={3}>
-              <Divider />
-            </Grid>
-            <Grid>
-              <FormGroup>
+        <Grid item xs={12}>
+          <Formik initialValues={{ ...wizardFormData }} onSubmit={handleSubmit}>
+            <Form>
+              <Card sx={{ p: 6 }} elevation={0}>
+                <ListItem>
+                  <ListItemAvatar>
+                    <img width={'60%'} src={ethereumBlue} alt="icon" />
+                  </ListItemAvatar>
+                  <Typography variant={'h5'}>
+                    {wizardData.network === 'Binance' ? 'BEP ' : 'ERC '}
+                    {wizardData.typeOfContact}
+                  </Typography>
+                </ListItem>
+                <Grid mb={3}>
+                  <Divider />
+                </Grid>
+
                 <Grid container>
-                  <Grid item sm={5} xs={12} lg={5}>
-                    <FormControl>
-                      <Grid item container>
-                        <Grid item container>
-                          <Grid item lg={12}>
-                            <FormLabel>
-                              <Typography variant="h5">Access</Typography>
-                            </FormLabel>
-                          </Grid>
-                        </Grid>
-                        <Grid item lg={12}>
-                          <RadioGroup
-                            aria-labelledby="demo-radio-buttons-group-label"
-                            defaultValue="Ownable"
-                            name="radio-buttons-group"
-                          >
-                            <FormControlLabel
-                              value="Ownable"
-                              control={<Radio />}
-                              label="Ownable"
-                            />
-                            <FormControlLabel
-                              value="Roles"
-                              control={<Radio />}
-                              label="Roles"
-                            />
-                          </RadioGroup>
-                        </Grid>
-                      </Grid>
-                    </FormControl>
-                  </Grid>
-                  <Grid item sm={1} xs={12} lg={1}>
-                    <Divider orientation="vertical" variant="middle" flexItem />
+                  <Grid item sm={6} xs={12} lg={6}>
+                    <RadioGroup
+                      label="Access"
+                      name="access"
+                      options={accessOptions}
+                      disable={false}
+                    />
                   </Grid>
                   <Grid item sm={6} xs={12} lg={6}>
-                    <FormControl>
-                      <Grid item container>
-                        <Grid item lg={10}>
-                          <FormLabel id="demo-radio-buttons-group-label">
-                            <Typography variant="h5">Upgradeability</Typography>
-                          </FormLabel>
-                        </Grid>
-                        <Grid item lg={2}>
-                          <Switch onChange={handleChange} />
-                        </Grid>
-                      </Grid>
-                      <Grid>
-                        <RadioGroup
-                          aria-labelledby="demo-radio-buttons-group-label"
-                          defaultValue="Transparent"
-                          name="radio-buttons-group"
-                        >
-                          <FormControlLabel
-                            value="Transparent"
-                            control={<Radio />}
-                            label="Transparent"
-                          />
-                          <FormControlLabel
-                            value="UUPS"
-                            control={<Radio />}
-                            label="UUPS"
-                          />
-                        </RadioGroup>
-                      </Grid>
-                    </FormControl>
+                    <RadioGroup
+                      label="Upgradeability"
+                      name="upgrade"
+                      options={upgradeOptions}
+                      disable={!switchValue}
+                    />
+                    <Switch
+                      name="upgradeability"
+                      checked={switchValue}
+                      onChange={handleSwitchChange}
+                    />
                   </Grid>
                 </Grid>
-              </FormGroup>
-            </Grid>
-          </Card>
-        </Grid>
-        <Grid
-          container
-          spacing={2}
-          mt={4}
-          display="flex"
-          justifyContent="flex-end"
-        >
-          <Grid item>
-            <Button
-              variant="outlined"
-              onClick={() => navigate('/wizard/step-setting')}
-            >
-              Previous
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => navigate('/wizard/step-info')}
-            >
-              Next
-            </Button>
-          </Grid>
+              </Card>
+              <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>
+                <Button
+                  variant="outlined"
+                  onClick={() => navigate('/wizard/step-feature')}
+                >
+                  Previous
+                </Button>
+                <Button variant="contained" color="secondary" type="submit">
+                  Next
+                </Button>
+              </Grid>
+            </Form>
+          </Formik>
         </Grid>
       </Grid>
     </Container>
   );
 }
-
+stepAccessUpgrade.propTypes = {
+  wizardData: PropTypes.object,
+  wizardFormData: PropTypes.object,
+  setWizardFormData: PropTypes.func,
+};
 export default stepAccessUpgrade;
