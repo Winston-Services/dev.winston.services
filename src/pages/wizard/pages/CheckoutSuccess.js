@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Container, Grid, Typography } from '@mui/material';
+import { Button, Container, Grid, Typography, Box } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
@@ -34,15 +34,26 @@ export default function SuccessCheckout({ wizardData, coin }) {
             Proceed to smart contract checkout
           </Button>
         ) : (
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => {
-              navigate('/wizard');
-            }}
-          >
-            Go To Workshop
-          </Button>
+          <Box display="flex" justifyContent={'center'}>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                navigate('/wizard');
+              }}
+              sx={{ mr: 2 }}
+            >
+              Go to Workshop
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                navigate('/');
+              }}
+            >
+              Home
+            </Button>
+          </Box>
         )}
       </Grid>
     </Container>

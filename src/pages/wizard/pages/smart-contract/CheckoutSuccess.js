@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Container, Grid, Typography } from '@mui/material';
+import { Button, Container, Grid, Typography, Box } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
@@ -21,15 +21,26 @@ export default function SuccessCheckout({ wizardData }) {
           urna risus porttitor dignissim. Tristique egestas ipsum nam commodo,
           aliquet ac. Lectus scelerisque leo ac tortor quis.
         </Typography>
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={() => {
-            navigate('/');
-          }}
-        >
-          Home
-        </Button>
+        <Box display="flex" justifyContent={'center'}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate('/wizard');
+            }}
+            sx={{ mr: 2 }}
+          >
+            Go to Workshop
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              navigate('/');
+            }}
+          >
+            Home
+          </Button>
+        </Box>
       </Grid>
     </Container>
   );

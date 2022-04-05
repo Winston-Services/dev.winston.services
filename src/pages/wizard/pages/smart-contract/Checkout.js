@@ -29,7 +29,7 @@ function Checkout({ setWizardData }) {
             navigate(
               isCustomWizard
                 ? '/wizard/custom/checkout-success'
-                : '/wizard/coin/checkout-success'
+                : '/wizard/smart-contract/checkout-success'
             );
           },
         },
@@ -46,7 +46,7 @@ function Checkout({ setWizardData }) {
             navigate(
               isCustomWizard
                 ? '/wizard/custom/checkout-success'
-                : '/wizard/coin/checkout-success'
+                : '/wizard/smart-contract/checkout-success'
             );
           },
         },
