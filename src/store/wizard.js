@@ -63,6 +63,8 @@ const initialState = {
     //Smart contract info
     securityContact: '',
     license: '',
+    walletIcon: '',
+    walletTestnetIcon: '',
   },
 };
 
