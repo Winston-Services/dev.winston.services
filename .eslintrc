@@ -19,7 +19,6 @@
   "plugins": ["react", "import"],
   "rules": {
     "no-debugger": 1,
-    "indent": ["error", 2],
     "quotes": ["error", "single"],
     "import/order": [
       "error",

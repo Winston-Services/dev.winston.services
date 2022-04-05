@@ -3,11 +3,11 @@ import React from 'react';
 import { Grid, Card, Button } from '@mui/material';
 import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import DropDown from './../../../components/common/DropDown';
-import TextField from './../../../components/common/TextField';
+import DropDown from './../../../../components/common/DropDown';
+import TextField from './../../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
   // coinName: Yup.string().required('Coin name is required'),
@@ -25,11 +25,11 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 function StepCoinName({ wizardFormData, setWizardFormData }) {
-  let navigate = useNavigate();
+  const { previous, next } = useOutletContext();
 
   const handleSubmit = (values) => {
     setWizardFormData(values);
-    navigate('/wizard/coin/step-block-reward');
+    next();
   };
 
   return (
@@ -95,10 +95,7 @@ function StepCoinName({ wizardFormData, setWizardFormData }) {
             </Grid>
           </Card>
           <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>
-            <Button
-              variant="outlined"
-              onClick={() => navigate('/wizard/coin/step-algorithm')}
-            >
+            <Button variant="outlined" onClick={previous}>
               Previous
             </Button>
             <Button variant="contained" color="secondary" type="submit">

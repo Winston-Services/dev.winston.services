@@ -4,12 +4,11 @@ const initialState = {
   workshop: '',
   network: { title: 'Ethereum', subTitle: 'ERC' },
   typeOfContact: '20',
-
   formData: {
     //Coin algorithm
     email: '',
     coinType: 'Paid',
-    coinAlgorithm: 'Scrpt - proof of work1',
+    coinAlgorithm: 'Script - proof of work1',
 
     //Coin name
     coinName: '',

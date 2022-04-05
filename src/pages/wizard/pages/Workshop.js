@@ -11,9 +11,9 @@ import {
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-import coin from '../../assets/coin.svg';
-import custom from '../../assets/custom.svg';
-import smartContract from '../../assets/smart_contract.svg';
+import coin from './../../../assets/coin.svg';
+import custom from './../../../assets/custom.svg';
+import smartContract from './../../../assets/smart_contract.svg';
 
 function Workshop({ wizardData, setWizardData }) {
   let navigate = useNavigate();
@@ -26,7 +26,7 @@ function Workshop({ wizardData, setWizardData }) {
     {
       title: 'Smart Contract',
       icon: smartContract,
-      onClickUrl: '/wizard/network',
+      onClickUrl: '/wizard/smart-contract',
     },
     {
       title: 'Custom',

@@ -3,12 +3,12 @@ import React from 'react';
 import { Grid, Card, Button } from '@mui/material';
 import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import CheckBox from './../../../components/common/CheckBox';
-import DropDown from './../../../components/common/DropDown';
-import TextField from './../../../components/common/TextField';
+import CheckBox from './../../../../components/common/CheckBox';
+import DropDown from './../../../../components/common/DropDown';
+import TextField from './../../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
   // blockReward: Yup.string().required('Block reward is required'),
@@ -24,11 +24,11 @@ const FORM_VALIDATION = Yup.object().shape({
   // ),
 });
 function StepCoinBlockReward({ wizardFormData, setWizardFormData }) {
-  let navigate = useNavigate();
+  const { previous, next } = useOutletContext();
 
   const handleSubmit = (values) => {
     setWizardFormData(values);
-    navigate('/wizard/coin/step-block-confirmation');
+    next();
   };
 
   return (
@@ -87,10 +87,7 @@ function StepCoinBlockReward({ wizardFormData, setWizardFormData }) {
             </Grid>
           </Card>
           <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>
-            <Button
-              variant="outlined"
-              onClick={() => navigate('/wizard/coin/step-name')}
-            >
+            <Button variant="outlined" onClick={previous}>
               Previous
             </Button>
             <Button variant="contained" color="secondary" type="submit">

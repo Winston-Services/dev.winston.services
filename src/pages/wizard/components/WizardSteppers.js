@@ -1,12 +1,5 @@
 import * as React from 'react';
 
-import {
-  Info,
-  Memory,
-  PlaylistAddCheck,
-  Security,
-  Settings,
-} from '@mui/icons-material';
 import { useMediaQuery } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Step from '@mui/material/Step';
@@ -61,58 +54,7 @@ const ColorLibStepIconRoot = styled('div')(({ ownerState, theme }) => ({
   }),
 }));
 
-function ColorLibStepIcon(props) {
-  const { active, completed } = props;
-
-  const icons = {
-    1: <Memory fontSize="large" />,
-    2: <Settings fontSize="large" />,
-    3: <PlaylistAddCheck fontSize="large" />,
-    4: <Security fontSize="large" />,
-    5: <Info fontSize="large" />,
-  };
-  return (
-    <ColorLibStepIconRoot ownerState={{ completed, active }}>
-      {icons[String(props.icon)]}
-    </ColorLibStepIconRoot>
-  );
-}
-
-ColorLibStepIcon.propTypes = {
-  /**
-   * Whether this step is active.
-   * @default false
-   */
-  active: PropTypes.bool,
-  className: PropTypes.string,
-  /**
-   * Mark the step as completed. Is passed to child components.
-   * @default false
-   */
-  completed: PropTypes.bool,
-  /**
-   * The label displayed in the step icon.
-   */
-  icon: PropTypes.node,
-};
-
-export default function WizardSteppers({ activeStepCount, from = 'other' }) {
-  const steps =
-    from === 'coin'
-      ? [
-        'Algorithm',
-        'Coin Name',
-        'Block  Reward',
-        'Block Confirmation',
-        'Custom Logo',
-      ]
-      : [
-        'Smart Contract Type',
-        'Settings',
-        'Features',
-        'Access and Upgradeability',
-        'Info',
-      ];
+export default function WizardSteppers({ activeStepCount = 2, steps }) {
   const matches = useMediaQuery('(min-width:535px)');
   return (
     <Stack spacing={4}>
@@ -121,10 +63,16 @@ export default function WizardSteppers({ activeStepCount, from = 'other' }) {
         activeStep={activeStepCount}
         connector={<ColorLibConnector />}
       >
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={ColorLibStepIcon}>
-              {matches ? label : ''}
+        {steps.map((stepObj) => (
+          <Step key={stepObj.title}>
+            <StepLabel
+              StepIconComponent={({ completed, active }) => (
+                <ColorLibStepIconRoot ownerState={{ completed, active }}>
+                  {stepObj.icon}
+                </ColorLibStepIconRoot>
+              )}
+            >
+              {matches ? stepObj.title : ''}
             </StepLabel>
           </Step>
         ))}
@@ -134,6 +82,7 @@ export default function WizardSteppers({ activeStepCount, from = 'other' }) {
 }
 
 WizardSteppers.propTypes = {
-  activeStepCount: PropTypes.number,
   from: PropTypes.string,
+  steps: PropTypes.array,
+  activeStepCount: PropTypes.number,
 };
