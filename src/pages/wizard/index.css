@@ -1,0 +1,15 @@
+.wizardCard:hover {
+  background: linear-gradient(#e06479, #d34aa3) !important;
+  box-shadow: 0px 30px 70px rgb(0 0 0 / 10%) !important;
+  cursor: pointer;
+}
+
+.activeWizardCard {
+  background: linear-gradient(#e06479, #d34aa3) !important;
+  box-shadow: 0px 30px 70px rgb(0 0 0 / 10%) !important;
+  cursor: pointer;
+}
+
+.wizardCard:hover .purchase-button {
+  background: linear-gradient(92.44deg, #271d5a 3.93%, #271d5a 98.71%);
+}

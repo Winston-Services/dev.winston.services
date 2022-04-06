@@ -1,0 +1,120 @@
+/* Landing page and top nav gradient */
+.signInGradient:after {
+  content: '';
+  background: linear-gradient(269deg, #f448ab 24.22%, #7968ff 100%);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: calc(50% - 50px);
+  height: 100%;
+  transform: skewX(-10deg);
+  z-index: -1;
+  border-left: 50px solid #2d2169;
+}
+
+.bannerSkewY {
+  transform: translate(0px, -255px) skewY(-15deg);
+  border-bottom: 50px solid #2d2169;
+  height: 150%;
+  min-height: 1200px;
+  bottom: calc(100% - 820px);
+}
+
+.landingInGradient {
+  overflow: hidden;
+  position: absolute;
+  display: block;
+  width: 100%;
+  z-index: 0;
+  background: linear-gradient(180deg, #ea7c8f 50%, #9e65e8 100%);
+}
+
+.staticMenuGradient.MuiAppBar-root {
+  overflow: hidden;
+  z-index: 100;
+  background: transparent;
+}
+
+.staticMenuGradient .MuiContainer-root .MuiToolbar-root {
+  z-index: 100;
+  padding: 15px 0;
+}
+
+.landingInGradient:after {
+  content: '';
+  background-image: linear-gradient(
+    129deg,
+    #ea7c8f,
+    #ea7c8f,
+    #e67cc1,
+    #9e65e8,
+    #9e65e8
+  );
+  position: absolute;
+  width: 100%;
+  height: 820px;
+  bottom: 0;
+}
+
+.landingInGradient:before {
+  content: '';
+  background-image: radial-gradient(#f1499f, transparent 60%);
+  position: absolute;
+  width: 70%;
+  height: 1220px;
+  z-index: 1;
+  bottom: 0;
+  transform: translate(-180px, 60px);
+}
+
+.landingInGradientShades:before {
+  content: '';
+  background-image: linear-gradient(180deg, transparent 40%, #af77f7 90%);
+  position: absolute;
+  width: 100%;
+  height: 820px;
+  z-index: 2;
+  transform: translate(0px, 110px);
+  bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .landingInGradient.bannerSkewY {
+    height: 1070px;
+    bottom: calc(100% - 1030px);
+  }
+
+  .landingInGradientShades::before,
+  .landingInGradientShades::after,
+  .landingInGradient::before,
+  .landingInGradient::after {
+    height: 1070px;
+  }
+}
+
+/* Landing page and top nav gradient */
+
+.nav-link {
+  position: relative;
+  font-size: 14px;
+}
+
+.nav-link::before,
+.nav-link::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  bottom: -8px;
+  left: 0;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in;
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  transition: transform 0.3s ease-in 0.3s;
+  transform: scaleX(1);
+}

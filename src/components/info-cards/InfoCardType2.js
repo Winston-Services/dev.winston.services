@@ -4,6 +4,8 @@ import { Grid } from '@mui/material';
 import { PropTypes } from 'prop-types';
 
 import CardType2 from './CardType2';
+
+import './index.css';
 export default function InfoCardType2({ data }) {
   return (
     <Grid container sx={{ mt: { xs: 10, lg: 0 } }}>

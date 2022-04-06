@@ -7,6 +7,7 @@ import { Outlet } from 'react-router-dom';
 import { setTheme } from '../store/themeColors';
 import LandingFooter from './common/LandingFooter';
 import LandingTopNav from './common/LandingTopNav';
+import './index.css';
 
 function LandingLayout() {
   const dispatch = useDispatch();

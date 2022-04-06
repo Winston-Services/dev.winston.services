@@ -1,0 +1,23 @@
+.blueSectionLandingBg {
+  position: relative;
+}
+
+.blueSectionLandingBg:before {
+  content: '';
+  border-top: 50px solid #2d2169;
+  border-bottom: 50px solid #2d2169;
+  transform: skewY(-15deg);
+  position: absolute;
+  top: -200px;
+  height: calc(100% + 60px);
+  width: 100%;
+  background: #271d5a;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 726px) {
+  .blueSectionLandingBg:before {
+    top: -100px;
+    height: calc(100% + 0px);
+  }
+}

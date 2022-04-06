@@ -93,7 +93,10 @@ export default function LandingTopNav() {
                   component="img"
                   src={Logo}
                   alt="crypto"
-                  sx={{ height: '47px' }}
+                  sx={{ height: '47px', cursor: 'pointer' }}
+                  onClick={() => {
+                    navigate('/');
+                  }}
                 />
               </Grid>
               <Grid
@@ -182,7 +185,7 @@ export default function LandingTopNav() {
                         component="img"
                         src={Logo}
                         alt="crypto"
-                        sx={{ height: '47px' }}
+                        sx={{ height: '47px', cursor: 'pointer' }}
                       />
                     </Grid>
                     <Grid item xs="auto">

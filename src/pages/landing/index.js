@@ -7,6 +7,7 @@ import CreateYourOwnBlockchain from './components/CreateYourOwnBlockchain';
 import Discord from './components/Discord';
 import Home from './components/Home';
 import Services from './components/Services';
+import './index.css';
 
 export default function Landing() {
   useEffect(() => {
