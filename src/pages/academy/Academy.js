@@ -74,7 +74,7 @@ const academyData = [
   },
 ];
 
-function index() {
+function Academy() {
   const navigate = useNavigate();
   return (
     <Container>
@@ -162,4 +162,4 @@ function index() {
   );
 }
 
-export default index;
+export default Academy;

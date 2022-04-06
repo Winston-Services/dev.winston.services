@@ -102,7 +102,7 @@ function CommunityDetails() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isSticky]);
 
   const handleChange = (newValue) => {
     setValue(newValue);

@@ -41,7 +41,7 @@ const upgradeOptions = [
       'Uses simpler proxy with less overhead, requires including extra code in your contract. Allows flexibility for authorizing upgrades.',
   },
 ];
-function stepAccessUpgrade({ wizardData, wizardFormData, setWizardFormData }) {
+function StepAccessUpgrade({ wizardData, wizardFormData, setWizardFormData }) {
   const [switchValue, setSwitchValue] = useState(false);
   const { previous, next } = useOutletContext();
   const handleSubmit = (values) => {
@@ -108,9 +108,9 @@ function stepAccessUpgrade({ wizardData, wizardFormData, setWizardFormData }) {
     </Grid>
   );
 }
-stepAccessUpgrade.propTypes = {
+StepAccessUpgrade.propTypes = {
   wizardData: PropTypes.object,
   wizardFormData: PropTypes.object,
   setWizardFormData: PropTypes.func,
 };
-export default stepAccessUpgrade;
+export default StepAccessUpgrade;

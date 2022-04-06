@@ -41,7 +41,7 @@ function ProductDetails() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isSticky]);
 
   return (
     <Container>

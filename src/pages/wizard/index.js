@@ -47,7 +47,7 @@ const StepSetting = React.lazy(() =>
 );
 const Workshop = React.lazy(() => import('./pages/Workshop'));
 
-const getRouteWrapper = (component) => {
+const WizardRoutes = (component) => {
   const dispatch = useDispatch();
   const wizardData = useSelector(wizardDataSelector);
   const wizardFormData = useSelector(wizardFormDataSelector);
@@ -86,7 +86,7 @@ export default function Wizard() {
 
   useEffect(() => {
     navigate('/wizard');
-  }, []);
+  }, [navigate]);
 
   const routes = [
     {
@@ -94,7 +94,7 @@ export default function Wizard() {
       children: [
         {
           index: true,
-          element: getRouteWrapper(<Workshop />),
+          element: WizardRoutes(<Workshop />),
         },
         {
           path: '/coin',
@@ -102,33 +102,33 @@ export default function Wizard() {
           children: [
             {
               index: true,
-              element: getRouteWrapper(<StepAlgorithmCoin />),
+              element: WizardRoutes(<StepAlgorithmCoin />),
             },
             {
               path: '/coin/step-name',
-              element: getRouteWrapper(<StepCoinName />),
+              element: WizardRoutes(<StepCoinName />),
             },
             {
               path: '/coin/step-block-reward',
-              element: getRouteWrapper(<StepCoinBlockReward />),
+              element: WizardRoutes(<StepCoinBlockReward />),
             },
             {
               path: '/coin/step-block-confirmation',
-              element: getRouteWrapper(<StepCoinBlockConfirmation />),
+              element: WizardRoutes(<StepCoinBlockConfirmation />),
             },
             {
               path: '/coin/step-custom-logo',
-              element: getRouteWrapper(<StepLogo />),
+              element: WizardRoutes(<StepLogo />),
             },
           ],
         },
         {
           path: '/coin/checkout',
-          element: getRouteWrapper(<CoinCheckout />),
+          element: WizardRoutes(<CoinCheckout />),
         },
         {
           path: '/coin/checkout-success',
-          element: getRouteWrapper(<CoinCheckoutSuccess />),
+          element: WizardRoutes(<CoinCheckoutSuccess />),
         },
         {
           path: '/smart-contract',
@@ -136,33 +136,33 @@ export default function Wizard() {
           children: [
             {
               index: true,
-              element: getRouteWrapper(<Network />),
+              element: WizardRoutes(<Network />),
             },
             {
               path: '/smart-contract/step-setting',
-              element: getRouteWrapper(<StepSetting />),
+              element: WizardRoutes(<StepSetting />),
             },
             {
               path: '/smart-contract/step-feature',
-              element: getRouteWrapper(<StepFeature />),
+              element: WizardRoutes(<StepFeature />),
             },
             {
               path: '/smart-contract/step-info',
-              element: getRouteWrapper(<StepInfo />),
+              element: WizardRoutes(<StepInfo />),
             },
             {
               path: '/smart-contract/step-access-upgrade',
-              element: getRouteWrapper(<StepAccessUpgrade />),
+              element: WizardRoutes(<StepAccessUpgrade />),
             },
           ],
         },
         {
           path: '/smart-contract/checkout',
-          element: getRouteWrapper(<SmartCheckout />),
+          element: WizardRoutes(<SmartCheckout />),
         },
         {
           path: '/smart-contract/checkout-success',
-          element: getRouteWrapper(<SmartCheckoutSuccess />),
+          element: WizardRoutes(<SmartCheckoutSuccess />),
         },
         {
           path: '/custom',
@@ -170,61 +170,61 @@ export default function Wizard() {
           children: [
             {
               index: true,
-              element: getRouteWrapper(<StepAlgorithmCoin />),
+              element: WizardRoutes(<StepAlgorithmCoin />),
             },
             {
               path: '/custom/step-name',
-              element: getRouteWrapper(<StepCoinName />),
+              element: WizardRoutes(<StepCoinName />),
             },
             {
               path: '/custom/step-block-reward',
-              element: getRouteWrapper(<StepCoinBlockReward />),
+              element: WizardRoutes(<StepCoinBlockReward />),
             },
             {
               path: '/custom/step-block-confirmation',
-              element: getRouteWrapper(<StepCoinBlockConfirmation />),
+              element: WizardRoutes(<StepCoinBlockConfirmation />),
             },
             {
               path: '/custom/step-custom-logo',
-              element: getRouteWrapper(<StepLogo />),
+              element: WizardRoutes(<StepLogo />),
             },
             {
               path: '/custom/step-smart-contract-network',
-              element: getRouteWrapper(<Network />),
+              element: WizardRoutes(<Network />),
             },
             {
               path: '/custom/step-smart-contract-setting',
-              element: getRouteWrapper(<StepSetting />),
+              element: WizardRoutes(<StepSetting />),
             },
             {
               path: '/custom/step-smart-contract-feature',
-              element: getRouteWrapper(<StepFeature />),
+              element: WizardRoutes(<StepFeature />),
             },
             {
               path: '/custom/step-smart-contract-info',
-              element: getRouteWrapper(<StepInfo />),
+              element: WizardRoutes(<StepInfo />),
             },
             {
               path: '/custom/step-smart-contract-access-upgrade',
-              element: getRouteWrapper(<StepAccessUpgrade />),
+              element: WizardRoutes(<StepAccessUpgrade />),
             },
           ],
         },
         {
           path: '/custom/coin-checkout',
-          element: getRouteWrapper(<CoinCheckout />),
+          element: WizardRoutes(<CoinCheckout />),
         },
         {
           path: '/custom/coin-checkout-success',
-          element: getRouteWrapper(<CheckoutSuccess coin={true} />),
+          element: WizardRoutes(<CheckoutSuccess coin={true} />),
         },
         {
           path: '/custom/smart-contract-checkout',
-          element: getRouteWrapper(<SmartCheckout />),
+          element: WizardRoutes(<SmartCheckout />),
         },
         {
           path: '/custom/checkout-success',
-          element: getRouteWrapper(<CheckoutSuccess />),
+          element: WizardRoutes(<CheckoutSuccess />),
         },
         { path: '*', element: <Navigate to={'/'} /> },
       ],
