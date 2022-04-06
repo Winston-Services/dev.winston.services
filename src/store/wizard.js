@@ -20,7 +20,7 @@ const initialState = {
     websiteUrl: '',
     githubUrl: '',
 
-    //Block reward
+    //Coin block reward
     blockReward: '',
     blockHalving: '',
     coinSupplyWithoutPremine: '',
@@ -29,7 +29,7 @@ const initialState = {
     premineAmount: '',
     coinSupplyWithPremine: '',
 
-    //Block confirmation
+    //Coin block confirmation
     coinbaseMaturity: '',
     numberOfConfirmations: '',
     targetSpacingInMinutes: '',
@@ -37,6 +37,10 @@ const initialState = {
     hardCodedNode: false,
     node1: '',
     node2: '',
+
+    // Coin custom logo
+    walletIcon: '',
+    walletTestnetIcon: '',
 
     //Smart contract type
     smartContractName: '',
@@ -63,8 +67,6 @@ const initialState = {
     //Smart contract info
     securityContact: '',
     license: '',
-    walletIcon: '',
-    walletTestnetIcon: '',
   },
 };
 

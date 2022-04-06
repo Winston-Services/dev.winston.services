@@ -77,7 +77,7 @@ FormikRadioGroup.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   options: PropTypes.array,
-  disable: PropTypes.boolean,
+  disable: PropTypes.bool,
 };
 
 export default FormikRadioGroup;

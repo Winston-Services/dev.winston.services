@@ -108,7 +108,7 @@ export default function Marketplace() {
                 }}
               />
             </Grid>
-            <Grid item xs="12" md="auto">
+            <Grid item xs={12} md="auto">
               <Grid container columnSpacing={2}>
                 <Grid item xs={7} md="auto">
                   <Button
@@ -129,7 +129,13 @@ export default function Marketplace() {
                     color="secondary"
                     onClick={toggleDrawer}
                     startIcon={<FilterListIcon />}
-                    endIcon={<Badge color="secondary" badgeContent={5} />}
+                    endIcon={
+                      <Badge
+                        color="secondary"
+                        badgeContent={5}
+                        sx={{ pl: 1 }}
+                      />
+                    }
                   >
                     Filter
                   </Button>

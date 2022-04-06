@@ -58,7 +58,7 @@ function stepAccessUpgrade({ wizardData, wizardFormData, setWizardFormData }) {
       <Formik initialValues={{ ...wizardFormData }} onSubmit={handleSubmit}>
         <Form>
           <Card sx={{ p: 6 }} elevation={0}>
-            <ListItem>
+            <ListItem sx={{ px: 0 }}>
               <ListItemAvatar>
                 <img width={'60%'} src={ethereumBlue} alt="icon" />
               </ListItemAvatar>

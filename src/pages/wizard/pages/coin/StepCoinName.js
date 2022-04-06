@@ -10,18 +10,18 @@ import DropDown from './../../../../components/common/DropDown';
 import TextField from './../../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
-  // coinName: Yup.string().required('Coin name is required'),
-  // coinAbbreviation: Yup.string().required('Coin abbreviation is required'),
-  // addressLetter: Yup.string().required('Address letter is required'),
-  // addressLetterTestnet: Yup.string().required(
-  //   'Address letter testnet is required'
-  // ),
-  // coinUnit: Yup.string().required('Coin unit is required'),
-  // timestamp: Yup.string().required('Timestamp is required'),
-  // websiteUrl: Yup.string()
-  //   .required('Website URL is required')
-  //   .url('Invalid URL'),
-  // githubUrl: Yup.string().required('Github URL is required').url('Invalid URL'),
+  coinName: Yup.string().required('Coin name is required'),
+  coinAbbreviation: Yup.string().required('Coin abbreviation is required'),
+  addressLetter: Yup.string().required('Address letter is required'),
+  addressLetterTestnet: Yup.string().required(
+    'Address letter testnet is required'
+  ),
+  coinUnit: Yup.string().required('Coin unit is required'),
+  timestamp: Yup.string().required('Timestamp is required'),
+  websiteUrl: Yup.string()
+    .required('Website URL is required')
+    .url('Invalid URL'),
+  githubUrl: Yup.string().required('Github URL is required').url('Invalid URL'),
 });
 
 function StepCoinName({ wizardFormData, setWizardFormData }) {

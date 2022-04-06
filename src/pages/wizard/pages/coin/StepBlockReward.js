@@ -11,17 +11,17 @@ import DropDown from './../../../../components/common/DropDown';
 import TextField from './../../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
-  // blockReward: Yup.string().required('Block reward is required'),
-  // blockHalving: Yup.string().required('Block halving is required'),
-  // coinSupplyWithoutPremine: Yup.string().required(
-  //   'Coin supply without premine is required'
-  // ),
-  // fullPremine: Yup.boolean().oneOf([true]),
-  // premine: Yup.string().required('Premine is required'),
-  // premineAmount: Yup.string().required('Premine amount is required'),
-  // coinSupplyWithPremine: Yup.string().required(
-  //   'Coin supply with premine is required'
-  // ),
+  blockReward: Yup.string().required('Block reward is required'),
+  blockHalving: Yup.string().required('Block halving is required'),
+  coinSupplyWithoutPremine: Yup.string().required(
+    'Coin supply without premine is required'
+  ),
+  fullPremine: Yup.boolean().oneOf([true]),
+  premine: Yup.string().required('Premine is required'),
+  premineAmount: Yup.string().required('Premine amount is required'),
+  coinSupplyWithPremine: Yup.string().required(
+    'Coin supply with premine is required'
+  ),
 });
 function StepCoinBlockReward({ wizardFormData, setWizardFormData }) {
   const { previous, next } = useOutletContext();

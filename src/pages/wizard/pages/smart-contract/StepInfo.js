@@ -39,7 +39,7 @@ function StepInfo({ wizardData, wizardFormData, setWizardFormData }) {
       >
         <Form>
           <Card sx={{ p: 6 }} elevation={0}>
-            <ListItem>
+            <ListItem sx={{ px: 0 }}>
               <ListItemAvatar>
                 <img width={'60%'} src={ethereumBlue} alt="icon" />
               </ListItemAvatar>
@@ -51,21 +51,17 @@ function StepInfo({ wizardData, wizardFormData, setWizardFormData }) {
             <Grid mb={3}>
               <Divider />
             </Grid>
-            <Grid container spacing={4}>
-              <Grid item xs={12}>
-                <TextField
-                  name="securityContact"
-                  label={'Security Contact'}
-                  placeholder={'Security Contact'}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  name="license"
-                  label={'License'}
-                  placeholder={'License'}
-                />
-              </Grid>
+            <Grid display={'flex'} flexDirection="column" gap={3}>
+              <TextField
+                name="securityContact"
+                label={'Security Contact'}
+                placeholder={'Security Contact'}
+              />
+              <TextField
+                name="license"
+                label={'License'}
+                placeholder={'License'}
+              />
             </Grid>
           </Card>
           <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>

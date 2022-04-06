@@ -153,17 +153,10 @@ function Filter({ toggleDrawer, openDrawer }) {
         ))}
         <CardContent sx={{ p: 4 }}>
           <Box display="flex" justifyContent="center" alignItems={'center'}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={toggleDrawer}
-              sx={{ mr: 2 }}
-            >
+            <Button variant="contained" color="secondary" sx={{ mr: 2 }}>
               Apply Filter
             </Button>
-            <Button variant="outlined" onClick={toggleDrawer}>
-              Clear
-            </Button>
+            <Button variant="outlined">Clear</Button>
           </Box>
         </CardContent>
       </>
@@ -173,7 +166,6 @@ function Filter({ toggleDrawer, openDrawer }) {
   return (
     <div>
       <Drawer
-        PaperProps={{ gradient: false }}
         anchor={'right'}
         open={openDrawer}
         onClose={toggleDrawer}
@@ -189,8 +181,8 @@ function Filter({ toggleDrawer, openDrawer }) {
 }
 
 Filter.propTypes = {
-  toggleDrawer: PropTypes.node,
-  openDrawer: PropTypes.node,
+  toggleDrawer: PropTypes.func,
+  openDrawer: PropTypes.bool,
 };
 
 export default Filter;

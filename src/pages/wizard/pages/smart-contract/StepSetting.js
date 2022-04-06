@@ -17,13 +17,21 @@ import * as Yup from 'yup';
 import ethereumBlue from './../../../../assets/ethereum_blue.svg';
 import TextField from './../../../../components/common/TextField';
 
-const FORM_VALIDATION = Yup.object().shape({
-  // smartContractName: Yup.string().required('Name is required'),
-  // smartContractSymbol: Yup.string().required('Symbol is required'),
-  // smartContractPremine: Yup.string().required('Premine is required'),
-});
 function StepSetting({ wizardData, wizardFormData, setWizardFormData }) {
   const { previous, next } = useOutletContext();
+
+  let FORM_VALIDATION;
+  if (wizardData.typeOfContact === '1155') {
+    FORM_VALIDATION = Yup.object().shape({
+      smartContractName: Yup.string().required('Name is required'),
+    });
+  } else {
+    FORM_VALIDATION = Yup.object().shape({
+      smartContractName: Yup.string().required('Name is required'),
+      smartContractSymbol: Yup.string().required('Symbol is required'),
+      smartContractPremine: Yup.string().required('Premine is required'),
+    });
+  }
 
   const handleSubmit = (values) => {
     setWizardFormData(values);
@@ -39,7 +47,7 @@ function StepSetting({ wizardData, wizardFormData, setWizardFormData }) {
       >
         <Form>
           <Card sx={{ p: 6 }} elevation={0}>
-            <ListItem>
+            <ListItem sx={{ px: 0 }}>
               <ListItemAvatar>
                 <img width={'60%'} src={ethereumBlue} alt="icon" />
               </ListItemAvatar>

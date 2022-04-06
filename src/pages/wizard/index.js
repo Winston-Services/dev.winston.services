@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Box, CircularProgress } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { useRoutes, Navigate } from 'react-router-dom';
+import { useRoutes, Navigate, useNavigate } from 'react-router-dom';
 
 import {
   wizardDataSelector,
@@ -82,11 +82,11 @@ const getRouteWrapper = (component) => {
 };
 
 export default function Wizard() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   navigate('/wizard');
-  // }, []);
+  useEffect(() => {
+    navigate('/wizard');
+  }, []);
 
   const routes = [
     {

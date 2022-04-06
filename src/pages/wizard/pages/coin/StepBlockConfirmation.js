@@ -11,19 +11,19 @@ import DropDown from './../../../../components/common/DropDown';
 import TextField from './../../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
-  // coinbaseMaturity: Yup.string().required('Coinbase maturity is required'),
-  // numberOfConfirmations: Yup.string().required(
-  //   'Number of confirmations is required'
-  // ),
-  // targetSpacingInMinutes: Yup.string().required(
-  //   'Target spacing in minutes is required'
-  // ),
-  // targetTimespanInMinutes: Yup.string().required(
-  //   'Target timespan in minutes is required'
-  // ),
-  // hardCodedNode: Yup.boolean().oneOf([true]),
-  // node1: Yup.string().required('Node 1 is required'),
-  // node2: Yup.string().required('Node 2 is required'),
+  coinbaseMaturity: Yup.string().required('Coinbase maturity is required'),
+  numberOfConfirmations: Yup.string().required(
+    'Number of confirmations is required'
+  ),
+  targetSpacingInMinutes: Yup.string().required(
+    'Target spacing in minutes is required'
+  ),
+  targetTimespanInMinutes: Yup.string().required(
+    'Target timespan in minutes is required'
+  ),
+  hardCodedNode: Yup.boolean().oneOf([true]),
+  node1: Yup.string().required('Node 1 is required'),
+  node2: Yup.string().required('Node 2 is required'),
 });
 function StepCoinBlockConfirmation({ wizardFormData, setWizardFormData }) {
   const { previous, next } = useOutletContext();

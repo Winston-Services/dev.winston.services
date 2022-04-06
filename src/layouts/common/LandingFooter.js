@@ -1,6 +1,14 @@
 import React from 'react';
 
-import { Box, Container, Grid, Stack, Typography, Link } from '@mui/material';
+import {
+  Box,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  Link,
+  IconButton,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as Discord } from './../../assets/discord_brands.svg';
@@ -158,17 +166,26 @@ export default function LandingFooter() {
             <Box src={winston} component="img" sx={{ width: '100%' }} />
           </Grid>
           <Grid item xs={9}>
-            <Box src={logo} component="img" sx={{ width: '100%', mb: 3 }} />
+            <Box src={logo} component="img" sx={{ width: '100%', mb: 2 }} />
             <Grid container spacing={4}>
               <Grid item xs={3}></Grid>
               <Grid item xs={3}>
-                <Discord width={'100%'} />
+                <IconButton
+                  href="https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8"
+                  target={'_blank'}
+                >
+                  <Discord width={'100%'} />
+                </IconButton>
               </Grid>
               <Grid item xs={3}>
-                <Twitter width={'100%'} />
+                <IconButton>
+                  <Twitter width={'100%'} />
+                </IconButton>
               </Grid>
               <Grid item xs={3}>
-                <Youtube width={'100%'} />
+                <IconButton>
+                  <Youtube width={'100%'} />
+                </IconButton>
               </Grid>
             </Grid>
           </Grid>
