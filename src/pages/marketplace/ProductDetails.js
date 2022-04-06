@@ -22,6 +22,7 @@ import ProductDetailsEthereum from '../../assets/product_details_ethereum.svg';
 import ProductImage from '../../assets/product_image.png';
 import ProductDetailTabs from './components/ProductDetailTabs';
 
+
 function ProductDetails() {
   const navigate = useNavigate();
   const [isSticky, setSticky] = React.useState(true);

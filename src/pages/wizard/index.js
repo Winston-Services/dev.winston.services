@@ -14,6 +14,8 @@ import {
 } from './../../store/wizard';
 import StepperLayout from './layout/StepperLayout';
 
+import './index.css';
+
 const CheckoutSuccess = React.lazy(() => import('./pages/CheckoutSuccess'));
 const CoinCheckoutSuccess = React.lazy(() =>
   import('./pages/coin/CheckoutSuccess')

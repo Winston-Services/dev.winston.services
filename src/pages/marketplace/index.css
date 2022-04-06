@@ -1,0 +1,26 @@
+.hover-nft-button-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-nft-button {
+  display: none !important;
+  transition: height 0.3s ease-in-out;
+}
+
+.nft-container .hover-nft-button-container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.2;
+  background-image: url('./../../assets/overlay_logo.svg');
+}
+
+.nft-container:hover .hover-nft-button {
+  display: inline !important;
+  position: absolute;
+  bottom: 0;
+}

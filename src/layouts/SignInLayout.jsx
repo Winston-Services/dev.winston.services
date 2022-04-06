@@ -9,6 +9,7 @@ import { setTheme } from '../store/themeColors';
 import { ReactComponent as Discord } from './../assets/discord_brands.svg';
 import Logo from './../assets/logo.svg';
 import CryptoLandingImage from './../components/crypto-landing-image/index';
+import './index.css';
 
 function SignInLayout() {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ function SignInLayout() {
               onClick={() => {
                 navigate('/');
               }}
-              sx={{ mb: 8, mt: 14, height: '72px' }}
+              sx={{ mb: 8, mt: 14, height: '72px', cursor: 'pointer' }}
             />
             <Box minHeight={'500px'}>
               <Outlet />

@@ -5,7 +5,6 @@ import { PropTypes } from 'prop-types';
 
 import InfoCardType1 from './InfoCardType1';
 import InfoCardType2 from './InfoCardType2';
-
 export default function InfoCard({
   listLayoutType,
   listData,

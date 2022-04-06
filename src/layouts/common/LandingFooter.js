@@ -166,7 +166,11 @@ export default function LandingFooter() {
             <Box src={winston} component="img" sx={{ width: '100%' }} />
           </Grid>
           <Grid item xs={9}>
-            <Box src={logo} component="img" sx={{ width: '100%', mb: 2 }} />
+            <Box
+              src={logo}
+              component="img"
+              sx={{ width: '100%', mb: 2, cursor: 'pointer' }}             
+            />
             <Grid container spacing={4}>
               <Grid item xs={3}></Grid>
               <Grid item xs={3}>

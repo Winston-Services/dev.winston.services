@@ -2,6 +2,8 @@ import React from 'react';
 
 import { useRoutes, Navigate } from 'react-router-dom';
 
+import './index.css';
+
 const Marketplace = React.lazy(() => import('./Marketplace'));
 const ProductDetails = React.lazy(() => import('./ProductDetails'));
 const Transaction = React.lazy(() => import('./Transaction'));
