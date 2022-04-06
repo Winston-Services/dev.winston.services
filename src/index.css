@@ -348,3 +348,10 @@ body,
   position: relative;
   box-shadow: 0px 0px 70px rgb(39 29 90) !important;
 }
+
+.gradient-border{
+  background: linear-gradient(90deg, #EA7A8F 0.64%, #E452C8 99.36%);
+  line-height: 0;
+  border-radius: 100px;
+  padding: 3px;
+}

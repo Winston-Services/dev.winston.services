@@ -28,6 +28,7 @@ const Faucet = React.lazy(() => import('./pages/faucet/Faucet'));
 const Staking = React.lazy(() => import('./pages/staking/Staking'));
 const Swapping = React.lazy(() => import('./pages/swapping'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
+const Team = React.lazy(() => import('./pages/team'));
 const CommunityDetails = React.lazy(() =>
   import('./pages/community/CommunityDetails.js')
 );
@@ -129,6 +130,10 @@ export default function App() {
         {
           path: '/supported-coins',
           element: getRouteWrapper(<SupportedCoins />, false),
+        },
+        {
+          path: '/our-team',
+          element: getRouteWrapper(<Team />, false),
         },
         {
           path: '/wizard/*',
