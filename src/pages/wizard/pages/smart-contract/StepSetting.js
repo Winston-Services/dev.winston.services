@@ -17,7 +17,11 @@ import * as Yup from 'yup';
 import ethereumBlue from './../../../../assets/ethereum_blue.svg';
 import TextField from './../../../../components/common/TextField';
 
-function StepSetting({ wizardData, wizardFormData, setWizardFormData }) {
+function StepSetting({
+  wizardData,
+  wizardSmartContractData,
+  setWizardSmartContractData,
+}) {
   const { previous, next } = useOutletContext();
 
   let FORM_VALIDATION;
@@ -34,14 +38,14 @@ function StepSetting({ wizardData, wizardFormData, setWizardFormData }) {
   }
 
   const handleSubmit = (values) => {
-    setWizardFormData(values);
+    setWizardSmartContractData(values);
     next();
   };
 
   return (
     <Grid item xs={12}>
       <Formik
-        initialValues={{ ...wizardFormData }}
+        initialValues={{ ...wizardSmartContractData }}
         validationSchema={FORM_VALIDATION}
         onSubmit={handleSubmit}
       >
@@ -109,8 +113,8 @@ function StepSetting({ wizardData, wizardFormData, setWizardFormData }) {
 
 StepSetting.propTypes = {
   wizardData: PropTypes.object,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardSmartContractData: PropTypes.object,
+  setWizardSmartContractData: PropTypes.func,
 };
 
 export default StepSetting;

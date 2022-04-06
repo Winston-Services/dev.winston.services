@@ -23,18 +23,18 @@ const FORM_VALIDATION = Yup.object().shape({
     'Coin supply with premine is required'
   ),
 });
-function StepCoinBlockReward({ wizardFormData, setWizardFormData }) {
+function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
   const { previous, next } = useOutletContext();
 
   const handleSubmit = (values) => {
-    setWizardFormData(values);
+    setWizardCoinData(values);
     next();
   };
 
   return (
     <Grid item xs={12}>
       <Formik
-        initialValues={{ ...wizardFormData }}
+        initialValues={{ ...wizardCoinData }}
         validationSchema={FORM_VALIDATION}
         onSubmit={handleSubmit}
       >
@@ -101,7 +101,7 @@ function StepCoinBlockReward({ wizardFormData, setWizardFormData }) {
 }
 StepCoinBlockReward.propTypes = {
   wizardData: PropTypes.object,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardCoinData: PropTypes.object,
+  setWizardCoinData: PropTypes.func,
 };
 export default StepCoinBlockReward;

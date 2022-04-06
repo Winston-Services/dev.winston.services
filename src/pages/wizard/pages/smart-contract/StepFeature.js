@@ -120,17 +120,24 @@ const data = {
   ],
 };
 
-function StepFeature({ wizardData, wizardFormData, setWizardFormData }) {
+function StepFeature({
+  wizardData,
+  wizardSmartContractData,
+  setWizardSmartContractData,
+}) {
   const { previous, next } = useOutletContext();
 
   const handleSubmit = (values) => {
-    setWizardFormData(values);
+    setWizardSmartContractData(values);
     next();
   };
 
   return (
     <Grid item xs={12}>
-      <Formik initialValues={{ ...wizardFormData }} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={{ ...wizardSmartContractData }}
+        onSubmit={handleSubmit}
+      >
         <Form>
           <Card sx={{ p: 6 }} elevation={0}>
             <ListItem sx={{ px: 0 }}>
@@ -197,8 +204,8 @@ function StepFeature({ wizardData, wizardFormData, setWizardFormData }) {
 
 StepFeature.propTypes = {
   wizardData: PropTypes.object,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardSmartContractData: PropTypes.object,
+  setWizardSmartContractData: PropTypes.func,
 };
 
 export default StepFeature;

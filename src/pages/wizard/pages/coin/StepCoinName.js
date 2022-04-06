@@ -24,18 +24,18 @@ const FORM_VALIDATION = Yup.object().shape({
   githubUrl: Yup.string().required('Github URL is required').url('Invalid URL'),
 });
 
-function StepCoinName({ wizardFormData, setWizardFormData }) {
+function StepCoinName({ wizardCoinData, setWizardCoinData }) {
   const { previous, next } = useOutletContext();
 
   const handleSubmit = (values) => {
-    setWizardFormData(values);
+    setWizardCoinData(values);
     next();
   };
 
   return (
     <Grid item xs={12}>
       <Formik
-        initialValues={{ ...wizardFormData }}
+        initialValues={{ ...wizardCoinData }}
         validationSchema={FORM_VALIDATION}
         onSubmit={handleSubmit}
       >
@@ -110,8 +110,8 @@ function StepCoinName({ wizardFormData, setWizardFormData }) {
 
 StepCoinName.propTypes = {
   wizardData: PropTypes.object,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardCoinData: PropTypes.object,
+  setWizardCoinData: PropTypes.func,
 };
 
 export default StepCoinName;

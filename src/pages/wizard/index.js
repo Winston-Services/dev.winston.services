@@ -6,9 +6,11 @@ import { useRoutes, Navigate, useNavigate } from 'react-router-dom';
 
 import {
   wizardDataSelector,
-  wizardFormDataSelector,
+  wizardCoinDataSelector,
+  wizardSmartContractDataSelector,
   updateWizardData,
-  updateWizardFormData,
+  updateWizardCoinData,
+  updateWizardSmartContractData,
 } from './../../store/wizard';
 import StepperLayout from './layout/StepperLayout';
 
@@ -50,13 +52,24 @@ const Workshop = React.lazy(() => import('./pages/Workshop'));
 const WizardRoutes = (component) => {
   const dispatch = useDispatch();
   const wizardData = useSelector(wizardDataSelector);
-  const wizardFormData = useSelector(wizardFormDataSelector);
+  const wizardCoinData = useSelector(wizardCoinDataSelector);
+  const wizardSmartContractData = useSelector(wizardSmartContractDataSelector);
   const setWizardData = (data) => {
     dispatch(updateWizardData(data));
   };
-  const setWizardFormData = (data) => {
-    dispatch(updateWizardFormData(data));
+  const setWizardCoinData = (data) => {
+    dispatch(updateWizardCoinData(data));
   };
+  const setWizardSmartContractData = (data) => {
+    dispatch(updateWizardSmartContractData(data));
+  };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (wizardData.workshop === '') navigate('/wizard');
+  }, [navigate, wizardData.workshop]);
+
   return (
     <React.Suspense
       fallback={
@@ -73,21 +86,17 @@ const WizardRoutes = (component) => {
     >
       {React.cloneElement(component, {
         wizardData,
-        wizardFormData,
+        wizardCoinData,
+        wizardSmartContractData,
         setWizardData,
-        setWizardFormData,
+        setWizardCoinData,
+        setWizardSmartContractData,
       })}
     </React.Suspense>
   );
 };
 
 export default function Wizard() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate('/wizard');
-  }, [navigate]);
-
   const routes = [
     {
       path: '/',

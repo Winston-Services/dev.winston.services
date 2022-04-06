@@ -22,18 +22,22 @@ const FORM_VALIDATION = Yup.object().shape({
   license: Yup.string().required('License is required'),
 });
 
-function StepInfo({ wizardData, wizardFormData, setWizardFormData }) {
+function StepInfo({
+  wizardData,
+  wizardSmartContractData,
+  setWizardSmartContractData,
+}) {
   const { previous, next } = useOutletContext();
 
   const handleSubmit = (values) => {
-    setWizardFormData(values);
+    setWizardSmartContractData(values);
     next();
   };
 
   return (
     <Grid item xs={12}>
       <Formik
-        initialValues={{ ...wizardFormData }}
+        initialValues={{ ...wizardSmartContractData }}
         validationSchema={FORM_VALIDATION}
         onSubmit={handleSubmit}
       >
@@ -79,8 +83,8 @@ function StepInfo({ wizardData, wizardFormData, setWizardFormData }) {
 }
 StepInfo.propTypes = {
   wizardData: PropTypes.object,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardSmartContractData: PropTypes.object,
+  setWizardSmartContractData: PropTypes.func,
 };
 
 export default StepInfo;

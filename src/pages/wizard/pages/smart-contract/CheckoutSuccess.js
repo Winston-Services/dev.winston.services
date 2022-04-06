@@ -48,6 +48,6 @@ export default function SuccessCheckout({ wizardData }) {
 SuccessCheckout.propTypes = {
   wizardData: PropTypes.object,
   setWizardData: PropTypes.func,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardSmartContractData: PropTypes.object,
+  setWizardSmartContractData: PropTypes.func,
 };

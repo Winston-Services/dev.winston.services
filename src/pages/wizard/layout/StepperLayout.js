@@ -7,8 +7,7 @@ import {
   Security,
   Settings,
 } from '@mui/icons-material';
-import { Container, Typography, Grid } from '@mui/material';
-import { styled } from '@mui/styles';
+import { styled, Container, Typography, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
@@ -159,9 +158,10 @@ export default function StepperLayout() {
     navigate(AllSteps[activeStepIndex + 1].current[isCustomWizard ? 1 : 0]);
   };
   const previous = () => {
-    if (activeStepIndex === 0) {
+    if (activeStepIndex === 0 || (!isCustomWizard && currentStep === 0)) {
       return navigate('/wizard');
     }
+
     navigate(AllSteps[activeStepIndex - 1].current[isCustomWizard ? 1 : 0]);
   };
   return (

@@ -33,7 +33,7 @@ export default function Home() {
         <Box
           className="cryptoContainer"
           sx={{
-            width: { xs: '100%', lg: '125%' },
+            width: { xs: '100%', sm: '100%', lg: '39vw' },
             height: { xs: '100%', sm: '425px', lg: '125%' },
           }}
         >

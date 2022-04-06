@@ -60,6 +60,6 @@ export default Checkout;
 Checkout.propTypes = {
   wizardData: PropTypes.object,
   setWizardData: PropTypes.func,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardCoinData: PropTypes.object,
+  setWizardCoinData: PropTypes.func,
 };

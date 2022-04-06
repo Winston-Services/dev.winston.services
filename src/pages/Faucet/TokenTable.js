@@ -11,8 +11,8 @@ import {
   Table,
   Container,
   Grid,
+  styled,
 } from '@mui/material';
-import { styled } from '@mui/styles';
 import { PropTypes } from 'prop-types';
 
 import TotalTokens from '../../assets/total_tokens.svg';

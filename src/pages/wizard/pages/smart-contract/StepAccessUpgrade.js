@@ -41,11 +41,15 @@ const upgradeOptions = [
       'Uses simpler proxy with less overhead, requires including extra code in your contract. Allows flexibility for authorizing upgrades.',
   },
 ];
-function StepAccessUpgrade({ wizardData, wizardFormData, setWizardFormData }) {
+function StepAccessUpgrade({
+  wizardData,
+  wizardSmartContractData,
+  setWizardSmartContractData,
+}) {
   const [switchValue, setSwitchValue] = useState(false);
   const { previous, next } = useOutletContext();
   const handleSubmit = (values) => {
-    setWizardFormData({ ...values, upgradeability: switchValue });
+    setWizardSmartContractData({ ...values, upgradeability: switchValue });
     next();
   };
 
@@ -55,7 +59,10 @@ function StepAccessUpgrade({ wizardData, wizardFormData, setWizardFormData }) {
 
   return (
     <Grid item xs={12}>
-      <Formik initialValues={{ ...wizardFormData }} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={{ ...wizardSmartContractData }}
+        onSubmit={handleSubmit}
+      >
         <Form>
           <Card sx={{ p: 6 }} elevation={0}>
             <ListItem sx={{ px: 0 }}>
@@ -110,7 +117,7 @@ function StepAccessUpgrade({ wizardData, wizardFormData, setWizardFormData }) {
 }
 StepAccessUpgrade.propTypes = {
   wizardData: PropTypes.object,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardSmartContractData: PropTypes.object,
+  setWizardSmartContractData: PropTypes.func,
 };
 export default StepAccessUpgrade;

@@ -1,12 +1,16 @@
 import React from 'react';
 
 import { KeyboardArrowDown } from '@mui/icons-material';
-import { ListItemButton, ListItemText, Tooltip } from '@mui/material';
-import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import Icon from '@mui/material/Icon';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import { styled } from '@mui/material/styles';
+import {
+  ListItemButton,
+  ListItemText,
+  Tooltip,
+  Box,
+  Icon,
+  styled,
+  ListItemIcon,
+  Drawer as MuiDrawer,
+} from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {

@@ -20,14 +20,14 @@ const FORM_VALIDATION = Yup.object().shape({
   walletIcon: Yup.string().required('Wallet icon is required'),
   walletTestnetIcon: Yup.string().required('Testnet wallet icon is required'),
 });
-function StepCoinCustomLogo({ wizardData, wizardFormData, setWizardFormData }) {
+function StepCoinCustomLogo({ wizardData, wizardCoinData, setWizardCoinData }) {
   const { previous, next } = useOutletContext();
   const [image, setImage] = useState({
-    walletIcon: wizardFormData?.walletIcon || '',
-    walletTestnetIcon: wizardFormData?.walletTestnetIcon || '',
+    walletIcon: wizardCoinData?.walletIcon || '',
+    walletTestnetIcon: wizardCoinData?.walletTestnetIcon || '',
   });
   const handleSubmit = (values) => {
-    setWizardFormData(values);
+    setWizardCoinData(values);
     next();
   };
   const handleUploadFile = (event, name, formik) => {
@@ -41,7 +41,7 @@ function StepCoinCustomLogo({ wizardData, wizardFormData, setWizardFormData }) {
   };
   return (
     <Formik
-      initialValues={{ ...wizardFormData }}
+      initialValues={{ ...wizardCoinData }}
       validationSchema={FORM_VALIDATION}
       onSubmit={handleSubmit}
     >
@@ -181,7 +181,7 @@ function StepCoinCustomLogo({ wizardData, wizardFormData, setWizardFormData }) {
 }
 StepCoinCustomLogo.propTypes = {
   wizardData: PropTypes.object,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardCoinData: PropTypes.object,
+  setWizardCoinData: PropTypes.func,
 };
 export default StepCoinCustomLogo;

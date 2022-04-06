@@ -25,17 +25,17 @@ const FORM_VALIDATION = Yup.object().shape({
   node1: Yup.string().required('Node 1 is required'),
   node2: Yup.string().required('Node 2 is required'),
 });
-function StepCoinBlockConfirmation({ wizardFormData, setWizardFormData }) {
+function StepCoinBlockConfirmation({ wizardCoinData, setWizardCoinData }) {
   const { previous, next } = useOutletContext();
   const handleSubmit = (values) => {
-    setWizardFormData(values);
+    setWizardCoinData(values);
     next();
   };
 
   return (
     <Grid item xs={12}>
       <Formik
-        initialValues={{ ...wizardFormData }}
+        initialValues={{ ...wizardCoinData }}
         validationSchema={FORM_VALIDATION}
         onSubmit={handleSubmit}
       >
@@ -100,7 +100,7 @@ function StepCoinBlockConfirmation({ wizardFormData, setWizardFormData }) {
 }
 StepCoinBlockConfirmation.propTypes = {
   wizardData: PropTypes.object,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardCoinData: PropTypes.object,
+  setWizardCoinData: PropTypes.func,
 };
 export default StepCoinBlockConfirmation;

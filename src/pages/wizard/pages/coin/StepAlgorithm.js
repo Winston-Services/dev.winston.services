@@ -15,17 +15,17 @@ const FORM_VALIDATION = Yup.object().shape({
   coinAlgorithm: Yup.string().required('Select coin algorithm'),
 });
 
-function StepAlgorithmCoin({ wizardFormData, setWizardFormData }) {
+function StepAlgorithmCoin({ wizardCoinData, setWizardCoinData }) {
   const { previous, next } = useOutletContext();
   const handleSubmit = (values) => {
-    setWizardFormData(values);
+    setWizardCoinData(values);
     next();
   };
 
   return (
     <Grid item xs={12}>
       <Formik
-        initialValues={{ ...wizardFormData }}
+        initialValues={{ ...wizardCoinData }}
         validationSchema={FORM_VALIDATION}
         onSubmit={handleSubmit}
       >
@@ -74,8 +74,8 @@ function StepAlgorithmCoin({ wizardFormData, setWizardFormData }) {
 StepAlgorithmCoin.propTypes = {
   wizardData: PropTypes.object,
   setWizardData: PropTypes.func,
-  wizardFormData: PropTypes.object,
-  setWizardFormData: PropTypes.func,
+  wizardCoinData: PropTypes.object,
+  setWizardCoinData: PropTypes.func,
 };
 
 export default StepAlgorithmCoin;
