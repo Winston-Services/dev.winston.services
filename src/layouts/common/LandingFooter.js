@@ -106,7 +106,7 @@ const footerMenu = [
       },
       {
         name: 'Meet the team',
-        url: null,
+        url: '/our-team',
       },
       {
         name: 'Assets',
