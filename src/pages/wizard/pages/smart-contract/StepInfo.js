@@ -31,6 +31,7 @@ function StepInfo({
 
   const handleSubmit = (values) => {
     setWizardSmartContractData(values);
+    // alert(JSON.stringify(wizardSmartContractData, null, 2));
     next();
   };
 

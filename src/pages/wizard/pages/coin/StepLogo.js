@@ -29,6 +29,7 @@ function StepCoinCustomLogo({ wizardData, wizardCoinData, setWizardCoinData }) {
   const handleSubmit = (values) => {
     setWizardCoinData(values);
     next();
+    // alert(JSON.stringify(wizardCoinData, null, 2));
   };
   const handleUploadFile = (event, name, formik) => {
     const fileUploaded = event.target.files[0];
