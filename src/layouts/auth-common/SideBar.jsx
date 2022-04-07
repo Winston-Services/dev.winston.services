@@ -79,10 +79,26 @@ export default function SideBar() {
                   alignItems="flex-start"
                   onClick={() => dispatch(openMenu({ index }))}
                 >
+                  <ListItemIcon
+                    sx={{
+                      mt: 0,
+                      minWidth: 0,
+                      mr: 2,
+                      justifyContent: 'center',
+                    }}
+                  >
+                    {menuItem.icon ? (
+                      <Icon {...menuItem.iconAttr}>{menuItem.icon}</Icon>
+                    ) : (
+                      <img src={menuItem.image} width={'24px'} />
+                    )}
+                  </ListItemIcon>
                   <ListItemText
                     primary={menuItem.attr.primary}
                     secondary={
-                      menuItem.attr.open ? '' : menuItem.attr.secondary
+                      !menuItem.attr.open && menuItem.attr.secondaryVisible
+                        ? menuItem.attr.secondary
+                        : ''
                     }
                     sx={{ my: 0 }}
                   />
@@ -111,7 +127,7 @@ export default function SideBar() {
                     <ListItemIcon
                       sx={{
                         minWidth: 0,
-                        mr: isSideBarOpen ? 3 : 'auto',
+                        mr: isSideBarOpen ? 2 : 'auto',
                         justifyContent: 'center',
                       }}
                     >
