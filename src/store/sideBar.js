@@ -27,8 +27,10 @@ const initialState = {
     },
     {
       key: 'wallets',
+      icon: 'account_balance_wallet',
       attr: {
         primary: 'Wallets',
+        secondaryVisible: false,
         secondary: 'BTC, BHY, LTC, DASH, DOGE, MSTR, ETH, SYS',
         open: true,
       },
@@ -48,27 +50,29 @@ const initialState = {
     },
     {
       key: 'reports',
+      icon: 'analytics',
       attr: {
         primary: 'Reports',
         secondary: 'Current month, Last quarter, Yearly reports',
         open: true,
       },
       items: [
-        { attr: { primary: 'Current month' }, icon: 'summarize' },
-        { attr: { primary: 'Last quarter' }, icon: 'summarize' },
-        { attr: { primary: 'Yearly reports' }, icon: 'summarize' },
+        { attr: { primary: 'Current month' }, icon: 'today' },
+        { attr: { primary: 'Last quarter' }, icon: 'date_range' },
+        { attr: { primary: 'Yearly reports' }, icon: 'calendar_month' },
       ],
     },
     {
       key: 'integrations',
+      icon: 'extension',
       attr: {
         primary: 'Integrations',
         secondary: 'OpenCart, Shopify, QuickBooks',
         open: true,
       },
       items: [
-        { attr: { primary: 'OpenCart' }, icon: 'extension' },
-        { attr: { primary: 'Shopify' }, icon: 'extension' },
+        { attr: { primary: 'OpenCart' }, icon: 'shopping_cart' },
+        { attr: { primary: 'Shopify' }, icon: 'shopping_bag' },
         { attr: { primary: 'QuickBooks' }, icon: 'extension' },
       ],
     },
