@@ -103,3 +103,11 @@ body,
   border-radius: 100px;
   padding: 3px;
 }
+
+.product-chip {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 100%;
+}
+

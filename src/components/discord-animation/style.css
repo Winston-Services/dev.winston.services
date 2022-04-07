@@ -1,0 +1,345 @@
+.img_animation {
+    animation: blink_light 2s linear infinite;
+    transition: 0.3s ease all;
+}
+
+@keyframes blink_light {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.float_element {
+    animation: float_animation 1.5s forwards;
+    transform: translate(42px, 378px) scale(0);
+}
+.float_ultimate {
+    animation: always_float 5s linear infinite;
+}
+.delay_file_float {
+    animation-delay: 0.5s;
+}
+.delay_file_ult {
+    animation-delay: 2.2s;
+}
+.robot_movement {
+    animation-delay: 1.0s;
+}
+.robot_ultimate {
+    animation-delay: 1.2s;
+    animation-duration: 7s;
+}
+
+@keyframes always_float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes float_animation {
+    0% {
+        transform: translate(42px, 378px) scale(0);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+
+.eye_blink {
+    animation: eye_blink 3s infinite 3s;
+    transform-box: fill-box;
+    transform-origin: bottom;
+}
+
+@keyframes eye_blink {
+    0% {
+        transform: rotateX(0deg);
+    }
+    30% {
+        transform: rotateX(0deg);
+    }
+    40% {
+        transform: rotateX(90deg);
+    }
+    50% {
+        transform: rotateX(0deg);
+    }
+    60% {
+        transform: rotateX(90deg);
+    }
+    70% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.second_eye_blink {
+    animation: second_eye_blink 3s infinite 3s;
+    transform-box: fill-box;
+    transform-origin: bottom;
+}
+@keyframes second_eye_blink {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    30% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    40% {
+        transform: rotateX(90deg) rotateY(-45deg);
+    }
+    50% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    60% {
+        transform: rotateX(90deg) rotateY(-45deg);
+    }
+    70% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    100% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+}
+
+.dicord_face {
+	animation: dicord_face 7s linear infinite 4s;
+	stroke-dasharray: 270;
+    stroke-dashoffset: 270;
+}
+@keyframes dicord_face {
+	0% {
+		stroke-dasharray: 270;
+	}
+	35% {
+		stroke-dasharray: 450;
+	}
+	65% {
+		stroke-dasharray: 450;
+	}
+	100% {
+		stroke-dashoffset: -180;
+	}
+}
+
+.discord_eye {
+	stroke-dasharray: 37;
+    stroke-dashoffset: 50;
+	animation: dicord_eye 7s linear infinite 4s;
+}
+@keyframes dicord_eye {
+	0% {
+		stroke-dasharray: 37;
+	}
+	35% {
+		stroke-dasharray: 74;
+	}
+	65% {
+		stroke-dasharray: 74;
+	}
+	100% {
+		stroke-dasharray: 75;
+    stroke-dashoffset: -24;
+	}
+}
+
+.st0{fill:#05D4F5;}
+	.st1{fill:#919DD6;}
+	.st2{fill:#E4E3EE;}
+	.st3{fill:#042F8F;}
+	.st4{fill:#336FD6;}
+	.st5{fill:#EBEBF1;}
+	.st6{fill:#B7B6E3;}
+	.st7{fill:#C4C3EC;}
+	.st8{fill:#04247D;}
+	.st9{opacity:0.5;}
+	.st10{display:none;opacity:0.5;}
+	.st11{opacity:0.4;}
+	.st12{fill:#0F0F18;}
+	.st13{fill:url(#SVGID_1_);}
+	.st14{fill:#F3D249;}
+	.st15{fill:#F5B000;}
+	.st16{fill:#F1BF0D;}
+	.st17{fill:#CCD9F2;}
+	.st18{fill:#E3ECF4;}
+	.st19{fill:#ACAABA;}
+	.st20{fill:#F5554F;}
+	.st21{fill:#DB3029;}
+	.st22{fill:#1393F2;}
+	.st23{fill:#00C4F5;}
+	.st24{fill:#DAD9E8;}
+	.st25{fill:none;stroke:#1856DD;stroke-width:2;}
+	.st26{fill:#12B0F3;}
+	.st27{fill:#362A71;}
+
+	.l_st0{fill:none; stroke:#05d4f5; stroke-width:1.5; stroke-miterlimit:10; }
+	.l_st1{fill:none;stroke:#05d4f5;stroke-width:1.5;stroke-miterlimit:10;}
+	.linee {
+		stroke-dasharray: 270;
+    	stroke-dashoffset: 270;
+		animation: Draw_line 3s forwards 2s;
+	}
+	.linee.l2 {
+		animation-delay: 2.3s;
+	}
+	.linee.l3 {
+		animation-delay: 2.6s;
+	}
+	.linee.l4 {
+		animation-delay: 2.9s;
+	}
+	.linee.l5 {
+		animation-delay: 3.2s;
+	}
+	.linee.l6 {
+		animation-delay: 3.5s;
+	}
+	.linee.l7 {
+		animation-delay: 3.8s;
+	}
+
+	@keyframes Draw_line {
+		0% {
+			stroke-dasharray: 270;
+		}
+		100% {
+			stroke-dasharray: 440;
+		}
+	}
+
+	.l_st2{fill:none;stroke:#05d4f5;stroke-width:1.5;stroke-miterlimit:10;}
+
+
+
+	.dot_1 {
+		transform: translate(-57px, -33px);
+		animation: dot1_animation 2s forwards 4.8s;
+	}
+	@keyframes dot1_animation {
+		0% {
+			transform: translate(-57px, -33px);
+		}
+		100% {
+			transform: translate(0px, 0px);
+		}
+	}
+
+	.dot_2 {
+		transform: translate(90px, -85px);
+		animation: dot2_animation 3s forwards 5s;
+	}
+	@keyframes dot2_animation {
+		0% {
+			transform: translate(90px, -85px);
+		}
+		22.5% {
+			transform: translate(120px, -70px);
+		}
+		100% {
+			transform: translate(0px, 0px);
+		}
+	}
+
+	.dot_3 {
+		transform: translate(-50px, -84px);
+		animation: dot3_animation 3.5s forwards 5.2s;
+	}
+
+	@keyframes dot3_animation {
+		0% {
+			transform: translate(-50px, -84px);
+		}
+		33% {
+			transform: translate(-5px, -57px);
+		}
+		66% {
+			transform: translate(-48px, -30px);
+		}
+		100% {
+			transform: translate(-4px, -4px);
+		}
+	}
+
+	.dot_4 {
+		transform: translate(-103px, -60px);
+		animation: dot4_animation 3.5s forwards 5s;
+	}
+
+	@keyframes dot4_animation {
+		0% {
+			transform: translate(-103px, -60px);
+		}
+		100% {
+			transform: translate(0px, 0px);	
+		}
+	}
+
+	.dot_5 {
+		transform: translate(-115px, 32px);
+		animation: dot5_animation 3s forwards 5s;
+	}
+
+	@keyframes dot5_animation {
+		0% {
+			transform: translate(-115px, 32px);
+		}
+		15% {
+			transform: translate(-85px, 49px);
+		}
+		100% {
+			transform: translate(0px, 0px);
+		}
+	}
+
+	.dot_6 {
+		transform: translate(-157px, -38px);
+		animation: dot6_animation 3s forwards 5.2s;
+	}
+
+	@keyframes dot6_animation {
+		0% {
+			transform: translate(-157px, -38px);
+		}
+		30% {
+			transform: translate(-114px, -13px);
+		}
+		60% {
+			transform: translate(-68px, -38px);
+		}
+		100% {
+			transform: translate(0px, 0px);
+		}
+	}
+
+	.dot_7 {
+	    transform: translate(-143px, 16px);
+		animation: dot7_animation 3s forwards 5.4s;
+	}
+
+	@keyframes dot7_animation {
+		0% {
+			transform: translate(-143px, 16px);
+		}
+		45% {
+			transform: translate(-85px, 49px);
+		}
+		100% {
+		    transform: translate(0px, 0px);
+		}
+	}
+

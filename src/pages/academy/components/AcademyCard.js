@@ -10,7 +10,7 @@ function AcademyCard({ item }) {
   const navigate = useNavigate();
   return (
     <>
-      <Grid className="academy-container">
+      <Grid sx={{ position: 'relative' }}>
         <img
           src={item.image}
           style={{
@@ -20,7 +20,7 @@ function AcademyCard({ item }) {
             objectFit: 'cover',
           }}
         />
-        <Grid className="academy-level-chip">
+        <Grid className="product-chip">
           <Chip
             variant="filled"
             icon={item.difficultyLevelIcon}

@@ -8,6 +8,8 @@ import { setTheme } from '../store/themeColors';
 import LandingFooter from './common/LandingFooter';
 import LandingTopNav from './common/LandingTopNav';
 
+import './index.css';
+
 function PublicPageLayout() {
   const dispatch = useDispatch();
   useEffect(() => {

@@ -34,5 +34,5 @@ export default function CheckoutWrapper({ checkoutData }) {
   );
 }
 CheckoutWrapper.propTypes = {
-  checkoutData: PropTypes.object,
+  checkoutData: PropTypes.array,
 };

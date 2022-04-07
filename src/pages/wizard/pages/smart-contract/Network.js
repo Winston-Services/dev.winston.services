@@ -46,7 +46,7 @@ const typeOfContract = [
     icon: ethereumBlue,
   },
 ];
-function Network({ wizardData, setWizardData }) {
+function Network({ wizardSmartContractData, setWizardSmartContractData }) {
   const { previous, next } = useOutletContext();
 
   return (
@@ -77,12 +77,12 @@ function Network({ wizardData, setWizardData }) {
               >
                 <WizardCard
                   onClick={() => {
-                    setWizardData({
+                    setWizardSmartContractData({
                       network: item,
                     });
                   }}
                   item={item}
-                  activeNetwork={wizardData?.network?.title}
+                  activeNetwork={wizardSmartContractData?.network?.title}
                 />
               </Grid>
             );
@@ -96,14 +96,14 @@ function Network({ wizardData, setWizardData }) {
                 <Grid item sm={6} xs={12} md={4} lg={4} key={index.toString()}>
                   <WizardCard
                     onClick={() => {
-                      setWizardData({
+                      setWizardSmartContractData({
                         typeOfContact: item.title,
                       });
                     }}
-                    title={wizardData.network.subTitle}
+                    title={wizardSmartContractData.network.subTitle}
                     item={item}
-                    wizardData={wizardData}
-                    activeContract={wizardData?.typeOfContact}
+                    wizardData={wizardSmartContractData}
+                    activeContract={wizardSmartContractData?.typeOfContact}
                   />
                 </Grid>
               );
@@ -135,6 +135,7 @@ function Network({ wizardData, setWizardData }) {
 
 Network.propTypes = {
   wizardData: PropTypes.object,
-  setWizardData: PropTypes.func,
+  wizardSmartContractData: PropTypes.object,
+  setWizardSmartContractData: PropTypes.func,
 };
 export default Network;

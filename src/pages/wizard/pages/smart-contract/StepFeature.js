@@ -120,11 +120,7 @@ const data = {
   ],
 };
 
-function StepFeature({
-  wizardData,
-  wizardSmartContractData,
-  setWizardSmartContractData,
-}) {
+function StepFeature({ wizardSmartContractData, setWizardSmartContractData }) {
   const { previous, next } = useOutletContext();
 
   const handleSubmit = (values) => {
@@ -145,8 +141,10 @@ function StepFeature({
                 <img width={'60%'} src={ethereumBlue} alt="icon" />
               </ListItemAvatar>
               <Typography variant={'h5'}>
-                {wizardData.network === 'Binance' ? 'BEP ' : 'ERC '}
-                {wizardData.typeOfContact}
+                {wizardSmartContractData.network === 'Binance'
+                  ? 'BEP '
+                  : 'ERC '}
+                {wizardSmartContractData.typeOfContact}
               </Typography>
             </ListItem>
             <Grid mb={3}>
@@ -155,7 +153,7 @@ function StepFeature({
             <Grid>
               <FormGroup>
                 <Grid container columnSpacing={5}>
-                  {data[wizardData.typeOfContact].map((item) => {
+                  {data[wizardSmartContractData.typeOfContact].map((item) => {
                     return (
                       <Grid item xs={12} sm={6} md={4} key={item.name}>
                         <Grid

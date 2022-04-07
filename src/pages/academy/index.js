@@ -2,8 +2,6 @@ import React from 'react';
 
 import { useRoutes, Navigate } from 'react-router-dom';
 
-import './index.css';
-
 const Academy = React.lazy(() => import('./Academy'));
 const AcademyDetails = React.lazy(() => import('./AcademyDetails'));
 const Voting = React.lazy(() => import('./Voting'));

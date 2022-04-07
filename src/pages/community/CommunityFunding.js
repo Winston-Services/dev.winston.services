@@ -3,26 +3,28 @@ import React from 'react';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { Button, Container, Grid, Typography } from '@mui/material';
 
-import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
-import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
-import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
-import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
-import ProductCard from '../marketplace/components/ProductCard';
 import { ReactComponent as CommunityFundingIcon } from './../../assets/community_funding_icon.svg';
+import CommunityImage1 from './../../assets/community_image1.png';
+import CommunityImage2 from './../../assets/community_image2.png';
+import CommunityImage3 from './../../assets/community_image3.png';
+import CommunityImage4 from './../../assets/community_image4.png';
+import CommunityImage5 from './../../assets/community_image5.png';
+import CommunityImage6 from './../../assets/community_image6.png';
+import CommunityImage7 from './../../assets/community_image7.png';
 import donner1 from './../../assets/donner1.svg';
 import donner2 from './../../assets/donner2.svg';
 import donner3 from './../../assets/donner3.svg';
 import donner4 from './../../assets/donner4.svg';
+import ProductCard from './components/ProductCard';
 
 function index() {
   const trendingItems = [
     {
-      image: NftMarketPlace1,
-      id: 5161,
-      name: 'PsychoMolly',
-      price: 59,
-      startBid: 15,
-      endBidIn: 5,
+      image: CommunityImage1,
+      title: 'Flower pot',
+      category: 'NFT Catagory',
+      subtitle: 'Lorem ipsum dolor sit, consectetur adipiscing elit.',
+      fundRaised: 20000,
       donners: [
         { name: 'Remy Sharp', avatar: donner1 },
         { name: 'Travis Howard', avatar: donner2 },
@@ -30,13 +32,13 @@ function index() {
         { name: 'Trevor Henderson', avatar: donner4 },
       ],
     },
+
     {
-      image: NftMarketPlace2,
-      id: 5161,
-      name: 'PsychoMolly',
-      price: 59,
-      startBid: 15,
-      endBidIn: 5,
+      image: CommunityImage2,
+      title: 'Wolf',
+      category: 'NFT Catagory',
+      subtitle: 'Lorem ipsum dolor sit, consectetur adipiscing elit.',
+      fundRaised: 20000,
       donners: [
         { name: 'Remy Sharp', avatar: donner1 },
         { name: 'Travis Howard', avatar: donner2 },
@@ -44,13 +46,13 @@ function index() {
         { name: 'Trevor Henderson', avatar: donner4 },
       ],
     },
+
     {
-      image: NftMarketPlace3,
-      id: 5161,
-      name: 'PsychoMolly',
-      price: 59,
-      startBid: 15,
-      endBidIn: 5,
+      image: CommunityImage3,
+      title: 'Flower pot',
+      category: 'NFT Catagory',
+      subtitle: 'Lorem ipsum dolor sit, consectetur adipiscing elit.',
+      fundRaised: 20000,
       donners: [
         { name: 'Remy Sharp', avatar: donner1 },
         { name: 'Travis Howard', avatar: donner2 },
@@ -58,13 +60,13 @@ function index() {
         { name: 'Trevor Henderson', avatar: donner4 },
       ],
     },
+
     {
-      image: NftMarketPlace4,
-      id: 5161,
-      name: 'PsychoMolly',
-      price: 59,
-      startBid: 15,
-      endBidIn: 5,
+      image: CommunityImage4,
+      title: 'Flower pot',
+      category: 'NFT Catagory',
+      subtitle: 'Lorem ipsum dolor sit, consectetur adipiscing elit.',
+      fundRaised: 20000,
       donners: [
         { name: 'Remy Sharp', avatar: donner1 },
         { name: 'Travis Howard', avatar: donner2 },
@@ -76,12 +78,11 @@ function index() {
 
   const newCampaignItems = [
     {
-      image: NftMarketPlace1,
-      id: 5161,
-      name: 'PsychoMolly',
-      price: 59,
-      startBid: 15,
-      endBidIn: 5,
+      image: CommunityImage5,
+      title: 'Flower pot',
+      category: 'NFT Catagory',
+      subtitle: 'Lorem ipsum dolor sit, consectetur adipiscing elit.',
+      fundRaised: 20000,
       donners: [
         { name: 'Remy Sharp', avatar: donner1 },
         { name: 'Travis Howard', avatar: donner2 },
@@ -89,13 +90,13 @@ function index() {
         { name: 'Trevor Henderson', avatar: donner4 },
       ],
     },
+
     {
-      image: NftMarketPlace2,
-      id: 5161,
-      name: 'PsychoMolly',
-      price: 59,
-      startBid: 15,
-      endBidIn: 5,
+      image: CommunityImage6,
+      title: 'Wolf',
+      category: 'NFT Catagory',
+      subtitle: 'Lorem ipsum dolor sit, consectetur adipiscing elit.',
+      fundRaised: 20000,
       donners: [
         { name: 'Remy Sharp', avatar: donner1 },
         { name: 'Travis Howard', avatar: donner2 },
@@ -103,13 +104,13 @@ function index() {
         { name: 'Trevor Henderson', avatar: donner4 },
       ],
     },
+
     {
-      image: NftMarketPlace3,
-      id: 5161,
-      name: 'PsychoMolly',
-      price: 59,
-      startBid: 15,
-      endBidIn: 5,
+      image: CommunityImage7,
+      title: 'Flower pot',
+      category: 'NFT Catagory',
+      subtitle: 'Lorem ipsum dolor sit, consectetur adipiscing elit.',
+      fundRaised: 20000,
       donners: [
         { name: 'Remy Sharp', avatar: donner1 },
         { name: 'Travis Howard', avatar: donner2 },
@@ -117,13 +118,13 @@ function index() {
         { name: 'Trevor Henderson', avatar: donner4 },
       ],
     },
+
     {
-      image: NftMarketPlace4,
-      id: 5161,
-      name: 'PsychoMolly',
-      price: 59,
-      startBid: 15,
-      endBidIn: 5,
+      image: CommunityImage2,
+      title: 'Flower pot',
+      category: 'NFT Catagory',
+      subtitle: 'Lorem ipsum dolor sit, consectetur adipiscing elit.',
+      fundRaised: 20000,
       donners: [
         { name: 'Remy Sharp', avatar: donner1 },
         { name: 'Travis Howard', avatar: donner2 },

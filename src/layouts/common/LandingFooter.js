@@ -151,7 +151,7 @@ const footerMenu = [
       },
       {
         name: 'Investors',
-        url: null,
+        url: 'our-investors',
       },
     ],
   },
@@ -169,7 +169,7 @@ export default function LandingFooter() {
             <Box
               src={logo}
               component="img"
-              sx={{ width: '100%', mb: 2, cursor: 'pointer' }}             
+              sx={{ width: '100%', mb: 2, cursor: 'pointer' }}
             />
             <Grid container spacing={4}>
               <Grid item xs={3}></Grid>

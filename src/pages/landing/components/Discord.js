@@ -3,8 +3,8 @@ import React from 'react';
 import { Grid, Typography, Button, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import DiscordLaptop from './../../../assets/discord_laptop.svg';
 import WinstonRobot from './../../../assets/discord_winston_robot.svg';
+import DiscordAnimationImage from './../../../components/discord-animation/index';
 
 export default function Discord() {
   const navigate = useNavigate();
@@ -89,11 +89,7 @@ export default function Discord() {
           />
         </Grid>
         <Grid item md={6} xs={12} sx={{ order: { xs: 4, md: 3 } }}>
-          <Box
-            component="img"
-            src={DiscordLaptop}
-            sx={{ width: '100%', height: 'auto' }}
-          />
+          <DiscordAnimationImage />
         </Grid>
         <Grid
           item

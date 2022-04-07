@@ -29,11 +29,9 @@ const Staking = React.lazy(() => import('./pages/staking/Staking'));
 const Swapping = React.lazy(() => import('./pages/swapping'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
 const Team = React.lazy(() => import('./pages/team'));
-const CommunityDetails = React.lazy(() =>
-  import('./pages/community/CommunityDetails.js')
-);
+const Investors = React.lazy(() => import('./pages/investors'));
 const CommunityFunding = React.lazy(() =>
-  import('./pages/community/CommunityFunding.js')
+  import('./pages/community/CommunityFunding')
 );
 
 export default function App() {
@@ -136,16 +134,16 @@ export default function App() {
           element: getRouteWrapper(<Team />, false),
         },
         {
+          path: '/our-investors',
+          element: getRouteWrapper(<Investors />, false),
+        },
+        {
           path: '/wizard/*',
           element: getRouteWrapper(<Wizard />, false),
         },
         {
           path: '/community-funding',
           element: getRouteWrapper(<CommunityFunding />, false),
-        },
-        {
-          path: '/community-details',
-          element: getRouteWrapper(<CommunityDetails />, false),
         },
       ],
     },

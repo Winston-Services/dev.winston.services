@@ -2,9 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   workshop: '',
-  network: { title: 'Ethereum', subTitle: 'ERC' },
-  typeOfContact: '20',
-
   formData: {
     coin: {
       //Coin algorithm
@@ -46,6 +43,10 @@ const initialState = {
     },
     smartContract: {
       //Smart contract type
+      network: { title: 'Ethereum', subTitle: 'ERC' },
+      typeOfContact: '20',
+
+      //Smart settings
       smartContractName: '',
       smartContractSymbol: '',
       smartContractPremine: '',
