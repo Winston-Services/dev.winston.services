@@ -5,14 +5,14 @@ import { Navigate, useRoutes } from 'react-router-dom';
 
 import ScrollToTop from './components/scroll-to-top';
 import useAuth, { AuthProvider, AuthRedirect } from './context/authContext';
-import AuthLayout from './layouts/AuthLayout';
-import LandingLayout from './layouts/LandingLayout';
-import PlaneLayout from './layouts/PlaneLayout';
-import PublicPageLayout from './layouts/PublicPageLayout';
-import SignInLayout from './layouts/SignInLayout';
-import Certificate from './pages/certificate/Certificate';
 import './App.css';
 
+const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'));
+const LandingLayout = React.lazy(() => import('./layouts/LandingLayout'));
+const PlaneLayout = React.lazy(() => import('./layouts/PlaneLayout'));
+const PublicPageLayout = React.lazy(() => import('./layouts/PublicPageLayout'));
+const SignInLayout = React.lazy(() => import('./layouts/SignInLayout'));
+const Certificate = React.lazy(() => import('./pages/certificate/Certificate'));
 const Dashboard = React.lazy(() => import('./pages/dashboard'));
 const MarketplaceRouting = React.lazy(() => import('./pages/marketplace'));
 const AcademyRouting = React.lazy(() => import('./pages/academy'));

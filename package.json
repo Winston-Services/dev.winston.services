@@ -8,6 +8,7 @@
   "license": "ISC",
   "homepage": "./",
   "scripts": {
+    "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
@@ -43,6 +44,7 @@
     "react-slick": "^0.28.1",
     "recharts": "^2.1.9",
     "slick-carousel": "^1.8.1",
+    "source-map-explorer": "^2.5.2",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },

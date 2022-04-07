@@ -18,15 +18,15 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 import blueTik from './../../assets/blue_tik.svg';
-import fund11 from './../../assets/fund11.svg';
-import fund12 from './../../assets/fund12.svg';
-import fund13 from './../../assets/fund13.svg';
-import fund21 from './../../assets/fund21.svg';
-import fund22 from './../../assets/fund22.svg';
-import fund23 from './../../assets/fund23.svg';
-import fund31 from './../../assets/fund31.svg';
-import fund32 from './../../assets/fund32.svg';
-import fund33 from './../../assets/fund33.svg';
+import fund11 from './../../assets/fund11.png';
+import fund12 from './../../assets/fund12.png';
+import fund13 from './../../assets/fund13.png';
+import fund21 from './../../assets/fund21.png';
+import fund22 from './../../assets/fund22.png';
+import fund23 from './../../assets/fund23.png';
+import fund31 from './../../assets/fund31.png';
+import fund32 from './../../assets/fund32.png';
+import fund33 from './../../assets/fund33.png';
 import plants from './../../assets/nft_marketplace_1.png';
 import ProductDetailsEthereum from './../../assets/product_details_ethereum.svg';
 import userProfile from './../../assets/user_profile.png';
@@ -42,11 +42,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box className="mt30">
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box className="mt30">{children}</Box>}
     </Grid>
   );
 }
@@ -222,7 +218,7 @@ function CommunityDetails() {
                   }}
                 >
                   {historyData1.map((item, index) => (
-                    <Grid key={item.title + index}>
+                    <Grid key={index}>
                       <Grid className="dFlex">
                         <Grid className="mr20">
                           <img
