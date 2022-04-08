@@ -1,21 +1,13 @@
 import React from 'react';
 
-import {
-  Box,
-  Container,
-  Grid,
-  Stack,
-  Typography,
-  Link,
-  IconButton,
-} from '@mui/material';
+import { Box, Container, Grid, Stack, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import { ReactComponent as Discord } from './../../assets/discord_brands.svg';
 import logo from './../../assets/logo_footer.svg';
-import { ReactComponent as Twitter } from './../../assets/twitter_brands.svg';
 import winston from './../../assets/winston_ahwa_footer.svg';
-import { ReactComponent as Youtube } from './../../assets/youtube_brands.svg';
+import DiscordLink from './../../components/DiscordLink';
+import TwitterLink from './../../components/TwitterLink';
+import YoutubeLink from './../../components/YoutubeLink';
 
 const footerMenu = [
   {
@@ -85,11 +77,11 @@ const footerMenu = [
       },
       {
         name: 'Feedback',
-        url: null,
+        url: '/feedback',
       },
       {
         name: 'Contact',
-        url: null,
+        url: '/contact-us',
       },
       {
         name: 'Wiki',
@@ -110,7 +102,7 @@ const footerMenu = [
     menuItems: [
       {
         name: 'News',
-        url: null,
+        url: '/news',
       },
       {
         name: 'Meet the team',
@@ -174,22 +166,13 @@ export default function LandingFooter() {
             <Grid container spacing={4}>
               <Grid item xs={3}></Grid>
               <Grid item xs={3}>
-                <IconButton
-                  href="https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8"
-                  target={'_blank'}
-                >
-                  <Discord width={'100%'} />
-                </IconButton>
+                <DiscordLink />
               </Grid>
               <Grid item xs={3}>
-                <IconButton>
-                  <Twitter width={'100%'} />
-                </IconButton>
+                <TwitterLink />
               </Grid>
               <Grid item xs={3}>
-                <IconButton>
-                  <Youtube width={'100%'} />
-                </IconButton>
+                <YoutubeLink />
               </Grid>
             </Grid>
           </Grid>

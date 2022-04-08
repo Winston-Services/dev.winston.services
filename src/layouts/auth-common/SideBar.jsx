@@ -76,6 +76,13 @@ export default function SideBar() {
             <Box sx={{ pb: 1 }}>
               {isSideBarOpen && menuItem.attr?.primary ? (
                 <ListItemButton
+                  sx={{
+                    minHeight: 35,
+                    justifyContent: isSideBarOpen ? 'initial' : 'center',
+                    px: 3.5,
+                    py: 0.5,
+                    minWidth: '246px',
+                  }}
                   alignItems="flex-start"
                   onClick={() => dispatch(openMenu({ index }))}
                 >
@@ -100,6 +107,9 @@ export default function SideBar() {
                         ? menuItem.attr.secondary
                         : ''
                     }
+                    secondaryTypographyProps={{
+                      noWrap: true,
+                    }}
                     sx={{ my: 0 }}
                   />
                   <KeyboardArrowDown
@@ -120,7 +130,7 @@ export default function SideBar() {
                     sx={{
                       minHeight: 35,
                       justifyContent: isSideBarOpen ? 'initial' : 'center',
-                      px: 3.5,
+                      px: isSideBarOpen && menuItem.attr.primary ? 6.5 : 3.5,
                       py: 0.5,
                     }}
                   >

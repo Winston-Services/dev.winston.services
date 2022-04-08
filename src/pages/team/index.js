@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { Twitter, YouTube } from '@mui/icons-material';
-import { Container, Grid, Typography, Paper, IconButton } from '@mui/material';
+import { Container, Grid, Typography, Paper } from '@mui/material';
 
-import { ReactComponent as Discord } from './../../assets/discord_brands.svg';
 import OurTeam from './../../assets/our_team.png';
 import OurTeam1 from './../../assets/our_team1.png';
 import OurTeam2 from './../../assets/our_team2.png';
@@ -13,6 +11,9 @@ import OurTeam5 from './../../assets/our_team5.png';
 import OurTeam6 from './../../assets/our_team6.png';
 import OurTeam7 from './../../assets/our_team7.png';
 import OurTeam8 from './../../assets/our_team8.png';
+import DiscordLink from './../../components/DiscordLink';
+import TwitterLink from './../../components/TwitterLink';
+import YoutubeLink from './../../components/YoutubeLink';
 
 const teamData = [
   {
@@ -79,16 +80,16 @@ function index() {
             faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis
             integer. Amet, in vitae, lacus, at mattis quis ut sed.
           </Typography>
-          <Grid mt={3}>
-            <IconButton>
-              <Discord />
-            </IconButton>
-            <IconButton>
-              <Twitter />
-            </IconButton>
-            <IconButton>
-              <YouTube />
-            </IconButton>
+          <Grid container mt={3} xs={3}>
+            <Grid item xs>
+              <DiscordLink />
+            </Grid>
+            <Grid item xs>
+              <TwitterLink />
+            </Grid>
+            <Grid item xs>
+              <YoutubeLink />
+            </Grid>
           </Grid>
         </Grid>
         <Grid item md={1} />
@@ -129,16 +130,20 @@ function index() {
                   {item.designation}
                 </Typography>
               </Grid>
-              <Grid>
-                <IconButton>
-                  <Discord />
-                </IconButton>
-                <IconButton>
-                  <Twitter />
-                </IconButton>
-                <IconButton>
-                  <YouTube />
-                </IconButton>
+              <Grid
+                container
+                spacing={2}
+                sx={{ my: 8, justifyContent: 'center' }}
+              >
+                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                  <DiscordLink />
+                </Grid>
+                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                  <TwitterLink />
+                </Grid>
+                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                  <YoutubeLink />
+                </Grid>
               </Grid>
             </Paper>
           </Grid>

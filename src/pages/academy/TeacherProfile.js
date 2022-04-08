@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { Twitter, YouTube } from '@mui/icons-material';
-import { Container, Grid, IconButton, Paper, Typography } from '@mui/material';
+import { Container, Grid, Paper, Typography } from '@mui/material';
 
 import { ReactComponent as Badge } from '../../assets/badge_icon.svg';
 import { ReactComponent as EyeIcon } from '../../assets/eye_icon.svg';
-import { ReactComponent as Discord } from './../../assets/discord_brands.svg';
+import DiscordLink from '../../components/DiscordLink';
+import TwitterLink from '../../components/TwitterLink';
+import YoutubeLink from '../../components/YoutubeLink';
 import TeacherProfileImage from './../../assets/teacher_image.png';
 import TeacherProfileTabs from './components/TeacherProfileTabs';
 
@@ -24,16 +25,20 @@ function TeacherProfile() {
                 hattie.moore@email.com
               </Typography>
             </Grid>
-            <Grid mt={4} textAlign={'center'}>
-              <IconButton>
-                <Discord />
-              </IconButton>
-              <IconButton>
-                <Twitter />
-              </IconButton>
-              <IconButton>
-                <YouTube />
-              </IconButton>
+            <Grid
+              container
+              spacing={2}
+              sx={{ my: 8, justifyContent: 'center' }}
+            >
+              <Grid item xs={3} sm={1.3} md={3} xl={3}>
+                <DiscordLink />
+              </Grid>
+              <Grid item xs={3} sm={1.3} md={3} xl={3}>
+                <TwitterLink />
+              </Grid>
+              <Grid item xs={3} sm={1.3} md={3} xl={3}>
+                <YoutubeLink />
+              </Grid>
             </Grid>
 
             <Grid display={'flex'} justifyContent="space-between" mt={6}>

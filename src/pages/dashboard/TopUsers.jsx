@@ -76,7 +76,7 @@ export default function TopUsers() {
               }
             >
               <ListItemIcon>
-                <img src={'./assets/user.png'} height="50" width="50" />
+                <img src={'./assets/user.png'} height="36" width="36" />
               </ListItemIcon>
               <ListItemText primary={user.name} secondary={user.designation} />
             </ListItem>

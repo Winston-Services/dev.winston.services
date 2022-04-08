@@ -34,6 +34,10 @@ const CommunityFunding = React.lazy(() =>
   import('./pages/community/CommunityFunding')
 );
 
+const ContactUs = React.lazy(() => import('./pages/contact-us'));
+const FeedbackRouting = React.lazy(() => import('./pages/feedback'));
+const News = React.lazy(() => import('./pages/news/index'));
+
 export default function App() {
   const auth = useAuth();
 
@@ -47,7 +51,7 @@ export default function App() {
               justifyContent={'center'}
               alignItems="center"
               height={'100%'}
-              minHeight="100vh"
+              minHeight="100%"
             >
               <CircularProgress />
             </Box>
@@ -144,6 +148,18 @@ export default function App() {
         {
           path: '/community-funding',
           element: getRouteWrapper(<CommunityFunding />, false),
+        },
+        {
+          path: '/contact-us',
+          element: getRouteWrapper(<ContactUs />, false),
+        },
+        {
+          path: '/feedback/*',
+          element: getRouteWrapper(<FeedbackRouting />, false),
+        },
+        {
+          path: '/news',
+          element: getRouteWrapper(<News />, false),
         },
       ],
     },

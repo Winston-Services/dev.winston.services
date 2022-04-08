@@ -30,7 +30,7 @@ const initialState = {
       icon: 'account_balance_wallet',
       attr: {
         primary: 'Wallets',
-        secondaryVisible: false,
+        secondaryVisible: true,
         secondary: 'BTC, BHY, LTC, DASH, DOGE, MSTR, ETH, SYS',
         open: true,
       },
@@ -53,6 +53,7 @@ const initialState = {
       icon: 'analytics',
       attr: {
         primary: 'Reports',
+        secondaryVisible: true,
         secondary: 'Current month, Last quarter, Yearly reports',
         open: true,
       },
@@ -67,6 +68,7 @@ const initialState = {
       icon: 'extension',
       attr: {
         primary: 'Integrations',
+        secondaryVisible: true,
         secondary: 'OpenCart, Shopify, QuickBooks',
         open: true,
       },
