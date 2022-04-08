@@ -1,9 +1,26 @@
 import React from 'react';
 
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import Slider from 'react-slick/lib/slider';
 
+import Image1 from './../../assets/news_image_1.png';
+import Image2 from './../../assets/news_image_2.png';
+import NewsSliderCard from './NewsSliderCard';
+
 function NewsSlider() {
+  const newsData = [
+    {
+      image: Image1,
+      date: 'March 18, 2022',
+      description:
+        'The Non-Fungible Token Bible Everything you need to know about NFTs',
+    },
+    {
+      image: Image2,
+      date: 'March 18, 2022',
+      description: 'The Non-Fungible Token Bible',
+    },
+  ];
   const settings = {
     dots: false,
     infinite: true,
@@ -12,12 +29,37 @@ function NewsSlider() {
     slidesToScroll: 1,
   };
   return (
-    <Grid container>
-      <Slider {...settings}>
-        {[1, 2, 3, 4].map((item, index) => {
-          return <div key={index}>{item}</div>;
-        })}
-      </Slider>
+    <Grid container display={'flex'} columnSpacing={5} mt={4}>
+      <Grid item xs={12} md={9}>
+        <Slider {...settings}>
+          {newsData.map((item, index) => {
+            return (
+              <div key={index}>
+                <NewsSliderCard item={item} />
+              </div>
+            );
+          })}
+        </Slider>
+      </Grid>
+      <Grid item md={3} sx={{ my: { xs: 2.5, md: 0 } }}>
+        <Grid>
+          <img
+            src={Image2}
+            style={{
+              width: '100%',
+              height: '260px',
+              borderRadius: '20px',
+              objectFit: 'cover',
+            }}
+          ></img>
+          <Grid my={1.5}>
+            <Typography variant="subtitle1">March 18,2022</Typography>
+          </Grid>
+          <Grid my={1.5}>
+            <Typography variant="h5">The Non-Fungible Token Bible</Typography>
+          </Grid>
+        </Grid>
+      </Grid>
     </Grid>
   );
 }
