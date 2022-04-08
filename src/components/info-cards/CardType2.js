@@ -33,7 +33,7 @@ export default function CardType2({ item }) {
                   {item.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {item.description}
+                  {item.subTitle}
                 </Typography>
               </Grid>
             </Grid>
@@ -73,8 +73,13 @@ export default function CardType2({ item }) {
                 </Typography>
               </Box>
               <Typography variant="body2" color="text.secondary">
-                {item.moreDescription}
+                {item.description}
               </Typography>
+              {item.moreDescription && (
+                <Typography variant="body2" color="text.secondary">
+                  {item.moreDescription}
+                </Typography>
+              )}
             </CardContent>
           </Collapse>
         </Card>

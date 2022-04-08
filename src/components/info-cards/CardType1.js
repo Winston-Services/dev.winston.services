@@ -22,7 +22,7 @@ export default function CardType1({ item, index, setOpen }) {
   return (
     <>
       <Card elevation={0} className="blueGradientBG" onClick={handleClick}>
-        <CardActionArea sx={{ py: 5 }}>
+        <CardActionArea sx={{ py: 5, height: '100%' }}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <img src={item.icon} />
           </Box>
@@ -40,7 +40,7 @@ export default function CardType1({ item, index, setOpen }) {
               variant="body2"
               color="text.secondary"
             >
-              {item.description}
+              {item.subTitle}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -77,9 +77,22 @@ export default function CardType1({ item, index, setOpen }) {
                   {item.title}
                 </Typography>
               </Box>
-              <Typography variant="body2" color="text.secondary">
-                {item.moreDescription}
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ textAlign: 'justify' }}
+              >
+                {item.description}
               </Typography>
+              {item.moreDescription && (
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ textAlign: 'justify' }}
+                >
+                  {item.moreDescription}
+                </Typography>
+              )}
             </CardContent>
           </Collapse>
         </Card>

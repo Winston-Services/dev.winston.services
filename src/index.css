@@ -16,7 +16,7 @@ body,
 
 /* Scroll style */
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -25,6 +25,7 @@ body,
 }
 
 ::-webkit-scrollbar-thumb {
+  width: 5px;
   background-color: transparent;
 }
 
@@ -110,4 +111,3 @@ body,
   left: 30px;
   width: 100%;
 }
-

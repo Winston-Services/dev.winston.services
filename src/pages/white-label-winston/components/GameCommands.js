@@ -8,13 +8,13 @@ export default function GameCommands() {
   const data = [
     {
       title: 'Tic-Tac-Toe',
-      description:
+      subTitle:
         'Get the current system trigger that triggers Winston’s commands.',
       icon: GetTrigger,
     },
     {
       title: 'Monster-Mash',
-      description:
+      subTitle:
         'Have Winston tell your the time or date the server is currently running at.',
       icon: Date,
     },

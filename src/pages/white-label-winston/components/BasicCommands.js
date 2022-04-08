@@ -10,33 +10,33 @@ export default function BasicCommands() {
   const data = [
     {
       title: 'Get Trigger',
-      description:
+      subTitle:
         'Get the current system trigger that triggers Winston’s commands.',
-      moreDescription:
+      description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra amet adipiscing ipsum placerat nulla gravida elit, non. Mauris neque egestas in.',
       icon: GetTrigger,
     },
     {
       title: 'Ping',
-      description:
+      subTitle:
         'Get the current system trigger that triggers Winston’s commands.',
-      moreDescription:
+      description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra amet adipiscing ipsum placerat nulla gravida elit, non. Mauris neque egestas in.',
       icon: Ping,
     },
     {
       title: 'Time/Date',
-      description:
+      subTitle:
         'Get the current system trigger that triggers Winston’s commands.',
-      moreDescription:
+      description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra amet adipiscing ipsum placerat nulla gravida elit, non. Mauris neque egestas in.',
       icon: Date,
     },
     {
       title: 'Hello',
-      description:
+      subTitle:
         'Get the current system trigger that triggers Winston’s commands.',
-      moreDescription:
+      description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra amet adipiscing ipsum placerat nulla gravida elit, non. Mauris neque egestas in.',
       icon: Hello,
     },

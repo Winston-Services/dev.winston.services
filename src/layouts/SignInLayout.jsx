@@ -40,7 +40,7 @@ function SignInLayout() {
             <Box minHeight={'500px'}>
               <Outlet />
             </Box>
-            <Grid container spacing={2} sx={{ my: 8 }}>
+            <Grid container spacing={2} sx={{ mt: 8 }}>
               <Grid item xs={2} sm={1} md={0.8} lg={1.6} xl={1.5}>
                 <DiscordLink />
               </Grid>
