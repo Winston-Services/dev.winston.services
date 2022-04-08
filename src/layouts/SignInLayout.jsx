@@ -1,15 +1,16 @@
 import * as React from 'react';
 
-import { Twitter, YouTube } from '@mui/icons-material';
 import { Grid, Container, Box, Chip } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Outlet } from 'react-router-dom';
 
 import { setTheme } from '../store/themeColors';
-import { ReactComponent as Discord } from './../assets/discord_brands.svg';
 import Logo from './../assets/logo.svg';
 import CryptoLandingImage from './../components/crypto-landing-image/index';
 import './index.css';
+import DiscordLink from './../components/DiscordLink';
+import TwitterLink from './../components/TwitterLink';
+import YoutubeLink from './../components/YoutubeLink';
 
 function SignInLayout() {
   const navigate = useNavigate();
@@ -40,14 +41,14 @@ function SignInLayout() {
               <Outlet />
             </Box>
             <Grid container spacing={2} sx={{ my: 8 }}>
-              <Grid item>
-                <Discord />
+              <Grid item xs={2} sm={1} md={0.8} lg={1.6} xl={1.5}>
+                <DiscordLink />
               </Grid>
-              <Grid item>
-                <Twitter />
+              <Grid item xs={2} sm={1} md={0.8} lg={1.6} xl={1.5}>
+                <TwitterLink />
               </Grid>
-              <Grid item>
-                <YouTube />
+              <Grid item xs={2} sm={1} md={0.8} lg={1.6} xl={1.5}>
+                <YoutubeLink />
               </Grid>
             </Grid>
           </Grid>

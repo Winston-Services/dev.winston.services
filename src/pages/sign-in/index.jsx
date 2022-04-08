@@ -100,7 +100,7 @@ function SignIn() {
       <Box component="div" sx={{ mt: 5 }}>
         <Button
           variant="outlined"
-          sx={{ mr: { xs: 2, md: 3 } }}
+          sx={{ mr: { xs: 1, md: 3 } }}
           onClick={loadKeyFromLocalStorage}
         >
           Browser Login

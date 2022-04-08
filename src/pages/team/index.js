@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Twitter, YouTube } from '@mui/icons-material';
-import { Container, Grid, Typography, Paper, IconButton } from '@mui/material';
+import { Container, Grid, Typography, Paper } from '@mui/material';
 
-import { ReactComponent as Discord } from './../../assets/discord_brands.svg';
+import DiscordLink from '../../components/DiscordLink';
+import TwitterLink from '../../components/TwitterLink';
+import YoutubeLink from '../../components/YoutubeLink';
 import TeamImage from './../../assets/team_image.png';
 
 const teamData = [
@@ -85,16 +86,20 @@ function index() {
                   {item.designation}
                 </Typography>
               </Grid>
-              <Grid>
-                <IconButton>
-                  <Discord />
-                </IconButton>
-                <IconButton>
-                  <Twitter />
-                </IconButton>
-                <IconButton>
-                  <YouTube />
-                </IconButton>
+              <Grid
+                container
+                spacing={2}
+                sx={{ my: 8, justifyContent: 'center' }}
+              >
+                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                  <DiscordLink />
+                </Grid>
+                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                  <TwitterLink />
+                </Grid>
+                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                  <YoutubeLink />
+                </Grid>
               </Grid>
             </Paper>
           </Grid>

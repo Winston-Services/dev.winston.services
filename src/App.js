@@ -35,6 +35,9 @@ const CommunityDetails = React.lazy(() =>
 const CommunityFunding = React.lazy(() =>
   import('./pages/community/CommunityFunding.js')
 );
+const ContactUs = React.lazy(() => import('./pages/contact-us'));
+const FeedbackRouting = React.lazy(() => import('./pages/feedback'));
+const News = React.lazy(() => import('./pages/news/index'));
 
 export default function App() {
   const auth = useAuth();
@@ -146,6 +149,18 @@ export default function App() {
         {
           path: '/community-details',
           element: getRouteWrapper(<CommunityDetails />, false),
+        },
+        {
+          path: '/contact-us',
+          element: getRouteWrapper(<ContactUs />, false),
+        },
+        {
+          path: '/feedback/*',
+          element: getRouteWrapper(<FeedbackRouting />, false),
+        },
+        {
+          path: '/news',
+          element: getRouteWrapper(<News />, false),
         },
       ],
     },
