@@ -147,6 +147,33 @@ const publicPageColors = {
             backgroundColor: '#382B78',
           },
         },
+        {
+          props: { variant: 'transparent' },
+          style: {
+            backgroundColor: 'transparent',
+            padding: '0px',
+          },
+        },
+      ],
+    },
+    MuiAccordionSummary: {
+      variants: [
+        {
+          props: { variant: 'transparent' },
+          style: {
+            padding: '0px',
+          },
+        },
+      ],
+    },
+    MuiAccordionDetails: {
+      variants: [
+        {
+          props: { variant: 'transparent' },
+          style: {
+            padding: '0px',
+          },
+        },
       ],
     },
     MuiTypography: {

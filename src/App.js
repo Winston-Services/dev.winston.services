@@ -37,6 +37,7 @@ const CommunityFunding = React.lazy(() =>
 const ContactUs = React.lazy(() => import('./pages/contact-us'));
 const FeedbackRouting = React.lazy(() => import('./pages/feedback'));
 const News = React.lazy(() => import('./pages/news/index'));
+const NetworkStatus = React.lazy(() => import('./pages/network-status/index'));
 
 export default function App() {
   const auth = useAuth();
@@ -160,6 +161,10 @@ export default function App() {
         {
           path: '/news',
           element: getRouteWrapper(<News />, false),
+        },
+        {
+          path: '/network-status',
+          element: getRouteWrapper(<NetworkStatus />, false),
         },
       ],
     },

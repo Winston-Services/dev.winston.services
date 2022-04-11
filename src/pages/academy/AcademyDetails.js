@@ -109,12 +109,16 @@ function AcademyDetails() {
         <Grid mt={4}>
           <AcademyAccordion />
         </Grid>
-        <Grid mt={10} height="440px">
+
+        {/* <Grid mt={10} height="440px">
           <Grid position="absolute" left={0} p={2.5}>
             <AcademySlider />
           </Grid>
-        </Grid>
+        </Grid> */}
       </Container>
+      <Grid my={5} mx={2}>
+        <AcademySlider />
+      </Grid>
     </Grid>
   );
 }

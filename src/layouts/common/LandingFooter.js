@@ -118,7 +118,7 @@ const footerMenu = [
       },
       {
         name: 'Network status',
-        url: null,
+        url: '/network-status',
       },
       {
         name: 'Supported Coins',

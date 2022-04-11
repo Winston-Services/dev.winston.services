@@ -3,8 +3,8 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Slider from 'react-slick/lib/slider';
 
-import Image1 from './../../assets/news_image_1.png';
-import Image2 from './../../assets/news_image_2.png';
+import Image1 from './../../../assets/news_image_1.png';
+import Image2 from './../../../assets/news_image_2.png';
 import NewsSliderCard from './NewsSliderCard';
 
 function NewsSlider() {

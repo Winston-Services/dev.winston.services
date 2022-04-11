@@ -28,15 +28,15 @@ function TeacherProfile() {
             <Grid
               container
               spacing={2}
-              sx={{ my: 8, justifyContent: 'center' }}
+              sx={{ my: 6, justifyContent: 'center' }}
             >
-              <Grid item xs={3} sm={1.3} md={3} xl={3}>
+              <Grid item width={65} height={65}>
                 <DiscordLink />
               </Grid>
-              <Grid item xs={3} sm={1.3} md={3} xl={3}>
+              <Grid item width={65} height={65}>
                 <TwitterLink />
               </Grid>
-              <Grid item xs={3} sm={1.3} md={3} xl={3}>
+              <Grid item width={65} height={65}>
                 <YoutubeLink />
               </Grid>
             </Grid>

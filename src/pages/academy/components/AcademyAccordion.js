@@ -205,6 +205,7 @@ function AcademyAccordion() {
     <div>
       {data.map((items, index) => (
         <Accordion
+          variant="transparent"
           disableGutters
           elevation={0}
           key={items.title + index}
@@ -212,13 +213,14 @@ function AcademyAccordion() {
           onChange={handleChange(items.title)}
         >
           <AccordionSummary
+            variant="transparent"
             expandIcon={<ExpandMore />}
-            sx={{ px: 4, py: 1 }}
+            sx={{ py: 1 }}
             aria-controls={`${items.title}-content`}
           >
             <Typography variant="h6">{items.title}</Typography>
           </AccordionSummary>
-          <AccordionDetails sx={{ px: 4, py: 1 }}>
+          <AccordionDetails variant="transparent" sx={{ py: 1 }}>
             {items.content.map((item, index) => (
               <Grid
                 key={items.title + item.title + index}
