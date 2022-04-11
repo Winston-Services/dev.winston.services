@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Container, Typography } from '@mui/material';
 
-import NewsSlider from './NewsSlider';
+import NewsSlider from './components/NewsSlider';
 import './index.css';
-import NewsTab from './NewsTab';
+import NewsTab from './components/NewsTab';
 
 function News() {
   return (

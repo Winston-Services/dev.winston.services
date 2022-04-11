@@ -1,13 +1,14 @@
 import React from 'react';
 
-import { Twitter, YouTube } from '@mui/icons-material';
-import { Container, Grid, Paper, Typography, IconButton } from '@mui/material';
+import { Container, Grid, Paper, Typography } from '@mui/material';
 
-import { ReactComponent as Discord } from './../../assets/discord_brands.svg';
 import OurTeam1 from './../../assets/our_team1.png';
 import OurTeam2 from './../../assets/our_team2.png';
 import OurTeam3 from './../../assets/our_team3.png';
 import OurTeam4 from './../../assets/our_team4.png';
+import DiscordLink from './../../components/DiscordLink';
+import TwitterLink from './../../components/TwitterLink';
+import YoutubeLink from './../../components/YoutubeLink';
 
 function index() {
   const investorsData = [
@@ -107,16 +108,16 @@ function index() {
                   {item.about}
                 </Typography>
               </Grid>
-              <Grid mt={3}>
-                <IconButton>
-                  <Discord />
-                </IconButton>
-                <IconButton>
-                  <Twitter />
-                </IconButton>
-                <IconButton>
-                  <YouTube />
-                </IconButton>
+              <Grid container spacing={2} justifyContent="center" mt={3}>
+                <Grid height={50} width={50}>
+                  <DiscordLink />
+                </Grid>
+                <Grid height={50} width={50}>
+                  <TwitterLink />
+                </Grid>
+                <Grid height={50} width={50}>
+                  <YoutubeLink />
+                </Grid>
               </Grid>
             </Paper>
           </Grid>

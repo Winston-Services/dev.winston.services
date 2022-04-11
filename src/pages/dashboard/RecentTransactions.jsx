@@ -100,7 +100,7 @@ export default function RecentTransactions() {
       <DataGrid
         rows={rows}
         columns={columns}
-        rowsPerPageOptions={[]}
+        rowsPerPageOptions={[25, 50, 100]}
         disableColumnMenu
         sortable={false}
       />

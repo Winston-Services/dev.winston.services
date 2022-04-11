@@ -80,14 +80,14 @@ function index() {
             faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis
             integer. Amet, in vitae, lacus, at mattis quis ut sed.
           </Typography>
-          <Grid container mt={3} xs={3}>
-            <Grid item xs>
+          <Grid container mt={3} gap={1.5}>
+            <Grid item height={50} width={50}>
               <DiscordLink />
             </Grid>
-            <Grid item xs>
+            <Grid item height={50} width={50}>
               <TwitterLink />
             </Grid>
-            <Grid item xs>
+            <Grid item height={50} width={50}>
               <YoutubeLink />
             </Grid>
           </Grid>
@@ -133,15 +133,15 @@ function index() {
               <Grid
                 container
                 spacing={2}
-                sx={{ my: 8, justifyContent: 'center' }}
+                sx={{ my: 2, justifyContent: 'center' }}
               >
-                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                <Grid item width={60} height={60}>
                   <DiscordLink />
                 </Grid>
-                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                <Grid item width={60} height={60}>
                   <TwitterLink />
                 </Grid>
-                <Grid item xs={2} sm={2.3} md={2.5} lg={2.5} xl={2.8}>
+                <Grid item width={60} height={60}>
                   <YoutubeLink />
                 </Grid>
               </Grid>

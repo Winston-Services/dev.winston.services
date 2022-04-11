@@ -30,13 +30,13 @@ const Swapping = React.lazy(() => import('./pages/swapping'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
 const Team = React.lazy(() => import('./pages/team'));
 const Investors = React.lazy(() => import('./pages/investors'));
-const CommunityFunding = React.lazy(() =>
-  import('./pages/community/CommunityFunding')
-);
 
 const ContactUs = React.lazy(() => import('./pages/contact-us'));
 const FeedbackRouting = React.lazy(() => import('./pages/feedback'));
 const News = React.lazy(() => import('./pages/news/index'));
+const NetworkStatus = React.lazy(() => import('./pages/network-status/index'));
+const Developers = React.lazy(() => import('./pages/developers/index'));
+const CommunityFundingRouting = React.lazy(() => import('./pages/community'));
 
 export default function App() {
   const auth = useAuth();
@@ -146,8 +146,8 @@ export default function App() {
           element: getRouteWrapper(<Wizard />, false),
         },
         {
-          path: '/community-funding',
-          element: getRouteWrapper(<CommunityFunding />, false),
+          path: '/community-funding/*',
+          element: getRouteWrapper(<CommunityFundingRouting />, false),
         },
         {
           path: '/contact-us',
@@ -160,6 +160,14 @@ export default function App() {
         {
           path: '/news',
           element: getRouteWrapper(<News />, false),
+        },
+        {
+          path: '/network-status',
+          element: getRouteWrapper(<NetworkStatus />, false),
+        },
+        {
+          path: '/developers',
+          element: getRouteWrapper(<Developers />, false),
         },
       ],
     },

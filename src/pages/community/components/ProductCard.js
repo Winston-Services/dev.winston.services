@@ -12,12 +12,13 @@ import {
   AvatarGroup,
   Avatar,
   Chip,
+  Link,
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function ProductCard({ item }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <Card sx={{ position: 'relative' }} elevation={0}>
       <Box>
@@ -41,7 +42,15 @@ function ProductCard({ item }) {
             justifyContent="space-between"
             alignItems={'center'}
           >
-            <Typography variant="h6">{item.title}</Typography>
+            {/* <Typography variant="h6">{item.title}</Typography> */}
+            <Link
+              onClick={() => {
+                navigate('/community-funding/community-details');
+              }}
+              variant="h6"
+            >
+              {item.title}
+            </Link>
             <IconButton>
               <FavoriteBorderIcon />
             </IconButton>

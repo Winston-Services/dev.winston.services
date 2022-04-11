@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Grid } from '@mui/material';
 
-import ImageData1 from './../../assets/news_tab_image_1.png';
-import ImageData2 from './../../assets/news_tab_image_2.png';
-import ImageData3 from './../../assets/news_tab_image_3.png';
-import ImageData4 from './../../assets/news_tab_image_4.png';
+import ImageData1 from './../../../assets/news_tab_image_1.png';
+import ImageData2 from './../../../assets/news_tab_image_2.png';
+import ImageData3 from './../../../assets/news_tab_image_3.png';
+import ImageData4 from './../../../assets/news_tab_image_4.png';
 import NewsCard from './NewsCard';
 
 function AllNewsTabData() {

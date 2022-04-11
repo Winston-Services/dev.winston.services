@@ -17,7 +17,6 @@ import user_profile from '../../assets/user_profile.png';
 import user_profile_cover from '../../assets/user_profile_cover.png';
 import UserProfileTabs from './components/UserProfileTabs';
 
-
 const userData = [
   {
     name: 'Likes',
