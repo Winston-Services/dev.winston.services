@@ -1,7 +1,13 @@
 import * as React from 'react';
 
-import { Grid, Paper, Typography } from '@mui/material';
+import {
+  //CircularProgress,
+  Grid,
+  Paper,
+  Typography,
+} from '@mui/material';
 
+// import { useGetLeadsQuery } from '../../store/lead';
 import AccountCreated from './AccountCreated';
 import BalanceChart from './BalanceChart';
 import BotPlanBarChart from './BotPlanBarChart';
@@ -11,7 +17,18 @@ import RecentTransactions from './RecentTransactions';
 import ServerPlanBarChart from './ServerPlanBarChart';
 import TopUsers from './TopUsers';
 
-export default function index() {
+export default function Dashboard() {
+  // const { isSuccess, isLoading, isError, data, error } = useGetLeadsQuery();
+  // if (isLoading) {
+  //   return <CircularProgress color={'error'} />;
+  // }
+  // if (isSuccess) {
+  //   console.log(data);
+  // }
+  // if (isError) {
+  //   console.log('error', isError, error);
+  // }
+
   return (
     <div>
       <Grid container spacing={3}>
