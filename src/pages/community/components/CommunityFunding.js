@@ -3,19 +3,19 @@ import React from 'react';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { Button, Container, Grid, Typography } from '@mui/material';
 
-import { ReactComponent as CommunityFundingIcon } from './../../assets/community_funding_icon.svg';
-import CommunityImage1 from './../../assets/community_image1.png';
-import CommunityImage2 from './../../assets/community_image2.png';
-import CommunityImage3 from './../../assets/community_image3.png';
-import CommunityImage4 from './../../assets/community_image4.png';
-import CommunityImage5 from './../../assets/community_image5.png';
-import CommunityImage6 from './../../assets/community_image6.png';
-import CommunityImage7 from './../../assets/community_image7.png';
-import donner1 from './../../assets/donner1.svg';
-import donner2 from './../../assets/donner2.svg';
-import donner3 from './../../assets/donner3.svg';
-import donner4 from './../../assets/donner4.svg';
-import ProductCard from './components/ProductCard';
+import { ReactComponent as CommunityFundingIcon } from './../../../assets/community_funding_icon.svg';
+import CommunityImage1 from './../../../assets/community_image1.png';
+import CommunityImage2 from './../../../assets/community_image2.png';
+import CommunityImage3 from './../../../assets/community_image3.png';
+import CommunityImage4 from './../../../assets/community_image4.png';
+import CommunityImage5 from './../../../assets/community_image5.png';
+import CommunityImage6 from './../../../assets/community_image6.png';
+import CommunityImage7 from './../../../assets/community_image7.png';
+import donner1 from './../../../assets/donner1.svg';
+import donner2 from './../../../assets/donner2.svg';
+import donner3 from './../../../assets/donner3.svg';
+import donner4 from './../../../assets/donner4.svg';
+import ProductCard from './ProductCard';
 
 function index() {
   const trendingItems = [

@@ -93,7 +93,7 @@ const footerMenu = [
       },
       {
         name: 'Developers',
-        url: null,
+        url: '/developers',
       },
     ],
   },
