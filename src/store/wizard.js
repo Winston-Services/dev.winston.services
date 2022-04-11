@@ -7,7 +7,7 @@ const initialState = {
       //Coin algorithm
       email: '',
       coinType: 'Paid',
-      coinAlgorithm: 'Script - proof of work1',
+      coinAlgorithm: 'Script - Proof of Work',
 
       //Coin name
       coinName: '',
@@ -16,28 +16,37 @@ const initialState = {
       addressLetterTestnet: 'A',
       coinUnit: '',
       timestamp: '',
-      websiteUrl: '',
-      githubUrl: '',
+      websiteUrl: 'https://bitcoin.org',
+      githubUrl: 'https://github.com/bitcoin/bitcoin',
 
       //Coin block reward
-      blockReward: '',
-      blockHalving: '',
-      coinSupplyWithoutPremine: '',
+      lastPowBlock: '',
+      blockReward: 50,
+      blockRewardPos: '',
+      superblockReward: '',
+      masternodeReward: '',
+      blockHalving: 210000,
+      coinSupplyWithoutPremine: 21000000,
       premine: 'Yes',
       fullPremine: false,
-      premineAmount: '',
-      coinSupplyWithPremine: '',
+      premineAmount: '0',
+      coinSupplyWithPremine: 21000000,
 
       //Coin block confirmation
+      minimumCoinAge: '',
       coinbaseMaturity: '',
       numberOfConfirmations: '',
       targetSpacingInMinutes: '',
       targetTimespanInMinutes: '10',
+      masternodeAmount: '',
+      masternodeConfirmations: '',
       hardCodedNode: false,
       node1: '',
       node2: '',
 
       // Coin custom logo
+      walletSplash: '',
+      WalletTestnetSplash: '',
       walletIcon: '',
       walletTestnetIcon: '',
     },

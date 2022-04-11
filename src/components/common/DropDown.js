@@ -4,12 +4,15 @@ import { TextField, MenuItem } from '@mui/material';
 import { useField, useFormikContext } from 'formik';
 import { PropTypes } from 'prop-types';
 
-const SelectWrapper = ({ name, options, ...otherProps }) => {
+const SelectWrapper = ({ name, options, onChange, ...otherProps }) => {
   const { setFieldValue } = useFormikContext();
   const [field, mata] = useField(name);
   const handleChange = (evt) => {
     const { value } = evt.target;
     setFieldValue(name, value);
+    if (onChange) {
+      onChange(value);
+    }
   };
   const configSelect = {
     ...field,
@@ -39,6 +42,7 @@ const SelectWrapper = ({ name, options, ...otherProps }) => {
 SelectWrapper.propTypes = {
   name: PropTypes.string,
   options: PropTypes.array,
+  onChange: PropTypes.func,
 };
 
 export default SelectWrapper;
