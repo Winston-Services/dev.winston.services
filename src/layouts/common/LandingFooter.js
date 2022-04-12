@@ -89,7 +89,7 @@ const footerMenu = [
       },
       {
         name: 'Support',
-        url: null,
+        url: '/support',
       },
       {
         name: 'Developers',
