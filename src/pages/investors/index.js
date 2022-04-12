@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Grid, Paper, Typography } from '@mui/material';
+import { Card, Container, Grid, Typography } from '@mui/material';
 
 import OurTeam1 from './../../assets/our_team1.png';
 import OurTeam2 from './../../assets/our_team2.png';
@@ -78,7 +78,7 @@ function index() {
       <Grid container spacing={4} mt={4}>
         {investorsData.map((item, index) => (
           <Grid item key={item.name + index} xs={12} sm={6}>
-            <Paper
+            <Card
               elevation={0}
               sx={{
                 p: { xs: 2, md: 5 },
@@ -108,18 +108,24 @@ function index() {
                   {item.about}
                 </Typography>
               </Grid>
-              <Grid container spacing={2} justifyContent="center" mt={3}>
-                <Grid height={50} width={50}>
+              <Grid
+                container
+                spacing={2}
+                justifyContent="center"
+                mt={3}
+                gap={2}
+              >
+                <Grid height={40} width={40}>
                   <DiscordLink />
                 </Grid>
-                <Grid height={50} width={50}>
+                <Grid height={40} width={40}>
                   <TwitterLink />
                 </Grid>
-                <Grid height={50} width={50}>
+                <Grid height={40} width={40}>
                   <YoutubeLink />
                 </Grid>
               </Grid>
-            </Paper>
+            </Card>
           </Grid>
         ))}
       </Grid>

@@ -1,8 +1,11 @@
 import React from 'react';
 
-import { Container, Grid, Typography, Paper } from '@mui/material';
+import { Container, Grid, Typography, Card } from '@mui/material';
 
-import OurTeam from './../../assets/our_team.png';
+import CareTakers1 from './../../assets/board_of_care_takers_1.png';
+import CareTakers2 from './../../assets/board_of_care_takers_2.png';
+import CareTakers3 from './../../assets/board_of_care_takers_3.png';
+import CareTakers4 from './../../assets/board_of_care_takers_4.png';
 import OurTeam1 from './../../assets/our_team1.png';
 import OurTeam2 from './../../assets/our_team2.png';
 import OurTeam3 from './../../assets/our_team3.png';
@@ -58,52 +61,97 @@ const teamData = [
   },
 ];
 
+const boardOfCaretakers = [
+  {
+    image: CareTakers1,
+    name: 'Michael Dennis',
+    designation: 'Chief managing officer',
+    about1:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+    about2:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+  },
+  {
+    image: CareTakers2,
+    name: 'Robert D. Obrien',
+    designation: 'Chief managing officer',
+    about1:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+    about2:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+  },
+  {
+    image: CareTakers3,
+    name: 'Jenny A. Taylor',
+    designation: 'Chief managing officer',
+    about1:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+    about2:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+  },
+  {
+    image: CareTakers4,
+    name: 'Daniel J. Carr',
+    designation: 'Chief managing officer',
+    about1:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+    about2:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+  },
+];
+
 function index() {
   return (
     <Container>
       <Typography variant="h3" textAlign="center">
-        Meet Our Team
+        Board of care takers
       </Typography>
-      <Grid container spacing={3} mt={4}>
-        <Grid item md={7}>
-          <Typography variant="h4">Michael Dennis</Typography>
-          <Typography variant="h6">Chief managing officer</Typography>
-          <Typography variant="subtitle1" mt={3}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            fringilla odio non aenean a lobortis. Nunc semper quisque dictum
-            faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis
-            integer. Amet, in vitae, lacus, at mattis quis ut sed.
-          </Typography>
-          <Typography variant="subtitle1" mt={3}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            fringilla odio non aenean a lobortis. Nunc semper quisque dictum
-            faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis
-            integer. Amet, in vitae, lacus, at mattis quis ut sed.
-          </Typography>
-          <Grid container mt={3} gap={1.5}>
-            <Grid item height={50} width={50}>
-              <DiscordLink />
-            </Grid>
-            <Grid item height={50} width={50}>
-              <TwitterLink />
-            </Grid>
-            <Grid item height={50} width={50}>
-              <YoutubeLink />
+      {boardOfCaretakers.map((item, index) => (
+        <Grid
+          key={item.name}
+          container
+          spacing={6.25}
+          mt={2}
+          display="flex"
+          sx={
+            index % 2 === 0
+              ? { flexDirection: { md: 'row-reverse' } }
+              : { flexDirection: { md: 'row' } }
+          }
+        >
+          <Grid item md={4}>
+            <img src={item.image} style={{ width: '100%' }} />
+          </Grid>
+          <Grid item md={8}>
+            <Typography variant="h4">{item.name}</Typography>
+            <Typography variant="h6">{item.designation}</Typography>
+            <Typography variant="subtitle1" mt={3}>
+              {item.about1}
+            </Typography>
+            <Typography variant="subtitle1" mt={3}>
+              {item.about2}
+            </Typography>
+            <Grid container mt={3} gap={1.5}>
+              <Grid item height={40} width={40}>
+                <DiscordLink />
+              </Grid>
+              <Grid item height={40} width={40}>
+                <TwitterLink />
+              </Grid>
+              <Grid item height={40} width={40}>
+                <YoutubeLink />
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={1} />
-        <Grid item md={4}>
-          <img src={OurTeam} style={{ width: '100%' }} />
-        </Grid>
-      </Grid>
+      ))}
       <Typography variant="h3" textAlign="center" mt={12}>
-        Board of directors
+        Core team
       </Typography>
       <Grid container spacing={3} mt={4}>
         {teamData.map((item, index) => (
           <Grid item key={item.name + index} xs={12} sm={6} md={4} lg={3}>
-            <Paper
+            <Card
               elevation={0}
               sx={{
                 py: 5,
@@ -135,17 +183,17 @@ function index() {
                 spacing={2}
                 sx={{ my: 2, justifyContent: 'center' }}
               >
-                <Grid item width={60} height={60}>
+                <Grid item width={55} height={55}>
                   <DiscordLink />
                 </Grid>
-                <Grid item width={60} height={60}>
+                <Grid item width={55} height={55}>
                   <TwitterLink />
                 </Grid>
-                <Grid item width={60} height={60}>
+                <Grid item width={55} height={55}>
                   <YoutubeLink />
                 </Grid>
               </Grid>
-            </Paper>
+            </Card>
           </Grid>
         ))}
       </Grid>
