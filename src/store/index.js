@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import createApiInstance from './createApiInstance';
+import apiInstance from './createApiInstance';
 import sideBar from './sideBar';
 import themeColors from './themeColors';
 import user from './user';
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   sideBar,
   themeColors,
   wizard,
-  [createApiInstance.reducerPath]: createApiInstance.reducer,
+  [apiInstance.reducerPath]: apiInstance.reducer,
 });
 const reducer = (state, action) => {
   if (action.type === 'logout') {
@@ -22,5 +22,5 @@ const reducer = (state, action) => {
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(createApiInstance.middleware),
+    getDefaultMiddleware().concat(apiInstance.middleware),
 });
