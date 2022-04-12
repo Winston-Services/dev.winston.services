@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import { TabContext, TabList, TabPanel } from '@mui/lab';
 import {
   Grid,
   Button,
@@ -11,30 +10,22 @@ import {
   Chip,
   Box,
   Paper,
-  Tab,
 } from '@mui/material';
 import { useNavigate } from 'react-router';
 
 import ProductDetailsEthereum from './../../../assets/product_details_ethereum.svg';
 import ProductImage from './../../../assets/product_image1.png';
 import user_profile from './../../../assets/user_profile.png';
-const TopFundingDetailsTabCard = React.lazy(() =>
-  import('./TopFundingDetailsTabCard')
-);
-const RecentFundingDetailsTabCard = React.lazy(() =>
-  import('./RecentFundingDetailsTabCard')
+const CommunityCardDetailTabs = React.lazy(() =>
+  import('./CommunityCardDetailTabs')
 );
 
 function ProductCardDetails() {
   const navigate = useNavigate();
-  const [isSticky, setSticky] = React.useState(true);
-  const [value, setValue] = React.useState('1');
+  const [isSticky, setSticky] = useState(true);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  const stickyRef = React.useRef(null);
-  React.useEffect(() => {
+  const stickyRef = useRef(null);
+  useEffect(() => {
     const handleScroll = () => {
       if (
         window.pageYOffset > stickyRef.current.getBoundingClientRect().bottom
@@ -55,7 +46,7 @@ function ProductCardDetails() {
       <Grid container sx={{ mt: { xs: 4, md: 12 } }}>
         <Grid item lg={12} sx={{ display: { xs: 'none', md: 'block' } }}>
           <Button
-            sx={{ p: 0 }}
+            sx={{ px: 3, py: 1.5 }}
             startIcon={<ArrowBackIosIcon />}
             onClick={() => navigate(-1)}
           >
@@ -75,7 +66,7 @@ function ProductCardDetails() {
           ></img>
 
           <Grid display="flex" alignItems="center" mt={4}>
-            <Grid item xs={12} md={3}>
+            <Grid item>
               <img
                 src={user_profile}
                 style={{
@@ -84,12 +75,12 @@ function ProductCardDetails() {
                 }}
               />
             </Grid>
-            <Grid item md={9}>
+            <Grid item ml={2.5}>
               <Typography variant="h4" fontWeight={800}>
                 Winston Art
               </Typography>
               <Grid display="flex" alignItems="center">
-                <Typography variant="h6" sx={{ mr: 2 }}>
+                <Typography variant="h6" sx={{ mx: 0.8 }}>
                   winston_art
                 </Typography>
                 <VerifiedIcon sx={{ color: '#3D96FF' }} />
@@ -135,48 +126,7 @@ function ProductCardDetails() {
               Fund raised
             </Typography>
           </Grid>
-          <Grid>
-            <Box sx={{ width: '100%', typography: 'body1', padding: 0 }}>
-              <TabContext value={value}>
-                <Box
-                  sx={{
-                    borderBottom: 1,
-                    borderColor: 'transparent',
-                  }}
-                >
-                  <TabList onChange={handleChange}>
-                    <Tab
-                      label="Top Funding"
-                      value="1"
-                      sx={{ fontSize: '16px', fontWeight: '500' }}
-                    />
-                    <Tab
-                      label="Recent Funding"
-                      value="2"
-                      sx={{ fontSize: '16px', fontWeight: '500' }}
-                    />
-                    <Tab
-                      label="See All"
-                      value="3"
-                      sx={{ fontSize: '16px', fontWeight: '500' }}
-                    />
-                  </TabList>
-                </Box>
-                <TabPanel value="1">
-                  <TopFundingDetailsTabCard />
-                </TabPanel>
-                <TabPanel value="2">
-                  <RecentFundingDetailsTabCard />
-                </TabPanel>
-                <TabPanel value="3">
-                  <>
-                    <RecentFundingDetailsTabCard />
-                    <TopFundingDetailsTabCard />
-                  </>
-                </TabPanel>
-              </TabContext>
-            </Box>
-          </Grid>
+          <CommunityCardDetailTabs />
         </Grid>
       </Grid>
       <Box sx={{ width: '100%' }}>
@@ -242,7 +192,7 @@ function ProductCardDetails() {
                         color="secondary"
                         sx={{
                           mt: { xs: 2, sm: 0 },
-                          width: { xs: '100%', sm: '182px' },
+                          width: { xs: '130px', sm: '182px' },
                         }}
                       >
                         Fund Now
@@ -251,7 +201,7 @@ function ProductCardDetails() {
                         variant="outlined"
                         sx={{
                           mt: { xs: 2, sm: 0 },
-                          width: { xs: '100%', sm: '182px' },
+                          width: { xs: '130px', sm: '182px' },
                         }}
                       >
                         Share

@@ -33,7 +33,7 @@ const Investors = React.lazy(() => import('./pages/investors'));
 
 const ContactUs = React.lazy(() => import('./pages/contact-us'));
 const FeedbackRouting = React.lazy(() => import('./pages/feedback'));
-const News = React.lazy(() => import('./pages/news/index'));
+const NewsRouting = React.lazy(() => import('./pages/news/index'));
 const NetworkStatus = React.lazy(() => import('./pages/network-status/index'));
 const Developers = React.lazy(() => import('./pages/developers/index'));
 const CommunityFundingRouting = React.lazy(() => import('./pages/community'));
@@ -163,8 +163,8 @@ export default function App() {
           element: getRouteWrapper(<FeedbackRouting />, false),
         },
         {
-          path: '/news',
-          element: getRouteWrapper(<News />, false),
+          path: '/news/*',
+          element: getRouteWrapper(<NewsRouting />, false),
         },
         {
           path: '/network-status',

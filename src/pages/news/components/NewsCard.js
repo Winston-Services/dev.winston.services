@@ -2,10 +2,20 @@ import React from 'react';
 
 import { Grid, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router';
 
 function NewsCard({ item }) {
+  const navigate = useNavigate();
   return (
-    <Grid container display={'flex'} columnSpacing={5}>
+    <Grid
+      container
+      display={'flex'}
+      columnSpacing={5}
+      onClick={() => {
+        navigate('/news/news-details');
+      }}
+      sx={{ cursor: 'pointer' }}
+    >
       <Grid item md={3}>
         <img
           src={item.image}

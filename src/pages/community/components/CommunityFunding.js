@@ -15,7 +15,7 @@ import donner1 from './../../../assets/donner1.svg';
 import donner2 from './../../../assets/donner2.svg';
 import donner3 from './../../../assets/donner3.svg';
 import donner4 from './../../../assets/donner4.svg';
-import ProductCard from './ProductCard';
+const CommunityCard = React.lazy(() => import('./CommunityCard'));
 
 function index() {
   const trendingItems = [
@@ -172,7 +172,7 @@ function index() {
           >
             {trendingItems.map((item, index) => (
               <Grid item xs={12} sm={6} md={6} lg={3} key={item + index}>
-                <ProductCard item={item} />
+                <CommunityCard item={item} />
               </Grid>
             ))}
           </Grid>
@@ -199,7 +199,7 @@ function index() {
           >
             {newCampaignItems.map((item, index) => (
               <Grid item xs={12} sm={6} md={6} lg={3} key={item + index}>
-                <ProductCard item={item} />
+                <CommunityCard item={item} />
               </Grid>
             ))}
           </Grid>

@@ -4,7 +4,6 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FlagIcon from '@mui/icons-material/Flag';
 import LinkIcon from '@mui/icons-material/Link';
-import RedoIcon from '@mui/icons-material/Redo';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import {
@@ -20,6 +19,7 @@ import { useNavigate } from 'react-router-dom';
 
 import ProductDetailsEthereum from '../../assets/product_details_ethereum.svg';
 import ProductImage from '../../assets/product_image.png';
+import { ReactComponent as ShareIcon } from './../../assets/share_icon.svg';
 import ProductDetailTabs from './components/ProductDetailTabs';
 
 function ProductDetails() {
@@ -48,7 +48,7 @@ function ProductDetails() {
       <Grid container sx={{ mt: { xs: 4, md: 12 } }}>
         <Grid item lg={12} sx={{ display: { xs: 'none', md: 'block' } }}>
           <Button
-            sx={{ p: 0 }}
+            sx={{ px: 3, py: 1 }}
             startIcon={<ArrowBackIosIcon />}
             onClick={() => navigate(-1)}
           >
@@ -89,7 +89,7 @@ function ProductDetails() {
                 <VisibilityIcon />
               </IconButton>
               <IconButton>
-                <RedoIcon />
+                <ShareIcon />
               </IconButton>
               <IconButton>
                 <FlagIcon />
