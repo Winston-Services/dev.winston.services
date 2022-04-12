@@ -10,9 +10,9 @@ import DropDown from './../../../../components/common/DropDown';
 import TextField from './../../../../components/common/TextField';
 
 const FORM_VALIDATION = Yup.object().shape({
-  email: Yup.string().email('Invalid email id').required('Email is required'),
-  coinType: Yup.string().required('Select coin type'),
-  coinAlgorithm: Yup.string().required('Select coin algorithm'),
+  email: Yup.string()
+    .email('Enter a valid email address.')
+    .required('Enter a valid email address.'),
 });
 
 function StepAlgorithmCoin({ wizardCoinData, setWizardCoinData }) {
@@ -37,6 +37,7 @@ function StepAlgorithmCoin({ wizardCoinData, setWizardCoinData }) {
                 label="Email"
                 placeholder="Email"
                 helperText="Please Enter your Email address"
+                autoComplete="off"
               />
               <TextField
                 name="coinType"
@@ -44,14 +45,17 @@ function StepAlgorithmCoin({ wizardCoinData, setWizardCoinData }) {
                 placeholder="Coin Type"
                 helperText="Coin Type"
                 disabled
+                autoComplete="off"
               />
               <DropDown
                 name="coinAlgorithm"
                 label="Coin Algorithm"
                 options={[
-                  'Script - proof of work1',
-                  'Script - proof of work2',
-                  'Script - proof of work3',
+                  'Script - Proof of Work',
+                  'Scrypt- Proof of Work and Proof of Stack',
+                  'SHA-256 - Proof of Work',
+                  'X11 - Proof of Work + Masternode',
+                  'Proof of Work and Proof of Stake + Masternode',
                 ]}
                 helperText="Select the algorithm for your coin."
               />

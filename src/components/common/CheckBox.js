@@ -11,17 +11,27 @@ import {
 import { useField, useFormikContext } from 'formik';
 import { PropTypes } from 'prop-types';
 
-const CheckboxWrapper = ({ name, label, helperText = '' }) => {
+const CheckboxWrapper = ({
+  name,
+  label,
+  helperText = '',
+  onChange,
+  ...otherProps
+}) => {
   const { setFieldValue } = useFormikContext();
   const [field, meta] = useField(name);
 
   const handleChange = (evt) => {
     const { checked } = evt.target;
     setFieldValue(name, checked);
+    if (onChange) {
+      onChange(checked);
+    }
   };
 
   const configCheckbox = {
     ...field,
+    ...otherProps,
     checked: field.value,
     onChange: handleChange,
   };
@@ -55,6 +65,7 @@ CheckboxWrapper.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   helperText: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 export default CheckboxWrapper;
