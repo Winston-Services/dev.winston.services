@@ -81,13 +81,13 @@ function index() {
             integer. Amet, in vitae, lacus, at mattis quis ut sed.
           </Typography>
           <Grid container mt={3} gap={1.5}>
-            <Grid item height={50} width={50}>
+            <Grid item height={40} width={40}>
               <DiscordLink />
             </Grid>
-            <Grid item height={50} width={50}>
+            <Grid item height={40} width={40}>
               <TwitterLink />
             </Grid>
-            <Grid item height={50} width={50}>
+            <Grid item height={40} width={40}>
               <YoutubeLink />
             </Grid>
           </Grid>
@@ -135,13 +135,13 @@ function index() {
                 spacing={2}
                 sx={{ my: 2, justifyContent: 'center' }}
               >
-                <Grid item width={60} height={60}>
+                <Grid item width={55} height={55}>
                   <DiscordLink />
                 </Grid>
-                <Grid item width={60} height={60}>
+                <Grid item width={55} height={55}>
                   <TwitterLink />
                 </Grid>
-                <Grid item width={60} height={60}>
+                <Grid item width={55} height={55}>
                   <YoutubeLink />
                 </Grid>
               </Grid>

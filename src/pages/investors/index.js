@@ -108,14 +108,20 @@ function index() {
                   {item.about}
                 </Typography>
               </Grid>
-              <Grid container spacing={2} justifyContent="center" mt={3}>
-                <Grid height={50} width={50}>
+              <Grid
+                container
+                spacing={2}
+                justifyContent="center"
+                mt={3}
+                gap={2}
+              >
+                <Grid height={40} width={40}>
                   <DiscordLink />
                 </Grid>
-                <Grid height={50} width={50}>
+                <Grid height={40} width={40}>
                   <TwitterLink />
                 </Grid>
-                <Grid height={50} width={50}>
+                <Grid height={40} width={40}>
                   <YoutubeLink />
                 </Grid>
               </Grid>
