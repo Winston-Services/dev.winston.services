@@ -2,11 +2,21 @@ import React from 'react';
 
 import { Grid, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router';
 
 function NewsCard({ item }) {
+  const navigate = useNavigate();
   return (
-    <Grid container display={'flex'} columnSpacing={5}>
-      <Grid item md={3}>
+    <Grid
+      container
+      display={'flex'}
+      spacing={5}
+      onClick={() => {
+        navigate('/news/news-details');
+      }}
+      sx={{ cursor: 'pointer' }}
+    >
+      <Grid item sm={4}>
         <img
           src={item.image}
           style={{
@@ -16,12 +26,12 @@ function NewsCard({ item }) {
           }}
         ></img>
       </Grid>
-      <Grid item md={9}>
+      <Grid item sm={8}>
         <Typography variant="h5">{item.title}</Typography>
         <Grid mt={2}>
           <Typography variant="body1">{item.description}</Typography>
         </Grid>
-        <Grid display={'flex'} gap={2} mt={7}>
+        <Grid display={'flex'} gap={2} mt={2}>
           <Typography variant="body2">{item.infoTag}</Typography>
           <Typography variant="body2">{item.infoTime}</Typography>
           <Typography variant="body2">{item.infoTitle}</Typography>

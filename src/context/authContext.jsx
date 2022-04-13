@@ -43,14 +43,14 @@ export function AuthRedirect({ children, authenticatedRoute = true }) {
   let auth = useAuth();
   let location = useLocation();
   const user = useSelector(userInfoSelector);
+
+  if (user?.authLoading) {
+    return <CircularProgress />;
+  }
   if (!auth?.authenticated && authenticatedRoute) {
     return <Navigate to="/sign-in" state={{ from: location }} />;
   } else if (auth?.authenticated && !authenticatedRoute) {
     return <Navigate to="/dashboard" state={{ from: location }} />;
-  }
-
-  if (user?.authLoading) {
-    return <CircularProgress />;
   }
 
   return children;

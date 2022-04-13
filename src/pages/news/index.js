@@ -1,19 +1,28 @@
 import React from 'react';
 
-import { Container, Typography } from '@mui/material';
+import { useRoutes } from 'react-router-dom';
 
-import NewsSlider from './components/NewsSlider';
 import './index.css';
-import NewsTab from './components/NewsTab';
+const News = React.lazy(() => import('./components/News'));
+const NewsDetails = React.lazy(() => import('./components/NewsDetails'));
 
-function News() {
-  return (
-    <Container>
-      <Typography variant="h3">Latest News</Typography>
-      <NewsSlider />
-      <NewsTab />
-    </Container>
-  );
+function NewsRouting() {
+  const routes = [
+    {
+      path: '/',
+      children: [
+        {
+          index: true,
+          element: <News />,
+        },
+        {
+          path: '/news-details',
+          element: <NewsDetails />,
+        },
+      ],
+    },
+  ];
+  return useRoutes(routes);
 }
 
-export default News;
+export default NewsRouting;

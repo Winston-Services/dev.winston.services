@@ -41,7 +41,7 @@ function NewsSlider() {
           })}
         </Slider>
       </Grid>
-      <Grid item md={3} sx={{ my: { xs: 2.5, md: 0 } }}>
+      <Grid item xs={12} md={3} sx={{ my: { xs: 2.5, md: 0 } }}>
         <Grid>
           <img
             src={Image2}

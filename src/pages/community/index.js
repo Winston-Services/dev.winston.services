@@ -7,8 +7,8 @@ import './index.css';
 const CommunityFunding = React.lazy(() =>
   import('./components/CommunityFunding')
 );
-const ProductCardDetails = React.lazy(() =>
-  import('./components/ProductCardDetails')
+const CommunityCardDetails = React.lazy(() =>
+  import('./components/CommunityCardDetails')
 );
 
 export default function CommunityFundingRouting() {
@@ -22,7 +22,7 @@ export default function CommunityFundingRouting() {
         },
         {
           path: '/community-details',
-          element: <ProductCardDetails />,
+          element: <CommunityCardDetails />,
         },
       ],
     },

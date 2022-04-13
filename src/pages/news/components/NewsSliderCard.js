@@ -2,10 +2,17 @@ import React from 'react';
 
 import { Grid, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 function NewsSliderCard({ item }) {
+  const navigate = useNavigate();
   return (
-    <Grid>
+    <Grid
+      onClick={() => {
+        navigate('/news/news-details');
+      }}
+      sx={{ cursor: 'pointer' }}
+    >
       <img
         src={item.image}
         style={{
