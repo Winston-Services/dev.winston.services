@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import { PropTypes } from 'prop-types';
 
-const NewsCard = React.lazy(() => import('./NewsCard'));
+import NewsCard from './NewsCard';
 
 function NewsTabData({ data }) {
   return (

@@ -26,7 +26,7 @@ export default function TabCard({ data }) {
             >
               <Grid display={'flex'} flexDirection="column">
                 <Typography component={'span'} variant="subtitle1">
-                  ${item.price}
+                  {'$' + item.price}
                 </Typography>
                 <Link
                   component={'span'}

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import HistoryImage from '../../../assets/history_image.png';
-const TabCard = React.lazy(() => import('./TabCard'));
+import TabCard from './TabCard';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -14,8 +14,8 @@ function TabPanel(props) {
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
+      id={`community-tabpanel-${index}`}
+      aria-labelledby={`community-tab-${index}`}
       {...other}
     >
       {value === index && (
@@ -35,8 +35,8 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    id: `community-tab-${index}`,
+    'aria-controls': `community-tabpanel-${index}`,
   };
 }
 
@@ -87,17 +87,12 @@ function CommunityCardDetailTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const tabIndicatorStyle = useSelector(
-    (state) => state.themeColors.colors.components.MuiTab.tabIndicatorStyle
-  );
-
+  // const tabIndicatorStyle = useSelector(
+  //   (state) => state.themeColors.colors.components.MuiTab.tabIndicatorStyle
+  // );
   return (
     <Box sx={{ width: '100%', typography: 'body1', padding: 0 }}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        TabIndicatorProps={{ ...tabIndicatorStyle }}
-      >
+      <Tabs value={value} onChange={handleChange}>
         <Tab label="Top Funding" {...a11yProps(0)} />
         <Tab label="Recent Funding" {...a11yProps(1)} />
         <Tab label="See All" {...a11yProps(2)} />
