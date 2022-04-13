@@ -115,7 +115,6 @@ const publicPageColors = {
           props: { gradient: true },
           style: {
             backgroundColor: 'transparent',
-            height: '100vh!important',
             backgroundImage:
               'linear-gradient(162deg, #f75385 20%, #ea7c8f, #9e65e8 100%)',
           },

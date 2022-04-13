@@ -14,9 +14,12 @@ export default function InfoCard({
 }) {
   return (
     <Grid container>
-      <Grid item xs={12} sx={{ mb: 8, textAlign: 'center' }}>
+      <Grid item xs={12} sx={{ mb: { xs: 0, md: 8 }, textAlign: 'center' }}>
         {title ? (
-          <Typography variant={'h3'} sx={{ mt: 8, fontWeight: '800' }}>
+          <Typography
+            variant={'h3'}
+            sx={{ mt: { xs: 4, md: 8 }, fontWeight: '800' }}
+          >
             {title}
           </Typography>
         ) : null}

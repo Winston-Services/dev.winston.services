@@ -65,7 +65,7 @@ export default function StakingTable() {
   return (
     <Box
       sx={{
-        height: 400,
+        height: 270,
         width: 1,
       }}
     >

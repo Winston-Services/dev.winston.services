@@ -110,7 +110,7 @@ const footerMenu = [
       },
       {
         name: 'Assets',
-        url: null,
+        url: '/assets',
       },
       {
         name: 'Currencies',

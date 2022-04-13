@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {
-  styled,
   Table,
   TableBody,
   TableCell,
@@ -9,40 +8,25 @@ import {
   TableRow,
   Typography,
   Paper,
-  tableCellClasses,
   Container,
   Grid,
-  Divider,
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
 
 import TotalTokens from '../../assets/total_tokens.svg';
 import TotalTokensGiven from '../../assets/total_tokens_given.svg';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#362A70',
-    color: theme.palette.common.white,
-    border: 0,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-    border: 0,
-    color: theme.palette.common.white,
-  },
-}));
-
 export default function CoinTable({ name, rows }) {
   return (
     <Container>
-      <TableContainer component={Paper} sx={{ p: 4, boxShadow: 'none' }}>
+      <TableContainer component={Paper} sx={{ p: 2, boxShadow: 'none' }}>
         <Table aria-label="customized table">
           <TableBody>
             <TableRow>
-              <StyledTableCell>
+              <TableCell>
                 <Typography variant="h6">Stack and {name}</Typography>
-              </StyledTableCell>
-              <StyledTableCell>
+              </TableCell>
+              <TableCell>
                 <Grid container item xs={12}>
                   <img src={TotalTokens} alt="icon" />
                   <Typography sx={{ fontSize: '0.725rem' }}>
@@ -50,48 +34,47 @@ export default function CoinTable({ name, rows }) {
                   </Typography>
                 </Grid>
                 <Typography>00000</Typography>
-              </StyledTableCell>
-              <StyledTableCell>
+              </TableCell>
+              <TableCell>
                 <Grid container item xs={12}>
                   <img src={TotalTokensGiven} alt="icon" />
                   <Typography sx={{ fontSize: '0.725rem' }}>Balance</Typography>
                 </Grid>
                 <Typography>00000</Typography>
-              </StyledTableCell>
+              </TableCell>
             </TableRow>
-            <Divider sx={{ width: '220%' }} />
             <TableRow>
-              <StyledTableCell>
+              <TableCell>
                 <Typography>Coin</Typography>
-              </StyledTableCell>
-              <StyledTableCell>
+              </TableCell>
+              <TableCell>
                 <Typography>Amount {name}</Typography>
-              </StyledTableCell>
-              <StyledTableCell>
+              </TableCell>
+              <TableCell>
                 <Typography>Balance</Typography>
-              </StyledTableCell>
+              </TableCell>
             </TableRow>
-            <Divider sx={{ width: '220%' }} />
             {rows?.map((row) => (
-              <>
-                <TableRow key={row.name}>
-                  <StyledTableCell>
+              <React.Fragment key={row.name + name}>
+                <TableRow
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell>
                     <Grid container spacing={1}>
                       <img src={row.icon} alt="icon" />
                       <Typography>{row.name}</Typography>
                     </Grid>
-                  </StyledTableCell>
-                  <StyledTableCell>
+                  </TableCell>
+                  <TableCell>
                     <Typography variant="subtitle2">Tokens</Typography>
                     <Typography variant="h6">{row.tokens}</Typography>
-                  </StyledTableCell>
-                  <StyledTableCell>
+                  </TableCell>
+                  <TableCell>
                     <Typography variant="subtitle2">Given Away</Typography>
                     <Typography variant="h6">{row.givenAway}</Typography>
-                  </StyledTableCell>
+                  </TableCell>
                 </TableRow>
-                <Divider sx={{ width: '220%' }} />
-              </>
+              </React.Fragment>
             ))}
           </TableBody>
         </Table>

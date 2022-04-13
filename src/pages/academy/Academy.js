@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, Container, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 
-import { ReactComponent as AcademyIcon } from './../../assets/academy_icon.svg';
+import AcademyIcon from './../../assets/academy_icon.svg';
 import AcademyImage from './../../assets/academy_image.svg';
 import { ReactComponent as BeginnerIcon } from './../../assets/beginner_icon.svg';
 import { ReactComponent as ExpertIcon } from './../../assets/expert_icon.svg';
@@ -95,14 +95,14 @@ function Academy() {
           <Button
             variant="contained"
             color="secondary"
-            sx={{ mt: 12.5 }}
+            sx={{ mt: 12.5, width: { xs: '100%', sm: 'auto' } }}
             onClick={() => navigate('/academy/add-course')}
           >
             Start uploading video
           </Button>
         </Grid>
         <Grid item md={5.5}>
-          <AcademyIcon />
+          <img src={AcademyIcon} style={{ width: '100%' }} />
         </Grid>
       </Grid>
 
@@ -110,7 +110,7 @@ function Academy() {
         Academy
       </Typography>
       <Grid container spacing={4} mt={3}>
-        <Grid item md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <DropDown2
             options={[
               'Altcoin',
@@ -124,15 +124,15 @@ function Academy() {
             placeholder={'Select Topics'}
           />
         </Grid>
-        <Grid item md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <DropDown2
             options={['Beginner', 'Intermediate', 'Expert']}
             placeholder={'Select Difficulty'}
           />
         </Grid>
-        <Grid item md={4}>
+        <Grid item xs={12} md={4}>
           <Grid container columnSpacing={3}>
-            <Grid item md={6}>
+            <Grid item xs={6}>
               <Button
                 variant="contained"
                 color="secondary"
@@ -141,7 +141,7 @@ function Academy() {
                 Apply Filter
               </Button>
             </Grid>
-            <Grid item md={6}>
+            <Grid item xs={6}>
               <Button
                 variant="contained"
                 color="primary"

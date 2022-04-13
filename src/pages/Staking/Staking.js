@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Typography, Grid, Card, Container, Divider } from '@mui/material';
+import { Typography, Grid, Card, Container } from '@mui/material';
 
 import BinanceSmartChain from '../../assets/binance_smart_chain.svg';
 import EthereumSmall from './../../assets/ethereum_small.svg';
@@ -13,30 +13,29 @@ import ProofOfWork3 from './../../assets/proof_of_work3.svg';
 import CoinTable from './CoinTable';
 import StakingTable from './StakingTable';
 
-
 const proofOfWork = [
   {
     icon: ProofOfWork1,
-    des: 'Miners complete to solve difficult math problems',
+    des: 'Stakers stake assets to validate a new block',
   },
   {
     icon: ProofOfWork2,
-    des: 'The first miner to solve the problem validates the next block',
-  },
-  {
-    icon: ProofOfWork3,
-    des: 'The winning miner recives a reward from the network',
-  },
-];
-const proofOfStake = [
-  { icon: ProofOfStake1, des: 'Stakers stake assets to validate a new block' },
-  {
-    icon: ProofOfStake2,
     des: 'If the block is illegitimate the staked amount will be "Slashed"',
   },
   {
-    icon: ProofOfStake3,
+    icon: ProofOfWork3,
     des: 'If legitmate, the staker will get back the staked assets and an addional reward',
+  },
+];
+const proofOfStake = [
+  { icon: ProofOfStake1, des: 'Communities Donate to a pool' },
+  {
+    icon: ProofOfStake2,
+    des: 'Stakers Stake Tokens and coins agains the pool to receive rewards.',
+  },
+  {
+    icon: ProofOfStake3,
+    des: 'Stake holders who have vested for thirty days earn daily rewards based on the pools.',
   },
 ];
 
@@ -60,14 +59,18 @@ export default function Staking() {
       <Grid container spacing={8}>
         <Grid container item lg={12} justifyContent={'center'} spacing={8}>
           <Grid item>
-            <Typography variant="h3">Proof of work</Typography>
+            <Typography variant="h2" textAlign={'center'}>
+              Staking With Winston
+            </Typography>
+            <Typography variant="h3" mt={10} textAlign={'center'}>
+              Traditional Chain Staking
+            </Typography>
           </Grid>
           <Grid item container spacing={6}>
-            {proofOfWork.map((item, index) => {
+            {proofOfWork.map((item) => {
               return (
                 <Grid
-                  container
-                  key={index}
+                  key={item.des}
                   item
                   sm={12}
                   md={4}
@@ -76,30 +79,31 @@ export default function Staking() {
                   textAlign={'center'}
                   spacing={6}
                 >
-                  <Grid item>
-                    <img src={item.icon} />
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="h6">{item.des}</Typography>
-                  </Grid>
+                  <img src={item.icon} />
+                  <Typography variant="h6" mt={5}>
+                    {item.des}
+                  </Typography>
                 </Grid>
               );
             })}
           </Grid>
         </Grid>
-        <Grid item lg={12}>
-          <Divider variant="fullWidth" sx={{ borderBottomWidth: 5 }} />
-        </Grid>
-        <Grid container item lg={12} justifyContent={'center'} spacing={8}>
+        <Grid
+          container
+          item
+          lg={12}
+          justifyContent={'center'}
+          spacing={8}
+          mt={4}
+        >
           <Grid item>
-            <Typography variant="h3">Proof of stake</Typography>
+            <Typography variant="h3">Staking On Winston</Typography>
           </Grid>
           <Grid item container spacing={6}>
-            {proofOfStake.map((item, index) => {
+            {proofOfStake.map((item) => {
               return (
                 <Grid
-                  container
-                  key={index}
+                  key={item.des}
                   item
                   sm={12}
                   md={4}
@@ -108,32 +112,30 @@ export default function Staking() {
                   textAlign={'center'}
                   spacing={6}
                 >
-                  <Grid item xs={12}>
-                    <img src={item.icon} />
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="h6">{item.des}</Typography>
-                  </Grid>
+                  <img src={item.icon} />
+                  <Typography variant="h6" mt={5}>
+                    {item.des}
+                  </Typography>
                 </Grid>
               );
             })}
           </Grid>
         </Grid>
-        <Grid item container spacing={4}>
+        <Grid item container spacing={4} mt={4}>
           <Grid item sm={12} xs={12} md={12} lg={6}>
-            <Card>
+            <Card elevation={0}>
               <CoinTable name={'Pending'} rows={rows} />
             </Card>
           </Grid>
           <Grid item sm={12} xs={12} md={12} lg={6}>
-            <Card>
+            <Card elevation={0}>
               <CoinTable name={'Vested'} rows={rows} />
             </Card>
           </Grid>
         </Grid>
         <Grid container item>
           <Grid item sm={12} lg={12}>
-            <Card sx={{ p: 5, height: '80%' }}>
+            <Card sx={{ p: 5 }} elevation={0}>
               <Grid container spacing={4}>
                 <Grid item container justifyContent={'space-between'}>
                   <Grid item lg={9} md={9} sm={6} xs={6}>
@@ -168,43 +170,40 @@ export default function Staking() {
           </Grid>
         </Grid>
         <Grid
-          container
-          item
-          sm={12}
-          lg={12}
-          justifyContent={'center'}
-          spacing={4}
+          display="flex"
+          flexDirection={'column'}
+          alignContent={'center'}
+          width="100%"
+          mt={10}
         >
-          <Grid item>
-            <Typography variant="h3">Staking On Winston</Typography>
-          </Grid>
+          <Typography variant="h3" textAlign={'center'} mb={6}>
+            Staking On Winston
+          </Typography>
 
-          <Grid item>
-            <Typography variant="h6" textAlign={'center'}>
-              <span>
-                Each coin or token project can enable staking with in the
-                Winston network.
-              </span>
-              <br />
-              <span>
-                Once a pool is established for staking members are able to stake
-                the coin ortoken for the project with in the Winston network.
-              </span>
-              <br />
-              <span>
-                Tokens must be held for 30 days to start earning rewards.
-                Rewards are based on the following algo.
-              </span>
-              <br />
-              <span style={{ color: 'yellow ' }}>
-                User_Weight = Total_Staked / User_Available_Stake
-              </span>
-              <br />
-              <span style={{ color: 'yellow ' }}>
-                Payout = (Pool / 365) / User_Weight
-              </span>
-            </Typography>
-          </Grid>
+          <Typography variant="h6" textAlign={'center'}>
+            <span>
+              Each coin or token project can enable staking with in the Winston
+              network.
+            </span>
+            <br />
+            <span>
+              Once a pool is established for staking members are able to stake
+              the coin ortoken for the project with in the Winston network.
+            </span>
+            <br />
+            <span>
+              Tokens must be held for 30 days to start earning rewards. Rewards
+              are based on the following algo.
+            </span>
+            <br />
+            <span style={{ color: 'yellow ' }}>
+              User_Weight = Total_Staked / User_Available_Stake
+            </span>
+            <br />
+            <span style={{ color: 'yellow ' }}>
+              Payout = (Pool / 365) / User_Weight
+            </span>
+          </Typography>
         </Grid>
       </Grid>
     </Container>
