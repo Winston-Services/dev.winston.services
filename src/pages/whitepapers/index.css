@@ -1,0 +1,22 @@
+.pdf-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #e4e4e4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+iframe {
+  height: 100vh;
+}
+
+.paper-container {
+  background: linear-gradient(
+    90deg,
+    rgb(234, 122, 143) 0.64%,
+    rgb(228, 82, 200) 99.36%
+  );
+  border-radius: 10px;
+}

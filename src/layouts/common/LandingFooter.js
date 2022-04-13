@@ -131,7 +131,7 @@ const footerMenu = [
     menuItems: [
       {
         name: 'Whitepapers',
-        url: null,
+        url: '/whitepapers',
       },
       {
         name: 'Terms',

@@ -39,6 +39,9 @@ const Developers = React.lazy(() => import('./pages/developers/index'));
 const CommunityFundingRouting = React.lazy(() => import('./pages/community'));
 const SupportRouting = React.lazy(() => import('./pages/support'));
 const Assets = React.lazy(() => import('./pages/assets'));
+const WhitePapersRouting = React.lazy(() =>
+  import('./pages/whitepapers/index')
+);
 
 export default function App() {
   const auth = useAuth();
@@ -178,6 +181,10 @@ export default function App() {
         {
           path: '/developers',
           element: getRouteWrapper(<Developers />, false),
+        },
+        {
+          path: '/whitepapers/*',
+          element: getRouteWrapper(<WhitePapersRouting />, false),
         },
       ],
     },
