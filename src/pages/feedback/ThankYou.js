@@ -3,7 +3,7 @@ import React from 'react';
 import { Container, Grid, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 
-import ThankYouIcon from './../../../assets/thank-you-icon.svg';
+import ThankYouIcon from './../../assets/thank-you-icon.svg';
 
 function ThankYou() {
   const navigate = useNavigate();

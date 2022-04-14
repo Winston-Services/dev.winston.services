@@ -2,10 +2,8 @@ import React from 'react';
 
 import { useRoutes } from 'react-router-dom';
 
-const WhitePapers = React.lazy(() => import('./components/WhitePapers'));
-const WhitePapersDocument = React.lazy(() =>
-  import('./components/WhitePapersDocument')
-);
+const WhitePapers = React.lazy(() => import('./WhitePapers'));
+const WhitePapersDocument = React.lazy(() => import('./WhitePapersDocument'));
 
 import './index.css';
 

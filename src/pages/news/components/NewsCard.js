@@ -10,7 +10,7 @@ function NewsCard({ item }) {
     <Grid
       container
       display={'flex'}
-      spacing={5}
+      spacing={2}
       onClick={() => {
         navigate('/news/news-details');
       }}
@@ -26,12 +26,19 @@ function NewsCard({ item }) {
           }}
         ></img>
       </Grid>
-      <Grid item sm={8}>
-        <Typography variant="h5">{item.title}</Typography>
-        <Grid mt={2}>
-          <Typography variant="body1">{item.description}</Typography>
-        </Grid>
-        <Grid display={'flex'} gap={2} mt={2}>
+      <Grid
+        item
+        sm={8}
+        display="flex"
+        flexDirection={'column'}
+        justifyContent="space-between"
+        gap={1}
+      >
+        <Typography variant="h5" sx={{ mt: { xs: 1, sm: 0 } }}>
+          {item.title}
+        </Typography>
+        <Typography variant="body1">{item.description}</Typography>
+        <Grid item display={'flex'} sx={{ gap: { xs: 1, md: 2.5 }, mb: 1 }}>
           <Typography variant="body2">{item.infoTag}</Typography>
           <Typography variant="body2">{item.infoTime}</Typography>
           <Typography variant="body2">{item.infoTitle}</Typography>

@@ -9,8 +9,8 @@ import {
   Paper,
 } from '@mui/material';
 
-import WinstonIcon from './../../../assets/assets_winston_icon.svg';
-import WhitePaperCard from './WhitePaperCard';
+import WinstonIcon from './../../assets/assets_winston_icon.svg';
+import WhitePaperCard from './components/WhitePaperCard';
 
 const documentData = [
   {
@@ -44,7 +44,7 @@ function WhitePapers() {
             <Grid item>
               <Paper
                 elevation={0}
-                gradient
+                $gradient
                 sx={{
                   height: '100px',
                   width: '100px',

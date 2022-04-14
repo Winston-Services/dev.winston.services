@@ -85,7 +85,7 @@ const footerMenu = [
       },
       {
         name: 'Wiki',
-        url: null,
+        url: '/wiki',
       },
       {
         name: 'Support',
@@ -161,17 +161,41 @@ export default function LandingFooter() {
             <Box
               src={logo}
               component="img"
-              sx={{ width: '100%', mb: 2, cursor: 'pointer' }}
+              sx={{
+                width: '100%',
+                maxWidth: '311.77px',
+                mb: 2,
+                cursor: 'pointer',
+              }}
             />
-            <Grid container spacing={4}>
-              <Grid item xs={3}></Grid>
-              <Grid item xs={3}>
+            <Grid
+              sx={{ gap: { xs: 1, sm: 2.5 } }}
+              display="flex"
+              justifyContent="start"
+              ml={10}
+            >
+              <Grid
+                sx={{
+                  height: { xs: 50 },
+                  width: { xs: 50 },
+                }}
+              >
                 <DiscordLink />
               </Grid>
-              <Grid item xs={3}>
+              <Grid
+                sx={{
+                  height: { xs: 50 },
+                  width: { xs: 50 },
+                }}
+              >
                 <TwitterLink />
               </Grid>
-              <Grid item xs={3}>
+              <Grid
+                sx={{
+                  height: { xs: 50 },
+                  width: { xs: 50 },
+                }}
+              >
                 <YoutubeLink />
               </Grid>
             </Grid>
@@ -206,7 +230,7 @@ export default function LandingFooter() {
                     variant="body2"
                     color="primary"
                     onClick={() => {
-                      navigate(menuItem.url);
+                      menuItem.url && navigate(menuItem.url);
                     }}
                   >
                     {menuItem.name}

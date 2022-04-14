@@ -30,8 +30,8 @@ function WinstonApp() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item md={6} sx={{ maxWidth: '100%', width: '100%' }}>
-            <img src={winstonMobile} alt="winston-mobile" height="100%" />
+          <Grid item md={6} xs={12} display={'flex'} alignItems={'flex-end'}>
+            <img src={winstonMobile} alt="winston-mobile" width="100%" />
           </Grid>
         </Grid>
       </Container>

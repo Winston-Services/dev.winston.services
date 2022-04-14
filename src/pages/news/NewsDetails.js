@@ -13,8 +13,8 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import graph from './../../../assets/graph.png';
-import { ReactComponent as ShareIcon } from './../../../assets/share_icon.svg';
+import graph from './../../assets/graph.png';
+import { ReactComponent as ShareIcon } from './../../assets/share_icon.svg';
 
 function NewsDetails() {
   const navigate = useNavigate();

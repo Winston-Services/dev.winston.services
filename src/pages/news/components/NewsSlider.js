@@ -30,7 +30,7 @@ function NewsSlider() {
   };
   return (
     <Grid container display={'flex'} columnSpacing={5} mt={4}>
-      <Grid item xs={12} md={9}>
+      <Grid item xs={12} sm={6} md={8}>
         <Slider {...settings}>
           {newsData.map((item, index) => {
             return (
@@ -41,7 +41,7 @@ function NewsSlider() {
           })}
         </Slider>
       </Grid>
-      <Grid item xs={12} md={3} sx={{ my: { xs: 2.5, md: 0 } }}>
+      <Grid item xs={12} sm={6} md={4} sx={{ my: { xs: 2, sm: 0 } }}>
         <Grid>
           <img
             src={Image2}

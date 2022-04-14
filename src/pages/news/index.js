@@ -3,8 +3,8 @@ import React from 'react';
 import { useRoutes } from 'react-router-dom';
 
 import './index.css';
-const News = React.lazy(() => import('./components/News'));
-const NewsDetails = React.lazy(() => import('./components/NewsDetails'));
+const News = React.lazy(() => import('./News'));
+const NewsDetails = React.lazy(() => import('./NewsDetails'));
 
 function NewsRouting() {
   const routes = [

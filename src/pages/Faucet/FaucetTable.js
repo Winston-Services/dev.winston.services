@@ -69,7 +69,7 @@ export default function FaucetTable({ rows }) {
   // });
 
   // rows.push(total);
-  console.log(rows, 'rows');
+  // console.log(rows, 'rows');
   return (
     <Box
       sx={{

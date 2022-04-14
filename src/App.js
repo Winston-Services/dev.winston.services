@@ -42,6 +42,7 @@ const Assets = React.lazy(() => import('./pages/assets'));
 const WhitePapersRouting = React.lazy(() =>
   import('./pages/whitepapers/index')
 );
+const Wiki = React.lazy(() => import('./pages/wiki/index'));
 
 export default function App() {
   const auth = useAuth();
@@ -185,6 +186,10 @@ export default function App() {
         {
           path: '/whitepapers/*',
           element: getRouteWrapper(<WhitePapersRouting />, false),
+        },
+        {
+          path: '/wiki',
+          element: getRouteWrapper(<Wiki />, false),
         },
       ],
     },

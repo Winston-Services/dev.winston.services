@@ -36,7 +36,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 export default function TokenTable({ name, rows }) {
   return (
     <Container>
-      <TableContainer component={Paper} sx={{ p: 4, boxShadow: 'none' }}>
+      <TableContainer
+        component={Paper}
+        sx={{ p: { xs: 0, sm: 1.2, md: 2.5 }, boxShadow: 'none' }}
+      >
         <Table aria-label="customized table">
           <TableBody>
             <TableRow>

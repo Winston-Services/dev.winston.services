@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Container, Typography, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import pdfFile from './../../../pdf/sample.pdf';
+import pdfFile from './../../pdf/sample.pdf';
 
 function WhitePapersDocument() {
   const [defaultPdfFile] = useState(pdfFile);
@@ -43,7 +43,7 @@ function WhitePapersDocument() {
           <Typography>Embed</Typography>
         </Grid>
       </Grid>
-      <Grid mt={5}>
+      <Grid mt={5} sx={{ width: { xs: '100%' } }}>
         <iframe src={defaultPdfFile} width="100%" />
       </Grid>
     </Container>

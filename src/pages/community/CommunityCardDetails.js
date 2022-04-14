@@ -13,11 +13,11 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router';
 
-import ProductDetailsEthereum from './../../../assets/product_details_ethereum.svg';
-import ProductImage from './../../../assets/product_image1.png';
-import user_profile from './../../../assets/user_profile.png';
+import ProductDetailsEthereum from './../../assets/product_details_ethereum.svg';
+import ProductImage from './../../assets/product_image1.png';
+import user_profile from './../../assets/user_profile.png';
 const CommunityCardDetailTabs = React.lazy(() =>
-  import('./CommunityCardDetailTabs')
+  import('./components/CommunityCardDetailTabs')
 );
 
 function ProductCardDetails() {

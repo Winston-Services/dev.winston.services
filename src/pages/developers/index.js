@@ -50,16 +50,14 @@ function Developers() {
         <Grid container spacing={2} mt={4}>
           {developersData.map((item, index) => {
             return (
-              <Grid item key={index} xs={12} sm={6} md={4} textAlign="center">
+              <Grid item key={index} xs={12} md={6} lg={4} textAlign="center">
                 <Paper elevation={0}>
                   <Grid item pt={5}>
                     <img src={item.image} height="80px" width="80px"></img>
                   </Grid>
-                  <Grid>
-                    <Typography variant="h6" py={1}>
-                      {item.title}
-                    </Typography>
-                  </Grid>
+                  <Typography variant="h6" py={1}>
+                    {item.title}
+                  </Typography>
                   <Grid px={4}>
                     <Typography variant="subtitle1">
                       {item.description}

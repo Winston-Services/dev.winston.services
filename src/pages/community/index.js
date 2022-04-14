@@ -4,12 +4,8 @@ import { useRoutes } from 'react-router-dom';
 
 import './index.css';
 
-const CommunityFunding = React.lazy(() =>
-  import('./components/CommunityFunding')
-);
-const CommunityCardDetails = React.lazy(() =>
-  import('./components/CommunityCardDetails')
-);
+const CommunityFunding = React.lazy(() => import('./CommunityFunding'));
+const CommunityCardDetails = React.lazy(() => import('./CommunityCardDetails'));
 
 export default function CommunityFundingRouting() {
   const routes = [

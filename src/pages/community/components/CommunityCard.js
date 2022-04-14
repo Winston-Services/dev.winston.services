@@ -18,7 +18,7 @@ import {
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
-function ProductCard({ item }) {
+function CommunityCard({ item }) {
   const navigate = useNavigate();
   return (
     <Card sx={{ position: 'relative' }} elevation={0}>
@@ -97,8 +97,8 @@ function ProductCard({ item }) {
     </Card>
   );
 }
-ProductCard.propTypes = {
+CommunityCard.propTypes = {
   item: PropTypes.object,
 };
 
-export default ProductCard;
+export default CommunityCard;

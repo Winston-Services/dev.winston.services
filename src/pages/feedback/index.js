@@ -2,8 +2,8 @@ import React from 'react';
 
 import { useRoutes } from 'react-router-dom';
 
-const Feedback = React.lazy(() => import('./components/Feedback'));
-const ThankYou = React.lazy(() => import('./components/ThankYou'));
+const Feedback = React.lazy(() => import('./Feedback'));
+const ThankYou = React.lazy(() => import('./ThankYou'));
 
 export default function FeedbackRouting() {
   const routes = [
