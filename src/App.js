@@ -30,7 +30,7 @@ const Swapping = React.lazy(() => import('./pages/swapping'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
 const Team = React.lazy(() => import('./pages/team'));
 const Investors = React.lazy(() => import('./pages/investors'));
-
+const Burning = React.lazy(() => import('./pages/burning'));
 const ContactUs = React.lazy(() => import('./pages/contact-us'));
 const FeedbackRouting = React.lazy(() => import('./pages/feedback'));
 const NewsRouting = React.lazy(() => import('./pages/news/index'));
@@ -76,20 +76,6 @@ export default function App() {
         {
           index: true,
           element: getRouteWrapper(<Dashboard />),
-        },
-      ],
-    },
-    {
-      path: '/',
-      element: getRouteWrapper(<SignInLayout />, false),
-      children: [
-        {
-          path: '/sign-in',
-          element: getRouteWrapper(<SignIn />, false),
-        },
-        {
-          path: '/sign-up',
-          element: getRouteWrapper(<SignUp />, false),
         },
       ],
     },
@@ -148,6 +134,10 @@ export default function App() {
           element: getRouteWrapper(<Investors />, false),
         },
         {
+          path: '/burning',
+          element: getRouteWrapper(<Burning />, false),
+        },
+        {
           path: '/wizard/*',
           element: getRouteWrapper(<Wizard />, false),
         },
@@ -190,6 +180,20 @@ export default function App() {
         {
           path: '/wiki',
           element: getRouteWrapper(<Wiki />, false),
+        },
+      ],
+    },
+    {
+      path: '/',
+      element: getRouteWrapper(<SignInLayout />, false),
+      children: [
+        {
+          path: '/sign-in',
+          element: getRouteWrapper(<SignIn />, false),
+        },
+        {
+          path: '/sign-up',
+          element: getRouteWrapper(<SignUp />, false),
         },
       ],
     },
