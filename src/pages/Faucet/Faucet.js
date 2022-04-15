@@ -14,8 +14,7 @@ import BinanceSmartChain from '../../assets/binance_smart_chain.svg';
 import coinDrop from '../../assets/coinDrop.png';
 import EthereumSmall from '../../assets/ethereum_small.svg';
 import Litecoin from '../../assets/litecoin.svg';
-// import waterDrop from '../../assets/water_drop.svg';
-import FaucetTable from './FaucetTable';
+import Table from '../../components/common/Table';
 import TokenTable from './TokenTable';
 
 const rows = [
@@ -39,7 +38,34 @@ const rows = [
   },
 ];
 
-const rowsFaucetOnnWinston = [
+const columns = [
+  {
+    id: 'coin',
+    headerName: 'Coin',
+  },
+  {
+    id: 'faucetTotal',
+    headerName: 'Faucet Total',
+  },
+  {
+    id: 'totalGiveToday',
+    headerName: 'Total Give Today',
+  },
+  {
+    id: 'memberDP',
+    headerName: 'Member Drip Amount',
+  },
+  {
+    id: 'publicDP',
+    headerName: 'Public Drip Amount',
+  },
+  {
+    id: 'totalDropped',
+    headerName: 'Total Dropped',
+  },
+];
+
+const rowsFaucet = [
   {
     id: 1,
     coin: 'Rickle',
@@ -76,6 +102,15 @@ const rowsFaucetOnnWinston = [
     publicDP: 0.000038584,
     totalDropped: 295.5353,
   },
+  {
+    id: 5,
+    coin: 'Total',
+    faucetTotal: 1306.25358,
+    totalGiveToday: 0.59858,
+    memberDP: 0.0038584,
+    publicDP: 0.000038584,
+    totalDropped: 295.5353,
+  },
 ];
 
 export default function Faucet() {
@@ -103,43 +138,44 @@ export default function Faucet() {
           <img src={coinDrop} alt="crypto" width="100%" />
         </Grid>
       </Grid>
-      <Grid container item spacing={4} my={14}>
-        <Grid item sm={12} lg={6}>
+      <Grid container item sx={{ my: { xs: 14 } }} spacing={4}>
+        <Grid item xs={12} md={6}>
           <Card>
             <TokenTable name={'Tokens'} rows={rows} />
           </Card>
         </Grid>
-        <Grid item sm={12} lg={6}>
+        <Grid item xs={12} md={6}>
           <Card>
             <TokenTable name={'Coins'} rows={rows} />
           </Card>
         </Grid>
       </Grid>
-      <Grid container item>
-        <Grid item sm={12} lg={12}>
-          <Card sx={{ p: 5, height: '90%', boxShadow: 'none' }}>
-            <Grid container spacing={4}>
+      <Grid container>
+        <Grid item xs={12}>
+          <Card sx={{ boxShadow: 'none' }}>
+            <Grid container spacing={1}>
               <Grid
-                item
-                container
                 display={'flex'}
-                justifyContent={'space-between'}
-                lg={12}
-                sm={12}
-                md={12}
-                xs={12}
+                sx={{
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  alignItems: { xs: 'start', sm: 'center' },
+                  justifyContent: { xs: 'start', sm: 'space-between' },
+                  width: { sm: '100%' },
+                }}
+                pt={3}
+                px={5}
               >
-                <Grid item>
+                <Grid item xs={12}>
                   <Typography>Faucet On Winston</Typography>
                 </Grid>
-                <Grid item>
+                <Grid item xs={12} display="flex" flexDirection={'end'}>
                   <TextField
-                    sx={{ backgroundColor: '#271D5A' }}
+                    sx={{ backgroundColor: '#271D5A', mt: { xs: 1.5, sm: 0 } }}
                     variant="standard"
                     hiddenLabel
                     fullWidth
                     color="filled"
-                    placeholder="Search"
+                    placeholder="Search coin or token"
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
@@ -151,9 +187,9 @@ export default function Faucet() {
                   />
                 </Grid>
               </Grid>
-              <Grid item lg={12} sm={12} md={12} xs={12}>
-                <FaucetTable rows={rowsFaucetOnnWinston} />
-              </Grid>
+            </Grid>
+            <Grid item xs={12} mt={2} pb={3}>
+              <Table columns={columns} rows={rowsFaucet} />
             </Grid>
           </Card>
         </Grid>

@@ -57,7 +57,7 @@ export default function Staking() {
   return (
     <Container>
       <Grid container spacing={8}>
-        <Grid container item lg={12} justifyContent={'center'} spacing={8}>
+        <Grid container item xs={12} justifyContent={'center'} spacing={8}>
           <Grid item>
             <Typography variant="h2" textAlign={'center'}>
               Staking With Winston
@@ -72,9 +72,8 @@ export default function Staking() {
                 <Grid
                   key={item.des}
                   item
-                  sm={12}
+                  xs={12}
                   md={4}
-                  lg={4}
                   justifyContent={'center'}
                   textAlign={'center'}
                   spacing={6}

@@ -322,6 +322,15 @@ const publicPageColors = {
       styleOverrides: {
         root: {
           borderColor: '#5A5189',
+          background: 'transparent',
+          padding: '16px 30px',
+        },
+      },
+    },
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          '&:last-child td, &:last-child th': { border: 0 },
         },
       },
     },
