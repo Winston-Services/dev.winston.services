@@ -33,16 +33,15 @@ const Investors = React.lazy(() => import('./pages/investors'));
 const Burning = React.lazy(() => import('./pages/burning'));
 const ContactUs = React.lazy(() => import('./pages/contact-us'));
 const FeedbackRouting = React.lazy(() => import('./pages/feedback'));
-const NewsRouting = React.lazy(() => import('./pages/news/index'));
-const NetworkStatus = React.lazy(() => import('./pages/network-status/index'));
-const Developers = React.lazy(() => import('./pages/developers/index'));
+const NewsRouting = React.lazy(() => import('./pages/news'));
+const NetworkStatus = React.lazy(() => import('./pages/network-status'));
+const Developers = React.lazy(() => import('./pages/developers'));
 const CommunityFundingRouting = React.lazy(() => import('./pages/community'));
 const SupportRouting = React.lazy(() => import('./pages/support'));
 const Assets = React.lazy(() => import('./pages/assets'));
-const WhitePapersRouting = React.lazy(() =>
-  import('./pages/whitepapers/index')
-);
-const Wiki = React.lazy(() => import('./pages/wiki/index'));
+const WhitePapersRouting = React.lazy(() => import('./pages/whitepapers'));
+const Wiki = React.lazy(() => import('./pages/wiki'));
+const AccountActivity = React.lazy(() => import('./pages/account-activity'));
 
 export default function App() {
   const auth = useAuth();
@@ -180,6 +179,10 @@ export default function App() {
         {
           path: '/wiki',
           element: getRouteWrapper(<Wiki />, false),
+        },
+        {
+          path: '/account-activity',
+          element: getRouteWrapper(<AccountActivity />, false),
         },
       ],
     },

@@ -23,7 +23,11 @@ export default function TableWrapper({ columns, rows }) {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow hover key={row.id}>
+            <TableRow
+              hover
+              key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
               {columns.map((column) => (
                 <TableCell key={column.id}>{row[column.id]}</TableCell>
               ))}
