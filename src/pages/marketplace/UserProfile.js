@@ -57,7 +57,7 @@ ReadMore.propTypes = {
 
 function UserProfile() {
   return (
-    <Grid mt={'-100px'}>
+    <Grid>
       <Grid>
         <img
           src={user_profile_cover}

@@ -1,12 +1,14 @@
 import React from 'react';
 
 import { Grid, Link } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+// import { DataGrid } from '@mui/x-data-grid';
+
+import Table from './../../../components/common/Table';
 
 const columns = [
-  { field: 'id', headerName: 'ID', sortable: false, hide: true },
+  { id: 'id', headerName: 'ID', sortable: false, hide: true },
   {
-    field: 'tokenId',
+    id: 'tokenId',
     headerName: 'Token ID',
     sortable: false,
     width: 90,
@@ -15,7 +17,7 @@ const columns = [
     },
   },
   {
-    field: 'denomId',
+    id: 'denomId',
     headerName: 'Denom ID',
     sortable: false,
     width: 120,
@@ -23,10 +25,10 @@ const columns = [
       return <Link>{param.row.denomId}</Link>;
     },
   },
-  { field: 'nftName', headerName: 'NFT Name', sortable: false, width: 180 },
-  { field: 'creator', headerName: 'Creator', sortable: false, width: 120 },
+  { id: 'nftName', headerName: 'NFT Name', sortable: false, width: 180 },
+  { id: 'creator', headerName: 'Creator', sortable: false, width: 120 },
   {
-    field: 'mintTime',
+    id: 'mintTime',
     headerName: 'Mint Time',
     sortable: false,
     width: 200,
@@ -145,13 +147,14 @@ const rows = [
 export default function OwnerNftsTable() {
   return (
     <Grid height={'765px'}>
-      <DataGrid
+      {/* <DataGrid
         rows={rows}
         columns={columns}
         rowsPerPageOptions={[]}
         disableColumnMenu
         sortable={false}
-      />
+      /> */}
+      <Table columns={columns} rows={rows} />
     </Grid>
   );
 }

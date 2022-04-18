@@ -330,7 +330,7 @@ const publicPageColors = {
     MuiTableRow: {
       styleOverrides: {
         root: {
-          '&:last-child td, &:last-child th': { border: 0 },
+          '&:last-child td': { border: 0 },
         },
       },
     },
@@ -370,25 +370,6 @@ const publicPageColors = {
           },
         },
       ],
-    },
-    MuiDataGrid: {
-      styleOverrides: {
-        root: {
-          border: 'none',
-        },
-        footerContainer: {
-          display: 'none',
-        },
-        columnSeparator: {
-          display: 'none',
-        },
-        cell: {
-          borderColor: '#564E7F',
-        },
-        columnHeaders: {
-          borderColor: '#564E7F',
-        },
-      },
     },
     MuiGrid: {
       variants: [
@@ -475,25 +456,6 @@ const createThemeVariable = (mode, dashboard) => {
         styleOverrides: {
           root: {
             textTransform: 'capitalize',
-          },
-        },
-      },
-      MuiDataGrid: {
-        styleOverrides: {
-          root: {
-            border: 'none',
-          },
-          footerContainer: {
-            display: 'none',
-          },
-          columnSeparator: {
-            display: 'none',
-          },
-          cell: {
-            borderColor: mode === 'light' ? '#EEECFA' : '#564E7F',
-          },
-          columnHeaders: {
-            borderColor: mode === 'light' ? '#EEECFA' : '#564E7F',
           },
         },
       },

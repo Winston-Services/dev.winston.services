@@ -74,11 +74,14 @@ export default function Staking() {
                   item
                   xs={12}
                   md={4}
-                  justifyContent={'center'}
+                  display="flex"
+                  flexDirection={'column'}
+                  alignItems="center"
                   textAlign={'center'}
-                  spacing={6}
                 >
-                  <img src={item.icon} />
+                  <Grid>
+                    <img src={item.icon} width="auto" />
+                  </Grid>
                   <Typography variant="h6" mt={5}>
                     {item.des}
                   </Typography>
@@ -104,14 +107,14 @@ export default function Staking() {
                 <Grid
                   key={item.des}
                   item
-                  sm={12}
+                  xs={12}
                   md={4}
-                  lg={4}
-                  justifyContent={'center'}
+                  display="flex"
+                  flexDirection={'column'}
+                  alignItems="center"
                   textAlign={'center'}
-                  spacing={6}
                 >
-                  <img src={item.icon} />
+                  <img src={item.icon} width="auto" />
                   <Typography variant="h6" mt={5}>
                     {item.des}
                   </Typography>
@@ -121,65 +124,57 @@ export default function Staking() {
           </Grid>
         </Grid>
         <Grid item container spacing={4} mt={4}>
-          <Grid item sm={12} xs={12} md={12} lg={6}>
-            <Card elevation={0}>
+          <Grid item xs={12} md={6}>
+            <Card elevation={0} sx={{ py: 2 }}>
               <CoinTable name={'Pending'} rows={rows} />
             </Card>
           </Grid>
-          <Grid item sm={12} xs={12} md={12} lg={6}>
-            <Card elevation={0}>
+          <Grid item xs={12} md={6}>
+            <Card elevation={0} sx={{ py: 2 }}>
               <CoinTable name={'Vested'} rows={rows} />
             </Card>
           </Grid>
         </Grid>
+
         <Grid container item>
-          <Grid item sm={12} lg={12}>
-            <Card sx={{ p: 5 }} elevation={0}>
-              <Grid container spacing={4}>
-                <Grid item container justifyContent={'space-between'}>
-                  <Grid item lg={9} md={9} sm={6} xs={6}>
+          <Grid item xs={12}>
+            <Card elevation={0}>
+              <Grid container spacing={3}>
+                <Grid
+                  item
+                  container
+                  mx={4}
+                  mt={3}
+                  display={'flex'}
+                  justifyContent="space-between"
+                >
+                  <Grid item>
                     <Typography variant="h6">Staking Pools</Typography>
                   </Grid>
-                  <Grid
-                    item
-                    container
-                    lg={3}
-                    md={3}
-                    sm={6}
-                    xs={6}
-                    justifyContent={'space-between'}
-                  >
-                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                  <Grid item display={'flex'} gap={3}>
+                    <Grid item>
                       <Typography variant="subtitle2">
                         Amount Pending
                       </Typography>
                       <Typography variant="subtitle2">00000</Typography>
                     </Grid>
-                    <Grid item lg={6} md={6} sm={6} xs={6}>
+                    <Grid item>
                       <Typography variant="subtitle2">Total Vested</Typography>
                       <Typography variant="subtitle2">00000</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item lg={12} sm={12} md={12} xs={12}>
+                <Grid item xs={12} pb={3}>
                   <StakingTable />
                 </Grid>
               </Grid>
             </Card>
           </Grid>
         </Grid>
-        <Grid
-          display="flex"
-          flexDirection={'column'}
-          alignContent={'center'}
-          width="100%"
-          mt={10}
-        >
-          <Typography variant="h3" textAlign={'center'} mb={6}>
-            Staking On Winston
-          </Typography>
 
-          <Typography variant="h6" textAlign={'center'}>
+        <Grid textAlign={'center'} item xs={12} mt={10}>
+          <Typography variant="h3">Staking On Winston</Typography>
+          <Typography variant="h6" my={8}>
             <span>
               Each coin or token project can enable staking with in the Winston
               network.

@@ -42,17 +42,7 @@ function WhitePapers() {
         <Grid container display="flex" alignItems={'center'}>
           <Grid container item md={9} display="flex" gap={2}>
             <Grid item>
-              <Paper
-                elevation={0}
-                $gradient
-                sx={{
-                  height: '100px',
-                  width: '100px',
-                  display: 'flex',
-                  alignItems: 'end',
-                  justifyContent: 'center',
-                }}
-              >
+              <Paper elevation={0} className="gradientPaper">
                 <img
                   src={WinstonIcon}
                   style={{ height: '90px', width: '90px' }}
@@ -92,68 +82,6 @@ function WhitePapers() {
           </Grid>
         </Grid>
       </Card>
-      {/* <Grid display={'flex'} flexDirection="column" gap={3} my={7}>
-        <Typography variant="h5">Winston Update</Typography>
-        <Grid item lg={12} sx={{ width: '100%' }}>
-          <Paper
-            elevation={0}
-            sx={{
-              p: 2.5,
-              borderRadius: 2,
-            }}
-          >
-            <Grid
-              display="flex"
-              sx={{
-                flexDirection: { xs: 'column', sm: 'row' },
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <Grid display="flex" sx={{ width: '100%' }}>
-                <Grid sx={{ mr: 2.5 }}>
-                  <Paper className="paper-container">
-                    <img
-                      src={WinstonIcon}
-                      alt={'image'}
-                      style={{
-                        width: 100,
-                        height: 110,                      
-                        margin: '10px 5px -6px',                        
-                      }}
-                    />
-                  </Paper>
-                </Grid>
-                <Grid display={'flex'} flexDirection="column" gap={2}>
-                  <Typography component={'span'} variant="h5">
-                    {'Winston'}
-                  </Typography>
-                  <Typography component={'span'} variant="subtitle1">
-                    {'Price: $500'}
-                  </Typography>
-                  <Typography component={'span'} variant="subtitle1">
-                    {
-                      'Winston character is a NFT built on Ethereum, introduced by the Winston.'
-                    }
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{
-                    mt: { xs: 2, sm: 0 },
-                    width: '180px',
-                  }}
-                >
-                  Buy Winston NFT
-                </Button>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-      </Grid> */}
       <Grid display={'flex'} flexDirection="column" gap={3}>
         <Typography variant="h5">Whitepaper Documents</Typography>
         <WhitePaperCard data={documentData} />

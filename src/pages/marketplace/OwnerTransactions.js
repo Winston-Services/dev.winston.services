@@ -9,10 +9,10 @@ function OwnerTransactions() {
     <Container>
       <Typography variant="h3">Transactions</Typography>
       <Grid container spacing={4}>
-        <Grid item md={8}>
+        <Grid item md={8} sx={{ overflowX: 'auto' }}>
           <OwnerTransactionsTabs />
         </Grid>
-        <Grid item md={4} sx={{ mt: 11.75 }}>
+        <Grid item md={4} xs={12} sx={{ mt: 11.75 }}>
           <Paper elevation={0} sx={{ p: 2.5 }}>
             <Typography variant="h6" sx={{ textAlign: 'center', mb: 2 }}>
               Account Summary

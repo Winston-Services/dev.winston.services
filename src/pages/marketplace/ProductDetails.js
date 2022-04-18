@@ -187,7 +187,7 @@ function ProductDetails() {
                   }}
                 >
                   <Grid display="flex" sx={{ width: '100%' }}>
-                    <Grid sx={{ mr: 2.5 }}>
+                    <Grid sx={{ mr: 1.5 }}>
                       <img
                         src={ProductImage}
                         style={{ width: 100, height: 100, borderRadius: 5 }}
@@ -201,7 +201,7 @@ function ProductDetails() {
                         alignItems="center"
                         sx={{ mt: 1.25 }}
                       >
-                        <Grid sx={{ mr: 2.5 }}>
+                        <Grid sx={{ mr: { xs: 1.2, sm: 2.5 } }}>
                           <img src={ProductDetailsEthereum} />
                         </Grid>
                         <Grid>
@@ -211,11 +211,14 @@ function ProductDetails() {
                           >
                             Minimum bid
                           </Typography>
-                          <Grid display="flex">
+                          <Grid display="flex" sx={{ mx: { xs: 0 } }}>
                             <Typography variant="h5">0.5 </Typography>
                             <Typography
                               variant="subtitle2"
-                              sx={{ alignSelf: 'end', ml: 0.5 }}
+                              sx={{
+                                alignSelf: 'end',
+                                ml: { xs: 0.4, sm: 0.5 },
+                              }}
                             >
                               ($1,574.39)
                             </Typography>

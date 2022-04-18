@@ -8,6 +8,8 @@ import {
 } from '@mui/material';
 
 // import { useGetLeadsQuery } from '../../store/lead';
+// import bitcoin from './../../assets/bitcoin.svg';
+// import send from './../../assets/send.svg';
 import AccountCreated from './AccountCreated';
 import BalanceChart from './BalanceChart';
 import BotPlanBarChart from './BotPlanBarChart';
