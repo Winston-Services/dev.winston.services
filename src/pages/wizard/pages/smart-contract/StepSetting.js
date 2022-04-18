@@ -50,7 +50,7 @@ function StepSetting({
         onSubmit={handleSubmit}
       >
         <Form>
-          <Card sx={{ p: 6 }} elevation={0}>
+          <Card sx={{ p: { xs: 2.5, sm: 4, md: 5, lg: 6 } }} elevation={0}>
             <ListItem sx={{ px: 0 }}>
               <ListItemAvatar>
                 <img width={'60%'} src={ethereumBlue} alt="icon" />
@@ -87,23 +87,22 @@ function StepSetting({
               ) : null}
             </Grid>
           </Card>
-          <Grid
-            container
-            spacing={2}
-            mt={4}
-            display="flex"
-            justifyContent="flex-end"
-          >
-            <Grid item>
-              <Button variant="outlined" onClick={previous}>
-                Previous
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button type="submit" variant="contained" color="secondary">
-                Next
-              </Button>
-            </Grid>
+          <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>
+            <Button
+              variant="outlined"
+              onClick={previous}
+              sx={{ width: { xs: '50%', sm: 'auto' } }}
+            >
+              Previous
+            </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              sx={{ width: { xs: '50%', sm: 'auto' } }}
+            >
+              Next
+            </Button>
           </Grid>
         </Form>
       </Formik>

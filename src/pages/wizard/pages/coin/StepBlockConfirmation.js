@@ -112,7 +112,7 @@ function StepCoinBlockConfirmation({ wizardCoinData, setWizardCoinData }) {
         onSubmit={handleSubmit}
       >
         <Form>
-          <Card sx={{ p: 6 }} elevation={0}>
+          <Card sx={{ p: { xs: 2.5, sm: 4, md: 5, lg: 6 } }} elevation={0}>
             <Grid display={'flex'} flexDirection="column" gap={3}>
               {wizardCoinData.coinAlgorithm ===
                 'Scrypt- Proof of Work and Proof of Stack' && (
@@ -199,10 +199,19 @@ function StepCoinBlockConfirmation({ wizardCoinData, setWizardCoinData }) {
             </Grid>
           </Card>
           <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>
-            <Button variant="outlined" onClick={previous}>
+            <Button
+              variant="outlined"
+              onClick={previous}
+              sx={{ width: { xs: '50%', sm: 'auto' } }}
+            >
               Previous
             </Button>
-            <Button variant="contained" color="secondary" type="submit">
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+              sx={{ width: { xs: '50%', sm: 'auto' } }}
+            >
               Next
             </Button>
           </Grid>

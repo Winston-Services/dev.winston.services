@@ -67,8 +67,8 @@ function StepCoinCustomLogo({ wizardData, wizardCoinData, setWizardCoinData }) {
         return (
           <Form style={{ width: '100%' }}>
             <Grid item xs={12}>
-              <Card sx={{ p: 6 }} elevation={0}>
-                <Grid container rowSpacing={6}>
+              <Card sx={{ p: { xs: 2.5, sm: 4, md: 5, lg: 6 } }} elevation={0}>
+                <Grid container spacing={6}>
                   {[
                     'Scrypt- Proof of Work and Proof of Stack',
                     'X11 - Proof of Work + Masternode',
@@ -293,12 +293,21 @@ function StepCoinCustomLogo({ wizardData, wizardCoinData, setWizardCoinData }) {
               justifyContent="flex-end"
             >
               <Grid item>
-                <Button variant="outlined" onClick={previous}>
+                <Button
+                  variant="outlined"
+                  onClick={previous}
+                  sx={{ width: { xs: '50%', sm: 'auto' } }}
+                >
                   Previous
                 </Button>
               </Grid>
               <Grid item>
-                <Button type="submit" variant="contained" color="secondary">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  sx={{ width: { xs: '50%', sm: 'auto' } }}
+                >
                   {wizardData.workshop === 'Custom' ? 'Next' : 'Checkout'}
                 </Button>
               </Grid>

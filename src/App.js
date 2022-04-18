@@ -38,6 +38,7 @@ const NetworkStatus = React.lazy(() => import('./pages/network-status'));
 const Developers = React.lazy(() => import('./pages/developers'));
 const CommunityFundingRouting = React.lazy(() => import('./pages/community'));
 const SupportRouting = React.lazy(() => import('./pages/support'));
+const CurrenciesRouting = React.lazy(() => import('./pages/currencies'));
 const Assets = React.lazy(() => import('./pages/assets'));
 const WhitePapersRouting = React.lazy(() => import('./pages/whitepapers'));
 const Wiki = React.lazy(() => import('./pages/wiki'));
@@ -147,6 +148,10 @@ export default function App() {
         {
           path: '/support/*',
           element: getRouteWrapper(<SupportRouting />, false),
+        },
+        {
+          path: '/currencies/*',
+          element: getRouteWrapper(<CurrenciesRouting />, false),
         },
         {
           path: '/contact-us',

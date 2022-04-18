@@ -20,7 +20,7 @@ export default function CustomSwitch({ name, option1, option2, onChange }) {
 
   const useStyles = makeStyles({
     root: {
-      width: '313px',
+      width: '380px',
       height: '57px',
       padding: '0px',
       backgroundColor: '#271D5A',
@@ -39,7 +39,7 @@ export default function CustomSwitch({ name, option1, option2, onChange }) {
     },
     thumb: {
       color: '#31256C',
-      width: '143px',
+      width: '180px',
       height: '49px',
       margin: '3px',
       borderRadius: '40px',
@@ -50,25 +50,23 @@ export default function CustomSwitch({ name, option1, option2, onChange }) {
       opacity: '1 !important',
       zIndex: 1,
       pointerEvents: 'none',
+      display: 'flex',
+      justifyContent: 'space-around',
+      alignItems: 'center',
       '&:after, &:before': {
-        color: 'white',
         fontSize: '14px',
-        position: 'absolute',
       },
       '&:after': {
         content: `"${option1}"`,
-        padding: '16px 24px',
       },
       '&:before': {
         content: `"${option2}"`,
-        right: '8px',
-        padding: '16px 16px',
       },
     },
     checked: {
       color: 'transparent !important',
       borderRadius: '40px',
-      transform: 'translateX(162px) !important',
+      transform: 'translateX(192px) !important',
     },
   });
 

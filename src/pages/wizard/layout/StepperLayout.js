@@ -28,19 +28,19 @@ const AllSteps = [
   {
     title: 'Algorithm',
     type: 'coin',
-    icon: <Memory fontSize="large" />,
+    icon: Memory,
     current: ['/wizard/coin', '/wizard/custom'],
   },
   {
     title: 'Coin Name',
     type: 'coin',
-    icon: <Settings fontSize="large" />,
+    icon: Settings,
     current: ['/wizard/coin/step-name', '/wizard/custom/step-name'],
   },
   {
     title: 'Block Reward',
     type: 'coin',
-    icon: <PlaylistAddCheck fontSize="large" />,
+    icon: PlaylistAddCheck,
     current: [
       '/wizard/coin/step-block-reward',
       '/wizard/custom/step-block-reward',
@@ -49,7 +49,7 @@ const AllSteps = [
   {
     title: 'Block Confirmation',
     type: 'coin',
-    icon: <Security fontSize="large" />,
+    icon: Security,
     current: [
       '/wizard/coin/step-block-confirmation',
       '/wizard/custom/step-block-confirmation',
@@ -58,7 +58,7 @@ const AllSteps = [
   {
     title: 'Custom Logo',
     type: 'coin',
-    icon: <Info fontSize="large" />,
+    icon: Info,
     current: [
       '/wizard/coin/step-custom-logo',
       '/wizard/custom/step-custom-logo',
@@ -67,7 +67,7 @@ const AllSteps = [
   {
     title: 'Smart Contract Type',
     type: 'smart-contract',
-    icon: <Memory fontSize="large" />,
+    icon: Memory,
     current: [
       '/wizard/smart-contract',
       '/wizard/custom/step-smart-contract-network',
@@ -76,7 +76,7 @@ const AllSteps = [
   {
     title: 'Settings',
     type: 'smart-contract',
-    icon: <Settings fontSize="large" />,
+    icon: Settings,
 
     current: [
       '/wizard/smart-contract/step-setting',
@@ -86,7 +86,7 @@ const AllSteps = [
   {
     title: 'Features',
     type: 'smart-contract',
-    icon: <PlaylistAddCheck fontSize="large" />,
+    icon: PlaylistAddCheck,
     current: [
       '/wizard/smart-contract/step-feature',
       '/wizard/custom/step-smart-contract-feature',
@@ -95,7 +95,7 @@ const AllSteps = [
   {
     title: 'Access and Upgradeability',
     type: 'smart-contract',
-    icon: <Security fontSize="large" />,
+    icon: Security,
     current: [
       '/wizard/smart-contract/step-access-upgrade',
       '/wizard/custom/step-smart-contract-access-upgrade',
@@ -104,7 +104,7 @@ const AllSteps = [
   {
     title: 'Info',
     type: 'smart-contract',
-    icon: <Info fontSize="large" />,
+    icon: Info,
     current: [
       '/wizard/smart-contract/step-info',
       '/wizard/custom/step-smart-contract-info',
@@ -194,7 +194,7 @@ export default function StepperLayout() {
       )}
 
       <Grid container>
-        <Grid item mt={6} mb={6} xs={12}>
+        <Grid item xs={12} sx={{ my: { xs: 4, sm: 6 } }}>
           <WizardSteppers steps={steps} activeStepCount={currentStep} />
         </Grid>
         <Outlet context={{ next, previous }}></Outlet>

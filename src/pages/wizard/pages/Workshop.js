@@ -40,13 +40,7 @@ function Workshop({ wizardData, setWizardData }) {
         <Grid item sm={12}>
           <Typography variant="h3">Workshop</Typography>
         </Grid>
-        <Grid
-          item
-          xs={12}
-          container
-          spacing={5}
-          sx={{ mb: { xs: 2, sm: 2 }, mt: { xs: 2, sm: 2 } }}
-        >
+        <Grid item xs={12} container spacing={5} my={2}>
           {workshopData?.map((item) => {
             return (
               <Grid key={item.title} item xs={12} md={6} lg={4}>

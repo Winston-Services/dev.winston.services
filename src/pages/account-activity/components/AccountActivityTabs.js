@@ -4,116 +4,7 @@ import { Typography, Box, Tabs, Tab, Card, Grid } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useSelector } from 'react-redux';
 
-import Table from '../../../components/common/Table';
-import CustomSwitch from './CustomSwitch';
-
-const balanceHistoryColumns = [
-  {
-    id: 'date',
-    headerName: 'Date',
-  },
-  {
-    id: 'type',
-    headerName: 'Type',
-  },
-  {
-    id: 'item',
-    headerName: 'Item',
-  },
-  {
-    id: 'buyer',
-    headerName: 'Buyer',
-  },
-  {
-    id: 'amount',
-    headerName: 'Amount',
-  },
-  {
-    id: 'status',
-    headerName: 'Status',
-  },
-];
-
-const balanceHistoryRows = [
-  {
-    date: '13-03-2022',
-    type: 'NFT Biding',
-    item: 'PsychoMolly #3671',
-    buyer: 'DemoTest',
-    amount: '$1500',
-    status: 'Received',
-  },
-  {
-    date: '13-03-2022',
-    type: 'NFT Biding',
-    item: 'PsychoMolly #3671',
-    buyer: 'DemoTest',
-    amount: '$1500',
-    status: 'Received',
-  },
-  {
-    date: '13-03-2022',
-    type: 'NFT Biding',
-    item: 'PsychoMolly #3671',
-    buyer: 'DemoTest',
-    amount: '$1500',
-    status: 'Received',
-  },
-];
-
-const purchaseHistoryColumns = [
-  {
-    id: 'date',
-    headerName: 'Date',
-  },
-  {
-    id: 'order',
-    headerName: 'Order #',
-  },
-  {
-    id: 'item',
-    headerName: 'Item',
-  },
-  {
-    id: 'seller',
-    headerName: 'Seller',
-  },
-  {
-    id: 'paymentMethod',
-    headerName: 'Payment Method',
-  },
-  {
-    id: 'status',
-    headerName: 'Status',
-  },
-];
-
-const purchaseHistoryRows = [
-  {
-    date: '13-03-2022',
-    order: 'NFT Biding',
-    item: 'PsychoMolly #3671',
-    seller: 'DemoTest',
-    paymentMethod: 'Cash',
-    status: 'Debited',
-  },
-  {
-    date: '13-03-2022',
-    order: 'NFT Biding',
-    item: 'PsychoMolly #3671',
-    seller: 'DemoTest',
-    paymentMethod: 'Cash',
-    status: 'Debited',
-  },
-  {
-    date: '13-03-2022',
-    order: 'NFT Biding',
-    item: 'PsychoMolly #3671',
-    seller: 'DemoTest',
-    paymentMethod: 'Cash',
-    status: 'Debited',
-  },
-];
+import HistoryTab from './HistoryTab';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -150,9 +41,6 @@ function a11yProps(index) {
 
 function AccountActivityTabs() {
   const [value, setValue] = React.useState(0);
-  const [history, setHistory] = React.useState(false);
-  const [transition, setTransition] = React.useState(false);
-  const [offers, setOffers] = React.useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -174,34 +62,19 @@ function AccountActivityTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Card elevation={0} sx={{ py: 3, mt: 3 }}>
-          <Grid ml={3}>
-            <CustomSwitch
-              name="history"
-              option1={'Balance History'}
-              option2={'Purchase History'}
-              onChange={(value) => setHistory(value)}
-            />
+        <Card elevation={0} sx={{ py: 2, mt: 3 }}>
+          <Grid
+            display="flex"
+            justifyContent={'space-between'}
+            alignItems="center"
+          >
+            <HistoryTab />
           </Grid>
-          {history ? (
-            <Table
-              rows={purchaseHistoryRows}
-              columns={purchaseHistoryColumns}
-            />
-          ) : (
-            <Table rows={balanceHistoryRows} columns={balanceHistoryColumns} />
-          )}
         </Card>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Card elevation={0} sx={{ p: 3, mt: 3 }}>
-          <CustomSwitch
-            name="transition"
-            option1={'Deposit'}
-            option2={'Withdrawal'}
-            onChange={(value) => setTransition(value)}
-          />
-          <Typography>{transition ? 'Withdrawal' : 'Deposit'}</Typography>
+          <Typography>Transition</Typography>
         </Card>
       </TabPanel>
       <TabPanel value={value} index={2}>
@@ -211,13 +84,7 @@ function AccountActivityTabs() {
       </TabPanel>
       <TabPanel value={value} index={3}>
         <Card elevation={0} sx={{ p: 3, mt: 3 }}>
-          <CustomSwitch
-            name="offers"
-            option1={'Offers Made'}
-            option2={'Offers Received'}
-            onChange={(value) => setOffers(value)}
-          />
-          <Typography>{offers ? 'Offers Received' : 'Offers Made'}</Typography>
+          <Typography>Offers</Typography>
         </Card>
       </TabPanel>
     </>
