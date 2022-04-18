@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Grid } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+
+import Table from './../../../components/common/Table';
 
 const columns = [
-  { field: 'id', headerName: 'ID', hide: true },
-  { field: 'index', headerName: 'Index', width: 150 },
-  { field: 'date', headerName: 'Date', width: 170 },
-  { field: 'burnedAmount', headerName: 'Burned Amount', width: 120 },
+  { id: 'index', headerName: 'Index' },
+  { id: 'date', headerName: 'Date' },
+  { id: 'burnedAmount', headerName: 'Burned Amount' },
 ];
 
 const rows = [
@@ -41,17 +41,17 @@ const rows = [
     date: 'Q1 2021',
     burnedAmount: '1,099,888 WNS',
   },
+  {
+    id: '6',
+    index: '15th',
+    date: 'Q1 2021',
+    burnedAmount: '1,099,888 WNS',
+  },
 ];
 export default function RealTimeBurnHistoryTable() {
   return (
     <Grid height={'100%'}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        rowsPerPageOptions={[25, 50, 100]}
-        disableColumnMenu
-        sortable={false}
-      />
+      <Table columns={columns} rows={rows} />
     </Grid>
   );
 }

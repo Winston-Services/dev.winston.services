@@ -12,7 +12,7 @@ import { PropTypes } from 'prop-types';
 
 export default function TableWrapper({ columns, rows }) {
   return (
-    <TableContainer>
+    <TableContainer sx={{ maxHeight: '100%' }}>
       <Table sx={{ minWidth: 900 }}>
         <TableHead>
           <TableRow>

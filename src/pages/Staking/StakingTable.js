@@ -1,36 +1,37 @@
 import * as React from 'react';
 
 import { Box } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
 
-const columns = [
+import TableWrapper from '../../components/common/Table';
+
+const stakingColumns = [
   {
-    field: 'coinTokenName',
+    id: 'coinTokenName',
     headerName: 'Coin/Token Name',
     headerClassName: 'super-app-theme--header',
     width: 380,
   },
   {
-    field: 'stakedAndPending',
+    id: 'stakedAndPending',
     headerName: 'Staked and Pending',
     headerClassName: 'super-app-theme--header',
     width: 260,
   },
   {
-    field: 'stakedAndVested',
+    id: 'stakedAndVested',
     headerName: 'Staked and Vested',
     headerClassName: 'super-app-theme--header',
     width: 260,
   },
   {
-    field: 'balance',
+    id: 'balance',
     headerName: 'Balance',
     headerClassName: 'super-app-theme--header',
     width: 150,
   },
 ];
 
-const rows = [
+const stakingRows = [
   {
     id: 1,
     coinTokenName: 'Rickle',
@@ -69,13 +70,7 @@ export default function StakingTable() {
         width: 1,
       }}
     >
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        disableColumnMenu
-      />
+      <TableWrapper rows={stakingRows} columns={stakingColumns} />
     </Box>
   );
 }

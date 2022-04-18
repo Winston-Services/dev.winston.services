@@ -140,12 +140,12 @@ export default function Faucet() {
       </Grid>
       <Grid container item sx={{ my: { xs: 14 } }} spacing={4}>
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card elevation={0}>
             <TokenTable name={'Tokens'} rows={rows} />
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card elevation={0}>
             <TokenTable name={'Coins'} rows={rows} />
           </Card>
         </Grid>

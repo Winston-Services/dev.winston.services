@@ -1,19 +1,18 @@
 import React from 'react';
 
 import { Grid } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
+
+import Table from './../../../components/common/Table';
 
 const columns = [
-  { field: 'id', headerName: 'ID', sortable: false, hide: true },
-  { field: 'name', headerName: 'Name', sortable: false, width: 270 },
-  { field: 'lastPrice', headerName: 'Last Price', sortable: false, width: 270 },
+  { id: 'id', headerName: 'ID' },
+  { id: 'name', headerName: 'Name' },
+  { id: 'lastPrice', headerName: 'Last Price' },
   {
-    field: 'oneDayChange',
+    id: 'oneDayChange',
     headerName: '24h Change',
-    sortable: false,
-    width: 270,
   },
-  { field: 'marketCap', headerName: 'Market Cap', sortable: false, width: 270 },
+  { id: 'marketCap', headerName: 'Market Cap' },
 ];
 
 const rows = [
@@ -49,13 +48,7 @@ const rows = [
 export default function TrendingNfts() {
   return (
     <Grid height={'100%'}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        rowsPerPageOptions={[25, 50, 100]}
-        disableColumnMenu
-        sortable={false}
-      />
+      <Table columns={columns} rows={rows} />
     </Grid>
   );
 }

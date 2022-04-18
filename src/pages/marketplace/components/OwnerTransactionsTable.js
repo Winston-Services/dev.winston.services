@@ -61,7 +61,7 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell>
-          <Grid display={'flex'} direction="column">
+          <Grid item display={'flex'} flexDirection="column">
             <Link>{row.transaction}</Link>
             <Grid mt={1}>
               <Chip variant="filled" label="Transfer NFT" />
@@ -69,7 +69,7 @@ function Row(props) {
           </Grid>
         </TableCell>
         <TableCell>
-          <Grid display={'flex'} direction="column">
+          <Grid item display={'flex'} flexDirection="column">
             <Link>{row.from}</Link>
             <Grid mt={1}>
               <Chip
@@ -103,7 +103,7 @@ function Row(props) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box>
-              <Typography variant="h6" gutterBottom component="div">
+              <Typography variant="h6" component={'div'} gutterBottom>
                 Coming Soon...!
               </Typography>
             </Box>
@@ -129,7 +129,7 @@ Row.propTypes = {
 
 const rows = [
   createData(
-    '4B5DF2E88EA...',
+    '4A5DF2E88EA...',
     'crye3e4g89f5...',
     'IN',
     'crye3e4g89f5...',
@@ -149,7 +149,7 @@ const rows = [
     '2021-12'
   ),
   createData(
-    '4B5DF2E88EA...',
+    '4C5DF2E88EA...',
     'crye3e4g89f5...',
     'IN',
     'crye3e4g89f5...',
@@ -159,7 +159,7 @@ const rows = [
     '2021-12'
   ),
   createData(
-    '4B5DF2E88EA...',
+    '4D5DF2E88EA...',
     'crye3e4g89f5...',
     'IN',
     'crye3e4g89f5...',
@@ -169,7 +169,7 @@ const rows = [
     '2021-12'
   ),
   createData(
-    '4B5DF2E88EA...',
+    '4E5DF2E88EA...',
     'crye3e4g89f5...',
     'IN',
     'crye3e4g89f5...',
@@ -179,7 +179,7 @@ const rows = [
     '2021-12'
   ),
   createData(
-    '4B5DF2E88EA...',
+    '4F5DF2E88EA...',
     'crye3e4g89f5...',
     'IN',
     'crye3e4g89f5...',
@@ -189,7 +189,7 @@ const rows = [
     '2021-12'
   ),
   createData(
-    '4B5DF2E88EA...',
+    '4G5DF2E88EA...',
     'crye3e4g89f5...',
     'IN',
     'crye3e4g89f5...',
@@ -217,7 +217,7 @@ export default function OwnerTransactionsTable() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <Row key={row.name} row={row} />
+            <Row key={row.transaction} row={row} />
           ))}
         </TableBody>
       </Table>

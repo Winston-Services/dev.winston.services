@@ -109,8 +109,8 @@ export default function Marketplace() {
               />
             </Grid>
             <Grid item xs={12} md="auto">
-              <Grid container columnSpacing={2}>
-                <Grid item xs={7} md="auto">
+              <Grid container spacing={1}>
+                <Grid item sx={{ xs: '100%', sm: 'auto' }}>
                   <Button
                     fullWidth
                     variant="contained"
@@ -121,7 +121,7 @@ export default function Marketplace() {
                     Recently Listed
                   </Button>
                 </Grid>
-                <Grid item xs={5}>
+                <Grid item sx={{ xs: '100%', sm: 'auto' }}>
                   <Button
                     fullWidth
                     sx={{ display: { xs: '', md: 'none' } }}

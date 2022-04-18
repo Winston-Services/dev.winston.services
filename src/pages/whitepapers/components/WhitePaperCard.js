@@ -16,17 +16,7 @@ function WhitePaperCard({ data }) {
           <Grid container display="flex" alignItems={'center'}>
             <Grid container item md={9} display="flex" gap={2}>
               <Grid item>
-                <Paper
-                  elevation={0}
-                  gradient
-                  sx={{
-                    height: '100px',
-                    width: '100px',
-                    display: 'flex',
-                    alignItems: 'end',
-                    justifyContent: 'center',
-                  }}
-                >
+                <Paper elevation={0} className="gradientPaper">
                   <img
                     src={WinstonIcon}
                     style={{ height: '90px', width: '90px' }}

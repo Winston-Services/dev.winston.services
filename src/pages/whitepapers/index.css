@@ -20,3 +20,16 @@ iframe {
   );
   border-radius: 10px;
 }
+
+.gradientPaper {
+  background: linear-gradient(
+    90deg,
+    rgb(234, 122, 143) 0.64%,
+    rgb(228, 82, 200) 99.36%
+  );
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}

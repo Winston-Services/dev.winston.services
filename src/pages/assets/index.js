@@ -13,6 +13,7 @@ import AhwaImage from './../../assets/ahwa_image.svg';
 import WinstonIcon from './../../assets/assets_winston_icon.svg';
 import WatchImage from './../../assets/watch_image.svg';
 import WinstonApp from './../../components/common/WinstonApp';
+import './index.css';
 import TrendingNfts from './components/TrendingNfts';
 
 function index() {
@@ -40,8 +41,8 @@ function index() {
               Ahwa
             </Typography>
             <Paper
-              gradient
               elevation={0}
+              className="gradient"
               sx={{
                 width: '158px',
                 height: '158px',
@@ -89,8 +90,8 @@ function index() {
               Winston Watch
             </Typography>
             <Paper
-              gradient
               elevation={0}
+              className="gradient"
               sx={{
                 width: '158px',
                 height: '158px',
@@ -104,10 +105,12 @@ function index() {
             </Paper>
           </Grid>
         </Grid>
-        <Card elevation={0} sx={{ p: 3, mt: 20, height: 440 }}>
-          <Typography variant="h6" mb={5}>
-            Winston trending NFT’s
-          </Typography>
+        <Card elevation={0} sx={{ p: 0, mt: 20, height: 380 }}>
+          <Grid item xs={12} px={3} pt={3}>
+            <Typography variant="h6" mb={5}>
+              Winston trending NFT’s
+            </Typography>
+          </Grid>
           <TrendingNfts />
         </Card>
       </Container>

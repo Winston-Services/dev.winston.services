@@ -60,7 +60,7 @@ function BurningTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Grid sx={{ height: '356px' }}>
+        <Grid>
           <RealTimeBurnHistoryTable />
         </Grid>
       </TabPanel>
