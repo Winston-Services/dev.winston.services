@@ -27,6 +27,7 @@ export default function SuccessUpload() {
           onClick={() => {
             navigate('/academy/teacher-profile');
           }}
+          sx={{ width: { xs: '100%', sm: 'auto' } }}
         >
           See All Video
         </Button>

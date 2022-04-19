@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ExpandMore } from '@mui/icons-material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import StarIcon from '@mui/icons-material/Star';
+import LockIcon from '@mui/icons-material/Lock';
 import {
   Accordion,
   AccordionDetails,
@@ -29,32 +29,33 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          icon: <LockIcon fontSize="8px" />,
+          view: 'Lock',
           duration: '5 min',
         },
       ],
@@ -64,32 +65,33 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          icon: <LockIcon fontSize="8px" />,
+          view: 'Lock',
           duration: '5 min',
         },
       ],
@@ -99,32 +101,33 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          icon: <LockIcon fontSize="8px" />,
+          view: 'Lock',
           duration: '5 min',
         },
       ],
@@ -134,32 +137,33 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          icon: <LockIcon fontSize="8px" />,
+          view: 'Lock',
           duration: '5 min',
         },
       ],
@@ -169,32 +173,33 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
-          rating: '4.7 (121 review)',
+          icon: <LockIcon fontSize="8px" />,
+          view: 'Lock',
           duration: '5 min',
         },
       ],
@@ -223,20 +228,35 @@ function AcademyAccordion() {
           <AccordionDetails variant="transparent" sx={{ py: 1 }}>
             {items.content.map((item, index) => (
               <Grid
+                container
                 key={items.title + item.title + index}
                 display="flex"
                 justifyContent="space-between"
                 sx={{ pb: 2.5 }}
               >
-                <Grid display="flex" alignItems="center" gap={1.25}>
-                  <PlayCircleIcon />
-                  <Link variant="h6">{item.title}</Link>
+                <Grid
+                  item
+                  display="flex"
+                  alignItems="center"
+                  gap={1.25}
+                  sx={{ width: { xs: 0.45, sm: 0.7, md: 'auto' } }}
+                >
+                  <Grid
+                    display={'flex'}
+                    alignItems="center"
+                    sx={{ display: { xs: 'none', sm: 'block' } }}
+                  >
+                    <PlayCircleIcon />
+                  </Grid>
+                  <Link noWrap variant="h6">
+                    {item.title}
+                  </Link>
                 </Grid>
 
-                <Grid gap={3} sx={{ display: { md: 'flex', xs: 'none' } }}>
+                <Grid item gap={3} display="flex">
                   <Grid display="flex" alignItems="center" gap={1}>
-                    <StarIcon sx={{ color: '#FFD215' }} />
-                    <Typography variant="subtitle1">{item.rating}</Typography>
+                    {item.icon}
+                    <Link variant="subtitle1">{item.view}</Link>
                   </Grid>
                   <Grid display="flex" alignItems="center" gap={1}>
                     <AccessTimeIcon />
@@ -246,19 +266,18 @@ function AcademyAccordion() {
               </Grid>
             ))}
             {data.length - 1 === index ? (
-              <Grid
-                display="flex"
-                gap={2.5}
-                justifyContent="center"
-                mt={1}
-                mb={3}
-              >
-                <Button variant="contained" color="secondary">
+              <Grid textAlign="center" mt={1} mb={3}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
+                >
                   Get your NFT certificate
                 </Button>
                 <Button
                   variant="outlined"
                   onClick={() => navigate('/academy/voting')}
+                  sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
                 >
                   Give a voting
                 </Button>

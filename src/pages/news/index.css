@@ -46,7 +46,7 @@ button[class='slick-arrow slick-prev'] {
   margin-top: 20px;
 }
 
-.blurImage {
+/* .blurImage {
   height: 500px;
   width: 100%;
   z-index: 1;
@@ -64,4 +64,4 @@ button[class='slick-arrow slick-prev'] {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   z-index: 3;
-}
+} */

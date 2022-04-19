@@ -138,7 +138,7 @@ export default function Faucet() {
           <img src={coinDrop} alt="crypto" width="100%" />
         </Grid>
       </Grid>
-      <Grid container item sx={{ my: { xs: 14 } }} spacing={4}>
+      <Grid container item sx={{ my: { xs: 10 } }} spacing={4}>
         <Grid item xs={12} md={6}>
           <Card elevation={0}>
             <TokenTable name={'Tokens'} rows={rows} />
@@ -165,15 +165,18 @@ export default function Faucet() {
                 pt={3}
                 px={5}
               >
-                <Grid item xs={12}>
-                  <Typography>Faucet On Winston</Typography>
+                <Grid item>
+                  <Typography variant="h6">Faucet On Winston</Typography>
                 </Grid>
-                <Grid item xs={12} display="flex" flexDirection={'end'}>
+                <Grid item>
                   <TextField
-                    sx={{ backgroundColor: '#271D5A', mt: { xs: 1.5, sm: 0 } }}
+                    sx={{
+                      backgroundColor: '#271D5A',
+                      mt: { xs: 1.5, sm: 0 },
+                      borderRadius: '5px',
+                    }}
                     variant="standard"
                     hiddenLabel
-                    fullWidth
                     color="filled"
                     placeholder="Search coin or token"
                     InputProps={{

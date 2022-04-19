@@ -10,7 +10,6 @@ import NftMarketPlace3 from '../../../assets/nft_marketplace_3.png';
 import NftMarketPlace4 from '../../../assets/nft_marketplace_4.png';
 import ProductCard from './ProductCard';
 
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -24,7 +23,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ mt: '30px' }}>
-          <Typography>{children}</Typography>
+          <Typography component={'span'}>{children}</Typography>
         </Box>
       )}
     </div>

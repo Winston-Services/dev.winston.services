@@ -37,7 +37,7 @@ function NewsCard({ item }) {
         <Typography variant="h5" sx={{ mt: { xs: 1, sm: 0 } }}>
           {item.title}
         </Typography>
-        <Typography variant="body1">{item.description}</Typography>
+        <Typography variant="subtitle1">{item.description}</Typography>
         <Grid item display={'flex'} sx={{ gap: { xs: 1, md: 2.5 }, mb: 1 }}>
           <Typography variant="body2">{item.infoTag}</Typography>
           <Typography variant="body2">{item.infoTime}</Typography>
