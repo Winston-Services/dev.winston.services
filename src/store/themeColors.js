@@ -400,6 +400,17 @@ const publicPageColors = {
         },
       },
     },
+    MuiLinearProgress: {
+      styleOverrides: {
+        bar: {
+          background:
+            'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
+        },
+        root: {
+          background: '#31256C',
+        },
+      },
+    },
   },
 };
 const createThemeVariable = (mode, dashboard) => {

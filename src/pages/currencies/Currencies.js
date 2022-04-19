@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Container, Typography, Grid, Paper, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import CurrenciesImage from './../../assets/currencies_image.png';
 
@@ -328,6 +329,7 @@ const data = [
 ];
 
 function Currencies() {
+  const navigate = useNavigate();
   return (
     <>
       <Container>
@@ -365,7 +367,11 @@ function Currencies() {
                 Cras eget malesuada risus ante. Vitae egestas tristique nisi,
                 eget mauris interdum.
               </Typography>
-              <Button variant="contained" color="secondary">
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => navigate('/currencies/upload-currency')}
+              >
                 Upload your own Currencies
               </Button>
             </Grid>

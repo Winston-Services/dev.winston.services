@@ -57,7 +57,7 @@ function StepSetting({
               </ListItemAvatar>
               <Typography variant={'h5'}>
                 {wizardData?.network === 'Binance' ? 'BEP ' : 'ERC '}
-                {wizardData?.typeOfContact}
+                {wizardSmartContractData?.typeOfContact}
               </Typography>
             </ListItem>
 
