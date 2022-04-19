@@ -44,7 +44,7 @@ export default function TokenTable({ name, rows }) {
         <TableBody>
           <TableRow>
             <StyledTableCell>
-              <Typography>{name}</Typography>
+              <Typography variant="h6">{name}</Typography>
             </StyledTableCell>
             <StyledTableCell>
               <Grid container>

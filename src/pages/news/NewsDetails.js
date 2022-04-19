@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import graph from './../../assets/graph.png';
+import ImageData1 from './../../assets/news_tab_image_1.png';
 import { ReactComponent as ShareIcon } from './../../assets/share_icon.svg';
 
 function NewsDetails() {
@@ -34,11 +34,18 @@ function NewsDetails() {
         >
           Back
         </Button>
-        <Typography>3 Days Ago</Typography>
+        <Typography variant="subtitle2">3 Days Ago</Typography>
       </Grid>
-      <Grid item xs mt={3} position="relative">
-        <img src={graph} alt="graph" className="blurImage" />
-        <img src={graph} alt="graph" className="overImage" />
+      <Grid container item xs={12} mt={3}>
+        <img
+          src={ImageData1}
+          alt="graph"
+          width="100%"
+          height="500px"
+          style={{ borderRadius: '20px' }}
+        />
+        {/* <img src={graph} alt="graph" className="blurImage" />
+        <img src={graph} alt="graph" className="overImage" /> */}
       </Grid>
 
       <Grid
@@ -75,7 +82,7 @@ function NewsDetails() {
         <Typography variant="h3">
           The Non-Fungible Token Bible: Everything you need to know about NFTs
         </Typography>
-        <Typography variant="h6">
+        <Typography variant="subtitile1">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry&apos;s standard dummy text
           ever since the 1500s, when an unknown printer took a galley of type
@@ -83,7 +90,7 @@ function NewsDetails() {
           only five centuries, but also the leap into electronic typesetting,
           remaining essentially unchanged.
         </Typography>
-        <Typography variant="h6">
+        <Typography variant="subtitile1">
           It was popularised in the 1960s with the release of Letraset sheets
           containing Lorem Ipsum passages, and more recently with desktop
           publishing software like Aldus PageMaker including versions of Lorem
@@ -93,7 +100,7 @@ function NewsDetails() {
           distribution of letters, as opposed to using &apos;Content here,
           content here&apos;, making it look like readable English.
         </Typography>
-        <Typography variant="h6">
+        <Typography variant="subtitile1">
           Many desktop publishing packages and web page editors now use Lorem
           Ipsum as their default model text, and a search for &apos;lorem
           ipsum&apos; will uncover many web sites still in their infancy.

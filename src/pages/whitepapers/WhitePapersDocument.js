@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Container, Typography, Grid } from '@mui/material';
+import { Container, Typography, Grid, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import pdfFile from './../../pdf/sample.pdf';
@@ -12,23 +12,16 @@ function WhitePapersDocument() {
   return (
     <Container>
       <Grid display={'flex'} gap={2}>
-        <Typography
+        <Link
           variant="subtitle2"
           onClick={() => {
             navigate('/whitepapers');
           }}
-          sx={{ cursor: 'pointer' }}
         >
           Whitepaper
-        </Typography>
+        </Link>
         <Typography variant="subtitle2">/</Typography>
-        <Typography
-          variant="subtitle2"
-          color="#FFD215"
-          sx={{ cursor: 'pointer' }}
-        >
-          Whitepaper Document
-        </Typography>
+        <Link variant="subtitle2">Whitepaper Document</Link>
       </Grid>
       <Grid
         display={'flex'}
