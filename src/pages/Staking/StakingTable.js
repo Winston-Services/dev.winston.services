@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Box } from '@mui/material';
 
-import TableWrapper from '../../components/common/Table';
+import Table from '../../components/common/Table';
 
 const stakingColumns = [
   {
@@ -70,7 +70,7 @@ export default function StakingTable() {
         width: 1,
       }}
     >
-      <TableWrapper rows={stakingRows} columns={stakingColumns} />
+      <Table rows={stakingRows} columns={stakingColumns} />
     </Box>
   );
 }
