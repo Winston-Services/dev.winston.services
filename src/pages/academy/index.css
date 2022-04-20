@@ -1,0 +1,21 @@
+.rdw-editor-toolbar{
+    background: transparent !important;
+    border-bottom: 1px solid #382B78 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.rdw-option-wrapper{
+    background: transparent !important;
+    border: none !important;
+}
+
+.rdw-option-wrapper:hover{
+    box-shadow: none !important;
+}
+
+.rdw-editor-main{
+    padding-left: 20px;
+    padding-right: 20px;
+}

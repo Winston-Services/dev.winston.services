@@ -7,8 +7,8 @@ const AcademyDetails = React.lazy(() => import('./AcademyDetails'));
 const Voting = React.lazy(() => import('./Voting'));
 const TeacherProfile = React.lazy(() => import('./TeacherProfile'));
 const AddCourse = React.lazy(() => import('./AddCourse'));
-const UploadVideo = React.lazy(() => import('./UploadVideo'));
-const SuccessUpload = React.lazy(() => import('./SuccessUpload'));
+const AddLecture = React.lazy(() => import('./AddLecture'));
+import './index.css';
 
 export default function AcademyRouting() {
   const routes = [
@@ -32,12 +32,8 @@ export default function AcademyRouting() {
           element: <AddCourse />,
         },
         {
-          path: '/add-course/upload-video',
-          element: <UploadVideo />,
-        },
-        {
-          path: '/add-course/upload-video/succuss-upload',
-          element: <SuccessUpload />,
+          path: '/add-lecture',
+          element: <AddLecture />,
         },
         {
           path: '/teacher-profile',
