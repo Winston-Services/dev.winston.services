@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Typography, Box, Tabs, Tab, Grid } from '@mui/material';
+import { Typography, Box, Tabs, Tab, Grid, Paper, Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import NftMarketPlace1 from '../../../assets/nft_marketplace_1.png';
 import NftMarketPlace2 from '../../../assets/nft_marketplace_2.png';
@@ -79,6 +80,7 @@ const items = [
 ];
 
 function UserProfileTabs() {
+  const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -113,7 +115,32 @@ function UserProfileTabs() {
         Coming Soon...!
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Coming Soon...!
+        <Paper
+          elevation={0}
+          sx={{
+            py: 3,
+            border: '1px solid #FFFFFF',
+            borderRadius: '10px',
+            mt: 10,
+          }}
+        >
+          <Typography textAlign={'center'} variant="subtitle1">
+            You have not created any NFT
+          </Typography>
+        </Paper>
+        <Grid item textAlign={'center'}>
+          <Button
+            variant="contained"
+            color="secondary"
+            type="submit"
+            sx={{ width: { xs: '100%', sm: 'auto' }, mt: 5 }}
+            onClick={() => {
+              navigate('/connect-your-wallet');
+            }}
+          >
+            Create your first NFT
+          </Button>
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={3}>
         Coming Soon...!

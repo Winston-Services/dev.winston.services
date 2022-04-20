@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 // import AcademyDetailsImage from '../../assets/academy_details_image.svg';
 import AuthorAvatar from '../../assets/author_avatar.svg';
 import AcademyAccordion from './components/AcademyAccordion';
-// import AcademySlider from './components/AcademySlider';
+import AcademySlider from './components/AcademySlider';
 
 function AcademyDetails() {
   const navigate = useNavigate();
@@ -131,9 +131,9 @@ function AcademyDetails() {
         </Grid> */}
       </Container>
 
-      {/* <Grid my={5} mx={2}>
+      <Grid my={5} mx={2}>
         <AcademySlider />
-      </Grid> */}
+      </Grid>
     </>
   );
 }

@@ -10,7 +10,6 @@ import { ReactComponent as BeginnerIcon } from './../../assets/beginner_icon.svg
 import { ReactComponent as ExpertIcon } from './../../assets/expert_icon.svg';
 import { ReactComponent as IntermediateIcon } from './../../assets/intermediate_icon.svg';
 
-
 const topics = [
   'Altcoin1',
   'Altcoin2',
