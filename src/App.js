@@ -5,6 +5,7 @@ import { Navigate, useRoutes } from 'react-router-dom';
 
 import ScrollToTop from './components/scroll-to-top';
 import useAuth, { AuthProvider, AuthRedirect } from './context/authContext';
+
 import './App.css';
 
 const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'));
@@ -43,6 +44,10 @@ const Assets = React.lazy(() => import('./pages/assets'));
 const WhitePapersRouting = React.lazy(() => import('./pages/whitepapers'));
 const Wiki = React.lazy(() => import('./pages/wiki'));
 const AccountActivity = React.lazy(() => import('./pages/account-activity'));
+const ConnectWallet = React.lazy(() =>
+  import('./pages/marketplace/ConnectWallet')
+);
+const UploadNFT = React.lazy(() => import('./pages/marketplace/UploadNFT'));
 
 export default function App() {
   const auth = useAuth();
@@ -188,6 +193,14 @@ export default function App() {
         {
           path: '/account-activity',
           element: getRouteWrapper(<AccountActivity />, false),
+        },
+        {
+          path: '/connect-your-wallet',
+          element: getRouteWrapper(<ConnectWallet />, false),
+        },
+        {
+          path: '/upload-nft',
+          element: getRouteWrapper(<UploadNFT />, false),
         },
       ],
     },
