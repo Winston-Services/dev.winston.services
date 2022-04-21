@@ -9,11 +9,13 @@ import {
   IconButton,
   Tooltip,
   Paper,
+  createTheme,
 } from '@mui/material';
-import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { ThemeProvider } from '@mui/styles';
+import MUIRichTextEditor from 'mui-rte';
 
-import BoldIcon from './../../assets/bold_icon.png';
+const myTheme = createTheme({});
 
 function lecture() {
   return (
@@ -26,24 +28,44 @@ function lecture() {
             arrow={true}
             title={'Edit'}
             sx={{ ml: 1 }}
+            enterDelay={500}
+            enterNextDelay={500}
           >
             <IconButton>
               <Edit />
             </IconButton>
           </Tooltip>
-          <Tooltip placement="bottom" arrow={true} title={'Delete'}>
+          <Tooltip
+            placement="bottom"
+            arrow={true}
+            title={'Delete'}
+            enterDelay={500}
+            enterNextDelay={500}
+          >
             <IconButton>
               <Delete />
             </IconButton>
           </Tooltip>
         </Grid>
         <Grid>
-          <Tooltip placement="bottom" arrow={true} title={'Add New Section'}>
+          <Tooltip
+            placement="bottom"
+            arrow={true}
+            title={'Add New Section'}
+            enterDelay={500}
+            enterNextDelay={500}
+          >
             <IconButton>
               <Add />
             </IconButton>
           </Tooltip>
-          <Tooltip placement="bottom" arrow={true} title={'...'}>
+          <Tooltip
+            placement="bottom"
+            arrow={true}
+            title={'...'}
+            enterDelay={500}
+            enterNextDelay={500}
+          >
             <IconButton>
               <Dehaze />
             </IconButton>
@@ -53,24 +75,14 @@ function lecture() {
       <Typography variant="subtitle1" mt={3} mb={2}>
         Lecture Description
       </Typography>
-      <Paper elevation={0}>
-        <Editor
-          toolbar={{
-            options: ['inline', 'textAlign'],
-            inline: {
-              inDropdown: false,
-              options: ['bold', 'italic', 'underline'],
-              bold: { icon: BoldIcon, className: undefined },
-            },
-            textAlign: { inDropdown: false },
-          }}
-          customStyleMap={{
-            redBackground: {
-              backgroundColor: 'red',
-            },
-          }}
-        />
-      </Paper>
+      <ThemeProvider theme={myTheme}>
+        <Paper elevation={0} sx={{ minHeight: '200px', px: 2, py: 1 }}>
+          <MUIRichTextEditor
+            label="Enter Description..."
+            controls={['bold', 'italic', 'numberList', 'bulletList']}
+          />
+        </Paper>
+      </ThemeProvider>
     </Paper>
   );
 }
@@ -87,30 +99,51 @@ function AddLecture() {
               arrow={true}
               title={'Edit'}
               sx={{ ml: 1 }}
+              enterDelay={500}
+              enterNextDelay={500}
             >
               <IconButton>
                 <Edit />
               </IconButton>
             </Tooltip>
-            <Tooltip placement="bottom" arrow={true} title={'Delete'}>
+            <Tooltip
+              placement="bottom"
+              arrow={true}
+              title={'Delete'}
+              enterDelay={500}
+              enterNextDelay={500}
+            >
               <IconButton>
                 <Delete />
               </IconButton>
             </Tooltip>
           </Grid>
           <Grid>
-            <Tooltip placement="bottom" arrow={true} title={'Add New Section'}>
+            <Tooltip
+              placement="bottom"
+              arrow={true}
+              title={'Add New Section'}
+              enterDelay={500}
+              enterNextDelay={500}
+            >
               <IconButton>
                 <Add />
               </IconButton>
             </Tooltip>
-            <Tooltip placement="bottom" arrow={true} title={'...'}>
+            <Tooltip
+              placement="bottom"
+              arrow={true}
+              title={'...'}
+              enterDelay={500}
+              enterNextDelay={500}
+            >
               <IconButton>
                 <Dehaze />
               </IconButton>
             </Tooltip>
           </Grid>
         </Grid>
+        <Grid mt={3.5}>{lecture()}</Grid>
         <Grid mt={3.5}>{lecture()}</Grid>
       </Card>
     </Container>

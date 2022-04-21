@@ -53,16 +53,17 @@ function index() {
         display={'flex'}
         flexDirection="column"
         alignItems="center"
+        sx={{ mb: { xs: 4, md: 5 } }}
       >
         <Grid item md={9}>
-          <Typography variant="subtitle1" mt={3} textAlign={'center'}>
+          <Typography variant="subtitle1" mt={2.5} textAlign={'center'}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
             sapien lectus magna cursus urna enim. Turpis risus integer leo,
             eget. Eu nullam risus pretium, risus senectus vulputate. Lacinia ut
             mattis nibh felis magna tristique nunc. Sit eu, tellus morbi metus.
             Elit vitae nec lectus in in.
           </Typography>
-          <Typography variant="subtitle1" mt={3} textAlign={'center'}>
+          <Typography variant="subtitle1" mt={2.5} textAlign={'center'}>
             Est accumsan feugiat dictum risus, ut tincidunt malesuada. Aliquam
             mauris cras faucibus pharetra sed sed. Diam faucibus tempus et
             fringilla. Dignissim in interdum a, iaculis viverra morbi vulputate
@@ -75,13 +76,13 @@ function index() {
         </Grid>
       </Grid>
 
-      <Grid container spacing={4} mt={4}>
+      <Grid container spacing={{ xs: 2.5, md: 4 }}>
         {investorsData.map((item, index) => (
           <Grid item key={item.name + index} xs={12} sm={6}>
             <Card
               elevation={0}
               sx={{
-                p: { xs: 2, md: 5 },
+                p: 5,
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 3,
@@ -112,7 +113,7 @@ function index() {
                 container
                 spacing={2}
                 justifyContent="center"
-                mt={3}
+                sx={{ mt: { xs: 0, md: 3 } }}
                 gap={2}
               >
                 <Grid height={40} width={40}>

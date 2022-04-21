@@ -1,21 +1,12 @@
-.rdw-editor-toolbar{
-    background: transparent !important;
-    border-bottom: 1px solid #382B78 !important;
-    border-top: none !important;
-    border-left: none !important;
-    border-right: none !important;
+#mui-rte-editor{
+    padding-left: 12px !important;
+    padding-right: 12px !important;
 }
 
-.rdw-option-wrapper{
-    background: transparent !important;
-    border: none !important;
+#mui-rte-toolbar{
+    border-bottom: 2px solid #382B78 !important;
 }
 
-.rdw-option-wrapper:hover{
-    box-shadow: none !important;
-}
-
-.rdw-editor-main{
-    padding-left: 20px;
-    padding-right: 20px;
+.MUIRichTextEditor-editorContainer-5 {
+    color:white !important;
 }

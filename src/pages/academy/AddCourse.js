@@ -82,7 +82,7 @@ function AddCourse() {
       </Typography>
       <LinearProgress
         variant="determinate"
-        value={slideIndex * 25}
+        value={(slideIndex + 1) * 25}
         sx={{ mt: 2 }}
       />
 

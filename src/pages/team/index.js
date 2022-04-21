@@ -107,57 +107,68 @@ function index() {
         Board of care takers
       </Typography>
       {boardOfCaretakers.map((item, index) => (
-        <Grid
-          key={item.name}
-          container
-          spacing={6.25}
-          mt={2}
-          display="flex"
-          sx={
-            index % 2 === 0
-              ? { flexDirection: { md: 'row-reverse' } }
-              : { flexDirection: { md: 'row' } }
-          }
-        >
-          <Grid item md={4}>
-            <img src={item.image} style={{ width: '100%' }} />
-          </Grid>
-          <Grid item md={8}>
-            <Typography variant="h4">{item.name}</Typography>
-            <Typography variant="h6">{item.designation}</Typography>
-            <Typography variant="subtitle1" mt={3}>
-              {item.about1}
-            </Typography>
-            <Typography variant="subtitle1" mt={3}>
-              {item.about2}
-            </Typography>
-            <Grid container mt={3} gap={1.5}>
-              <Grid item height={40} width={40}>
-                <DiscordLink />
-              </Grid>
-              <Grid item height={40} width={40}>
-                <TwitterLink />
-              </Grid>
-              <Grid item height={40} width={40}>
-                <YoutubeLink />
+        <Grid key={item.name} sx={{ mt: { xs: 4, md: 6 } }}>
+          <Grid
+            container
+            spacing={{ xs: 3, md: 6 }}
+            display="flex"
+            sx={
+              index % 2 === 0
+                ? { flexDirection: { md: 'row-reverse' } }
+                : { flexDirection: { md: 'row' } }
+            }
+          >
+            <Grid item xs={12} sm={6} md={4}>
+              <img src={item.image} style={{ width: '100%' }} />
+            </Grid>
+            <Grid item md={8} sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+              <Typography variant="h4">{item.name}</Typography>
+              <Typography variant="h6">{item.designation}</Typography>
+              <Typography variant="subtitle1" sx={{ mt: { xs: 2, md: 3 } }}>
+                {item.about1}
+              </Typography>
+              <Typography variant="subtitle1" sx={{ mt: { xs: 2, md: 3 } }}>
+                {item.about2}
+              </Typography>
+              <Grid
+                container
+                mt={3}
+                gap={1.5}
+                display="flex"
+                sx={{ justifyContent: { xs: 'center', sm: 'start' } }}
+              >
+                <Grid item height={40} width={40}>
+                  <DiscordLink />
+                </Grid>
+                <Grid item height={40} width={40}>
+                  <TwitterLink />
+                </Grid>
+                <Grid item height={40} width={40}>
+                  <YoutubeLink />
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       ))}
-      <Typography variant="h3" textAlign="center" mt={12}>
+      <Typography
+        variant="h3"
+        textAlign="center"
+        mt={12}
+        sx={{ mb: { xs: 2.5, md: 6.25 } }}
+      >
         Core team
       </Typography>
-      <Grid container spacing={3} mt={4}>
+      <Grid container spacing={{ xs: 2, md: 3 }}>
         {teamData.map((item, index) => (
           <Grid item key={item.name + index} xs={12} sm={6} md={4} lg={3}>
             <Card
               elevation={0}
               sx={{
-                py: 5,
+                py: { xs: 2.5, md: 5 },
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 3,
+                gap: { xs: 2, md: 3 },
                 alignItems: 'center',
               }}
             >
@@ -178,11 +189,7 @@ function index() {
                   {item.designation}
                 </Typography>
               </Grid>
-              <Grid
-                container
-                spacing={2}
-                sx={{ my: 2, justifyContent: 'center' }}
-              >
+              <Grid container spacing={2} justifyContent="center">
                 <Grid item width={55} height={55}>
                   <DiscordLink />
                 </Grid>
