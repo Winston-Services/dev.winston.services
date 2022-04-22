@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
+import academy from './academy';
 import apiInstance from './createApiInstance';
 import sideBar from './sideBar';
 import themeColors from './themeColors';
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   sideBar,
   themeColors,
   wizard,
+  academy,
   [apiInstance.reducerPath]: apiInstance.reducer,
 });
 const reducer = (state, action) => {

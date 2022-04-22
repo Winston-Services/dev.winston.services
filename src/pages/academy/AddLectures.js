@@ -14,10 +14,11 @@ import {
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { ThemeProvider } from '@mui/styles';
 import MUIRichTextEditor from 'mui-rte';
+import { PropTypes } from 'prop-types';
 
 const myTheme = createTheme({});
 
-function lecture() {
+function AddLecture() {
   return (
     <Paper elevation={0} sx={{ background: '#382B78', p: 3.5 }}>
       <Grid display="flex" justifyContent={'space-between'}>
@@ -87,7 +88,7 @@ function lecture() {
   );
 }
 
-function AddLecture() {
+function AddSection() {
   return (
     <Container>
       <Card elevation={0} sx={{ p: 3.5 }}>
@@ -143,11 +144,37 @@ function AddLecture() {
             </Tooltip>
           </Grid>
         </Grid>
-        <Grid mt={3.5}>{lecture()}</Grid>
-        <Grid mt={3.5}>{lecture()}</Grid>
+        <Grid mt={3.5}>{AddLecture()}</Grid>
       </Card>
     </Container>
   );
 }
 
-export default AddLecture;
+function AddLectures({ sectionData, setSectionData }) {
+  console.log(sectionData);
+  React.useEffect(() => {
+    setSectionData({
+      numberOfSection: 1,
+      sectionData: [
+        {
+          sectionName: 'Section',
+          numberOfLecture: 1,
+          lectureData: [
+            {
+              lectureName: 'lecture',
+              lectureDescription: '',
+            },
+          ],
+        },
+      ],
+    });
+  }, [setSectionData]);
+  return AddSection();
+}
+
+AddLectures.propTypes = {
+  sectionData: PropTypes.object,
+  setSectionData: PropTypes.func,
+};
+
+export default AddLectures;

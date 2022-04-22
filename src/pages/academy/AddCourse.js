@@ -7,8 +7,11 @@ import {
   LinearProgress,
   Button,
 } from '@mui/material';
+import { Form, Formik } from 'formik';
+import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
+import * as Yup from 'yup';
 
 import MonitorImage from './../../assets/moniter.svg';
 import StepAddCourse from './components/StepAddCourse';
@@ -53,7 +56,7 @@ const steps = [
   },
 ];
 
-function AddCourse() {
+function AddCourse({ addCourseData, setAddCourseData }) {
   const slider = React.useRef(null);
   const [slideIndex, setSlideIndex] = React.useState(0);
 
@@ -63,10 +66,23 @@ function AddCourse() {
     dots: false,
     infinite: false,
     arrows: false,
-    swipeToSlide: false,
     draggable: false,
+    swipe: false,
+    adaptiveHeight: true,
     beforeChange: (current, next) => setSlideIndex(next),
   };
+
+  const handleSubmit = (values) => {
+    if (slideIndex === 3) {
+      setAddCourseData(values);
+      navigate('/academy/add-lecture');
+    } else slider?.current?.slickNext();
+  };
+
+  const FORM_VALIDATION = Yup.object().shape({
+    title: slideIndex === 3 && Yup.string().required('Title is required'),
+    category: slideIndex === 3 && Yup.string().required('Select category'),
+  });
   return (
     <Container>
       <Grid
@@ -77,48 +93,65 @@ function AddCourse() {
         <Typography variant="h3">Add your courses</Typography>
         <Typography variant="subtitle1">Exit</Typography>
       </Grid>
-      <Typography variant="subtitle1" mt={6}>
+      <Typography variant="subtitle1" mt={{ xs: 3, sm: 6 }}>
         Step {slideIndex + 1} of 4
       </Typography>
       <LinearProgress
         variant="determinate"
         value={(slideIndex + 1) * 25}
-        sx={{ mt: 2 }}
+        sx={{ mt: { xs: 1, sm: 2 } }}
       />
 
-      <Grid container mt={0} spacing={6} display="flex" alignItems={'center'}>
+      <Grid
+        container
+        mt={0}
+        spacing={6}
+        display="flex"
+        flexDirection={{ xs: 'column-reverse', md: 'row' }}
+        alignItems={'center'}
+      >
         <Grid item md={6.5}>
-          <Slider ref={slider} {...settings}>
-            {steps.map((step) => (
-              <Grid key={step.title} px={2}>
-                <StepAddCourse data={step} />
+          <Formik
+            initialValues={{ ...addCourseData }}
+            validationSchema={FORM_VALIDATION}
+            onSubmit={handleSubmit}
+          >
+            <Form>
+              <Slider ref={slider} {...settings}>
+                {steps.map((step, index) => (
+                  <Grid key={step.title}>
+                    <StepAddCourse name={'step' + (index + 1)} data={step} />
+                  </Grid>
+                ))}
+                <StepTitle />
+              </Slider>
+              <Grid
+                sx={{ mt: { xs: 2.5, sm: 5 } }}
+                display="flex"
+                gap={2}
+                justifyContent={'space-between'}
+              >
+                <Button
+                  sx={{
+                    ...(slideIndex === 0 && { visibility: 'hidden' }),
+                    width: { xs: '50%', sm: 'auto' },
+                  }}
+                  variant="outlined"
+                  onClick={() => slider?.current?.slickPrev()}
+                >
+                  Previous
+                </Button>
+                <Button
+                  sx={{ width: { xs: '50%', sm: 'auto' } }}
+                  variant="contained"
+                  color="secondary"
+                  type="submit"
+                >
+                  Next
+                </Button>
               </Grid>
-            ))}
-
-            <Grid px={2}>
-              <StepTitle />
-            </Grid>
-          </Slider>
-          <Grid mt={5.5} display="flex" justifyContent={'space-between'}>
-            <Button
-              sx={{ ...(slideIndex === 0 && { visibility: 'hidden' }) }}
-              variant="outlined"
-              onClick={() => slider?.current?.slickPrev()}
-            >
-              Previous
-            </Button>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() =>
-                slideIndex === 3
-                  ? navigate('/academy/add-lecture')
-                  : slider?.current?.slickNext()
-              }
-            >
-              Next
-            </Button>
-          </Grid>
+            </Form>
+          </Formik>
         </Grid>
         <Grid item md={5}>
           <img src={MonitorImage} width="100%" />
@@ -127,5 +160,10 @@ function AddCourse() {
     </Container>
   );
 }
+
+AddCourse.propTypes = {
+  addCourseData: PropTypes.object,
+  setAddCourseData: PropTypes.func,
+};
 
 export default AddCourse;

@@ -1,25 +1,27 @@
 import React from 'react';
 
-import { TextField, Typography, Grid } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 
-import DropDown2 from './../../../components/common/DropDown2';
+import DropDown from './../../../components/common/DropDown';
+import TextField from './../../../components/common/TextField';
 
 function StepTitle() {
   return (
     <div>
       <Typography variant="h4">How about a working title?</Typography>
       <TextField
-        fullWidth
-        variant="outlined"
-        label="Title"
-        placeholder="Course"
-        sx={{ mt: 5 }}
+        name="title"
+        label={'Title'}
+        placeholder={'Course'}
+        autoComplete="off"
       />
       <Typography variant="h4" mt={5}>
         What category best fits the knowledge you’ll share?
       </Typography>
-      <Grid mt={5}>
-        <DropDown2
+      <Grid mt={{ xs: 3, sm: 5 }}>
+        <DropDown
+          name="category"
+          label={'Category'}
           options={[
             'Category1',
             'Category2',
@@ -27,7 +29,6 @@ function StepTitle() {
             'Category4',
             'Category5',
           ]}
-          placeholder={'Choose a category'}
         />
       </Grid>
     </div>

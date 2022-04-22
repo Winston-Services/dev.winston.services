@@ -10,3 +10,5 @@
 .MUIRichTextEditor-editorContainer-5 {
     color:white !important;
 }
+
+.slick-slider { display: table; table-layout: fixed; width: 100%; }
