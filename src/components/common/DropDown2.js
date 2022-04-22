@@ -6,10 +6,11 @@ import Select from '@mui/material/Select';
 import { PropTypes } from 'prop-types';
 
 function DropDown2({ options, placeholder = '' }) {
-  const [value, setVlaue] = React.useState('');
+  const [value, setValue] = React.useState('');
 
   const handleChange = (event) => {
-    setVlaue(event.target.value);
+    setValue(event.target.value);
+    console.log(value);
   };
 
   return (

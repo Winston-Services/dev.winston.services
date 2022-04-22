@@ -135,7 +135,7 @@ function UserProfileTabs() {
             type="submit"
             sx={{ width: { xs: '100%', sm: 'auto' }, mt: 5 }}
             onClick={() => {
-              navigate('/connect-your-wallet');
+              navigate('/user-profile/connect-your-wallet');
             }}
           >
             Create your first NFT

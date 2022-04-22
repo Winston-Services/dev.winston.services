@@ -15,9 +15,10 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Form, Formik, ErrorMessage } from 'formik';
 import { PropTypes } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import DropDown2 from '../../components/common/DropDown2';
+import DropDown from '../../components/common/DropDown';
 import TextField from '../../components/common/TextField';
 import UploadFile from './components/UploadFile';
 
@@ -38,16 +39,18 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '100%',
+  maxHeight: '100%',
   bgcolor: 'background.paper',
   borderRadius: '30px',
   px: 3,
   py: 3,
   boxShadow: '0px 0px 60px rgba(0, 0, 0, 0.4)',
   outline: 'none',
+  overflowY: 'auto',
 };
 
 const FORM_VALIDATION = Yup.object().shape({
-  image: Yup.array().required('Image is required'),
+  image: Yup.array().min(1, 'Please select image'),
   name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -61,7 +64,7 @@ const FORM_VALIDATION = Yup.object().shape({
     .required('Please enter link'),
   description: Yup.string().required('Please enter few words'),
   date: Yup.string().required('Please select date'),
-  category: Yup.string().required('Please select atleast one category'),
+  category: Yup.string().required('Please select at least one category'),
   price: Yup.string().required('Please enter price'),
 });
 
@@ -72,6 +75,8 @@ function UploadNFT() {
   const [selectedCategory, setSelectedCategory] = React.useState([]);
 
   const [showModal, setShowModal] = React.useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -85,13 +90,30 @@ function UploadNFT() {
           collection: 'Untitled Collection #272881336',
           category: '',
           price: '',
+          auctionLength: '12 Hours',
+          background: 'Purple',
+          backgroundTrait: '14% have this trait',
+          body: 'Black',
+          bodyTrait: '14% have this trait',
+          cloths: 'Black',
+          clothsTrait: '14% have this trait',
+          eyes: 'Black',
+          eyesTrait: '14% have this trait',
+          hat: 'Black',
+          hatTrait: '14% have this trait',
+          mouth: 'Black',
+          mouthTrait: '14% have this trait',
+          nose: 'Black',
+          noseTrait: '14% have this trait',
         }}
         validationSchema={FORM_VALIDATION}
         onSubmit={(values) => {
           console.log('submit method call');
           console.log(values);
+          navigate('/user-profile/upload-nft/nft-created');
         }}
-        render={(props) => {
+      >
+        {(props) => {
           return (
             <Form>
               <Grid container spacing={5}>
@@ -132,13 +154,17 @@ function UploadNFT() {
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
                       label="Sale date"
+                      format="MM-dd-y"
                       value={value}
                       onChange={(newValue) => {
-                        props.setFieldValue('date', newValue);
-                        setValue(newValue);
+                        let formattedDate = `${
+                          newValue.getMonth() + 1
+                        }/${newValue.getDate()}/${newValue.getFullYear()}`;
+                        props.setFieldValue('date', formattedDate);
+                        setValue(formattedDate);
                       }}
                       renderInput={(params) => (
-                        <TextField name="date" {...params} />
+                        <TextField name="date" autoComplete="off" {...params} />
                       )}
                     />
                   </LocalizationProvider>
@@ -268,61 +294,89 @@ function UploadNFT() {
                           </Grid>
                           <Grid container spacing={1.6} mt={0.8}>
                             <Grid container item xs={12} sm={6} gap={2}>
-                              <DropDown2
+                              <DropDown
+                                label="Background"
+                                name="background"
                                 options={['Purple', 'red', 'blue']}
                                 placeholder={'Background'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Body"
+                                name="body"
                                 options={['Black', 'red', 'blue']}
                                 placeholder={'Body'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Cloths"
+                                name="cloths"
                                 options={['Black', 'red', 'blue']}
                                 placeholder={'Cloths'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Eyes"
+                                name="eyes"
                                 options={['Black', 'red', 'blue']}
                                 placeholder={'Eyes'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Hat"
+                                name="hat"
                                 options={['Black', 'red', 'blue']}
                                 placeholder={'Hat'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Mouth"
+                                name="mouth"
                                 options={['Black', 'red', 'blue']}
                                 placeholder={'Mouth'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Nose"
+                                name="nose"
                                 options={['Black', 'red', 'blue']}
                                 placeholder={'Nose'}
                               />
                             </Grid>
                             <Grid container item xs={12} sm={6} gap={2}>
-                              <DropDown2
+                              <DropDown
+                                label="Trait"
+                                name="backgroundTrait"
                                 options={['14% have this trait', 'red', 'blue']}
                                 placeholder={'Trait'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Trait"
+                                name="bodyTrait"
                                 options={['14% have this trait', 'red', 'blue']}
                                 placeholder={'Trait'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Trait"
+                                name="clothsTrait"
                                 options={['14% have this trait', 'red', 'blue']}
                                 placeholder={'Trait'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Trait"
+                                name="eyesTrait"
                                 options={['14% have this trait', 'red', 'blue']}
                                 placeholder={'Trait'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Trait"
+                                name="hatTrait"
                                 options={['14% have this trait', 'red', 'blue']}
                                 placeholder={'Trait'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Trait"
+                                name="mouthTrait"
                                 options={['14% have this trait', 'red', 'blue']}
                                 placeholder={'Trait'}
                               />
-                              <DropDown2
+                              <DropDown
+                                label="Trait"
+                                name="noseTrait"
                                 options={['14% have this trait', 'red', 'blue']}
                                 placeholder={'Trait'}
                               />
@@ -388,12 +442,13 @@ function UploadNFT() {
                       <Typography mb={1} variant="subtitle1">
                         Auction Length
                       </Typography>
-                      <Paper
-                        elevation={0}
-                        sx={{ pl: 1.4, py: 2, border: '1px solid #483996' }}
-                      >
-                        <Typography variant="subtitle1">12 Hours</Typography>
-                      </Paper>
+
+                      <DropDown
+                        label="length"
+                        name="auctionLength"
+                        options={['12 Hours', '6 Hours']}
+                        placeholder={'12 Hours'}
+                      />
                     </Grid>
                   ) : (
                     <></>
@@ -426,7 +481,7 @@ function UploadNFT() {
             </Form>
           );
         }}
-      />
+      </Formik>
     </Container>
   );
 }

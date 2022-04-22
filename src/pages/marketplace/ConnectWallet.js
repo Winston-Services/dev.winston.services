@@ -58,7 +58,7 @@ function ConnectWallet() {
                 alignItems="center"
                 p={3}
                 onClick={() => {
-                  navigate('/upload-nft');
+                  navigate('/user-profile/upload-nft');
                 }}
                 sx={{ cursor: 'pointer' }}
               >

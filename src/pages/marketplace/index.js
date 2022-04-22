@@ -9,6 +9,7 @@ const ProductDetails = React.lazy(() => import('./ProductDetails'));
 const Transaction = React.lazy(() => import('./Transaction'));
 const TokenDetails = React.lazy(() => import('./TokenDetails'));
 const OwnerTransactions = React.lazy(() => import('./OwnerTransactions'));
+// const ConnectWallet = React.lazy(() => import('./ConnectWallet'));
 
 export default function MarketPlaceRouting() {
   const routes = [
@@ -35,6 +36,10 @@ export default function MarketPlaceRouting() {
           path: '/owner-transactions/',
           element: <OwnerTransactions />,
         },
+        // {
+        //   path: '/user-profile/connect-your-wallet',
+        //   element: <ConnectWallet />,
+        // },
         { path: '*', element: <Navigate to={'/'} /> },
       ],
     },

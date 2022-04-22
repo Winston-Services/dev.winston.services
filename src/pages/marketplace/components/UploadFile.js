@@ -1,7 +1,15 @@
 import React from 'react';
 
-import { Paper, Grid, Typography, FormHelperText } from '@mui/material';
-import { ErrorMessage, useFormikContext } from 'formik';
+// import { DeleteOutline } from '@mui/icons-material';
+import { Cancel } from '@mui/icons-material';
+import {
+  Paper,
+  Grid,
+  Typography,
+  FormHelperText,
+  IconButton,
+} from '@mui/material';
+import { useFormikContext, ErrorMessage } from 'formik';
 import { PropTypes } from 'prop-types';
 import { useDropzone } from 'react-dropzone';
 
@@ -9,37 +17,54 @@ import { ReactComponent as UploadImage } from './../../../assets/upload_image.sv
 
 function UploadFile(props) {
   const { values, setFieldValue } = useFormikContext();
-  const { getRootProps } = useDropzone({
+
+  const { getRootProps, getInputProps } = useDropzone({
+    noClick: !values,
     accept: 'image/*',
-    onDrop: (acceptedFiles) => {
-      setFieldValue(
-        props.name,
-        acceptedFiles.map((file) => {
-          const a = URL.createObjectURL(file);
-          return Object.assign(file, {
-            preview: a,
-          });
-        })
-      );
-    },
+    onDrop:
+      values &&
+      ((acceptedFiles) => {
+        // console.log('onDrop method call');
+        setFieldValue(
+          props.name,
+          acceptedFiles.map((file) => {
+            const a = URL.createObjectURL(file);
+            return Object.assign(file, {
+              preview: a,
+            });
+          })
+        );
+      }),
   });
+  // console.log('getRootProps', { getRootProps: getRootProps(), otherProps });
 
   const thumbs = (values[props.name] || []).map((file) => (
     <div key={file.name}>
-      <div>
+      <div style={{ position: 'relative' }}>
         <img src={URL.createObjectURL(file)} height="100%" width="100%" />
+        {
+          <IconButton
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '25px',
+              borderRadius: '20px',
+            }}
+            sx={{ fontSize: 30, color: 'red' }}
+            onClick={() => {
+              setFieldValue(props.name, '');
+            }}
+          >
+            <Cancel />
+          </IconButton>
+        }
       </div>
     </div>
   ));
 
-  //   React.useEffect(() => {
-  //     // Make sure to revoke the data uris to avoid memory leaks
-  //     files.forEach((file) => URL.revokeObjectURL(file.preview));
-  //   }, [files]);
-
   return (
     <div {...getRootProps({ className: 'dropzone' })}>
-      {thumbs.length !== 0 ? (
+      {values && thumbs.length !== 0 ? (
         <aside>{thumbs}</aside>
       ) : (
         <Paper
@@ -50,6 +75,7 @@ function UploadFile(props) {
             cursor: 'pointer',
           }}
         >
+          {values && <input {...getInputProps()} />}
           <Grid item mt={11.2}>
             <UploadImage />
           </Grid>
@@ -71,7 +97,7 @@ function UploadFile(props) {
         </Paper>
       )}
       {thumbs.length !== 0 ? (
-        <>{/* {props.setFieldValue('image', files[0].preview)} */}</>
+        <></>
       ) : (
         <FormHelperText error={true}>
           <ErrorMessage name={props.name} />

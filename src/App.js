@@ -17,7 +17,6 @@ const Certificate = React.lazy(() => import('./pages/certificate/Certificate'));
 const Dashboard = React.lazy(() => import('./pages/dashboard'));
 const MarketplaceRouting = React.lazy(() => import('./pages/marketplace'));
 const AcademyRouting = React.lazy(() => import('./pages/academy'));
-const UserProfile = React.lazy(() => import('./pages/marketplace/UserProfile'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
 const Landing = React.lazy(() => import('./pages/landing'));
@@ -44,10 +43,7 @@ const Assets = React.lazy(() => import('./pages/assets'));
 const WhitePapersRouting = React.lazy(() => import('./pages/whitepapers'));
 const Wiki = React.lazy(() => import('./pages/wiki'));
 const AccountActivity = React.lazy(() => import('./pages/account-activity'));
-const ConnectWallet = React.lazy(() =>
-  import('./pages/marketplace/ConnectWallet')
-);
-const UploadNFT = React.lazy(() => import('./pages/marketplace/UploadNFT'));
+const UserProfileRouting = React.lazy(() => import('./pages/user-profile'));
 
 export default function App() {
   const auth = useAuth();
@@ -107,8 +103,8 @@ export default function App() {
           element: getRouteWrapper(<AcademyRouting />, false),
         },
         {
-          path: '/user-profile',
-          element: getRouteWrapper(<UserProfile />, false),
+          path: '/user-profile/*',
+          element: getRouteWrapper(<UserProfileRouting />, false),
         },
         {
           path: '/white-label-winston',
@@ -193,14 +189,6 @@ export default function App() {
         {
           path: '/account-activity',
           element: getRouteWrapper(<AccountActivity />, false),
-        },
-        {
-          path: '/connect-your-wallet',
-          element: getRouteWrapper(<ConnectWallet />, false),
-        },
-        {
-          path: '/upload-nft',
-          element: getRouteWrapper(<UploadNFT />, false),
         },
       ],
     },
