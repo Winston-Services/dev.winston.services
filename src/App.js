@@ -44,6 +44,7 @@ const WhitePapersRouting = React.lazy(() => import('./pages/whitepapers'));
 const Wiki = React.lazy(() => import('./pages/wiki'));
 const AccountActivity = React.lazy(() => import('./pages/account-activity'));
 const UserProfileRouting = React.lazy(() => import('./pages/user-profile'));
+const Holding = React.lazy(() => import('./pages/holding'));
 
 export default function App() {
   const auth = useAuth();
@@ -189,6 +190,10 @@ export default function App() {
         {
           path: '/account-activity',
           element: getRouteWrapper(<AccountActivity />, false),
+        },
+        {
+          path: '/holding',
+          element: getRouteWrapper(<Holding />, false),
         },
       ],
     },
