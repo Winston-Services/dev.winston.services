@@ -15,7 +15,11 @@ function WinstonApp() {
             <Typography variant="h3" mt={12}>
               Get the Winston app now!
             </Typography>
-            <Typography variant="subtitle1" mt={4} mb={20}>
+            <Typography
+              variant="subtitle1"
+              mt={4}
+              sx={{ mb: { xs: 5, sm: 10, md: 20 } }}
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo
               consequat ultricies adipiscing nisi nunc, sit feugiat euismod.
               Cras eget malesuada risus ante. Vitae egestas tristique nisi, eget
