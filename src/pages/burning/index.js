@@ -34,7 +34,7 @@ function Burning() {
           <img src={BurningImage} width={'100%'} />
         </Grid>
       </Grid>
-      <Grid mt={12}>
+      <Grid item sx={{ mt: { xs: 0, sm: 6, md: 12 } }}>
         <RealTimeBurn />
       </Grid>
       <Grid mt={6}>

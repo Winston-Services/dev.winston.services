@@ -5,7 +5,7 @@ import {
   ShareOutlined,
   BookmarkAddedOutlined,
 } from '@mui/icons-material';
-import { Container, Grid, IconButton, Typography } from '@mui/material';
+import { Container, Grid, IconButton, Paper, Typography } from '@mui/material';
 
 import './index.css';
 
@@ -40,10 +40,22 @@ const data = [
 function Wiki() {
   return (
     <Container>
-      <Grid container item justifyContent={'space-between'}>
-        <Typography variant="h3">Welcome to Winston Wiki!</Typography>
-        <Grid item>
-          <IconButton className="IconButton">
+      <Grid container justifyContent={'space-between'}>
+        <Grid item md={10}>
+          <Typography variant="h3">Welcome to Winston Wiki!</Typography>
+        </Grid>
+        <Grid
+          item
+          md={2}
+          display={'flex'}
+          justifyContent="end"
+          sx={{
+            display: { xs: 'none', sm: 'flex' },
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: { xs: 'end', sm: 'center' },
+          }}
+        >
+          <IconButton className="IconButton" sx={{ mr: 1 }}>
             <BookmarkAddedOutlined />
           </IconButton>
           <IconButton>
@@ -54,9 +66,39 @@ function Wiki() {
           </IconButton>
         </Grid>
       </Grid>
+      <Paper
+        elevation={0}
+        sx={{
+          px: 1,
+          py: 2,
+          position: 'fixed',
+          right: '0',
+          display: { xs: 'block', sm: 'none' },
+          top: 'calc(50% - 60px)',
+          mr: 2,
+        }}
+      >
+        <Grid
+          container
+          display={'flex'}
+          flexDirection="column"
+          gap={2}
+          alignItems="center"
+        >
+          <IconButton className="IconButton">
+            <BookmarkAddedOutlined />
+          </IconButton>
+          <IconButton>
+            <PrintOutlined />
+          </IconButton>
+          <IconButton>
+            <ShareOutlined />
+          </IconButton>
+        </Grid>
+      </Paper>
       {data.map((item) => (
         <Grid key={item.question}>
-          <Typography variant="h5" mt={6.25}>
+          <Typography variant="h5" sx={{ mt: { xs: 2, sm: 6.25 } }}>
             {item.question}
           </Typography>
           {item.answers.map((answer, index) => (

@@ -9,6 +9,7 @@ import {
   Button,
   FormHelperText,
   Modal,
+  capitalize,
 } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -66,6 +67,7 @@ const FORM_VALIDATION = Yup.object().shape({
   date: Yup.string().required('Please select date'),
   category: Yup.string().required('Please select at least one category'),
   price: Yup.string().required('Please enter price'),
+  selectedProperties: Yup.bool().oneOf([true], 'Field must be checked'),
 });
 
 function UploadNFT() {
@@ -78,33 +80,88 @@ function UploadNFT() {
 
   const navigate = useNavigate();
 
+  const properties = [
+    {
+      name: 'background',
+      title: 'Background',
+      options: ['Purple', 'Red', 'Black'],
+      traitOptions: ['14% have this trait'],
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      options: ['Purple', 'Red', 'Black'],
+      traitOptions: ['14% have this trait'],
+    },
+    {
+      name: 'cloths',
+      title: 'Cloths',
+      options: ['Purple', 'Red', 'Black'],
+      traitOptions: ['14% have this trait'],
+    },
+    {
+      name: 'eyes',
+      title: 'Eyes',
+      options: ['Purple', 'Red', 'Black'],
+      traitOptions: ['14% have this trait'],
+    },
+    {
+      name: 'hat',
+      title: 'Hat',
+      options: ['Purple', 'Red', 'Black'],
+      traitOptions: ['14% have this trait'],
+    },
+    {
+      name: 'mouth',
+      title: 'Mouth',
+      options: ['Purple', 'Red', 'Black'],
+      traitOptions: ['14% have this trait'],
+    },
+    {
+      name: 'nose',
+      title: 'Nose',
+      options: ['Purple', 'Red', 'Black'],
+      traitOptions: ['14% have this trait'],
+    },
+  ];
+
+  const [initialValue, setInitialValue] = React.useState({
+    image: [],
+    name: '',
+    link: '',
+    description: '',
+    date: null,
+    collection: 'Untitled Collection #272881336',
+    category: '',
+    price: '',
+    auctionLength: '12 Hours',
+    selectedProperties: false,
+    properties: {
+      background: {
+        background: '',
+        backgroundTrait: '14% have this trait',
+      },
+      body: {
+        body: '',
+        bodyTrait: '14% have this trait',
+      },
+      cloths: { cloths: '', clothsTrait: '14% have this trait' },
+      eyes: { eyes: '', eyesTrait: '14% have this trait' },
+      hat: { hat: '', hatTrait: '14% have this trait' },
+      mouth: { mouth: '', mouthTrait: '14% have this trait' },
+      nose: { nose: '', noseTrait: '14% have this trait' },
+    },
+  });
+
+  React.useEffect(() => {
+    console.log(initialValue);
+  }, [initialValue]);
+
   return (
     <Container>
       <Formik
         initialValues={{
-          image: [],
-          name: '',
-          link: '',
-          description: '',
-          date: null,
-          collection: 'Untitled Collection #272881336',
-          category: '',
-          price: '',
-          auctionLength: '12 Hours',
-          background: 'Purple',
-          backgroundTrait: '14% have this trait',
-          body: 'Black',
-          bodyTrait: '14% have this trait',
-          cloths: 'Black',
-          clothsTrait: '14% have this trait',
-          eyes: 'Black',
-          eyesTrait: '14% have this trait',
-          hat: 'Black',
-          hatTrait: '14% have this trait',
-          mouth: 'Black',
-          mouthTrait: '14% have this trait',
-          nose: 'Black',
-          noseTrait: '14% have this trait',
+          ...initialValue,
         }}
         validationSchema={FORM_VALIDATION}
         onSubmit={(values) => {
@@ -247,11 +304,60 @@ function UploadNFT() {
                     <Typography mb={1} variant="subtitle1">
                       Properties
                     </Typography>
+                    <Grid container spacing={2}>
+                      {Object.keys(initialValue.properties).map((items) => {
+                        const item = Object.keys(
+                          initialValue.properties[items]
+                        );
+                        return (
+                          initialValue.properties[items][item[0]] && (
+                            <Grid key={item[0]} item xs={6} sm={4}>
+                              <Paper
+                                elevation={0}
+                                sx={{
+                                  p: 1,
+                                  borderRadius: 4,
+                                  textAlign: 'center',
+                                  border: '1px dashed #9283DC',
+                                }}
+                              >
+                                <Grid
+                                  display={'flex'}
+                                  flexDirection="column"
+                                  textAlign={'center'}
+                                >
+                                  <Typography
+                                    component={'span'}
+                                    variant="subtitle1"
+                                  >
+                                    {capitalize(items)}
+                                  </Typography>
+                                  <Typography
+                                    component={'span'}
+                                    variant="subtitle1"
+                                  >
+                                    {initialValue.properties[items][item[0]]}
+                                  </Typography>
+                                  <Typography
+                                    component={'span'}
+                                    variant="subtitle1"
+                                    fontWeight={'700'}
+                                  >
+                                    {initialValue.properties[items][item[1]]}
+                                  </Typography>
+                                </Grid>
+                              </Paper>
+                            </Grid>
+                          )
+                        );
+                      })}
+                    </Grid>
                     <Paper
                       elevation={0}
                       sx={{
-                        width: '157px',
+                        width: '170px',
                         border: '1px dashed #9283DC',
+                        marginTop: 1.5,
                       }}
                     >
                       <Typography
@@ -292,99 +398,83 @@ function UploadNFT() {
                               }}
                             />
                           </Grid>
-                          <Grid container spacing={1.6} mt={0.8}>
-                            <Grid container item xs={12} sm={6} gap={2}>
-                              <DropDown
-                                label="Background"
-                                name="background"
-                                options={['Purple', 'red', 'blue']}
-                                placeholder={'Background'}
-                              />
-                              <DropDown
-                                label="Body"
-                                name="body"
-                                options={['Black', 'red', 'blue']}
-                                placeholder={'Body'}
-                              />
-                              <DropDown
-                                label="Cloths"
-                                name="cloths"
-                                options={['Black', 'red', 'blue']}
-                                placeholder={'Cloths'}
-                              />
-                              <DropDown
-                                label="Eyes"
-                                name="eyes"
-                                options={['Black', 'red', 'blue']}
-                                placeholder={'Eyes'}
-                              />
-                              <DropDown
-                                label="Hat"
-                                name="hat"
-                                options={['Black', 'red', 'blue']}
-                                placeholder={'Hat'}
-                              />
-                              <DropDown
-                                label="Mouth"
-                                name="mouth"
-                                options={['Black', 'red', 'blue']}
-                                placeholder={'Mouth'}
-                              />
-                              <DropDown
-                                label="Nose"
-                                name="nose"
-                                options={['Black', 'red', 'blue']}
-                                placeholder={'Nose'}
-                              />
-                            </Grid>
-                            <Grid container item xs={12} sm={6} gap={2}>
-                              <DropDown
-                                label="Trait"
-                                name="backgroundTrait"
-                                options={['14% have this trait', 'red', 'blue']}
-                                placeholder={'Trait'}
-                              />
-                              <DropDown
-                                label="Trait"
-                                name="bodyTrait"
-                                options={['14% have this trait', 'red', 'blue']}
-                                placeholder={'Trait'}
-                              />
-                              <DropDown
-                                label="Trait"
-                                name="clothsTrait"
-                                options={['14% have this trait', 'red', 'blue']}
-                                placeholder={'Trait'}
-                              />
-                              <DropDown
-                                label="Trait"
-                                name="eyesTrait"
-                                options={['14% have this trait', 'red', 'blue']}
-                                placeholder={'Trait'}
-                              />
-                              <DropDown
-                                label="Trait"
-                                name="hatTrait"
-                                options={['14% have this trait', 'red', 'blue']}
-                                placeholder={'Trait'}
-                              />
-                              <DropDown
-                                label="Trait"
-                                name="mouthTrait"
-                                options={['14% have this trait', 'red', 'blue']}
-                                placeholder={'Trait'}
-                              />
-                              <DropDown
-                                label="Trait"
-                                name="noseTrait"
-                                options={['14% have this trait', 'red', 'blue']}
-                                placeholder={'Trait'}
-                              />
-                            </Grid>
-                          </Grid>
+                          {properties.map((item) => {
+                            return (
+                              <Grid
+                                key={item.name}
+                                container
+                                spacing={1.6}
+                                mt={0.8}
+                              >
+                                <Grid item xs={12} sm={6}>
+                                  <DropDown
+                                    label={item.title}
+                                    // name={item.name}
+                                    name={
+                                      'properties.' +
+                                      item.name +
+                                      '.' +
+                                      item.name
+                                    }
+                                    options={item.options}
+                                    placeholder={item.title}
+                                    onChange={(value) =>
+                                      setInitialValue({
+                                        ...initialValue,
+                                        properties: {
+                                          ...initialValue.properties,
+                                          [item.name]: {
+                                            ...initialValue.properties[
+                                              item.name
+                                            ],
+                                            [item.name]: value,
+                                          },
+                                        },
+                                        selectedProperties: true,
+                                      })
+                                    }
+                                  />
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                  <DropDown
+                                    label="Trait"
+                                    name={
+                                      'properties.' +
+                                      item.name +
+                                      '.' +
+                                      item.name +
+                                      'Trait'
+                                    }
+                                    options={item.traitOptions}
+                                    onChange={(value) =>
+                                      setInitialValue({
+                                        ...initialValue,
+                                        properties: {
+                                          ...initialValue.properties,
+                                          [item.name]: {
+                                            ...initialValue.properties[
+                                              item.name
+                                            ],
+                                            [item.name + 'Trait']: value,
+                                          },
+                                        },
+                                      })
+                                    }
+                                  />
+                                </Grid>
+                              </Grid>
+                            );
+                          })}
                         </Grid>
                       </Modal>
                     </Paper>
+                    {initialValue.selectedProperties === true ? (
+                      <></>
+                    ) : (
+                      <FormHelperText error={true}>
+                        <ErrorMessage name="selectedProperties" />
+                      </FormHelperText>
+                    )}
                   </Grid>
 
                   <Grid item>
@@ -422,9 +512,17 @@ function UploadNFT() {
                   </Grid>
 
                   <Grid item>
-                    <Typography mb={1.3} variant="subtitle1">
-                      Price in USD: $0.00
-                    </Typography>
+                    <Grid
+                      container
+                      item
+                      display={'flex'}
+                      gap={2}
+                      alignItems="baseline"
+                    >
+                      <Typography mb={1.3} variant="subtitle1">
+                        Price in USD: $0.00
+                      </Typography>
+                    </Grid>
                     <TextField
                       fullWidth
                       name="price"
