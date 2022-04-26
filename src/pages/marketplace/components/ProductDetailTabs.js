@@ -157,7 +157,7 @@ function ProductDetailTabs() {
                     <Link
                       component={'span'}
                       variant="subtitle1"
-                      sx={{ color: 'white', textDecoration: 'none' }}
+                      sx={{ color: '#fff', textDecoration: 'none' }}
                       onClick={() => {
                         navigate('/user-profile');
                       }}

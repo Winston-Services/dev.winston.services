@@ -2,19 +2,19 @@ import React from 'react';
 
 import { Facebook, Instagram, Twitter, Verified } from '@mui/icons-material';
 import {
-  Grid,
   Typography,
   Link,
+  Grid,
+  Container,
   Paper,
   IconButton,
-  Container,
   Divider,
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
 
 import user_profile from '../../assets/user_profile.png';
 import user_profile_cover from '../../assets/user_profile_cover.png';
-import UserProfileTabs from '../marketplace/components/UserProfileTabs';
+import UserDashboardTabs from './components/UserDashboardTabs';
 
 const userData = [
   {
@@ -54,7 +54,7 @@ ReadMore.propTypes = {
   children: PropTypes.string,
 };
 
-function UserProfile() {
+function UserDashboard() {
   return (
     <Grid container item xs={12} sx={{ mt: { xs: '-40px', sm: '-80px' } }}>
       <img
@@ -146,11 +146,11 @@ function UserProfile() {
           </ReadMore>
         </Grid>
         <Grid item md={12} mt={2}>
-          <UserProfileTabs />
+          <UserDashboardTabs />
         </Grid>
       </Container>
     </Grid>
   );
 }
 
-export default UserProfile;
+export default UserDashboard;
