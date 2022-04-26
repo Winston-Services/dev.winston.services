@@ -68,7 +68,7 @@ function AddCourse({ addCourseData, setAddCourseData }) {
     arrows: false,
     draggable: false,
     swipe: false,
-    adaptiveHeight: true,
+    // adaptiveHeight: true,
     beforeChange: (current, next) => setSlideIndex(next),
   };
 

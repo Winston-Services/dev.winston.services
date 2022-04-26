@@ -212,7 +212,7 @@ export default function LandingTopNav() {
                           <ListItemText
                             sx={{ textAlign: 'center' }}
                             primary={menu.name}
-                            onClick={(e) => handleChange(e, menu.key)}
+                            onClick={() => handleChange(menu.key)}
                           />
                         </ListItem>
                       ))}

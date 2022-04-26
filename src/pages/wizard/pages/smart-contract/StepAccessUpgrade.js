@@ -71,7 +71,7 @@ function StepAccessUpgrade({
               </ListItemAvatar>
               <Typography variant={'h5'}>
                 {wizardData.network === 'Binance' ? 'BEP ' : 'ERC '}
-                {wizardSmartContractData?.typeOfContact}
+                {wizardSmartContractData?.typeOfContract}
               </Typography>
             </ListItem>
             <Grid mb={3}>

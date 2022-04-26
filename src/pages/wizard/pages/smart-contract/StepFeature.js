@@ -144,7 +144,7 @@ function StepFeature({ wizardSmartContractData, setWizardSmartContractData }) {
                 {wizardSmartContractData.network === 'Binance'
                   ? 'BEP '
                   : 'ERC '}
-                {wizardSmartContractData.typeOfContact}
+                {wizardSmartContractData.typeOfContract}
               </Typography>
             </ListItem>
             <Grid mb={3}>
@@ -153,7 +153,7 @@ function StepFeature({ wizardSmartContractData, setWizardSmartContractData }) {
             <Grid>
               <FormGroup>
                 <Grid container columnSpacing={5}>
-                  {data[wizardSmartContractData.typeOfContact].map((item) => {
+                  {data[wizardSmartContractData.typeOfContract].map((item) => {
                     return (
                       <Grid item xs={12} sm={6} md={4} key={item.name}>
                         <Grid

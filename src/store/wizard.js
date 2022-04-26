@@ -53,7 +53,7 @@ const initialState = {
     smartContract: {
       //Smart contract type
       network: { title: 'Ethereum', subTitle: 'ERC' },
-      typeOfContact: '20',
+      typeOfContract: '20',
 
       //Smart settings
       smartContractName: '',

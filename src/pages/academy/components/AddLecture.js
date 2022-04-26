@@ -7,15 +7,17 @@ import {
   IconButton,
   createTheme,
   Tooltip,
-  TextField,
   Button,
   Card,
 } from '@mui/material';
 import { ThemeProvider } from '@mui/styles';
+import { Form, Formik } from 'formik';
 import MUIRichTextEditor from 'mui-rte';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
 
+import TextField from './../../../components/common/TextField';
 import {
   addLecture,
   updateLecture,
@@ -29,11 +31,20 @@ function AddLecture({ lecture, sectionIndex, lectureIndex, lectureCount }) {
   const [isEdit, setIsEdit] = React.useState(false);
   const [isAddExternalResource, setIsAddExternalResource] =
     React.useState(false);
-  const [externalResourceName, setExternalResourceName] = React.useState('');
-  const [externalResourceLink, setExternalResourceLink] = React.useState('');
+  const [initialValue, setInitialValue] = React.useState({
+    title: '',
+    url: '',
+  });
+
+  const [uploadVideo, setUploadVideo] = React.useState(false);
   const [externalResource, setExternalResource] = React.useState(false);
   const [name, setName] = React.useState(lecture?.name);
   const dispatch = useDispatch();
+
+  const FORM_VALIDATION = Yup.object().shape({
+    title: Yup.string().required('Title is required'),
+    url: Yup.string().required('URL is required').url('Invalid URL'),
+  });
 
   React.useEffect(() => {
     if (lecture.externalResource.length === 0) {
@@ -68,14 +79,16 @@ function AddLecture({ lecture, sectionIndex, lectureIndex, lectureCount }) {
             {isEdit ? (
               <IconButton
                 onClick={() => {
-                  setIsEdit(false);
-                  dispatch(
-                    updateLecture({
-                      sectionIndex,
-                      lectureIndex,
-                      name,
-                    })
-                  );
+                  if (name) {
+                    setIsEdit(false);
+                    dispatch(
+                      updateLecture({
+                        sectionIndex,
+                        lectureIndex,
+                        name,
+                      })
+                    );
+                  }
                 }}
               >
                 <Done />
@@ -105,14 +118,27 @@ function AddLecture({ lecture, sectionIndex, lectureIndex, lectureCount }) {
           )}
         </Grid>
         <Grid display={'flex'} gap={2} alignItems="center">
-          <Button startIcon={<Add />} variant="contained">
+          <Button
+            startIcon={<Add />}
+            variant="contained"
+            color={uploadVideo ? 'secondary' : 'primary'}
+            onClick={() => {
+              setExternalResource(false);
+              setUploadVideo(!uploadVideo);
+              return;
+            }}
+          >
             Upload video
           </Button>
           <Button
             startIcon={<Add />}
             variant="contained"
             color={externalResource ? 'secondary' : 'primary'}
-            onClick={() => setExternalResource(!externalResource)}
+            onClick={() => {
+              setUploadVideo(false);
+              setExternalResource(!externalResource);
+              return;
+            }}
           >
             External resource
           </Button>
@@ -156,8 +182,7 @@ function AddLecture({ lecture, sectionIndex, lectureIndex, lectureCount }) {
           </Grid>
         </Grid>
       </Grid>
-
-      {externalResource ? (
+      {externalResource && (
         <Card elevation={0} sx={{ mt: 2, px: 3, py: 2 }}>
           <Grid
             display="flex"
@@ -193,51 +218,74 @@ function AddLecture({ lecture, sectionIndex, lectureIndex, lectureCount }) {
           {isAddExternalResource && (
             <Card elevation={0} sx={{ mt: 2, background: '#382B78', p: 3.75 }}>
               <Grid>
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label={'Title'}
-                  placeholder={'Add Title'}
-                  value={externalResourceName}
-                  onChange={(e) => setExternalResourceName(e.target.value)}
-                />
-                <TextField
-                  fullWidth
-                  variant="outlined"
-                  label={'URL'}
-                  placeholder={'https://example.com'}
-                  sx={{ mt: 3 }}
-                  value={externalResourceLink}
-                  onChange={(e) => setExternalResourceLink(e.target.value)}
-                />
-                <Grid mt={3} display="flex" justifyContent={'center'}>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() => {
-                      setIsAddExternalResource(false);
-                      setExternalResourceName('');
-                      setExternalResourceLink('');
-                      return dispatch(
-                        addExternalResource({
-                          sectionIndex: sectionIndex,
-                          lectureIndex: lectureIndex,
-                          externalResourceData: {
-                            name: externalResourceName,
-                            link: externalResourceLink,
-                          },
-                        })
-                      );
-                    }}
-                  >
-                    Add Link
-                  </Button>
-                </Grid>
+                <Formik
+                  initialValues={{ ...initialValue }}
+                  validationSchema={FORM_VALIDATION}
+                  onSubmit={(values) => {
+                    console.log('add link submit');
+                    setIsAddExternalResource(false);
+                    setInitialValue({
+                      title: '',
+                      url: '',
+                    });
+                    return dispatch(
+                      addExternalResource({
+                        sectionIndex: sectionIndex,
+                        lectureIndex: lectureIndex,
+                        externalResourceData: {
+                          ...values,
+                        },
+                      })
+                    );
+                  }}
+                >
+                  <Form>
+                    <TextField
+                      fullWidth
+                      name="title"
+                      label={'Title'}
+                      autoComplete="off"
+                      placeholder={'Add Title'}
+                    />
+                    <TextField
+                      fullWidth
+                      name="url"
+                      autoComplete="off"
+                      label={'URL'}
+                      placeholder={'https://example.com'}
+                      sx={{ mt: 2 }}
+                    />
+                    <Grid mt={3} display="flex" justifyContent={'center'}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                      >
+                        Add Link
+                      </Button>
+                    </Grid>
+                  </Form>
+                </Formik>
               </Grid>
             </Card>
           )}
         </Card>
-      ) : (
+      )}
+      {uploadVideo && (
+        <Grid container spacing={3} mt={0}>
+          <Grid item md={6}>
+            <Card elevation={0} sx={{ p: 3 }}>
+              <Typography>Upload a video</Typography>
+            </Card>
+          </Grid>
+          <Grid item md={6}>
+            <Card elevation={0} sx={{ p: 3 }}>
+              <Typography>Upload thumbnail</Typography>
+            </Card>
+          </Grid>
+        </Grid>
+      )}
+      {!externalResource && !uploadVideo && (
         <Card elevation={0} sx={{ minHeight: '200px', mt: 2, px: 2, py: 1 }}>
           <ThemeProvider theme={myTheme}>
             <MUIRichTextEditor

@@ -97,13 +97,13 @@ function Network({ wizardSmartContractData, setWizardSmartContractData }) {
                   <WizardCard
                     onClick={() => {
                       setWizardSmartContractData({
-                        typeOfContact: item.title,
+                        typeOfContract: item.title,
                       });
                     }}
                     title={wizardSmartContractData.network.subTitle}
                     item={item}
                     wizardData={wizardSmartContractData}
-                    activeContract={wizardSmartContractData?.typeOfContact}
+                    activeContract={wizardSmartContractData?.typeOfContract}
                   />
                 </Grid>
               );

@@ -25,7 +25,7 @@ function StepSetting({
   const { previous, next } = useOutletContext();
 
   let FORM_VALIDATION;
-  if (wizardData.typeOfContact === '1155') {
+  if (wizardData.typeOfContract === '1155') {
     FORM_VALIDATION = Yup.object().shape({
       smartContractName: Yup.string().required('Name is required'),
     });
@@ -57,7 +57,7 @@ function StepSetting({
               </ListItemAvatar>
               <Typography variant={'h5'}>
                 {wizardData?.network === 'Binance' ? 'BEP ' : 'ERC '}
-                {wizardSmartContractData?.typeOfContact}
+                {wizardSmartContractData?.typeOfContract}
               </Typography>
             </ListItem>
 
@@ -71,7 +71,7 @@ function StepSetting({
                 placeholder={'Enter your Name'}
                 helperText={'Please Enter your Full Name'}
               />
-              {wizardData.typeOfContact !== '1155' ? (
+              {wizardData.typeOfContract !== '1155' ? (
                 <>
                   <TextField
                     name="smartContractSymbol"

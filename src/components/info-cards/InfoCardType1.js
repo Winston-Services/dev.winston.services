@@ -12,7 +12,7 @@ export default function InfoCardType1({ data }) {
     setOpen({ ...open, [index]: !!value });
   };
   return (
-    <Grid container sx={{ mt: { xs: 10, lg: 0 } }}>
+    <Grid container>
       <Grid item xs={12} container spacing={5}>
         {data.map((service, index) => (
           <Grid
