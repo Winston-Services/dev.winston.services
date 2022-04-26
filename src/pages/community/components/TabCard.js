@@ -31,7 +31,7 @@ export default function TabCard({ data }) {
                 <Link
                   component={'span'}
                   variant="subtitle1"
-                  sx={{ color: 'white', textDecoration: 'none' }}
+                  sx={{ color: '#fff', textDecoration: 'none' }}
                   onClick={() => {}}
                 >
                   {item.user}

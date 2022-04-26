@@ -2,6 +2,7 @@ import React from 'react';
 
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { Button, Container, Grid, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as CommunityFundingIcon } from './../../assets/community_funding_icon.svg';
 import CommunityImage1 from './../../assets/community_image1.png';
@@ -17,7 +18,8 @@ import donner3 from './../../assets/donner3.svg';
 import donner4 from './../../assets/donner4.svg';
 import CommunityCard from './components/CommunityCard';
 
-function index() {
+function CommunityFunding() {
+  const navigate = useNavigate();
   const trendingItems = [
     {
       image: CommunityImage1,
@@ -141,7 +143,11 @@ function index() {
             <Typography variant="h2" mb={6.25}>
               Do you really have a creative idea?
             </Typography>
-            <Button variant="contained" color="secondary">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => navigate('/campain')}
+            >
               Start Campaign
             </Button>
           </Grid>
@@ -159,10 +165,11 @@ function index() {
             justifyContent={'space-between'}
           >
             <Typography variant="h4">Trending Campain</Typography>
-            <Button>
+            <Button endIcon={<ExpandMoreOutlinedIcon />}>View more</Button>
+            {/* <Button>
               <Typography>View more</Typography>
               <ExpandMoreOutlinedIcon />
-            </Button>
+            </Button> */}
           </Grid>
           <Grid
             container
@@ -186,10 +193,12 @@ function index() {
             justifyContent={'space-between'}
           >
             <Typography variant="h4">New Campaign</Typography>
-            <Button>
+            <Button endIcon={<ExpandMoreOutlinedIcon />}>View more</Button>
+
+            {/* <Button>
               <Typography>View more</Typography>
               <ExpandMoreOutlinedIcon />
-            </Button>
+            </Button> */}
           </Grid>
           <Grid
             container
@@ -209,4 +218,4 @@ function index() {
   );
 }
 
-export default index;
+export default CommunityFunding;

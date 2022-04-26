@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import PieChartRoundedIcon from '@mui/icons-material/PieChartRounded';
 import { Card, Typography } from '@mui/material';
-import { PieChart, Pie, Cell, Sector } from 'recharts';
+import { PieChart, Pie, Cell, Sector, ResponsiveContainer } from 'recharts';
 
 const data = [
   { name: 'Circulating Supply', value: 35240 },
@@ -112,25 +112,26 @@ function SupplyChart() {
         <PieChartRoundedIcon sx={{ mr: 1 }} />
         WNS Circulating Supply Chart
       </Typography>
-
-      <PieChart width={550} height={400}>
-        <Pie
-          activeIndex={activeIndex}
-          activeShape={renderActiveShape}
-          data={data}
-          cx={250}
-          cy={200}
-          innerRadius={90}
-          outerRadius={120}
-          fill="#4F409A"
-          dataKey="value"
-          stroke=""
-          onMouseEnter={onPieEnter}
-        >
-          <Cell key="cell-0" fill="#4F409A" />
-          <Cell key="cell-1" fill="#271D5A" />
-        </Pie>
-      </PieChart>
+      <ResponsiveContainer width={'100%'} height={400}>
+        <PieChart width={550} height={400}>
+          <Pie
+            activeIndex={activeIndex}
+            activeShape={renderActiveShape}
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={90}
+            outerRadius={120}
+            fill="#4F409A"
+            dataKey="value"
+            stroke=""
+            onMouseEnter={onPieEnter}
+          >
+            <Cell key="cell-0" fill="#4F409A" />
+            <Cell key="cell-1" fill="#271D5A" />
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
     </Card>
   );
 }

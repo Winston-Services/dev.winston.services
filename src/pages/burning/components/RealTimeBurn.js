@@ -7,7 +7,7 @@ import { ReactComponent as BurningIcon } from './../../../assets/burning_icon.sv
 
 function RealTimeBurn() {
   return (
-    <Card elevation={0} sx={{ p: 5 }}>
+    <Card elevation={0} sx={{ p: { xs: 2, sm: 3, md: 5 } }}>
       <Typography
         variant="h5"
         display={'flex'}

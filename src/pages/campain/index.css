@@ -1,0 +1,13 @@
+.campainGradient:after {
+  content: '';
+  background: linear-gradient(175.99deg, #ed8ef3 24.22%, #7968ff 67.15%);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 40%;
+  height: 100%;
+  z-index: -1;
+  border-left: 50px solid #2d2169;
+  transform: matrix(0.27, -0.93, -1.03, -0.1, 0, 0);
+  border: 50px solid #2d2169;
+}
