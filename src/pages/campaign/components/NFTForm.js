@@ -1,7 +1,16 @@
 import React from 'react';
 
-import { Container, Card, Typography, Grid, Link, Button } from '@mui/material';
-import { Form, Formik } from 'formik';
+import {
+  Container,
+  Card,
+  Typography,
+  Grid,
+  Link,
+  Button,
+  FormHelperText,
+} from '@mui/material';
+import { Form, Formik, ErrorMessage } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import CheckBox from './../../../components/common/CheckBox';
@@ -15,10 +24,18 @@ const FORM_VALIDATION = Yup.object().shape({
     .required('Name is required'),
   country: Yup.string().required('Country is required'),
   goal: Yup.string().required(' goal is required'),
-  tnc: Yup.boolean().oneOf([true], 'Message'),
+  tnc: Yup.boolean().oneOf([true], 'accept term and condition'),
 });
 
+const initialValues = {
+  title: '',
+  country: '',
+  goal: '',
+  tnc: false,
+};
+
 function NFTForm() {
+  const navigate = useNavigate();
   return (
     <Container>
       <Grid container justifyContent={'center'}>
@@ -35,14 +52,12 @@ function NFTForm() {
             <Grid pb={5}>
               <Formik
                 initialValues={{
-                  title: '',
-                  country: '',
-                  goal: '',
-                  tnc: false,
+                  ...initialValues,
                 }}
                 validationSchema={FORM_VALIDATION}
                 onSubmit={(values) => {
                   console.log(values);
+                  navigate('/campaign/user-dashboard');
                 }}
               >
                 <Form>
@@ -74,22 +89,35 @@ function NFTForm() {
                     mt={2}
                     mb={5}
                     display="flex"
-                    alignItems={'center'}
+                    flexDirection={'column'}
+                    alignItems={'start'}
                   >
-                    <CheckBox name="tnc" />
-                    <Grid item display="flex" gap={1}>
-                      <Link>
-                        <Typography variant="subtitle1">Terms</Typography>
-                      </Link>
-                      <Typography variant="subtitle1">&</Typography>
-                      <Link>
-                        <Typography variant="subtitle1">Conditions</Typography>
-                      </Link>
-                      <Typography noWrap variant="subtitle1">
-                        of Winston
-                      </Typography>
+                    <Grid display={'flex'} alignItems="center">
+                      <CheckBox name="tnc" />
+                      <Grid item display="flex" gap={1}>
+                        <Link>
+                          <Typography variant="subtitle1">Terms</Typography>
+                        </Link>
+                        <Typography variant="subtitle1">&</Typography>
+                        <Link>
+                          <Typography variant="subtitle1">
+                            Conditions
+                          </Typography>
+                        </Link>
+                        <Typography noWrap variant="subtitle1">
+                          of Winston
+                        </Typography>
+                      </Grid>
                     </Grid>
+                    {initialValues.tnc === true ? (
+                      <></>
+                    ) : (
+                      <FormHelperText error={true}>
+                        <ErrorMessage name="tnc" />
+                      </FormHelperText>
+                    )}
                   </Grid>
+
                   <Button
                     type="submit"
                     variant="contained"

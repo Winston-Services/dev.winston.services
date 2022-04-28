@@ -1,9 +1,42 @@
 import React from 'react';
 
-import { Box, Typography, Tabs, Tab, Paper, Button, Grid } from '@mui/material';
+import { Box, Typography, Tabs, Tab } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+
+import NftImage1 from './../../../assets/nft_image_1.png';
+import PromotionImage1 from './../../../assets/promotion_image_1.png';
+import FundedTab from './FundedTab';
+import MyNftTab from './MyNftTab';
+import PromotionTab from './PromotionTab';
+import WithdrawTab from './WithdrawTab';
+
+const myNftData = [
+  {
+    goal: 2000,
+    archiveInPer: 60,
+    archiveInDollar: 1200,
+    image: NftImage1,
+    title: 'Flower pot',
+    subtitle:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s',
+    viewer: 10254,
+    version: 1,
+    likes: 4,
+  },
+];
+
+const RecentPromotionData = [
+  {
+    image: PromotionImage1,
+    title: 'PsychoMolly',
+  },
+  {
+    image: PromotionImage1,
+    title: 'PsychoMolly',
+  },
+];
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,7 +72,7 @@ function a11yProps(index) {
 }
 
 function UserDashboardTabs() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -51,6 +84,7 @@ function UserDashboardTabs() {
     <Box sx={{ width: '100%', mt: 2 }}>
       <Box>
         <Tabs
+          variant="scrollable"
           value={value}
           onChange={handleChange}
           TabIndicatorProps={{ ...tabIndicatorStyle }}
@@ -62,40 +96,16 @@ function UserDashboardTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Paper
-          elevation={0}
-          sx={{
-            py: 3,
-            borderRadius: '10px',
-            mt: 3,
-          }}
-        >
-          <Typography textAlign={'center'} variant="subtitle1">
-            You have not started any Campaign
-          </Typography>
-        </Paper>
-        <Grid item textAlign={'center'}>
-          <Button
-            variant="contained"
-            color="secondary"
-            type="submit"
-            sx={{ width: { xs: '100%', sm: 'auto' }, mt: 5 }}
-            onClick={() => {
-              navigate('/campain/user-dashboard/nft-form');
-            }}
-          >
-            Started your first Campaign
-          </Button>
-        </Grid>
+        <MyNftTab myNftData={myNftData} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Coming Soon...!
+        <PromotionTab RecentPromotionData={RecentPromotionData} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Coming Soon...!
+        <FundedTab />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Coming Soon...!
+        <WithdrawTab />
       </TabPanel>
     </Box>
   );

@@ -41,7 +41,12 @@ function UploadFile(props) {
   const thumbs = (values[props.name] || []).map((file) => (
     <div key={file.name}>
       <div style={{ position: 'relative' }}>
-        <img src={URL.createObjectURL(file)} height="100%" width="100%" />
+        <img
+          src={URL.createObjectURL(file)}
+          height="465px"
+          width="575px"
+          style={{ borderRadius: '20px', objectFit: 'contain' }}
+        />
         {
           <IconButton
             style={{
