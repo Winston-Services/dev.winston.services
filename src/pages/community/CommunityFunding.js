@@ -146,7 +146,7 @@ function CommunityFunding() {
             <Button
               variant="contained"
               color="secondary"
-              onClick={() => navigate('/campain')}
+              onClick={() => navigate('/campaign')}
             >
               Start Campaign
             </Button>

@@ -2,20 +2,22 @@ import React from 'react';
 
 import {
   Box,
-  Checkbox,
   Container,
   Grid,
   Typography,
   Button,
   Link,
+  FormHelperText,
 } from '@mui/material';
-import { Form, Formik } from 'formik';
+import { Form, Formik, ErrorMessage } from 'formik';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
 
+import Checkbox from '../../components/common/CheckBox';
+import TextField from '../../components/common/TextField';
 import CampainImage from './../../assets/campain.svg';
 import Logo from './../../assets/logo.svg';
-import TextField from './../../components/common/TextField';
+import './index.css';
 
 const FORM_VALIDATION = Yup.object().shape({
   fullName: Yup.string()
@@ -25,9 +27,15 @@ const FORM_VALIDATION = Yup.object().shape({
     .required('Name is required'),
   country: Yup.string().required('Country is required'),
   pinCode: Yup.string().required(' PinCode is required'),
+  tnc: Yup.boolean().oneOf([true], 'accept term and condition'),
 });
 
-const label = { inputProps: { 'aria-label': 'checkBox' } };
+const initialValues = {
+  fullName: '',
+  country: '',
+  pinCode: '',
+  tnc: false,
+};
 
 function Campain() {
   const navigate = useNavigate();
@@ -58,15 +66,11 @@ function Campain() {
                 We are here to guid you for Crowd Funding Journey
               </Typography>
               <Formik
-                initialValues={{
-                  fullName: '',
-                  country: '',
-                  pinCode: '',
-                }}
+                initialValues={{ ...initialValues }}
                 validationSchema={FORM_VALIDATION}
                 onSubmit={(values) => {
                   console.log(values);
-                  navigate('/user-dashboard');
+                  navigate('/campaign/user-dashboard');
                 }}
               >
                 <Form>
@@ -93,18 +97,35 @@ function Campain() {
                       placeholder="Select your PinCode"
                     />
                   </Grid>
-                  <Grid container my={5} display="flex" alignItems={'center'}>
-                    <Checkbox {...label} />
-                    <Grid item display="flex" gap={1}>
-                      <Link>
-                        <Typography variant="subtitle1">Terms</Typography>
-                      </Link>
-                      <Typography variant="subtitle1">&</Typography>
-                      <Link>
-                        <Typography variant="subtitle1">Conditions</Typography>
-                      </Link>
-                      <Typography variant="subtitle1">of Winston</Typography>
+                  <Grid
+                    container
+                    my={5}
+                    display="flex"
+                    alignItems={'start'}
+                    flexDirection="column"
+                  >
+                    <Grid display={'flex'} alignItems="center">
+                      <Checkbox name="tnc" />
+                      <Grid item display="flex" gap={1}>
+                        <Link>
+                          <Typography variant="subtitle1">Terms</Typography>
+                        </Link>
+                        <Typography variant="subtitle1">&</Typography>
+                        <Link>
+                          <Typography variant="subtitle1">
+                            Conditions
+                          </Typography>
+                        </Link>
+                        <Typography variant="subtitle1">of Winston</Typography>
+                      </Grid>
                     </Grid>
+                    {initialValues.tnc === true ? (
+                      <></>
+                    ) : (
+                      <FormHelperText error={true}>
+                        <ErrorMessage name="tnc" />
+                      </FormHelperText>
+                    )}
                   </Grid>
                   <Button
                     type="submit"
@@ -139,7 +160,7 @@ function Campain() {
                 mb: 2,
                 width: { xs: '100%', md: 'auto' },
               }}
-              onClick={() => navigate('/campain/user-dashboard')}
+              onClick={() => navigate('/campaign/user-dashboard')}
             >
               Skip
             </Button>

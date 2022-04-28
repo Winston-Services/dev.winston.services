@@ -45,8 +45,8 @@ const Wiki = React.lazy(() => import('./pages/wiki'));
 const AccountActivity = React.lazy(() => import('./pages/account-activity'));
 const UserProfileRouting = React.lazy(() => import('./pages/user-profile'));
 const Holding = React.lazy(() => import('./pages/holding'));
-const CampainRouting = React.lazy(() => import('./pages/campain'));
-const Campain = React.lazy(() => import('./pages/campain/Campain'));
+const CampaignRouting = React.lazy(() => import('./pages/campaign'));
+const Campaign = React.lazy(() => import('./pages/campaign/Campaign'));
 
 export default function App() {
   const auth = useAuth();
@@ -92,8 +92,8 @@ export default function App() {
           element: getRouteWrapper(<Certificate />, false),
         },
         {
-          path: '/campain/',
-          element: getRouteWrapper(<Campain />, false),
+          path: '/campaign/',
+          element: getRouteWrapper(<Campaign />, false),
         },
       ],
     },
@@ -202,8 +202,8 @@ export default function App() {
           element: getRouteWrapper(<Holding />, false),
         },
         {
-          path: '/campain/*',
-          element: getRouteWrapper(<CampainRouting />, false),
+          path: '/campaign/*',
+          element: getRouteWrapper(<CampaignRouting />, false),
         },
       ],
     },
