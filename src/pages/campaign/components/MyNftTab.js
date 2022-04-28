@@ -69,7 +69,11 @@ function MyNftTab({ myNftData }) {
                   </Typography>
                 </Grid>
               </Grid>
-              <LinearProgress variant="determinate" value={60} />
+              <LinearProgress
+                variant="determinate"
+                value={60}
+                sx={{ background: '#271D5A' }}
+              />
               <Grid container my={3}>
                 <Grid item sm={3}>
                   <img src={item.image} alt="nft-image" width="100%" />

@@ -3,6 +3,7 @@ import React from 'react';
 import { Paper, Typography, Button, Grid, Card } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { ResponsiveContainer, AreaChart, Tooltip, Area } from 'recharts';
 
 import { ReactComponent as CursorIcon } from './../../../assets/cursor_icon.svg';
 import { ReactComponent as EyeIcon } from './../../../assets/eye_icon.svg';
@@ -25,6 +26,35 @@ const promotionData = [
   },
 ];
 
+const chartData = [
+  {
+    uv: 0,
+  },
+  {
+    uv: 12,
+  },
+  {
+    uv: 10,
+  },
+  {
+    uv: 30,
+  },
+  {
+    uv: 10,
+  },
+  {
+    uv: 60,
+  },
+  {
+    uv: 15,
+  },
+  {
+    uv: 40,
+  },
+  {
+    uv: 0,
+  },
+];
 function PromotionTab({ RecentPromotionData }) {
   const navigate = useNavigate();
   return (
@@ -148,7 +178,7 @@ function PromotionTab({ RecentPromotionData }) {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid container my={3}>
+              <Grid container mt={3}>
                 <Grid item md={5}>
                   <Grid container spacing={2}>
                     <Grid item md={3}>
@@ -177,11 +207,61 @@ function PromotionTab({ RecentPromotionData }) {
                     Edit Promotion
                   </Button>
                 </Grid>
-                <Grid item md={3}></Grid>
-                <Grid item md={4}></Grid>
+                <Grid item md={2}></Grid>
+                <Grid item md={5}>
+                  <Card elevation={0} sx={{ background: '#382C76' }}>
+                    <Grid
+                      pt={1}
+                      px={2}
+                      display="flex"
+                      justifyContent={'space-between'}
+                    >
+                      <Grid>
+                        <Typography variant="subtitle1">Invested</Typography>
+                        <Typography variant="h5">$30</Typography>
+                      </Grid>
+                      <Grid>
+                        <Typography variant="subtitle1">Spend</Typography>
+                        <Typography variant="h5">$12.50</Typography>
+                      </Grid>
+                    </Grid>
+                    <Grid height={'152px'} mb={'-5px'}>
+                      <ResponsiveContainer>
+                        <AreaChart data={chartData}>
+                          <defs>
+                            <linearGradient
+                              id={'color1'}
+                              x1="0"
+                              y1="0"
+                              x2="1"
+                              y2="0"
+                            >
+                              <stop offset="30%" stopColor="#E77C8D" />
+                              <stop offset="100%" stopColor="#E251C6" />
+                            </linearGradient>
+                          </defs>
+                          <Tooltip />
+                          <Area
+                            strokeOpacity={0}
+                            type="monotone"
+                            dataKey="uv"
+                            fillOpacity={1}
+                            fill="url(#color1)"
+                          />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </Grid>
+                  </Card>
+                </Grid>
               </Grid>
             </Card>
           ))}
+
+          <Grid mt={3} textAlign="center">
+            <Button variant="contained" color="secondary">
+              Promote Another NFT
+            </Button>
+          </Grid>
         </Grid>
       )}
     </Grid>

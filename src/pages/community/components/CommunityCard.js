@@ -5,7 +5,6 @@ import {
   Grid,
   Card,
   CardMedia,
-  CardContent,
   Typography,
   IconButton,
   Box,
@@ -13,7 +12,6 @@ import {
   Avatar,
   Chip,
   Link,
-  CardActionArea,
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -22,78 +20,76 @@ function CommunityCard({ item }) {
   const navigate = useNavigate();
   return (
     <Card sx={{ position: 'relative' }} elevation={0}>
-      <CardActionArea>
-        <Box>
-          <CardMedia
-            component="img"
-            height="300px"
-            image={item.image}
-            alt="green iguana"
-            onClick={() => {
-              navigate('/community-funding/community-details');
-            }}
-          />
-        </Box>
-        <Grid className="product-chip">
-          <Chip variant="filled" label={item.category} />
-        </Grid>
+      <Box>
+        <CardMedia
+          component="img"
+          height="300px"
+          image={item.image}
+          alt="green iguana"
+          onClick={() => {
+            navigate('/community-funding/community-details');
+          }}
+        />
+      </Box>
+      <Grid className="product-chip">
+        <Chip variant="filled" label={item.category} />
+      </Grid>
 
-        <CardContent sx={{ pb: 3 }}>
-          <Grid container rowGap={1}>
-            <Grid
-              item
-              xs={12}
-              display="flex"
-              justifyContent="space-between"
-              alignItems={'center'}
-            >
-              {/* <Typography variant="h6">{item.title}</Typography> */}
-              <Link
-                onClick={() => {
-                  navigate('/community-funding/community-details');
-                }}
-                variant="h6"
-              >
-                {item.title}
-              </Link>
-              <IconButton>
-                <FavoriteBorderIcon />
-              </IconButton>
-            </Grid>
-            <Grid
+      <Grid p={2}>
+        <Grid container rowGap={1}>
+          <Grid
+            item
+            xs={12}
+            display="flex"
+            justifyContent="space-between"
+            alignItems={'center'}
+          >
+            {/* <Typography variant="h6">{item.title}</Typography> */}
+            <Link
               onClick={() => {
                 navigate('/community-funding/community-details');
               }}
+              variant="h6"
             >
-              <Typography variant="subtitle2">{item.subtitle}</Typography>
-              <Grid display={'flex'} alignItems="center" gap={2} mt={1}>
-                <Typography variant="h5">${item.fundRaised}</Typography>
-                <Typography variant="subtitle2" sx={{ color: '#FFD215' }}>
-                  Funds Raised
-                </Typography>
-              </Grid>
-            </Grid>
+              {item.title}
+            </Link>
+            <IconButton>
+              <FavoriteBorderIcon />
+            </IconButton>
           </Grid>
           <Grid
-            display={'flex'}
-            justifyContent={'space-between'}
-            alignItems={'center'}
-            mt={1}
+            onClick={() => {
+              navigate('/community-funding/community-details');
+            }}
           >
-            <AvatarGroup>
-              {item.donners.map((donner) => (
-                <Avatar
-                  className="borderNone"
-                  key={donner.name}
-                  alt={donner.name}
-                  src={donner.avatar}
-                />
-              ))}
-            </AvatarGroup>
-            <Typography>{item.donners.length} donners</Typography>
+            <Typography variant="subtitle2">{item.subtitle}</Typography>
+            <Grid display={'flex'} alignItems="center" gap={2} mt={1}>
+              <Typography variant="h5">${item.fundRaised}</Typography>
+              <Typography variant="subtitle2" sx={{ color: '#FFD215' }}>
+                Funds Raised
+              </Typography>
+            </Grid>
           </Grid>
-        </CardContent>
-      </CardActionArea>
+        </Grid>
+        <Grid
+          display={'flex'}
+          justifyContent={'space-between'}
+          alignItems={'center'}
+          mt={1}
+        >
+          <AvatarGroup>
+            {item.donners.map((donner) => (
+              <Avatar
+                className="borderNone"
+                key={donner.name}
+                alt={donner.name}
+                src={donner.avatar}
+              />
+            ))}
+          </AvatarGroup>
+          <Typography>{item.donners.length} donners</Typography>
+        </Grid>
+      </Grid>
     </Card>
   );
 }
