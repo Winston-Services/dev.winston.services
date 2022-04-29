@@ -8,11 +8,32 @@ import {
   Button,
   Container,
 } from '@mui/material';
+import { Form, Formik } from 'formik';
+import * as Yup from 'yup';
 
-import DropDown2 from './../../components/common/DropDown2';
+import DropDown from './../../components/common/DropDown';
+import FormTextField from './../../components/common/TextField';
 import SwapTable from './SwapTable';
 
+const FORM_VALIDATION = Yup.object().shape({
+  token: Yup.string().required(' Token is required'),
+  address: Yup.string().required(' Token is required'),
+  amount: Yup.string().required(' Token is required'),
+});
+
 export default function Swapping() {
+  const [initialValues1] = React.useState({
+    network: 'Network',
+    token: '',
+    address: '',
+    amount: '',
+  });
+  const [initialValues2] = React.useState({
+    network: 'Network',
+    token: '',
+    address: '',
+    amount: '',
+  });
   return (
     <Container>
       <Grid container spacing={8} justifyContent={'center'}>
@@ -22,62 +43,126 @@ export default function Swapping() {
         <Grid item container spacing={4}>
           <Grid item sm={12} lg={6}>
             <Card sx={{ p: 4 }}>
-              <Grid container spacing={3}>
-                <Grid item xs={12}>
-                  <Typography variant="h5">Swap From</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <DropDown2 label="Network" option="" placeholder="Network" />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField fullWidth label="Token" placeholder="Token" />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Address"
-                    placeholder="Token Address"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField fullWidth label="Amount" placeholder="Amount" />
-                </Grid>
-                <Grid item xs={12} textAlign={'center'}>
-                  <Button variant="contained" color="secondary">
-                    Confirm
-                  </Button>
-                </Grid>
-              </Grid>
+              <Formik
+                initialValues={{
+                  ...initialValues1,
+                }}
+                validationSchema={FORM_VALIDATION}
+                onSubmit={(values) => {
+                  console.log(values);
+                }}
+              >
+                <Form>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                      <Typography variant="h5">Swap From</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <DropDown
+                        label="Network"
+                        name="network"
+                        options={['Network']}
+                        placeholder="Network"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormTextField
+                        name="token"
+                        fullWidth
+                        label="Token"
+                        placeholder="Token"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormTextField
+                        name="address"
+                        fullWidth
+                        label="Address"
+                        placeholder="Token Address"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormTextField
+                        name="amount"
+                        fullWidth
+                        label="Amount"
+                        placeholder="Amount"
+                      />
+                    </Grid>
+                    <Grid item xs={12} textAlign={'center'}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                      >
+                        Confirm
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Form>
+              </Formik>
             </Card>
           </Grid>
           <Grid item sm={12} lg={6}>
             <Card sx={{ p: 4 }}>
-              <Grid container spacing={3}>
-                <Grid item xs={12}>
-                  <Typography variant="h5">Swap To</Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <DropDown2 label="Network" option="" placeholder="Network" />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField fullWidth label="Token" placeholder="Token" />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Address"
-                    placeholder="Token Address"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField fullWidth label="Amount" placeholder="Amount" />
-                </Grid>
-                <Grid item xs={12} textAlign={'center'}>
-                  <Button variant="contained" color="secondary">
-                    Confirm
-                  </Button>
-                </Grid>
-              </Grid>
+              <Formik
+                initialValues={{
+                  ...initialValues2,
+                }}
+                validationSchema={FORM_VALIDATION}
+                onSubmit={(values) => {
+                  console.log(values);
+                }}
+              >
+                <Form>
+                  <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                      <Typography variant="h5">Swap To</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <DropDown
+                        label="Network"
+                        name="network"
+                        options={['Network']}
+                        placeholder="Network"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormTextField
+                        name="token"
+                        fullWidth
+                        label="Token"
+                        placeholder="Token"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormTextField
+                        name="address"
+                        fullWidth
+                        label="Address"
+                        placeholder="Token Address"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <FormTextField
+                        name="amount"
+                        fullWidth
+                        label="Amount"
+                        placeholder="Amount"
+                      />
+                    </Grid>
+                    <Grid item xs={12} textAlign={'center'}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                      >
+                        Confirm
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Form>
+              </Formik>
             </Card>
           </Grid>
         </Grid>
@@ -109,7 +194,7 @@ export default function Swapping() {
                 >
                   <Typography>Filter:</Typography>
                   <TextField
-                    sx={{ backgroundColor: '#271D5A' }}
+                    sx={{ backgroundColor: '#271D5A', borderRadius: '5px' }}
                     variant="standard"
                     hiddenLabel
                     fullWidth
@@ -120,7 +205,7 @@ export default function Swapping() {
                     }}
                   />
                   <TextField
-                    sx={{ backgroundColor: '#271D5A' }}
+                    sx={{ backgroundColor: '#271D5A', borderRadius: '5px' }}
                     variant="standard"
                     hiddenLabel
                     fullWidth

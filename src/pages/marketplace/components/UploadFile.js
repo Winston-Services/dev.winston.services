@@ -8,6 +8,8 @@ import {
   Typography,
   FormHelperText,
   IconButton,
+  Box,
+  CircularProgress,
 } from '@mui/material';
 import { useFormikContext, ErrorMessage } from 'formik';
 import { PropTypes } from 'prop-types';
@@ -15,8 +17,53 @@ import { useDropzone } from 'react-dropzone';
 
 import { ReactComponent as UploadImage } from './../../../assets/upload_image.svg';
 
+function CircularProgressWithLabel(props) {
+  return (
+    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+      <CircularProgress variant="determinate" {...props} />
+      <Box
+        sx={{
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          position: 'absolute',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Typography variant="caption" component="div" color="text.secondary">
+          {`${Math.round(props.value)}%`}
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
+
+CircularProgressWithLabel.propTypes = {
+  /**
+   * The value of the progress indicator for the determinate variant.
+   * Value between 0 and 100.
+   * @default 0
+   */
+  value: PropTypes.number.isRequired,
+};
+
 function UploadFile(props) {
   const { values, setFieldValue } = useFormikContext();
+  const [progress, setProgress] = React.useState(20);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) =>
+        prevProgress >= 100 ? 0 : prevProgress + 20
+      );
+    }, 800);
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
     noClick: !values,
@@ -41,28 +88,34 @@ function UploadFile(props) {
   const thumbs = (values[props.name] || []).map((file) => (
     <div key={file.name}>
       <div style={{ position: 'relative' }}>
-        <img
-          src={URL.createObjectURL(file)}
-          height="465px"
-          width="575px"
-          style={{ borderRadius: '20px', objectFit: 'contain' }}
-        />
-        {
-          <IconButton
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '25px',
-              borderRadius: '20px',
-            }}
-            sx={{ fontSize: 30, color: 'red' }}
-            onClick={() => {
-              setFieldValue(props.name, '');
-            }}
-          >
-            <Cancel />
-          </IconButton>
-        }
+        {progress === 100 ? (
+          <>
+            <img
+              src={URL.createObjectURL(file)}
+              height="465px"
+              width="575px"
+              style={{ borderRadius: '20px', objectFit: 'contain' }}
+            />
+            {
+              <IconButton
+                style={{
+                  position: 'absolute',
+                  top: '20px',
+                  right: '25px',
+                  borderRadius: '20px',
+                }}
+                sx={{ fontSize: 30, color: 'red' }}
+                onClick={() => {
+                  setFieldValue(props.name, '');
+                }}
+              >
+                <Cancel />
+              </IconButton>
+            }
+          </>
+        ) : (
+          <CircularProgressWithLabel value={progress} />
+        )}
       </div>
     </div>
   ));

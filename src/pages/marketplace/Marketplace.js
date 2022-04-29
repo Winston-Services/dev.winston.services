@@ -33,7 +33,7 @@ const items = [
   {
     image: NftMarketPlace2,
     id: 5161,
-    name: 'PsychoMolly',
+    name: 'Abc',
     price: 59,
     startBid: 15,
     endBidIn: 5,
@@ -41,7 +41,7 @@ const items = [
   {
     image: NftMarketPlace3,
     id: 5161,
-    name: 'PsychoMolly',
+    name: 'Def',
     price: 59,
     startBid: 15,
     endBidIn: 5,
@@ -49,7 +49,7 @@ const items = [
   {
     image: NftMarketPlace4,
     id: 5161,
-    name: 'PsychoMolly',
+    name: 'Ghi',
     price: 59,
     startBid: 15,
     endBidIn: 5,
@@ -57,7 +57,7 @@ const items = [
   {
     image: NftMarketPlace5,
     id: 5161,
-    name: 'PsychoMolly',
+    name: 'Jkl',
     price: 59,
     startBid: 15,
     endBidIn: 5,
@@ -65,7 +65,7 @@ const items = [
   {
     image: NftMarketPlace1,
     id: 5161,
-    name: 'PsychoMolly',
+    name: 'Mno',
     price: 59,
     startBid: 15,
     endBidIn: 5,

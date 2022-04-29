@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, Container, Grid, Typography } from '@mui/material';
+import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router';
 
 import AcademyIcon from './../../assets/academy_icon.svg';
@@ -8,7 +9,7 @@ import AcademyImage from './../../assets/academy_image.svg';
 import { ReactComponent as BeginnerIcon } from './../../assets/beginner_icon.svg';
 import { ReactComponent as ExpertIcon } from './../../assets/expert_icon.svg';
 import { ReactComponent as IntermediateIcon } from './../../assets/intermediate_icon.svg';
-import DropDown2 from './../../components/common/DropDown2';
+import DropDown from './../../components/common/DropDown';
 import AcademyCard from './components/AcademyCard';
 
 const academyData = [
@@ -75,6 +76,10 @@ const academyData = [
 ];
 
 function Academy() {
+  const [initialValues] = React.useState({
+    topic: 'Altcoin',
+    difficulty: 'Beginner',
+  });
   const navigate = useNavigate();
   return (
     <Container>
@@ -109,55 +114,72 @@ function Academy() {
       <Typography variant="h3" mt={12.5} textAlign="center">
         Academy
       </Typography>
-      <Grid container spacing={4} mt={3}>
-        <Grid item xs={12} sm={6} md={4}>
-          <DropDown2
-            options={[
-              'Altcoin',
-              'Binance',
-              'Bitcoin',
-              'Blockchain',
-              'Consensus',
-              'Cryptography',
-              'DeFi',
-            ]}
-            placeholder={'Select Topics'}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4}>
-          <DropDown2
-            options={['Beginner', 'Intermediate', 'Expert']}
-            placeholder={'Select Difficulty'}
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Grid container columnSpacing={3}>
-            <Grid item xs={6}>
-              <Button
-                variant="contained"
-                color="secondary"
-                sx={{ width: '100%' }}
-              >
-                Apply Filter
-              </Button>
+      <Formik
+        initialValues={{
+          ...initialValues,
+        }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+      >
+        <Form>
+          <Grid container spacing={4} mt={3}>
+            <Grid item xs={12} sm={6} md={4}>
+              <DropDown
+                name="topic"
+                options={[
+                  'Altcoin',
+                  'Binance',
+                  'Bitcoin',
+                  'Blockchain',
+                  'Consensus',
+                  'Cryptography',
+                  'DeFi',
+                ]}
+                label="Select Topics"
+                placeholder={'Select Topics'}
+              />
             </Grid>
-            <Grid item xs={6}>
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ width: '100%' }}
-              >
-                Clear Filter
-              </Button>
+            <Grid item xs={12} sm={6} md={4}>
+              <DropDown
+                name="difficulty"
+                label="Select Difficulty"
+                options={['Beginner', 'Intermediate', 'Expert']}
+                placeholder={'Select Difficulty'}
+              />
             </Grid>
+            <Grid item xs={12} md={4}>
+              <Grid container columnSpacing={3}>
+                <Grid item xs={6}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="secondary"
+                    sx={{ width: '100%' }}
+                  >
+                    Apply Filter
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{ width: '100%' }}
+                  >
+                    Clear Filter
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
+
+            {academyData.map((item, index) => (
+              <Grid item xs={12} sm={6} md={4} lg={4} key={item.title + index}>
+                <AcademyCard item={item} />
+              </Grid>
+            ))}
           </Grid>
-        </Grid>
-        {academyData.map((item, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={4} key={item.title + index}>
-            <AcademyCard item={item} />
-          </Grid>
-        ))}
-      </Grid>
+        </Form>
+      </Formik>
     </Container>
   );
 }

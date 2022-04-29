@@ -14,6 +14,7 @@ import BinanceSmartChain from '../../assets/binance_smart_chain.svg';
 import coinDrop from '../../assets/coinDrop.png';
 import EthereumSmall from '../../assets/ethereum_small.svg';
 import Litecoin from '../../assets/litecoin.svg';
+import { debounce } from '../../components/common/CommonFunction';
 import Table from '../../components/common/Table';
 import TokenTable from './TokenTable';
 
@@ -114,6 +115,25 @@ const rowsFaucet = [
 ];
 
 export default function Faucet() {
+  const [searchInput, setSearchInput] = React.useState('');
+  const [searchData, setSearchData] = React.useState(rowsFaucet);
+
+  React.useEffect(() => {
+    debounce(
+      () =>
+        setSearchData(
+          searchInput
+            ? rowsFaucet.filter((row) => {
+                return row.coin
+                  .toLowerCase()
+                  .includes(searchInput.toLowerCase());
+              })
+            : rowsFaucet
+        ),
+      500
+    );
+  }, [searchInput]);
+
   return (
     <Container>
       <Grid container>
@@ -170,6 +190,8 @@ export default function Faucet() {
                 </Grid>
                 <Grid item>
                   <TextField
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
                     sx={{
                       backgroundColor: '#271D5A',
                       mt: { xs: 1.5, sm: 0 },
@@ -192,7 +214,13 @@ export default function Faucet() {
               </Grid>
             </Grid>
             <Grid item xs={12} mt={2} pb={3}>
-              <Table columns={columns} rows={rowsFaucet} />
+              {searchData && searchData.length !== 0 ? (
+                <Table columns={columns} rows={searchData} />
+              ) : (
+                <Typography textAlign={'center'}>
+                  No results for &apos;{searchInput}&apos;
+                </Typography>
+              )}
             </Grid>
           </Card>
         </Grid>

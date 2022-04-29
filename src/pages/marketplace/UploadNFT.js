@@ -153,9 +153,9 @@ function UploadNFT() {
     },
   });
 
-  React.useEffect(() => {
-    console.log(initialValue);
-  }, [initialValue]);
+  // React.useEffect(() => {
+  //   console.log(initialValue);
+  // }, [initialValue]);
 
   return (
     <Container>
@@ -167,7 +167,7 @@ function UploadNFT() {
         onSubmit={(values) => {
           console.log('submit method call');
           console.log(values);
-          navigate('/user-profile/upload-nft/nft-created');
+          return navigate('/user-profile/upload-nft/nft-created');
         }}
       >
         {(props) => {
@@ -418,8 +418,12 @@ function UploadNFT() {
                                     }
                                     options={item.options}
                                     placeholder={item.title}
-                                    onChange={(value) =>
-                                      setInitialValue({
+                                    onChange={(value) => {
+                                      props.setFieldValue(
+                                        'selectedProperties',
+                                        true
+                                      );
+                                      return setInitialValue({
                                         ...initialValue,
                                         properties: {
                                           ...initialValue.properties,
@@ -430,9 +434,8 @@ function UploadNFT() {
                                             [item.name]: value,
                                           },
                                         },
-                                        selectedProperties: true,
-                                      })
-                                    }
+                                      });
+                                    }}
                                   />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -586,5 +589,6 @@ function UploadNFT() {
 
 UploadNFT.propTypes = {
   setFieldValue: PropTypes.func,
+  errors: PropTypes.object,
 };
 export default UploadNFT;

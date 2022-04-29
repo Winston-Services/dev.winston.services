@@ -8,6 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Typography, TextField, InputAdornment, Grid } from '@mui/material';
 import { styled } from '@mui/system';
 
+import { debounce } from '../../../components/common/CommonFunction';
 import Table from '../../../components/common/Table';
 
 const Tab = styled(TabUnstyled)`
@@ -84,7 +85,7 @@ const balanceHistoryRows = [
     id: 2,
     date: '13-03-2022',
     type: 'NFT Biding',
-    item: 'PsychoMolly #3671',
+    item: 'Abc #3671',
     buyer: 'DemoTest',
     amount: '$1500',
     status: 'Received',
@@ -93,7 +94,7 @@ const balanceHistoryRows = [
     id: 3,
     date: '13-03-2022',
     type: 'NFT Biding',
-    item: 'PsychoMolly #3671',
+    item: 'Xyz #3671',
     buyer: 'DemoTest',
     amount: '$1500',
     status: 'Received',
@@ -141,7 +142,7 @@ const purchaseHistoryRows = [
     id: 2,
     date: '13-03-2022',
     order: 'NFT Biding',
-    item: 'PsychoMolly #3671',
+    item: 'Pqr #3671',
     seller: 'DemoTest',
     paymentMethod: 'Cash',
     status: 'Debited',
@@ -150,13 +151,37 @@ const purchaseHistoryRows = [
     id: 3,
     date: '13-03-2022',
     order: 'NFT Biding',
-    item: 'PsychoMolly #3671',
+    item: 'Mnq #3671',
     seller: 'DemoTest',
     paymentMethod: 'Cash',
     status: 'Debited',
   },
 ];
 export default function HistoryTab() {
+  const [searchInput, setSearchInput] = React.useState('');
+  const [searchData, setSearchData] = React.useState(balanceHistoryRows);
+  const [isHistory, setIsHistory] = React.useState(true);
+
+  React.useEffect(() => {
+    debounce(
+      () =>
+        setSearchData(
+          searchInput
+            ? (isHistory ? balanceHistoryRows : purchaseHistoryRows).filter(
+                (row) => {
+                  return row.item
+                    .toLowerCase()
+                    .includes(searchInput.toLowerCase());
+                }
+              )
+            : isHistory
+            ? balanceHistoryRows
+            : purchaseHistoryRows
+        ),
+      500
+    );
+  }, [isHistory, searchInput]);
+
   return (
     <TabsUnstyled defaultValue={0} style={{ width: '100%' }}>
       <Grid
@@ -169,16 +194,32 @@ export default function HistoryTab() {
       >
         <Grid item>
           <TabsList>
-            <Tab>
+            <Tab
+              onClick={() => {
+                setIsHistory(true);
+                setSearchInput('');
+                setSearchData(balanceHistoryRows);
+                return;
+              }}
+            >
               <Typography variant="subtitle2">Balance History</Typography>
             </Tab>
-            <Tab>
+            <Tab
+              onClick={() => {
+                setIsHistory(false);
+                setSearchInput('');
+                setSearchData(purchaseHistoryRows);
+                return;
+              }}
+            >
               <Typography variant="subtitle2">Purchase History</Typography>
             </Tab>
           </TabsList>
         </Grid>
         <Grid item>
           <TextField
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
             variant="standard"
             hiddenLabel
             fullWidth
@@ -201,10 +242,22 @@ export default function HistoryTab() {
         </Grid>
       </Grid>
       <TabPanel value={0}>
-        <Table rows={purchaseHistoryRows} columns={purchaseHistoryColumns} />
+        {searchData && searchData.length !== 0 ? (
+          <Table rows={searchData} columns={balanceHistoryColumns} />
+        ) : (
+          <Typography textAlign={'center'}>
+            No results for &apos;{searchInput}&apos;
+          </Typography>
+        )}
       </TabPanel>
       <TabPanel value={1}>
-        <Table rows={balanceHistoryRows} columns={balanceHistoryColumns} />
+        {searchData && searchData.length !== 0 ? (
+          <Table rows={searchData} columns={purchaseHistoryColumns} />
+        ) : (
+          <Typography textAlign={'center'}>
+            No results for &apos;{searchInput}&apos;
+          </Typography>
+        )}
       </TabPanel>
     </TabsUnstyled>
   );
