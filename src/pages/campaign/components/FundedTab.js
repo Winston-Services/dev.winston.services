@@ -100,7 +100,10 @@ function FundedTab() {
                     </Grid>
                   </Grid>
                   <Grid>
-                    <Button variant="outlined" sx={{ py: 1 }}>
+                    <Button
+                      variant="outlined"
+                      sx={{ py: 1, display: { xs: 'none', sm: 'block' } }}
+                    >
                       View Details
                     </Button>
                   </Grid>
@@ -145,7 +148,10 @@ function FundedTab() {
                     </Grid>
                   </Grid>
                   <Grid>
-                    <Button variant="outlined" sx={{ py: 1 }}>
+                    <Button
+                      variant="outlined"
+                      sx={{ py: 1, display: { xs: 'none', sm: 'block' } }}
+                    >
                       View Details
                     </Button>
                   </Grid>
@@ -190,7 +196,10 @@ function FundedTab() {
                     </Grid>
                   </Grid>
                   <Grid>
-                    <Button variant="outlined" sx={{ py: 1 }}>
+                    <Button
+                      variant="outlined"
+                      sx={{ py: 1, display: { xs: 'none', sm: 'block' } }}
+                    >
                       View Details
                     </Button>
                   </Grid>

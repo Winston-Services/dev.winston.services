@@ -42,8 +42,8 @@ function ProductCardDetails() {
   }, [isSticky]);
 
   return (
-    <Container>
-      <Grid container sx={{ mt: { xs: 4, md: 12 } }}>
+    <Container sx={{ pb: 3 }}>
+      <Grid>
         <Grid item lg={12} sx={{ display: { xs: 'none', md: 'block' } }}>
           <Button
             sx={{ px: 3, py: 1.5 }}

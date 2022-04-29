@@ -9,14 +9,29 @@ import {
   Paper,
   Button,
 } from '@mui/material/';
-import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as EyeIcon } from './../../../assets/eye_icon.svg';
 import { ReactComponent as LikeIcon } from './../../../assets/like_icon.svg';
+import NftImage1 from './../../../assets/nft_image_1.png';
 import { ReactComponent as VersionIcon } from './../../../assets/version_icon.svg';
 
-function MyNftTab({ myNftData }) {
+const myNftData = [
+  {
+    goal: 2000,
+    archiveInPer: 60,
+    archiveInDollar: 1200,
+    image: NftImage1,
+    title: 'Flower pot',
+    subtitle:
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s',
+    viewer: 10254,
+    version: 1,
+    likes: 4,
+  },
+];
+
+function MyNftTab() {
   const navigate = useNavigate();
   return (
     <Grid>
@@ -78,18 +93,11 @@ function MyNftTab({ myNftData }) {
                 <Grid item sm={3}>
                   <img src={item.image} alt="nft-image" width="100%" />
                 </Grid>
-                <Grid
-                  item
-                  sm={9}
-                  sx={{ px: { xs: 0.5, sm: 3 }, mt: { xs: 1, sm: 0 } }}
-                  display="flex"
-                  flexDirection={'column'}
-                  justifyContent="space-between"
-                >
+                <Grid item sm={9} sx={{ px: { xs: 0, sm: 3 }, mt: 1 }}>
                   <Typography sx={{ fontSize: '22px' }}>
                     {item.title}
                   </Typography>
-                  <Typography sx={{ fontSize: '13px', my: { xs: 1, sm: 0.5 } }}>
+                  <Typography sx={{ fontSize: '13px', my: 2.5 }}>
                     {item.subtitle}
                   </Typography>
                   <Grid container>
@@ -99,7 +107,7 @@ function MyNftTab({ myNftData }) {
                     container
                     display={'flex'}
                     justifyContent={'space-between'}
-                    sx={{ my: { xs: 1, sm: 0.5 } }}
+                    mt={2.5}
                   >
                     <Grid item>
                       <Grid container gap={2}>
@@ -143,11 +151,15 @@ function MyNftTab({ myNftData }) {
                         </Grid>
                       </Grid>
                     </Grid>
-                    <Grid item>
+                    <Grid
+                      item
+                      mt={2.5}
+                      sx={{ width: { xs: '100%', sm: 'auto' } }}
+                    >
                       <Button
                         variant="contained"
                         color="secondary"
-                        sx={{ mt: { xs: 1, sm: 0 } }}
+                        sx={{ width: { xs: '100%', sm: 'auto' } }}
                       >
                         Edit NFT fund
                       </Button>
@@ -162,9 +174,5 @@ function MyNftTab({ myNftData }) {
     </Grid>
   );
 }
-
-MyNftTab.propTypes = {
-  myNftData: PropTypes.array,
-};
 
 export default MyNftTab;

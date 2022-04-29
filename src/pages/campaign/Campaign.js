@@ -48,7 +48,7 @@ function Campain() {
       />
       <Container maxWidth="xl" sx={{ margin: 'auto' }}>
         <Grid container sx={{ display: 'flex', msFlexDirection: 'column' }}>
-          <Grid item md={12} lg={4}>
+          <Grid item lg={4}>
             <Box
               component="img"
               src={Logo}
@@ -131,7 +131,7 @@ function Campain() {
                     type="submit"
                     variant="contained"
                     color="secondary"
-                    sx={{ width: { xs: '100%', md: 'auto' } }}
+                    sx={{ width: { xs: '100%', sm: 'auto' } }}
                   >
                     Next
                   </Button>
@@ -142,12 +142,12 @@ function Campain() {
           <Grid item md={0} lg={2}></Grid>
           <Grid
             item
-            xs={12}
-            sm={10.5}
             lg={6}
-            display="flex"
             flexDirection="column"
-            sx={{ alignItems: { xs: 'start', lg: 'end' } }}
+            sx={{
+              alignItems: 'end',
+              display: { xs: 'none', lg: 'flex' },
+            }}
           >
             <Grid item mt={14} sx={{ display: { xs: 'none', lg: 'block' } }}>
               <img src={CampainImage} alt="campain-image" width="100%" />
@@ -157,8 +157,6 @@ function Campain() {
               variant="outlined"
               sx={{
                 mt: { xs: 2, sm: 4.7 },
-                mb: 2,
-                width: { xs: '100%', md: 'auto' },
               }}
               onClick={() => navigate('/campaign/user-dashboard')}
             >

@@ -97,7 +97,8 @@ function WithdrawTab() {
                 <defs>
                   <linearGradient id={'color1'} x1="0" y1="0" x2="1" y2="0">
                     <stop offset="30%" stopColor="#E77C8D" />
-                    <stop offset="100%" stopColor="#E251C6" />
+                    <stop offset="65%" stopColor="#E251C6" />
+                    <stop offset="100%" stopColor="#A764E5" />
                   </linearGradient>
                 </defs>
                 <Tooltip />

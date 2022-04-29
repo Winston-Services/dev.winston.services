@@ -1,10 +1,10 @@
 import React from 'react';
 
-import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import { ExpandMoreOutlined, ArrowRight } from '@mui/icons-material/';
 import { Button, Container, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import { ReactComponent as CommunityFundingIcon } from './../../assets/community_funding_icon.svg';
+import CommunityFundingIcon from './../../assets/community_funding_icon.svg';
 import CommunityImage1 from './../../assets/community_image1.png';
 import CommunityImage2 from './../../assets/community_image2.png';
 import CommunityImage3 from './../../assets/community_image3.png';
@@ -137,81 +137,85 @@ function CommunityFunding() {
   ];
   return (
     <Container>
-      <Grid container spacing={8}>
-        <Grid container item display={'flex'} alignItems="center">
-          <Grid item md={6} lg={6}>
-            <Typography variant="h2" mb={6.25}>
-              Do you really have a creative idea?
-            </Typography>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => navigate('/campaign')}
-            >
-              Start Campaign
-            </Button>
-          </Grid>
-          <Grid item md={6} lg={6}>
-            <CommunityFundingIcon />
+      <Grid container display={'flex'} alignItems="center" spacing={3}>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h2" mb={6.25}>
+            Do you really have a creative idea?
+          </Typography>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => navigate('/campaign')}
+            sx={{ width: { xs: '100%', sm: 'auto' } }}
+          >
+            Start Campaign
+          </Button>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <img src={CommunityFundingIcon} width="100%" />
+        </Grid>
+      </Grid>
+
+      <Grid mt={{ xs: 6, md: 12 }}>
+        <Grid
+          display={'flex'}
+          justifyContent={'space-between'}
+          alignItems="center"
+        >
+          <Typography variant="h3">Trending Campaign</Typography>
+          <Grid display={{ xs: 'none', sm: 'block' }}>
+            <Button endIcon={<ExpandMoreOutlined />}>View more</Button>
           </Grid>
         </Grid>
-
-        <Grid container item>
-          <Grid
-            item
-            sm={12}
-            lg={12}
-            display={'flex'}
-            justifyContent={'space-between'}
+        <Grid
+          container
+          mt={2}
+          rowSpacing={2}
+          columnSpacing={{ xs: 2, md: 2, lg: 4 }}
+        >
+          {trendingItems.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={item + index}>
+              <CommunityCard item={item} />
+            </Grid>
+          ))}
+        </Grid>
+        <Grid display={{ xs: 'block', sm: 'none' }} mt={3}>
+          <Button
+            variant="contained"
+            sx={{ width: '100%' }}
+            endIcon={<ArrowRight />}
           >
-            <Typography variant="h4">Trending Campain</Typography>
-            <Button endIcon={<ExpandMoreOutlinedIcon />}>View more</Button>
-            {/* <Button>
-              <Typography>View more</Typography>
-              <ExpandMoreOutlinedIcon />
-            </Button> */}
-          </Grid>
-          <Grid
-            container
-            mt={4}
-            rowSpacing={2}
-            columnSpacing={{ xs: 2, md: 2, lg: 4 }}
-          >
-            {trendingItems.map((item, index) => (
-              <Grid item xs={12} sm={6} md={6} lg={3} key={item + index}>
-                <CommunityCard item={item} />
-              </Grid>
-            ))}
+            View more
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid mt={{ xs: 6, md: 12 }}>
+        <Grid display={'flex'} justifyContent={'space-between'}>
+          <Typography variant="h3">New Campaign</Typography>
+          <Grid display={{ xs: 'none', sm: 'block' }}>
+            <Button endIcon={<ExpandMoreOutlined />}>View more</Button>
           </Grid>
         </Grid>
-        <Grid container item>
-          <Grid
-            item
-            sm={12}
-            lg={12}
-            display={'flex'}
-            justifyContent={'space-between'}
+        <Grid
+          container
+          mt={2}
+          rowSpacing={2}
+          columnSpacing={{ xs: 2, md: 2, lg: 4 }}
+        >
+          {newCampaignItems.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={item + index}>
+              <CommunityCard item={item} />
+            </Grid>
+          ))}
+        </Grid>
+        <Grid display={{ xs: 'block', sm: 'none' }} mt={3}>
+          <Button
+            variant="contained"
+            sx={{ width: '100%' }}
+            endIcon={<ArrowRight />}
           >
-            <Typography variant="h4">New Campaign</Typography>
-            <Button endIcon={<ExpandMoreOutlinedIcon />}>View more</Button>
-
-            {/* <Button>
-              <Typography>View more</Typography>
-              <ExpandMoreOutlinedIcon />
-            </Button> */}
-          </Grid>
-          <Grid
-            container
-            mt={4}
-            rowSpacing={2}
-            columnSpacing={{ xs: 2, md: 2, lg: 4 }}
-          >
-            {newCampaignItems.map((item, index) => (
-              <Grid item xs={12} sm={6} md={6} lg={3} key={item + index}>
-                <CommunityCard item={item} />
-              </Grid>
-            ))}
-          </Grid>
+            View more
+          </Button>
         </Grid>
       </Grid>
     </Container>
