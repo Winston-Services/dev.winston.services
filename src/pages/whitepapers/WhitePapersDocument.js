@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Container, Typography, Grid, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import pdfFile from './../../pdf/sample.pdf';
 
 function WhitePapersDocument() {
-  const [defaultPdfFile] = useState(pdfFile);
+  const [defaultPdfFile] = React.useState(pdfFile);
   const navigate = useNavigate();
+  const pdfRef = React.createRef();
 
   return (
     <Container>
@@ -31,13 +32,23 @@ function WhitePapersDocument() {
         sx={{ width: '100%' }}
       >
         <Typography variant="h3">Winston Whitepaper</Typography>
-        <Grid display={'flex'} gap={2} sx={{ cursor: 'pointer' }}>
+        <Grid
+          display={'flex'}
+          gap={2}
+          sx={{ cursor: 'pointer' }}
+          onClick={() => {
+            console.log(pdfRef.current);
+          }}
+        >
           <Typography>&lt;&gt;</Typography>
           <Typography>Embed</Typography>
+          {/* <Link href={defaultPdfFile} underline="none">
+            &lt;&gt; Embed
+          </Link> */}
         </Grid>
       </Grid>
       <Grid mt={5} sx={{ width: { xs: '100%' } }}>
-        <iframe src={defaultPdfFile} width="100%" />
+        <iframe ref={pdfRef} src={defaultPdfFile} width="100%" />
       </Grid>
     </Container>
   );

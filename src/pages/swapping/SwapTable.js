@@ -143,6 +143,8 @@ export default function SwapTable() {
       sx={{
         height: 400,
         width: 1,
+        paddingLeft: { xs: 3, sm: 5 },
+        paddingRight: { xs: 3, sm: 5 },
       }}
     >
       <Table columns={columns} rows={rowsFaucetOnnWinston} />
