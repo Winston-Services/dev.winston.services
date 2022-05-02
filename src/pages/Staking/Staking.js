@@ -80,7 +80,7 @@ export default function Staking() {
                   textAlign={'center'}
                 >
                   <Grid>
-                    <img src={item.icon} width="auto" />
+                    <img src={item.icon} width="100%" />
                   </Grid>
                   <Typography variant="h6" mt={5}>
                     {item.des}
@@ -114,7 +114,7 @@ export default function Staking() {
                   alignItems="center"
                   textAlign={'center'}
                 >
-                  <img src={item.icon} width="auto" />
+                  <img src={item.icon} width="100%" />
                   <Typography variant="h6" mt={5}>
                     {item.des}
                   </Typography>

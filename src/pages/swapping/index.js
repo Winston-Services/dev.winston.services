@@ -15,10 +15,16 @@ import DropDown from './../../components/common/DropDown';
 import FormTextField from './../../components/common/TextField';
 import SwapTable from './SwapTable';
 
+const digitsOnly = (value) => /^\d+$/.test(value);
+
 const FORM_VALIDATION = Yup.object().shape({
   token: Yup.string().required(' Token is required'),
   address: Yup.string().required(' Token is required'),
-  amount: Yup.string().required(' Token is required'),
+  amount: Yup.string().test(
+    'Digits only',
+    'The field should have digits only',
+    digitsOnly
+  ),
 });
 
 export default function Swapping() {
@@ -57,7 +63,7 @@ export default function Swapping() {
                     <Grid item xs={12}>
                       <Typography variant="h5">Swap From</Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sx={{ mt: { xs: 3, sm: 1.5, md: 0 } }}>
                       <DropDown
                         label="Network"
                         name="network"
@@ -119,7 +125,7 @@ export default function Swapping() {
                     <Grid item xs={12}>
                       <Typography variant="h5">Swap To</Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sx={{ mt: { xs: 3, sm: 1.5, md: 0 } }}>
                       <DropDown
                         label="Network"
                         name="network"
@@ -190,7 +196,7 @@ export default function Swapping() {
                   justifyContent={'end'}
                   alignItems="center"
                   gap={1}
-                  sx={{ px: { xs: 1.5, sm: 0 } }}
+                  sx={{ px: { xs: 1.5, sm: 0 }, mt: { xs: 1.7, sm: 0 } }}
                 >
                   <Typography>Filter:</Typography>
                   <TextField

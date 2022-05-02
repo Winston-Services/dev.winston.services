@@ -21,12 +21,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: '#362A70',
     color: theme.palette.common.white,
-    border: 0,
     size: 'large',
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
-    border: 0,
     color: theme.palette.common.white,
   },
 }));
@@ -38,6 +36,8 @@ export default function TokenTable({ name, rows }) {
       sx={{
         boxShadow: 'none',
         overflowX: 'auto',
+        paddingLeft: { xs: 2, sm: 3.5, md: 5 },
+        paddingRight: { xs: 2, sm: 3.5, md: 5 },
       }}
     >
       <Table sx={{ minWidth: 500 }} aria-label="customized table">

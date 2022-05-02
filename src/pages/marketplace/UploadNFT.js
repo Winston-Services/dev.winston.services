@@ -50,8 +50,10 @@ const style = {
   overflowY: 'auto',
 };
 
+const digitsOnly = (value) => /^\d+$/.test(value);
+
 const FORM_VALIDATION = Yup.object().shape({
-  image: Yup.array().min(1, 'Please select image'),
+  image: Yup.string().required('Please select image'),
   name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -66,8 +68,13 @@ const FORM_VALIDATION = Yup.object().shape({
   description: Yup.string().required('Please enter few words'),
   date: Yup.string().required('Please select date'),
   category: Yup.string().required('Please select at least one category'),
-  price: Yup.string().required('Please enter price'),
-  selectedProperties: Yup.bool().oneOf([true], 'Field must be checked'),
+  price: Yup.string()
+    .test('Digits only', 'The field should have digits only', digitsOnly)
+    .required('Please enter price'),
+  selectedProperties: Yup.bool().oneOf(
+    [true],
+    'Please select at least one property'
+  ),
 });
 
 function UploadNFT() {
@@ -126,15 +133,13 @@ function UploadNFT() {
   ];
 
   const [initialValue, setInitialValue] = React.useState({
-    image: [],
+    image: '',
     name: '',
     link: '',
     description: '',
     date: null,
     collection: 'Untitled Collection #272881336',
     category: '',
-    price: '',
-    auctionLength: '12 Hours',
     selectedProperties: false,
     properties: {
       background: {
@@ -151,11 +156,9 @@ function UploadNFT() {
       mouth: { mouth: '', mouthTrait: '14% have this trait' },
       nose: { nose: '', noseTrait: '14% have this trait' },
     },
+    price: '',
+    auctionLength: '12 Hours',
   });
-
-  // React.useEffect(() => {
-  //   console.log(initialValue);
-  // }, [initialValue]);
 
   return (
     <Container>
@@ -165,8 +168,7 @@ function UploadNFT() {
         }}
         validationSchema={FORM_VALIDATION}
         onSubmit={(values) => {
-          console.log('submit method call');
-          console.log(values);
+          console.log(JSON.stringify(values, null, 2));
           return navigate('/user-profile/upload-nft/nft-created');
         }}
       >

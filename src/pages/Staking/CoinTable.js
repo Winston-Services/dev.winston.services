@@ -36,6 +36,8 @@ export default function CoinTable({ name, rows }) {
       sx={{
         boxShadow: 'none',
         overflowX: 'auto',
+        paddingLeft: { xs: 2, sm: 3.5, md: 5 },
+        paddingRight: { xs: 2, sm: 3.5, md: 5 },
       }}
     >
       <Table sx={{ minWidth: 500 }} aria-label="customized table">

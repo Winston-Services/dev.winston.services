@@ -66,8 +66,9 @@ export default function StakingTable() {
   return (
     <Box
       sx={{
-        height: 270,
         width: 1,
+        paddingLeft: { xs: 3, sm: 5 },
+        paddingRight: { xs: 3, sm: 5 },
       }}
     >
       <Table rows={stakingRows} columns={stakingColumns} />

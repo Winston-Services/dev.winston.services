@@ -124,7 +124,7 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
     premineAmount: Yup.number()
       .required('The “Premine amount” value cannot be empty.')
       .min(
-        1,
+        0,
         'The “Premine amount” value must be a number between 1 and 9999999999.'
       )
       .max(
@@ -153,6 +153,19 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
                   placeholder={'1000'}
                   helperText="Last block height that can be mined with Proof of Work."
                   autoComplete="off"
+                  onChange={(value) =>
+                    setWizardCoinData({
+                      lastPowBlock: parseInt(value),
+                      coinSupplyWithoutPremine:
+                        wizardCoinData.fullPremine === true
+                          ? 0
+                          : value * wizardCoinData.blockReward,
+                      coinSupplyWithPremine:
+                        wizardCoinData.fullPremine === true
+                          ? wizardCoinData.premineAmount
+                          : value * wizardCoinData.blockReward,
+                    })
+                  }
                 />
               )}
 
@@ -165,11 +178,21 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
                 autoComplete="off"
                 onChange={(value) =>
                   setWizardCoinData({
-                    blockReward: value,
+                    blockReward: parseInt(value),
                     coinSupplyWithoutPremine:
-                      value * wizardCoinData.blockHalving * 2,
+                      wizardCoinData.coinAlgorithm ===
+                        'Scrypt- Proof of Work and Proof of Stack' ||
+                      wizardCoinData.coinAlgorithm ===
+                        'Proof of Work and Proof of Stake + Masternode'
+                        ? value * wizardCoinData.lastPowBlock
+                        : value * wizardCoinData.blockHalving * 2,
                     coinSupplyWithPremine:
-                      value * wizardCoinData.blockHalving * 2,
+                      wizardCoinData.coinAlgorithm ===
+                        'Scrypt- Proof of Work and Proof of Stack' ||
+                      wizardCoinData.coinAlgorithm ===
+                        'Proof of Work and Proof of Stake + Masternode'
+                        ? value * wizardCoinData.lastPowBlock
+                        : value * wizardCoinData.blockHalving * 2,
                   })
                 }
               />
@@ -225,7 +248,8 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
                       coinSupplyWithoutPremine:
                         value * wizardCoinData.blockReward * 2,
                       coinSupplyWithPremine:
-                        value * wizardCoinData.blockReward * 2,
+                        value * wizardCoinData.blockReward * 2 +
+                        parseInt(wizardCoinData.premineAmount),
                     })
                   }
                 />
@@ -280,6 +304,16 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
                         ? wizardCoinData.coinSupplyWithoutPremine
                         : parseInt(wizardCoinData.coinSupplyWithoutPremine) +
                           parseInt(wizardCoinData.premineAmount),
+                      coinSupplyWithoutPremine:
+                        wizardCoinData.coinAlgorithm ===
+                          'Script - Proof of Work' ||
+                        wizardCoinData.coinAlgorithm ===
+                          'SHA-256 - Proof of Work'
+                          ? wizardCoinData.blockReward *
+                            wizardCoinData.blockHalving *
+                            2
+                          : wizardCoinData.lastPowBlock *
+                            wizardCoinData.blockReward,
                     })
                   }
                   helperText="Your total coin supply is available after the mining of
@@ -294,7 +328,7 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
                 }
                 name="premineAmount"
                 label={'Premine amount'}
-                placeholder={'1'}
+                placeholder={'0'}
                 helperText="Number of coins that is available after the mining of block #1."
                 autoComplete="off"
                 value={wizardCoinData.premineAmount}
@@ -322,6 +356,9 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
             <Button
               variant="outlined"
               onClick={previous}
+              onChange={() => {
+                setWizardCoinData({ fullPremine: false });
+              }}
               sx={{ width: { xs: '50%', sm: 'auto' } }}
             >
               Previous

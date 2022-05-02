@@ -213,7 +213,13 @@ export default function Faucet() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} mt={2} pb={3}>
+            <Grid
+              item
+              xs={12}
+              mt={2}
+              pb={3}
+              sx={{ px: { xs: 2, sm: 3.5, md: 5 } }}
+            >
               {searchData && searchData.length !== 0 ? (
                 <Table columns={columns} rows={searchData} />
               ) : (

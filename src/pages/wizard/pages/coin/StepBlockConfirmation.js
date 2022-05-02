@@ -100,8 +100,9 @@ function StepCoinBlockConfirmation({ wizardCoinData, setWizardCoinData }) {
           1000,
           'The “Masternode confirmations” value must be a number between 1 and 1000.'
         ),
-    node1: Yup.string().required('The “Node 1” value cannot be empty.'),
-    node2: Yup.string().required('The “Node 2” value cannot be empty.'),
+    node1:
+      wizardCoinData.hardCodedNode &&
+      Yup.string().required('The “Node 1” value cannot be empty.'),
   });
 
   return (
@@ -181,21 +182,31 @@ function StepCoinBlockConfirmation({ wizardCoinData, setWizardCoinData }) {
                 label={'Hardcoded node'}
                 helperText="Your wallet will automatically connect with a hardcoded
                     node."
+                onChange={(value) =>
+                  setWizardCoinData({ hardCodedNode: value })
+                }
               />
-              <TextField
-                name={'node1'}
-                label={'Node 1'}
-                placeholder={'Node2.winston.services'}
-                helperText="Hostname/IP of server that will run a node for your coin."
-                autoComplete="off"
-              />
-              <TextField
-                name={'node2'}
-                label={'Node 2'}
-                placeholder={'Secondnode.winston.services'}
-                helperText="Hostname/IP of second server that will run a node for your coin."
-                autoComplete="off"
-              />
+              {wizardCoinData.hardCodedNode === true ? (
+                <>
+                  {' '}
+                  <TextField
+                    name={'node1'}
+                    label={'Node 1'}
+                    placeholder={'Node2.winston.services'}
+                    helperText="Hostname/IP of server that will run a node for your coin."
+                    autoComplete="off"
+                  />
+                  <TextField
+                    name={'node2'}
+                    label={'Node 2'}
+                    placeholder={'Secondnode.winston.services'}
+                    helperText="Hostname/IP of second server that will run a node for your coin."
+                    autoComplete="off"
+                  />
+                </>
+              ) : (
+                <></>
+              )}
             </Grid>
           </Card>
           <Grid mt={4} display="flex" justifyContent="flex-end" gap={2}>

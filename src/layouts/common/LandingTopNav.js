@@ -172,6 +172,7 @@ export default function LandingTopNav() {
                       color: 'white',
                       background:
                         'linear-gradient(90deg,rgb(234, 122, 143) 0.64%,rgb(228, 82, 200) 99.36%)',
+                      height: '100%',
                     },
                   }}
                 >

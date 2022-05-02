@@ -58,6 +58,9 @@ function StepAlgorithmCoin({ wizardCoinData, setWizardCoinData }) {
                   'Proof of Work and Proof of Stake + Masternode',
                 ]}
                 helperText="Select the algorithm for your coin."
+                onChange={(value) => {
+                  setWizardCoinData({ coinAlgorithm: value });
+                }}
               />
             </Grid>
           </Card>
