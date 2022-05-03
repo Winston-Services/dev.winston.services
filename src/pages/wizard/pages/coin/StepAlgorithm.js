@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, Card, Button } from '@mui/material';
+import { Grid, Card, Button, Typography, Link, Paper } from '@mui/material';
 import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
 import { useOutletContext } from 'react-router-dom';
@@ -47,6 +47,25 @@ function StepAlgorithmCoin({ wizardCoinData, setWizardCoinData }) {
                 disabled
                 autoComplete="off"
               />
+              {wizardCoinData.coinAlgorithm ===
+              'Proof of Work and Proof of Stake + Masternode' ? (
+                <Paper
+                  elevation={0}
+                  sx={{ padding: '20px', backgroundColor: '#4F409A' }}
+                >
+                  <Grid container gap={1}>
+                    <Typography>
+                      This coin has requirements to start the PoS phase.{' '}
+                    </Typography>
+                    <Link>
+                      <Typography>Click here</Typography>
+                    </Link>
+                    <Typography>for more information.</Typography>
+                  </Grid>
+                </Paper>
+              ) : (
+                <></>
+              )}
               <DropDown
                 name="coinAlgorithm"
                 label="Coin Algorithm"
