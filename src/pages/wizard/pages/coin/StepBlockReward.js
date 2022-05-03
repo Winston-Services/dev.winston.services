@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, Card, Button } from '@mui/material';
+import { Grid, Card, Button, Paper, Typography } from '@mui/material';
 import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
 import { useOutletContext } from 'react-router-dom';
@@ -11,6 +11,25 @@ import DropDown from './../../../../components/common/DropDown';
 import TextField from './../../../../components/common/TextField';
 function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
   const { previous, next } = useOutletContext();
+
+  const superBlockCal = (
+    (parseInt(wizardCoinData.blockReward) *
+      parseInt(wizardCoinData.superblockReward)) /
+    100
+  ).toFixed(8);
+
+  const masternodeCal = (
+    (superBlockCal * parseInt(wizardCoinData.masternodeReward)) /
+    100
+  ).toFixed(8);
+
+  const blockCal = (superBlockCal - masternodeCal).toFixed(8);
+
+  const budgetCal =
+    (parseInt(wizardCoinData.blockRewardPos).toFixed(8) / 100) *
+    wizardCoinData.superblockReward *
+    288 *
+    30;
 
   const handleSubmit = ({
     lastPowBlock,
@@ -206,6 +225,11 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
                   placeholder={'5'}
                   helperText="Number of coins received for mining a block with Proof of Stake."
                   autoComplete="off"
+                  onChange={(value) => {
+                    setWizardCoinData({
+                      blockRewardPos: value,
+                    });
+                  }}
                 />
               )}
               {[
@@ -219,14 +243,121 @@ function StepCoinBlockReward({ wizardCoinData, setWizardCoinData }) {
                     placeholder={'10'}
                     helperText="Percentage of the block reward reserved for decentralized governance budget."
                     autoComplete="off"
+                    onChange={(value) => {
+                      setWizardCoinData({
+                        superblockReward: value,
+                      });
+                    }}
                   />
+                  {wizardCoinData.coinAlgorithm ===
+                  'Proof of Work and Proof of Stake + Masternode' ? (
+                    <Paper
+                      elevation={0}
+                      sx={{ padding: '20px', backgroundColor: '#4F409A' }}
+                    >
+                      <Typography>
+                        <strong>Governance budget structure</strong>
+                      </Typography>
+                      <Typography>
+                        Estimated amount of blocks per day: <strong>288</strong>
+                      </Typography>
+                      <Typography>
+                        Governance budget per month: ((
+                        <strong>
+                          {' '}
+                          {parseInt(wizardCoinData.blockRewardPos).toFixed(
+                            8
+                          )}{' '}
+                        </strong>
+                        / 100) *{' '}
+                        <strong>{wizardCoinData.superblockReward}</strong>) *
+                        <strong>288</strong> * 30 =
+                        <strong>{budgetCal.toFixed(8)}</strong>
+                      </Typography>
+                    </Paper>
+                  ) : (
+                    <></>
+                  )}
                   <TextField
                     name="masternodeReward"
                     label={'Masternode reward (%)'}
                     placeholder={'50'}
                     helperText="Percentage of the block reward."
                     autoComplete="off"
+                    onChange={(value) => {
+                      setWizardCoinData({
+                        masternodeReward: value,
+                      });
+                    }}
                   />
+                  {wizardCoinData.coinAlgorithm ===
+                  'X11 - Proof of Work + Masternode' ? (
+                    <Paper
+                      elevation={0}
+                      sx={{ padding: '20px', backgroundColor: '#4F409A' }}
+                    >
+                      <Typography>
+                        <strong>Block reward structure</strong>
+                      </Typography>
+                      <Typography>
+                        Superblock reward: <strong>{superBlockCal}</strong>,
+                        masternode reward:
+                        <strong>{masternodeCal}</strong>, block reward:{' '}
+                        <strong>{blockCal}</strong>
+                      </Typography>
+                    </Paper>
+                  ) : (
+                    <></>
+                  )}
+                  {wizardCoinData.coinAlgorithm ===
+                  'Proof of Work and Proof of Stake + Masternode' ? (
+                    <Paper
+                      elevation={0}
+                      sx={{ padding: '20px', backgroundColor: '#4F409A' }}
+                    >
+                      <Typography>
+                        <strong>Block reward structure</strong>
+                      </Typography>
+                      <Typography>
+                        Proof-of-Work phase: Masternode reward:{' '}
+                        <strong>
+                          {' '}
+                          {(
+                            (wizardCoinData.blockReward / 100) *
+                            wizardCoinData.masternodeReward
+                          ).toFixed(8)}
+                        </strong>
+                        , block reward:{' '}
+                        <strong>
+                          {' '}
+                          {(
+                            (wizardCoinData.blockReward / 100) *
+                            (100 - wizardCoinData.masternodeReward)
+                          ).toFixed(8)}
+                        </strong>
+                      </Typography>
+                      <Typography>
+                        Proof-of-Stake phase: Masternode reward:{' '}
+                        <strong>
+                          {' '}
+                          {(
+                            (wizardCoinData.blockRewardPos / 100) *
+                            wizardCoinData.masternodeReward
+                          ).toFixed(8)}
+                        </strong>
+                        , block reward:{' '}
+                        <strong>
+                          {' '}
+                          {(
+                            (wizardCoinData.blockRewardPos / 100) *
+                            (100 - wizardCoinData.masternodeReward)
+                          ).toFixed(8)}
+                        </strong>
+                      </Typography>
+                    </Paper>
+                  ) : (
+                    <></>
+                  )}
                 </>
               )}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, Card, Button } from '@mui/material';
+import { Grid, Card, Button, Paper, Typography } from '@mui/material';
 import { Formik, Form } from 'formik';
 import { PropTypes } from 'prop-types';
 import { useOutletContext } from 'react-router-dom';
@@ -15,6 +15,12 @@ function StepCoinBlockConfirmation({ wizardCoinData, setWizardCoinData }) {
     setWizardCoinData(values);
     next();
   };
+
+  const budgetCal =
+    (parseInt(wizardCoinData.blockRewardPos).toFixed(8) / 100) *
+    wizardCoinData.superblockReward *
+    (1440 / parseInt(wizardCoinData.targetSpacingInMinutes)) *
+    30;
 
   const FORM_VALIDATION = Yup.object().shape({
     minimumCoinAge:
@@ -146,7 +152,39 @@ function StepCoinBlockConfirmation({ wizardCoinData, setWizardCoinData }) {
                 placeholder={'5'}
                 helperText="Number of minutes it should take to mine a block."
                 autoComplete="off"
+                onChange={(value) => {
+                  setWizardCoinData({
+                    targetSpacingInMinutes: value,
+                  });
+                }}
               />
+              {wizardCoinData.coinAlgorithm ===
+              'Proof of Work and Proof of Stake + Masternode' ? (
+                <Paper
+                  elevation={0}
+                  sx={{ padding: '20px', backgroundColor: '#4F409A' }}
+                >
+                  <Typography>
+                    <strong>Governance budget structure</strong>
+                  </Typography>
+                  <Typography>
+                    Estimated amount of blocks per day:{' '}
+                    <strong>
+                      {1440 / parseInt(wizardCoinData.targetSpacingInMinutes)}
+                    </strong>
+                  </Typography>
+                  <Typography>
+                    Governance budget per month: (( <strong>5.00000000</strong>{' '}
+                    / 100) * <strong>50</strong>) *{' '}
+                    <strong>
+                      {1440 / parseInt(wizardCoinData.targetSpacingInMinutes)}{' '}
+                    </strong>
+                    * 30 = <strong>{budgetCal.toFixed(8)} </strong>
+                  </Typography>
+                </Paper>
+              ) : (
+                <></>
+              )}
               <TextField
                 name="targetTimespanInMinutes"
                 label={'Target timespan in minutes'}
