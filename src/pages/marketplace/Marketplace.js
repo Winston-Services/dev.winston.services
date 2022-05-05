@@ -3,22 +3,14 @@ import * as React from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ListIcon from '@mui/icons-material/List';
-import SearchIcon from '@mui/icons-material/Search';
-import {
-  Typography,
-  Button,
-  TextField,
-  Grid,
-  InputAdornment,
-  Badge,
-  Container,
-} from '@mui/material';
+import { Typography, Button, Grid, Badge, Container } from '@mui/material';
 
 import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
 import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
 import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
 import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
 import NftMarketPlace5 from '../../assets/nft_marketplace_5.png';
+import AutoCompleteSearchBar from './../../components/common/AutoCompleteSearchBar';
 import Filter from './components/Filter';
 import ProductCard from './components/ProductCard';
 const items = [
@@ -32,7 +24,7 @@ const items = [
   },
   {
     image: NftMarketPlace2,
-    id: 5161,
+    id: 5162,
     name: 'Abc',
     price: 59,
     startBid: 15,
@@ -40,7 +32,7 @@ const items = [
   },
   {
     image: NftMarketPlace3,
-    id: 5161,
+    id: 5173,
     name: 'Def',
     price: 59,
     startBid: 15,
@@ -48,7 +40,7 @@ const items = [
   },
   {
     image: NftMarketPlace4,
-    id: 5161,
+    id: 5174,
     name: 'Ghi',
     price: 59,
     startBid: 15,
@@ -56,7 +48,7 @@ const items = [
   },
   {
     image: NftMarketPlace5,
-    id: 5161,
+    id: 5185,
     name: 'Jkl',
     price: 59,
     startBid: 15,
@@ -64,7 +56,7 @@ const items = [
   },
   {
     image: NftMarketPlace1,
-    id: 5161,
+    id: 5186,
     name: 'Mno',
     price: 59,
     startBid: 15,
@@ -74,6 +66,8 @@ const items = [
 
 export default function Marketplace() {
   const [openDrawer, setOpenDrawer] = React.useState(false);
+  const [searchInput, setSearchInput] = React.useState('');
+  const [searchData, setSearchData] = React.useState(items);
 
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer);
@@ -92,20 +86,12 @@ export default function Marketplace() {
         <Grid item sm={12} md={8} display="flex" alignItems="center">
           <Grid container alignItems={'center'} spacing={3}>
             <Grid item flexGrow={1}>
-              <TextField
-                variant="standard"
-                hiddenLabel
-                fullWidth
-                color="filled"
-                placeholder="Search"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon />
-                    </InputAdornment>
-                  ),
-                  disableUnderline: true,
-                }}
+              <AutoCompleteSearchBar
+                data={items}
+                searchBy="name"
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+                setSearchData={setSearchData}
               />
             </Grid>
             <Grid item xs={12} md="auto">
@@ -153,11 +139,17 @@ export default function Marketplace() {
             rowSpacing={4}
             columnSpacing={{ xs: 2, md: 2, lg: 4 }}
           >
-            {items.map((item, index) => (
-              <Grid item xs={12} sm={6} md={6} lg={4} key={item + index}>
-                <ProductCard item={item} />
-              </Grid>
-            ))}
+            {searchData && searchData.length !== 0 ? (
+              searchData.map((item, index) => (
+                <Grid item xs={12} sm={6} md={6} lg={4} key={item + index}>
+                  <ProductCard item={item} />
+                </Grid>
+              ))
+            ) : (
+              <Typography textAlign={'center'}>
+                No results for &apos;{searchInput}&apos;
+              </Typography>
+            )}
           </Grid>
         </Grid>
       </Grid>

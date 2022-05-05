@@ -3,12 +3,10 @@ import React from 'react';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import { Grid, Paper, Typography, Button, Card } from '@mui/material';
 import { PropTypes } from 'prop-types';
-import { useNavigate } from 'react-router';
 
 import WinstonIcon from './../../../assets/assets_winston_icon.svg';
 
-function WhitePaperCard({ data }) {
-  const navigate = useNavigate();
+function WhitePaperCard({ data, setViewDocument }) {
   return (
     <Grid>
       {data.map((item) => (
@@ -52,7 +50,12 @@ function WhitePaperCard({ data }) {
                 startIcon={<AssignmentOutlinedIcon />}
                 variant="contained"
                 color="secondary"
-                onClick={() => navigate('/whitepapers/documents')}
+                onClick={() =>
+                  setViewDocument({
+                    isViewDocument: true,
+                    data: item,
+                  })
+                }
                 sx={{ my: 2, width: { xs: '100%', sm: 'auto' } }}
               >
                 View document
@@ -67,6 +70,7 @@ function WhitePaperCard({ data }) {
 
 WhitePaperCard.propTypes = {
   data: PropTypes.array,
+  setViewDocument: PropTypes.func,
 };
 
 export default WhitePaperCard;

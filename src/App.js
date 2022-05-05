@@ -40,13 +40,14 @@ const CommunityFundingRouting = React.lazy(() => import('./pages/community'));
 const SupportRouting = React.lazy(() => import('./pages/support'));
 const CurrenciesRouting = React.lazy(() => import('./pages/currencies'));
 const Assets = React.lazy(() => import('./pages/assets'));
-const WhitePapersRouting = React.lazy(() => import('./pages/whitepapers'));
+const WhitePapers = React.lazy(() => import('./pages/whitepapers'));
 const Wiki = React.lazy(() => import('./pages/wiki'));
 const AccountActivity = React.lazy(() => import('./pages/account-activity'));
 const UserProfileRouting = React.lazy(() => import('./pages/user-profile'));
 const Holding = React.lazy(() => import('./pages/holding'));
 const CampaignRouting = React.lazy(() => import('./pages/campaign'));
 const Campaign = React.lazy(() => import('./pages/campaign/Campaign'));
+const Ico = React.lazy(() => import('./pages/ico'));
 
 export default function App() {
   const auth = useAuth();
@@ -186,8 +187,8 @@ export default function App() {
           element: getRouteWrapper(<Developers />, false),
         },
         {
-          path: '/whitepapers/*',
-          element: getRouteWrapper(<WhitePapersRouting />, false),
+          path: '/whitepapers',
+          element: getRouteWrapper(<WhitePapers />, false),
         },
         {
           path: '/wiki',
@@ -204,6 +205,10 @@ export default function App() {
         {
           path: '/campaign/*',
           element: getRouteWrapper(<CampaignRouting />, false),
+        },
+        {
+          path: '/ico',
+          element: getRouteWrapper(<Ico />, false),
         },
       ],
     },

@@ -20,16 +20,22 @@ const FORM_VALIDATION = Yup.object().shape({
 function ContactUs() {
   return (
     <Container>
-      <Grid container columnSpacing={3}>
-        <Grid item xs={12} md={6}>
-          <Typography variant="h3">Contact us</Typography>
+      <Typography variant="h3">Contact us</Typography>
+      <Grid
+        container
+        columnSpacing={3}
+        display="flex"
+        flexDirection={{ xs: 'column-reverse', md: 'row' }}
+        alignItems="center"
+      >
+        <Grid item xs={12} md={6} width="100%">
           <Typography variant="h5" mt={5}>
             Quick query form
           </Typography>
           <Typography variant="subtitle2">
             by filling this form we will contact you soon
           </Typography>
-          <Grid mt={5}>
+          <Grid mt={{ xs: 3, sm: 5 }}>
             <Formik
               initialValues={{
                 name: '',
@@ -66,12 +72,12 @@ function ContactUs() {
                     label={'Message'}
                     placeholder={'Type you Query Here'}
                   />
-                  <Grid item xs={8}>
+                  <Grid mt={{ xs: 3, sm: 5 }}>
                     <Button
                       type="submit"
                       variant="contained"
                       color="secondary"
-                      sx={{ mt: 7 }}
+                      sx={{ width: { xs: '100%', sm: 'auto' } }}
                     >
                       Submit your query
                     </Button>
@@ -81,7 +87,7 @@ function ContactUs() {
             </Formik>
           </Grid>
         </Grid>
-        <Grid item md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
+        <Grid item xs={12} md={6}>
           <img src={ContactUsIcon} style={{ width: '100%' }} />
         </Grid>
       </Grid>

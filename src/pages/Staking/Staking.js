@@ -172,9 +172,9 @@ export default function Staking() {
           </Grid>
         </Grid>
 
-        <Grid textAlign={'center'} item xs={12} mt={10}>
+        <Grid textAlign={{ xs: 'left', md: 'center' }} item xs={12} mt={10}>
           <Typography variant="h3">Staking On Winston</Typography>
-          <Typography variant="h6" my={8}>
+          <Typography variant="h6" my={8} display={{ xs: 'none', md: 'block' }}>
             <span>
               Each coin or token project can enable staking with in the Winston
               network.
@@ -197,6 +197,32 @@ export default function Staking() {
             <span style={{ color: 'yellow ' }}>
               Payout = (Pool / 365) / User_Weight
             </span>
+          </Typography>
+          <Typography variant="h6" my={8} display={{ xs: 'block', md: 'none' }}>
+            <ul>
+              <li>
+                Each coin or token project can enable staking with in the
+                Winston network.
+              </li>
+              <li>
+                Once a pool is established for staking members are able to stake
+                the coin ortoken for the project with in the Winston network.
+              </li>
+              <li>
+                <span>
+                  Tokens must be held for 30 days to start earning rewards.
+                  Rewards are based on the following algo.
+                </span>
+                <br />
+                <span style={{ color: 'yellow ' }}>
+                  User_Weight = Total_Staked / User_Available_Stake
+                </span>
+                <br />
+                <span style={{ color: 'yellow ' }}>
+                  Payout = (Pool / 365) / User_Weight
+                </span>
+              </li>
+            </ul>
           </Typography>
         </Grid>
       </Grid>

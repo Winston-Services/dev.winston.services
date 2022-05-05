@@ -242,21 +242,29 @@ export default function LandingFooter() {
         </Grid>
       </Grid>
       <Grid container sx={{ my: 10, pb: 10 }}>
-        <Grid item xs={12} md={6}>
-          <Typography
-            variant="subtitle1"
-            sx={{ textAlign: { xs: 'center', md: 'left' } }}
-          >
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{ textAlign: { xs: 'center', md: 'left' } }}
+        >
+          <Typography variant="subtitle1">
             Powered by : Winston Services
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{ textAlign: { xs: 'center', md: 'right' } }}
+        >
+          <Link
+            href={'./assets/pdf/MADComputerConsultingLLC-AOO.pdf'}
             variant="subtitle1"
-            sx={{ textAlign: { xs: 'center', md: 'right' } }}
+            target="_blank"
           >
             Copyright © 2022 M.A.D. Computer Consulting LLC{' '}
-          </Typography>
+          </Link>
         </Grid>
       </Grid>
     </Container>
