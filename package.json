@@ -36,7 +36,6 @@
     "@testing-library/user-event": "^13.5.0",
     "formik": "^2.2.9",
     "js-file-download": "^0.4.12",
-    "mui-rte": "^2.0.1",
     "node-rsa": "^1.1.1",
     "qrcode-npm": "^0.0.3",
     "react": "^17.0.2",

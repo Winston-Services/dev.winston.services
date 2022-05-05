@@ -12,7 +12,6 @@ import {
 } from '@mui/material';
 import { ThemeProvider } from '@mui/styles';
 import { Form, Formik } from 'formik';
-import MUIRichTextEditor from 'mui-rte';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
@@ -287,12 +286,7 @@ function AddLecture({ lecture, sectionIndex, lectureIndex, lectureCount }) {
       )}
       {!externalResource && !uploadVideo && (
         <Card elevation={0} sx={{ minHeight: '200px', mt: 2, px: 2, py: 1 }}>
-          <ThemeProvider theme={myTheme}>
-            <MUIRichTextEditor
-              label="Enter Description..."
-              controls={['bold', 'italic', 'numberList', 'bulletList']}
-            />
-          </ThemeProvider>
+          <ThemeProvider theme={myTheme}></ThemeProvider>
         </Card>
       )}
     </Card>
