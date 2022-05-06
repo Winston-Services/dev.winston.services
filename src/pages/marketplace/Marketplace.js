@@ -146,7 +146,7 @@ export default function Marketplace() {
                 </Grid>
               ))
             ) : (
-              <Typography textAlign={'center'}>
+              <Typography textAlign={'center'} width="100%">
                 No results for &apos;{searchInput}&apos;
               </Typography>
             )}

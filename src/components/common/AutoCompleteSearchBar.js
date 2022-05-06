@@ -44,8 +44,6 @@ function AutoCompleteSearchBar({
       options={data.map((option) => option[searchBy].toString())}
       onChange={(e, v) => setSearchInput(v)}
       renderInput={(params) => {
-        console.log(params);
-
         return (
           <TextField
             {...params}
