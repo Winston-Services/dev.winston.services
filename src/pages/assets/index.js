@@ -50,6 +50,7 @@ function index() {
                 fontSize: { xs: '12px', sm: '25px', md: '34px' },
               }}
               pb={8}
+              height={{ xs: 50, md: 150 }}
             >
               Ahwa
             </Typography>
@@ -102,6 +103,7 @@ function index() {
               }}
               textAlign={'center'}
               pb={8}
+              height={{ xs: 50, md: 150 }}
             >
               Winston Watch
             </Typography>

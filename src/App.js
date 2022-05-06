@@ -5,9 +5,7 @@ import { Navigate, useRoutes } from 'react-router-dom';
 
 import ScrollToTop from './components/scroll-to-top';
 import useAuth, { AuthProvider, AuthRedirect } from './context/authContext';
-
 import './App.css';
-
 const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'));
 const LandingLayout = React.lazy(() => import('./layouts/LandingLayout'));
 const PlaneLayout = React.lazy(() => import('./layouts/PlaneLayout'));
@@ -48,6 +46,7 @@ const Holding = React.lazy(() => import('./pages/holding'));
 const CampaignRouting = React.lazy(() => import('./pages/campaign'));
 const Campaign = React.lazy(() => import('./pages/campaign/Campaign'));
 const Ico = React.lazy(() => import('./pages/ico'));
+import { isElectron } from './utils/commonFunctions';
 
 export default function App() {
   const auth = useAuth();
@@ -84,6 +83,37 @@ export default function App() {
         },
       ],
     },
+    {
+      path: '/',
+      element: getRouteWrapper(
+        <Navigate to={isElectron() ? '/sign-in' : '/'} />,
+        false
+      ),
+    },
+    {
+      path: '/',
+      element: getRouteWrapper(<SignInLayout />, false),
+      children: [
+        {
+          path: '/sign-in',
+          element: getRouteWrapper(<SignIn />, false),
+        },
+        {
+          path: '/sign-up',
+          element: getRouteWrapper(<SignUp />, false),
+        },
+      ],
+    },
+
+    {
+      path: '*',
+      element: (
+        <Navigate to={auth?.authenticated ? './dashboard' : './sign-in'} />
+      ),
+    },
+  ];
+
+  const publicRoutes = [
     {
       path: '/',
       element: getRouteWrapper(<PlaneLayout />, false),
@@ -214,20 +244,6 @@ export default function App() {
     },
     {
       path: '/',
-      element: getRouteWrapper(<SignInLayout />, false),
-      children: [
-        {
-          path: '/sign-in',
-          element: getRouteWrapper(<SignIn />, false),
-        },
-        {
-          path: '/sign-up',
-          element: getRouteWrapper(<SignUp />, false),
-        },
-      ],
-    },
-    {
-      path: '/',
       element: getRouteWrapper(<LandingLayout />, false),
       children: [
         {
@@ -236,18 +252,13 @@ export default function App() {
         },
       ],
     },
-    {
-      path: '*',
-      element: (
-        <Navigate to={auth?.authenticated ? './dashboard' : './sign-in'} />
-      ),
-    },
   ];
+
   return (
     <AuthProvider>
       <>
         <ScrollToTop />
-        {useRoutes(routes)}
+        {useRoutes(isElectron() ? routes : routes.concat(publicRoutes))}
       </>
     </AuthProvider>
   );
