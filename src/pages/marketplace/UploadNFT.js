@@ -50,7 +50,8 @@ const style = {
   overflowY: 'auto',
 };
 
-const digitsOnly = (value) => /^\d+$/.test(value);
+// const digitsOnly = (value) => /^\d+$/.test(value);
+const digitsOnly = (value) => /^\d+(\.\d{1,2})?$/.test(value);
 
 const FORM_VALIDATION = Yup.object().shape({
   image: Yup.string().required('Please select image'),
@@ -69,7 +70,11 @@ const FORM_VALIDATION = Yup.object().shape({
   date: Yup.string().required('Please select date'),
   category: Yup.string().required('Please select at least one category'),
   price: Yup.string()
-    .test('Digits only', 'The field should have digits only', digitsOnly)
+    .test(
+      'Decimal only',
+      'The field should have decimal number only',
+      digitsOnly
+    )
     .required('Please enter price'),
   selectedProperties: Yup.bool().oneOf(
     [true],
@@ -536,7 +541,7 @@ function UploadNFT() {
                           ? 'Fixed price - in USD'
                           : 'Starting Bid Price - in USD'
                       }
-                      placeholder="0.0"
+                      placeholder="0.00"
                       variant="outlined"
                     />
                   </Grid>
