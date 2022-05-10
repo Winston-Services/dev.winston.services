@@ -33,7 +33,7 @@ const paymentTypes = [
     price: 12,
   },
   {
-    image: './assets/icons/wbnb.svg',
+    image: './assets/icons/field.svg',
     name: 'FIELD',
     price: 20,
   },
