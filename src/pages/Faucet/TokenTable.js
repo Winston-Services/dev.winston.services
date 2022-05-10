@@ -11,6 +11,7 @@ import {
   Table,
   Grid,
   styled,
+  Divider,
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
 
@@ -31,65 +32,68 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 export default function TokenTable({ name, rows }) {
   return (
-    <TableContainer
-      component={Paper}
-      sx={{
-        boxShadow: 'none',
-        overflowX: 'auto',
-        paddingLeft: { xs: 2, sm: 3.5, md: 5 },
-        paddingRight: { xs: 2, sm: 3.5, md: 5 },
-      }}
-    >
-      <Table sx={{ minWidth: 500 }} aria-label="customized table">
-        <TableBody>
-          <TableRow>
-            <StyledTableCell>
-              <Typography variant="h6">{name}</Typography>
-            </StyledTableCell>
-            <StyledTableCell>
-              <Grid container>
-                <img src={TotalTokens} alt="icon" />
-                <Typography sx={{ fontSize: '0.625rem' }}>
-                  Total Tokens
-                </Typography>
-              </Grid>
-              <Typography>00000</Typography>
-            </StyledTableCell>
-            <StyledTableCell>
-              <Grid container>
-                <img src={TotalTokensGiven} alt="icon" />
-                <Typography sx={{ fontSize: '0.625rem' }}>
-                  Total Tokens Given
-                </Typography>
-              </Grid>
-              <Typography>00000</Typography>
-            </StyledTableCell>
-          </TableRow>
-          {rows?.map((row) => (
-            <TableRow key={row.name}>
-              <StyledTableCell>
-                <Grid container spacing={2}>
-                  <Grid item>
-                    <img src={row.icon} alt="icon" />
+    <Paper>
+      <Grid container justifyContent={'space-between'}>
+        <Typography p={3} variant="h6">
+          {name}
+        </Typography>
+        <Grid item display={'flex'} p={3}>
+          <Grid>
+            <Grid container>
+              <img src={TotalTokens} alt="icon" />
+              <Typography sx={{ fontSize: '0.625rem', ml: 0.5 }}>
+                Total Tokens
+              </Typography>
+            </Grid>
+            <Typography ml={2.5}>00000</Typography>
+          </Grid>
+          <Grid ml={7}>
+            <Grid container>
+              <img src={TotalTokensGiven} alt="icon" />
+              <Typography sx={{ fontSize: '0.625rem', ml: 0.5 }}>
+                Total Tokens Given
+              </Typography>
+            </Grid>
+            <Typography ml={2.5}>00000</Typography>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Divider />
+      <TableContainer
+        component={Paper}
+        sx={{
+          boxShadow: 'none',
+          overflowX: { xs: 'auto', sm: 'hidden' },
+        }}
+      >
+        <Table sx={{ width: '100%' }} aria-label="customized table">
+          <TableBody>
+            {rows?.map((row) => (
+              <TableRow key={row.name}>
+                <StyledTableCell>
+                  <Grid container spacing={2}>
+                    <Grid item>
+                      <img src={row.icon} alt="icon" />
+                    </Grid>
+                    <Grid item>
+                      <Typography>{row.name}</Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <Typography>{row.name}</Typography>
-                  </Grid>
-                </Grid>
-              </StyledTableCell>
-              <StyledTableCell>
-                <Typography variant="subtitle2">Tokens</Typography>
-                <Typography>{row.tokens}</Typography>
-              </StyledTableCell>
-              <StyledTableCell>
-                <Typography variant="subtitle2">Given Away</Typography>
-                <Typography>{row.givenAway}</Typography>
-              </StyledTableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                </StyledTableCell>
+                <StyledTableCell>
+                  <Typography variant="subtitle2">Tokens</Typography>
+                  <Typography>{row.tokens}</Typography>
+                </StyledTableCell>
+                <StyledTableCell>
+                  <Typography variant="subtitle2">Given Away</Typography>
+                  <Typography>{row.givenAway}</Typography>
+                </StyledTableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
   );
 }
 
