@@ -7,45 +7,155 @@ import {
   TextField,
   Typography,
   Button,
+  FormHelperText,
 } from '@mui/material';
+import { ethers } from 'ethers';
 
-import BnbIcon from './../../assets/bnb_icon.svg';
 import logo from './../../assets/logo_footer.svg';
 import './index.css';
 
+const provider = new ethers.providers.Web3Provider(window.ethereum);
+
 const paymentTypes = [
   {
-    image: BnbIcon,
+    image: './assets/icons/wbnb.svg',
     name: 'WBNB',
     price: 405.18,
   },
   {
-    image: BnbIcon,
+    image: './assets/icons/busd.svg',
     name: 'BUSD',
     price: 1,
   },
   {
-    image: BnbIcon,
+    image: './assets/icons/rickel.svg',
     name: 'RICKEL',
     price: 12,
   },
   {
-    image: BnbIcon,
+    image: './assets/icons/wbnb.svg',
     name: 'FIELD',
     price: 20,
   },
   {
-    image: BnbIcon,
+    image: './assets/icons/wmue.svg',
     name: 'WMUE',
     price: 0.00237,
   },
 ];
 
 function Ico() {
+  const [abiResponse, setAbiResponse] = React.useState(null);
   const [selectedPayment, SetSelectedPayment] = React.useState();
   const [amount, setAmount] = React.useState(0);
   const [winstonCoin, setWinstonCoin] = React.useState(0);
   const winstonCoinPrice = 150;
+
+  const [errorMessage, setErrorMessage] = React.useState(null);
+  const [account, setAccount] = React.useState(null);
+  const [balance, setBalance] = React.useState(null);
+
+  React.useEffect(() => {
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', accountsChanged);
+      window.ethereum.on('chainChanged', chainChanged);
+    }
+  }, []);
+
+  const connectHandler = async () => {
+    if (window.ethereum) {
+      try {
+        const res = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        await accountsChanged(res[0]);
+      } catch (err) {
+        console.error(err);
+        setErrorMessage('There was a problem connecting to MetaMask');
+      }
+    } else {
+      setErrorMessage('Install MetaMask');
+    }
+  };
+
+  // const disConnectHandler = async () => {
+  //   setAccount(null);
+  //   setBalance(null);
+  // };
+
+  const accountsChanged = async (newAccount) => {
+    setAccount(newAccount);
+    try {
+      const balance = await window.ethereum.request({
+        method: 'eth_getBalance',
+        params: [newAccount.toString(), 'latest'],
+      });
+      setBalance(ethers.utils.formatEther(balance));
+    } catch (err) {
+      console.error(err);
+      setErrorMessage('There was a problem connecting to MetaMask');
+    }
+  };
+
+  const chainChanged = () => {
+    setErrorMessage(null);
+    setAccount(null);
+    setBalance(null);
+  };
+
+  React.useEffect(() => {
+    fetch(
+      'https://api.bscscan.com/api?module=contract&action=getabi&address=0xb5e7ff9a2f33a8a1e31eb79dc14659111f3dd51c&apikey=HH5C3ZYPGVQUT8FIVNIJXGDHQPNXUEC89U',
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        const response = { isError: true, message: res.result };
+        if (res.status === '1' && res.message === 'OK') {
+          response.abiFile = JSON.parse(res.result);
+          response.isError = false;
+        }
+        setAbiResponse(response);
+        // setIsAbiLoading(false);
+      })
+      .catch(() => {
+        setAbiResponse({
+          isError: true,
+          message: 'something went wrong while connecting to contract',
+        });
+        // setIsAbiLoading(false);
+      });
+  }, []);
+
+  const handleClick = async () => {
+    try {
+      await provider.send('eth_requestAccounts', []);
+
+      const signer = provider.getSigner();
+
+      const daiContract = new ethers.Contract(
+        '0xb5e7ff9a2f33a8a1e31eb79dc14659111f3dd51c',
+        abiResponse.abiFile,
+        signer
+      );
+      console.log(daiContract);
+      await daiContract.swap(
+        '010000000000000000',
+        '100000000000000000',
+        '0xbec7CB5896A41FeA1829d31b8d9206B547B6D414',
+        []
+      );
+      // setIsContractLoading(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   React.useEffect(() => {
     if (amount < 0) setAmount(0);
@@ -101,7 +211,7 @@ function Ico() {
           </Grid>
         </Grid>
         {paymentTypes.map((item, index) => (
-          <Grid item key={item.name + index} xs={12} sm={6} md={4} lg={3}>
+          <Grid item key={item.name + index} xs={12} sm={6} md={4} lg={2.4}>
             <Card
               className={`icoCard ${
                 selectedPayment?.name === item.name && 'activeIcoCard'
@@ -116,16 +226,8 @@ function Ico() {
                 cursor: 'pointer',
               }}
             >
-              <Grid
-                sx={{
-                  background: '#58435f',
-                  p: 3,
-                  borderRadius: '100%',
-                  lineHeight: 0,
-                }}
-              >
+              <Grid>
                 <img
-                  className="icoIcon"
                   src={item.image}
                   style={{
                     borderRadius: '100px',
@@ -153,20 +255,33 @@ function Ico() {
                 onChange={(e) => setAmount(e.target.value)}
                 InputProps={{ inputProps: { min: 0 } }}
                 variant="outlined"
-                label="Amount"
+                label={selectedPayment?.name}
                 placeholder={`0.00 ${selectedPayment?.name}`}
               />
               <Typography variant="h4" mt={3}>
                 {winstonCoin} WIN
               </Typography>
+
               <Button
                 fullWidth
+                onClick={
+                  account
+                    ? balance >= amount
+                      ? handleClick
+                      : null
+                    : connectHandler
+                }
                 variant="contained"
                 color="secondary"
                 sx={{ mt: 3 }}
               >
-                Confirm purchase
+                {account
+                  ? balance >= amount
+                    ? 'Confirm purchase'
+                    : 'Insufficient balance'
+                  : 'Connect wallet'}
               </Button>
+              <FormHelperText error>{errorMessage}</FormHelperText>
             </Grid>
           </Grid>
         </Card>
