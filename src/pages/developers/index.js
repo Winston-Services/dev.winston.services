@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Container, Grid, Paper, Typography } from '@mui/material';
+import { Button, Card, Container, Grid, Typography } from '@mui/material';
 
 import blockAtlas from './../../assets/block_atlas.svg';
 import walletConnect from './../../assets/wallet_connect.svg';
@@ -51,7 +51,7 @@ function Developers() {
           {developersData.map((item, index) => {
             return (
               <Grid item key={index} xs={12} md={6} lg={4} textAlign="center">
-                <Paper elevation={0}>
+                <Card elevation={0}>
                   <Grid item pt={5}>
                     <img src={item.image} height="80px" width="80px"></img>
                   </Grid>
@@ -67,7 +67,7 @@ function Developers() {
                   <Button variant="contained" color="secondary" sx={{ my: 6 }}>
                     Read More
                   </Button>
-                </Paper>
+                </Card>
               </Grid>
             );
           })}

@@ -1,15 +1,21 @@
 import React from 'react';
 
-import {
-  Typography,
-  Grid,
-  Button,
-  Card,
-  TextField,
-  CardContent,
-} from '@mui/material';
+import { Typography, Grid, Button, Card, CardContent } from '@mui/material';
+import { Form, Formik } from 'formik';
+import * as Yup from 'yup';
+
+import TextField from './../../../components/common/TextField';
+
+const FORM_VALIDATION = Yup.object().shape({
+  name: Yup.string().required(' name is required'),
+  key: Yup.string().required(' key is required'),
+});
 
 export default function CustomizeWinston() {
+  const [initialValues] = React.useState({
+    name: '',
+    key: '',
+  });
   return (
     <Grid container spacing={5}>
       <Grid item sm={12} md={7} lg={7}>
@@ -35,28 +41,43 @@ export default function CustomizeWinston() {
       <Grid item sm={12} md={5} lg={5}>
         <Card elevation={0}>
           <CardContent sx={{ p: { xs: 2.5, sm: 5 }, textAlign: 'center' }}>
-            <Typography variant="h5" sx={{ fontWeight: 400, mb: 5 }}>
-              White label Winston with a bot
-            </Typography>
-            <TextField
-              fullWidth
-              sx={{ mb: 3 }}
-              label={'Add Winston to Discord'}
-              placeholder={'Add Winston to Discord'}
-            />
-            <TextField
-              fullWidth
-              sx={{ mb: 3 }}
-              label={'Discord Bot API Key'}
-              placeholder={'HKDIK$KS(S78da43ad86dsd86faedfa43fasdf'}
-            />
-            <Button
-              variant="contained"
-              color="secondary"
-              sx={{ width: { xs: '100%', sm: 'auto' } }}
+            <Formik
+              initialValues={{
+                ...initialValues,
+              }}
+              validationSchema={FORM_VALIDATION}
+              onSubmit={(values) => {
+                console.log(JSON.stringify(values, null, 2));
+              }}
             >
-              Add on Discord
-            </Button>
+              <Form>
+                <Typography variant="h5" sx={{ fontWeight: 400, mb: 5 }}>
+                  White label Winston with a bot
+                </Typography>
+                <TextField
+                  name="name"
+                  fullWidth
+                  sx={{ mb: 3 }}
+                  label={'Add Winston to Discord'}
+                  placeholder={'Add Winston to Discord'}
+                />
+                <TextField
+                  name="key"
+                  fullWidth
+                  sx={{ mb: 3 }}
+                  label={'Discord Bot API Key'}
+                  placeholder={'HKDIK$KS(S78da43ad86dsd86faedfa43fasdf'}
+                />
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  sx={{ width: { xs: '100%', sm: 'auto' } }}
+                >
+                  Add on Discord
+                </Button>
+              </Form>
+            </Formik>
           </CardContent>
         </Card>
       </Grid>
