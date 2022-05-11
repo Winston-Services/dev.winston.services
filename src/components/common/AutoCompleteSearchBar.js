@@ -31,7 +31,7 @@ function AutoCompleteSearchBar({
         sx={{
           width: 'calc(100% + 50px)',
           ml: '-25px',
-          borderRadius: '0 0 25px 25px',
+          borderRadius: '0 0 20px 20px',
         }}
       />
     );
@@ -64,7 +64,7 @@ function AutoCompleteSearchBar({
             }}
             sx={{
               ...(params.inputProps['aria-expanded'] === true && {
-                borderRadius: '25px 25px 0 0',
+                borderRadius: '20px 20px 0 0',
               }),
             }}
           />

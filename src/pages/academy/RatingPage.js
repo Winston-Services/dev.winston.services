@@ -10,7 +10,7 @@ import {
   Rating,
 } from '@mui/material';
 
-function Voting() {
+function RatingPage() {
   return (
     <Container>
       <Grid container display={'flex'} justifyContent="center">
@@ -18,25 +18,25 @@ function Voting() {
           <Paper elevation={0} sx={{ textAlign: 'center' }}>
             <Paper elevation={0} sx={{ background: '#483996' }}>
               <Typography variant="h5" py={4}>
-                Your opinion matters to us!
+                How did you like this Course ?
               </Typography>
             </Paper>
 
-            <Typography variant="h6" mt={3}>
-              Lorem Ipsum is simply dummy text of the printing
+            <Typography variant="h5" mt={3}>
+              Rate the Course
             </Typography>
 
-            <Grid mt={4}>
+            <Grid mt={1}>
               <Rating sx={{ fontSize: '50px' }} />
             </Grid>
 
             <Grid p={6}>
               <TextField
                 fullWidth
-                label="Message"
+                label="Your Feedback"
                 multiline
                 rows={12}
-                placeholder="Message"
+                placeholder="Please write your feedback in few words."
               />
             </Grid>
 
@@ -53,4 +53,4 @@ function Voting() {
   );
 }
 
-export default Voting;
+export default RatingPage;

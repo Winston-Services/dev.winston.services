@@ -1,25 +1,54 @@
 import React from 'react';
 
 import { Button, Container, Grid, Typography } from '@mui/material';
-import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router';
 
 import AcademyIcon from './../../assets/academy_icon.svg';
 import AcademyImage from './../../assets/academy_image.svg';
-import { ReactComponent as BeginnerIcon } from './../../assets/beginner_icon.svg';
-import { ReactComponent as ExpertIcon } from './../../assets/expert_icon.svg';
-import { ReactComponent as IntermediateIcon } from './../../assets/intermediate_icon.svg';
-import DropDown from './../../components/common/DropDown';
+import BeginnerIcon from './../../assets/beginner_icon.svg';
+import ExpertIcon from './../../assets/expert_icon.svg';
+import IntermediateIcon from './../../assets/intermediate_icon.svg';
+import Filter from './../../components/common/Filter';
 import AcademyCard from './components/AcademyCard';
+
+const filterPanels = [
+  {
+    summaryText: 'Topic',
+    summaryCount: 0,
+    detailsComponent: <Typography>Topic Filter Coming Soon...!</Typography>,
+  },
+  {
+    summaryText: 'Difficulty',
+    summaryCount: 0,
+    detailsComponent: (
+      <Typography>Difficulty Filter Coming Soon...!</Typography>
+    ),
+  },
+  {
+    summaryText: 'Price',
+    summaryCount: 0,
+    detailsComponent: (
+      <>
+        <Typography>Price Filter Coming Soon...!</Typography>
+      </>
+    ),
+  },
+  {
+    summaryText: 'Rating',
+    summaryCount: 0,
+    detailsComponent: <Typography>Rating Filter Coming Soon...!</Typography>,
+  },
+];
 
 const academyData = [
   {
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
+      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
     difficultyLevel: 'Beginner',
-    difficultyLevelIcon: <BeginnerIcon />,
+    difficultyLevelIcon: BeginnerIcon,
+    priceLevel: 25,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
@@ -27,9 +56,9 @@ const academyData = [
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
+      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
     difficultyLevel: 'Intermediate',
-    difficultyLevelIcon: <IntermediateIcon />,
+    difficultyLevelIcon: IntermediateIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
@@ -37,9 +66,10 @@ const academyData = [
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
+      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
     difficultyLevel: 'Expert',
-    difficultyLevelIcon: <ExpertIcon />,
+    difficultyLevelIcon: ExpertIcon,
+    priceLevel: 25,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
@@ -47,9 +77,9 @@ const academyData = [
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
+      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
     difficultyLevel: 'Beginner',
-    difficultyLevelIcon: <BeginnerIcon />,
+    difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
@@ -57,9 +87,9 @@ const academyData = [
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
+      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
     difficultyLevel: 'Beginner',
-    difficultyLevelIcon: <BeginnerIcon />,
+    difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
@@ -67,20 +97,21 @@ const academyData = [
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
+      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
     difficultyLevel: 'Beginner',
-    difficultyLevelIcon: <BeginnerIcon />,
+    difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
 ];
 
 function Academy() {
-  const [initialValues] = React.useState({
-    topic: 'Altcoin',
-    difficulty: 'Beginner',
-  });
+  const [openDrawer, setOpenDrawer] = React.useState(false);
   const navigate = useNavigate();
+
+  const toggleDrawer = () => {
+    setOpenDrawer(!openDrawer);
+  };
   return (
     <Container>
       <Grid
@@ -114,72 +145,24 @@ function Academy() {
       <Typography variant="h3" mt={12.5} textAlign="center">
         Academy
       </Typography>
-      <Formik
-        initialValues={{
-          ...initialValues,
-        }}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
-      >
-        <Form>
-          <Grid container spacing={4} mt={3}>
-            <Grid item xs={12} sm={6} md={4}>
-              <DropDown
-                name="topic"
-                options={[
-                  'Altcoin',
-                  'Binance',
-                  'Bitcoin',
-                  'Blockchain',
-                  'Consensus',
-                  'Cryptography',
-                  'DeFi',
-                ]}
-                label="Select Topics"
-                placeholder={'Select Topics'}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <DropDown
-                name="difficulty"
-                label="Select Difficulty"
-                options={['Beginner', 'Intermediate', 'Expert']}
-                placeholder={'Select Difficulty'}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Grid container columnSpacing={3}>
-                <Grid item xs={6}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="secondary"
-                    sx={{ width: '100%' }}
-                  >
-                    Apply Filter
-                  </Button>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{ width: '100%' }}
-                  >
-                    Clear Filter
-                  </Button>
-                </Grid>
-              </Grid>
-            </Grid>
-
+      <Grid container mt={5} columnSpacing={3}>
+        <Grid item md={4}>
+          <Filter
+            toggleDrawer={toggleDrawer}
+            openDrawer={openDrawer}
+            filterPanels={filterPanels}
+          />
+        </Grid>
+        <Grid item md={8}>
+          <Grid container spacing={3}>
             {academyData.map((item, index) => (
-              <Grid item xs={12} sm={6} md={4} lg={4} key={item.title + index}>
+              <Grid item xs={12} sm={6} lg={4} key={item.title + index}>
                 <AcademyCard item={item} />
               </Grid>
             ))}
           </Grid>
-        </Form>
-      </Formik>
+        </Grid>
+      </Grid>
     </Container>
   );
 }

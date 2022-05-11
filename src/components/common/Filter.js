@@ -5,13 +5,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import {
   Typography,
   Button,
-  Switch,
   Badge,
   IconButton,
   Grid,
   Box,
   Drawer,
-  Chip,
   Card,
   CardContent,
   Accordion,
@@ -20,88 +18,13 @@ import {
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
 
-const categoriesFilter = [
-  'Art',
-  'Collectibles',
-  'Domain Names',
-  'Music',
-  'Photography',
-  'Sports',
-  'Trading Cards',
-  'Utility',
-];
-
-const onSaleInFilter = [
-  'ETH',
-  'WETH',
-  '$BASED',
-  '3$DG',
-  '0xBTC',
-  '1337',
-  '1MT',
-  '2XDN',
-  'ABST',
-];
-
-function Filter({ toggleDrawer, openDrawer }) {
+function Filter({ toggleDrawer, openDrawer, filterPanels }) {
   const [expanded, setExpanded] = React.useState('panel1');
 
   const list = () => <Box role="presentation">{filter()}</Box>;
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-  const filterPanels = [
-    {
-      summaryText: 'Price',
-      summaryCount: 5,
-      detailsComponent: <Typography>Price Filter Coming Soon...!</Typography>,
-    },
-    {
-      summaryText: 'Collection',
-      summaryCount: 0,
-      detailsComponent: <Typography>Price Filter Coming Soon...!</Typography>,
-    },
-    {
-      summaryText: 'Categories',
-      summaryCount: 10,
-      detailsComponent: (
-        <>
-          {categoriesFilter.map((item, index) => (
-            <Chip
-              variant="filled"
-              key={item + index}
-              label={item}
-              sx={{ mr: 1.25, mt: 1.25 }}
-            />
-          ))}
-        </>
-      ),
-    },
-    {
-      summaryText: 'Chain',
-      summaryCount: 100,
-      detailsComponent: <Typography>Price Filter Coming Soon...!</Typography>,
-    },
-    {
-      summaryText: 'On sale in',
-      summaryCount: 10000,
-      detailsComponent: (
-        <>
-          {onSaleInFilter.map((item) => (
-            <Grid
-              key={item}
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Typography>{item}</Typography>
-              <Switch />
-            </Grid>
-          ))}
-        </>
-      ),
-    },
-  ];
 
   const filter = () => {
     return (
@@ -183,6 +106,7 @@ function Filter({ toggleDrawer, openDrawer }) {
 Filter.propTypes = {
   toggleDrawer: PropTypes.func,
   openDrawer: PropTypes.bool,
+  filterPanels: PropTypes.array,
 };
 
 export default Filter;

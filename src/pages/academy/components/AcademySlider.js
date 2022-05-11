@@ -3,9 +3,9 @@ import React from 'react';
 import Slider from 'react-slick';
 
 import AcademyImage from './../../../assets/academy_image.svg';
-import { ReactComponent as BeginnerIcon } from './../../../assets/beginner_icon.svg';
-import { ReactComponent as ExpertIcon } from './../../../assets/expert_icon.svg';
-import { ReactComponent as IntermediateIcon } from './../../../assets/intermediate_icon.svg';
+import BeginnerIcon from './../../../assets/beginner_icon.svg';
+import ExpertIcon from './../../../assets/expert_icon.svg';
+import IntermediateIcon from './../../../assets/intermediate_icon.svg';
 import AcademyCard from './AcademyCard';
 
 export default function AcademySlider() {
@@ -16,7 +16,7 @@ export default function AcademySlider() {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
       difficultyLevel: 'Beginner',
-      difficultyLevelIcon: <BeginnerIcon />,
+      difficultyLevelIcon: BeginnerIcon,
       duration: '2 hour 15 min',
       rating: '4.7',
     },
@@ -26,7 +26,7 @@ export default function AcademySlider() {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
       difficultyLevel: 'Intermediate',
-      difficultyLevelIcon: <IntermediateIcon />,
+      difficultyLevelIcon: IntermediateIcon,
       duration: '2 hour 15 min',
       rating: '4.7',
     },
@@ -36,7 +36,7 @@ export default function AcademySlider() {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
       difficultyLevel: 'Expert',
-      difficultyLevelIcon: <ExpertIcon />,
+      difficultyLevelIcon: ExpertIcon,
       duration: '2 hour 15 min',
       rating: '4.7',
     },
@@ -46,7 +46,7 @@ export default function AcademySlider() {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
       difficultyLevel: 'Beginner',
-      difficultyLevelIcon: <BeginnerIcon />,
+      difficultyLevelIcon: BeginnerIcon,
       duration: '2 hour 15 min',
       rating: '4.7',
     },
@@ -56,7 +56,7 @@ export default function AcademySlider() {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
       difficultyLevel: 'Beginner',
-      difficultyLevelIcon: <BeginnerIcon />,
+      difficultyLevelIcon: BeginnerIcon,
       duration: '2 hour 15 min',
       rating: '4.7',
     },
@@ -66,7 +66,7 @@ export default function AcademySlider() {
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
       difficultyLevel: 'Beginner',
-      difficultyLevelIcon: <BeginnerIcon />,
+      difficultyLevelIcon: BeginnerIcon,
       duration: '2 hour 15 min',
       rating: '4.7',
     },

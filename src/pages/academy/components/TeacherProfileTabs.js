@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import AcademyImage from './../../../assets/academy_image.svg';
-import { ReactComponent as BeginnerIcon } from './../../../assets/beginner_icon.svg';
-import { ReactComponent as ExpertIcon } from './../../../assets/expert_icon.svg';
-import { ReactComponent as IntermediateIcon } from './../../../assets/intermediate_icon.svg';
+import BeginnerIcon from './../../../assets/beginner_icon.svg';
+import ExpertIcon from './../../../assets/expert_icon.svg';
+import IntermediateIcon from './../../../assets/intermediate_icon.svg';
+import AutoCompleteSearchBar from './../../../components/common/AutoCompleteSearchBar';
 import AcademyCard from './AcademyCard';
 
 const academyData = [
@@ -17,59 +18,90 @@ const academyData = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
     difficultyLevel: 'Beginner',
-    difficultyLevelIcon: <BeginnerIcon />,
+    difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
   {
     image: AcademyImage,
-    title: 'What Is SolScan and How to Use It?',
+    title: 'What Is SolScan1 and How to Use It?',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
     difficultyLevel: 'Intermediate',
-    difficultyLevelIcon: <IntermediateIcon />,
+    difficultyLevelIcon: IntermediateIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
   {
     image: AcademyImage,
-    title: 'What Is SolScan and How to Use It?',
+    title: 'What Is SolScan2 and How to Use It?',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
     difficultyLevel: 'Expert',
-    difficultyLevelIcon: <ExpertIcon />,
+    difficultyLevelIcon: ExpertIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
   {
     image: AcademyImage,
-    title: 'What Is SolScan and How to Use It?',
+    title: 'What Is SolScan3 and How to Use It?',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
     difficultyLevel: 'Beginner',
-    difficultyLevelIcon: <BeginnerIcon />,
+    difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
   {
     image: AcademyImage,
-    title: 'What Is SolScan and How to Use It?',
+    title: 'What Is SolScan4 and How to Use It?',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
     difficultyLevel: 'Beginner',
-    difficultyLevelIcon: <BeginnerIcon />,
+    difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
   },
   {
     image: AcademyImage,
-    title: 'What Is SolScan and How to Use It?',
+    title: 'What Is SolScan5 and How to Use It?',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget elit semper, feugiat nulla in, euismod neque. Ut aliquet volutpat neque eu posuere.',
     difficultyLevel: 'Beginner',
-    difficultyLevelIcon: <BeginnerIcon />,
+    difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
     rating: '4.7',
+  },
+];
+
+const courseData = [
+  {
+    image: AcademyImage,
+    title: 'What Is SolScan and How to Use It?',
+    difficultyLevel: 'Beginner',
+    difficultyLevelIcon: BeginnerIcon,
+    rewardPoint: 80,
+  },
+  {
+    image: AcademyImage,
+    title: 'What Is SolScan1 and How to Use It?',
+    difficultyLevel: 'Beginner',
+    difficultyLevelIcon: BeginnerIcon,
+    rewardPoint: 80,
+  },
+  {
+    image: AcademyImage,
+    title: 'What Is SolScan2 and How to Use It?',
+    difficultyLevel: 'Intermediate',
+    difficultyLevelIcon: IntermediateIcon,
+    rewardPoint: 80,
+  },
+  {
+    image: AcademyImage,
+    title: 'What Is SolScan3 and How to Use It?',
+    difficultyLevel: 'Expert',
+    difficultyLevelIcon: ExpertIcon,
+    rewardPoint: 80,
   },
 ];
 
@@ -108,6 +140,10 @@ function a11yProps(index) {
 
 function TeacherProfileTabs() {
   const [value, setValue] = React.useState(0);
+
+  const [searchInput, setSearchInput] = React.useState('');
+  const [searchCourseData, setSearchCourseData] = React.useState(courseData);
+  const [searchAcademyData, setSearchAcademyData] = React.useState(academyData);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -128,19 +164,97 @@ function TeacherProfileTabs() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Grid container spacing={4}>
-          {academyData.map((item, index) => (
-            <Grid item xs={12} sm={6} md={6} lg={6} key={item.title + index}>
-              <AcademyCard item={item} />
-            </Grid>
-          ))}
-        </Grid>
+        <>
+          <AutoCompleteSearchBar
+            data={academyData}
+            searchBy="title"
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            setSearchData={setSearchAcademyData}
+          />
+          <Grid container spacing={4} mt={1}>
+            {searchAcademyData && searchAcademyData.length !== 0 ? (
+              searchAcademyData.map((item, index) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  lg={6}
+                  key={item.title + index}
+                >
+                  <AcademyCard item={item} />
+                </Grid>
+              ))
+            ) : (
+              <Typography textAlign={'center'} width="100%">
+                No results for &apos;{searchInput}&apos;
+              </Typography>
+            )}
+          </Grid>
+        </>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Coming soon...!
+        <>
+          <AutoCompleteSearchBar
+            data={academyData}
+            searchBy="title"
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            setSearchData={setSearchAcademyData}
+          />
+          <Grid container spacing={4} mt={1}>
+            {searchAcademyData && searchAcademyData.length !== 0 ? (
+              searchAcademyData.map((item, index) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  lg={6}
+                  key={item.title + index}
+                >
+                  <AcademyCard item={item} />
+                </Grid>
+              ))
+            ) : (
+              <Typography textAlign={'center'} width="100%">
+                No results for &apos;{searchInput}&apos;
+              </Typography>
+            )}
+          </Grid>
+        </>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Coming soon...!
+        <>
+          <AutoCompleteSearchBar
+            data={courseData}
+            searchBy="title"
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            setSearchData={setSearchCourseData}
+          />
+          <Grid container spacing={4} mt={1}>
+            {searchCourseData && searchCourseData.length !== 0 ? (
+              searchCourseData.map((item, index) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={6}
+                  lg={6}
+                  key={item.title + index}
+                >
+                  <AcademyCard item={item} />
+                </Grid>
+              ))
+            ) : (
+              <Typography textAlign={'center'} width="100%">
+                No results for &apos;{searchInput}&apos;
+              </Typography>
+            )}
+          </Grid>
+        </>
       </TabPanel>
     </Box>
   );
