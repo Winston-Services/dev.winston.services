@@ -3,6 +3,7 @@ import React from 'react';
 import { ExpandMore } from '@mui/icons-material';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LockIcon from '@mui/icons-material/Lock';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import {
   Accordion,
   AccordionDetails,
@@ -29,26 +30,31 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
@@ -65,26 +71,31 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
@@ -101,26 +112,31 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
@@ -137,26 +153,31 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
@@ -173,26 +194,31 @@ function AcademyAccordion() {
       content: [
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
+          icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
           duration: '5 min',
         },
@@ -256,7 +282,7 @@ function AcademyAccordion() {
                 <Grid item gap={3} display="flex">
                   <Grid display="flex" alignItems="center" gap={1}>
                     {item.icon}
-                    <Link variant="subtitle1">{item.view}</Link>
+                    {/* <Link variant="subtitle1">{item.view}</Link> */}
                   </Grid>
                   <Grid display="flex" alignItems="center" gap={1}>
                     <AccessTimeIcon />
@@ -276,10 +302,10 @@ function AcademyAccordion() {
                 </Button>
                 <Button
                   variant="outlined"
-                  onClick={() => navigate('/academy/voting')}
+                  onClick={() => navigate('/academy/rating')}
                   sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
                 >
-                  Give a voting
+                  Give a rating
                 </Button>
               </Grid>
             ) : (

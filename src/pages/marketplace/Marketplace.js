@@ -3,7 +3,15 @@ import * as React from 'react';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import ListIcon from '@mui/icons-material/List';
-import { Typography, Button, Grid, Badge, Container } from '@mui/material';
+import {
+  Typography,
+  Button,
+  Grid,
+  Badge,
+  Container,
+  Chip,
+  Switch,
+} from '@mui/material';
 
 import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
 import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
@@ -11,7 +19,7 @@ import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
 import NftMarketPlace4 from '../../assets/nft_marketplace_4.png';
 import NftMarketPlace5 from '../../assets/nft_marketplace_5.png';
 import AutoCompleteSearchBar from './../../components/common/AutoCompleteSearchBar';
-import Filter from './components/Filter';
+import Filter from './../../components/common/Filter';
 import ProductCard from './components/ProductCard';
 const items = [
   {
@@ -61,6 +69,82 @@ const items = [
     price: 59,
     startBid: 15,
     endBidIn: 5,
+  },
+];
+
+const categoriesFilter = [
+  'Art',
+  'Collectibles',
+  'Domain Names',
+  'Music',
+  'Photography',
+  'Sports',
+  'Trading Cards',
+  'Utility',
+];
+
+const onSaleInFilter = [
+  'ETH',
+  'WETH',
+  '$BASED',
+  '3$DG',
+  '0xBTC',
+  '1337',
+  '1MT',
+  '2XDN',
+  'ABST',
+];
+
+const filterPanels = [
+  {
+    summaryText: 'Price',
+    summaryCount: 5,
+    detailsComponent: <Typography>Price Filter Coming Soon...!</Typography>,
+  },
+  {
+    summaryText: 'Collection',
+    summaryCount: 0,
+    detailsComponent: <Typography>Price Filter Coming Soon...!</Typography>,
+  },
+  {
+    summaryText: 'Categories',
+    summaryCount: 10,
+    detailsComponent: (
+      <>
+        {categoriesFilter.map((item, index) => (
+          <Chip
+            variant="filled"
+            key={item + index}
+            label={item}
+            sx={{ mr: 1.25, mt: 1.25 }}
+          />
+        ))}
+      </>
+    ),
+  },
+  {
+    summaryText: 'Chain',
+    summaryCount: 100,
+    detailsComponent: <Typography>Price Filter Coming Soon...!</Typography>,
+  },
+  {
+    summaryText: 'On sale in',
+    summaryCount: 10000,
+    detailsComponent: (
+      <>
+        {onSaleInFilter.map((item) => (
+          <Grid
+            key={item}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Typography>{item}</Typography>
+            <Switch />
+          </Grid>
+        ))}
+      </>
+    ),
   },
 ];
 
@@ -131,7 +215,11 @@ export default function Marketplace() {
           </Grid>
         </Grid>
         <Grid item md={4}>
-          <Filter toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
+          <Filter
+            toggleDrawer={toggleDrawer}
+            openDrawer={openDrawer}
+            filterPanels={filterPanels}
+          />
         </Grid>
         <Grid item md={8}>
           <Grid
