@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Cancel } from '@mui/icons-material';
 import {
-  Paper,
+  Card,
   Grid,
   Typography,
   FormHelperText,
@@ -11,7 +11,7 @@ import {
 import { useFormikContext, ErrorMessage } from 'formik';
 import { PropTypes } from 'prop-types';
 
-import { ReactComponent as UploadImage } from './../../../assets/upload_image.svg';
+import { ReactComponent as UploadImage } from './../../assets/upload_image.svg';
 
 function UploadFile(props) {
   const { setFieldValue } = useFormikContext();
@@ -43,7 +43,7 @@ function UploadFile(props) {
     </div>
   ) : (
     <>
-      <Paper
+      <Card
         className="dragBox"
         elevation={0}
         sx={{
@@ -60,16 +60,14 @@ function UploadFile(props) {
           sx={{ fontSize: '18px', mt: 2.5, mb: 1 }}
           textAlign={'center'}
         >
-          Drag and drop or Upload Image,Video, Audio or 3D Model
+          {props.title}
         </Typography>
         <Typography
           variant="subtitle2"
           textAlign={'center'}
           sx={{ color: '#B3AFC8', mb: 7 }}
         >
-          You can upload maximum 100MB
-          <br /> File Supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, MAV, OGG,
-          GLB, GLTF.
+          {props.subtitle}
         </Typography>
 
         <input
@@ -83,7 +81,6 @@ function UploadFile(props) {
             setValue(URL.createObjectURL(event.target.files[0]));
             return;
           }}
-          id="uploadFile"
           style={{
             position: 'absolute',
             height: '100%',
@@ -93,7 +90,7 @@ function UploadFile(props) {
             left: 0,
           }}
         />
-      </Paper>
+      </Card>
 
       <FormHelperText error={true}>
         <ErrorMessage name={props.name} />
@@ -104,6 +101,8 @@ function UploadFile(props) {
 
 UploadFile.propTypes = {
   name: PropTypes.string,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
 };
 
 export default UploadFile;

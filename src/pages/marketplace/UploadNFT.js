@@ -21,7 +21,7 @@ import * as Yup from 'yup';
 
 import DropDown from '../../components/common/DropDown';
 import TextField from '../../components/common/TextField';
-import UploadFile from './components/UploadFile';
+import UploadFile from './../../components/common/UploadFile';
 
 const category = [
   'Art',
@@ -182,7 +182,12 @@ function UploadNFT() {
             <Form>
               <Grid container spacing={5}>
                 <Grid item xs={12} md={6}>
-                  <UploadFile name="image" />
+                  <UploadFile
+                    name="image"
+                    title="Drag and drop or Upload Image,Video, Audio or 3D Model"
+                    subtitle="You can upload maximum 100MB File Supported: JPG, PNG, GIF, SVG, MP4,
+          WEBM, MP3, MAV, OGG, GLB, GLTF."
+                  />
                 </Grid>
                 <Grid
                   item

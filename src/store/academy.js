@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  course: [],
   addCourse: {
     step1: 'In person, informally',
     step2: 'I am a beginner',
@@ -26,6 +27,9 @@ export const academySlice = createSlice({
   name: 'academy',
   initialState,
   reducers: {
+    updateCourse: (state, action) => {
+      state.course = { ...state.course, ...action.payload };
+    },
     updateAddCourse: (state, action) => {
       state.addCourse = { ...state.addCourse, ...action.payload };
     },
@@ -80,6 +84,7 @@ export const academySlice = createSlice({
 });
 
 export const {
+  updateCourse,
   updateAddCourse,
   addSection,
   updateSection,
@@ -91,6 +96,7 @@ export const {
   updateExternalResource,
   deleteExternalResource,
 } = academySlice.actions;
+export const courseSelector = (state) => state.academy.course;
 export const addCourseSelector = (state) => state.academy.addCourse;
 export const sectionSelector = (state) => state.academy.section;
 

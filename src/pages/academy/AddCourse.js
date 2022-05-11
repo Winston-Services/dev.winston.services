@@ -8,14 +8,14 @@ import {
   Button,
 } from '@mui/material';
 import { Form, Formik } from 'formik';
-import { PropTypes } from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import * as Yup from 'yup';
 
 import MonitorImage from './../../assets/moniter.svg';
+import { updateCourse, courseSelector } from './../../store/academy';
 import StepAddCourse from './components/StepAddCourse';
-import StepTitle from './components/StepTitle';
 
 const steps = [
   {
@@ -56,7 +56,12 @@ const steps = [
   },
 ];
 
-function AddCourse({ addCourseData, setAddCourseData }) {
+function AddCourse() {
+  const dispatch = useDispatch();
+  const addCourseData = useSelector(courseSelector);
+  const setCourseData = (data) => {
+    dispatch(updateCourse(data));
+  };
   const slider = React.useRef(null);
   const [slideIndex, setSlideIndex] = React.useState(0);
 
@@ -73,8 +78,8 @@ function AddCourse({ addCourseData, setAddCourseData }) {
   };
 
   const handleSubmit = (values) => {
-    if (slideIndex === 3) {
-      setAddCourseData(values);
+    if (slideIndex === 2) {
+      setCourseData(values);
       navigate('/academy/add-lecture');
     } else slider?.current?.slickNext();
   };
@@ -94,11 +99,11 @@ function AddCourse({ addCourseData, setAddCourseData }) {
         <Typography variant="subtitle1">Exit</Typography>
       </Grid>
       <Typography variant="subtitle1" mt={{ xs: 3, sm: 6 }}>
-        Step {slideIndex + 1} of 4
+        Step {slideIndex + 1} of 3
       </Typography>
       <LinearProgress
         variant="determinate"
-        value={(slideIndex + 1) * 25}
+        value={(slideIndex + 1) * 33.33}
         sx={{ mt: { xs: 1, sm: 2 } }}
       />
 
@@ -123,7 +128,6 @@ function AddCourse({ addCourseData, setAddCourseData }) {
                     <StepAddCourse name={'step' + (index + 1)} data={step} />
                   </Grid>
                 ))}
-                <StepTitle />
               </Slider>
               <Grid
                 sx={{ mt: { xs: 2.5, sm: 5 } }}
@@ -160,10 +164,5 @@ function AddCourse({ addCourseData, setAddCourseData }) {
     </Container>
   );
 }
-
-AddCourse.propTypes = {
-  addCourseData: PropTypes.object,
-  setAddCourseData: PropTypes.func,
-};
 
 export default AddCourse;

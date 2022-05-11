@@ -1,9 +1,7 @@
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
 import { useRoutes, Navigate } from 'react-router-dom';
 
-import { updateAddCourse, addCourseSelector } from './../../store/academy';
 const Academy = React.lazy(() => import('./Academy'));
 const AcademyDetails = React.lazy(() => import('./AcademyDetails'));
 const Voting = React.lazy(() => import('./Voting'));
@@ -13,11 +11,6 @@ const AddLectures = React.lazy(() => import('./AddLectures'));
 import './index.css';
 
 export default function AcademyRouting() {
-  const dispatch = useDispatch();
-  const addCourseData = useSelector(addCourseSelector);
-  const setAddCourseData = (data) => {
-    dispatch(updateAddCourse(data));
-  };
   const routes = [
     {
       path: '/',
@@ -36,12 +29,7 @@ export default function AcademyRouting() {
         },
         {
           path: '/add-course',
-          element: (
-            <AddCourse
-              addCourseData={addCourseData}
-              setAddCourseData={setAddCourseData}
-            />
-          ),
+          element: <AddCourse />,
         },
         {
           path: '/add-lecture',

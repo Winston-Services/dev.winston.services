@@ -122,6 +122,7 @@ function Ico() {
           response.isError = false;
         }
         setAbiResponse(response);
+        console.log(response);
         // setIsAbiLoading(false);
       })
       .catch(() => {
