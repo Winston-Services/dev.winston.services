@@ -23,10 +23,14 @@ function DropDown2({ options, placeholder = '' }) {
         onChange={handleChange}
         displayEmpty
         inputProps={{ 'aria-label': 'Without label' }}
-        // sx={{
-        //   borderRadius: '50px',
-        //   background: '#31256C',
-        // }}
+        sx={{
+          background:
+            'linear-gradient(92.44deg, #EA7A8F 3.93%, #E452C8 98.71%)',
+          borderRadius: '5px',
+          height: '47px',
+          width: '154px',
+          border: 'none',
+        }}
       >
         <MenuItem value="">{placeholder}</MenuItem>
         {options?.map((value) => {

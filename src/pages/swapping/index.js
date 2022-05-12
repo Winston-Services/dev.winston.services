@@ -19,7 +19,7 @@ const digitsOnly = (value) => /^\d+$/.test(value);
 
 const FORM_VALIDATION = Yup.object().shape({
   token: Yup.string().required(' Token is required'),
-  address: Yup.string().required(' Token is required'),
+  address: Yup.string().required(' Address is required'),
   amount: Yup.string().test(
     'Digits only',
     'The field should have digits only',
@@ -76,6 +76,7 @@ export default function Swapping() {
                         name="token"
                         fullWidth
                         label="Token"
+                        helperText="Token is required"
                         placeholder="Token"
                       />
                     </Grid>
@@ -84,6 +85,7 @@ export default function Swapping() {
                         name="address"
                         fullWidth
                         label="Address"
+                        helperText="Address is required"
                         placeholder="Token Address"
                       />
                     </Grid>
@@ -92,6 +94,7 @@ export default function Swapping() {
                         name="amount"
                         fullWidth
                         label="Amount"
+                        helperText="Amount is required"
                         placeholder="Amount"
                       />
                     </Grid>
@@ -138,6 +141,7 @@ export default function Swapping() {
                         name="token"
                         fullWidth
                         label="Token"
+                        helperText="Token is required"
                         placeholder="Token"
                       />
                     </Grid>
@@ -146,6 +150,7 @@ export default function Swapping() {
                         name="address"
                         fullWidth
                         label="Address"
+                        helperText="Address is required"
                         placeholder="Token Address"
                       />
                     </Grid>
@@ -154,6 +159,7 @@ export default function Swapping() {
                         name="amount"
                         fullWidth
                         label="Amount"
+                        helperText="Amount is required"
                         placeholder="Amount"
                       />
                     </Grid>

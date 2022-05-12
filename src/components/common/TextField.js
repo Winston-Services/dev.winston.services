@@ -26,7 +26,7 @@ const TextFieldWrapper = ({ name, onChange, ...otherProps }) => {
     configTextField.error = true;
     configTextField.helperText = mata.error;
   }
-  return <TextField {...configTextField} />;
+  return <TextField autoComplete="off" {...configTextField} />;
 };
 
 TextFieldWrapper.propTypes = {

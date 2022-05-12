@@ -190,12 +190,14 @@ export default function Faucet() {
                 </Grid>
                 <Grid item>
                   <TextField
+                    autoComplete="off"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                     sx={{
                       backgroundColor: '#271D5A',
                       mt: { xs: 1.5, sm: 0 },
                       borderRadius: '5px',
+                      px: 2,
                     }}
                     variant="standard"
                     hiddenLabel
@@ -223,9 +225,12 @@ export default function Faucet() {
               {searchData && searchData.length !== 0 ? (
                 <Table columns={columns} rows={searchData} />
               ) : (
-                <Typography textAlign={'center'}>
-                  No results for &apos;{searchInput}&apos;
-                </Typography>
+                <>
+                  <Table columns={columns} />
+                  <Typography mt={2} textAlign={'center'}>
+                    No results for &apos;{searchInput}&apos;
+                  </Typography>
+                </>
               )}
             </Grid>
           </Card>

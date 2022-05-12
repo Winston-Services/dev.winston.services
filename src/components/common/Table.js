@@ -22,17 +22,21 @@ export default function TableWrapper({ columns, rows }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              hover
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              {columns.map((column) => (
-                <TableCell key={column.id}>{row[column.id]}</TableCell>
-              ))}
-            </TableRow>
-          ))}
+          {rows && rows.length != 0 ? (
+            rows.map((row) => (
+              <TableRow
+                hover
+                key={row.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                {columns.map((column) => (
+                  <TableCell key={column.id}>{row[column.id]}</TableCell>
+                ))}
+              </TableRow>
+            ))
+          ) : (
+            <></>
+          )}
         </TableBody>
       </Table>
     </TableContainer>
