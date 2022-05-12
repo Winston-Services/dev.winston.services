@@ -58,7 +58,7 @@ const steps = [
 
 function AddCourse() {
   const dispatch = useDispatch();
-  const addCourseData = useSelector(courseSelector);
+  const courseData = useSelector(courseSelector);
   const setCourseData = (data) => {
     dispatch(updateCourse(data));
   };
@@ -117,7 +117,7 @@ function AddCourse() {
       >
         <Grid item md={6.5}>
           <Formik
-            initialValues={{ ...addCourseData }}
+            initialValues={{ ...courseData }}
             validationSchema={FORM_VALIDATION}
             onSubmit={handleSubmit}
           >

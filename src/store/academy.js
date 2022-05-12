@@ -1,7 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  course: [],
+  course: {
+    step1: 'In person, informally',
+    step2: 'I am a beginner',
+    step3: 'Not at the moment',
+    thumbnail: '',
+    title: '',
+    description: '',
+    skills: [],
+    tags: [],
+    summary: '',
+    price: '',
+    discountPrice: '',
+    category: [
+      {
+        name: 'Untitled category1',
+        lesson: [
+          { name: 'Lesson1', isRequired: true, link: '' },
+          { name: 'Lesson2', isRequired: true, link: '' },
+        ],
+      },
+      {
+        name: 'Untitled category2',
+        lesson: [{ name: 'Lesson1', isRequired: true, link: '' }],
+      },
+    ],
+  },
   addCourse: {
     step1: 'In person, informally',
     step2: 'I am a beginner',

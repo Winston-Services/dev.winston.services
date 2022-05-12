@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Add, Close, Remove } from '@mui/icons-material';
+import { Add, Close, Remove, TextFields } from '@mui/icons-material';
 import {
   Container,
   Grid,
@@ -187,6 +187,7 @@ function UploadNFT() {
                     title="Drag and drop or Upload Image,Video, Audio or 3D Model"
                     subtitle="You can upload maximum 100MB File Supported: JPG, PNG, GIF, SVG, MP4,
           WEBM, MP3, MAV, OGG, GLB, GLTF."
+                    height="465px"
                   />
                 </Grid>
                 <Grid
@@ -197,26 +198,16 @@ function UploadNFT() {
                   flexDirection={'column'}
                   gap={2}
                 >
-                  <TextField
-                    fullWidth
-                    name="name"
-                    label="NFT Name"
-                    placeholder="Name"
-                    variant="outlined"
-                  />
+                  <TextFields name="name" label="NFT Name" placeholder="Name" />
                   <TextField
                     name="link"
-                    fullWidth
                     label="External Link"
                     placeholder="Link"
-                    variant="outlined"
                   />
                   <TextField
-                    fullWidth
                     name="description"
                     label="Description"
                     placeholder="Description"
-                    variant="outlined"
                     multiline={true}
                     rows={8}
                   />
@@ -539,7 +530,6 @@ function UploadNFT() {
                       </Typography>
                     </Grid>
                     <TextField
-                      fullWidth
                       name="price"
                       label={
                         fixedPrice
@@ -547,7 +537,6 @@ function UploadNFT() {
                           : 'Starting Bid Price - in USD'
                       }
                       placeholder="0.00"
-                      variant="outlined"
                     />
                   </Grid>
                   {auctionPrice ? (

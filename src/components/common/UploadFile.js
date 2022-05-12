@@ -21,7 +21,7 @@ function UploadFile(props) {
     <div style={{ position: 'relative' }}>
       <img
         src={value}
-        height="465px"
+        height={props.height}
         width="100%"
         style={{ borderRadius: '20px', objectFit: 'cover' }}
       />
@@ -42,18 +42,23 @@ function UploadFile(props) {
       </IconButton>
     </div>
   ) : (
-    <>
+    <Grid height={props.height}>
       <Card
         className="dragBox"
         elevation={0}
         sx={{
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          p: 3,
           textAlign: 'center',
           border: '2px dashed #6D6691',
           cursor: 'pointer',
           position: 'relative',
         }}
       >
-        <Grid item mt={11.2}>
+        <Grid>
           <UploadImage />
         </Grid>
         <Typography
@@ -65,7 +70,7 @@ function UploadFile(props) {
         <Typography
           variant="subtitle2"
           textAlign={'center'}
-          sx={{ color: '#B3AFC8', mb: 7 }}
+          sx={{ color: '#B3AFC8' }}
         >
           {props.subtitle}
         </Typography>
@@ -95,7 +100,7 @@ function UploadFile(props) {
       <FormHelperText error={true}>
         <ErrorMessage name={props.name} />
       </FormHelperText>
-    </>
+    </Grid>
   );
 }
 
@@ -103,6 +108,7 @@ UploadFile.propTypes = {
   name: PropTypes.string,
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  height: PropTypes.string,
 };
 
 export default UploadFile;
