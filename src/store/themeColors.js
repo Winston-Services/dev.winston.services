@@ -340,6 +340,19 @@ const publicPageColors = {
           props: { variant: 'outlined' },
           style: {
             fieldset: { borderRadius: '4px' },
+            '&:hover fieldset': {
+              borderColor: 'white',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'white',
+            },
+            '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+              border: '1px solid white',
+            },
+            '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline':
+              {
+                border: '1px solid white',
+              },
           },
         },
         {

@@ -44,8 +44,7 @@ const academyData = [
   {
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
-    description:
-      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
+    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elitr.',
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     priceLevel: 25,
@@ -55,8 +54,7 @@ const academyData = [
   {
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
-    description:
-      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
+    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
     difficultyLevel: 'Intermediate',
     difficultyLevelIcon: IntermediateIcon,
     duration: '2 hour 15 min',
@@ -65,8 +63,7 @@ const academyData = [
   {
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
-    description:
-      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
+    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
     difficultyLevel: 'Expert',
     difficultyLevelIcon: ExpertIcon,
     priceLevel: 25,
@@ -76,8 +73,7 @@ const academyData = [
   {
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
-    description:
-      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
+    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
@@ -86,8 +82,7 @@ const academyData = [
   {
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
-    description:
-      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
+    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
@@ -96,8 +91,7 @@ const academyData = [
   {
     image: AcademyImage,
     title: 'What Is SolScan and How to Use It?',
-    description:
-      'Lorem ipsum dolor sit amet,consectetur adipiscing elit. Donec eget elit semper.',
+    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
