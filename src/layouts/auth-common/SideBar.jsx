@@ -18,6 +18,8 @@ import {
   sideBarItemSelector,
   sideBarStateSelector,
 } from '../../store/sideBar';
+// import OvalDark from './../../assets/oval_dark.svg';
+import OvalLight from './../../assets/oval_light.svg';
 
 const drawerWidth = 240;
 
@@ -68,6 +70,20 @@ export default function SideBar() {
   const dispatch = useDispatch();
   const isSideBarOpen = useSelector(sideBarStateSelector);
   const sideBarItem = useSelector(sideBarItemSelector);
+  console.log(sideBarItem);
+
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    console.log(selectedIndex);
+  }, [selectedIndex]);
+
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
+
+  // console.log(selectedIndex);
+
   return (
     <>
       <Drawer variant="permanent" open={isSideBarOpen}>
@@ -76,6 +92,7 @@ export default function SideBar() {
             <Box sx={{ pb: 1 }}>
               {isSideBarOpen && menuItem.attr?.primary ? (
                 <ListItemButton
+                  selected={selectedIndex === index}
                   sx={{
                     minHeight: 35,
                     justifyContent: isSideBarOpen ? 'initial' : 'center',
@@ -84,8 +101,16 @@ export default function SideBar() {
                     minWidth: '246px',
                   }}
                   alignItems="flex-start"
-                  onClick={() => dispatch(openMenu({ index }))}
+                  onClick={(e) => {
+                    dispatch(openMenu({ index }));
+                    handleListItemClick(e, index);
+                  }}
                 >
+                  {selectedIndex === index ? (
+                    <img src={OvalLight} alt="" width="11px" height="56px" />
+                  ) : (
+                    <></>
+                  )}
                   <ListItemIcon
                     sx={{
                       mt: 0,

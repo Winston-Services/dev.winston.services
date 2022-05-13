@@ -22,6 +22,7 @@ import {
 } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import TextField from '../../components/common/TextField';
@@ -49,6 +50,7 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 function AddLectures() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [title, setTitle] = React.useState('Course Title');
   const courseData = useSelector(courseSelector);
@@ -205,7 +207,11 @@ function AddLectures() {
                                 control={<Checkbox defaultChecked />}
                                 label="Required"
                               />
-                              <IconButton>
+                              <IconButton
+                                onClick={() =>
+                                  navigate('/academy/add-lecture/edit')
+                                }
+                              >
                                 <Edit sx={{ color: '#C4C4C4' }} />
                               </IconButton>
                               <IconButton>
