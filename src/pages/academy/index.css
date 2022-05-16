@@ -7,3 +7,41 @@
   table-layout: fixed;
   width: 100%;
 }
+
+.border1 {
+  position: relative;
+}
+
+.border1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  padding: 1px;
+  background: linear-gradient(#ea7a8f, #e452c8);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
+
+.border1:hover {
+  background: linear-gradient(#ea7a8f, #e452c8);
+  border-radius: 10px;
+}
+
+.border2 {
+  background: linear-gradient(45deg, #ea7a8f, #e452c8);
+  border-radius: 10px;
+}
+
+.dottedBorder {
+  margin: 20px;
+  border-radius: 15px;
+  border: 2px dashed #31256c;
+  background: linear-gradient(#31256c, #31256c) padding-box,
+    linear-gradient(#ea7a8f, #e452c8) border-box;
+}
+
+.rdw-editor-toolbar {
+  background: #31256c !important;
+  border: none !important;
+}

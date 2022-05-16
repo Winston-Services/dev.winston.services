@@ -55,6 +55,44 @@ export const academySlice = createSlice({
     updateCourse: (state, action) => {
       state.course = { ...state.course, ...action.payload };
     },
+    updateCategory: (state, action) => {
+      state.course.category[action.payload.categoryIndex].name =
+        action.payload.name;
+    },
+    updateLesson: (state, action) => {
+      state.course.category[action.payload.categoryIndex].lesson[
+        action.payload.lessonIndex
+      ] = {
+        ...state.course.category[action.payload.categoryIndex].lesson[
+          action.payload.lessonIndex
+        ],
+        ...action.payload.data,
+      };
+    },
+    addCategory: (state, action) => {
+      state.course.category.splice(
+        action.payload.categoryIndex,
+        0,
+        action.payload.categoryData
+      );
+    },
+    addLesson: (state, action) => {
+      state.course.category[action.payload.categoryIndex].lesson.splice(
+        action.payload.lessonIndex,
+        0,
+        action.payload.lessonData
+      );
+    },
+    deleteCategory: (state, action) => {
+      state.course.category.splice(action.payload, 1);
+    },
+    deleteLesson: (state, action) => {
+      state.course.category[action.payload.categoryIndex].lesson.splice(
+        action.payload.lessonIndex,
+        1
+      );
+    },
+
     updateAddCourse: (state, action) => {
       state.addCourse = { ...state.addCourse, ...action.payload };
     },
@@ -110,6 +148,13 @@ export const academySlice = createSlice({
 
 export const {
   updateCourse,
+  updateCategory,
+  updateLesson,
+  addCategory,
+  addLesson,
+  deleteCategory,
+  deleteLesson,
+
   updateAddCourse,
   addSection,
   updateSection,

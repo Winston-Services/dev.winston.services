@@ -9,6 +9,7 @@ const TeacherProfile = React.lazy(() => import('./TeacherProfile'));
 const AddCourse = React.lazy(() => import('./AddCourse'));
 const AddLectures = React.lazy(() => import('./AddLectures'));
 const Courses = React.lazy(() => import('./Courses'));
+const AddCategory = React.lazy(() => import('./components/AddCategory'));
 import './index.css';
 
 export default function AcademyRouting() {
@@ -35,6 +36,10 @@ export default function AcademyRouting() {
         {
           path: '/add-lecture',
           element: <AddLectures />,
+        },
+        {
+          path: '/add-lecture/edit',
+          element: <AddCategory />,
         },
         {
           path: '/teacher-profile',
