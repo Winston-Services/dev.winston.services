@@ -7,14 +7,20 @@ import {
   TextField,
   Typography,
   Button,
-  FormHelperText,
+  CircularProgress,
 } from '@mui/material';
 import { ethers } from 'ethers';
 
 import logo from './../../assets/logo_footer.svg';
 import './index.css';
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
+const provider = new ethers.providers.JsonRpcProvider(
+  'https://bsc-dataseed.binance.org/'
+);
+const pancakeSwapContract = {
+  factory: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73', // PancakeSwap V2 factory
+  router: '0x10ED43C718714eb63d5aA57B78B54704E256024E', // PancakeSwap V2 router
+};
 
 const paymentTypes = [
   {
@@ -29,7 +35,7 @@ const paymentTypes = [
   },
   {
     image: './assets/icons/rickel.svg',
-    name: 'RICKEL',
+    name: 'RKL',
     price: 12,
   },
   {
@@ -44,124 +50,84 @@ const paymentTypes = [
   },
 ];
 
+const tokens = {
+  BUSD: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
+  RKL: '0xeca15e1bbff172d545dd6325f3bae7b737906737',
+  WBNB: '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+  WIN: '0x75578ebBefe274F240B8E1b5859cA34f342157D9',
+  FIELD: '0x04D50c032F16a25d1449Ef04D893e95Bcc54d747',
+  WMUE: '0x00abaA93fAF8fDc4f382135a7A56F9Cf7C3EdD21',
+};
+const router = new ethers.Contract(
+  pancakeSwapContract.router,
+  [
+    'function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts)',
+  ],
+  provider
+);
+
+const priceHandler = async (token, token2) => {
+  if (token.indexOf('0x') === -1) {
+    token = tokens[token.toUpperCase()];
+  }
+  if (token2.indexOf('0x') === -1) {
+    token2 = tokens[token2.toUpperCase()];
+  }
+  if (token) {
+    // console.log(token, 'TOKENS', token2);
+    const price = await getPrice(token, token2);
+    return { status: 'success', token2: price };
+  } else {
+    return await new Promise.resolve(() => {
+      return {
+        status: 'error',
+        BUSD: 0,
+      };
+    });
+  }
+};
+
+async function getPrice(inputCurrency, outputCurrency) {
+  const amounts = await router.getAmountsOut(ethers.utils.parseUnits('1', 18), [
+    inputCurrency,
+    outputCurrency,
+  ]);
+  return amounts[1].toString() / 1e18;
+}
+
 function Ico() {
-  const [abiResponse, setAbiResponse] = React.useState(null);
   const [selectedPayment, SetSelectedPayment] = React.useState();
-  const [amount, setAmount] = React.useState(0);
+  const [amount, setAmount] = React.useState(1);
   const [winstonCoin, setWinstonCoin] = React.useState(0);
-  const winstonCoinPrice = 150;
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  const [errorMessage, setErrorMessage] = React.useState(null);
-  const [account, setAccount] = React.useState(null);
-  const [balance, setBalance] = React.useState(null);
-
-  React.useEffect(() => {
-    if (window.ethereum) {
-      window.ethereum.on('accountsChanged', accountsChanged);
-      window.ethereum.on('chainChanged', chainChanged);
-    }
-  }, []);
-
-  const connectHandler = async () => {
-    if (window.ethereum) {
-      try {
-        const res = await window.ethereum.request({
-          method: 'eth_requestAccounts',
-        });
-        await accountsChanged(res[0]);
-      } catch (err) {
-        console.error(err);
-        setErrorMessage('There was a problem connecting to MetaMask');
-      }
+  const checker = async (name) => {
+    setIsLoading(true);
+    if (name === 'RKL') {
+      const WIN = await priceHandler(name, 'WIN');
+      // console.log(WIN, WIN.token2);
+      setWinstonCoin(WIN.token2);
+    } else if (name === 'BUSD') {
+      const RKL = await priceHandler(name, 'RKL');
+      const WIN = await priceHandler('RKL', 'WIN');
+      // console.log(RKL, WIN, RKL.token2 * WIN.token2);
+      setWinstonCoin(RKL.token2 * WIN.token2);
     } else {
-      setErrorMessage('Install MetaMask');
+      const BUSD = await priceHandler(name, 'BUSD');
+      const RKL = await priceHandler('BUSD', 'RKL');
+      const WIN = await priceHandler('RKL', 'WIN');
+      // console.log(BUSD, RKL, WIN, BUSD.token2 * RKL.token2 * WIN.token2);
+      setWinstonCoin(BUSD.token2 * RKL.token2 * WIN.token2);
     }
-  };
-
-  // const disConnectHandler = async () => {
-  //   setAccount(null);
-  //   setBalance(null);
-  // };
-
-  const accountsChanged = async (newAccount) => {
-    setAccount(newAccount);
-    try {
-      const balance = await window.ethereum.request({
-        method: 'eth_getBalance',
-        params: [newAccount.toString(), 'latest'],
-      });
-      setBalance(ethers.utils.formatEther(balance));
-    } catch (err) {
-      console.error(err);
-      setErrorMessage('There was a problem connecting to MetaMask');
-    }
-  };
-
-  const chainChanged = () => {
-    setErrorMessage(null);
-    setAccount(null);
-    setBalance(null);
-  };
-
-  React.useEffect(() => {
-    fetch(
-      'https://api.bscscan.com/api?module=contract&action=getabi&address=0xb5e7ff9a2f33a8a1e31eb79dc14659111f3dd51c&apikey=HH5C3ZYPGVQUT8FIVNIJXGDHQPNXUEC89U',
-      {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        const response = { isError: true, message: res.result };
-        if (res.status === '1' && res.message === 'OK') {
-          response.abiFile = JSON.parse(res.result);
-          response.isError = false;
-        }
-        setAbiResponse(response);
-        console.log(response);
-        // setIsAbiLoading(false);
-      })
-      .catch(() => {
-        setAbiResponse({
-          isError: true,
-          message: 'something went wrong while connecting to contract',
-        });
-        // setIsAbiLoading(false);
-      });
-  }, []);
-
-  const handleClick = async () => {
-    try {
-      await provider.send('eth_requestAccounts', []);
-
-      const signer = provider.getSigner();
-
-      const daiContract = new ethers.Contract(
-        '0xb5e7ff9a2f33a8a1e31eb79dc14659111f3dd51c',
-        abiResponse.abiFile,
-        signer
-      );
-      console.log(daiContract);
-      await daiContract.swap(
-        '010000000000000000',
-        '100000000000000000',
-        '0xbec7CB5896A41FeA1829d31b8d9206B547B6D414',
-        []
-      );
-      // setIsContractLoading(false);
-    } catch (e) {
-      console.log(e);
-    }
+    setIsLoading(false);
   };
 
   React.useEffect(() => {
     if (amount < 0) setAmount(0);
-    setWinstonCoin((amount * selectedPayment?.price) / winstonCoinPrice);
-  }, [amount, selectedPayment?.price]);
+  }, [amount]);
+  React.useEffect(() => {
+    selectedPayment && checker(selectedPayment?.name);
+  }, [selectedPayment]);
 
   return (
     <Container>
@@ -259,30 +225,23 @@ function Ico() {
                 label={selectedPayment?.name}
                 placeholder={`0.00 ${selectedPayment?.name}`}
               />
-              <Typography variant="h4" mt={3}>
-                {winstonCoin} WIN
-              </Typography>
-
+              <Grid mt={3}>
+                {isLoading ? (
+                  <CircularProgress />
+                ) : (
+                  <Typography variant="h5">
+                    {amount * winstonCoin} WIN
+                  </Typography>
+                )}
+              </Grid>
               <Button
                 fullWidth
-                onClick={
-                  account
-                    ? balance >= amount
-                      ? handleClick
-                      : null
-                    : connectHandler
-                }
                 variant="contained"
                 color="secondary"
                 sx={{ mt: 3 }}
               >
-                {account
-                  ? balance >= amount
-                    ? 'Confirm purchase'
-                    : 'Insufficient balance'
-                  : 'Connect wallet'}
+                Confirm purchase
               </Button>
-              <FormHelperText error>{errorMessage}</FormHelperText>
             </Grid>
           </Grid>
         </Card>

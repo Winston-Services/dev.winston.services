@@ -113,12 +113,12 @@ function AddLectures() {
                       label="Skills"
                       placeholder="Enter skill name and press enter to add more skills"
                     />
-                    <AutoCompleteMultiple
+                    {/* <AutoCompleteMultiple
                       name="tags"
                       options={allSkills}
                       label="Tags"
                       placeholder="Enter tag name and press enter to add more tags"
-                    />
+                    /> */}
 
                     <TextField
                       multiline
