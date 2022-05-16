@@ -23,6 +23,11 @@
   -webkit-mask-composite: xor;
 }
 
+.border1:hover {
+  background: linear-gradient(#ea7a8f, #e452c8);
+  border-radius: 10px;
+}
+
 .border2 {
   background: linear-gradient(45deg, #ea7a8f, #e452c8);
   border-radius: 10px;

@@ -11,10 +11,10 @@ import {
   PlayArrow,
   TextFields,
   AddPhotoAlternate,
-  ArrowDownward,
-  VisibilityOff,
-  ContentCopy,
-  Delete,
+  // ArrowDownward,
+  // VisibilityOff,
+  // ContentCopy,
+  // Delete,
 } from '@mui/icons-material';
 import {
   Container,
@@ -30,45 +30,22 @@ import {
   Button,
 } from '@mui/material';
 import { Form, Formik } from 'formik';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
 
-import WysiwygEditor from '../../../components/common/Editor';
-import UploadImage from './../../../assets/upload_image.svg';
+// import WysiwygEditor from '../../../components/common/Editor';
+// import UploadImage from './../../../assets/upload_image.svg';
 import UploadVideoImage from './../../../assets/upload_video_icon.png';
 import AutoCompleteMultiple from './../../../components/common/AutoCompleteMultiple';
 import TextField from './../../../components/common/TextField';
-
-const categoryPanels = [
-  {
-    name: 'Untitled category',
-    lesson: [
-      {
-        name: 'Untitled category',
-      },
-      {
-        name: 'Untitled category',
-      },
-      {
-        name: 'Untitled category',
-      },
-    ],
-  },
-  {
-    name: 'Untitled category1',
-    lesson: [
-      {
-        name: 'Untitled category',
-      },
-    ],
-  },
-];
+import { courseSelector } from './../../../store/academy';
 
 const FORM_VALIDATION = Yup.object().shape({
-  categoryName: Yup.string()
+  lessonName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Category is required'),
+    .required('Lesson is required'),
   description: Yup.string()
     .min(2, 'Too Short!')
     .max(100, 'Too Long! 100 Characters only')
@@ -87,22 +64,32 @@ const allSkills = [
 function AddCategory() {
   const navigate = useNavigate();
 
+  const courseData = useSelector(courseSelector);
+
+  const [value, setValue] = React.useState();
+
   const [expanded, setExpanded] = React.useState('Untitled category');
 
+  const [counter, setCounter] = React.useState(0);
+
   const [icon, setIcon] = React.useState(true);
-  const [showVideo, setShowVideo] = React.useState(false);
-  const [showEditor, setShowEditor] = React.useState(false);
-  const [showSlider, setShowSlider] = React.useState(false);
+  // const [showVideo, setShowVideo] = React.useState(false);
+  // const [showEditor, setShowEditor] = React.useState(false);
+  // const [showSlider, setShowSlider] = React.useState(false);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
   const [initialValues] = React.useState({
-    categoryName: '',
+    lessonName: '',
     description: '',
     skills: [],
   });
+
+  React.useEffect(() => {
+    console.log(value);
+  }, [value]);
 
   return (
     <Container>
@@ -142,13 +129,13 @@ function AddCategory() {
                   </Grid>
                 </Link>
                 <Divider />
-                {categoryPanels.map((accordionData) => (
+                {courseData.category.map((accordionData, categoryIndex) => (
                   <Accordion
                     disableGutters
-                    key={accordionData.name}
+                    key={categoryIndex}
                     elevation={0}
-                    expanded={expanded === accordionData.name}
-                    onChange={handleChange(accordionData.name)}
+                    expanded={expanded === categoryIndex}
+                    onChange={handleChange(categoryIndex)}
                   >
                     <AccordionSummary
                       expandIcon={<ExpandMore />}
@@ -167,10 +154,10 @@ function AddCategory() {
                     <AccordionDetails sx={{ pl: 5, pr: 2, py: 0, pb: 3 }}>
                       {accordionData.lesson &&
                       accordionData.lesson.length != 0 ? (
-                        accordionData.lesson.map((item, index) => (
+                        accordionData.lesson.map((item, lessonIndex) => (
                           <Grid
                             container
-                            key={index}
+                            key={lessonIndex}
                             alignItems="center"
                             justifyContent={'space-between'}
                           >
@@ -204,9 +191,9 @@ function AddCategory() {
               <Card elevation={0} sx={{ p: 3 }}>
                 <Grid display={'flex'} flexDirection="column" gap={2}>
                   <TextField
-                    name="categoryName"
-                    label="Category"
-                    placeholder="Add category"
+                    name="lessonName"
+                    label="Lesson"
+                    placeholder="Add lesson"
                   />
                   <TextField
                     multiline
@@ -222,7 +209,7 @@ function AddCategory() {
                     placeholder="Enter skill name and press enter"
                   />
                 </Grid>
-                {showVideo || showSlider || showEditor ? (
+                {/* {showVideo || showSlider || showEditor ? (
                   <>
                     <Grid container justifyContent={'end'} mt={2}>
                       <IconButton>
@@ -241,11 +228,12 @@ function AddCategory() {
                   </>
                 ) : (
                   <></>
-                )}
+                )} */}
 
-                {showVideo ? (
-                  <>
+                {Array.from(Array(counter)).map((c, index) => {
+                  return (
                     <Card
+                      key={index}
                       elevation={0}
                       className="dottedBorder"
                       sx={{
@@ -253,6 +241,7 @@ function AddCategory() {
                         textAlign: 'center',
                         pt: 5,
                         pb: 3.4,
+                        position: 'relative',
                       }}
                     >
                       <img src={UploadVideoImage} alt="" />
@@ -262,21 +251,90 @@ function AddCategory() {
                       <Typography variant="subtitle2" sx={{ color: '#C4C4C4' }}>
                         You can upload maximum 100mb video
                       </Typography>
+                      <input
+                        type="file"
+                        className="imageDragDrop"
+                        onChange={() => {
+                          setValue(URL.createObjectURL(event.target.files[0]));
+                          return;
+                        }}
+                        style={{
+                          position: 'absolute',
+                          height: '100%',
+                          width: '100%',
+                          opacity: 0,
+                          top: 0,
+                          left: 0,
+                        }}
+                      />
                     </Card>
+                  );
+                })}
+
+                {/* {showVideo ? (
+                  <>
+                    {value ? (
+                      <>
+                        <video width={'100%'} height="auto" controls>
+                          <source src={value} type="video/mp4" />
+                        </video>
+                      </>
+                    ) : (
+                      <Card
+                        elevation={0}
+                        className="dottedBorder"
+                        sx={{
+                          mt: 1,
+                          textAlign: 'center',
+                          pt: 5,
+                          pb: 3.4,
+                          position: 'relative',
+                        }}
+                      >
+                        <img src={UploadVideoImage} alt="" />
+                        <Typography variant="subtitle1">
+                          Upload a video
+                        </Typography>
+                        <Typography
+                          variant="subtitle2"
+                          sx={{ color: '#C4C4C4' }}
+                        >
+                          You can upload maximum 100mb video
+                        </Typography>
+                        <input
+                          type="file"
+                          className="imageDragDrop"
+                          onChange={() => {
+                            setValue(
+                              URL.createObjectURL(event.target.files[0])
+                            );
+                            return;
+                          }}
+                          style={{
+                            position: 'absolute',
+                            height: '100%',
+                            width: '100%',
+                            opacity: 0,
+                            top: 0,
+                            left: 0,
+                          }}
+                        />
+                      </Card>
+                    )}
                   </>
                 ) : (
                   <></>
-                )}
+                )} */}
 
-                {showEditor ? (
+                {/* {showEditor ? (
                   <>
                     <WysiwygEditor />
                   </>
                 ) : (
                   <></>
-                )}
+                )} */}
 
-                {showSlider ? (
+                {/* {showSlider ? (
                   <>
                     <Card
                       elevation={0}
@@ -309,10 +367,37 @@ function AddCategory() {
                   </>
                 ) : (
                   <></>
-                )}
+                )} */}
 
                 <Grid container gap={2} alignItems="end">
-                  <IconButton
+                  <Grid
+                    onClick={() => {
+                      if (icon === true) {
+                        setIcon(false);
+                        // setShowVideo(false);
+                        // setShowSlider(false);
+                        // setShowEditor(false);
+                      } else {
+                        setIcon(true);
+                      }
+                    }}
+                    className={icon ? 'border1' : 'border2'}
+                    px={1.5}
+                    py={0.7}
+                    mt={3}
+                    sx={{ cursor: 'pointer' }}
+                  >
+                    {icon ? (
+                      <Grid mt={0.7}>
+                        <Add />
+                      </Grid>
+                    ) : (
+                      <Grid mt={0.7}>
+                        <Close />
+                      </Grid>
+                    )}
+                  </Grid>
+                  {/* <IconButton
                     onClick={() => {
                       if (icon === true) {
                         setIcon(false);
@@ -327,7 +412,7 @@ function AddCategory() {
                     sx={{ mt: 3, height: '50px', width: '50px' }}
                   >
                     {icon ? <Add /> : <Close />}
-                  </IconButton>
+                  </IconButton> */}
                   {!icon ? (
                     <>
                       {' '}
@@ -336,8 +421,9 @@ function AddCategory() {
                         startIcon={<PlayArrow />}
                         variant="outlined"
                         onClick={() => {
-                          setShowVideo(true);
+                          // setShowVideo(true);
                           setIcon(true);
+                          setCounter(counter + 1);
                         }}
                       >
                         Add video
@@ -347,7 +433,7 @@ function AddCategory() {
                         startIcon={<TextFields />}
                         variant="outlined"
                         onClick={() => {
-                          setShowEditor(true);
+                          // setShowEditor(true);
                           setIcon(true);
                         }}
                       >
@@ -358,7 +444,7 @@ function AddCategory() {
                         startIcon={<AddPhotoAlternate />}
                         variant="outlined"
                         onClick={() => {
-                          setShowSlider(true);
+                          // setShowSlider(true);
                           setIcon(true);
                         }}
                       >
@@ -370,6 +456,9 @@ function AddCategory() {
                   )}
                 </Grid>
               </Card>
+              <Button type="submit" variant="outlined">
+                submit
+              </Button>
             </Grid>
           </Grid>
         </Form>

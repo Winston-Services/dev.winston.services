@@ -8,6 +8,8 @@ import {
   DragIndicator,
   Edit,
   InsertLink,
+  Done,
+  BorderColor,
 } from '@mui/icons-material';
 import {
   Grid,
@@ -19,16 +21,26 @@ import {
   FormControlLabel,
   Checkbox,
   IconButton,
+  TextField,
 } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import TextField from '../../components/common/TextField';
+import TextFieldForm from '../../components/common/TextField';
 import AutoCompleteMultiple from './../../components/common/AutoCompleteMultiple';
 import UploadFile from './../../components/common/UploadFile';
-import { updateCourse, courseSelector } from './../../store/academy';
+import {
+  updateCourse,
+  updateCategory,
+  updateLesson,
+  addCategory,
+  addLesson,
+  deleteCategory,
+  deleteLesson,
+  courseSelector,
+} from './../../store/academy';
 
 const allSkills = [
   'Photoshop',
@@ -57,6 +69,18 @@ function AddLectures() {
   const setCourseData = (data) => {
     dispatch(updateCourse(data));
   };
+
+  const [editCategory, setEditCategory] = React.useState({
+    categoryIndex: -1,
+    name: '',
+  });
+
+  const [editLesson, setEditLesson] = React.useState({
+    lessonIndex: -1,
+    categoryIndex: -1,
+    name: '',
+  });
+
   return (
     <Container>
       <Grid
@@ -96,13 +120,13 @@ function AddLectures() {
                       gap: 2.5,
                     }}
                   >
-                    <TextField
+                    <TextFieldForm
                       name="title"
                       label="Course title"
                       placeholder="Course title Name"
                       onChange={(value) => setTitle(value)}
                     />
-                    <TextField
+                    <TextFieldForm
                       multiline
                       rows={4}
                       name="description"
@@ -122,7 +146,7 @@ function AddLectures() {
                       placeholder="Enter tag name and press enter to add more tags"
                     />
 
-                    <TextField
+                    <TextFieldForm
                       multiline
                       rows={8}
                       name="summary"
@@ -131,14 +155,14 @@ function AddLectures() {
                     />
                     <Grid container spacing={3}>
                       <Grid item xs={12} sm={6}>
-                        <TextField
+                        <TextFieldForm
                           name="price"
                           label="Price"
                           placeholder="Enter price"
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <TextField
+                        <TextFieldForm
                           name="discountPrice"
                           label="Discount price"
                           placeholder="Enter discount price"
@@ -159,9 +183,9 @@ function AddLectures() {
                       gap: 3,
                     }}
                   >
-                    {courseData.category.map((category) => (
+                    {courseData.category.map((category, categoryIndex) => (
                       <Grid
-                        key={category.name}
+                        key={category.name + categoryIndex}
                         display="flex"
                         flexDirection={'column'}
                         gap={1}
@@ -172,39 +196,174 @@ function AddLectures() {
                           justifyContent={'space-between'}
                         >
                           <Grid display={'flex'} alignItems="center" gap={1}>
-                            <IconButton>
-                              <DragIndicator sx={{ color: '#4C3B9C' }} />
-                            </IconButton>
-                            <Typography variant="h6">
-                              {category.name}
-                            </Typography>
-                            <IconButton>
-                              <Edit sx={{ color: '#C4C4C4' }} />
-                            </IconButton>
+                            {editCategory.categoryIndex === categoryIndex ? (
+                              <>
+                                <TextField
+                                  inputProps={{ style: { fontSize: 20 } }}
+                                  sx={{ width: 'auto' }}
+                                  variant="standard"
+                                  value={editCategory.name}
+                                  onChange={(e) =>
+                                    setEditCategory({
+                                      ...editCategory,
+                                      name: e.target.value,
+                                    })
+                                  }
+                                />
+                              </>
+                            ) : (
+                              <>
+                                <IconButton>
+                                  <DragIndicator sx={{ color: '#4C3B9C' }} />
+                                </IconButton>
+                                <Typography variant="h6">
+                                  {category.name}
+                                </Typography>
+                              </>
+                            )}
+                            {editCategory.categoryIndex === categoryIndex ? (
+                              <IconButton
+                                onClick={() => {
+                                  setEditCategory({
+                                    ...editCategory,
+                                    categoryIndex: -1,
+                                  });
+                                  dispatch(
+                                    updateCategory({
+                                      categoryIndex,
+                                      name: editCategory.name,
+                                    })
+                                  );
+                                }}
+                              >
+                                <Done sx={{ color: '#C4C4C4' }} />
+                              </IconButton>
+                            ) : (
+                              <IconButton
+                                onClick={() => {
+                                  setEditCategory({
+                                    name: category.name,
+                                    categoryIndex,
+                                  });
+                                }}
+                              >
+                                <BorderColor sx={{ color: '#C4C4C4' }} />
+                              </IconButton>
+                            )}
                           </Grid>
-                          <IconButton>
-                            <ContentCopy sx={{ color: '#C4C4C4' }} />
-                          </IconButton>
+                          <Grid>
+                            <IconButton
+                              onClick={() =>
+                                dispatch(
+                                  addCategory({
+                                    categoryIndex,
+                                    categoryData: category,
+                                  })
+                                )
+                              }
+                            >
+                              <ContentCopy sx={{ color: '#C4C4C4' }} />
+                            </IconButton>
+                            {courseData.category.length > 1 ? (
+                              <IconButton
+                                onClick={() =>
+                                  dispatch(deleteCategory(categoryIndex))
+                                }
+                              >
+                                <Delete sx={{ color: '#C4C4C4' }} />
+                              </IconButton>
+                            ) : null}
+                          </Grid>
                         </Grid>
-                        {category.lesson.map((lesson) => (
+                        {category.lesson.map((lesson, lessonIndex) => (
                           <Grid
-                            key={lesson.name}
+                            key={lesson.name + lessonIndex}
                             display={'flex'}
                             alignItems="center"
                             justifyContent={'space-between'}
                             pl={3}
                           >
                             <Grid display={'flex'} alignItems="center" gap={1}>
-                              <IconButton>
-                                <DragIndicator sx={{ color: '#4C3B9C' }} />
-                              </IconButton>
-                              <Typography variant="subtitle1">
-                                {lesson.name}
-                              </Typography>
+                              {editLesson.lessonIndex == lessonIndex &&
+                              editLesson.categoryIndex === categoryIndex ? (
+                                <>
+                                  <TextField
+                                    inputProps={{ style: { fontSize: 17 } }}
+                                    sx={{ width: 'auto' }}
+                                    variant="standard"
+                                    value={editLesson.name}
+                                    onChange={(e) =>
+                                      setEditLesson({
+                                        ...editLesson,
+                                        name: e.target.value,
+                                      })
+                                    }
+                                  />
+                                </>
+                              ) : (
+                                <>
+                                  <IconButton>
+                                    <DragIndicator sx={{ color: '#4C3B9C' }} />
+                                  </IconButton>
+                                  <Typography variant="subtitle1">
+                                    {lesson.name}
+                                  </Typography>
+                                </>
+                              )}
+
+                              {editLesson.lessonIndex == lessonIndex &&
+                              editLesson.categoryIndex === categoryIndex ? (
+                                <IconButton
+                                  onClick={() => {
+                                    dispatch(
+                                      updateLesson({
+                                        lessonIndex,
+                                        categoryIndex,
+                                        data: { name: editLesson.name },
+                                      })
+                                    );
+                                    setEditLesson({
+                                      ...editLesson,
+                                      lessonIndex: -1,
+                                      categoryIndex: -1,
+                                    });
+                                  }}
+                                >
+                                  <Done sx={{ color: '#C4C4C4' }} />
+                                </IconButton>
+                              ) : (
+                                <IconButton
+                                  onClick={() => {
+                                    setEditLesson({
+                                      name: lesson.name,
+                                      categoryIndex,
+                                      lessonIndex,
+                                    });
+                                  }}
+                                >
+                                  <BorderColor
+                                    sx={{
+                                      color: '#C4C4C4',
+                                      width: '18px',
+                                      height: '18px',
+                                    }}
+                                  />
+                                </IconButton>
+                              )}
                             </Grid>
                             <Grid display="flex" alignItems={'center'}>
                               <FormControlLabel
-                                control={<Checkbox defaultChecked />}
+                                control={
+                                  <Checkbox
+                                    defaultChecked
+                                    sx={{
+                                      '& .MuiSvgIcon-root': {
+                                        fontSize: 18,
+                                        color: '#FFD215',
+                                      },
+                                    }}
+                                  />
+                                }
                                 label="Required"
                               />
                               <IconButton
@@ -212,22 +371,79 @@ function AddLectures() {
                                   navigate('/academy/add-lecture/edit')
                                 }
                               >
-                                <Edit sx={{ color: '#C4C4C4' }} />
+                                <Edit
+                                  sx={{
+                                    color: '#C4C4C4',
+                                    width: '18px',
+                                    height: '18px',
+                                  }}
+                                />
+                              </IconButton>
+                              <IconButton
+                                onClick={() =>
+                                  dispatch(
+                                    addLesson({
+                                      lessonIndex,
+                                      categoryIndex,
+                                      lessonData: lesson,
+                                    })
+                                  )
+                                }
+                              >
+                                <ContentCopy
+                                  sx={{
+                                    color: '#C4C4C4',
+                                    width: '18px',
+                                    height: '18px',
+                                  }}
+                                />
                               </IconButton>
                               <IconButton>
-                                <ContentCopy sx={{ color: '#C4C4C4' }} />
+                                <InsertLink
+                                  sx={{
+                                    color: '#C4C4C4',
+                                    width: '18px',
+                                    height: '18px',
+                                  }}
+                                />
+                              </IconButton>
+                              {category.lesson.length > 1 ? (
+                                <IconButton
+                                  onClick={() =>
+                                    dispatch(
+                                      deleteLesson({
+                                        categoryIndex,
+                                        lessonIndex,
+                                      })
+                                    )
+                                  }
+                                >
+                                  <Delete
+                                    sx={{
+                                      color: '#C4C4C4',
+                                      width: '18px',
+                                      height: '18px',
+                                    }}
+                                  />
+                                </IconButton>
+                              ) : null}
+                              <IconButton>
+                                <AddBox
+                                  sx={{
+                                    color: '#C4C4C4',
+                                    width: '18px',
+                                    height: '18px',
+                                  }}
+                                />
                               </IconButton>
                               <IconButton>
-                                <InsertLink sx={{ color: '#C4C4C4' }} />
-                              </IconButton>
-                              <IconButton>
-                                <Delete sx={{ color: '#C4C4C4' }} />
-                              </IconButton>
-                              <IconButton>
-                                <AddBox sx={{ color: '#C4C4C4' }} />
-                              </IconButton>
-                              <IconButton>
-                                <Queue sx={{ color: '#C4C4C4' }} />
+                                <Queue
+                                  sx={{
+                                    color: '#C4C4C4',
+                                    width: '18px',
+                                    height: '18px',
+                                  }}
+                                />
                               </IconButton>
                             </Grid>
                           </Grid>

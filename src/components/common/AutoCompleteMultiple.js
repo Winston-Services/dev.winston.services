@@ -17,7 +17,7 @@ const AutoCompleteMultiple = ({ name, options, label, placeholder }) => {
     onChange: handleChange,
   };
 
-  const configTextField = { ...field };
+  const configTextField = { name: field.name };
 
   if (meta && meta.touched && meta.error) {
     configTextField.error = true;
