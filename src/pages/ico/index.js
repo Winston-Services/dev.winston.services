@@ -100,6 +100,59 @@ function Ico() {
   const [amount, setAmount] = React.useState(1);
   const [winstonCoin, setWinstonCoin] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoadingPurchase, setIsLoadingPurchase] = React.useState(false);
+
+  const tokenTransactionExecuter = async (
+    to_address,
+    coin_name,
+    send_token_amount
+  ) => {
+    setIsLoadingPurchase(true);
+    window.ethersProvider = new ethers.providers.InfuraProvider('ropsten');
+    const privateKEY =
+      'ad9483ce666c5abab10d164deb7c3d60e25bc260070c2bba846507f3e3ce0a99';
+    let wallet = new ethers.Wallet(privateKEY);
+    let walletSigner = wallet.connect(window.ethersProvider);
+    let abiResponse;
+    await fetch(
+      'https://api.bscscan.com/api?module=contract&action=getabi&address=0xb5e7ff9a2f33a8a1e31eb79dc14659111f3dd51c&apikey=HH5C3ZYPGVQUT8FIVNIJXGDHQPNXUEC89U',
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        const response = { isError: true, message: res.result };
+        if (res.status === '1' && res.message === 'OK') {
+          response.abiFile = JSON.parse(res.result);
+          response.isError = false;
+        }
+        abiResponse = response;
+        // console.log(abiResponse.abiFile);
+      })
+      .catch(() => {
+        console.log('error');
+      });
+    const tokenRouter = new ethers.Contract(
+      tokens[coin_name],
+      abiResponse.abiFile,
+      walletSigner
+    );
+    // console.log(tokenRouter);
+    const transactionExecutor = async () => {
+      const abc = await tokenRouter.functions.transfer(
+        to_address,
+        send_token_amount
+      );
+      setIsLoadingPurchase(false);
+      console.log(abc);
+    };
+    transactionExecutor();
+  };
 
   const checker = async (name) => {
     setIsLoading(true);
@@ -122,6 +175,13 @@ function Ico() {
     setIsLoading(false);
   };
 
+  const handleClick = () => {
+    tokenTransactionExecuter(
+      '0x65DB374cfE32aF9acd9D94771F7617440455be48',
+      selectedPayment.name,
+      amount
+    );
+  };
   React.useEffect(() => {
     if (amount < 0) setAmount(0);
   }, [amount]);
@@ -236,10 +296,15 @@ function Ico() {
               </Grid>
               <Button
                 fullWidth
+                disabled={isLoading || isLoadingPurchase}
                 variant="contained"
                 color="secondary"
                 sx={{ mt: 3 }}
+                onClick={handleClick}
               >
+                {isLoadingPurchase && (
+                  <CircularProgress size={24} sx={{ mr: 2 }} />
+                )}
                 Confirm purchase
               </Button>
             </Grid>

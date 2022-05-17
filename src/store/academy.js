@@ -4,6 +4,7 @@ import { uuid } from '../components/common/CommonFunction';
 
 const initialState = {
   course: {
+    id: uuid(),
     step1: 'In person, informally',
     step2: 'I am a beginner',
     step3: 'Not at the moment',
@@ -53,6 +54,15 @@ export const academySlice = createSlice({
         action.payload.categoryData
       );
     },
+    splitCategory: (state, action) => {
+      state.course.category.splice(action.payload.categoryIndex + 1, 0, {
+        id: uuid(),
+        name: 'Untitled category',
+        lesson: state.course.category[
+          action.payload.categoryIndex
+        ].lesson.splice(action.payload.lessonIndex + 1),
+      });
+    },
     addLesson: (state, action) => {
       state.course.category[action.payload.categoryIndex].lesson.splice(
         action.payload.lessonIndex + 1,
@@ -78,6 +88,7 @@ export const {
   updateLesson,
   addCategory,
   addLesson,
+  splitCategory,
   deleteCategory,
   deleteLesson,
 } = academySlice.actions;
