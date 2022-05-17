@@ -2,7 +2,7 @@ import React from 'react';
 
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import StarIcon from '@mui/icons-material/Star';
-import { Link, Typography, Grid, Paper } from '@mui/material';
+import { Link, Typography, Grid, Paper, CardMedia } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,13 +13,15 @@ function AcademyCard({ item }) {
   return (
     <>
       <Grid sx={{ position: 'relative' }}>
-        <img
-          src={item.image}
-          style={{
-            width: '100%',
-            height: '260px',
-            borderRadius: '20px',
-            objectFit: 'cover',
+        <CardMedia
+          component="img"
+          width="100%"
+          height="260px"
+          sx={{ borderRadius: '20px', objectFit: 'cover', cursor: 'pointer' }}
+          image={item.image}
+          alt="green iguana"
+          onClick={() => {
+            navigate('/academy/details');
           }}
         />
         <Grid
@@ -108,14 +110,16 @@ function AcademyCard({ item }) {
       )}
 
       {item.duration ? (
-        <Grid display={'flex'} justifyContent={'space-between'} mt={3.75}>
-          <Grid display={'flex'} alignItems={'center'}>
-            <AccessTimeIcon sx={{ mr: 1.25 }} />
-            <Typography variant="subtitle1">{item.duration}</Typography>
+        <Grid container justifyContent={'space-between'} mt={3.75}>
+          <Grid item display={'flex'} alignItems={'center'} gap={1}>
+            <AccessTimeIcon sx={{ width: '20px', height: '20px' }} />
+            <Typography variant="subtitle2">{item.duration}</Typography>
           </Grid>
-          <Grid display={'flex'} alignItems={'center'}>
-            <StarIcon sx={{ mr: 1.25, color: '#FFD215' }} />
-            <Typography variant="subtitle1">{item.rating} review</Typography>
+          <Grid item display={'flex'} alignItems={'center'} gap={1}>
+            <StarIcon
+              sx={{ width: '20px', height: '20px', color: '#FFD215' }}
+            />
+            <Typography variant="subtitle2">{item.rating} review</Typography>
           </Grid>
         </Grid>
       ) : (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Add, Close, Remove, TextFields } from '@mui/icons-material';
+import { Add, Close, Remove } from '@mui/icons-material';
 import {
   Container,
   Grid,
@@ -198,7 +198,7 @@ function UploadNFT() {
                   flexDirection={'column'}
                   gap={2}
                 >
-                  <TextFields name="name" label="NFT Name" placeholder="Name" />
+                  <TextField name="name" label="NFT Name" placeholder="Name" />
                   <TextField
                     name="link"
                     label="External Link"

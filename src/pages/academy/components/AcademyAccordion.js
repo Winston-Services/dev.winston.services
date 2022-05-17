@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { ExpandMore } from '@mui/icons-material';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import {
@@ -32,37 +31,31 @@ function AcademyAccordion() {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
-          duration: '5 min',
         },
       ],
     },
@@ -73,37 +66,31 @@ function AcademyAccordion() {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
-          duration: '5 min',
         },
       ],
     },
@@ -114,37 +101,31 @@ function AcademyAccordion() {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
-          duration: '5 min',
         },
       ],
     },
@@ -155,37 +136,31 @@ function AcademyAccordion() {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
-          duration: '5 min',
         },
       ],
     },
@@ -196,37 +171,31 @@ function AcademyAccordion() {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
-          duration: '5 min',
         },
         {
           title: 'Introduction how to design a NFT card within 25 min',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
-          duration: '5 min',
         },
       ],
     },
@@ -279,15 +248,9 @@ function AcademyAccordion() {
                   </Link>
                 </Grid>
 
-                <Grid item gap={3} display="flex">
-                  <Grid display="flex" alignItems="center" gap={1}>
-                    {item.icon}
-                    {/* <Link variant="subtitle1">{item.view}</Link> */}
-                  </Grid>
-                  <Grid display="flex" alignItems="center" gap={1}>
-                    <AccessTimeIcon />
-                    <Typography variant="subtitle1">{item.duration}</Typography>
-                  </Grid>
+                <Grid pr={0.5}>
+                  {item.icon}
+                  {/* <Link variant="subtitle1">{item.view}</Link> */}
                 </Grid>
               </Grid>
             ))}

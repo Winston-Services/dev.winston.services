@@ -17,6 +17,7 @@ const initialState = {
     discountPrice: '',
     category: [
       {
+        id: uuid(),
         name: 'Untitled category1',
         lesson: [{ id: uuid(), name: 'Lesson1', isRequired: true }],
       },
