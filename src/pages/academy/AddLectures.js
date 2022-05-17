@@ -28,6 +28,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
+import { uuid } from '../../components/common/CommonFunction';
 import TextFieldForm from '../../components/common/TextField';
 import AutoCompleteMultiple from './../../components/common/AutoCompleteMultiple';
 import UploadFile from './../../components/common/UploadFile';
@@ -247,7 +248,13 @@ function AddLectures() {
                                   });
                                 }}
                               >
-                                <BorderColor sx={{ color: '#C4C4C4' }} />
+                                <BorderColor
+                                  sx={{
+                                    color: '#C4C4C4',
+                                    height: '20px',
+                                    width: '20px',
+                                  }}
+                                />
                               </IconButton>
                             )}
                           </Grid>
@@ -262,7 +269,13 @@ function AddLectures() {
                                 )
                               }
                             >
-                              <ContentCopy sx={{ color: '#C4C4C4' }} />
+                              <ContentCopy
+                                sx={{
+                                  color: '#C4C4C4',
+                                  height: '20px',
+                                  width: '20px',
+                                }}
+                              />
                             </IconButton>
                             {courseData.category.length > 1 ? (
                               <IconButton
@@ -270,7 +283,13 @@ function AddLectures() {
                                   dispatch(deleteCategory(categoryIndex))
                                 }
                               >
-                                <Delete sx={{ color: '#C4C4C4' }} />
+                                <Delete
+                                  sx={{
+                                    color: '#C4C4C4',
+                                    height: '20px',
+                                    width: '20px',
+                                  }}
+                                />
                               </IconButton>
                             ) : null}
                           </Grid>
@@ -355,12 +374,23 @@ function AddLectures() {
                               <FormControlLabel
                                 control={
                                   <Checkbox
-                                    defaultChecked
+                                    defaultChecked={lesson.isRequired}
                                     sx={{
                                       '& .MuiSvgIcon-root': {
                                         fontSize: 18,
                                         color: '#FFD215',
                                       },
+                                    }}
+                                    onChange={(e) => {
+                                      const { checked } = e.target;
+                                      dispatch(
+                                        updateLesson({
+                                          lessonIndex,
+                                          categoryIndex,
+                                          data: { isRequired: checked },
+                                        })
+                                      );
+                                      console.log(checked);
                                     }}
                                   />
                                 }
@@ -368,7 +398,7 @@ function AddLectures() {
                               />
                               <IconButton
                                 onClick={() =>
-                                  navigate('/academy/add-lecture/edit')
+                                  navigate('/academy/add-lecture/edit/')
                                 }
                               >
                                 <Edit
@@ -385,7 +415,7 @@ function AddLectures() {
                                     addLesson({
                                       lessonIndex,
                                       categoryIndex,
-                                      lessonData: lesson,
+                                      lessonData: { ...lesson, id: uuid() },
                                     })
                                   )
                                 }
@@ -427,7 +457,21 @@ function AddLectures() {
                                   />
                                 </IconButton>
                               ) : null}
-                              <IconButton>
+                              <IconButton
+                                onClick={() =>
+                                  dispatch(
+                                    addLesson({
+                                      lessonIndex,
+                                      categoryIndex,
+                                      lessonData: {
+                                        id: uuid(),
+                                        name: 'Untitled lesson',
+                                        isRequired: false,
+                                      },
+                                    })
+                                  )
+                                }
+                              >
                                 <AddBox
                                   sx={{
                                     color: '#C4C4C4',
@@ -436,7 +480,25 @@ function AddLectures() {
                                   }}
                                 />
                               </IconButton>
-                              <IconButton>
+                              <IconButton
+                                onClick={() =>
+                                  dispatch(
+                                    addCategory({
+                                      categoryIndex,
+                                      categoryData: {
+                                        name: 'Untitled category',
+                                        lesson: [
+                                          {
+                                            id: uuid(),
+                                            name: 'Untitled lesson',
+                                            isRequired: false,
+                                          },
+                                        ],
+                                      },
+                                    })
+                                  )
+                                }
+                              >
                                 <Queue
                                   sx={{
                                     color: '#C4C4C4',
