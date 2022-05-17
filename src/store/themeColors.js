@@ -217,9 +217,20 @@ const publicPageColors = {
           boxSizing: 'border-box',
           borderRadius: '28px',
           boxShadow: 'none',
+          '&:hover': {
+            boxShadow: 'none',
+          },
         },
       },
       variants: [
+        {
+          props: { variant: 'outlined' },
+          style: {
+            '&:hover': {
+              background: 'transparent',
+            },
+          },
+        },
         {
           props: { variant: 'contained', color: 'secondary' },
           style: {
@@ -278,6 +289,10 @@ const publicPageColors = {
             background: '#4F409A',
             padding: '6px',
             // borderRadius: '17px',
+            '&:hover, &:focus': {
+              background:
+                'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
+            },
           },
         },
         {
