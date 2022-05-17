@@ -30,7 +30,7 @@ import {
   Button,
 } from '@mui/material';
 import { Form, Formik } from 'formik';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
 
@@ -39,7 +39,11 @@ import * as Yup from 'yup';
 import UploadVideoImage from './../../../assets/upload_video_icon.png';
 import AutoCompleteMultiple from './../../../components/common/AutoCompleteMultiple';
 import TextField from './../../../components/common/TextField';
-import { courseSelector } from './../../../store/academy';
+import {
+  courseSelector,
+  addLesson,
+  addCategory,
+} from './../../../store/academy';
 
 const FORM_VALIDATION = Yup.object().shape({
   lessonName: Yup.string()
@@ -63,6 +67,7 @@ const allSkills = [
 
 function AddCategory() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const courseData = useSelector(courseSelector);
 
@@ -129,7 +134,7 @@ function AddCategory() {
                   </Grid>
                 </Link>
                 <Divider />
-                {courseData.category.map((accordionData, categoryIndex) => (
+                {courseData.category.map((category, categoryIndex) => (
                   <Accordion
                     disableGutters
                     key={categoryIndex}
@@ -140,21 +145,18 @@ function AddCategory() {
                     <AccordionSummary
                       expandIcon={<ExpandMore />}
                       sx={{ px: 2, py: 0.2 }}
-                      aria-controls={`${accordionData.name}-content`}
+                      aria-controls={`${category.name}-content`}
                     >
                       <Grid display={'flex'} alignItems={'center'}>
                         <IconButton>
                           <DragIndicator sx={{ color: '#4C3B9C' }} />
                         </IconButton>
-                        <Typography variant="h6">
-                          {accordionData.name}
-                        </Typography>
+                        <Typography variant="h6">{category.name}</Typography>
                       </Grid>
                     </AccordionSummary>
                     <AccordionDetails sx={{ pl: 5, pr: 2, py: 0, pb: 3 }}>
-                      {accordionData.lesson &&
-                      accordionData.lesson.length != 0 ? (
-                        accordionData.lesson.map((item, lessonIndex) => (
+                      {category.lesson && category.lesson.length != 0 ? (
+                        category.lesson.map((lesson, lessonIndex) => (
                           <Grid
                             container
                             key={lessonIndex}
@@ -166,14 +168,42 @@ function AddCategory() {
                                 <DragIndicator sx={{ color: '#4C3B9C' }} />
                               </IconButton>
                               <Typography ml={1} variant="subtitle1">
-                                {item.name}
+                                {lesson.name}
                               </Typography>
                             </Grid>
                             <Grid display={'flex'} alignItems="center">
-                              <IconButton>
+                              <IconButton
+                                onClick={() =>
+                                  dispatch(
+                                    addLesson({
+                                      lessonIndex,
+                                      categoryIndex,
+                                      lessonData: {
+                                        name: 'Untitled lesson',
+                                      },
+                                    })
+                                  )
+                                }
+                              >
                                 <AddBox sx={{ color: '#C4C4C4' }} />
                               </IconButton>
-                              <IconButton>
+                              <IconButton
+                                onClick={() =>
+                                  dispatch(
+                                    addCategory({
+                                      categoryIndex,
+                                      categoryData: {
+                                        name: 'Untitled category',
+                                        lesson: [
+                                          {
+                                            name: 'Untitled lesson',
+                                          },
+                                        ],
+                                      },
+                                    })
+                                  )
+                                }
+                              >
                                 <Queue sx={{ color: '#C4C4C4' }} />
                               </IconButton>
                             </Grid>
