@@ -36,6 +36,7 @@
     "@testing-library/user-event": "^13.5.0",
     "ethers": "^5.6.5",
     "formik": "^2.2.9",
+    "immutability-helper": "^3.1.1",
     "js-file-download": "^0.4.12",
     "node-rsa": "^1.1.1",
     "qrcode-npm": "^0.0.3",
