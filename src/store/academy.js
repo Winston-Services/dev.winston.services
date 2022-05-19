@@ -22,6 +22,24 @@ const initialState = {
         name: 'Untitled category1',
         lesson: [{ id: uuid(), name: 'Lesson1', isRequired: true }],
       },
+      {
+        id: uuid(),
+        name: 'Untitled category2',
+        lesson: [{ id: uuid(), name: 'Lesson2', isRequired: true }],
+      },
+      {
+        id: uuid(),
+        name: 'Untitled category3',
+        lesson: [{ id: uuid(), name: 'Lesson3', isRequired: true }],
+      },
+      {
+        id: uuid(),
+        name: 'Untitled category4',
+        lesson: [
+          { id: uuid(), name: 'Lesson4', isRequired: true },
+          { id: uuid(), name: 'Lesson5', isRequired: true },
+        ],
+      },
     ],
   },
 };
@@ -32,6 +50,9 @@ export const academySlice = createSlice({
   reducers: {
     updateCourse: (state, action) => {
       state.course = { ...state.course, ...action.payload };
+    },
+    setCategory: (state, action) => {
+      state.course.category = action.payload;
     },
     updateCategory: (state, action) => {
       state.course.category[action.payload.categoryIndex].name =
@@ -84,6 +105,7 @@ export const academySlice = createSlice({
 
 export const {
   updateCourse,
+  setCategory,
   updateCategory,
   updateLesson,
   addCategory,
