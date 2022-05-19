@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router';
 
-import { ReactComponent as PlayCircleIcon } from './../../../assets/play_circle.svg';
+// import { ReactComponent as PlayCircleIcon } from './../../../assets/play_circle.svg';
 
 function AcademyAccordion() {
   const navigate = useNavigate();
@@ -28,32 +28,32 @@ function AcademyAccordion() {
       title: 'Introduction',
       content: [
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
         },
@@ -63,32 +63,32 @@ function AcademyAccordion() {
       title: 'How do crypto payments work?',
       content: [
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
         },
@@ -98,32 +98,32 @@ function AcademyAccordion() {
       title: 'Crypto cards for payments',
       content: [
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
         },
@@ -133,32 +133,32 @@ function AcademyAccordion() {
       title: 'What are the advantages of crypto payments?',
       content: [
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
         },
@@ -168,32 +168,32 @@ function AcademyAccordion() {
       title: 'What are the disadvantages of cryptocurrency payments?',
       content: [
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockOpenIcon fontSize="8px" />,
           view: 'Preview',
         },
         {
-          title: 'Introduction how to design a NFT card within 25 min',
+          title: 'Introduction how to design a NFT card',
           icon: <LockIcon fontSize="8px" />,
           view: 'Lock',
         },
@@ -227,6 +227,7 @@ function AcademyAccordion() {
                 key={items.title + item.title + index}
                 display="flex"
                 justifyContent="space-between"
+                alignItems={'center'}
                 sx={{ pb: 2.5 }}
               >
                 <Grid
@@ -234,16 +235,20 @@ function AcademyAccordion() {
                   display="flex"
                   alignItems="center"
                   gap={1.25}
-                  sx={{ width: { xs: 0.45, sm: 0.7, md: 'auto' } }}
+                  // sx={{ width: { xs: 0.45, sm: 0.7, md: 'auto' } }}
                 >
-                  <Grid
+                  {/* <Grid
                     display={'flex'}
                     alignItems="center"
                     sx={{ display: { xs: 'none', sm: 'block' } }}
                   >
                     <PlayCircleIcon />
-                  </Grid>
-                  <Link noWrap variant="h6">
+                  </Grid> */}
+                  <Link
+                    // noWrap
+                    variant="h6"
+                    onClick={() => navigate('/academy/lesson-details')}
+                  >
                     {item.title}
                   </Link>
                 </Grid>

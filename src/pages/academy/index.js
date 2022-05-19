@@ -10,6 +10,7 @@ const AddCourse = React.lazy(() => import('./AddCourse'));
 const AddLectures = React.lazy(() => import('./AddLectures'));
 const Courses = React.lazy(() => import('./Courses'));
 const AddCategory = React.lazy(() => import('./components/AddCategory'));
+const LessonDetails = React.lazy(() => import('./LessonDetails'));
 import './index.css';
 
 export default function AcademyRouting() {
@@ -24,6 +25,10 @@ export default function AcademyRouting() {
         {
           path: '/details',
           element: <AcademyDetails />,
+        },
+        {
+          path: '/lesson-details',
+          element: <LessonDetails />,
         },
         {
           path: '/rating',

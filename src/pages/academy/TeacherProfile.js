@@ -13,7 +13,7 @@ import TeacherProfileTabs from './components/TeacherProfileTabs';
 function TeacherProfile() {
   return (
     <Container>
-      <Grid container columnSpacing={4}>
+      <Grid container spacing={4}>
         <Grid item md={4} width="100%">
           <Paper elevation={0} sx={{ p: 6 }}>
             <img src={TeacherProfileImage} style={{ width: '100%' }} />
