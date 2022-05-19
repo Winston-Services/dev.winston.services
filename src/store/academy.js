@@ -22,24 +22,6 @@ const initialState = {
         name: 'Untitled category1',
         lesson: [{ id: uuid(), name: 'Lesson1', isRequired: true }],
       },
-      {
-        id: uuid(),
-        name: 'Untitled category2',
-        lesson: [{ id: uuid(), name: 'Lesson2', isRequired: true }],
-      },
-      {
-        id: uuid(),
-        name: 'Untitled category3',
-        lesson: [{ id: uuid(), name: 'Lesson3', isRequired: true }],
-      },
-      {
-        id: uuid(),
-        name: 'Untitled category4',
-        lesson: [
-          { id: uuid(), name: 'Lesson4', isRequired: true },
-          { id: uuid(), name: 'Lesson5', isRequired: true },
-        ],
-      },
     ],
   },
 };

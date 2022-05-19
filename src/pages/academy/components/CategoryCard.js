@@ -18,6 +18,7 @@ import { PropTypes } from 'prop-types';
 import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch } from 'react-redux';
 
+import { uuid } from '../../../components/common/CommonFunction';
 import {
   addCategory,
   deleteCategory,
@@ -70,7 +71,7 @@ export default function CategoryCard({
       item.categoryIndex = hoverIndex;
     },
   });
-  const [{ isDragging }, drag] = useDrag({
+  const [{ isDragging }, drag, preview] = useDrag({
     type: 'card',
     item: () => {
       return { id, categoryIndex };
@@ -80,7 +81,8 @@ export default function CategoryCard({
     }),
   });
   const opacity = isDragging ? '0' : '1';
-  drag(drop(ref));
+  preview(drop(ref));
+
   return (
     <div ref={ref} style={{ opacity }} data-handler-id={handlerId}>
       <Grid display="flex" flexDirection={'column'} gap={1}>
@@ -90,13 +92,13 @@ export default function CategoryCard({
           justifyContent={'space-between'}
         >
           <Grid display={'flex'} alignItems="center" gap={1}>
-            <IconButton>
+            <IconButton ref={drag} sx={{ cursor: 'move' }}>
               <DragIndicator sx={{ color: '#4C3B9C' }} />
             </IconButton>
             {editCategory.categoryIndex === categoryIndex ? (
               <>
                 <TextField
-                  inputProps={{ style: { fontSize: 20 } }}
+                  inputProps={{ style: { fontSize: 16 } }}
                   sx={{ width: 'auto' }}
                   variant="standard"
                   value={editCategory.name}
@@ -162,26 +164,6 @@ export default function CategoryCard({
             )}
           </Grid>
           <Grid>
-            <Tooltip placement="top" arrow={true} title={'Copy Category'}>
-              <IconButton
-                onClick={() =>
-                  dispatch(
-                    addCategory({
-                      categoryIndex,
-                      categoryData: category,
-                    })
-                  )
-                }
-              >
-                <ContentCopy
-                  sx={{
-                    color: '#C4C4C4',
-                    height: '20px',
-                    width: '20px',
-                  }}
-                />
-              </IconButton>
-            </Tooltip>
             {categoryLength > 1 ? (
               <Tooltip placement="top" arrow={true} title={'Delete Category'}>
                 <IconButton
@@ -197,6 +179,32 @@ export default function CategoryCard({
                 </IconButton>
               </Tooltip>
             ) : null}
+            <Tooltip placement="top" arrow={true} title={'Copy Category'}>
+              <IconButton
+                onClick={() =>
+                  dispatch(
+                    addCategory({
+                      categoryIndex,
+                      categoryData: {
+                        ...category,
+                        id: uuid(),
+                        lesson: category.lesson.map((lesson) => {
+                          return { ...lesson, id: uuid() };
+                        }),
+                      },
+                    })
+                  )
+                }
+              >
+                <ContentCopy
+                  sx={{
+                    color: '#C4C4C4',
+                    height: '20px',
+                    width: '20px',
+                  }}
+                />
+              </IconButton>
+            </Tooltip>
           </Grid>
         </Grid>
         {category?.lesson?.map((lesson, lessonIndex) => (

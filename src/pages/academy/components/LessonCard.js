@@ -157,7 +157,10 @@ export default function LessonCard({
             />
           </Tooltip>
           <Tooltip placement="top" arrow={true} title={'Edit lesson'}>
-            <IconButton onClick={() => navigate('/academy/add-lecture/edit/')}>
+            <IconButton
+              // onClick={() => navigate('/academy/add-lecture/edit-lesson/')}
+              onClick={() => navigate(`/academy/edit-lesson/${lesson.id}`)}
+            >
               <Edit
                 sx={{
                   color: '#C4C4C4',
@@ -254,6 +257,7 @@ export default function LessonCard({
                       addCategory({
                         categoryIndex,
                         categoryData: {
+                          id: uuid(),
                           name: 'Untitled category',
                           lesson: [
                             {
@@ -293,4 +297,6 @@ LessonCard.propTypes = {
   categoryIndex: PropTypes.number,
   lessonIndex: PropTypes.number,
   lessonLength: PropTypes.number,
+  moveCard: PropTypes.func,
+  id: PropTypes.string,
 };

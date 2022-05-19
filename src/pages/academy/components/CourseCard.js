@@ -30,19 +30,22 @@ function CourseCard() {
     setCategoryCards(courseData.category);
   }, [courseData.category]);
 
-  const renderCard = React.useCallback((category, categoryIndex) => {
-    // console.log(category.id);
-    return (
-      <CategoryCard
-        key={category.id}
-        category={category}
-        categoryIndex={categoryIndex}
-        id={category.id}
-        categoryLength={courseData.category.length}
-        moveCard={moveCard}
-      />
-    );
-  }, []);
+  const renderCard = React.useCallback(
+    (category, categoryIndex) => {
+      // console.log(category.id);
+      return (
+        <CategoryCard
+          key={category.id}
+          category={category}
+          categoryIndex={categoryIndex}
+          id={category.id}
+          categoryLength={categoryCards.length}
+          moveCard={moveCard}
+        />
+      );
+    },
+    [categoryCards.length, moveCard]
+  );
   return (
     <Card
       elevation={0}

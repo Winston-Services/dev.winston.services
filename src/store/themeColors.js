@@ -291,7 +291,7 @@ const publicPageColors = {
             // borderRadius: '17px',
             '&:hover, &:focus': {
               background:
-                'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
+                'linear-gradient(92.44deg, #EA7A8F 3.93%, #E452C8 98.71%)',
             },
           },
         },
@@ -299,7 +299,7 @@ const publicPageColors = {
           props: { color: 'secondary' },
           style: {
             background:
-              'linear-gradient(180deg, #EA7A8F 0%, #E452C8 100%) !important',
+              'linear-gradient(92.44deg, #EA7A8F 3.93%, #E452C8 98.71%)',
             padding: '6px',
           },
         },
