@@ -87,8 +87,6 @@ function EditLesson() {
 
   const [expanded, setExpanded] = React.useState('Untitled category');
 
-  const [counter, setCounter] = React.useState(0);
-
   const [icon, setIcon] = React.useState(true);
   const [showVideo, setShowVideo] = React.useState(false);
   // const [showEditor, setShowEditor] = React.useState(false);
@@ -114,7 +112,7 @@ function EditLesson() {
           validationSchema={FORM_VALIDATION}
           onSubmit={(value) => {
             console.log(value);
-            console.log(imageValue);
+            navigate('/academy/upload-success');
           }}
         >
           {(props) => {
@@ -539,7 +537,6 @@ function EditLesson() {
                               onClick={() => {
                                 setShowVideo(true);
                                 setIcon(true);
-                                setCounter(counter + 1);
                               }}
                             >
                               Add video

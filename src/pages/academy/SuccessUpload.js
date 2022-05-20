@@ -13,8 +13,9 @@ export default function SuccessUpload() {
       <Grid textAlign={'center'}>
         <img src={CertificateStar} />
         <Typography variant="h4" mt={5}>
-          Congratulations! your video uploaded successfully
+          Congratulations!
         </Typography>
+        <Typography variant="h4">your video uploaded successfully</Typography>
         <Typography mt={2} mb={10}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur
           sapien consectetur leo duis arcu. Justo, habitant sit a enim tincidunt

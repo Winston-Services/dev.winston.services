@@ -5,10 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { PropTypes } from 'prop-types';
 
-function DropDown2({ options, placeholder = '' }) {
+function DropDown2({ options, handleChange, placeholder = '' }) {
   const [value, setValue] = React.useState('');
 
-  const handleChange = (event) => {
+  handleChange = (event) => {
     setValue(event.target.value);
   };
 
@@ -49,6 +49,7 @@ DropDown2.propTypes = {
   label: PropTypes.string,
   options: PropTypes.array,
   placeholder: PropTypes.string,
+  handleChange: PropTypes.func,
 };
 
 export default DropDown2;

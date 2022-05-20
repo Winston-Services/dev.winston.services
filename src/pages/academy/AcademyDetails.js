@@ -46,16 +46,24 @@ function AcademyDetails() {
               <Typography variant="subtitle1" mx={1.25}>
                 /
               </Typography>
-              <Link variant="subtitle1">Crypto Payments Explained</Link>
+              <Typography
+                variant="subtitle1"
+                color="#FFD215"
+                fontWeight={'700'}
+              >
+                Crypto Payments Explained
+              </Typography>
             </Grid>
             <Grid my={2}>
-              <Link variant="h3">Complete crypto payment masterclass</Link>
+              <Typography variant="h3" color="#FFD215">
+                Complete crypto payment masterclass
+              </Typography>
             </Grid>
             <Typography variant="subtitle2">
               Learn to Crypto like a Pro with Crypto. Start with Crypto
               Programming Basics and progress to a Crypto payment explained.
             </Typography>
-            <Grid container gap={1.1} my={2}>
+            <Grid container gap={1.1} my={2.5}>
               <Chip color="secondary" label="Blockchain" />
               <Chip color="secondary" label="Economics" />
             </Grid>
@@ -81,9 +89,12 @@ function AcademyDetails() {
             </Grid>
             <Grid container mt={1.9}>
               <Typography mr={0.5}>Created by :</Typography>
-              <Link onClick={() => navigate('/academy/teacher-profile')}>
+              <Typography
+                sx={{ color: '#FFD215', cursor: 'pointer' }}
+                onClick={() => navigate('/academy/teacher-profile')}
+              >
                 Hattie H. Moore{' '}
-              </Link>
+              </Typography>
             </Grid>
           </Grid>
           <Grid item md={6}>

@@ -76,6 +76,7 @@ function UploadFile(props) {
         </Typography>
 
         <input
+          accept="image/*"
           type="file"
           className="imageDragDrop"
           onChange={() => {

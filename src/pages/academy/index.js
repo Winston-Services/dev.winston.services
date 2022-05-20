@@ -11,6 +11,8 @@ const AddLectures = React.lazy(() => import('./AddLectures'));
 const Courses = React.lazy(() => import('./Courses'));
 const LessonDetails = React.lazy(() => import('./LessonDetails'));
 const EditLesson = React.lazy(() => import('./EditLesson'));
+const SuccessUpload = React.lazy(() => import('./SuccessUpload'));
+const AllCourseList = React.lazy(() => import('./AllCourseList'));
 import './index.css';
 
 export default function AcademyRouting() {
@@ -53,6 +55,14 @@ export default function AcademyRouting() {
         {
           path: '/courses',
           element: <Courses />,
+        },
+        {
+          path: '/upload-success',
+          element: <SuccessUpload />,
+        },
+        {
+          path: '/all-courses',
+          element: <AllCourseList />,
         },
         { path: '/*', element: <Navigate to={'/'} /> },
       ],
