@@ -11,10 +11,6 @@ import {
   PlayArrow,
   TextFields,
   AddPhotoAlternate,
-  ArrowDownward,
-  VisibilityOff,
-  ContentCopy,
-  Delete,
 } from '@mui/icons-material';
 import {
   Container,
@@ -29,16 +25,13 @@ import {
   Divider,
   Button,
   Tooltip,
-  FormHelperText,
 } from '@mui/material';
-import { Form, Formik, ErrorMessage } from 'formik';
+import { FieldArray, Form, Formik } from 'formik';
 import { PropTypes } from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-// import { useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 
-// import WysiwygEditor from '../../../components/common/Editor';
 import AutoCompleteMultiple from '../../components/common/AutoCompleteMultiple';
 import TextField from '../../components/common/TextField';
 import {
@@ -46,13 +39,15 @@ import {
   addLesson,
   addCategory,
   splitCategory,
+  lessonSelector,
+  removeCurrentLessonEdit,
 } from '../../store/academy';
-import UploadImage from './../../assets/upload_image.svg';
-import UploadVideoImage from './../../assets/upload_video_icon.png';
 import { uuid } from './../../components/common/CommonFunction';
+import ImageSliderCard from './components/ImageSliderCard';
+import VideoCard from './components/VideoCard';
 
 const FORM_VALIDATION = Yup.object().shape({
-  lessonName: Yup.string()
+  name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Lesson is required'),
@@ -61,8 +56,6 @@ const FORM_VALIDATION = Yup.object().shape({
     .max(100, 'Too Long! 100 Characters only')
     .required('Description is required'),
   skills: Yup.array().min(1).required('At least one skill required'),
-  // videoFile: Yup.string().required('Video File is required'),
-  // imageFile: Yup.string().required('Image File is required'),
 });
 
 const allSkills = [
@@ -72,50 +65,45 @@ const allSkills = [
   'Development',
   'Designing',
 ];
-
+const RenderContentComponent = (item, index) => {
+  switch (item.type) {
+    case 'video':
+      return <VideoCard name={`content[${index}].content`} index />;
+    case 'slider':
+      return <ImageSliderCard name={`content[${index}].content`} index />;
+    case 'wysiwyg':
+      return <div>WYSIWYG</div>;
+    default:
+      return null;
+  }
+};
 function EditLesson() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const { pathname } = useLocation();
-
-  // console.log('pathname', pathname);
 
   const courseData = useSelector(courseSelector);
-
-  const [videoValue, setVideoValue] = React.useState();
-  const [imageValue] = React.useState([]);
+  const lessonData = useSelector(lessonSelector);
 
   const [expanded, setExpanded] = React.useState('Untitled category');
 
   const [icon, setIcon] = React.useState(true);
-  const [showVideo, setShowVideo] = React.useState(false);
-  // const [showEditor, setShowEditor] = React.useState(false);
-  const [showSlider, setShowSlider] = React.useState(false);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  const [initialValues] = React.useState({
-    lessonName: 'Lesson1',
-    description: 'Dummy data',
-    skills: ['sss'],
-    videoFile: '',
-    imageFile: [],
-  });
-
   {
     return (
       <Container>
         <Formik
-          initialValues={{ ...initialValues }}
+          initialValues={{ ...lessonData }}
           validationSchema={FORM_VALIDATION}
           onSubmit={(value) => {
             console.log(value);
-            navigate('/academy/upload-success');
+            // navigate('/academy/upload-success');
           }}
         >
-          {(props) => {
+          {({ values }) => {
             return (
               <Form>
                 <Grid
@@ -138,7 +126,14 @@ function EditLesson() {
                   <Grid item xs={12} md={4}>
                     <Card elevation={0}>
                       <Link onClick={() => navigate(-1)}>
-                        <Grid display={'flex'} p={3} alignItems="center">
+                        <Grid
+                          display={'flex'}
+                          p={3}
+                          alignItems="center"
+                          onClick={() => {
+                            dispatch(removeCurrentLessonEdit());
+                          }}
+                        >
                           <ArrowBackIos fontSize="12px" />
                           <Typography variant="h6" ml={1}>
                             Back to course editor
@@ -262,7 +257,7 @@ function EditLesson() {
                     <Card elevation={0} sx={{ p: 3 }}>
                       <Grid display={'flex'} flexDirection="column" gap={2}>
                         <TextField
-                          name="lessonName"
+                          name="name"
                           label="Lesson"
                           placeholder="Add lesson"
                         />
@@ -280,47 +275,92 @@ function EditLesson() {
                           placeholder="Enter skill name and press enter"
                         />
                       </Grid>
+                      <FieldArray
+                        name="content"
+                        render={({ push }) => (
+                          <div>
+                            {values.content && values.content.length > 0
+                              ? values.content.map((contentObj, index) => (
+                                  <div key={index}>
+                                    {RenderContentComponent(contentObj, index)}
+                                  </div>
+                                ))
+                              : null}
+                            <Grid container gap={2} alignItems="end">
+                              <IconButton
+                                onClick={() => {
+                                  if (icon === true) {
+                                    setIcon(false);
+                                  } else {
+                                    setIcon(true);
+                                  }
+                                }}
+                                className={icon ? 'border1' : 'border2'}
+                                sx={{ mt: 3, height: '50px', width: '50px' }}
+                              >
+                                {icon ? <Add /> : <Close />}
+                              </IconButton>
+                              {!icon ? (
+                                <>
+                                  <Button
+                                    sx={{ height: '50px' }}
+                                    startIcon={<PlayArrow />}
+                                    variant="outlined"
+                                    onClick={() => {
+                                      push({
+                                        id: uuid(),
+                                        type: 'video',
+                                        content: null,
+                                        config: null,
+                                      });
+                                      setIcon(true);
+                                    }}
+                                  >
+                                    Add video
+                                  </Button>
+                                  <Button
+                                    sx={{ height: '50px' }}
+                                    startIcon={<TextFields />}
+                                    variant="outlined"
+                                    onClick={() => {
+                                      push({
+                                        id: uuid(),
+                                        type: 'wysiwyg',
+                                        content: null,
+                                        config: null,
+                                      });
+                                      setIcon(true);
+                                    }}
+                                  >
+                                    Add mark down editor
+                                  </Button>
+                                  <Button
+                                    sx={{ height: '50px' }}
+                                    startIcon={<AddPhotoAlternate />}
+                                    variant="outlined"
+                                    onClick={() => {
+                                      push({
+                                        id: uuid(),
+                                        type: 'slider',
+                                        content: null,
+                                        config: null,
+                                      });
+                                      setIcon(true);
+                                    }}
+                                  >
+                                    Add slider
+                                  </Button>
+                                </>
+                              ) : (
+                                <></>
+                              )}
+                            </Grid>
+                          </div>
+                        )}
+                      />
 
-                      {showVideo ? (
+                      {/* {showVideo ? (
                         <>
-                          <Grid container justifyContent={'end'} mt={2}>
-                            <IconButton>
-                              <ArrowDownward
-                                sx={{
-                                  color: '#C4C4C4',
-                                  height: '20px',
-                                  width: '20px',
-                                }}
-                              />
-                            </IconButton>
-                            <IconButton>
-                              <VisibilityOff
-                                sx={{
-                                  color: '#C4C4C4',
-                                  height: '20px',
-                                  width: '20px',
-                                }}
-                              />
-                            </IconButton>
-                            <IconButton>
-                              <ContentCopy
-                                sx={{
-                                  color: '#C4C4C4',
-                                  height: '20px',
-                                  width: '20px',
-                                }}
-                              />
-                            </IconButton>
-                            <IconButton>
-                              <Delete
-                                sx={{
-                                  color: '#C4C4C4',
-                                  height: '20px',
-                                  width: '20px',
-                                }}
-                              />
-                            </IconButton>
-                          </Grid>
                           {videoValue ? (
                             <>
                               <video width={'100%'} height="auto" controls>
@@ -384,17 +424,9 @@ function EditLesson() {
                         </>
                       ) : (
                         <></>
-                      )}
+                      )} */}
 
-                      {/* {showEditor ? (
-                  <>
-                    <WysiwygEditor />
-                  </>
-                ) : (
-                  <></>
-                )} */}
-
-                      {showSlider ? (
+                      {/* {showSlider ? (
                         <>
                           <Grid container justifyContent={'end'} mt={2}>
                             <IconButton>
@@ -481,9 +513,9 @@ function EditLesson() {
                                 className="imageDragDrop"
                                 onChange={(e) => {
                                   Object.keys(e.target.files).map((key) => {
-                                    console.log(
-                                      URL.createObjectURL(e.target.files[key])
-                                    );
+                                    // console.log(
+                                    //   URL.createObjectURL(e.target.files[key])
+                                    // );
                                     imageValue.push(
                                       URL.createObjectURL(e.target.files[key])
                                     );
@@ -508,66 +540,7 @@ function EditLesson() {
                         </>
                       ) : (
                         <></>
-                      )}
-
-                      <Grid container gap={2} alignItems="end">
-                        <IconButton
-                          onClick={() => {
-                            if (icon === true) {
-                              setIcon(false);
-                              // setShowVideo(false);
-                              // setShowSlider(false);
-                              // setShowEditor(false);
-                            } else {
-                              setIcon(true);
-                            }
-                          }}
-                          className={icon ? 'border1' : 'border2'}
-                          sx={{ mt: 3, height: '50px', width: '50px' }}
-                        >
-                          {icon ? <Add /> : <Close />}
-                        </IconButton>
-                        {!icon ? (
-                          <>
-                            {' '}
-                            <Button
-                              sx={{ height: '50px' }}
-                              startIcon={<PlayArrow />}
-                              variant="outlined"
-                              onClick={() => {
-                                setShowVideo(true);
-                                setIcon(true);
-                              }}
-                            >
-                              Add video
-                            </Button>
-                            <Button
-                              sx={{ height: '50px' }}
-                              startIcon={<TextFields />}
-                              variant="outlined"
-                              onClick={() => {
-                                // setShowEditor(true);
-                                setIcon(true);
-                              }}
-                            >
-                              Add mark down editor
-                            </Button>
-                            <Button
-                              sx={{ height: '50px' }}
-                              startIcon={<AddPhotoAlternate />}
-                              variant="outlined"
-                              onClick={() => {
-                                setShowSlider(true);
-                                setIcon(true);
-                              }}
-                            >
-                              Add slider
-                            </Button>
-                          </>
-                        ) : (
-                          <></>
-                        )}
-                      </Grid>
+                      )} */}
                     </Card>
                     <Button type="submit" variant="outlined" sx={{ mt: 2 }}>
                       submit

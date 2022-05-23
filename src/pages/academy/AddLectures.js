@@ -4,13 +4,13 @@ import { Grid, Card, Container, Button, Typography, Link } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
 import TextFieldForm from '../../components/common/TextField';
 import AutoCompleteMultiple from './../../components/common/AutoCompleteMultiple';
 import UploadFile from './../../components/common/UploadFile';
-import { updateCourse, courseSelector } from './../../store/academy';
+import { courseSelector, updateCourse } from './../../store/academy';
 import CourseCard from './components/CourseCard';
 
 const allSkills = [
@@ -63,6 +63,7 @@ function AddLectures() {
         }}
         validationSchema={FORM_VALIDATION}
         onSubmit={(values) => {
+          // console.log(values);
           setCourseData(values);
         }}
       >
@@ -99,12 +100,12 @@ function AddLectures() {
                       label="Skills"
                       placeholder="Enter skill name and press enter to add more skills"
                     />
-                    {/* <AutoCompleteMultiple
+                    <AutoCompleteMultiple
                       name="tags"
                       options={allSkills}
                       label="Tags"
                       placeholder="Enter tag name and press enter to add more tags"
-                    /> */}
+                    />
 
                     <TextFieldForm
                       multiline

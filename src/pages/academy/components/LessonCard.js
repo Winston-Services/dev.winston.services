@@ -27,6 +27,7 @@ import { useNavigate } from 'react-router-dom';
 import { uuid } from '../../../components/common/CommonFunction';
 import {
   addCategory,
+  addCurrentLessonEdit,
   addLesson,
   deleteLesson,
   splitCategory,
@@ -159,7 +160,15 @@ export default function LessonCard({
           <Tooltip placement="top" arrow={true} title={'Edit lesson'}>
             <IconButton
               // onClick={() => navigate('/academy/add-lecture/edit-lesson/')}
-              onClick={() => navigate(`/academy/edit-lesson/${lesson.id}`)}
+              onClick={() => {
+                navigate(`/academy/edit-lesson/${lesson.name}`);
+                dispatch(
+                  addCurrentLessonEdit({
+                    categoryIndex,
+                    id: lesson.id,
+                  })
+                );
+              }}
             >
               <Edit
                 sx={{
