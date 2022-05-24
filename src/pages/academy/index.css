@@ -43,3 +43,21 @@
   background: #31256c !important;
   border: none !important;
 }
+
+.sliderImage{
+  position: relative;
+  cursor: move;
+}
+
+.sliderImage>div{
+  position:absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 20px;
+  font-size: 30;
+  visibility: hidden;
+}
+
+.sliderImage:hover>div{
+  visibility: visible;
+}

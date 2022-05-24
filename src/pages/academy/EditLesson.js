@@ -98,12 +98,13 @@ function EditLesson() {
         <Formik
           initialValues={{ ...lessonData }}
           validationSchema={FORM_VALIDATION}
-          onSubmit={(value) => {
-            console.log(value);
+          onSubmit={() => {
+            // console.log(value);
             // navigate('/academy/upload-success');
           }}
         >
           {({ values }) => {
+            console.log('main', values);
             return (
               <Form>
                 <Grid

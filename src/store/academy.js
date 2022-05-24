@@ -32,7 +32,6 @@ const initialState = {
               //   type: 'video',
               //   content: [
               //     'https://www.youtube.com/watch?v=3xC0F9bj9FU',
-              //     'https://www.youtube.com/watch?v=3xC0F9bj9FU',
               //   ],
               //   config: {},
               // },

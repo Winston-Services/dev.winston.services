@@ -22,7 +22,6 @@ import UploadVideoImage from './../../../assets/upload_video_icon.png';
 
 function VideoCard(props) {
   const [field, meta, helpers] = useField(props);
-  console.log('meta', meta);
 
   return (
     <>
@@ -120,6 +119,9 @@ function VideoCard(props) {
           <ErrorMessage name={props.name} />
         </FormHelperText>
       </Grid>
+      {meta.touched && meta.error ? (
+        <div className="error">{meta.error}</div>
+      ) : null}
     </>
   );
 }
