@@ -26,6 +26,7 @@ const initialState = {
             name: 'Lesson1',
             isRequired: true,
             description: '',
+            skills: [],
             content: [
               // {
               //   id: uuid(),

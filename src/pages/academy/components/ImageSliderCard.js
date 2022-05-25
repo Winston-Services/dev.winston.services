@@ -5,30 +5,67 @@ import {
   ContentCopy,
   VisibilityOff,
   Delete,
-  Cancel,
 } from '@mui/icons-material';
 import { Grid, IconButton, Card, Typography } from '@mui/material';
 import { useField } from 'formik';
-// import update from 'immutability-helper';
+import update from 'immutability-helper';
 import { PropTypes } from 'prop-types';
 
+import { uuid } from '../../../components/common/CommonFunction';
 import UploadImage from './../../../assets/upload_image.svg';
+import ImageCard from './ImageCard';
 
 function ImageSliderCard(props) {
   const [field, meta, helpers] = useField(props);
 
-  // const [imageCard] = React.useState(field.value);
+  const [itemsImage, setItemsImage] = React.useState(field.value);
+  // const [deletingImageId, setDeletingImageId] = React.useState(null);
 
-  // const moveCard = useCallback((dragIndex, hoverIndex) => {
-  //   setImageCard((prevCards) =>
-  //     update(prevCards, {
-  //       $splice: [
-  //         [dragIndex, 1],
-  //         [hoverIndex, 0, prevCards[dragIndex]],
-  //       ],
-  //     })
-  //   );
-  // }, []);
+  console.log(itemsImage);
+
+  React.useEffect(() => {
+    setItemsImage(field.value);
+  }, [field, itemsImage]);
+
+  const moveCard = React.useCallback((dragIndex, hoverIndex) => {
+    setItemsImage((prevCards) =>
+      update(prevCards, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, prevCards[dragIndex]],
+        ],
+      })
+    );
+  }, []);
+
+  const renderCard = React.useCallback(
+    (item, itemIndex) => {
+      return (
+        <ImageCard
+          key={item.id}
+          item={item}
+          itemIndex={itemIndex}
+          id={item.id}
+          moveCard={moveCard}
+          // deleteFunc={setDeletingImageId}
+        />
+      );
+    },
+    [moveCard]
+  );
+
+  React.useEffect(() => {
+    setItemsImage(itemsImage);
+  }, [itemsImage]);
+
+  // React.useEffect(() => {
+  //   const imageIndex = itemsImage.findIndex((item) => {
+  //     deletingImageId === item.id;
+  //   });
+  //   console.log(imageIndex);
+
+  //   // itemsImage.splice(deletingImageId, 1);
+  // }, [deletingImageId, itemsImage]);
 
   // console.log('field', field);
   return (
@@ -80,30 +117,32 @@ function ImageSliderCard(props) {
         }}
       >
         <Grid display={'flex'} sx={{ overflowX: 'auto' }}>
-          {field.value?.map((image, index) => (
-            <Grid key={index} pt={2} pb={1} px={2}>
-              <div className="sliderImage">
-                <img
-                  src={URL.createObjectURL(image)}
-                  alt=""
-                  height="150px"
-                  width="150px"
-                  style={{ borderRadius: '10px' }}
-                />
-                <div>
-                  <IconButton
-                    sx={{ color: 'red' }}
-                    onClick={() => {
-                      field.value.pop(index);
-                      console.log(field.value);
-                    }}
-                  >
-                    <Cancel />
-                  </IconButton>
-                </div>
-              </div>
-            </Grid>
-          ))}
+          {itemsImage?.map(
+            (image, index) => renderCard(image, index)
+            // <ImageCard key={index} item={image} itemIndex={index} />
+            // <Grid key={index} pt={2} pb={1} px={2}>
+            //   <div className="sliderImage">
+            //     <img
+            //       src={URL.createObjectURL(image)}
+            //       alt=""
+            //       height="150px"
+            //       width="150px"
+            //       style={{ borderRadius: '10px' }}
+            //     />
+            //     <div>
+            //       <IconButton
+            //         sx={{ color: 'red' }}
+            //         onClick={() => {
+            //           field.value.pop(index);
+            //           console.log(field.value);
+            //         }}
+            //       >
+            //         <Cancel />
+            //       </IconButton>
+            //     </div>
+            //   </div>
+            // </Grid>
+          )}
           <label htmlFor={props.name} style={{ marginTop: 5 }}>
             <Card
               elevation={0}
@@ -132,10 +171,44 @@ function ImageSliderCard(props) {
           multiple
           onChange={(e) => {
             const files = Array.isArray(field.value) ? [...field.value] : [];
-            Object.keys(e.target.files).map((key) => {
-              files.push(e.target.files[key]);
-            });
+
             helpers.setValue(files);
+
+            Object.keys(e.target.files).map((key) => {
+              console.log('key', e.target.files[key]);
+              files.push(e.target.files[key]);
+              Object.assign(e.target.files[key], { id: uuid() });
+            });
+            // if (files.length === 0) {
+            //   Object.keys(e.target.files).map((key) => {
+            //     files.push(e.target.files[key]);
+            //   });
+            // } else {
+            //   const newFiles = [];
+            //   files.forEach((item) => {
+            //     Object.keys(e.target.files).map((inputKey) => {
+            //       if (item.name === e.target.files[inputKey].name) {
+            //         console.log('same file name');
+            //       }
+            //       newFiles.push(e.target.files[inputKey]);
+            //     });
+            //   });
+            //   console.log('newfuiles', newFiles);
+            //   newFiles.forEach((item) => {
+            //     files.push(item);
+            //   });
+            // }
+            // console.log('length', files.length);
+            // files?.forEach((item) => {
+            //   if (item.name === e.target.files[0].name) {
+            //     console.log('not uploded');
+            //   } else {
+            //     Object.keys(e.target.files).map((key) => {
+            //       files.push(e.target.files[key]);
+            //     });
+            //     helpers.setValue(files);
+            //   }
+            // });
           }}
         />
       </Card>

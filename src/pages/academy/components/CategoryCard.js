@@ -53,6 +53,8 @@ export default function CategoryCard({
       }
       const dragIndex = item.categoryIndex;
       const hoverIndex = categoryIndex;
+
+      console.log(dragIndex, hoverIndex);
       if (dragIndex === hoverIndex) {
         return;
       }
@@ -74,6 +76,7 @@ export default function CategoryCard({
   const [{ isDragging }, drag, preview] = useDrag({
     type: 'card',
     item: () => {
+      console.log(id, categoryIndex);
       return { id, categoryIndex };
     },
     collect: (monitor) => ({

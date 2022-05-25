@@ -28,6 +28,8 @@ import {
 } from '@mui/material';
 import { FieldArray, Form, Formik } from 'formik';
 import { PropTypes } from 'prop-types';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
@@ -70,7 +72,11 @@ const RenderContentComponent = (item, index) => {
     case 'video':
       return <VideoCard name={`content[${index}].content`} index />;
     case 'slider':
-      return <ImageSliderCard name={`content[${index}].content`} index />;
+      return (
+        <DndProvider backend={HTML5Backend}>
+          <ImageSliderCard name={`content[${index}].content`} index />
+        </DndProvider>
+      );
     case 'wysiwyg':
       return <div>WYSIWYG</div>;
     default:
