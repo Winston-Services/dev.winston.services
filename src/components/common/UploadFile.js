@@ -8,19 +8,18 @@ import {
   FormHelperText,
   IconButton,
 } from '@mui/material';
-import { useFormikContext, ErrorMessage } from 'formik';
+import { ErrorMessage, useField } from 'formik';
 import { PropTypes } from 'prop-types';
 
 import { ReactComponent as UploadImage } from './../../assets/upload_image.svg';
 
 function UploadFile(props) {
-  const { setFieldValue } = useFormikContext();
-  const [value, setValue] = React.useState();
+  const [field, , helpers] = useField(props.name);
 
-  return value ? (
+  return field.value ? (
     <div style={{ position: 'relative' }}>
       <img
-        src={value}
+        src={field.value}
         height={props.height}
         width="100%"
         style={{ borderRadius: '20px', objectFit: 'cover' }}
@@ -33,10 +32,7 @@ function UploadFile(props) {
           borderRadius: '20px',
         }}
         sx={{ fontSize: 30, color: 'red' }}
-        onClick={() => {
-          setFieldValue(props.name, '');
-          setValue('');
-        }}
+        {...field}
       >
         <Cancel />
       </IconButton>
@@ -79,13 +75,8 @@ function UploadFile(props) {
           accept="image/*"
           type="file"
           className="imageDragDrop"
-          onChange={() => {
-            setFieldValue(
-              props.name,
-              URL.createObjectURL(event.target.files[0])
-            );
-            setValue(URL.createObjectURL(event.target.files[0]));
-            return;
+          onChange={(event) => {
+            helpers.setValue(URL.createObjectURL(event.target.files[0]));
           }}
           style={{
             position: 'absolute',

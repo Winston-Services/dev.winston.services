@@ -3,6 +3,100 @@ import { createSlice } from '@reduxjs/toolkit';
 import { uuid } from '../components/common/CommonFunction';
 
 const initialState = {
+  courses: [
+    {
+      image: 'https://picsum.photos/260/300?random=1',
+      title: 'Cillum est id mollit ipsum in',
+      description: 'In occaecat commodo cillum ullamco ex veniam ex anim...',
+      difficultyLevel: 'Beginner',
+      price: 25,
+      currencySymbol: '$',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+    {
+      image: 'https://picsum.photos/260/300?random=2',
+      title: 'What Is SolScan1 and How to Use It?',
+      description:
+        'Sunt sit consectetur nostrud in. Duis nisi elit est anim deserunt.',
+      difficultyLevel: 'Intermediate',
+      currencySymbol: '',
+      price: 'Free',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+    {
+      image: 'https://picsum.photos/260/300?random=3',
+      title: 'Excepteur ea laboris?',
+      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
+      difficultyLevel: 'Expert',
+      price: 45,
+      currencySymbol: '€',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+    {
+      image: 'https://picsum.photos/260/300?random=4',
+      title: 'What Is SolScan3 and How to Use It?',
+      description:
+        'Et nulla incididunt id voluptate laborum exercitation veniam dolor.',
+      difficultyLevel: 'Beginner',
+      price: 25,
+      currencySymbol: '€',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+    {
+      image: 'https://picsum.photos/260/300?random=5',
+      title: 'Excepteur enim excepteur',
+      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
+      difficultyLevel: 'Beginner',
+      price: 25,
+      currencySymbol: '$',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+    {
+      image: 'https://picsum.photos/260/300?random=6',
+      title: 'What Is SolScan5 and How to Use It?',
+      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
+      difficultyLevel: 'Beginner',
+      price: 25,
+      currencySymbol: '$',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+    {
+      image: 'https://picsum.photos/260/300?random=7',
+      title: 'What Is SolScan6 and How to Use It?',
+      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
+      difficultyLevel: 'Beginner',
+      price: 25,
+      currencySymbol: '$',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+    {
+      image: 'https://picsum.photos/260/300?random=8',
+      title: 'What Is SolScan7 and How to Use It?',
+      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
+      difficultyLevel: 'Beginner',
+      price: 25,
+      currencySymbol: '$',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+    {
+      image: 'https://picsum.photos/260/300?random=9',
+      title: 'Learn Blockchain',
+      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
+      difficultyLevel: 'Beginner',
+      price: 25,
+      currencySymbol: '$',
+      duration: '2:15 hour',
+      rating: '4.7',
+    },
+  ],
   course: {
     id: uuid(),
     step1: 'In person, informally',
@@ -160,6 +254,7 @@ export const {
   addCurrentLessonEdit,
   removeCurrentLessonEdit,
 } = academySlice.actions;
+export const coursesSelector = (state) => state.academy.courses;
 export const courseSelector = (state) => state.academy.course;
 export const lessonSelector = (state) => state.academy.currentLessonEdit;
 

@@ -95,7 +95,7 @@ function AddCourse() {
         alignItems={'center'}
         justifyContent="space-between"
       >
-        <Typography variant="h3">Add your courses</Typography>
+        <Typography variant="h3">Add your course</Typography>
         <Typography variant="subtitle1">Exit</Typography>
       </Grid>
       <Typography variant="subtitle1" mt={{ xs: 3, sm: 6 }}>

@@ -1,15 +1,14 @@
 import React from 'react';
 
 import { TextField } from '@mui/material';
-import { useField, useFormikContext } from 'formik';
+import { useField } from 'formik';
 import { PropTypes } from 'prop-types';
 
 const TextFieldWrapper = ({ name, onChange, ...otherProps }) => {
-  const [field, mata] = useField(name);
-  const { setFieldValue } = useFormikContext();
+  const [field, meta, { setValue }] = useField(name);
 
   const handleChange = (e) => {
-    setFieldValue(name, e.target.value);
+    setValue(e.target.value);
     if (onChange) {
       onChange(e.target.value);
     }
@@ -22,10 +21,11 @@ const TextFieldWrapper = ({ name, onChange, ...otherProps }) => {
     variant: 'outlined',
     onChange: handleChange,
   };
-  if (mata && mata.touched && mata.error) {
+  if (meta && meta.touched && meta.error) {
     configTextField.error = true;
-    configTextField.helperText = mata.error;
+    configTextField.helperText = meta.error;
   }
+  console.log('render');
   return <TextField autoComplete="off" {...configTextField} />;
 };
 

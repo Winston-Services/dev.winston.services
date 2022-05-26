@@ -158,16 +158,16 @@ export default function Marketplace() {
   };
 
   return (
-    <Container>
+    <Container maxWidth={'xl'}>
       <Grid
         container
         rowSpacing={{ xs: 2, md: 5 }}
         columnSpacing={{ xs: 2, md: 2, lg: 4 }}
       >
-        <Grid item md={4}>
+        <Grid item xl={3}>
           <Typography variant="h2">Marketplace</Typography>
         </Grid>
-        <Grid item sm={12} md={8} display="flex" alignItems="center">
+        <Grid item sm={12} xl={9} display="flex" alignItems="center">
           <Grid container alignItems={'center'} spacing={3}>
             <Grid item flexGrow={1}>
               <AutoCompleteSearchBar
@@ -214,14 +214,14 @@ export default function Marketplace() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={4}>
+        <Grid item xl={3}>
           <Filter
             toggleDrawer={toggleDrawer}
             openDrawer={openDrawer}
             filterPanels={filterPanels}
           />
         </Grid>
-        <Grid item md={8}>
+        <Grid item xl={9}>
           <Grid
             container
             rowSpacing={4}

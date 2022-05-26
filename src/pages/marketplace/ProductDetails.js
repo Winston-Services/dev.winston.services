@@ -45,7 +45,7 @@ function ProductDetails() {
 
   return (
     <Container>
-      <Grid container sx={{ mt: { xs: 4, md: 12 } }}>
+      <Grid container>
         <Grid item lg={12} sx={{ display: { xs: 'none', md: 'block' } }}>
           <Button
             sx={{ px: 3, py: 1 }}

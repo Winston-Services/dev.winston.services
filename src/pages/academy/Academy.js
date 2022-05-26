@@ -8,14 +8,12 @@ import {
   Paper,
   Typography,
 } from '@mui/material';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 
 import AutoCompleteSearchBar from '../../components/common/AutoCompleteSearchBar';
+import { coursesSelector } from '../../store/academy';
 import AcademyIcon from './../../assets/academy_icon.svg';
-import AcademyImage from './../../assets/academy_image.svg';
-import BeginnerIcon from './../../assets/beginner_icon.svg';
-import ExpertIcon from './../../assets/expert_icon.svg';
-import IntermediateIcon from './../../assets/intermediate_icon.svg';
 import Filter from './../../components/common/Filter';
 import AcademyCard from './components/AcademyCard';
 
@@ -79,93 +77,8 @@ const filterPanels = [
   },
 ];
 
-const academyData = [
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elitr.',
-    difficultyLevel: 'Beginner',
-    difficultyLevelIcon: BeginnerIcon,
-    priceLevel: 25,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan1 and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-    difficultyLevel: 'Intermediate',
-    difficultyLevelIcon: IntermediateIcon,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan2 and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-    difficultyLevel: 'Expert',
-    difficultyLevelIcon: ExpertIcon,
-    priceLevel: 25,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan3 and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-    difficultyLevel: 'Beginner',
-    difficultyLevelIcon: BeginnerIcon,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan4 and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-    difficultyLevel: 'Beginner',
-    difficultyLevelIcon: BeginnerIcon,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan5 and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-    difficultyLevel: 'Beginner',
-    difficultyLevelIcon: BeginnerIcon,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan6 and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-    difficultyLevel: 'Beginner',
-    difficultyLevelIcon: BeginnerIcon,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan7 and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-    difficultyLevel: 'Beginner',
-    difficultyLevelIcon: BeginnerIcon,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-  {
-    image: AcademyImage,
-    title: 'What Is SolScan8 and How to Use It?',
-    description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-    difficultyLevel: 'Beginner',
-    difficultyLevelIcon: BeginnerIcon,
-    duration: '2 hour 15 min',
-    rating: '4.7',
-  },
-];
-
 function Academy() {
+  const academyData = useSelector(coursesSelector);
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [searchInput, setSearchInput] = React.useState('');
   const [searchData, setSearchData] = React.useState(academyData);
@@ -177,31 +90,38 @@ function Academy() {
   return (
     <>
       <Container>
-        <Grid container columnSpacing={3} alignItems="center">
-          <Grid item md={4} display="flex">
-            <Typography variant="h3" textAlign="center">
-              Academy
-            </Typography>
+        <Grid container columnSpacing={3}>
+          <Grid
+            item
+            xl={12}
+            container
+            mb={5}
+            columnSpacing={3}
+            alignItems="center"
+          >
+            <Grid item xl={4} display="flex">
+              <Typography variant="h3" textAlign="center">
+                Academy
+              </Typography>
+            </Grid>
+            <Grid item xl={8}>
+              <AutoCompleteSearchBar
+                data={academyData}
+                searchBy="title"
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+                setSearchData={setSearchData}
+              />
+            </Grid>
           </Grid>
-          <Grid item md={8}>
-            <AutoCompleteSearchBar
-              data={academyData}
-              searchBy="title"
-              searchInput={searchInput}
-              setSearchInput={setSearchInput}
-              setSearchData={setSearchData}
-            />
-          </Grid>
-        </Grid>
-        <Grid container mt={5} columnSpacing={3}>
-          <Grid item md={4}>
+          <Grid item xl={4}>
             <Filter
               toggleDrawer={toggleDrawer}
               openDrawer={openDrawer}
               filterPanels={filterPanels}
             />
           </Grid>
-          <Grid item md={8}>
+          <Grid item xl={8}>
             <Grid container spacing={3}>
               {searchData && searchData.length !== 0 ? (
                 searchData.map((item, index) => (
@@ -221,7 +141,7 @@ function Academy() {
           </Grid>
         </Grid>
       </Container>
-      <Paper elevation={0} sx={{ py: 10, mt: 10 }}>
+      <Paper elevation={0} sx={{ py: 10, mt: 10, borderRadius: 0 }}>
         <Container>
           <Grid
             container
@@ -231,7 +151,7 @@ function Academy() {
             alignItems="center"
           >
             <Grid item md={6.5}>
-              <Typography variant="h3">Upload video</Typography>
+              <Typography variant="h3">Add course</Typography>
               <Typography variant="subtitle1" mt={3}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra
                 sollicitudin venenatis feugiat magna feugiat urna cursus turpis.
@@ -247,7 +167,7 @@ function Academy() {
                 }}
                 onClick={() => navigate('/academy/add-course')}
               >
-                Start uploading video
+                Add course
               </Button>
             </Grid>
             <Grid item md={5.5}>

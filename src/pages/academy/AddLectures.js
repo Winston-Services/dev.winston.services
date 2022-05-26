@@ -1,25 +1,25 @@
 import React from 'react';
 
-import { Grid, Card, Container, Button, Typography, Link } from '@mui/material';
+import { Grid, Card, Container, Button, Typography, Box } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
-import TextFieldForm from '../../components/common/TextField';
-import AutoCompleteMultiple from './../../components/common/AutoCompleteMultiple';
+// import AutoCompleteMultiple from './../../components/common/AutoCompleteMultiple';
+import FormikTextField from './../../components/common/FormikTextField';
 import UploadFile from './../../components/common/UploadFile';
 import { courseSelector, updateCourse } from './../../store/academy';
 import CourseCard from './components/CourseCard';
 
-const allSkills = [
-  'Photoshop',
-  'Programming',
-  'Gaming',
-  'Development',
-  'Designing',
-];
+// const allSkills = [
+//   'Photoshop',
+//   'Programming',
+//   'Gaming',
+//   'Development',
+//   'Designing',
+// ];
 
 const FORM_VALIDATION = Yup.object().shape({
   thumbnail: Yup.string().required('Please select thumbnail'),
@@ -34,41 +34,42 @@ const FORM_VALIDATION = Yup.object().shape({
 
 function AddLectures() {
   const dispatch = useDispatch();
-  const [title, setTitle] = React.useState('Course Title');
   const courseData = useSelector(courseSelector);
-  // const [categoryData, setCategoryData] = React.useState(courseData);
   const setCourseData = (data) => {
     dispatch(updateCourse(data));
   };
 
   return (
     <Container>
-      <Grid
-        mb={3}
-        display="flex"
-        alignItems={'center'}
-        justifyContent="space-between"
-        height={30}
-      >
-        <Typography variant="h5">{title}</Typography>
-        <Grid display="flex" gap={3}>
-          <Link variant="subtitle2">Preview</Link>
-          <Link variant="subtitle2">Save</Link>
-          <Link variant="subtitle2">Submit for review</Link>
-        </Grid>
-      </Grid>
       <Formik
         initialValues={{
           ...courseData,
         }}
         validationSchema={FORM_VALIDATION}
         onSubmit={(values) => {
-          // console.log(values);
           setCourseData(values);
         }}
       >
-        {() => {
-          return (
+        {({ values }) => (
+          <>
+            <Grid
+              mb={3}
+              display="flex"
+              alignItems={'center'}
+              justifyContent="space-between"
+              height={30}
+            >
+              <Typography variant="h5">
+                {values?.title || 'Course title'}
+              </Typography>
+              <Box>
+                <Button sx={{ px: 2 }}>Preview</Button>
+                <Button sx={{ px: 2, ml: 2 }} type="submit">
+                  Save
+                </Button>
+                <Button sx={{ px: 2, ml: 2 }}>Submit for review</Button>
+              </Box>
+            </Grid>
             <Form>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={8}>
@@ -81,33 +82,32 @@ function AddLectures() {
                       gap: 2.5,
                     }}
                   >
-                    <TextFieldForm
+                    <FormikTextField
                       name="title"
                       label="Course title"
                       placeholder="Course title Name"
-                      onChange={(value) => setTitle(value)}
                     />
-                    <TextFieldForm
+                    <FormikTextField
                       multiline
                       rows={4}
                       name="description"
                       label="Short description"
                       placeholder="Description"
                     />
-                    <AutoCompleteMultiple
-                      name="skills"
-                      options={allSkills}
-                      label="Skills"
-                      placeholder="Enter skill name and press enter to add more skills"
-                    />
-                    <AutoCompleteMultiple
-                      name="tags"
-                      options={allSkills}
-                      label="Tags"
-                      placeholder="Enter tag name and press enter to add more tags"
-                    />
+                    {/* <AutoCompleteMultiple
+                name="skills"
+                options={allSkills}
+                label="Skills"
+                placeholder="Enter skill name and press enter to add more skills"
+              />
+              <AutoCompleteMultiple
+                name="tags"
+                options={allSkills}
+                label="Tags"
+                placeholder="Enter tag name and press enter to add more tags"
+              /> */}
 
-                    <TextFieldForm
+                    <FormikTextField
                       multiline
                       rows={8}
                       name="summary"
@@ -116,14 +116,14 @@ function AddLectures() {
                     />
                     <Grid container spacing={3}>
                       <Grid item xs={12} sm={6}>
-                        <TextFieldForm
+                        <FormikTextField
                           name="price"
                           label="Price"
                           placeholder="Enter price"
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <TextFieldForm
+                        <FormikTextField
                           name="discountPrice"
                           label="Discount price"
                           placeholder="Enter discount price"
@@ -148,17 +148,9 @@ function AddLectures() {
                   />
                 </Grid>
               </Grid>
-              <Button
-                variant="contained"
-                color="secondary"
-                type="submit"
-                sx={{ mt: 3 }}
-              >
-                submit
-              </Button>
             </Form>
-          );
-        }}
+          </>
+        )}
       </Formik>
     </Container>
   );
