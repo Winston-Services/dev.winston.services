@@ -44,13 +44,13 @@
   border: none !important;
 }
 
-.sliderImage{
+.sliderImage {
   position: relative;
   cursor: move;
 }
 
-.sliderImage>div{
-  position:absolute;
+.sliderImage > div {
+  position: absolute;
   top: 5px;
   right: 5px;
   border-radius: 20px;
@@ -58,10 +58,21 @@
   visibility: hidden;
 }
 
-.sliderImage:hover>div{
+.sliderImage:hover > div {
   visibility: visible;
 }
 
-.abc:hover{
-  
+.slider.variable-width .slick-arrow.slick-prev {
+  left: 15px;
+  z-index: 10;
+  height: 40px;
+  width: 40px;
+}
+.slider.variable-width .slick-arrow.slick-next {
+  right: 30px;
+  z-index: 10;
+}
+.slider.variable-width .slick-arrow::before {
+  font-size: 40px;
+  line-height: 1;
 }

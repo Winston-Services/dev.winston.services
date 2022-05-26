@@ -7,14 +7,14 @@ import { coursesSelector } from './../../../store/academy';
 import AcademyCard from './AcademyCard';
 const settings = {
   className: 'slider variable-width',
-  arrows: false,
+  arrows: true,
   dots: false,
-  infinite: true,
+  infinite: false,
   speed: 500,
   autoplay: true,
-  autoplaySpeed: 3000,
+  autoplaySpeed: 5000,
   slidesToShow: 1,
-  slidesToScroll: 3,
+  slidesToScroll: 1,
   variableWidth: true,
 };
 export default function AcademySlider() {
@@ -24,7 +24,7 @@ export default function AcademySlider() {
     <Slider {...settings}>
       {academyData.map((item, index) => (
         <div key={item.title + index} style={{ width: '410px' }}>
-          <div style={{ width: '380px' }}>
+          <div style={{ width: '380px', height: '450px' }}>
             <AcademyCard item={item} />
           </div>
         </div>
