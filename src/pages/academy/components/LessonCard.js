@@ -36,6 +36,7 @@ import {
 
 export default function LessonCard({
   lesson,
+  categoryId,
   lessonIndex,
   categoryIndex,
   lessonLength,
@@ -65,7 +66,7 @@ export default function LessonCard({
           editLesson.categoryIndex === categoryIndex ? (
             <>
               <TextField
-                inputProps={{ style: { fontSize: 17 } }}
+                inputProps={{ style: { fontSize: 14 } }}
                 sx={{ width: 'auto' }}
                 variant="standard"
                 value={editLesson.name}
@@ -166,6 +167,7 @@ export default function LessonCard({
                   addCurrentLessonEdit({
                     categoryIndex,
                     id: lesson.id,
+                    categoryId: categoryId,
                   })
                 );
               }}
@@ -308,4 +310,5 @@ LessonCard.propTypes = {
   lessonLength: PropTypes.number,
   moveCard: PropTypes.func,
   id: PropTypes.string,
+  categoryId: PropTypes.string,
 };

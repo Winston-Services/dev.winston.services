@@ -25,7 +25,7 @@ const TextFieldWrapper = ({ name, onChange, ...otherProps }) => {
     configTextField.error = true;
     configTextField.helperText = meta.error;
   }
-  console.log('render');
+  // console.log('render');
   return <TextField autoComplete="off" {...configTextField} />;
 };
 

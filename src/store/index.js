@@ -24,5 +24,7 @@ const reducer = (state, action) => {
 export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiInstance.middleware),
+    getDefaultMiddleware({ serializableCheck: false }).concat(
+      apiInstance.middleware
+    ),
 });

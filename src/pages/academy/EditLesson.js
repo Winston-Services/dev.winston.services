@@ -43,6 +43,8 @@ import {
   splitCategory,
   lessonSelector,
   removeCurrentLessonEdit,
+  updateLessonContent,
+  updateLessonContentData,
 } from '../../store/academy';
 import { uuid } from './../../components/common/CommonFunction';
 import ImageSliderCard from './components/ImageSliderCard';
@@ -53,7 +55,7 @@ const FORM_VALIDATION = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Lesson is required'),
-  description: Yup.string()
+  summary: Yup.string()
     .min(2, 'Too Short!')
     .max(100, 'Too Long! 100 Characters only')
     .required('Description is required'),
@@ -83,6 +85,7 @@ const RenderContentComponent = (item, index) => {
       return null;
   }
 };
+
 function EditLesson() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -104,13 +107,33 @@ function EditLesson() {
         <Formik
           initialValues={{ ...lessonData }}
           validationSchema={FORM_VALIDATION}
-          onSubmit={() => {
-            // console.log(value);
+          onSubmit={(values) => {
             // navigate('/academy/upload-success');
+            dispatch(
+              updateLessonContent({
+                data: {
+                  name: values.name,
+                  summary: values.summary,
+                  skills: values.skills,
+                  content: values.content,
+                },
+              })
+            );
+            dispatch(
+              updateLessonContentData({
+                category_id: lessonData.categoryId,
+                lesson_id: lessonData.id,
+                data: {
+                  name: values.name,
+                  summary: values.summary,
+                  skills: values.skills,
+                  content: values.content,
+                },
+              })
+            );
           }}
         >
           {({ values }) => {
-            console.log('main', values);
             return (
               <Form>
                 <Grid
@@ -271,7 +294,7 @@ function EditLesson() {
                         <TextField
                           multiline
                           rows={4}
-                          name="description"
+                          name="summary"
                           label="Summary"
                           placeholder="Description"
                         />
@@ -365,189 +388,6 @@ function EditLesson() {
                           </div>
                         )}
                       />
-
-                      {/* {showVideo ? (
-                        <>
-                          {videoValue ? (
-                            <>
-                              <video width={'100%'} height="auto" controls>
-                                <source src={videoValue} type="video/mp4" />
-                              </video>
-                            </>
-                          ) : (
-                            <>
-                              <Card
-                                elevation={0}
-                                className="dottedBorder"
-                                sx={{
-                                  mt: 1,
-                                  textAlign: 'center',
-                                  pt: 5,
-                                  pb: 3.4,
-                                  position: 'relative',
-                                }}
-                              >
-                                <img src={UploadVideoImage} alt="" />
-                                <Typography variant="subtitle1">
-                                  Upload a video
-                                </Typography>
-                                <Typography
-                                  variant="subtitle2"
-                                  sx={{ color: '#C4C4C4' }}
-                                >
-                                  You can upload maximum 100mb video
-                                </Typography>
-                                <input
-                                  type="file"
-                                  accept="video/*"
-                                  className="imageDragDrop"
-                                  onChange={() => {
-                                    setVideoValue(
-                                      URL.createObjectURL(event.target.files[0])
-                                    );
-                                    props.setFieldValue(
-                                      'videoFile',
-                                      URL.createObjectURL(event.target.files[0])
-                                    );
-                                    return;
-                                  }}
-                                  style={{
-                                    position: 'absolute',
-                                    height: '100%',
-                                    width: '100%',
-                                    opacity: 0,
-                                    top: 0,
-                                    left: 0,
-                                  }}
-                                />
-                              </Card>
-                              <Grid container ml={2}>
-                                <FormHelperText error={true}>
-                                  <ErrorMessage name="videoFile" />
-                                </FormHelperText>
-                              </Grid>
-                            </>
-                          )}
-                        </>
-                      ) : (
-                        <></>
-                      )} */}
-
-                      {/* {showSlider ? (
-                        <>
-                          <Grid container justifyContent={'end'} mt={2}>
-                            <IconButton>
-                              <ArrowDownward
-                                sx={{
-                                  color: '#C4C4C4',
-                                  height: '20px',
-                                  width: '20px',
-                                }}
-                              />
-                            </IconButton>
-                            <IconButton>
-                              <VisibilityOff
-                                sx={{
-                                  color: '#C4C4C4',
-                                  height: '20px',
-                                  width: '20px',
-                                }}
-                              />
-                            </IconButton>
-                            <IconButton>
-                              <ContentCopy
-                                sx={{
-                                  color: '#C4C4C4',
-                                  height: '20px',
-                                  width: '20px',
-                                }}
-                              />
-                            </IconButton>
-                            <IconButton>
-                              <Delete
-                                sx={{
-                                  color: '#C4C4C4',
-                                  height: '20px',
-                                  width: '20px',
-                                }}
-                              />
-                            </IconButton>
-                          </Grid>
-                          <Card
-                            elevation={0}
-                            className="dottedBorder"
-                            sx={{
-                              mt: 1,
-                              display: 'flex',
-                            }}
-                          >
-                            <Grid display={'flex'} sx={{ overflowX: 'auto' }}>
-                              {imageValue.map((image) => (
-                                <Grid key={image} pt={2} pb={1} px={2}>
-                                  <img
-                                    style={{ borderRadius: '10px' }}
-                                    src={image}
-                                    alt=""
-                                    height="150px"
-                                    width="150px"
-                                  />
-                                </Grid>
-                              ))}
-                            </Grid>
-                            <Card
-                              elevation={0}
-                              sx={{
-                                width: '150px',
-                                py: 3.6,
-                                textAlign: 'center',
-                                position: 'relative',
-                              }}
-                              className="dottedBorder"
-                            >
-                              <img
-                                src={UploadImage}
-                                alt=""
-                                height="45px"
-                                width="42px"
-                              />
-                              <Typography variant="subtitle2" mt={1.5}>
-                                Upload image
-                              </Typography>
-                              <input
-                                type="file"
-                                accept="image/*"
-                                multiple
-                                className="imageDragDrop"
-                                onChange={(e) => {
-                                  Object.keys(e.target.files).map((key) => {
-                                    // console.log(
-                                    //   URL.createObjectURL(e.target.files[key])
-                                    // );
-                                    imageValue.push(
-                                      URL.createObjectURL(e.target.files[key])
-                                    );
-                                    props.setFieldValue(
-                                      'imageFile',
-                                      imageValue
-                                    );
-                                  });
-                                  return;
-                                }}
-                                style={{
-                                  position: 'absolute',
-                                  height: '100%',
-                                  width: '100%',
-                                  opacity: 0,
-                                  top: 0,
-                                  left: 0,
-                                }}
-                              />
-                            </Card>
-                          </Card>
-                        </>
-                      ) : (
-                        <></>
-                      )} */}
                     </Card>
                     <Button type="submit" variant="outlined" sx={{ mt: 2 }}>
                       submit

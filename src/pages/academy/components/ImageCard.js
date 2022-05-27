@@ -5,7 +5,7 @@ import { Grid, IconButton } from '@mui/material/';
 import { PropTypes } from 'prop-types';
 import { useDrag, useDrop } from 'react-dnd';
 
-function ImageCard({ item, itemIndex, moveCard, id }) {
+function ImageCard({ item, itemIndex, removeImageItem, moveCard, id }) {
   const ref = React.useRef(null);
   const [{ handlerId }, drop] = useDrop({
     accept: 'card',
@@ -57,7 +57,8 @@ function ImageCard({ item, itemIndex, moveCard, id }) {
       <Grid key={itemIndex} pt={2} pb={1} px={2}>
         <div className="sliderImage">
           <img
-            src={URL.createObjectURL(item)}
+            // src={URL.createObjectURL(item)}
+            src={item.name}
             alt=""
             height="150px"
             width="150px"
@@ -67,7 +68,7 @@ function ImageCard({ item, itemIndex, moveCard, id }) {
             <IconButton
               sx={{ color: 'red' }}
               onClick={() => {
-                // deleteFunc(item.id);
+                removeImageItem(item.id);
                 console.log(item.id);
               }}
             >
@@ -85,6 +86,7 @@ ImageCard.propTypes = {
   itemIndex: PropTypes.number,
   moveCard: PropTypes.func,
   id: PropTypes.string,
+  removeImageItem: PropTypes.func,
 };
 
 export default ImageCard;

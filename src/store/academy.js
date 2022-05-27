@@ -119,34 +119,9 @@ const initialState = {
             id: uuid(),
             name: 'Lesson1',
             isRequired: true,
-            description: '',
+            summary: '',
             skills: [],
-            content: [
-              // {
-              //   id: uuid(),
-              //   type: 'video',
-              //   content: [
-              //     'https://www.youtube.com/watch?v=3xC0F9bj9FU',
-              //   ],
-              //   config: {},
-              // },
-              // {
-              //   id: uuid(),
-              //   type: 'slider',
-              //   content: [
-              //     'https://source.unsplash.com/random/300×300',
-              //     'https://source.unsplash.com/random/300×300',
-              //     'https://source.unsplash.com/random/300×300',
-              //   ],
-              //   config: {},
-              // },
-              // {
-              //   id: uuid(),
-              //   type: 'wysiwyg',
-              //   content: 'https://www.youtube.com/watch?v=3xC0F9bj9FU',
-              //   config: 'Hi There',
-              // },
-            ],
+            content: [],
           },
         ],
       },
@@ -216,25 +191,49 @@ export const academySlice = createSlice({
         action.payload.categoryIndex
       ].lesson.find((lessonId) => lessonId.id === action.payload.id);
       if (lesson) {
-        state.currentLessonEdit = lesson;
+        state.currentLessonEdit = {
+          ...lesson,
+          categoryId: action.payload.categoryId,
+        };
+        // state.currentLessonEdit = lesson;
       }
     },
     removeCurrentLessonEdit: (state) => {
       state.currentLessonEdit = null;
     },
-    addLessonContent: (state, action) => {
-      state.updateLessonContent.currentLessonEdit.content.push({
-        id: uuid(),
-        ...action.payload,
-      });
-    },
     updateLessonContent: (state, action) => {
-      const index =
-        state.updateLessonContent.currentLessonEdit.content.findIndex(
-          (d) => d.id === action.payload.id
-        );
-      state.updateLessonContent.currentLessonEdit.content[index].content =
-        action.payload.content;
+      state.currentLessonEdit = {
+        ...state.currentLessonEdit,
+        ...action.payload.data,
+      };
+    },
+    updateLessonContentData: (state, action) => {
+      const categoryId = state.course.category.findIndex(
+        (cid) => cid.id === action.payload.category_id
+      );
+      const lessonId = state.course.category[categoryId].lesson.findIndex(
+        (lid) => lid.id === action.payload.lesson_id
+      );
+      state.course.category[categoryId].lesson[lessonId] = {
+        ...state.course.category[categoryId].lesson[lessonId],
+        ...action.payload.data,
+      };
+    },
+    deleteVideoCard: (state, action) => {
+      const categoryId = state.course.category.findIndex(
+        (cid) => cid.id === action.payload.category_id
+      );
+      const lessonId = state.course.category[categoryId].lesson.findIndex(
+        (lid) => lid.id === action.payload.lesson_id
+      );
+      console.log(
+        state.course.category[categoryId].lesson,
+        'state.course.category[categoryId].lesson'
+      );
+      state.course.category[categoryId].lesson[lessonId].content.splice(
+        action.payload.contentId,
+        1
+      );
     },
   },
 });
@@ -253,6 +252,8 @@ export const {
   deleteLesson,
   addCurrentLessonEdit,
   removeCurrentLessonEdit,
+  updateLessonContentData,
+  deleteVideoCard,
 } = academySlice.actions;
 export const coursesSelector = (state) => state.academy.courses;
 export const courseSelector = (state) => state.academy.course;

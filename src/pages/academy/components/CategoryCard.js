@@ -217,6 +217,7 @@ export default function CategoryCard({
             lessonIndex={lessonIndex}
             categoryIndex={categoryIndex}
             lessonLength={category.lesson.length}
+            categoryId={category.id}
           />
         ))}
       </Grid>
