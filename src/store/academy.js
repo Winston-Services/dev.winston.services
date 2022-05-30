@@ -219,22 +219,19 @@ export const academySlice = createSlice({
         ...action.payload.data,
       };
     },
-    deleteVideoCard: (state, action) => {
-      const categoryId = state.course.category.findIndex(
-        (cid) => cid.id === action.payload.category_id
-      );
-      const lessonId = state.course.category[categoryId].lesson.findIndex(
-        (lid) => lid.id === action.payload.lesson_id
-      );
-      console.log(
-        state.course.category[categoryId].lesson,
-        'state.course.category[categoryId].lesson'
-      );
-      state.course.category[categoryId].lesson[lessonId].content.splice(
-        action.payload.contentId,
-        1
-      );
-    },
+    // deleteVideoCard: (state, action) => {
+    //   const categoryId = state.course.category.findIndex(
+    //     (cid) => cid.id === action.payload.category_id
+    //   );
+    //   const lessonId = state.course.category[categoryId].lesson.findIndex(
+    //     (lid) => lid.id === action.payload.lesson_id
+    //   );
+    //   state.course.category[categoryId].lesson[lessonId].content.splice(
+    //     action.payload.contentId,
+    //     1
+    //   );
+    //   console.log(categoryId, lessonId);
+    // },
   },
 });
 
@@ -253,7 +250,7 @@ export const {
   addCurrentLessonEdit,
   removeCurrentLessonEdit,
   updateLessonContentData,
-  deleteVideoCard,
+  // deleteVideoCard,
 } = academySlice.actions;
 export const coursesSelector = (state) => state.academy.courses;
 export const courseSelector = (state) => state.academy.course;

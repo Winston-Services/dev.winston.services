@@ -18,24 +18,23 @@ import {
 } from '@mui/material';
 import { ErrorMessage, useField } from 'formik';
 import { PropTypes } from 'prop-types';
-// import { useSelector } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 
 // import { uuid } from '../../../components/common/CommonFunction';
-import // courseSelector,
-// deleteVideoCard,
-// lessonSelector,
-'../../../store/academy';
+
+import { uuid } from '../../../components/common/CommonFunction';
 import UploadVideoImage from './../../../assets/upload_video_icon.png';
+// import { lessonSelector, deleteVideoCard } from './../../../store/academy';
 
 function VideoCard(props) {
   const [field, meta, helpers] = useField(props);
+  let file;
 
   const [isShow, setIsShow] = React.useState(true);
 
-  console.log('field', field);
-
   // const courseData = useSelector(courseSelector);
   // const lessonData = useSelector(lessonSelector);
+  // console.log('lessonData', lessonData);
 
   // courseData.category.map((category) => {
   //   category.lesson.map((lesson) => {
@@ -66,14 +65,20 @@ function VideoCard(props) {
           </Tooltip>
         ) : null}
 
-        <IconButton>
-          <ArrowDownward
-            sx={{
-              color: '#C4C4C4',
-              height: '20px',
-              width: '20px',
-            }}
-          />
+        <IconButton
+          onClick={() => {
+            console.log('field.value', field.value);
+          }}
+        >
+          <a href={field.value} download>
+            <ArrowDownward
+              sx={{
+                color: '#C4C4C4',
+                height: '20px',
+                width: '20px',
+              }}
+            />
+          </a>
         </IconButton>
         {isShow ? (
           <IconButton
@@ -107,6 +112,8 @@ function VideoCard(props) {
 
         <IconButton
           onClick={() => {
+            props.insert(props.videoIndex, { ...props.item, id: uuid() });
+            console.log('props', props);
             // dispatch(
             //   addVideoCard({
             //     id: lessonSelectorData.id,
@@ -130,11 +137,12 @@ function VideoCard(props) {
             // );
             // itemsImage.splice(index, 1);
             // field.value.splice(index, 1);
+            props.remove(props.videoIndex);
             // dispatch(
             //   deleteVideoCard({
             //     category_id: lessonData.categoryId,
             //     lesson_id: lessonData.id,
-            //     contentId: lessonData.content[0].id,
+            //     contentId: props.videoIndex,
             //   })
             // );
           }}
@@ -185,7 +193,7 @@ function VideoCard(props) {
             hidden
             onChange={(event) => {
               // helpers.setValue(event.target.files[0]);
-              const file = URL.createObjectURL(event.target.files[0]);
+              file = URL.createObjectURL(event.target.files[0]);
               helpers.setValue(file);
               // console.log('file', file);
             }}
@@ -209,6 +217,10 @@ function VideoCard(props) {
 
 VideoCard.propTypes = {
   name: PropTypes.string,
+  videoIndex: PropTypes.number,
+  remove: PropTypes.func,
+  insert: PropTypes.func,
+  item: PropTypes.object,
 };
 
 export default VideoCard;

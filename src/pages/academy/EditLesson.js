@@ -69,14 +69,29 @@ const allSkills = [
   'Development',
   'Designing',
 ];
-const RenderContentComponent = (item, index) => {
+const RenderContentComponent = (item, index, remove, insert) => {
+  // console.log('item', item);
   switch (item.type) {
     case 'video':
-      return <VideoCard name={`content[${index}].content`} index />;
+      return (
+        <VideoCard
+          name={`content[${index}].content`}
+          videoIndex={index}
+          remove={remove}
+          insert={insert}
+          item={item}
+        />
+      );
     case 'slider':
       return (
         <DndProvider backend={HTML5Backend}>
-          <ImageSliderCard name={`content[${index}].content`} index />
+          <ImageSliderCard
+            name={`content[${index}].content`}
+            sliderIndex={index}
+            remove={remove}
+            insert={insert}
+            item={item}
+          />
         </DndProvider>
       );
     case 'wysiwyg':
@@ -307,12 +322,18 @@ function EditLesson() {
                       </Grid>
                       <FieldArray
                         name="content"
-                        render={({ push }) => (
+                        render={({ push, remove, insert }) => (
                           <div>
+                            {console.log('values.content', values.content)}
                             {values.content && values.content.length > 0
                               ? values.content.map((contentObj, index) => (
                                   <div key={index}>
-                                    {RenderContentComponent(contentObj, index)}
+                                    {RenderContentComponent(
+                                      contentObj,
+                                      index,
+                                      remove,
+                                      insert
+                                    )}
                                   </div>
                                 ))
                               : null}

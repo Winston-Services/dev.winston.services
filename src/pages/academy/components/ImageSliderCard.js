@@ -121,7 +121,14 @@ function ImageSliderCard(props) {
             }}
           />
         </IconButton> */}
-        <IconButton>
+        <IconButton
+          onClick={() => {
+            props.insert(props.sliderIndex, {
+              ...props.item,
+              id: uuid(),
+            });
+          }}
+        >
           <ContentCopy
             sx={{
               color: '#C4C4C4',
@@ -130,7 +137,11 @@ function ImageSliderCard(props) {
             }}
           />
         </IconButton>
-        <IconButton>
+        <IconButton
+          onClick={() => {
+            props.remove(props.sliderIndex);
+          }}
+        >
           <Delete
             sx={{
               color: '#C4C4C4',
@@ -214,6 +225,10 @@ function ImageSliderCard(props) {
 
 ImageSliderCard.propTypes = {
   name: PropTypes.string,
+  sliderIndex: PropTypes.number,
+  remove: PropTypes.func,
+  insert: PropTypes.func,
+  item: PropTypes.object,
 };
 
 export default ImageSliderCard;
