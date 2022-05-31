@@ -28,6 +28,8 @@ import UploadVideoImage from './../../../assets/upload_video_icon.png';
 
 function VideoCard(props) {
   const [field, meta, helpers] = useField(props);
+
+  // console.log('props', props);
   let file;
 
   const [isShow, setIsShow] = React.useState(true);
@@ -65,42 +67,70 @@ function VideoCard(props) {
           </Tooltip>
         ) : null}
 
-        <IconButton
-          onClick={() => {
-            console.log('field.value', field.value);
-          }}
-        >
-          <a href={field.value} download>
-            <ArrowDownward
-              sx={{
-                color: '#C4C4C4',
-                height: '20px',
-                width: '20px',
-              }}
-            />
-          </a>
-        </IconButton>
+        <Tooltip placement="top" arrow={true} title={'Download content'}>
+          <IconButton
+            onClick={() => {
+              console.log('field.value', field.value);
+            }}
+          >
+            <a href={field.value} download>
+              <ArrowDownward
+                sx={{
+                  color: '#C4C4C4',
+                  height: '20px',
+                  width: '20px',
+                }}
+              />
+            </a>
+          </IconButton>
+        </Tooltip>
         {isShow ? (
-          <IconButton
-            onClick={() => {
-              setIsShow(false);
-            }}
-          >
-            <VisibilityOff
-              sx={{
-                color: '#C4C4C4',
-                height: '20px',
-                width: '20px',
+          <Tooltip placement="top" arrow={true} title={'Hide content'}>
+            <IconButton
+              onClick={() => {
+                setIsShow(false);
               }}
-            />
-          </IconButton>
+            >
+              <VisibilityOff
+                sx={{
+                  color: '#C4C4C4',
+                  height: '20px',
+                  width: '20px',
+                }}
+              />
+            </IconButton>
+          </Tooltip>
         ) : (
+          <Tooltip placement="top" arrow={true} title={'Show content'}>
+            <IconButton
+              onClick={() => {
+                setIsShow(true);
+              }}
+            >
+              <Visibility
+                sx={{
+                  color: '#C4C4C4',
+                  height: '20px',
+                  width: '20px',
+                }}
+              />
+            </IconButton>
+          </Tooltip>
+        )}
+        <Tooltip placement="top" arrow={true} title={'Copy content'}>
           <IconButton
             onClick={() => {
-              setIsShow(true);
+              props.insert(props.videoIndex, { ...props.item, id: uuid() });
+              // console.log('props', props);
+              // dispatch(
+              //   addVideoCard({
+              //     id: lessonSelectorData.id,
+              //     data: { ...lessonSelectorData.content, id: uuid() },
+              //   })
+              // );
             }}
           >
-            <Visibility
+            <ContentCopy
               sx={{
                 color: '#C4C4C4',
                 height: '20px',
@@ -108,53 +138,34 @@ function VideoCard(props) {
               }}
             />
           </IconButton>
-        )}
-
-        <IconButton
-          onClick={() => {
-            props.insert(props.videoIndex, { ...props.item, id: uuid() });
-            console.log('props', props);
-            // dispatch(
-            //   addVideoCard({
-            //     id: lessonSelectorData.id,
-            //     data: { ...lessonSelectorData.content, id: uuid() },
-            //   })
-            // );
-          }}
-        >
-          <ContentCopy
-            sx={{
-              color: '#C4C4C4',
-              height: '20px',
-              width: '20px',
+        </Tooltip>
+        <Tooltip placement="top" arrow={true} title={'Delete content'}>
+          <IconButton
+            onClick={() => {
+              // const index = field.findIndex(
+              //   (value) => value.id === deletingImageId
+              // );
+              // itemsImage.splice(index, 1);
+              // field.value.splice(index, 1);
+              props.remove(props.videoIndex);
+              // dispatch(
+              //   deleteVideoCard({
+              //     category_id: lessonData.categoryId,
+              //     lesson_id: lessonData.id,
+              //     contentId: props.videoIndex,
+              //   })
+              // );
             }}
-          />
-        </IconButton>
-        <IconButton
-          onClick={() => {
-            // const index = field.findIndex(
-            //   (value) => value.id === deletingImageId
-            // );
-            // itemsImage.splice(index, 1);
-            // field.value.splice(index, 1);
-            props.remove(props.videoIndex);
-            // dispatch(
-            //   deleteVideoCard({
-            //     category_id: lessonData.categoryId,
-            //     lesson_id: lessonData.id,
-            //     contentId: props.videoIndex,
-            //   })
-            // );
-          }}
-        >
-          <Delete
-            sx={{
-              color: '#C4C4C4',
-              height: '20px',
-              width: '20px',
-            }}
-          />
-        </IconButton>
+          >
+            <Delete
+              sx={{
+                color: '#C4C4C4',
+                height: '20px',
+                width: '20px',
+              }}
+            />
+          </IconButton>
+        </Tooltip>
       </Grid>
 
       {isShow ? (

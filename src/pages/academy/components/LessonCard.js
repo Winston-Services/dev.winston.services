@@ -135,7 +135,7 @@ export default function LessonCard({
             <FormControlLabel
               control={
                 <Checkbox
-                  defaultChecked={lesson.isRequired}
+                  checked={lesson.isRequired}
                   sx={{
                     '& .MuiSvgIcon-root': {
                       fontSize: 18,

@@ -7,7 +7,7 @@ import {
   Delete,
   Visibility,
 } from '@mui/icons-material';
-import { Grid, IconButton, Card, Typography } from '@mui/material';
+import { Grid, IconButton, Card, Typography, Tooltip } from '@mui/material';
 import { useField } from 'formik';
 import update from 'immutability-helper';
 import { PropTypes } from 'prop-types';
@@ -74,43 +74,49 @@ function ImageSliderCard(props) {
   return (
     <>
       <Grid container justifyContent={'end'} mt={2}>
-        <IconButton>
-          <ArrowDownward
-            sx={{
-              color: '#C4C4C4',
-              height: '20px',
-              width: '20px',
-            }}
-          />
-        </IconButton>
+        <Tooltip placement="top" arrow={true} title={'Download content'}>
+          <IconButton>
+            <ArrowDownward
+              sx={{
+                color: '#C4C4C4',
+                height: '20px',
+                width: '20px',
+              }}
+            />
+          </IconButton>
+        </Tooltip>
         {isShow ? (
-          <IconButton
-            onClick={() => {
-              setIsShow(false);
-            }}
-          >
-            <VisibilityOff
-              sx={{
-                color: '#C4C4C4',
-                height: '20px',
-                width: '20px',
+          <Tooltip placement="top" arrow={true} title={'Hide content'}>
+            <IconButton
+              onClick={() => {
+                setIsShow(false);
               }}
-            />
-          </IconButton>
+            >
+              <VisibilityOff
+                sx={{
+                  color: '#C4C4C4',
+                  height: '20px',
+                  width: '20px',
+                }}
+              />
+            </IconButton>
+          </Tooltip>
         ) : (
-          <IconButton
-            onClick={() => {
-              setIsShow(true);
-            }}
-          >
-            <Visibility
-              sx={{
-                color: '#C4C4C4',
-                height: '20px',
-                width: '20px',
+          <Tooltip placement="top" arrow={true} title={'Show content'}>
+            <IconButton
+              onClick={() => {
+                setIsShow(true);
               }}
-            />
-          </IconButton>
+            >
+              <Visibility
+                sx={{
+                  color: '#C4C4C4',
+                  height: '20px',
+                  width: '20px',
+                }}
+              />
+            </IconButton>
+          </Tooltip>
         )}
         {/* <IconButton>
           <VisibilityOff
@@ -121,35 +127,39 @@ function ImageSliderCard(props) {
             }}
           />
         </IconButton> */}
-        <IconButton
-          onClick={() => {
-            props.insert(props.sliderIndex, {
-              ...props.item,
-              id: uuid(),
-            });
-          }}
-        >
-          <ContentCopy
-            sx={{
-              color: '#C4C4C4',
-              height: '20px',
-              width: '20px',
+        <Tooltip placement="top" arrow={true} title={'Copy content'}>
+          <IconButton
+            onClick={() => {
+              props.insert(props.sliderIndex, {
+                ...props.item,
+                id: uuid(),
+              });
             }}
-          />
-        </IconButton>
-        <IconButton
-          onClick={() => {
-            props.remove(props.sliderIndex);
-          }}
-        >
-          <Delete
-            sx={{
-              color: '#C4C4C4',
-              height: '20px',
-              width: '20px',
+          >
+            <ContentCopy
+              sx={{
+                color: '#C4C4C4',
+                height: '20px',
+                width: '20px',
+              }}
+            />
+          </IconButton>
+        </Tooltip>
+        <Tooltip placement="top" arrow={true} title={'Delete content'}>
+          <IconButton
+            onClick={() => {
+              props.remove(props.sliderIndex);
             }}
-          />
-        </IconButton>
+          >
+            <Delete
+              sx={{
+                color: '#C4C4C4',
+                height: '20px',
+                width: '20px',
+              }}
+            />
+          </IconButton>
+        </Tooltip>
       </Grid>
 
       {isShow ? (

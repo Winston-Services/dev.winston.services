@@ -76,3 +76,74 @@
   font-size: 40px;
   line-height: 1;
 }
+
+/* For TextEditor */
+.rdw-option-wrapper {
+  border: none !important;
+  background: none !important;
+  filter: invert(1);
+  padding: 2px !important;
+}
+.rdw-dropdown-optionwrapper {
+  background-color: #31256c !important;
+  color: #fff !important;
+  stroke: #fff !important;
+}
+.rdw-dropdown-wrapper {
+  background-color: #31256c !important;
+  color: #fff !important;
+  border: none !important;
+}
+.rdw-dropdownoption-active {
+  background-color: #31256c !important;
+  color: #fff !important;
+}
+.rdw-dropdownoption-highlighted {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+.rdw-dropdown-selectedtext {
+  background-color: #31256c !important;
+  color: #fff !important;
+}
+
+.rdw-editor-wrapper {
+  border: #483996 1px solid;
+  border-radius: 4px 4px 0px 0px;
+}
+.rdw-dropdown {
+  background-color: #31256c !important;
+  color: #fff !important;
+}
+
+.rdw-editor-toolbar {
+  border: #483996 1px solid !important;
+  border-radius: 4px 4px 0px 0px;
+}
+.public-DraftStyleDefault-ltr {
+  height: auto;
+  padding: 10px 0px;
+}
+
+.rdw-dropdown-carettoopen {
+  border-top: #fff 6px solid !important;
+  top: 44% !important;
+}
+
+.rdw-dropdown-carettoclose {
+  border-bottom: #fff 6px solid !important;
+  top: 44% !important;
+}
+
+.public-DraftStyleDefault-block {
+  margin: 0px !important;
+  padding-left: 10px;
+}
+
+.public-DraftEditorPlaceholder-root {
+  padding-left: 10px;
+}
+
+.rdw-dropdown-wrapper:hover {
+  box-shadow: none !important;
+}

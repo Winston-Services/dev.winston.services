@@ -48,6 +48,7 @@ import {
 } from '../../store/academy';
 import { uuid } from './../../components/common/CommonFunction';
 import ImageSliderCard from './components/ImageSliderCard';
+import TextEditor from './components/TextEditor';
 import VideoCard from './components/VideoCard';
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -70,7 +71,6 @@ const allSkills = [
   'Designing',
 ];
 const RenderContentComponent = (item, index, remove, insert) => {
-  // console.log('item', item);
   switch (item.type) {
     case 'video':
       return (
@@ -95,7 +95,15 @@ const RenderContentComponent = (item, index, remove, insert) => {
         </DndProvider>
       );
     case 'wysiwyg':
-      return <div>WYSIWYG</div>;
+      return (
+        <TextEditor
+          name={`content[${index}].content`}
+          editorIndex={index}
+          remove={remove}
+          insert={insert}
+          item={item}
+        />
+      );
     default:
       return null;
   }
@@ -324,7 +332,6 @@ function EditLesson() {
                         name="content"
                         render={({ push, remove, insert }) => (
                           <div>
-                            {console.log('values.content', values.content)}
                             {values.content && values.content.length > 0
                               ? values.content.map((contentObj, index) => (
                                   <div key={index}>
