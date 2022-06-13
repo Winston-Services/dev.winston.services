@@ -12,7 +12,7 @@ const initialState = {
         {
           attr: { primary: 'Home' },
           icon: 'home',
-          link: '/dashboard',
+          link: '/dashboard/admin',
         },
         {
           attr: { primary: 'Send' },
@@ -39,14 +39,17 @@ const initialState = {
         {
           attr: { primary: 'AHWA' },
           image: './assets/icons/btc.svg',
+          link: '/dashboard/ahwa',
         },
         {
           attr: { primary: 'WIN' },
           image: './assets/icons/btc.svg',
+          link: '/dashboard/win',
         },
         {
           attr: { primary: 'RKL' },
           image: './assets/icons/btc.svg',
+          link: '/dashboard/RKL',
         },
         {
           attr: { primary: 'WAC' },

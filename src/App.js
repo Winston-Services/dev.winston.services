@@ -58,7 +58,7 @@ export default function App() {
       element: getRouteWrapper(<AuthLayout />),
       children: [
         {
-          index: true,
+          path: '*',
           element: getRouteWrapper(<DashboardRouting />),
         },
       ],
@@ -87,9 +87,7 @@ export default function App() {
 
     {
       path: '*',
-      element: (
-        <Navigate to={auth?.authenticated ? './dashboard' : './'} />
-      ),
+      element: <Navigate to={auth?.authenticated ? './dashboard' : './'} />,
     },
   ];
 
@@ -247,4 +245,3 @@ export default function App() {
     </AuthProvider>
   );
 }
-
