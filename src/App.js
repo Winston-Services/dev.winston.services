@@ -1,10 +1,9 @@
 import * as React from 'react';
 
-import { CircularProgress, Box } from '@mui/material';
 import { Navigate, useRoutes } from 'react-router-dom';
 
 import ScrollToTop from './components/scroll-to-top';
-import useAuth, { AuthProvider, AuthRedirect } from './context/authContext';
+import useAuth, { AuthProvider } from './context/authContext';
 import './App.css';
 const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'));
 const LandingLayout = React.lazy(() => import('./layouts/LandingLayout'));
@@ -12,7 +11,7 @@ const PlaneLayout = React.lazy(() => import('./layouts/PlaneLayout'));
 const PublicPageLayout = React.lazy(() => import('./layouts/PublicPageLayout'));
 const SignInLayout = React.lazy(() => import('./layouts/SignInLayout'));
 const Certificate = React.lazy(() => import('./pages/certificate/Certificate'));
-const Dashboard = React.lazy(() => import('./pages/dashboard'));
+const DashboardRouting = React.lazy(() => import('./pages/dashboard'));
 const MarketplaceRouting = React.lazy(() => import('./pages/marketplace'));
 const AcademyRouting = React.lazy(() => import('./pages/academy'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
@@ -46,40 +45,21 @@ const Holding = React.lazy(() => import('./pages/holding'));
 const CampaignRouting = React.lazy(() => import('./pages/campaign'));
 const Campaign = React.lazy(() => import('./pages/campaign/Campaign'));
 const Ico = React.lazy(() => import('./pages/ico'));
+const LinkAccount = React.lazy(() => import('./pages/link'));
+import { getRouteWrapper } from './getRouteWrapper';
 import { isElectron } from './utils/commonFunctions';
 
 export default function App() {
   const auth = useAuth();
 
-  const getRouteWrapper = (component, authRoute = true) => {
-    return (
-      <AuthRedirect authenticatedRoute={authRoute}>
-        <React.Suspense
-          fallback={
-            <Box
-              display="flex"
-              justifyContent={'center'}
-              alignItems="center"
-              height={'100%'}
-              minHeight="100%"
-            >
-              <CircularProgress />
-            </Box>
-          }
-        >
-          {component}
-        </React.Suspense>
-      </AuthRedirect>
-    );
-  };
   const routes = [
     {
-      path: '/dashboard',
+      path: '/dashboard/*',
       element: getRouteWrapper(<AuthLayout />),
       children: [
         {
           index: true,
-          element: getRouteWrapper(<Dashboard />),
+          element: getRouteWrapper(<DashboardRouting />),
         },
       ],
     },
@@ -108,7 +88,7 @@ export default function App() {
     {
       path: '*',
       element: (
-        <Navigate to={auth?.authenticated ? './dashboard' : './sign-in'} />
+        <Navigate to={auth?.authenticated ? './dashboard' : './'} />
       ),
     },
   ];
@@ -240,6 +220,10 @@ export default function App() {
           path: '/ico',
           element: getRouteWrapper(<Ico />, false),
         },
+        {
+          path: '/link',
+          element: getRouteWrapper(<LinkAccount />, false),
+        },
       ],
     },
     {
@@ -263,3 +247,4 @@ export default function App() {
     </AuthProvider>
   );
 }
+

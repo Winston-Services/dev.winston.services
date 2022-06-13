@@ -31,10 +31,30 @@ const initialState = {
       attr: {
         primary: 'Wallets',
         secondaryVisible: true,
-        secondary: 'BTC, BHY, LTC, DASH, DOGE, MSTR, ETH, SYS',
+        secondary: 'AHWA, WIN, RKL, WHAT',
         open: true,
       },
       items: [
+        {
+          attr: { primary: 'AHWA' },
+          image: './assets/icons/btc.svg',
+        },
+        {
+          attr: { primary: 'WIN' },
+          image: './assets/icons/btc.svg',
+        },
+        {
+          attr: { primary: 'RKL' },
+          image: './assets/icons/btc.svg',
+        },
+        {
+          attr: { primary: 'WAC' },
+          image: './assets/icons/btc.svg',
+        },
+        {
+          attr: { primary: 'WHAT' },
+          image: './assets/icons/btc.svg',
+        },
         {
           attr: { primary: 'BTC' },
           image: './assets/icons/btc.svg',
