@@ -12,6 +12,7 @@ import {
   Drawer as MuiDrawer,
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import {
   openMenu,
@@ -68,6 +69,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function SideBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isSideBarOpen = useSelector(sideBarStateSelector);
   const sideBarItem = useSelector(sideBarItemSelector);
   console.log(sideBarItem);
@@ -82,6 +84,9 @@ export default function SideBar() {
     setSelectedIndex(index);
   };
 
+  const navigateToPage = (url) => {
+    navigate(url)
+  }
   // console.log(selectedIndex);
 
   return (
@@ -118,6 +123,7 @@ export default function SideBar() {
                       mr: 2,
                       justifyContent: 'center',
                     }}
+                    onClick={() => navigateToPage(menuItem.link)}
                   >
                     {menuItem.icon ? (
                       <Icon {...menuItem.iconAttr}>{menuItem.icon}</Icon>
@@ -158,6 +164,7 @@ export default function SideBar() {
                       px: isSideBarOpen && menuItem.attr.primary ? 6.5 : 3.5,
                       py: 0.5,
                     }}
+                    onClick={() => navigateToPage(item.link)}
                   >
                     <ListItemIcon
                       sx={{
