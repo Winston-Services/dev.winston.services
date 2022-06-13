@@ -12,6 +12,7 @@ const initialState = {
         {
           attr: { primary: 'Home' },
           icon: 'home',
+          link: '/dashboard',
         },
         {
           attr: { primary: 'Send' },
@@ -38,6 +39,7 @@ const initialState = {
         {
           attr: { primary: 'BTC' },
           image: './assets/icons/btc.svg',
+          link: '/btc',
         },
         { attr: { primary: 'BHY' }, image: './assets/icons/bhy.jpg' },
         { attr: { primary: 'LTC' }, image: './assets/icons/ltc.png' },
@@ -58,9 +60,21 @@ const initialState = {
         open: true,
       },
       items: [
-        { attr: { primary: 'Current month' }, icon: 'today' },
-        { attr: { primary: 'Last quarter' }, icon: 'date_range' },
-        { attr: { primary: 'Yearly reports' }, icon: 'calendar_month' },
+        {
+          attr: { primary: 'Current month' },
+          icon: 'today',
+          link: '/month-report',
+        },
+        {
+          attr: { primary: 'Last quarter' },
+          icon: 'date_range',
+          link: '/date-range-report',
+        },
+        {
+          attr: { primary: 'Yearly reports' },
+          icon: 'calendar_month',
+          link: '/calendar-month-report',
+        },
       ],
     },
     {
