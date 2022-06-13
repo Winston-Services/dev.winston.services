@@ -22,8 +22,8 @@ const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
 );
 const Wizard = React.lazy(() => import('./pages/wizard'));
-const Faucet = React.lazy(() => import('./pages/faucet/Faucet'));
-const Staking = React.lazy(() => import('./pages/staking/Staking'));
+const Faucet = React.lazy(() => import('./pages/faucet-page/Faucet'));
+const Staking = React.lazy(() => import('./pages/staking-page/Staking'));
 const Swapping = React.lazy(() => import('./pages/swapping'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
 const Team = React.lazy(() => import('./pages/team'));
