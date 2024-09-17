@@ -30,25 +30,59 @@ export function AuthProvider({ children }) {
   };
   const [connected, setConnected] = React.useState(false);
   let connection = React.useRef();
+
+  const handleCommunication = (message, data) => {
+    if (!data.SIG || data.SIG === '') {
+      return;
+    }
+    if (!data.OP_CODE) {
+      return;
+    }
+
+    switch (data.OP_CODE) {
+      case 'CONNECT':
+        message.send(JSON.stringify({
+          OP_CODE: 'AUTHENTICATE',
+          SIG: 'Add_Sig',
+          data:'SIG'
+        }, false, 2));
+        break;
+      case 'AUTHENTICATE':
+        console.log(data);
+        break;
+      default:
+        return;
+    }
+    return;
+    // check op codes
+    // check if current sig
+  };
+
   const communicate = (connection) => {
     //set websocket connection states.
     setConnected(true);
     connection.onmessage = (message) => {
-      console.log(message)
-    }
+      try {
+        const data = JSON.parse(message.data, false, 2);
+        handleCommunication(connection, data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
   };
-  
+
   React.useEffect(() => {
     if (!connected) {
       connection.current = new WebSocket('ws://localhost:7557');
+      
       communicate(connection.current);
     }
     return () => {
       if (connected) {
-        connection.current.close();
+        // connection.current.close();
       }
     };
-  }, [connected, connection]);
+  });
 
   const value = { authenticated: auth, setAuth: addAuth, removeAuth };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
@@ -71,8 +105,8 @@ export function AuthRedirect({ children, authenticatedRoute = true }) {
   }
   if (!auth?.authenticated && authenticatedRoute) {
     return <Navigate to="/sign-in" state={{ from: location }} />;
-  } 
-  
+  }
+
   /*
   else if (auth?.authenticated && authenticatedRoute) {
     return <Navigate to="/dashboard" state={{ from: location }} />;

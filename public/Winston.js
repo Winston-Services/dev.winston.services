@@ -40,7 +40,8 @@ class Winston {
     this.rateLimit = new Map();
     this.limit = 1000;
     this.server.on('connection', async (socket) => {
-      let baseDb = await this.db.get(root);
+      // eslint-disable-next-line no-unused-vars
+      let baseDb = await this.db.get(root).catch(_error => false);
       if (!baseDb) {
         await db.put(
           root,
@@ -64,12 +65,15 @@ class Winston {
       socket.on('message', this.message(socket));
       socket.on('close', this.close);
       socket.on('error', this.error);
+
+      //create the signature.
       socket.send(
         JSON.stringify(
           {
             OP_CODE: 'CONNECT',
             ADDRESS: this.address,
             SIG: 'Add_Sig',
+            data: ''
           },
           false,
           2
