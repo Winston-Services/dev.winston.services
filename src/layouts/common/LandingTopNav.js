@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import { Close, Menu as MenuIcon } from '@mui/icons-material';
 import {
   AppBar,
@@ -17,6 +18,7 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import useAuth from '../../context/authContext';
 import Logo from './../../assets/logo.svg';
 import ElevationScroll from './../../components/elevated-scroll/index';
 
@@ -48,6 +50,7 @@ const defaultActive =
     : '';
 var timer;
 export default function LandingTopNav() {
+  const auth = useAuth();
   const [value, setValue] = React.useState(defaultActive);
   const navigate = useNavigate();
   const [menuState, setMenuState] = React.useState(false);
@@ -69,6 +72,7 @@ export default function LandingTopNav() {
     };
     window.addEventListener('scroll', handleScroll);
     return () => {
+      clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -136,7 +140,7 @@ export default function LandingTopNav() {
                   ))}
                 </Tabs> */}
               </Grid>
-              <Grid
+              {!auth && <Grid
                 sx={{ display: { xs: 'none', md: 'flex' } }}
                 item
                 alignItems={'center'}
@@ -148,7 +152,7 @@ export default function LandingTopNav() {
                 >
                   Sign In
                 </Button>
-              </Grid>
+              </Grid>}
               <Grid
                 sx={{ display: { xs: 'flex', md: 'none' } }}
                 alignItems="center"

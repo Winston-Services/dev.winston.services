@@ -14,7 +14,7 @@ export default function Discord() {
         <Typography id="discordTitle" variant="h3" sx={{ my: 3 }}>
           Discord
         </Typography>
-        <Typography textAlign="justify" sx={{ mb: 6 }}>
+        <Typography textAlign="justify" sx={{ mb: 6, fontSize: 'larger' }}>
           We are currently running Winston on several servers with in the
           Discord community. With over 1200 users, and 42 Paid Membership. You
           too can add Winston to your server and have him fully setup for under
@@ -31,7 +31,8 @@ export default function Discord() {
           }}
           onClick={() =>
             window.open(
-              'https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8'
+              'https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8',
+              '_blank'
             )
           }
         >
@@ -73,7 +74,8 @@ export default function Discord() {
               color="secondary"
               onClick={() =>
                 window.open(
-                  'https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8'
+                  'https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8',
+                  '_blank'
                 )
               }
             >

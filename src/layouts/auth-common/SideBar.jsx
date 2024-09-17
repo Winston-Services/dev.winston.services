@@ -72,14 +72,15 @@ export default function SideBar() {
   const navigate = useNavigate();
   const isSideBarOpen = useSelector(sideBarStateSelector);
   const sideBarItem = useSelector(sideBarItemSelector);
-  console.log(sideBarItem);
+  // console.log(sideBarItem);
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
+  /*
   React.useEffect(() => {
     console.log(selectedIndex);
   }, [selectedIndex]);
-
+ */
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
   };

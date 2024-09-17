@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { CircularProgress, Box } from '@mui/material';
+import { useNavigate } from 'react-router';
 import { Navigate, useRoutes } from 'react-router-dom';
 
 import ScrollToTop from './components/scroll-to-top';
@@ -50,13 +51,7 @@ import { isElectron } from './utils/commonFunctions';
 
 export default function App() {
   const auth = useAuth();
-  /*
-  React.useEffect(() => {
-    if (isElectron()) {
-      document.addEventListener('DOMContentLoaded', async () => {});
-    }
-  });
-  */
+  const navigate = useNavigate();
   const getRouteWrapper = (component, authRoute = true) => {
     return (
       <AuthRedirect authenticatedRoute={authRoute}>
@@ -259,6 +254,17 @@ export default function App() {
       ],
     },
   ];
+
+  const nav = React.useCallback(() => {
+    if (!auth)
+      window.Winston.navigate((route) => {
+        navigate(route);
+      });
+  }, [auth, navigate]);
+
+  React.useEffect(() => {
+    nav();
+  }, [nav]);
 
   return (
     <AuthProvider>

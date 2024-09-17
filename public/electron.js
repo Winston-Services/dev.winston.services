@@ -4,14 +4,19 @@
 const path = require('path');
 const url = require('url');
 
-const { app, BrowserWindow, protocol, ipcMain, Menu } = require('electron');
+const { app, BrowserWindow, protocol, Menu, shell } = require('electron');
 const { Level } = require('level');
 
 const { Winston } = require('./Winston');
 
-const winstonAppInstance = new Winston({ root: '127.0.0.1', address: 'n/a' });
 // Create a database
 const db = new Level('wallet.db', { valueEncoding: 'json' });
+
+const winstonAppInstance = new Winston({
+  root: '127.0.0.1',
+  address: 'n/a',
+  db,
+});
 
 // Create the native browser window.
 function createWindow() {
@@ -23,9 +28,17 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
-    icon: path.join(__dirname, 'favicon.ico')
+    icon: path.join(__dirname, 'favicon.ico'),
   });
 
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    if (url.startsWith('file://')) {
+      return { action: 'allow' };
+    }
+    // open url in a browser and prevent default
+    shell.openExternal(url);
+    return { action: 'deny' };
+  });
   // In production, set the initial browser path to the local bundle generated
   // by the Create React App build process.
   // In development, set it to localhost to allow live/hot-reloading.
@@ -124,7 +137,8 @@ function createWindow() {
           label: 'Airdrop',
         },
         {
-          click: () => mainWindow.webContents.send('navigate', '/community-funding'),
+          click: () =>
+            mainWindow.webContents.send('navigate', '/community-funding'),
           label: 'Community Funding',
         },
         {
@@ -191,15 +205,14 @@ function createWindow() {
           click: () =>
             mainWindow.webContents.send('navigate', '/supported-coins'),
         },
-      ],
-    },
-
-    {
-      label: 'Legal',
-      submenu: [
         {
           click: () => mainWindow.webContents.send('navigate', '/whitepapers'),
           label: 'Whitepapers',
+        },
+        {
+          click: () =>
+            mainWindow.webContents.send('navigate', '/our-investors'),
+          label: 'Investors',
         },
         {
           click: () => mainWindow.webContents.send('navigate', '/terms'),
@@ -208,11 +221,6 @@ function createWindow() {
         {
           click: () => mainWindow.webContents.send('navigate', '/privacy'),
           label: 'Privacy',
-        },
-        {
-          click: () =>
-            mainWindow.webContents.send('navigate', '/our-investors'),
-          label: 'Investors',
         },
       ],
     },
@@ -239,10 +247,6 @@ function setupLocalFilesNormalizerProxy() {
 // is ready to create the browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  ipcMain.once('navigate', (_event, value) => {
-    console.log('electron', value); // will print value to Node console
-  });
-
   createWindow();
   setupLocalFilesNormalizerProxy();
 

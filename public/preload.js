@@ -10,6 +10,6 @@ const { contextBridge, ipcRenderer } = require('electron');
 process.once('loaded', () => {
   contextBridge.exposeInMainWorld('versions', process.versions);
   contextBridge.exposeInMainWorld('Winston', {
-    navigate: (callback) => ipcRenderer.once('navigate', (_event, value) => callback(value))
+    navigate: (callback) => ipcRenderer.on('navigate', (_event, value) => callback(value))
   });
 });
