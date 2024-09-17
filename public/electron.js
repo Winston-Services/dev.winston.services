@@ -1,8 +1,17 @@
 /* eslint-disable no-undef */
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol } = require('electron');
+// this is the server side.
 const path = require('path');
 const url = require('url');
+
+const { app, BrowserWindow, protocol, ipcMain, Menu } = require('electron');
+const { Level } = require('level');
+
+const { Winston } = require('./Winston');
+
+const winstonAppInstance = new Winston({ root: '127.0.0.1', address: 'n/a' });
+// Create a database
+const db = new Level('wallet.db', { valueEncoding: 'json' });
 
 // Create the native browser window.
 function createWindow() {
@@ -14,6 +23,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
+    icon: path.join(__dirname, 'favicon.ico')
   });
 
   // In production, set the initial browser path to the local bundle generated
@@ -26,12 +36,188 @@ function createWindow() {
         slashes: true,
       })
     : 'http://localhost:3000';
+
   mainWindow.loadURL(appURL);
 
   // Automatically open Chrome's DevTools in development mode.
   if (!app.isPackaged) {
     mainWindow.webContents.openDevTools();
   }
+
+  const menu = Menu.buildFromTemplate([
+    {
+      label: 'Winston',
+      submenu: [
+        {
+          click: () => mainWindow.webContents.send('navigate', '/'),
+          label: 'Home',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/academy'),
+          label: 'Academy',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/marketplace'),
+          label: 'Marketplace',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/wizard'),
+          label: 'Workshop',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/faucet'),
+          label: 'Faucet',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/staking'),
+          label: 'Staking',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/burning'),
+          label: 'Burning',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/swapping'),
+          label: 'Swapping',
+        },
+      ],
+    },
+    {
+      label: 'Integrations',
+      submenu: [
+        {
+          click: () => mainWindow.webContents.send('navigate', '/discord'),
+          label: 'Discord',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/slack'),
+          label: 'Slack',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/telegram'),
+          label: 'Telegram',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/twitter'),
+          label: 'Twitter',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/github'),
+          label: 'Github',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/bitbucket'),
+          label: 'Bitbucket',
+        },
+      ],
+    },
+
+    {
+      label: 'Tools',
+      submenu: [
+        {
+          click: () => mainWindow.webContents.send('navigate', '/dashboard'),
+          label: 'Wallet',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/airdrop'),
+          label: 'Airdrop',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/community-funding'),
+          label: 'Community Funding',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/ico'),
+          label: 'ICO',
+        },
+      ],
+    },
+    {
+      label: 'Connect',
+      submenu: [
+        {
+          click: () => mainWindow.webContents.send('navigate', '/sign-in'),
+          label: 'Sign In',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/feedback'),
+          label: 'Feedback',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/contact-us'),
+          label: 'Contact',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/wiki'),
+          label: 'Wiki',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/support'),
+          label: 'Support',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/developers'),
+          label: 'Developers',
+        },
+      ],
+    },
+    {
+      label: 'About',
+      submenu: [
+        {
+          click: () => mainWindow.webContents.send('navigate', '/news'),
+          label: 'News',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/our-team'),
+          label: 'Meet the team',
+        },
+        {
+          label: 'Assets',
+          click: () => mainWindow.webContents.send('navigate', '/assets'),
+        },
+        {
+          label: 'Currencies',
+          click: () => mainWindow.webContents.send('navigate', '/currencies'),
+        },
+        {
+          label: 'Network Status',
+          click: () =>
+            mainWindow.webContents.send('navigate', '/network-status'),
+        },
+        {
+          label: 'Supported Coins',
+          click: () =>
+            mainWindow.webContents.send('navigate', '/supported-coins'),
+        },
+      ],
+    },
+
+    {
+      label: 'Legal',
+      submenu: [
+        {
+          click: () => mainWindow.webContents.send('navigate', '/whitepapers'),
+          label: 'Whitepapers',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/terms'),
+          label: 'Terms',
+        },
+        {
+          click: () => mainWindow.webContents.send('navigate', '/privacy'),
+          label: 'Privacy',
+        },
+        {
+          click: () =>
+            mainWindow.webContents.send('navigate', '/our-investors'),
+          label: 'Investors',
+        },
+      ],
+    },
+  ]);
+  Menu.setApplicationMenu(menu);
 }
 
 // Setup a local proxy to adjust the paths of requested files when loading
@@ -53,6 +239,10 @@ function setupLocalFilesNormalizerProxy() {
 // is ready to create the browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  ipcMain.once('navigate', (_event, value) => {
+    console.log('electron', value); // will print value to Node console
+  });
+
   createWindow();
   setupLocalFilesNormalizerProxy();
 
@@ -77,7 +267,7 @@ app.on('window-all-closed', function () {
 // If your app has no need to navigate or only needs to navigate to known pages,
 // it is a good idea to limit navigation outright to that known scope,
 // disallowing any other kinds of navigation.
-const allowedNavigationDestinations = 'https://my-electron-app.com';
+const allowedNavigationDestinations = 'http://localhost';
 app.on('web-contents-created', (event, contents) => {
   contents.on('will-navigate', (event, navigationUrl) => {
     const parsedUrl = new URL(navigationUrl);

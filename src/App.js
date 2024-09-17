@@ -50,7 +50,13 @@ import { isElectron } from './utils/commonFunctions';
 
 export default function App() {
   const auth = useAuth();
-
+  /*
+  React.useEffect(() => {
+    if (isElectron()) {
+      document.addEventListener('DOMContentLoaded', async () => {});
+    }
+  });
+  */
   const getRouteWrapper = (component, authRoute = true) => {
     return (
       <AuthRedirect authenticatedRoute={authRoute}>
@@ -258,7 +264,10 @@ export default function App() {
     <AuthProvider>
       <>
         <ScrollToTop />
-        {useRoutes(isElectron() ? routes : routes.concat(publicRoutes))}
+        {
+          /*useRoutes(isElectron() ? routes : routes.concat(publicRoutes))*/
+          useRoutes(routes.concat(publicRoutes))
+        }
       </>
     </AuthProvider>
   );

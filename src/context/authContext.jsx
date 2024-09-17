@@ -8,6 +8,7 @@ import { Navigate } from 'react-router-dom';
 
 import { userInfoSelector } from '../store/user';
 
+
 const oldToken = false;
 // const oldToken = localStorage.getItem('token')
 //   ? JSON.parse(localStorage.getItem('token'))
@@ -21,13 +22,42 @@ export function AuthProvider({ children }) {
   const removeAuth = () => {
     dispatch({ type: 'logout' });
     // localStorage.removeItem('token');
-    setAuth(undefined);
+    setAuth(false);
     navigate('/sign-in');
   };
   const addAuth = (wallet) => {
     // localStorage.setItem('token', JSON.stringify(wallet));
     setAuth(wallet);
   };
+  let connected = false;
+  let connection = React.useRef(null);
+  const handleMessage = () => {};
+  const communicate = (connection) => {
+    connection.onopen = () => {
+      connected = true;
+    }
+    //set websocket connection states.
+    connection.onmessage = (message) => {
+      // set OP Code handler.
+      handleMessage(message);
+    }
+    // console.log(connection)
+  };
+
+  React.useEffect(() => {
+    if (!connected) {
+      connection.current = new WebSocket('ws://127.0.0.1:7557');
+      communicate(connection.current);
+    }
+    
+  });
+
+  React.useEffect(() => {
+    window.Winston.navigate((location) => {
+      console.log('Location', location);
+      navigate(location);
+    });
+  });
   const value = { authenticated: auth, setAuth: addAuth, removeAuth };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

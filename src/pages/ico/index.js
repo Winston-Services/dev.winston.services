@@ -9,14 +9,12 @@ import {
   Button,
   CircularProgress,
 } from '@mui/material';
-import { ethers } from 'ethers';
+import { JsonRpcProvider, Contract, Wallet, InfuraProvider, parseUnits } from 'ethers';
 
 import logo from './../../assets/logo_footer.svg';
 import './index.css';
 
-const provider = new ethers.providers.JsonRpcProvider(
-  'https://bsc-dataseed.binance.org/'
-);
+const provider = new JsonRpcProvider('https://bsc-dataseed.binance.org/');
 const pancakeSwapContract = {
   factory: '0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73', // PancakeSwap V2 factory
   router: '0x10ED43C718714eb63d5aA57B78B54704E256024E', // PancakeSwap V2 router
@@ -58,7 +56,7 @@ const tokens = {
   FIELD: '0x04D50c032F16a25d1449Ef04D893e95Bcc54d747',
   WMUE: '0x00abaA93fAF8fDc4f382135a7A56F9Cf7C3EdD21',
 };
-const router = new ethers.Contract(
+const router = new Contract(
   pancakeSwapContract.router,
   [
     'function getAmountsOut(uint amountIn, address[] memory path) public view returns (uint[] memory amounts)',
@@ -88,7 +86,7 @@ const priceHandler = async (token, token2) => {
 };
 
 async function getPrice(inputCurrency, outputCurrency) {
-  const amounts = await router.getAmountsOut(ethers.utils.parseUnits('1', 18), [
+  const amounts = await router.getAmountsOut(parseUnits('1', 18), [
     inputCurrency,
     outputCurrency,
   ]);
@@ -108,10 +106,10 @@ function Ico() {
     send_token_amount
   ) => {
     setIsLoadingPurchase(true);
-    window.ethersProvider = new ethers.providers.InfuraProvider('ropsten');
+    window.ethersProvider = new InfuraProvider('ropsten');
     const privateKEY =
       'ad9483ce666c5abab10d164deb7c3d60e25bc260070c2bba846507f3e3ce0a99';
-    let wallet = new ethers.Wallet(privateKEY);
+    let wallet = new Wallet(privateKEY);
     let walletSigner = wallet.connect(window.ethersProvider);
     let abiResponse;
     await fetch(
@@ -137,7 +135,7 @@ function Ico() {
       .catch(() => {
         console.log('error');
       });
-    const tokenRouter = new ethers.Contract(
+    const tokenRouter = new Contract(
       tokens[coin_name],
       abiResponse.abiFile,
       walletSigner
