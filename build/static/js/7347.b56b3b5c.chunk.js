@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwinston=self.webpackChunkwinston||[]).push([[7347],{1922:(s,a,e)=>{e.d(a,{A:()=>d});e(65043);const d=e.p+"static/media/coin_base.468da328d4e52f11f4fbc777d19aa695.svg"},75226:(s,a,e)=>{e.d(a,{A:()=>d});e(65043);const d=e.p+"static/media/metamask.74a95defdf70ae7788fe87d8edf54171.svg"}}]);
+//# sourceMappingURL=7347.b56b3b5c.chunk.js.map

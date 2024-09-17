@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwinston=self.webpackChunkwinston||[]).push([[6722],{16722:(s,e,f)=>{f.d(e,{A:()=>t});f(65043);const t=f.p+"static/media/logo_footer.c79f4bf9e5b8330493814ff3f6923ebb.svg"}}]);
+//# sourceMappingURL=6722.676fb3c8.chunk.js.map
