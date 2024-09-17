@@ -256,7 +256,7 @@ export default function App() {
   ];
 
   const nav = React.useCallback(() => {
-    if (!auth)
+    if (isElectron()&&!auth)
       window.Winston.navigate((route) => {
         navigate(route);
       });
