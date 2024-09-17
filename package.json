@@ -6,7 +6,7 @@
   "main": "public/electron.js",
   "author": "",
   "license": "ISC",
-  "homepage": "./",
+  "homepage": "https://dev.winston.services",
   "scripts": {
     "analyze": "npm run build && source-map-explorer 'build/static/js/*.js'",
     "start": "react-app-rewired start",
