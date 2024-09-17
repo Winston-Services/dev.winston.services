@@ -13,7 +13,7 @@ export default function CreateYourOwnBlockchain() {
       alignItems={'center'}
       sx={{ mt: 0, flexDirection: { sm: 'column', md: 'row' } }}
     >
-      <Grid item xs={12} container spacing={5} sx={{ mb: 25 }}>
+      <Grid item xs={12} container spacing={5} sx={{ mb: 15 }}>
         <Grid
           item
           md={6}
@@ -25,12 +25,12 @@ export default function CreateYourOwnBlockchain() {
           <Typography id="createBlockchainTitle" variant="h3" sx={{ mb: 3 }}>
             Create your own Blockchain
           </Typography>
-          <Typography textAlign="justify" sx={{ mb: 6 }}>
+          <Typography textAlign="justify" sx={{ mb: 6, fontSize: 'x-large' }}>
             Trade your favorite crypto through the Winston Trading platform and
             have access to it through these platforms, WebApp, Discord, Twitter,
             SMS, and email. More to come.
           </Typography>
-          <Box component="div" sx={{ mt: 6 }}>
+          <Box component="div" sx={{ mt: 4 }}>
             <Button
               variant="outlined"
               sx={{

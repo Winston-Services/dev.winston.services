@@ -16,12 +16,18 @@ export default function Home() {
           id="homeTitle"
           variant="h2"
           fontWeight={'700'}
-          sx={{ mb: 3 }}
-          
+          sx={{ mt: 4, mb: 3 }}
         >
           Crypto
         </Typography>
-        <Typography textAlign="justify" sx={{ mb: { lg: 25, md: 20, xs: 8 } }} >
+        <Typography
+          textAlign="justify"
+          sx={{
+            mt: { md: 10, xs: 8 },
+            mb: { lg: 20, md: 15, xs: 8 },
+            fontSize: 'xx-large',
+          }}
+        >
           Ever find yourself struggling to understand blockchain and
           cryptocurrency? Let Winston Services help you find answers to your
           most pressing questions about blockchain and cryptocurrency. Winston

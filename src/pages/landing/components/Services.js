@@ -43,12 +43,12 @@ let data = [
 ];
 export default function Services() {
   return (
-    <Grid container sx={{ mt: { xs: 10, lg: 0 }, mb: { xs: 20, sm: 20 } }}>
+    <Grid container sx={{ mt: { xs: 5, lg: 0 }, mb: { xs: 10, sm: 10 } }}>
       <Grid item xs={12}>
         <Typography id="servicesTitle" variant="h3" sx={{ mb: 3 }}>
           Services
         </Typography>
-        <Typography textAlign="justify" sx={{ mb: 8 }}>
+        <Typography textAlign="justify" sx={{ mb: 8, fontSize:'xx-large' }}>
           Winston love&apos;s crypto, and we support many projects. We want you
           to enjoy crypto as well. So we try to offer as many crypto related
           services as we can. We are proud to include all of these great
