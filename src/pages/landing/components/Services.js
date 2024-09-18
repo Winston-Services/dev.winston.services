@@ -9,10 +9,9 @@ import nodeHosting from '../../../assets/node_hosting.svg';
 import InfoCardType1 from '../../../components/info-cards/InfoCardType1';
 let data = [
   {
-    title: 'Node hosting',
-    subTitle: 'Full managed node hosting with secure connection',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra amet adipiscing ipsum placerat nulla gravida elit, non. Mauris neque egestas in.',
+    title: 'Winston Dashboard',
+    subTitle: 'A multicore wallet and dashboard.',
+    description: 'A unique purspective of your assets on blockchains.',
     icon: nodeHosting,
   },
   {

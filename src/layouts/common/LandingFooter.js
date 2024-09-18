@@ -56,20 +56,12 @@ export default function LandingFooter() {
           href: 'https://discord.gg/rickle-897546129108008960',
         },
         {
-          name: 'Telegram',
-          url: null,
-        },
-        {
           name: 'Twitter',
-          url: null,
-        },
-        {
-          name: 'Bitbucket',
-          url: null,
+          href: 'https://x.com/Rickle_Token',
         },
         {
           name: 'Github',
-          url: null,
+          href: 'https://github.com/Winston-Services',
         },
         {
           name: 'Issues',
