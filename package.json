@@ -1,10 +1,10 @@
 {
   "name": "winston",
   "version": "1.0.0",
-  "description": "",
+  "description": "Your personal assistant to all things blockchain.",
   "private": true,
   "main": "public/electron.js",
-  "author": "",
+  "author": "michaeladennis@yahoo.com",
   "license": "ISC",
   "homepage": "https://dev.winston.services",
   "scripts": {

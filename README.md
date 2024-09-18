@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Getting Started
+Welcome to Winston; Winston is your personal assistant to all things blockchain.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This Dapp and WebApp is a combination of tools to help the common person get started in blockchain technology.
 
-## Available Scripts
+### What's in the App?
 
-In the project directory, you can run:
+We have some of the basic stuff you would expect.
 
-### `npm start`
+* Cross Chain Swap.
+* Cross Chain NFT Marketplace
+* Cross Chain Faucet
+* Cross Chain Airdrop Contract
+* Cross Chain Crowd Funding
+* Cross Chain Academy
+* Cross Chain Wallet/Dashboard
+* Cross Chain Explorer
+* Cross Chain News
+* Cross Chain Tech Docs
+* Cross Chain Asset Wizard
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Build Instructions
+The Dapp uses electron to build cross platform desktop applications.
 
-### `npm test`
+To begin the build process fork this repository, and run the following commands.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install the node modules.
+`npm ci`
 
-### `npm run build`
+Build the UI components.
+`npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run the desktop packaging process.
+#### Windows
+`npm run electron:package:win`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Linux
+`npm run electron:package:linux`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### MacOS
+`npm run electron:package:mac`

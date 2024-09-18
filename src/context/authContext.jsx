@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from 'react-router';
 import { Navigate } from 'react-router-dom';
 
 import { userInfoSelector } from '../store/user';
+import { isElectron } from '../utils/commonFunctions';
 
 const oldToken = false;
 // const oldToken = localStorage.getItem('token')
@@ -72,9 +73,8 @@ export function AuthProvider({ children }) {
   };
 
   React.useEffect(() => {
-    if (!connected) {
-      connection.current = new WebSocket('ws://localhost:7557');
-      
+    if (isElectron() && !connected) {
+      connection.current = new WebSocket('ws://ws.winston.services:7557');
       communicate(connection.current);
     }
     return () => {
