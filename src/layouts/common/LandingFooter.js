@@ -9,150 +9,160 @@ import DiscordLink from './../../components/DiscordLink';
 import TwitterLink from './../../components/TwitterLink';
 import YoutubeLink from './../../components/YoutubeLink';
 
-const footerMenu = [
-  {
-    name: 'Services',
-    menuItems: [
-      {
-        name: 'Academy',
-        url: '/academy',
-      },
-      {
-        name: 'Marketplace',
-        url: '/marketplace',
-      },
-      {
-        name: 'Workshop',
-        url: '/wizard',
-      },
-      {
-        name: 'Community Funding',
-        url: '/community-funding',
-      },
-      {
-        name: 'Faucet',
-        url: '/faucet',
-      },
-      {
-        name: 'Staking',
-        url: '/staking',
-      },
-      {
-        name: 'Burning',
-        url: '/burning',
-      },
-      {
-        name: 'Swapping',
-        url: '/swapping',
-      },
-    ],
-  },
-  {
-    name: 'Integrations',
-    menuItems: [
-      {
-        name: 'Discord',
-        url: null,
-      },
-      {
-        name: 'Slack',
-        url: null,
-      },
-      {
-        name: 'Telegram',
-        url: null,
-      },
-      {
-        name: 'Twitter',
-        url: null,
-      },
-      {
-        name: 'Bitbucket',
-        url: null,
-      },
-    ],
-  },
-  {
-    name: 'Connect',
-    menuItems: [
-      {
-        name: 'Sign In',
-        url: '/sign-in',
-      },
-      {
-        name: 'Feedback',
-        url: '/feedback',
-      },
-      {
-        name: 'Contact',
-        url: '/contact-us',
-      },
-      {
-        name: 'Wiki',
-        url: '/wiki',
-      },
-      {
-        name: 'Support',
-        url: '/support',
-      },
-      {
-        name: 'Developers',
-        url: '/developers',
-      },
-    ],
-  },
-  {
-    name: 'About',
-    menuItems: [
-      {
-        name: 'News',
-        url: '/news',
-      },
-      {
-        name: 'Meet the team',
-        url: '/our-team',
-      },
-      {
-        name: 'Assets',
-        url: '/assets',
-      },
-      {
-        name: 'Currencies',
-        url: '/currencies',
-      },
-      {
-        name: 'Network status',
-        url: '/network-status',
-      },
-      {
-        name: 'Supported Coins',
-        url: '/supported-coins',
-      },
-    ],
-  },
-  {
-    name: 'Legal',
-    menuItems: [
-      {
-        name: 'Whitepapers',
-        url: '/whitepapers',
-      },
-      {
-        name: 'Terms',
-        url: null,
-      },
-      {
-        name: 'Privacy',
-        url: null,
-      },
-      {
-        name: 'Investors',
-        url: 'our-investors',
-      },
-    ],
-  },
-];
 export default function LandingFooter() {
+  const footerMenu = [
+    {
+      name: 'Services',
+      menuItems: [
+        {
+          name: 'Academy',
+          url: '/academy',
+        },
+        {
+          name: 'Marketplace',
+          url: '/marketplace',
+        },
+        {
+          name: 'Workshop',
+          url: '/wizard',
+        },
+        {
+          name: 'Community Funding',
+          url: '/community-funding',
+        },
+        {
+          name: 'Faucet',
+          url: '/faucet',
+        },
+        {
+          name: 'Staking',
+          url: '/staking',
+        },
+        {
+          name: 'Burning',
+          url: '/burning',
+        },
+        {
+          name: 'Swapping',
+          url: '/swapping',
+        },
+      ],
+    },
+    {
+      name: 'Integrations',
+      menuItems: [
+        {
+          name: 'Discord',
+          href: 'https://discord.gg/rickle-897546129108008960',
+        },
+        {
+          name: 'Telegram',
+          url: null,
+        },
+        {
+          name: 'Twitter',
+          url: null,
+        },
+        {
+          name: 'Bitbucket',
+          url: null,
+        },
+        {
+          name: 'Github',
+          url: null,
+        },
+        {
+          name: 'Issues',
+          href: 'https://github.com/Winston-Services/dev.winston.services/issues',
+        },
+      ],
+    },
+    {
+      name: 'Connect',
+      menuItems: [
+        {
+          name: 'Sign In',
+          url: '/sign-in',
+        },
+        {
+          name: 'Feedback',
+          url: '/feedback',
+        },
+        {
+          name: 'Contact',
+          url: '/contact-us',
+        },
+        {
+          name: 'Wiki',
+          url: '/wiki',
+        },
+        {
+          name: 'Support',
+          url: '/support',
+        },
+        {
+          name: 'Developers',
+          url: '/developers',
+        },
+      ],
+    },
+    {
+      name: 'About',
+      menuItems: [
+        {
+          name: 'News',
+          url: '/news',
+        },
+        {
+          name: 'Meet the team',
+          url: '/our-team',
+        },
+        {
+          name: 'Assets',
+          url: '/assets',
+        },
+        {
+          name: 'Currencies',
+          url: '/currencies',
+        },
+        {
+          name: 'Network status',
+          url: '/network-status',
+        },
+        {
+          name: 'Supported Coins',
+          url: '/supported-coins',
+        },
+        {
+          name: 'Documentation',
+          href: 'https://docs.winston.services',
+        },
+      ],
+    },
+    {
+      name: 'Legal',
+      menuItems: [
+        {
+          name: 'Whitepapers',
+          url: '/whitepapers',
+        },
+        {
+          name: 'Terms',
+          url: null,
+        },
+        {
+          name: 'Privacy',
+          url: null,
+        },
+        {
+          name: 'Investors',
+          url: 'our-investors',
+        },
+      ],
+    },
+  ];
+
+
   const navigate = useNavigate();
   return (
     <Container maxWidth="lg">
@@ -233,9 +243,15 @@ export default function LandingFooter() {
                     component="a"
                     variant="body2"
                     color="primary"
-                    onClick={() => {
-                      menuItem.url && navigate(menuItem.url);
-                    }}
+                    onClick={
+                      menuItem.url
+                        ? () => {
+                            menuItem.url && navigate(menuItem.url);
+                          }
+                        : undefined
+                    }
+                    href={menuItem.href ? menuItem.href : undefined}
+                    target={menuItem.href ? '_blank' : undefined}
                   >
                     {menuItem.name}
                   </Link>
