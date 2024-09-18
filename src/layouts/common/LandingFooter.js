@@ -26,6 +26,10 @@ const footerMenu = [
         url: '/wizard',
       },
       {
+        name: 'Crowd Funding',
+        url: '/community-funding',
+      },
+      {
         name: 'Faucet',
         url: '/faucet',
       },
