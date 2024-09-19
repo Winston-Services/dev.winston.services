@@ -88,7 +88,7 @@ export function AuthProvider({ children }) {
 
   React.useEffect(() => {
     if (!connected) {
-      connection.current = new WebSocket('http://ws.winston.services:7557/ws');
+      connection.current = new WebSocket('https://ws.winston.services:7557/ws');
       communicate(connection.current);
     }
     return () => {
