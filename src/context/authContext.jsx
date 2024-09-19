@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from 'react-router';
 import { Navigate } from 'react-router-dom';
 
 import { userInfoSelector } from '../store/user';
-import { isElectron } from '../utils/commonFunctions';
+// import { isElectron } from '../utils/commonFunctions';
 
 const oldToken = false;
 // const oldToken = localStorage.getItem('token')
@@ -52,6 +52,7 @@ export function AuthProvider({ children }) {
         console.log(data);
         break;
       default:
+        console.log(message);
         return;
     }
     return;
@@ -62,19 +63,32 @@ export function AuthProvider({ children }) {
   const communicate = (connection) => {
     //set websocket connection states.
     setConnected(true);
-    connection.onmessage = (message) => {
+    connection.onmessage = async (message) => {
+      // console.log();
       try {
-        const data = JSON.parse(message.data, false, 2);
+        const data = JSON.parse(await message.data.text(), false, 2);
         handleCommunication(connection, data);
       } catch (error) {
         console.error(error);
       }
     };
+    connection.onopen = () => {
+      console.log('Connected', connection); 
+      if(connection.readyState === 1) {
+        const message = JSON.stringify({
+          OP_CODE: 'CONNECT',
+          SIG: 'Add_Sig',
+          data: ''
+        }, false, 2)
+        connection.send(message);
+        console.log(message);
+      }
+    }
   };
 
   React.useEffect(() => {
-    if (isElectron() && !connected) {
-      connection.current = new WebSocket('ws://ws.winston.services:7557');
+    if (!connected) {
+      connection.current = new WebSocket('http://ws.winston.services:7557/ws');
       communicate(connection.current);
     }
     return () => {

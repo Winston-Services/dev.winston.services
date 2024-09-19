@@ -27,7 +27,7 @@ export default function LandingFooter() {
           url: '/wizard',
         },
         {
-          name: 'Community Funding',
+          name: 'Funding',
           url: '/community-funding',
         },
         {

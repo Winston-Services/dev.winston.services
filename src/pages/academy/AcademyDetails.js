@@ -4,7 +4,14 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CircleIcon from '@mui/icons-material/Circle';
 import StarIcon from '@mui/icons-material/Star';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Grid, Container, Typography, Link, Chip } from '@mui/material';
+import {
+  Grid,
+  Container,
+  Typography,
+  Link,
+  Chip,
+  Divider,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 // import AcademyDetailsImage from '../../assets/academy_details_image.svg';
@@ -42,7 +49,7 @@ function AcademyDetails() {
               <Typography variant="subtitle1" mx={1.25}>
                 /
               </Typography>
-              <Link variant="subtitle1">Articles</Link>
+              <Link variant="subtitle1">Course</Link>
               <Typography variant="subtitle1" mx={1.25}>
                 /
               </Typography>
@@ -56,13 +63,17 @@ function AcademyDetails() {
             </Grid>
             <Grid my={2}>
               <Typography variant="h3" color="#FFD215">
-                Complete crypto payment masterclass
+                Complete crypto payment master class
               </Typography>
             </Grid>
             <Typography variant="subtitle2">
               Learn to Crypto like a Pro with Crypto. Start with Crypto
               Programming Basics and progress to a Crypto payment explained.
             </Typography>
+            <Grid container gap={1.1} my={2.5}>
+              <Chip color="primary" label="Programming" />
+              <Chip color="primary" label="Development" />
+            </Grid>
             <Grid container gap={1.1} my={2.5}>
               <Chip color="secondary" label="Blockchain" />
               <Chip color="secondary" label="Economics" />
@@ -110,7 +121,7 @@ function AcademyDetails() {
           mt={10}
           xs={12}
         >
-          <Typography variant="h5">Course detail</Typography>
+          <Typography variant="h4">Course detail</Typography>
           <Grid item display={'flex'} gap={2} sx={{ my: { xs: 1.5 } }}>
             <Grid item display={'flex'} alignItems="center">
               <CircleIcon sx={{ fontSize: '6px' }} />
@@ -129,17 +140,16 @@ function AcademyDetails() {
         <Grid item xs={12}>
           <AcademyAccordion />
         </Grid>
-
-        {/* <Grid mt={10} height="440px">
-          <Grid position="absolute" left={0} p={2.5}>
-            <AcademySlider />
-          </Grid>
-        </Grid> */}
+        <Grid item xs={12}>
+          <Divider sx={{ height: '20px' }} />
+          <Typography variant="h4" sx={{ marginTop: '16px' }}>
+            Some other courses of interest.
+          </Typography>
+        </Grid>
+        <Grid my={5} mx={2}>
+          <AcademySlider />
+        </Grid>
       </Container>
-
-      <Grid my={5} mx={2}>
-        <AcademySlider />
-      </Grid>
     </>
   );
 }

@@ -166,7 +166,7 @@ function EditLesson() {
                   justifyContent="space-between"
                   height={30}
                 >
-                  <Typography variant="h5">Untitled category</Typography>
+                  <Typography variant="h5">{courseData.title}</Typography>
                   <Grid display="flex" gap={3}>
                     <Link variant="subtitle2">Preview</Link>
                     <Link type="submit" variant="subtitle2">

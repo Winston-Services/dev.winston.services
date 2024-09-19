@@ -13,8 +13,8 @@ const FormikTextField = ({ name, ...rest }) => {
       variant={'outlined'}
       autoComplete="off"
       {...field}
-      error={meta.touched && Boolean(meta.errors)}
-      helperText={meta.touched && meta.errors}
+      error={meta.touched && Boolean(meta.error)}
+      helperText={meta.touched && meta.error}
       {...rest}
     />
   );

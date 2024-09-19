@@ -12,9 +12,9 @@ function Developers() {
   const developersData = [
     {
       image: walletCore,
-      title: 'Wallet core',
+      title: 'Michael Dennis',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada a posuere nunc cras pretium. Mauris eu faucibus dignissim felis. Cursus commodo blandit maecenas porta. Viverra ullamcorper tellus varius iaculis.',
+        'The founder of the Winston Project. A dedicated developer with decades of experience building technology driven applications.',
     },
     {
       image: walletConnect,

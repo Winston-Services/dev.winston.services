@@ -218,7 +218,7 @@ function AcademyAccordion() {
             sx={{ py: 1 }}
             aria-controls={`${items.title}-content`}
           >
-            <Typography variant="h6">{items.title}</Typography>
+            <Typography variant="h5">{items.title}</Typography>
           </AccordionSummary>
           <AccordionDetails variant="transparent" sx={{ py: 1 }}>
             {items.content.map((item, index) => (
@@ -259,12 +259,15 @@ function AcademyAccordion() {
                 </Grid>
               </Grid>
             ))}
-            {data.length - 1 === index ? (
+          </AccordionDetails>
+        </Accordion>
+      ))}
               <Grid textAlign="center" mt={1} mb={3}>
                 <Button
                   variant="contained"
                   color="secondary"
                   sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
+                  onClick={() => navigate('/certificate')}
                 >
                   Get your NFT certificate
                 </Button>
@@ -276,12 +279,6 @@ function AcademyAccordion() {
                   Give a rating
                 </Button>
               </Grid>
-            ) : (
-              ''
-            )}
-          </AccordionDetails>
-        </Accordion>
-      ))}
     </div>
   );
 }
