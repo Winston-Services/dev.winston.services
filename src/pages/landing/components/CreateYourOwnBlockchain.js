@@ -23,9 +23,9 @@ export default function CreateYourOwnBlockchain() {
           display="flex"
         >
           <Typography id="createBlockchainTitle" variant="h3" sx={{ mb: 3 }}>
-            Create your own Blockchain
+            Coin Wizard
           </Typography>
-          <Typography textAlign="justify" sx={{ mb: 6, fontSize: 'x-large' }}>
+          <Typography textAlign="left" sx={{ mb: 6, fontSize: 'x-large' }}>
             Trade your favorite crypto through the Winston Trading platform and
             have access to it through these platforms, WebApp, Discord, Twitter,
             SMS, and email. More to come.

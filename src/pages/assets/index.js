@@ -1,23 +1,23 @@
 import React from 'react';
 
 import { Button, Container, Grid, Typography, Card } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import AhwaImage from './../../assets/ahwa_icon.svg';
 import WatchImage from './../../assets/watch_icon.svg';
 import WinstonIcon from './../../assets/winston_char_icon.svg';
-// import AhwaImage from './../../assets/ahwa_image.svg';
-// import WinstonIcon from './../../assets/assets_winston_icon.svg';
-// import WatchImage from './../../assets/watch_image.svg';
 import WinstonApp from './../../components/common/WinstonApp';
-import './index.css';
+// import './index.css';
 import TrendingNfts from './components/TrendingNfts';
 
-function index() {
+
+function Assets() {
+  const navigate = useNavigate();
   return (
     <>
       <Container>
         <Typography variant="h3" textAlign={'center'}>
-          Create, Buy and hold 100+ NFT’s on Winston
+          Create, Buy and hold 100+ of assets
         </Typography>
         <Grid textAlign={'center'} mt={4}>
           <Button
@@ -25,13 +25,16 @@ function index() {
             color={'secondary'}
             sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
           >
-            Explore more assets
+            Explore more
           </Button>
           <Button
             variant={'outlined'}
             sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
+            onClick={() => {
+              navigate('/wizard');
+            }}
           >
-            Create your own assets
+            Create your own
           </Button>
         </Grid>
         <Grid
@@ -55,36 +58,10 @@ function index() {
               Ahwa
             </Typography>
             <img src={AhwaImage} alt="ahwa_icon" width="100%" />
-            {/* <Paper
-              elevation={0}
-              className="gradient"
-              sx={{
-                width: '158px',
-                height: '158px',
-                borderRadius: '100%',
-              }}
-            >
-              <img
-                src={AhwaImage}
-                style={{ marginTop: '-70px', marginLeft: '30px' }}
-              />
-            </Paper> */}
           </Grid>
 
           <Grid item xs={6}>
             <img src={WinstonIcon} alt="winston_icon" width="100%" />
-            {/* <Paper
-              elevation={0}
-              sx={{
-                width: '496px',
-                height: '496px',
-                borderRadius: '100%',
-                textAlign: 'center',
-                pt: '76px',
-              }}
-            >
-              <img src={WinstonIcon} />
-            </Paper> */}
             <Typography
               sx={{
                 fontSize: { xs: '18px', sm: '30px', md: '48px' },
@@ -92,7 +69,7 @@ function index() {
               }}
               textAlign={'center'}
             >
-              Winston Character
+              Blockchain Assets
             </Typography>
           </Grid>
 
@@ -105,30 +82,16 @@ function index() {
               pb={8}
               height={{ xs: 50, md: 150 }}
             >
-              Winston Watch
+              Winston
             </Typography>
 
             <img src={WatchImage} alt="watch_image" width="100%" />
-            {/* <Paper
-              elevation={0}
-              className="gradient"
-              sx={{
-                width: '158px',
-                height: '158px',
-                borderRadius: '100%',
-              }}
-            >
-              <img
-                src={WatchImage}
-                style={{ marginTop: '-10px', marginLeft: '-100px' }}
-              />
-            </Paper> */}
           </Grid>
         </Grid>
         <Card elevation={0} sx={{ p: 0, mt: 10, height: 380 }}>
           <Grid item xs={12} px={3} pt={3}>
             <Typography variant="h6" mb={5}>
-              Winston trending NFT’s
+              Winston trending Assets
             </Typography>
           </Grid>
           <TrendingNfts />
@@ -139,4 +102,4 @@ function index() {
   );
 }
 
-export default index;
+export default Assets;

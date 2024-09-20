@@ -17,113 +17,68 @@ function NetworkStatusAccordion() {
   };
   const data = [
     {
-      title: 'Winston app wallet',
+      title: 'Winston Socket Server',
       content: [
         {
-          title: 'Buy',
+          title: 'Node',
           subTitle: 'Operational',
         },
         {
-          title: 'Sell',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Send',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Withdrawals',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Deposits',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Fiat Wallets',
+          title: 'Client',
           subTitle: 'Operational',
         },
       ],
     },
     {
-      title: 'Winston app',
+      title: 'Winston Dapp',
       content: [
         {
-          title: 'Main Page',
-          subTitle: 'Operational',
+          title: 'Web Site',
+          subTitle: 'Build v1.0.0',
         },
         {
-          title: 'Track Coins',
-          subTitle: 'Operational',
+          title: 'Web App',
+          subTitle: 'Build v1.0.0',
         },
         {
-          title: 'Notifications',
-          subTitle: 'Degraded Performance',
-        },
-        {
-          title: 'Onboarding',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Card and Staking',
-          subTitle: 'Operational',
+          title: 'Desktop',
+          subTitle: 'Build v1.0.0',
         },
       ],
     },
     {
-      title: 'Winston exchange (Spot/Derivatives)',
+      title: 'Winston Services',
       content: [
         {
-          title: 'API Server - Spot/Margin',
+          title: 'Fish4Fun Discord Game',
           subTitle: 'Operational',
         },
         {
-          title: 'API Server - Derivatives',
+          title: 'Winston Discord Bot',
           subTitle: 'Operational',
         },
         {
-          title: 'Web Server - Spot/Margin',
+          title: 'Winston Shopping Cart',
           subTitle: 'Operational',
         },
         {
-          title: 'Web Server - Derivatives',
+          title: 'Winston Crowd Funding',
           subTitle: 'Operational',
         },
         {
-          title: 'Withdrawals',
+          title: 'Winston NFT Marketplace',
           subTitle: 'Degraded Performance',
         },
         {
-          title: 'Deposits',
+          title: 'Winston Swap',
           subTitle: 'Degraded Performance',
         },
         {
-          title: 'Exchange App',
-          subTitle: 'Operational',
-        },
-      ],
-    },
-    {
-      title: 'NFT',
-      content: [
-        {
-          title: 'NFT Login',
+          title: 'Winston Academy',
           subTitle: 'Operational',
         },
         {
-          title: 'NFT Website',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'NFT Purchase',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'NFT Sale',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'NFT Withdraw',
+          title: 'Winston Staking',
           subTitle: 'Operational',
         },
       ],

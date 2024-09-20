@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   info: {
     name: 'Michael Dennis',
-    role: 'Project Manager',
+    role: 'Founder',
   },
   wallet: {},
 };

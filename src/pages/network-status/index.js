@@ -8,23 +8,23 @@ function NetworkStatus() {
   const data = [
     {
       title: 'API',
-      subTitle: 'Operational',
+      subTitle: 'In Development',
     },
     {
       title: 'Alchemy API',
-      subTitle: 'Operational',
+      subTitle: 'In Development',
     },
     {
       title: 'Website',
-      subTitle: 'Operational',
+      subTitle: 'In Development',
     },
     {
       title: 'Mobile Application',
-      subTitle: 'Operational',
+      subTitle: 'In Development',
     },
     {
       title: 'Support Services',
-      subTitle: 'Operational',
+      subTitle: 'In Development',
     },
     {
       title: 'Emails',
@@ -34,7 +34,7 @@ function NetworkStatus() {
   return (
     <Container>
       <Grid textAlign="center">
-        <Typography variant="h3">Network status</Typography>
+        <Typography variant="h3">Network Status</Typography>
       </Grid>
       <Grid container justifyContent="center" spacing={3} mt={4}>
         {data.map((item, index) => {

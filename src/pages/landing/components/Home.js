@@ -21,7 +21,7 @@ export default function Home() {
           Crypto
         </Typography>
         <Typography
-          textAlign="justify"
+          textAlign="left"
           sx={{
             mt: { md: 10, xs: 8 },
             mb: { lg: 20, md: 15, xs: 8 },

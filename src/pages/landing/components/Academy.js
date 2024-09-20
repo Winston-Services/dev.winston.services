@@ -32,7 +32,7 @@ export default function Academy() {
           <Typography id="academyTitle" variant="h3" sx={{ mb: 3 }}>
             Academy
           </Typography>
-          <Typography textAlign="justify" sx={{ mb: 4, fontSize: 'x-large' }}>
+          <Typography textAlign="left" sx={{ mb: 4, fontSize: 'x-large' }}>
             Want to learn about blockchain and all the components that are
             involved in the decentralized financial world of the future. Winston
             Academy is here to help, and you can even earn while you learn.

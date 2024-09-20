@@ -18,6 +18,11 @@ function index() {
       designation: 'Chief managing officer',
       about:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+      links: {
+        discord: '',
+        twitter: '',
+        youtube: '',
+      },
     },
     {
       image: OurTeam2,
@@ -25,6 +30,11 @@ function index() {
       designation: 'Chief managing officer',
       about:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+      links: {
+        discord: '',
+        twitter: '',
+        youtube: '',
+      },
     },
     {
       image: OurTeam3,
@@ -32,6 +42,11 @@ function index() {
       designation: 'Chief managing officer',
       about:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+      links: {
+        discord: '',
+        twitter: '',
+        youtube: '',
+      },
     },
     {
       image: OurTeam4,
@@ -39,9 +54,15 @@ function index() {
       designation: 'Chief managing officer',
       about:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+      links: {
+        discord: '',
+        twitter: '',
+        youtube: '',
+      },
     },
   ];
-
+  // add a fetch for the investor data
+  // public/assets/
   return (
     <Container>
       <Typography variant="h3" textAlign={'center'}>
