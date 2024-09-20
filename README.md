@@ -31,6 +31,9 @@ Install the node modules.
 Build the UI components.
 `npm run build`
 
+Run the UI components.
+`npm run start`
+
 Run the desktop packaging process.
 #### Windows
 `npm run electron:package:win`
