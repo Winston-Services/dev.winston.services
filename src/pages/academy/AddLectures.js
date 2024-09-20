@@ -60,7 +60,7 @@ function AddLectures() {
           setCourseData(values);
         }}
       >
-        {({ values }) => (
+        
           <Form>
             <Grid
               mb={3}
@@ -70,7 +70,7 @@ function AddLectures() {
               height={30}
             >
               <Typography variant="h5">
-                {values?.title || 'Course title'}
+                Create A Course
               </Typography>
               <Box>
                 <Button sx={{ px: 2 }}>Preview</Button>
@@ -158,7 +158,7 @@ function AddLectures() {
               </Grid>
             </Grid>
           </Form>
-        )}
+        
       </Formik>
     </Container>
   );

@@ -3,6 +3,7 @@ import React from 'react';
 import { Box, Container, Grid, Stack, Typography, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import useAuth from '../../context/authContext';
 import logo from './../../assets/logo_footer.svg';
 import winston from './../../assets/winston_ahwa_footer.svg';
 import DiscordLink from './../../components/DiscordLink';
@@ -10,6 +11,7 @@ import TwitterLink from './../../components/TwitterLink';
 import YoutubeLink from './../../components/YoutubeLink';
 
 export default function LandingFooter() {
+  const auth = useAuth();
   const footerMenu = [
     {
       name: 'Services',
@@ -73,8 +75,8 @@ export default function LandingFooter() {
       name: 'Connect',
       menuItems: [
         {
-          name: 'Sign In',
-          url: '/sign-in',
+          name: auth?.authenticated ? 'Dashboard' : 'Sign In',
+          url:  auth?.authenticated ? '/dashboard' :'/sign-in',
         },
         {
           name: 'Feedback',
@@ -156,6 +158,7 @@ export default function LandingFooter() {
 
 
   const navigate = useNavigate();
+  
   return (
     <Container maxWidth="lg">
       <Grid container sx={{ mt: 3 }}>

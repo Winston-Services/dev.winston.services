@@ -49,7 +49,14 @@ function AcademyDetails() {
               <Typography variant="subtitle1" mx={1.25}>
                 /
               </Typography>
-              <Link variant="subtitle1">Course</Link>
+              <Link
+                variant="subtitle1"
+                onClick={() => {
+                  navigate('/academy/courses');
+                }}
+              >
+                Courses
+              </Link>
               <Typography variant="subtitle1" mx={1.25}>
                 /
               </Typography>

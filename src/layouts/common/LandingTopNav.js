@@ -140,7 +140,7 @@ export default function LandingTopNav() {
                   ))}
                 </Tabs> */}
               </Grid>
-              {!auth && <Grid
+               <Grid
                 sx={{ display: { xs: 'none', md: 'flex' } }}
                 item
                 alignItems={'center'}
@@ -148,11 +148,11 @@ export default function LandingTopNav() {
                 <Button
                   variant="outlined"
                   sx={{ ml: 3 }}
-                  onClick={() => navigate('/sign-in')}
+                  onClick={() => navigate(auth?.authenticated  ? '/dashboard' : '/sign-in')}
                 >
-                  Sign In
+                  {auth?.authenticated  ? 'Dashboard' : 'Sign In'}
                 </Button>
-              </Grid>}
+              </Grid>
               <Grid
                 sx={{ display: { xs: 'flex', md: 'none' } }}
                 alignItems="center"

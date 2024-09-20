@@ -1,4 +1,5 @@
-const WebSocket = require('ws');
+const { WebSocketServer } = require('ws');
+
 class Winston {
   constructor({ root = '127.0.0.1', address = 'n/a', db }) {
     this.db = db;
@@ -36,7 +37,7 @@ class Winston {
         );
       },
     };
-    this.server = new WebSocket.Server({ port: 7557 });
+    this.server = new WebSocketServer({ port: 7557 });
     this.rateLimit = new Map();
     this.limit = 1000;
     this.server.on('connection', async (socket) => {

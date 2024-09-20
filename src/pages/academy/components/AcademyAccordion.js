@@ -262,23 +262,23 @@ function AcademyAccordion() {
           </AccordionDetails>
         </Accordion>
       ))}
-              <Grid textAlign="center" mt={1} mb={3}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
-                  onClick={() => navigate('/certificate')}
-                >
-                  Get your NFT certificate
-                </Button>
-                <Button
-                  variant="outlined"
-                  onClick={() => navigate('/academy/rating')}
-                  sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
-                >
-                  Give a rating
-                </Button>
-              </Grid>
+      <Grid textAlign="center" mt={1} mb={3}>
+        <Button
+          variant="contained"
+          color="secondary"
+          sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
+          onClick={() => navigate('/certificate')}
+        >
+          Get your NFT certificate
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => navigate('/academy/rating')}
+          sx={{ width: { xs: '100%', sm: 'auto' }, m: 1 }}
+        >
+          Give a rating
+        </Button>
+      </Grid>
     </div>
   );
 }

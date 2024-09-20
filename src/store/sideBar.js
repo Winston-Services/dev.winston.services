@@ -12,7 +12,7 @@ const initialState = {
         {
           attr: { primary: 'Home' },
           icon: 'home',
-          link: '/dashboard',
+          link: '/',
         },
         {
           attr: { primary: 'Send' },

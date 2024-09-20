@@ -136,7 +136,7 @@ function Academy() {
               )}
             </Grid>
             <Grid container justifyContent={'center'} mt={5}>
-              <Button variant="outlined">Load more videos</Button>
+              <Button variant="outlined">Load more courses</Button>
             </Grid>
           </Grid>
         </Grid>
@@ -153,9 +153,9 @@ function Academy() {
             <Grid item md={6.5}>
               <Typography variant="h3">Add course</Typography>
               <Typography variant="subtitle1" mt={3}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra
-                sollicitudin venenatis feugiat magna feugiat urna cursus turpis.
-                Consectetur arcu quis vel nec, nibh id nisl praesent ac. Neque.
+                Begin your journey as an educator and help someone learn
+                something you already know. Winston Academy is about helping
+                each other learn.
               </Typography>
               <Button
                 variant="contained"
