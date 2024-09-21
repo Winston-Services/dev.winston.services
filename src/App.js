@@ -73,13 +73,14 @@ export default function App() {
       </AuthRedirect>
     );
   };
+
   const routes = [
     {
-      path: '/dashboard',
+      path: '/',
       element: getRouteWrapper(<AuthLayout />),
       children: [
         {
-          index: true,
+          path: '/dashboard/*',
           element: getRouteWrapper(<Dashboard />),
         },
       ],

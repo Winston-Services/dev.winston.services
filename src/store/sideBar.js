@@ -12,16 +12,18 @@ const initialState = {
         {
           attr: { primary: 'Home' },
           icon: 'home',
-          link: '/',
+          link: '/dashboard',
         },
         {
           attr: { primary: 'Send' },
           icon: 'call_made',
+          link: '/dashboard/send',
           iconAttr: { sx: { color: 'red' } },
         },
         {
           attr: { primary: 'Receive' },
           icon: 'call_received',
+          link: '/dashboard/receive',
           iconAttr: { sx: { color: 'green' } },
         },
       ],
@@ -33,13 +35,13 @@ const initialState = {
         primary: 'Wallets',
         secondaryVisible: true,
         secondary: 'BTC, BHY, LTC, DASH, DOGE, MSTR, ETH, SYS',
-        open: true,
+        open: false,
       },
       items: [
         {
           attr: { primary: 'BTC' },
           image: './assets/icons/btc.svg',
-          link: '/btc',
+          link: '/dashboard/wallets/btc',
         },
         { attr: { primary: 'BHY' }, image: './assets/icons/bhy.jpg' },
         { attr: { primary: 'LTC' }, image: './assets/icons/ltc.png' },
@@ -57,7 +59,7 @@ const initialState = {
         primary: 'Reports',
         secondaryVisible: true,
         secondary: 'Current month, Last quarter, Yearly reports',
-        open: true,
+        open: false,
       },
       items: [
         {
@@ -83,17 +85,37 @@ const initialState = {
       attr: {
         primary: 'Integrations',
         secondaryVisible: true,
-        secondary: 'OpenCart, Shopify, QuickBooks',
-        open: true,
+        secondary: 'Discord, OpenCart, Shopify, QuickBooks',
+        open: false,
       },
       items: [
+        { attr: { primary: 'Discord' }, icon: 'discord' },
         { attr: { primary: 'OpenCart' }, icon: 'shopping_cart' },
         { attr: { primary: 'Shopify' }, icon: 'shopping_bag' },
         { attr: { primary: 'QuickBooks' }, icon: 'extension' },
       ],
     },
+    {
+      key: 'settings',
+      icon: 'settings',
+      attr: {
+        primary: 'Settings',
+        secondaryVisible: true,
+        secondary: 'Networks, Preferences, Theme, Custom Assets ',
+        open: false,
+      },
+      items: [
+        { attr: { primary: 'Networks' }, icon: 'extension' },
+        { attr: { primary: 'Preferences' }, icon: 'extension' },
+        { attr: { primary: 'Theme' }, icon: 'extension' },
+        { attr: { primary: 'Custom Assets' }, icon: 'extension' },
+      ],
+    },
   ],
 };
+
+// add/remove wallet accounts.
+// set default wallet as send/receive wallet
 
 export const sideBarSlice = createSlice({
   name: 'sideBar',

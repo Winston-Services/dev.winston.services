@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router';
 import { Navigate } from 'react-router-dom';
 
-import { userInfoSelector } from '../store/user';
+import { setUserWallet, userInfoSelector } from '../store/user';
 // import { isElectron } from '../utils/commonFunctions';
 
 const oldToken = false;
@@ -27,6 +27,7 @@ export function AuthProvider({ children }) {
   };
   const addAuth = (wallet) => {
     // localStorage.setItem('token', JSON.stringify(wallet));
+    dispatch(setUserWallet(wallet));
     setAuth(wallet);
   };
   const [connected, setConnected] = React.useState(false);

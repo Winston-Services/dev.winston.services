@@ -21,9 +21,11 @@ import {
   Typography,
   Grid,
   Button,
+  Stack,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import logoLight from '../../assets/logo.svg';
 import logoDark from '../../assets/logo_dark.svg';
@@ -42,9 +44,20 @@ const AppBar = styled(MuiAppBar, {
   backgroundImage: 'none',
 }));
 
+function NotificationBadge(props) {
+  // eslint-disable-next-line react/prop-types
+  const { count, color } = props;
+  return (
+    <Badge badgeContent={count} color={color}>
+      <NotificationsIcon />
+    </Badge>
+  );
+}
+
 function TopNav() {
   const auth = useAuth();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isSideBarOpen = useSelector(sideBarStateSelector);
   const themeMode = useSelector(themeModeSelector);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -84,14 +97,12 @@ function TopNav() {
         Theme Mode
       </MenuItem>
       <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>
-        <IconButton aria-label="show 17 new notifications" color="inherit">
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
+        <IconButton aria-label="show 0 new notifications" color="inherit">
+          <NotificationBadge count={0} color="error" />
         </IconButton>
         Notifications
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={() => navigate('/user-profile')}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -134,8 +145,19 @@ function TopNav() {
         <img
           src={themeMode === 'dark' ? logoLight : logoDark}
           style={{ cursor: 'pointer', height: '35px' }}
+          onClick={() => {
+            navigate('/');
+          }}
         />
-        <Box sx={{ flexGrow: 1 }} />
+        <Stack sx={{ flexDirection:'row', ml: 6 }}>
+          <MenuItem>Swap</MenuItem>
+          <MenuItem>Liquidity</MenuItem>
+          <MenuItem>Market Place</MenuItem>
+          <MenuItem>Crowd Funding</MenuItem>
+          <MenuItem>Workshop</MenuItem>
+          <MenuItem>Academy</MenuItem>
+        </Stack>
+        <Box sx={{ flexGrow: 1 }}></Box>
         <Box>
           <IconButton
             sx={{ display: { xs: 'none', md: 'inline-flex' }, mr: 2 }}
@@ -146,12 +168,10 @@ function TopNav() {
           </IconButton>
           <IconButton
             sx={{ display: { xs: 'none', md: 'inline-flex' }, mr: 2 }}
-            aria-label="show 17 new notifications"
+            aria-label="show 0 new notifications"
             color="inherit"
           >
-            <Badge badgeContent={17} color="error">
-              <NotificationsIcon />
-            </Badge>
+            <NotificationBadge count={0} color="error" />
           </IconButton>
           <Button
             aria-controls={menuId}
@@ -189,7 +209,7 @@ function TopNav() {
                   variant="subtitle2"
                   style={{ textTransform: 'none' }}
                 >
-                  {'Project Manager'}
+                  {'Founder'}
                 </Typography>
               </Grid>
               <Grid color="text.primary" item xs="auto" alignItems="center">
