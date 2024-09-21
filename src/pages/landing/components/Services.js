@@ -44,7 +44,7 @@ export default function Services() {
   return (
     <Grid container sx={{ mt: { xs: 5, lg: 0 }, mb: { xs: 10, sm: 10 } }}>
       <Grid item xs={12}>
-        <Typography id="servicesTitle" variant="h3" sx={{ mb: 3 }}>
+        <Typography id="servicesTitle" variant="h2" sx={{ mb: 3 }}>
           Services
         </Typography>
         <Typography textAlign="justify" sx={{ mb: 8, fontSize:'xx-large' }}>

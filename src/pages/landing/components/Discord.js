@@ -11,7 +11,7 @@ export default function Discord() {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Typography id="discordTitle" variant="h3" sx={{ my: 3 }}>
+        <Typography id="discordTitle" variant="h2" sx={{ my: 3 }}>
           Discord
         </Typography>
         <Typography textAlign="justify" sx={{ mb: 6, fontSize: 'xx-large' }}>

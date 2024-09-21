@@ -29,7 +29,7 @@ export default function Academy() {
           flexDirection={'column'}
           display="flex"
         >
-          <Typography id="academyTitle" variant="h3" sx={{ mb: 3 }}>
+          <Typography id="academyTitle" variant="h2" sx={{ mb: 3 }}>
             Academy
           </Typography>
           <Typography textAlign="left" sx={{ mb: 4, fontSize: 'x-large' }}>

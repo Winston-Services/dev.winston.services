@@ -22,7 +22,7 @@ export default function CreateYourOwnBlockchain() {
           flexDirection={'column'}
           display="flex"
         >
-          <Typography id="createBlockchainTitle" variant="h3" sx={{ mb: 3 }}>
+          <Typography id="createBlockchainTitle" variant="h2" sx={{ mb: 3 }}>
             Coin Wizard
           </Typography>
           <Typography textAlign="left" sx={{ mb: 6, fontSize: 'x-large' }}>
