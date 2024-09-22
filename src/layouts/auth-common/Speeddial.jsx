@@ -7,11 +7,30 @@ import ShareIcon from '@mui/icons-material/Share';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import { useNavigate } from 'react-router-dom';
 
 export default function Speeddial() {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = (action) => {
+    if (!action) {
+      setOpen(false);
+    }
+    switch (action.name) {
+      case 'News':
+        navigate('/news');
+        break;
+      case 'Receive':
+        navigate('/dashboard/receive');
+        break;
+      case 'Send':
+        navigate('/dashboard/send');
+        break;
+      default:
+        setOpen(false);
+    }
+  };
 
   const actions = [
     { icon: <PrintIcon />, name: 'Send' },
@@ -22,7 +41,7 @@ export default function Speeddial() {
 
   return (
     <SpeedDial
-      ariaLabel="SpeedDial tooltip example"
+      ariaLabel="SpeedDial"
       icon={<SpeedDialIcon />}
       onClose={handleClose}
       onOpen={handleOpen}
@@ -30,7 +49,7 @@ export default function Speeddial() {
       sx={{
         position: 'fixed',
         bottom: 16,
-        right: 16
+        right: 16,
       }}
     >
       {actions.map((action) => (
@@ -39,7 +58,7 @@ export default function Speeddial() {
           icon={action.icon}
           tooltipTitle={action.name}
           tooltipOpen
-          onClick={handleClose}
+          onClick={() => handleClose(action)}
         />
       ))}
     </SpeedDial>

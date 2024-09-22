@@ -16,24 +16,39 @@ export default function Home() {
           id="homeTitle"
           variant="h2"
           fontWeight={'700'}
-          sx={{ mt: 4, mb: 3 }}
+          sx={{ mt: 4 }}
         >
           Crypto
         </Typography>
-        <Typography
-          textAlign="left"
-          sx={{
-            mt: { md: 10, xs: 8 },
-            mb: { lg: 20, md: 15, xs: 8 },
-            fontSize: 'xx-large',
-          }}
-        >
-          Ever find yourself struggling to understand blockchain and
-          cryptocurrency? Let Winston Services help you find answers to your
-          most pressing questions about blockchain and cryptocurrency. Winston
-          Services offers a full line of features and services to help you along
-          your journey in this new Decentralized Financial World.
-        </Typography>
+        <div textAlign="left">
+          <Typography
+            sx={{
+              mt: 3,
+              fontSize: 'xx-large',
+            }}
+          >
+            Ever find yourself struggling to understand blockchain and
+            cryptocurrency?
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: 'xx-large',
+            }}
+          >
+            Let Winston Services help you find answers to your most pressing
+            questions about blockchain and cryptocurrency.
+          </Typography>
+
+          <Typography
+            sx={{
+              mb: { lg: 20, md: 15, xs: 8 },
+              fontSize: 'xx-large',
+            }}
+          >
+            Winston Services offers a full line of features and services to help
+            you along your journey in this new Decentralized Financial World.
+          </Typography>
+        </div>
       </Grid>
       <Grid item md={0.5}></Grid>
       <Grid item xs={12} md={6}>

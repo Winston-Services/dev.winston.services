@@ -141,16 +141,16 @@ export default function LandingFooter() {
           url: '/whitepapers',
         },
         {
-          name: 'Terms',
+          name: 'Terms of Service',
           url: null,
         },
         {
-          name: 'Privacy',
+          name: 'Privacy Policy',
           url: null,
         },
         {
           name: 'Investors',
-          url: 'our-investors',
+          url: '/our-investors',
         },
       ],
     },
@@ -176,6 +176,7 @@ export default function LandingFooter() {
                 mb: 2,
                 cursor: 'pointer',
               }}
+              onClick={() => navigate('/')}
             />
             <Grid
               sx={{ gap: { xs: 1, sm: 2.5 } }}

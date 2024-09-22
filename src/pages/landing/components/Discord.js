@@ -15,10 +15,17 @@ export default function Discord() {
           Discord
         </Typography>
         <Typography textAlign="left" sx={{ mb: 6, fontSize: 'xx-large' }}>
-          We are currently running Winston on several servers with in the
-          Discord community. With over 1200 users, and 42 Paid Membership. You
-          too can add Winston to your server and have him fully setup for under
-          $500 year.
+          Join Our Thriving Blockchain Community! Step into a world where
+          decentralized finance is accessible to everyone. We are eager to
+          welcome you and help you start your journey in DeFi. Our dynamic
+          community is ready to support you as you embark on your new
+          adventure. Our enthusiastic community is here to guide you on your
+          path to DeFi success. Embrace decentralized finance with a community
+          that’s passionate about making it accessible to all. Your DeFi journey
+          begins here with us. Become a Member of Our Blossoming Blockchain
+          Family! Dive into decentralized finance with the support of our
+          energetic community. We’re excited to help you start your DeFi
+          journey.
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -49,7 +56,7 @@ export default function Discord() {
           display="flex"
         >
           <Typography variant="h4" sx={{ mb: 2 }}>
-            Winston
+            Winston Bot
           </Typography>
           <Box component="ul">
             <Box component="li" sx={{ mb: 2 }}>
@@ -103,7 +110,7 @@ export default function Discord() {
           sx={{ order: { xs: 3, md: 4 } }}
         >
           <Typography variant="h4" sx={{ mb: 2 }}>
-            Whitelabel Winston
+            Whitelabel Winston (Comming Soon)
           </Typography>
           <Box component="ul">
             <Box component="li" sx={{ mb: 2 }}>
@@ -130,7 +137,7 @@ export default function Discord() {
                 navigate('/white-label-winston');
               }}
             >
-              Get on discord
+              Integrate Winston
             </Button>
           </Box>
         </Grid>
