@@ -7,6 +7,7 @@ import { Outlet } from 'react-router-dom';
 import { setTheme } from '../store/themeColors';
 import { sideBarStateSelector } from './../store/sideBar';
 import SideBar from './auth-common/SideBar';
+import Speeddial from './auth-common/Speeddial';
 import TopNav from './auth-common/TopNav';
 
 function Layout() {
@@ -33,6 +34,7 @@ function Layout() {
           <Outlet />
         </Container>
       </Box>
+        <Speeddial />
     </Box>
   );
 }

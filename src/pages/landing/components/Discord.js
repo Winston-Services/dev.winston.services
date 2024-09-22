@@ -14,7 +14,7 @@ export default function Discord() {
         <Typography id="discordTitle" variant="h2" sx={{ my: 3 }}>
           Discord
         </Typography>
-        <Typography textAlign="justify" sx={{ mb: 6, fontSize: 'xx-large' }}>
+        <Typography textAlign="left" sx={{ mb: 6, fontSize: 'xx-large' }}>
           We are currently running Winston on several servers with in the
           Discord community. With over 1200 users, and 42 Paid Membership. You
           too can add Winston to your server and have him fully setup for under

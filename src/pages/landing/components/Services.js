@@ -47,7 +47,7 @@ export default function Services() {
         <Typography id="servicesTitle" variant="h2" sx={{ mb: 3 }}>
           Services
         </Typography>
-        <Typography textAlign="justify" sx={{ mb: 8, fontSize:'xx-large' }}>
+        <Typography textAlign="left" sx={{ mb: 8, fontSize:'xx-large' }}>
           Winston love&apos;s crypto, and we support many projects. We want you
           to enjoy crypto as well. So we try to offer as many crypto related
           services as we can. We are proud to include all of these great

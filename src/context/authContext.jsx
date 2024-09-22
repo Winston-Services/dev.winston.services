@@ -43,15 +43,30 @@ export function AuthProvider({ children }) {
 
     switch (data.OP_CODE) {
       case 'CONNECT':
-        message.send(JSON.stringify({
-          OP_CODE: 'AUTHENTICATE',
-          SIG: 'Add_Sig',
-          data:'SIG'
-        }, false, 2));
+        // user connected.
+        console.log(message);
+        break;
+      case 'REGISTER':
+        console.log(message);
         break;
       case 'AUTHENTICATE':
+        message.send(
+          JSON.stringify(
+            {
+              OP_CODE: 'AUTHENTICATE',
+              SIG: 'Add_Sig',
+              data: 'SIG',
+            },
+            false,
+            2
+          )
+        );
         console.log(data);
         break;
+      case 'MESSAGE':
+        console.log(message);
+        break;
+
       default:
         console.log(message);
         return;
@@ -74,17 +89,21 @@ export function AuthProvider({ children }) {
       }
     };
     connection.onopen = () => {
-      console.log('Connected', connection); 
-      if(connection.readyState === 1) {
-        const message = JSON.stringify({
-          OP_CODE: 'CONNECT',
-          SIG: 'Add_Sig',
-          data: ''
-        }, false, 2)
+      console.log('Connected', connection);
+      if (connection.readyState === 1) {
+        const message = JSON.stringify(
+          {
+            OP_CODE: 'CONNECT',
+            SIG: 'No_Sig',
+            data: '',
+          },
+          false,
+          2
+        );
         connection.send(message);
         console.log(message);
       }
-    }
+    };
   };
 
   React.useEffect(() => {
@@ -129,6 +148,7 @@ export function AuthRedirect({ children, authenticatedRoute = true }) {
 */
   return children;
 }
+
 AuthRedirect.propTypes = {
   children: PropTypes.element,
   authenticatedRoute: PropTypes.bool,

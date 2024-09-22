@@ -181,7 +181,8 @@ export default function LandingFooter() {
               sx={{ gap: { xs: 1, sm: 2.5 } }}
               display="flex"
               justifyContent="start"
-              ml={10}
+              ml={6}
+              mt={3.5}
             >
               <Grid
                 sx={{
