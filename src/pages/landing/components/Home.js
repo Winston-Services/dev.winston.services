@@ -20,7 +20,7 @@ export default function Home() {
         >
           Crypto
         </Typography>
-        <div textAlign="left">
+        <div style={{ textAlign: 'left'}}>
           <Typography
             sx={{
               mt: 3,

@@ -91,6 +91,7 @@ export default function Messages() {
       message: message,
       date: new Date().toISOString().split('T')[0],
     };
+    console.log('Handle Send :', connection)
     connection.send(
       JSON.stringify({
         OP_CODE: 'MESSAGE',
