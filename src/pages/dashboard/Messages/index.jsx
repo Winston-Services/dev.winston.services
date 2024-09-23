@@ -63,6 +63,7 @@ export default function Messages() {
   const [message, setMessage] = React.useState('');
 
   const handleCommunication = (message, data) => {
+    console.log('incoming', message, data);
     if (!data.SIG || data.SIG === '') {
       return;
     }
@@ -72,10 +73,9 @@ export default function Messages() {
 
     switch (data.OP_CODE) {
       case 'MESSAGE':
-        console.log('incoming', message, data);
+        console.log('Message Data', data.data);
         setMessages([...messages, data.data]);
         break;
-
       default:
         console.log(message);
         return;
