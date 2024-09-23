@@ -64,9 +64,8 @@ export function AuthProvider({ children }) {
         console.log(data);
         break;
       case 'MESSAGE':
-        console.log(message);
+        console.log('message', data);
         break;
-
       default:
         console.log(message);
         return;
