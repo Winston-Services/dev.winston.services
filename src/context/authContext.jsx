@@ -118,7 +118,7 @@ export function AuthProvider({ children }) {
     };
   });
 
-  const value = { authenticated: auth, setAuth: addAuth, removeAuth };
+  const value = { authenticated: auth, setAuth: addAuth, removeAuth, connection };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 AuthProvider.propTypes = {

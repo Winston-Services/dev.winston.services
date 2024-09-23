@@ -34,7 +34,7 @@ function Layout() {
           <Outlet />
         </Container>
       </Box>
-        <Speeddial />
+      <Speeddial />
     </Box>
   );
 }

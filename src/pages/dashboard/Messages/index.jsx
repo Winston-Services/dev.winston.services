@@ -1,8 +1,18 @@
 import React from 'react';
 
-import { Grid, List, ListItem, Button, Card, CardContent, Typography } from '@mui/material';
+import {
+  Grid,
+  List,
+  ListItem,
+  Button,
+  Card,
+  CardContent,
+  Typography,
+} from '@mui/material';
 import TextField from '@mui/material/TextField';
 import PropTypes from 'prop-types';
+
+import useAuth from '../../../context/authContext';
 
 function MessageList({ messages }) {
   const listRef = React.useRef(null);
@@ -47,13 +57,32 @@ MessageList.propTypes = {
 };
 
 export default function Messages() {
-  const [messages, setMessages] = React.useState([
-    { to: 'John Doe', message: 'Hello, how are you?', date: '2024-02-14' },
-    { to: 'Jane Smith', message: 'Meeting at 3 PM.', date: '2024-02-15' },
-    // Add more messages as needed
-  ]);
+  const { connection } = useAuth();
+  const [messages, setMessages] = React.useState([]);
   const [recipient, setRecipient] = React.useState('');
   const [message, setMessage] = React.useState('');
+
+  const handleCommunication = (message, data) => {
+    if (!data.SIG || data.SIG === '') {
+      return;
+    }
+    if (!data.OP_CODE) {
+      return;
+    }
+
+    switch (data.OP_CODE) {
+      case 'MESSAGE':
+        console.log(message);
+        break;
+
+      default:
+        console.log(message);
+        return;
+    }
+    return;
+    // check op codes
+    // check if current sig
+  };
 
   function handleSendMessage(event) {
     event.preventDefault();
@@ -62,11 +91,30 @@ export default function Messages() {
       message: message,
       date: new Date().toISOString().split('T')[0],
     };
+    connection.send(
+      JSON.stringify({
+        OP_CODE: 'MESSAGE',
+        SIG: 'No_Sig',
+        from: 'anonymous',
+        to: recipient,
+        data: newMessage,
+      })
+    );
     setMessages([...messages, newMessage]);
     setRecipient('');
     setMessage('');
   }
-
+  React.useEffect(() => {
+    connection.onmessage = async (message) => {
+      // console.log();
+      try {
+        const data = JSON.parse(await message.data.text(), false, 2);
+        handleCommunication(connection, data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  });
   return (
     <div>
       <Grid container spacing={1}>
@@ -76,7 +124,10 @@ export default function Messages() {
         </Grid>
         <Grid item xs={12}>
           <h2>Send Message</h2>
-          <form onSubmit={handleSendMessage} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <form
+            onSubmit={handleSendMessage}
+            style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
+          >
             <TextField
               id="recipient"
               name="recipient"
@@ -101,7 +152,9 @@ export default function Messages() {
               onChange={(e) => setMessage(e.target.value)}
               autoComplete="off"
             />
-            <Button type="submit" variant="contained" color="primary">Send</Button>
+            <Button type="submit" variant="contained" color="primary">
+              Send
+            </Button>
           </form>
         </Grid>
       </Grid>
