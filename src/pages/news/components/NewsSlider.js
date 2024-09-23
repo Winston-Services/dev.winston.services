@@ -29,6 +29,8 @@ function NewsSlider() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
   return (
     <Grid container display={'flex'} columnSpacing={5} mt={4}>
@@ -44,10 +46,12 @@ function NewsSlider() {
         </Slider>
       </Grid>
       <Grid item xs={12} sm={6} md={4} sx={{ my: { xs: 2, sm: 0 } }}>
-        <Grid 
-      onClick={() => {
-        navigate('/news/news-details');
-      }}>
+        <Grid
+          onClick={() => {
+            navigate('/news/news-details');
+          }}
+          sx={{ cursor: 'pointer' }}
+        >
           <img
             src={Image2}
             style={{

@@ -1,4 +1,6 @@
-const resource = 'https://github.com/Winston-Services/support-networks';
+const resource =
+  'https://raw.githubusercontent.com/Winston-Services/support-networks/main/network.json';
+
 const networks = [
   {
     name: 'Bitcoin',
@@ -85,26 +87,32 @@ const networks = [
     explorer: '',
   },
 ];
-class WinstonNetwork {
-  _networks = [];
+
+class WinstonNetworks {
   constructor() {
     this._networks = [...networks];
-    // fetch the neworks list form the supported networks api.
+    fetch(resource)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        this._networks = data.networks;
+      })
+      .catch((error) => {
+        console.error('Error fetching networks:', error);
+      });
+    // fetch the networks list form the supported networks api.
     return {
       network: (network) => {
+        const foundNetwork =
+          this.getNetworkByName(network) ||
+          this.getNetworkBySymbol(network) ||
+          this.getNetworkByChainId(network);
         return {
-          metadata: {
-            name: 'Bitcoin',
-            symbol: 'BTC',
-            core: 'bitcoin',
-            image: './assets/icons/btc.svg',
-            chainId: 0,
-            decimals: 9,
-            testnet: false,
-            ws: '',
-            rpc: '',
-            explorer: '',
-          },
+          metadata: foundNetwork || -1,
         };
       },
       get networks() {
@@ -119,19 +127,19 @@ class WinstonNetwork {
   }
   getNetworkByChainId(chainId) {
     return {
-      ...this._networks.filter((n) => n.chainId === chainId),
+      ...this._networks.find((n) => n.chainId === chainId),
     };
   }
   getNetworkBySymbol(symbol) {
     return {
-      ...this._networks.filter(
+      ...this._networks.find(
         (n) => n.symbol.toLowerCase() === symbol.toLowerCase()
       ),
     };
   }
   getNetworkByName(name) {
     return {
-      ...this._networks.filter(
+      ...this._networks.find(
         (n) => n.name.toLowerCase() === name.toLowerCase()
       ),
     };
@@ -143,6 +151,11 @@ class WinstonNetwork {
     };
   }
   deleteNetwork(network) {
-
+    this._networks = this._networks.filter((n) => n.name !== network);
+    return {
+      ...network,
+    };
   }
 }
+
+module.exports = WinstonNetworks;
