@@ -43,54 +43,57 @@ function a11yProps(index) {
   };
 }
 
-const AllNewsData = [
-  {
-    image: ImageData1,
-    title:
-      'The Non-Fungible Token Bible Everything you need to know about NFTs',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-    infoTag: 'Jordan Lyanchev-CryptoPotato',
-    infoTime: '2 hrs ago',
-    infoTitle: 'Goldman Sachs',
-    infoSubTitle: 'Goldman Sachs',
-  },
-  {
-    image: ImageData2,
-    title:
-      'The Non-Fungible Token Bible Everything you need to know about NFTs',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-    infoTag: 'Jordan Lyanchev-CryptoPotato',
-    infoTime: '3 hrs ago',
-    infoTitle: 'Goldman Sachs',
-    infoSubTitle: 'Goldman Sachs',
-  },
-  {
-    image: ImageData3,
-    title:
-      'The Non-Fungible Token Bible Everything you need to know about NFTs',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-    infoTag: 'Jordan Lyanchev-CryptoPotato',
-    infoTime: '3 hrs ago',
-    infoTitle: 'Goldman Sachs',
-    infoSubTitle: 'Goldman Sachs',
-  },
-  {
-    image: ImageData4,
-    title:
-      'The Non-Fungible Token Bible Everything you need to know about NFTs',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-    infoTag: 'Jordan Lyanchev-CryptoPotato',
-    infoTime: '3 hrs ago',
-    infoTitle: 'Goldman Sachs',
-    infoSubTitle: 'Goldman Sachs',
-  },
-];
-
 function NewsTab() {
+  const AllNewsData = [
+    {
+      category: 'Business',
+      image: ImageData1,
+      title:
+        'The Non-Fungible Token Bible Everything you need to know about NFTs',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
+      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      infoTime: '2 hrs ago',
+      infoTitle: 'Goldman Sachs',
+      infoSubTitle: 'Goldman Sachs',
+    },
+    {
+      category: 'Business',
+      image: ImageData2,
+      title:
+        'The Non-Fungible Token Bible Everything you need to know about NFTs',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
+      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      infoTime: '3 hrs ago',
+      infoTitle: 'Goldman Sachs',
+      infoSubTitle: 'Goldman Sachs',
+    },
+    {
+      category: 'Markets',
+      image: ImageData3,
+      title:
+        'The Non-Fungible Token Bible Everything you need to know about NFTs',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
+      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      infoTime: '3 hrs ago',
+      infoTitle: 'Goldman Sachs',
+      infoSubTitle: 'Goldman Sachs',
+    },
+    {
+      category: 'Technology',
+      image: ImageData4,
+      title:
+        'The Non-Fungible Token Bible Everything you need to know about NFTs',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
+      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      infoTime: '3 hrs ago',
+      infoTitle: 'Goldman Sachs',
+      infoSubTitle: 'Goldman Sachs',
+    },
+  ];
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -106,16 +109,22 @@ function NewsTab() {
         TabIndicatorProps={{ ...tabIndicatorStyle }}
       >
         <Tab label="All news" {...a11yProps(0)} />
-        <Tab label="Bussiness" {...a11yProps(1)} />
+        <Tab label="Business" {...a11yProps(1)} />
         <Tab label="Markets" {...a11yProps(2)} />
         <Tab label="Technology" {...a11yProps(3)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <NewsTabData data={AllNewsData} />
       </TabPanel>
-      <TabPanel value={value} index={1}></TabPanel>
-      <TabPanel value={value} index={2}></TabPanel>
-      <TabPanel value={value} index={3}></TabPanel>
+      <TabPanel value={value} index={1}>
+        <NewsTabData data={AllNewsData.filter((item) => item.category === 'Business')} />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <NewsTabData data={AllNewsData.filter((item) => item.category === 'Markets')} />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <NewsTabData data={AllNewsData.filter((item) => item.category === 'Technology')} />
+      </TabPanel>
     </Box>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Grid, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick/lib/slider';
 
 import Image1 from './../../../assets/news_image_1.png';
@@ -8,6 +9,7 @@ import Image2 from './../../../assets/news_image_2.png';
 import NewsSliderCard from './NewsSliderCard';
 
 function NewsSlider() {
+  const navigate = useNavigate();
   const newsData = [
     {
       image: Image1,
@@ -42,7 +44,10 @@ function NewsSlider() {
         </Slider>
       </Grid>
       <Grid item xs={12} sm={6} md={4} sx={{ my: { xs: 2, sm: 0 } }}>
-        <Grid>
+        <Grid 
+      onClick={() => {
+        navigate('/news/news-details');
+      }}>
           <img
             src={Image2}
             style={{
