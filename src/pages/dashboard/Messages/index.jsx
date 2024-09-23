@@ -72,7 +72,8 @@ export default function Messages() {
 
     switch (data.OP_CODE) {
       case 'MESSAGE':
-        console.log(message);
+        console.log('incoming', message, data);
+        setMessages([...messages, data.data]);
         break;
 
       default:
