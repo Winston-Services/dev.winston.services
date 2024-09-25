@@ -89,7 +89,7 @@ function AcademyDetails() {
               <Grid item display="flex" alignItems={'center'}>
                 <StarIcon sx={{ color: '#FFD215' }} />
                 <Typography variant="subtitle2" ml={0.7}>
-                  4.7 (120 review)
+                  4.7 (120 reviews)
                 </Typography>
               </Grid>
               <Grid item display="flex" alignItems={'center'}>
@@ -101,7 +101,7 @@ function AcademyDetails() {
               <Grid item display="flex" alignItems={'center'}>
                 <VisibilityIcon />
                 <Typography variant="subtitle2" ml={0.7}>
-                  251 viewer
+                  251 viewers
                 </Typography>
               </Grid>
             </Grid>
@@ -139,7 +139,7 @@ function AcademyDetails() {
             <Grid item display={'flex'} alignItems="center">
               <CircleIcon sx={{ fontSize: '6px' }} />
               <Typography variant="subtitle1" ml={1}>
-                9h 43m total length
+                2h 15m total length
               </Typography>
             </Grid>
           </Grid>

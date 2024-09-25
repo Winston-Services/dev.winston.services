@@ -113,7 +113,13 @@ function LessonDetails() {
   //     </Grid>
   //   );
   // };
-
+  const quizData = [
+    {
+      question: 'What is the capital of France?',
+      options: ['Paris', 'London', 'Berlin', 'Madrid'],
+      correctAnswer: 'Paris',
+    },
+  ];
   const navigate = useNavigate();
   return (
     <Container>
@@ -230,7 +236,50 @@ function LessonDetails() {
           </Grid>
 
           {/* <div style={{ position: 'relative' }}>{renderArrows()}</div> */}
-
+          <Grid container direction="column" mt={5}>
+            <Typography variant="h4" mb={3}>
+              Quiz
+            </Typography>
+            {quizData.map((quizItem, quizIndex) => (
+              <Card key={quizIndex} sx={{ mb: 3, p: 2 }}>
+                <Typography variant="h6" mb={2}>
+                  {quizItem.question}
+                </Typography>
+                <ul>
+                  {quizItem.options.map((option, optionIndex) => (
+                    <li key={optionIndex}>
+                      <Typography variant="body1">{option}</Typography>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </Grid>
+          <Grid container direction="column" mt={5}>
+            <Typography variant="h4" mb={3}>
+              Answer the Quiz
+            </Typography>
+            {quizData.map((quizItem, quizIndex) => (
+              <Card key={quizIndex} sx={{ mb: 3, p: 2 }}>
+                <Typography variant="h6" mb={2}>
+                  {quizItem.question}
+                </Typography>
+                <ul>
+                  {quizItem.options.map((option, optionIndex) => (
+                    <li key={optionIndex}>
+                      <Checkbox />
+                      <Typography variant="body1" display="inline">
+                        {option}
+                      </Typography>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+            <Button variant="contained" color="primary" sx={{ mt: 3 }}>
+              Submit Answers
+            </Button>
+          </Grid>
           <Grid container justifyContent={'space-between'} mt={5}>
             <Grid
               item

@@ -10,58 +10,18 @@ import {
   Grid,
   Paper,
   LinearProgress,
+  Link,
 } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { debounce } from '../../components/common/CommonFunction';
-import CourseImage1 from './../../assets/course_image1.png';
+import { coursesSelector } from '../../store/academy';
 import DropDown2 from './../../components/common/DropDown2';
 
-const courseData = [
-  {
-    image: CourseImage1,
-    title: 'Video title here',
-    date: '26-04-2022',
-    time: '05:00PM',
-    progress: 10,
-  },
-  {
-    image: CourseImage1,
-    title: 'Video title1 here',
-    date: '26-04-2022',
-    time: '05:00OPM',
-    progress: 30,
-  },
-  {
-    image: CourseImage1,
-    title: 'Video title2 here',
-    date: '26-04-2022',
-    time: '05:00PM',
-    progress: 100,
-  },
-  {
-    image: CourseImage1,
-    title: 'Video title3 here',
-    date: '26-04-2022',
-    time: '05:00PM',
-    progress: 50,
-  },
-  {
-    image: CourseImage1,
-    title: 'Video title4 here',
-    date: '26-04-2022',
-    time: '05:00PM',
-    progress: 80,
-  },
-  {
-    image: CourseImage1,
-    title: 'Video title5 here',
-    date: '26-04-2022',
-    time: '05:00PM',
-    progress: 20,
-  },
-];
-
 function Courses() {
+  const navigate = useNavigate();
+  const courseData = useSelector(coursesSelector);
   const [searchInput, setSearchInput] = React.useState('');
   const [searchData, setSearchData] = React.useState(courseData);
 
@@ -79,13 +39,40 @@ function Courses() {
         ),
       500
     );
-  }, [searchInput]);
+  }, [searchInput, courseData]);
 
   return (
     <Container>
       <Grid container justifyContent={'space-between'} alignItems="center">
-        <Typography variant="h5">Courses</Typography>
         <Grid display={'flex'} alignItems={'baseline'}>
+          <Grid container item xs={12} display={'flex'}>
+            <Link
+              variant="subtitle1"
+              onClick={() => {
+                navigate('/');
+              }}
+            >
+              Home
+            </Link>
+            <Typography variant="subtitle1" mx={1.25}>
+              /
+            </Typography>
+            <Link
+              variant="subtitle1"
+              onClick={() => {
+                navigate('/academy');
+              }}
+            >
+              Academy
+            </Link>
+            <Typography variant="subtitle1" mx={1.25}>
+              /
+            </Typography>
+
+            <Typography variant="subtitle1" mx={1.25}>
+              Courses
+            </Typography>
+          </Grid>
           <TextField
             autoComplete="off"
             value={searchInput}
@@ -119,8 +106,12 @@ function Courses() {
         {searchData && searchData.length !== 0 ? (
           <>
             {searchData.map((item, index) => (
-              <Grid key={index} item xs={12} sm={6} md={4}>
-                <Paper elevation={0} sx={{ p: 3 }}>
+              <Grid key={index} item xs={12} sm={6} md={4} sx={{ cursor: 'pointer' }}>
+                <Paper
+                  elevation={0}
+                  sx={{ p: 3 }}
+                  onClick={() => navigate('/academy/details')}
+                >
                   <Grid container gap={2} alignItems="center">
                     <img src={item.image} alt="" width="54px" />
                     <Grid>
@@ -145,6 +136,7 @@ function Courses() {
               </Grid>
             ))}
             <Paper
+              onClick={() => navigate('/academy/add-course')}
               elevation={0}
               sx={{
                 mt: 3,
@@ -155,6 +147,7 @@ function Courses() {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
+                cursor: 'pointer',
               }}
             >
               <AddIcon sx={{ fontSize: '28px', mb: 2 }} />

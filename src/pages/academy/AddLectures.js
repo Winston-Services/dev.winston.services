@@ -14,20 +14,7 @@ import UploadFile from './../../components/common/UploadFile';
 import { courseSelector, updateCourse } from './../../store/academy';
 import CourseCard from './components/CourseCard';
 
-const allSkills = [
-   'Photoshop',
-   'Programming',
-   'Gaming',
-   'Development',
-   'Designing',
-];
-const allTags = [
-  'Blockchain',
-  'Economics',
-  'Math',
-  'Engineering',
-  'Art',
-];
+
 const FORM_VALIDATION = Yup.object().shape({
   thumbnail: Yup.string().required('Please select thumbnail'),
   title: Yup.string().required('Course title is required'),
@@ -40,6 +27,20 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 function AddLectures() {
+  const allSkills = [
+    'Photoshop',
+    'Programming',
+    'Gaming',
+    'Development',
+    'Designing',
+ ];
+ const allTags = [
+   'Blockchain',
+   'Economics',
+   'Math',
+   'Engineering',
+   'Art',
+ ];
   const dispatch = useDispatch();
   const courseData = useSelector(courseSelector);
   // console.log(courseData);

@@ -25,6 +25,7 @@ const difficultyLevelIcons = {
   Expert,
   Intermediate,
 };
+
 function AcademyCard({ item }) {
   const navigate = useNavigate();
   return (

@@ -17,67 +17,68 @@ import AcademyIcon from './../../assets/academy_icon.svg';
 import Filter from './../../components/common/Filter';
 import AcademyCard from './components/AcademyCard';
 
-const topicFilter = [
-  'Altcoin',
-  'Music',
-  'Domain Names',
-  'Music',
-  'Photography',
-  'Sports',
-  'Trading Cards',
-  'Utility',
-  'Virtual Worlds',
-];
-
-const filterPanels = [
-  {
-    summaryText: 'Sort',
-    summaryCount: 0,
-    detailsComponent: <Typography>Sort Filter Coming Soon...!</Typography>,
-  },
-  {
-    summaryText: 'Topic',
-    summaryCount: 0,
-    detailsComponent: (
-      <>
-        {topicFilter.map((item, index) => (
-          <Chip
-            variant="filled"
-            key={item + index}
-            label={item}
-            onClick={() => {
-              console.log('first');
-            }}
-            sx={{ mr: 1.25, mt: 1.25 }}
-          />
-        ))}
-      </>
-    ),
-  },
-  {
-    summaryText: 'Difficulty',
-    summaryCount: 0,
-    detailsComponent: (
-      <Typography>Difficulty Filter Coming Soon...!</Typography>
-    ),
-  },
-  {
-    summaryText: 'Price',
-    summaryCount: 0,
-    detailsComponent: (
-      <>
-        <Typography>Price Filter Coming Soon...!</Typography>
-      </>
-    ),
-  },
-  {
-    summaryText: 'Rating',
-    summaryCount: 0,
-    detailsComponent: <Typography>Rating Filter Coming Soon...!</Typography>,
-  },
-];
-
 function Academy() {
+  
+  const topicFilter = [
+    'Altcoin',
+    'Music',
+    'Domain Names',
+    'Music',
+    'Photography',
+    'Sports',
+    'Trading Cards',
+    'Utility',
+    'Virtual Worlds',
+  ];
+  
+  const filterPanels = [
+    {
+      summaryText: 'Sort',
+      summaryCount: 0,
+      detailsComponent: <Typography>Sort Filter Coming Soon...!</Typography>,
+    },
+    {
+      summaryText: 'Topic',
+      summaryCount: 0,
+      detailsComponent: (
+        <>
+          {topicFilter.map((item, index) => (
+            <Chip
+              variant="filled"
+              key={item + index}
+              label={item}
+              onClick={() => {
+                console.log('first');
+              }}
+              sx={{ mr: 1.25, mt: 1.25 }}
+            />
+          ))}
+        </>
+      ),
+    },
+    {
+      summaryText: 'Difficulty',
+      summaryCount: 0,
+      detailsComponent: (
+        <Typography>Difficulty Filter Coming Soon...!</Typography>
+      ),
+    },
+    {
+      summaryText: 'Price',
+      summaryCount: 0,
+      detailsComponent: (
+        <>
+          <Typography>Price Filter Coming Soon...!</Typography>
+        </>
+      ),
+    },
+    {
+      summaryText: 'Rating',
+      summaryCount: 0,
+      detailsComponent: <Typography>Rating Filter Coming Soon...!</Typography>,
+    },
+  ];
+  
   const academyData = useSelector(coursesSelector);
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [searchInput, setSearchInput] = React.useState('');

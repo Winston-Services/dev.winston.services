@@ -6,102 +6,228 @@ const initialState = {
   courses: [
     {
       image: 'https://picsum.photos/260/300?random=1',
-      title: 'Cillum est id mollit ipsum in',
-      description: 'In occaecat commodo cillum ullamco ex veniam ex anim...',
+      title: 'Crypto Payments Explained',
+      description: 'Complete crypto payment master class',
       difficultyLevel: 'Beginner',
       price: 25,
       currencySymbol: '$',
       duration: '2:15 hour',
       rating: '4.7',
+      reviews: [],
+      viewers: 251,
+      id: uuid(),
+      step1: 'In person, informally',
+      step2: 'I am a beginner',
+      step3: 'Not at the moment',
+      thumbnail: '',
+      skills: ['Programming', 'Development'],
+      tags: ['Blockchain', 'Economics'],
+      summary:
+        'Learn to Crypto like a Pro with Winston. Start with Crypto Programming Basics and progress to a Crypto payment explained.',
+      discountPrice: '',
+      category: [
+        {
+          id: uuid(),
+          name: 'Introduction',
+          lesson: [
+            {
+              id: uuid(),
+              name: 'Introduction how to design a NFT card',
+              summary: 'Learn the basics of crypto and blockchain technology.',
+              skills: ['Programming', 'Development'],
+              isRequired: true,
+              duration: '1:30 hour',
+              content: [{
+                component: 'video',
+                url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+              },
+              {
+                component: 'markdown',
+                content: 'This is the content of the lesson',
+              },
+              {
+                component: 'image',
+                image: 'https://picsum.photos/260/300?random=1',
+              },              
+              {
+                component: 'markdown',
+                content: 'This is the content of the lesson',
+              },
+              {
+                component: 'slider',
+                content: [
+                  {
+                    image: 'https://picsum.photos/260/300?random=1',
+                  },
+                  {
+                    image: 'https://picsum.photos/260/300?random=2',
+                  },
+                  {
+                    image: 'https://picsum.photos/260/300?random=3',
+                  },
+                ],
+              },
+              ],
+              quiz: [
+                {
+                  question: 'What is the capital of France?',
+                  options: ['Paris', 'London', 'Berlin', 'Madrid'],
+                  correctAnswer: 'Paris',
+                },
+              ],
+              answers: [
+                {
+                  question: 0,                  
+                  answer: 'Paris',
+                  correct: true,
+                },
+              ],
+              completed: false,
+            },
+          ],
+        },
+        {
+          id: uuid(),
+          name: 'How do crypto payments work?',
+          lesson: [],
+        },
+        {
+          id: uuid(),
+          name: 'Crypto cards for payments',
+          lesson: [],
+        },
+        {
+          id: uuid(),
+          name: 'What are the advantages of crypto payments?',
+          lesson: [],
+        },
+        {
+          id: uuid(),
+          name: 'What are the disadvantages of crypto payments?',
+          lesson: [],
+        },
+      ],
+      teacher: {
+        name: 'Hattie H. Moore',
+        image: 'https://picsum.photos/260/300?random=1',
+      },
+      progress: 0,
     },
     {
-      image: 'https://picsum.photos/260/300?random=2',
-      title: 'What Is SolScan1 and How to Use It?',
-      description:
-        'Sunt sit consectetur nostrud in. Duis nisi elit est anim deserunt.',
-      difficultyLevel: 'Intermediate',
-      currencySymbol: '',
-      price: 'Free',
-      duration: '2:15 hour',
-      rating: '4.7',
-    },
-    {
-      image: 'https://picsum.photos/260/300?random=3',
-      title: 'Excepteur ea laboris?',
-      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-      difficultyLevel: 'Expert',
-      price: 45,
-      currencySymbol: '€',
-      duration: '2:15 hour',
-      rating: '4.7',
-    },
-    {
-      image: 'https://picsum.photos/260/300?random=4',
-      title: 'What Is SolScan3 and How to Use It?',
-      description:
-        'Et nulla incididunt id voluptate laborum exercitation veniam dolor.',
-      difficultyLevel: 'Beginner',
-      price: 25,
-      currencySymbol: '€',
-      duration: '2:15 hour',
-      rating: '4.7',
-    },
-    {
-      image: 'https://picsum.photos/260/300?random=5',
-      title: 'Excepteur enim excepteur',
-      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
+      image: 'https://picsum.photos/260/300?random=1',
+      title: 'Crypto Payments Explained',
+      description: 'Complete crypto payment master class',
       difficultyLevel: 'Beginner',
       price: 25,
       currencySymbol: '$',
       duration: '2:15 hour',
       rating: '4.7',
-    },
-    {
-      image: 'https://picsum.photos/260/300?random=6',
-      title: 'What Is SolScan5 and How to Use It?',
-      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-      difficultyLevel: 'Beginner',
-      price: 25,
-      currencySymbol: '$',
-      duration: '2:15 hour',
-      rating: '4.7',
-    },
-    {
-      image: 'https://picsum.photos/260/300?random=7',
-      title: 'What Is SolScan6 and How to Use It?',
-      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-      difficultyLevel: 'Beginner',
-      price: 25,
-      currencySymbol: '$',
-      duration: '2:15 hour',
-      rating: '4.7',
-    },
-    {
-      image: 'https://picsum.photos/260/300?random=8',
-      title: 'What Is SolScan7 and How to Use It?',
-      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-      difficultyLevel: 'Beginner',
-      price: 25,
-      currencySymbol: '$',
-      duration: '2:15 hour',
-      rating: '4.7',
-    },
-    {
-      image: 'https://picsum.photos/260/300?random=9',
-      title: 'Learn Blockchain',
-      description: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit.',
-      difficultyLevel: 'Beginner',
-      price: 25,
-      currencySymbol: '$',
-      duration: '2:15 hour',
-      rating: '4.7',
+      reviews: [],
+      viewers: 251,
+      id: uuid(),
+      step1: 'In person, informally',
+      step2: 'I am a beginner',
+      step3: 'Not at the moment',
+      thumbnail: '',
+      skills: ['Programming', 'Development'],
+      tags: ['Blockchain', 'Economics'],
+      summary:
+        'Learn to Crypto like a Pro with Winston. Start with Crypto Programming Basics and progress to a Crypto payment explained.',
+      discountPrice: '',
+      category: [
+        {
+          id: uuid(),
+          name: 'Introduction',
+          lesson: [
+            {
+              id: uuid(),
+              name: 'Introduction how to design a NFT card',
+              summary: 'Learn the basics of crypto and blockchain technology.',
+              skills: ['Programming', 'Development'],
+              isRequired: true,
+              duration: '1:30 hour',
+              content: [{
+                component: 'video',
+                url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+              },
+              {
+                component: 'markdown',
+                content: 'This is the content of the lesson',
+              },
+              {
+                component: 'image',
+                image: 'https://picsum.photos/260/300?random=1',
+              },              
+              {
+                component: 'markdown',
+                content: 'This is the content of the lesson',
+              },
+              {
+                component: 'slider',
+                content: [
+                  {
+                    image: 'https://picsum.photos/260/300?random=1',
+                  },
+                  {
+                    image: 'https://picsum.photos/260/300?random=2',
+                  },
+                  {
+                    image: 'https://picsum.photos/260/300?random=3',
+                  },
+                ],
+              },
+              ],
+              quiz: [
+                {
+                  question: 'What is the capital of France?',
+                  options: ['Paris', 'London', 'Berlin', 'Madrid'],
+                  correctAnswer: 'Paris',
+                },
+              ],
+              answers: [
+                {
+                  question: 0,                  
+                  answer: 'Paris',
+                  correct: true,
+                },
+              ],
+              completed: false,
+            },
+          ],
+        },
+        {
+          id: uuid(),
+          name: 'How do crypto payments work?',
+          lesson: [],
+        },
+        {
+          id: uuid(),
+          name: 'Crypto cards for payments',
+          lesson: [],
+        },
+        {
+          id: uuid(),
+          name: 'What are the advantages of crypto payments?',
+          lesson: [],
+        },
+        {
+          id: uuid(),
+          name: 'What are the disadvantages of crypto payments?',
+          lesson: [],
+        },
+      ],
+      teacher: {
+        name: 'Hattie H. Moore',
+        image: 'https://picsum.photos/260/300?random=1',
+      },
+      progress: 0,
     },
   ],
   course: {
     id: uuid(),
-    step1: 'In person, informally',
-    step2: 'I am a beginner',
-    step3: 'Not at the moment',
+    step1: '',
+    step2: '',
+    step3: '',
     thumbnail: '',
     title: '',
     description: '',
@@ -128,6 +254,7 @@ const initialState = {
     ],
   },
   currentLessonEdit: null,
+
 };
 
 export const academySlice = createSlice({

@@ -17,46 +17,44 @@ import MonitorImage from './../../assets/moniter.svg';
 import { updateCourse, courseSelector } from './../../store/academy';
 import StepAddCourse from './components/StepAddCourse';
 
-const steps = [
-  {
-    title: 'Share your knowledge',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam ipsum ut potenti ut. Facilisi est facilisi elementum duis tellus porttitor ac. Sagittis etiam penatibus urna sit porta lectus. Tortor eu nisi velit magna lorem non dui.',
-    question: 'What kind of teching have you done before?',
-    options: [
-      'In person, informally',
-      'In person, professionally',
-      'Online',
-      'Other',
-    ],
-  },
-  {
-    title: 'Create a course',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam ipsum ut potenti ut. Facilisi est facilisi elementum duis tellus porttitor ac. Sagittis etiam penatibus urna sit porta lectus. Tortor eu nisi velit magna lorem non dui.',
-    question: 'How much of a video”pro” are you?',
-    options: [
-      'I am a beginner',
-      'I have some knowledge',
-      'I am experienced',
-      'I have videos ready to upload',
-    ],
-  },
-  {
-    title: 'Expand your reach',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam ipsum ut potenti ut. Facilisi est facilisi elementum duis tellus porttitor ac. Sagittis etiam penatibus urna sit porta lectus. Tortor eu nisi velit magna lorem non dui.',
-    question: 'Do you have an audience to share your course with?',
-    options: [
-      'Not at the moment',
-      'I have small following',
-      'I have sizeable following',
-      'To everyone',
-    ],
-  },
-];
-
 function AddCourse() {
+  const steps = [
+    {
+      title: 'Share your knowledge',
+      description:
+        'Not everyone has the time or money to go to school. Winston Academy is here to help you share your knowledge with the world.',
+      question: 'What kind of teching have you done before?',
+      options: [
+        'In person, informally',
+        'In person, professionally',
+        'Online',
+        'Other',
+      ],
+    },
+    {
+      title: 'Create a course',
+      description:
+        'Winston Academy is here to help you share your knowledge with the world.',
+      question: 'How much of a ”pro” are you?',
+      options: [
+        'I am a beginner',
+        'I have some knowledge',
+        'I am experienced',
+        'I have videos ready to upload',
+      ],
+    },
+    {
+      title: 'Expand your reach',
+      description: 'Connecting with an audience is key to sharing your knowledge.',
+      question: 'Do you have an audience to share your course with?',
+      options: [
+        'Not at the moment',
+        'I have small following',
+        'I have sizeable following',
+        'To everyone',
+      ],
+    },
+  ];
   const dispatch = useDispatch();
   const courseData = useSelector(courseSelector);
   const setCourseData = (data) => {
@@ -73,7 +71,7 @@ function AddCourse() {
     arrows: false,
     draggable: false,
     swipe: false,
-    // adaptiveHeight: true,
+    adaptiveHeight: true,
     beforeChange: (current, next) => setSlideIndex(next),
   };
 
