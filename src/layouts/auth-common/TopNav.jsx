@@ -149,7 +149,13 @@ function TopNav() {
             navigate('/');
           }}
         />
-        <Stack sx={{ flexDirection:'row', ml: 6 }}>
+        <Stack
+          sx={{
+            display: { xs: 'none', md: 'none', lg: 'inline-flex' },
+            flexDirection: 'row',
+            ml: 6,
+          }}
+        >
           <MenuItem>Swap</MenuItem>
           <MenuItem>Liquidity</MenuItem>
           <MenuItem>Market Place</MenuItem>
@@ -186,12 +192,18 @@ function TopNav() {
               alignItems="center"
               spacing={1}
             >
-              <Grid item xs="auto" alignItems="flex-start">
+              <Grid
+                item
+                sx={{ display: { xs: 'none', sm: 'none', md: 'auto' } }}
+                alignItems="flex-start"
+              >
                 <Avatar {...stringAvatar('Michael Dennis')} />
               </Grid>
               <Grid
                 item
-                sx={{ display: { xs: 'none', sm: 'flex' } }}
+                sx={{
+                  display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
+                }}
                 sm
                 container
                 direction="column"

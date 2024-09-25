@@ -1,45 +1,82 @@
-# Getting Started
-Welcome to Winston; Winston is your personal assistant to all things blockchain.
+# Winston - Your Personal Assistant to All Things Blockchain
 
-## This Dapp and WebApp is a combination of tools to help the common person get started in blockchain technology.
+Winston is a comprehensive platform designed to assist users with various aspects of blockchain technology. This project includes features such as an academy for learning, a marketplace for NFTs, community funding, and more.
 
-### What's in the App?
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Links](#links)
 
-We have some of the basic stuff you would expect.
+## Project Overview
+Winston aims to provide users with a seamless experience in the blockchain world. Whether you're looking to learn about blockchain, trade NFTs, or start a community funding campaign, Winston has got you covered.
 
-* Cross Chain Swap.
-* Cross Chain NFT Marketplace
-* Cross Chain Faucet
-* Cross Chain Airdrop Contract
-* Cross Chain Crowd Funding
-* Cross Chain Academy
-* Cross Chain Wallet/Dashboard
-* Cross Chain Explorer
-* Cross Chain News
-* Cross Chain Tech Docs
-* Cross Chain Asset Wizard
+## Features
+- **Academy**: Learn about blockchain and cryptocurrencies through comprehensive courses.
+- **Marketplace**: Buy, sell, and trade NFTs.
+- **Community Funding**: Start and support community-driven projects.
+- **Support**: Get help and support for any issues or questions you have.
 
+## Installation
+To get started with Winston, follow these steps:
 
-### Build Instructions
-The Dapp uses electron to build cross platform desktop applications.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/winston.git
+   ```
 
-To begin the build process fork this repository, and run the following commands.
+2. Navigate to the project directory:
+   ```bash
+   cd winston
+   ```
 
-Install the node modules.
-`npm ci`
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
 
-Build the UI components.
-`npm run build`
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-Run the UI components.
-`npm run start`
+## Usage
+Once the development server is running, you can access the application at `http://localhost:3000`.
 
-Run the desktop packaging process.
-#### Windows
-`npm run electron:package:win`
+### Navigation
+- **Academy**: `/academy`
+- **Marketplace**: `/marketplace`
+- **Community Funding**: `/community`
+- **Support**: `/support`
 
-#### Linux
-`npm run electron:package:linux`
+## Contributing
+We welcome contributions from the community. To contribute, follow these steps:
 
-#### MacOS
-`npm run electron:package:mac`
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Description of your changes"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-branch
+   ```
+5. Create a pull request on GitHub.
+
+## License
+This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+For any questions or support, please reach out to us at [admin@winston.services](mailto:admin@winston.services).
+
+## Links
+- [Homepage](https://dev.winston.services)
+- [Documentation](https://docs.winston.services)

@@ -19,7 +19,9 @@ const initialState = {
       ],
     },
   ],
-  account: {},
+  account: {
+    perMessageEncryption: false,
+  },
   wallet: {},
 };
 
@@ -57,5 +59,7 @@ export const userInfoSelector = (state) => state.user.info;
 export const userWalletSelector = (state) => state.user.wallet;
 export const userAccountsSelector = (state) => state.user.accounts;
 export const userAccountSelector = (state) => state.user.account;
+export const userPerMessageEncryptionSelector = (state) =>
+  state.user.account.perMessageEncryption;
 const user = userSlice.reducer;
 export default user;

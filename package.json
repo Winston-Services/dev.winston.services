@@ -18,9 +18,19 @@
     "electron:start": "concurrently -k \"cross-env BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electronmon .\"",
     "electron:package:mac": "npm run build && electron-builder -m -c.extraMetadata.main=build/electron.js",
     "electron:package:win": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js",
-    "electron:package:linux": "npm run build && electron-builder -l -c.extraMetadata.main=build/electron.js"
+    "electron:package:linux": "npm run build && electron-builder -l -c.extraMetadata.main=build/electron.js",
+    "ionic:build": "npm run build",
+    "ionic:serve": "npm run start"
   },
   "dependencies": {
+    "@capacitor/android": "6.1.2",
+    "@capacitor/app": "6.0.1",
+    "@capacitor/cli": "6.1.2",
+    "@capacitor/core": "6.1.2",
+    "@capacitor/haptics": "6.0.1",
+    "@capacitor/ios": "6.1.2",
+    "@capacitor/keyboard": "6.0.2",
+    "@capacitor/status-bar": "6.0.1",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
     "@mui/base": "^5.0.0-alpha.76",

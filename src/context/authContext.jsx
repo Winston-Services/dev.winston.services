@@ -88,7 +88,7 @@ export function AuthProvider({ children }) {
       }
     };
     connection.onopen = () => {
-      console.log('Connected', connection);
+      // console.log('Connected', connection);
       if (connection.readyState === 1) {
         const message = JSON.stringify(
           {
@@ -100,7 +100,7 @@ export function AuthProvider({ children }) {
           2
         );
         connection.send(message);
-        console.log(message);
+        // console.log(message);
       }
     };
   };

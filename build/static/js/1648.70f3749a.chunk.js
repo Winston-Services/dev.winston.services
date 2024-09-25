@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwinston=self.webpackChunkwinston||[]).push([[1648],{71648:(e,n,t)=>{t.r(n),t.d(n,{default:()=>c});var l=t(65043),s=t(86971),a=t(70579);const i=l.lazy((()=>Promise.all([t.e(5429),t.e(126),t.e(197)]).then(t.bind(t,41169)))),r=l.lazy((()=>Promise.all([t.e(126),t.e(1893)]).then(t.bind(t,81893))));function c(){const e=[{path:"/",children:[{index:!0,element:(0,a.jsx)(i,{})},{path:"/upload-currency",element:(0,a.jsx)(r,{})},{path:"*",element:(0,a.jsx)(s.C5,{to:"/"})}]}];return(0,s.Ye)(e)}}}]);
+//# sourceMappingURL=1648.70f3749a.chunk.js.map

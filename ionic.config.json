@@ -1,0 +1,7 @@
+{
+  "name": "winston",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
