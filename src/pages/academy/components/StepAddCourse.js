@@ -28,7 +28,6 @@ function StepAddCourse({ name, data }) {
   if (meta && meta.touched && meta.error) {
     configFormControl.error = true;
   }
-
   return (
     <div>
       <Typography variant="h4">{data.title}</Typography>

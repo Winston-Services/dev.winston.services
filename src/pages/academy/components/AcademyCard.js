@@ -38,7 +38,7 @@ function AcademyCard({ item }) {
           justifyContent: 'start',
         }}
         onClick={() => {
-          navigate('/academy/details');
+          navigate(`/academy/details/${item.id}`);
         }}
       >
         <CardMedia

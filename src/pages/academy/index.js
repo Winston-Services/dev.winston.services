@@ -25,11 +25,11 @@ export default function AcademyRouting() {
           element: <Academy />,
         },
         {
-          path: '/details',
+          path: '/details/:courseId',
           element: <AcademyDetails />,
         },
         {
-          path: '/lesson-details',
+          path: '/lesson-details/:lessonId',
           element: <LessonDetails />,
         },
         {

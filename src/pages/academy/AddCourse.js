@@ -14,7 +14,11 @@ import Slider from 'react-slick';
 import * as Yup from 'yup';
 
 import MonitorImage from './../../assets/moniter.svg';
-import { updateCourse, courseSelector } from './../../store/academy';
+import {
+  setCourseEdit,
+  courseEditSelector,
+  courseTemplateSelector,
+} from './../../store/academy';
 import StepAddCourse from './components/StepAddCourse';
 
 function AddCourse() {
@@ -45,7 +49,8 @@ function AddCourse() {
     },
     {
       title: 'Expand your reach',
-      description: 'Connecting with an audience is key to sharing your knowledge.',
+      description:
+        'Connecting with an audience is key to sharing your knowledge.',
       question: 'Do you have an audience to share your course with?',
       options: [
         'Not at the moment',
@@ -56,10 +61,8 @@ function AddCourse() {
     },
   ];
   const dispatch = useDispatch();
-  const courseData = useSelector(courseSelector);
-  const setCourseData = (data) => {
-    dispatch(updateCourse(data));
-  };
+  const courseTemplateData = useSelector(courseTemplateSelector);
+  const newCourseData = useSelector(courseEditSelector);
   const slider = React.useRef(null);
   const [slideIndex, setSlideIndex] = React.useState(0);
 
@@ -75,16 +78,28 @@ function AddCourse() {
     beforeChange: (current, next) => setSlideIndex(next),
   };
 
+  const courseData = newCourseData || courseTemplateData;
+
   const handleSubmit = (values) => {
     if (slideIndex === 2) {
-      setCourseData(values);
+      console.log('courseData', courseData, values);
+      dispatch(setCourseEdit({ ...courseData, ...values, isTemplate: false }));
       navigate('/academy/add-lecture');
     } else slider?.current?.slickNext();
   };
 
   const FORM_VALIDATION = Yup.object().shape({
     title: slideIndex === 3 && Yup.string().required('Title is required'),
-    category: slideIndex === 3 && Yup.string().required('Select category'),
+    description:
+      slideIndex === 3 && Yup.string().required('Description is required'),
+    summary: slideIndex === 3 && Yup.string().required('Summary is required'),
+    skills: slideIndex === 3 && Yup.array().min(0),
+    tags: slideIndex === 3 && Yup.array().min(0),
+    price: slideIndex === 3 && Yup.number().required('Price is required'),
+    discountPrice:
+      slideIndex === 3 && Yup.number().required('Discount price is required'),
+    thumbnail:
+      slideIndex === 3 && Yup.string().required('Please select thumbnail'),
   });
   return (
     <Container>

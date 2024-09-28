@@ -21,33 +21,36 @@ import {
   Typography,
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { uuid } from '../../../components/common/CommonFunction';
-import {
-  addCategory,
-  addCurrentLessonEdit,
-  addLesson,
-  deleteLesson,
-  splitCategory,
-  updateLesson,
-} from '../../../store/academy';
+import { setLectureEdit, lectureEditSelector, setLessonEdit } from '../../../store/academy';
 
 export default function LessonCard({
   lesson,
-  categoryId,
+  lectureId,
   lessonIndex,
-  categoryIndex,
+  lectureIndex,
   lessonLength,
 }) {
+  console.log(
+    'lesson card',
+    lesson,
+    lectureId,
+    lessonIndex,
+    lectureIndex,
+    lessonLength
+  );
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [editLesson, setEditLesson] = React.useState({
     lessonIndex: -1,
-    categoryIndex: -1,
+    lectureIndex: -1,
     name: '',
   });
+  const lectureEdit = useSelector(lectureEditSelector);
+  const lecture = lectureEdit[lectureIndex];
 
   return (
     <>
@@ -63,7 +66,7 @@ export default function LessonCard({
             <DragIndicator sx={{ color: '#4C3B9C' }} />
           </IconButton>
           {editLesson.lessonIndex == lessonIndex &&
-          editLesson.categoryIndex === categoryIndex ? (
+          editLesson.lectureIndex === lectureIndex ? (
             <>
               <TextField
                 inputProps={{ style: { fontSize: 14 } }}
@@ -83,21 +86,27 @@ export default function LessonCard({
           )}
 
           {editLesson.lessonIndex == lessonIndex &&
-          editLesson.categoryIndex === categoryIndex ? (
+          editLesson.lectureIndex === lectureIndex ? (
             <Tooltip placement="top" arrow={true} title={'Update lesson name'}>
               <IconButton
                 onClick={() => {
-                  dispatch(
-                    updateLesson({
-                      lessonIndex,
-                      categoryIndex,
-                      data: { name: editLesson.name },
-                    })
-                  );
+                  const newLesson = {
+                    ...lesson,
+                    name: editLesson.name,
+                  };
+                  const newLessons = [...lecture.lesson];
+                  newLessons[lessonIndex] = newLesson;
+                  const newLecture = {
+                    ...lecture,
+                    lesson: newLessons,
+                  };
+                  const newLectures = [...lectureEdit];
+                  newLectures[lectureIndex] = newLecture;
+                  dispatch(setLectureEdit(newLectures));
                   setEditLesson({
                     ...editLesson,
                     lessonIndex: -1,
-                    categoryIndex: -1,
+                    lectureIndex: -1,
                   });
                 }}
               >
@@ -110,7 +119,7 @@ export default function LessonCard({
                 onClick={() => {
                   setEditLesson({
                     name: lesson.name,
-                    categoryIndex,
+                    lectureIndex,
                     lessonIndex,
                   });
                 }}
@@ -144,14 +153,19 @@ export default function LessonCard({
                   }}
                   onChange={(e) => {
                     const { checked } = e.target;
-                    dispatch(
-                      updateLesson({
-                        lessonIndex,
-                        categoryIndex,
-                        data: { isRequired: checked },
-                      })
-                    );
-                    console.log(checked);
+                    const newLesson = {
+                      ...lesson,
+                      isRequired: checked,
+                    };
+                    const newLessons = [...lecture.lesson];
+                    newLessons[lessonIndex] = newLesson;
+                    const newLecture = {
+                      ...lecture,
+                      lesson: newLessons,
+                    };
+                    const newLectures = [...lectureEdit];
+                    newLectures[lectureIndex] = newLecture;
+                    dispatch(setLectureEdit(newLectures));
                   }}
                 />
               }
@@ -162,14 +176,8 @@ export default function LessonCard({
             <IconButton
               // onClick={() => navigate('/academy/add-lecture/edit-lesson/')}
               onClick={() => {
-                navigate(`/academy/edit-lesson/${lesson.name}`);
-                dispatch(
-                  addCurrentLessonEdit({
-                    categoryIndex,
-                    id: lesson.id,
-                    categoryId: categoryId,
-                  })
-                );
+                navigate('/academy/edit-lesson');
+                dispatch(setLessonEdit(lesson));
               }}
             >
               <Edit
@@ -183,15 +191,22 @@ export default function LessonCard({
           </Tooltip>
           <Tooltip placement="top" arrow={true} title={'Copy lesson'}>
             <IconButton
-              onClick={() =>
-                dispatch(
-                  addLesson({
-                    lessonIndex,
-                    categoryIndex,
-                    lessonData: { ...lesson, id: uuid() },
-                  })
-                )
-              }
+              onClick={() => {
+                const newLesson = {
+                  ...lesson,
+                  id: uuid(),
+                  name: 'Copy of ' + lesson.name,
+                };
+                const newLessons = [...lecture.lesson];
+                newLessons.splice(lessonIndex + 1, 0, newLesson);
+                const newLecture = {
+                  ...lecture,
+                  lesson: newLessons,
+                };
+                const newLectures = [...lectureEdit];
+                newLectures[lectureIndex] = newLecture;
+                dispatch(setLectureEdit(newLectures));
+              }}
             >
               <ContentCopy
                 sx={{
@@ -216,14 +231,17 @@ export default function LessonCard({
           {lessonLength > 1 ? (
             <Tooltip placement="top" arrow={true} title={'Delete lesson'}>
               <IconButton
-                onClick={() =>
-                  dispatch(
-                    deleteLesson({
-                      categoryIndex,
-                      lessonIndex,
-                    })
-                  )
-                }
+                onClick={() => {
+                  const newLessons = [...lecture.lesson];
+                  newLessons.splice(lessonIndex, 1);
+                  const newLecture = {
+                    ...lecture,
+                    lesson: newLessons,
+                  };
+                  const newLectures = [...lectureEdit];
+                  newLectures[lectureIndex] = newLecture;
+                  dispatch(setLectureEdit(newLectures));
+                }}
               >
                 <Delete
                   sx={{
@@ -237,19 +255,23 @@ export default function LessonCard({
           ) : null}
           <Tooltip placement="top" arrow={true} title={'Add lesson below'}>
             <IconButton
-              onClick={() =>
-                dispatch(
-                  addLesson({
-                    lessonIndex,
-                    categoryIndex,
-                    lessonData: {
-                      id: uuid(),
-                      name: 'Untitled lesson',
-                      isRequired: false,
-                    },
-                  })
-                )
-              }
+              onClick={() => {
+                const newLesson = {
+                  id: uuid(),
+                  name: 'Untitled lesson',
+                  isRequired: false,
+                  content: [],
+                };
+                const newLessons = [...lecture.lesson];
+                newLessons.splice(lessonIndex + 1, 0, newLesson);
+                const newLecture = {
+                  ...lecture,
+                  lesson: newLessons,
+                };
+                const newLectures = [...lectureEdit];
+                newLectures[lectureIndex] = newLecture;
+                dispatch(setLectureEdit(newLectures));
+              }}
             >
               <AddBox
                 sx={{
@@ -260,14 +282,32 @@ export default function LessonCard({
               />
             </IconButton>
           </Tooltip>
-          <Tooltip placement="top" arrow={true} title={'Add category below'}>
+          <Tooltip placement="top" arrow={true} title={'Add lecture below'}>
             <IconButton
               onClick={() => {
+                const newLectures = [...lectureEdit];
+                const lectureCopy = {
+                  ...lecture,
+                  id: uuid(),
+                  name: 'Untitled lecture',
+                  lesson: [
+                    {
+                      id: uuid(),
+                      name: 'Untitled lesson',
+                      isRequired: false,
+                      content: [],
+                    },
+                  ],
+                };
+                newLectures.splice(lectureIndex + 1, 0, lectureCopy);
+                // console.log('newLectures', newLectures);
+                dispatch(setLectureEdit(newLectures));
+                /*
                 lessonLength - 1 === lessonIndex
                   ? dispatch(
                       addCategory({
-                        categoryIndex,
-                        categoryData: {
+                        lectureIndex,
+                        lectureData: {
                           id: uuid(),
                           name: 'Untitled category',
                           lesson: [
@@ -282,10 +322,11 @@ export default function LessonCard({
                     )
                   : dispatch(
                       splitCategory({
-                        categoryIndex,
+                        lectureIndex,
                         lessonIndex,
                       })
                     );
+                    */
               }}
             >
               <Queue
@@ -305,10 +346,10 @@ export default function LessonCard({
 
 LessonCard.propTypes = {
   lesson: PropTypes.object,
-  categoryIndex: PropTypes.number,
+  lectureIndex: PropTypes.number,
   lessonIndex: PropTypes.number,
   lessonLength: PropTypes.number,
   moveCard: PropTypes.func,
   id: PropTypes.string,
-  categoryId: PropTypes.string,
+  lectureId: PropTypes.string,
 };

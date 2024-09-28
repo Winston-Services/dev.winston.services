@@ -110,7 +110,7 @@ function Courses() {
                 <Paper
                   elevation={0}
                   sx={{ p: 3 }}
-                  onClick={() => navigate('/academy/details')}
+                  onClick={() => navigate(`/academy/details/${item.id}`)}
                 >
                   <Grid container gap={2} alignItems="center">
                     <img src={item.image} alt="" width="54px" />

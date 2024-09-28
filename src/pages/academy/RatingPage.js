@@ -9,12 +9,21 @@ import {
   TextField,
   Rating,
 } from '@mui/material';
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-function RatingPage() {
+import { courseSelector } from '../../store/academy';
+function RatingPage({ lessonId }) {
+  const { course } = useSelector(courseSelector);
+  if (lessonId) {
+    const lesson = course.lessons.find((lesson) => lesson.id === lessonId);
+    console.log(lesson);
+  }
+
   return (
     <Container>
       <Grid container display={'flex'} justifyContent="center">
-        <Grid item xs={12} sm={10} md={8} lg={7}>
+        <Grid item xs={12} sm={10}>
           <Paper elevation={0} sx={{ textAlign: 'center' }}>
             <Paper elevation={0} sx={{ background: '#483996' }}>
               <Typography variant="h5" py={4}>
@@ -52,5 +61,9 @@ function RatingPage() {
     </Container>
   );
 }
+
+RatingPage.propTypes = {
+  lessonId: PropTypes.string,
+};
 
 export default RatingPage;

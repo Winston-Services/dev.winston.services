@@ -17,13 +17,16 @@ import {
   LinearProgress,
   Button,
 } from '@mui/material/';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 
+import { coursesSelector } from '../../store/academy';
 import LessonDetailsImage from './../../assets/lesson_details.svg';
 import Image1 from './../../assets/news_image_1.png';
 import Image2 from './../../assets/news_image_2.png';
 import AcademyAccordion from './components/AcademyAccordion';
+import RatingPage from './RatingPage';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -92,8 +95,236 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
 };
-
+/*
+const courses = [
+  {
+    image: 'https://picsum.photos/260/300?random=1',
+    title: 'Crypto Payments Explained',
+    description: 'Complete crypto payment master class',
+    difficultyLevel: 'Beginner',
+    price: 25,
+    currencySymbol: '$',
+    duration: '2:15 hour',
+    rating: '4.7',
+    reviews: [],
+    viewers: 251,
+    id: uuid(),
+    step1: 'In person, informally',
+    step2: 'I am a beginner',
+    step3: 'Not at the moment',
+    thumbnail: '',
+    skills: ['Programming', 'Development'],
+    tags: ['Blockchain', 'Economics'],
+    summary:
+      'Learn to Crypto like a Pro with Winston. Start with Crypto Programming Basics and progress to a Crypto payment explained.',
+    discountPrice: '',
+    category: [
+      {
+        id: uuid(),
+        name: 'Introduction',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Introduction how to design a NFT card',
+            summary: 'Learn the basics of crypto and blockchain technology.',
+            skills: ['Programming', 'Development'],
+            isRequired: true,
+            duration: '1:30 hour',
+            content: [{
+              component: 'video',
+              url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            },
+            {
+              component: 'markdown',
+              content: 'This is the content of the lesson',
+            },
+            {
+              component: 'image',
+              image: 'https://picsum.photos/260/300?random=1',
+            },              
+            {
+              component: 'markdown',
+              content: 'This is the content of the lesson',
+            },
+            {
+              component: 'slider',
+              content: [
+                {
+                  image: 'https://picsum.photos/260/300?random=1',
+                },
+                {
+                  image: 'https://picsum.photos/260/300?random=2',
+                },
+                {
+                  image: 'https://picsum.photos/260/300?random=3',
+                },
+              ],
+            },
+            ],
+            quiz: [
+              {
+                question: 'What is the capital of France?',
+                options: ['Paris', 'London', 'Berlin', 'Madrid'],
+                correctAnswer: 'Paris',
+              },
+            ],
+            answers: [
+              {
+                question: 0,                  
+                answer: 'Paris',
+                correct: true,
+              },
+            ],
+            completed: false,
+          },
+        ],
+      },
+      {
+        id: uuid(),
+        name: 'How do crypto payments work?',
+        lesson: [],
+      },
+      {
+        id: uuid(),
+        name: 'Crypto cards for payments',
+        lesson: [],
+      },
+      {
+        id: uuid(),
+        name: 'What are the advantages of crypto payments?',
+        lesson: [],
+      },
+      {
+        id: uuid(),
+        name: 'What are the disadvantages of crypto payments?',
+        lesson: [],
+      },
+    ],
+    teacher: {
+      name: 'Hattie H. Moore',
+      image: 'https://picsum.photos/260/300?random=1',
+    },
+    progress: 0,
+  },
+  {
+    image: 'https://picsum.photos/260/300?random=1',
+    title: 'Crypto Payments Explained',
+    description: 'Complete crypto payment master class',
+    difficultyLevel: 'Beginner',
+    price: 25,
+    currencySymbol: '$',
+    duration: '2:15 hour',
+    rating: '4.7',
+    reviews: [],
+    viewers: 251,
+    id: uuid(),
+    step1: 'In person, informally',
+    step2: 'I am a beginner',
+    step3: 'Not at the moment',
+    thumbnail: '',
+    skills: ['Programming', 'Development'],
+    tags: ['Blockchain', 'Economics'],
+    summary:
+      'Learn to Crypto like a Pro with Winston. Start with Crypto Programming Basics and progress to a Crypto payment explained.',
+    discountPrice: '',
+    category: [
+      {
+        id: uuid(),
+        name: 'Introduction',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Introduction how to design a NFT card',
+            summary: 'Learn the basics of crypto and blockchain technology.',
+            skills: ['Programming', 'Development'],
+            isRequired: true,
+            duration: '1:30 hour',
+            content: [{
+              component: 'video',
+              url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            },
+            {
+              component: 'markdown',
+              content: 'This is the content of the lesson',
+            },
+            {
+              component: 'image',
+              image: 'https://picsum.photos/260/300?random=1',
+            },              
+            {
+              component: 'markdown',
+              content: 'This is the content of the lesson',
+            },
+            {
+              component: 'slider',
+              content: [
+                {
+                  image: 'https://picsum.photos/260/300?random=1',
+                },
+                {
+                  image: 'https://picsum.photos/260/300?random=2',
+                },
+                {
+                  image: 'https://picsum.photos/260/300?random=3',
+                },
+              ],
+            },
+            ],
+            quiz: [
+              {
+                question: 'What is the capital of France?',
+                options: ['Paris', 'London', 'Berlin', 'Madrid'],
+                correctAnswer: 'Paris',
+              },
+            ],
+            answers: [
+              {
+                question: 0,                  
+                answer: 'Paris',
+                correct: true,
+              },
+            ],
+            completed: false,
+          },
+        ],
+      },
+      {
+        id: uuid(),
+        name: 'How do crypto payments work?',
+        lesson: [],
+      },
+      {
+        id: uuid(),
+        name: 'Crypto cards for payments',
+        lesson: [],
+      },
+      {
+        id: uuid(),
+        name: 'What are the advantages of crypto payments?',
+        lesson: [],
+      },
+      {
+        id: uuid(),
+        name: 'What are the disadvantages of crypto payments?',
+        lesson: [],
+      },
+    ],
+    teacher: {
+      name: 'Hattie H. Moore',
+      image: 'https://picsum.photos/260/300?random=1',
+    },
+    progress: 0,
+  },
+];
+*/
 function LessonDetails() {
+  const { lessonId } = useParams();
+  const courses = useSelector(coursesSelector);
+  const course = courses.find((course) => 
+    course.lectures.some((lecture) => lecture.lesson.some((lesson) => lesson.id === lessonId))
+  );
+  
+  console.log(course);
   const slider = React.useRef();
   const prevHandle = () => {
     slider.current.slickPrev();
@@ -101,18 +332,7 @@ function LessonDetails() {
   const nextHandle = () => {
     slider.current.slickNext();
   };
-  // const renderArrows = () => {
-  //   return (
-  //     <Grid container display={'flex'} justifyContent="space-between">
-  //       <Card sx={{ p: 2 }} onClick={() => prevHandle()}>
-  //         <ArrowBackIosNew />
-  //       </Card>
-  //       <Card sx={{ p: 2 }} onClick={() => nextHandle()}>
-  //         <ArrowForwardIos />
-  //       </Card>
-  //     </Grid>
-  //   );
-  // };
+  
   const quizData = [
     {
       question: 'What is the capital of France?',
@@ -126,7 +346,7 @@ function LessonDetails() {
       <Grid container spacing={3}>
         <Grid item xs={12} md={4.5}>
           <Card elevation={0}>
-            <Link onClick={() => navigate('/academy/details')}>
+            <Link onClick={() => navigate(`/academy/details/${course.id}`)}>
               <Grid container alignItems="center" gap={1} p={3}>
                 <ArrowBackIos fontSize="12px" />
                 <Typography variant="h6">Back to home</Typography>
@@ -149,7 +369,7 @@ function LessonDetails() {
                 />
               </Grid>
               <Divider />
-              <AcademyAccordion />
+              <AcademyAccordion course={course?.lectures || []} />
               <Divider />
               <Grid mt={3} display="flex" justifyContent={'center'}>
                 <Button variant="contained" color="secondary">
@@ -257,7 +477,7 @@ function LessonDetails() {
           </Grid>
           <Grid container direction="column" mt={5}>
             <Typography variant="h4" mb={3}>
-              Answer the Quiz
+              Final Quiz
             </Typography>
             {quizData.map((quizItem, quizIndex) => (
               <Card key={quizIndex} sx={{ mb: 3, p: 2 }}>
@@ -279,6 +499,11 @@ function LessonDetails() {
             <Button variant="contained" color="primary" sx={{ mt: 3 }}>
               Submit Answers
             </Button>
+          </Grid>
+          <Grid container justifyContent={'space-between'} mt={5}>
+            <Grid item xs={12}>
+              <RatingPage />
+            </Grid>
           </Grid>
           <Grid container justifyContent={'space-between'} mt={5}>
             <Grid

@@ -2,50 +2,73 @@ import React from 'react';
 
 import { Card } from '@mui/material';
 import update from 'immutability-helper';
-import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { courseSelector, setCategory } from './../../../store/academy';
-import CategoryCard from './CategoryCard';
+import {
+  courseEditSelector,
+  courseSelector,
+  setLectureEdit,
+  lectureEditSelector,
+} from './../../../store/academy';
+import LectureCard from './LectureCard';
 
-function CourseCard() {
+function CourseCard({ editMode }) {
   const dispatch = useDispatch();
-  const courseData = useSelector(courseSelector);
-  const [categoryCards, setCategoryCards] = React.useState(courseData.category);
+  const navigate = useNavigate();
+  const courseData = useSelector(
+    editMode ? courseEditSelector : courseSelector
+  );
+  const lectures = useSelector(lectureEditSelector);
+  console.log('course card courseData', courseData, lectures);
+
   const moveCard = React.useCallback((dragIndex, hoverIndex) => {
-    setCategoryCards((prevCards) =>
-      update(prevCards, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, prevCards[dragIndex]],
-        ],
-      })
-    );
-  }, []);
+    let updatedLectures = update(lectures, {
+      $splice: [
+        [dragIndex, 1],
+        [hoverIndex, 0, lectures[dragIndex]],
+      ],
+    });
+    dispatch(setLectureEdit(updatedLectures));
+  }, [dispatch, lectures]);
 
   React.useEffect(() => {
-    dispatch(setCategory(categoryCards));
-  }, [categoryCards, dispatch]);
-
-  React.useEffect(() => {
-    setCategoryCards(courseData.category);
-  }, [courseData.category]);
+    // console.log('lectures', lectures);
+    // console.log('courseData.lectures', courseData);
+    if (!lectures) {
+      if (!courseData) {
+        navigate('/academy/add-course');
+      } else {
+        dispatch(setLectureEdit(courseData.lectures));
+      }
+    }
+    return () => {
+      return false;
+    };
+  }, [lectures, courseData, dispatch, navigate]);
 
   const renderCard = React.useCallback(
-    (category, categoryIndex) => {
-      // console.log(category.id);
+    (lecture, lectureIndex) => {
+      // console.log(lecture.id);
       return (
-        <CategoryCard
-          key={category.id}
-          category={category}
-          categoryIndex={categoryIndex}
-          id={category.id}
-          categoryLength={categoryCards.length}
+        <LectureCard
+          key={lecture.id}
+          lecture={lecture}
+          lectureIndex={lectureIndex}
+          id={lecture.id}
+          lectureLength={lectures.length}
           moveCard={moveCard}
         />
       );
     },
-    [categoryCards.length, moveCard]
+    [lectures, moveCard]
   );
+
+  if (!lectures) {
+    return null;
+  }
+
   return (
     <Card
       elevation={0}
@@ -56,11 +79,15 @@ function CourseCard() {
         gap: 3,
       }}
     >
-      {categoryCards.map((category, categoryIndex) =>
-        renderCard(category, categoryIndex)
+      {lectures.map((lecture, lectureIndex) =>
+        renderCard(lecture, lectureIndex)
       )}
     </Card>
   );
 }
+
+CourseCard.propTypes = {
+  editMode: PropTypes.bool,
+};
 
 export default CourseCard;

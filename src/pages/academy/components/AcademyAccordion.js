@@ -12,17 +12,28 @@ import {
   Grid,
   Link,
 } from '@mui/material';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router';
 
 // import { ReactComponent as PlayCircleIcon } from './../../../assets/play_circle.svg';
 
-function AcademyAccordion() {
+function AcademyAccordion({ course }) {
   const navigate = useNavigate();
   const [expanded, setExpanded] = React.useState('Introduction');
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-
+  console.log('course', course);
+  const data = course.map((item) => ({
+    title: item.name,
+    content: item.lesson.map((lesson) => ({
+      id: lesson.id,
+      title: lesson.name,
+      icon: lesson.isRequired ? <LockOpenIcon fontSize="8px" /> : <LockIcon fontSize="8px" />,
+      view: lesson.isRequired ? 'Preview' : 'Lock',
+    })),
+  }));
+  /*
   const data = [
     {
       title: 'Introduction',
@@ -200,7 +211,7 @@ function AcademyAccordion() {
       ],
     },
   ];
-
+  */
   return (
     <div>
       {data.map((items, index) => (
@@ -247,7 +258,7 @@ function AcademyAccordion() {
                   <Link
                     // noWrap
                     variant="h6"
-                    onClick={() => navigate('/academy/lesson-details')}
+                    onClick={() => navigate(`/academy/lesson-details/${item.id}`)}
                   >
                     {item.title}
                   </Link>
@@ -282,5 +293,9 @@ function AcademyAccordion() {
     </div>
   );
 }
+
+AcademyAccordion.propTypes = {
+  course: PropTypes.array.isRequired,
+};
 
 export default AcademyAccordion;

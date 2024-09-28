@@ -78,15 +78,27 @@ export function AuthProvider({ children }) {
   const communicate = (connection) => {
     //set websocket connection states.
     setConnected(true);
-    connection.onmessage = async (message) => {
-      // console.log();
+    
+    const rateLimit = (func, limit) => {
+      let lastCall = 0;
+      return (...args) => {
+        const now = Date.now();
+        if (now - lastCall >= limit) {
+          lastCall = now;
+          return func(...args);
+        }
+      };
+    };
+
+    connection.onmessage = rateLimit(async (message) => {
       try {
         const data = JSON.parse(await message.data.text(), false, 2);
         handleCommunication(connection, data);
       } catch (error) {
         console.error(error);
       }
-    };
+    }, 100); // rate limit
+
     connection.onopen = () => {
       // console.log('Connected', connection);
       if (connection.readyState === 1) {
