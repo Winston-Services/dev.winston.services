@@ -15,7 +15,7 @@ import AutoCompleteSearchBar from '../../components/common/AutoCompleteSearchBar
 import { coursesSelector } from '../../store/academy';
 import AcademyIcon from './../../assets/academy_icon.svg';
 import Filter from './../../components/common/Filter';
-import AcademyCard from './components/AcademyCard';
+import AcademyCard from './components/common/AcademyCard';
 
 function Academy() {
   

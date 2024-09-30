@@ -6,8 +6,9 @@ const Academy = React.lazy(() => import('./Academy'));
 const AcademyDetails = React.lazy(() => import('./AcademyDetails'));
 const Rating = React.lazy(() => import('./RatingPage'));
 const TeacherProfile = React.lazy(() => import('./TeacherProfile'));
-const AddCourse = React.lazy(() => import('./AddCourse'));
-const AddLectures = React.lazy(() => import('./AddLectures'));
+const AddCourse = React.lazy(() => import('./course-editor/AddCourse'));
+const CreateCourse = React.lazy(() => import('./course-editor/CreateCourse'));
+const AddLectures = React.lazy(() => import('./course-editor/AddLectures'));
 const Courses = React.lazy(() => import('./Courses'));
 const LessonDetails = React.lazy(() => import('./LessonDetails'));
 const EditLesson = React.lazy(() => import('./EditLesson'));
@@ -41,7 +42,11 @@ export default function AcademyRouting() {
           element: <AddCourse />,
         },
         {
-          path: '/add-lecture',
+          path: '/create-course',
+          element: <CreateCourse />,
+        },
+        {
+          path: '/add-lectures',
           element: <AddLectures />,
         },
         {

@@ -9,7 +9,7 @@ import BeginnerIcon from './../../../assets/beginner_icon.svg';
 import ExpertIcon from './../../../assets/expert_icon.svg';
 import IntermediateIcon from './../../../assets/intermediate_icon.svg';
 import AutoCompleteSearchBar from './../../../components/common/AutoCompleteSearchBar';
-import AcademyCard from './AcademyCard';
+import AcademyCard from './common/AcademyCard';
 
 const academyData = [
   {

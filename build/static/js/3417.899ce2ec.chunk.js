@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkwinston=self.webpackChunkwinston||[]).push([[3417],{3417:(e,s,t)=>{t.d(s,{A:()=>a});t(65043);const a=t.p+"static/media/certificate_star.afe3e9d9eb21c9e05a8d787bdba75fe2.svg"}}]);
-//# sourceMappingURL=3417.899ce2ec.chunk.js.map

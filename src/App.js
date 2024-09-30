@@ -87,13 +87,6 @@ export default function App() {
     },
     {
       path: '/',
-      element: getRouteWrapper(
-        <Navigate to={isElectron() ? '/sign-in' : '/'} />,
-        false
-      ),
-    },
-    {
-      path: '/',
       element: getRouteWrapper(<SignInLayout />, false),
       children: [
         {
@@ -106,11 +99,17 @@ export default function App() {
         },
       ],
     },
-
+    {
+      path: '/',
+      element: getRouteWrapper(
+        <Navigate to={isElectron() ? '/sign-in' : '/'} />,
+        false
+      ),
+    },
     {
       path: '*',
       element: (
-        <Navigate to={auth?.authenticated ? './dashboard' : './sign-in'} />
+        <Navigate to={auth?.authenticated ? '/dashboard' : '/'} />
       ),
     },
   ];
@@ -257,7 +256,7 @@ export default function App() {
   ];
 
   const nav = React.useCallback(() => {
-    if (isElectron()&&!auth)
+    if (isElectron() && !auth)
       window.Winston.navigate((route) => {
         navigate(route);
       });

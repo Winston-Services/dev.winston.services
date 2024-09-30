@@ -20,28 +20,38 @@ import { uuid } from '../../../components/common/CommonFunction';
 
 export default function TextEditor(props) {
   const [field, meta, helpers] = useField(props);
+  // console.log(field, meta, helpers);
   const [editorState, setEditorState] = React.useState(
-    props.item?.content
-      ? EditorState.createWithContent(
-          ContentState.createFromBlockArray(
-            htmlToDraft(props.item.content?.replace(/(^")|("$)/g, '')) ||
-              // htmlToDraft(props.item.content?.trim('"')) ||
-              ''.contentBlocks
-          )
-        )
-      : EditorState.createEmpty()
+    EditorState.createEmpty()
   );
 
-  const handleChange = (value) => {
-    setEditorState(value);
+  const saveContent = () => {
     const data = JSON.stringify(
       draftjsToHtml(convertToRaw(editorState.getCurrentContent()))
     );
-    helpers.setValue(data);
+    helpers.setValue(data.replaceAll(/(^")|("$)|(\\\\n)/g, '').trim('"'));
+  };
+
+  const handleChange = (value) => {
+    setEditorState(value);
+    saveContent();
   };
 
   const [isShow, setIsShow] = React.useState(true);
 
+  React.useEffect(() => {
+    props.item?.content
+      ? setEditorState(
+          EditorState.createWithContent(
+            ContentState.createFromBlockArray(
+              htmlToDraft(
+                props.item.content?.replaceAll(/(^")|("$)|(\\\\n)/g, '').trim('"')
+              ) || ''.contentBlocks
+            )
+          )
+        )
+      : setEditorState(EditorState.createEmpty());
+  }, [props.item?.content]);
   return (
     <>
       <Grid container justifyContent={'end'} my={2}>
@@ -134,14 +144,7 @@ export default function TextEditor(props) {
             editorState={editorState}
             onEditorStateChange={handleChange}
             toolbar={{
-              options: [
-                'fontFamily',
-                'blockType',
-                'list',
-                'inline',
-                'image',
-                'colorPicker',
-              ],
+              options: ['fontFamily', 'blockType', 'list', 'inline'],
               link: { inDropdown: true },
               inline: {
                 options: [
@@ -161,6 +164,9 @@ export default function TextEditor(props) {
                 component: undefined,
                 dropdownClassName: undefined,
               },
+              lineBreak: {
+                inDropdown: false,
+              },
             }}
           />
         </>
@@ -178,4 +184,5 @@ TextEditor.propTypes = {
   insert: PropTypes.func,
   item: PropTypes.object,
   editorState: PropTypes.any,
+  update: PropTypes.func,
 };

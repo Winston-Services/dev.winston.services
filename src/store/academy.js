@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { uuid } from '../components/common/CommonFunction';
-const skills = ['Photoshop', 'Programming', 'Gaming', 'Development', 'Designing'];
+const skills = [
+  'Photoshop',
+  'Programming',
+  'Gaming',
+  'Development',
+  'Designing',
+];
 const tags = ['Blockchain', 'Economics', 'Math', 'Engineering', 'Art'];
 
 const courses = [
@@ -171,7 +177,7 @@ const initialState = {
               {
                 id: uuid(),
                 type: 'video',
-                url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                content: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                 config: null,
               },
               {

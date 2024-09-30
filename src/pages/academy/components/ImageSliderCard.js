@@ -21,8 +21,7 @@ function ImageSliderCard(props) {
   const [isShow, setIsShow] = React.useState(true);
   const [itemsImage, setItemsImage] = React.useState(field.value);
 
-
-  /*
+  
   React.useEffect(() => {
     console.log('field.value', field.value);
     setItemsImage(field.value);
@@ -31,7 +30,7 @@ function ImageSliderCard(props) {
   React.useEffect(() => {
     setItemsImage(itemsImage);
   }, [itemsImage]);
-*/
+
   // console.log('props.item', props.item, itemsImage);
   const moveCard = React.useCallback((dragIndex, hoverIndex) => {
     setItemsImage((prevCards) =>

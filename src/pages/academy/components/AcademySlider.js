@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 
 import { coursesSelector } from './../../../store/academy';
-import AcademyCard from './AcademyCard';
+import AcademyCard from './common/AcademyCard';
 const settings = {
   className: 'slider variable-width',
   arrows: true,

@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/2573.29c4eed5.chunk.css","mappings":"AAAA,YACE,6DAIC,CACD,kBACF","sources":["pages/wiki/index.css"],"sourcesContent":[".IconButton {\n  background: linear-gradient(\n    90deg,\n    rgb(234, 122, 143) 0.64%,\n    rgb(228, 82, 200) 99.36%\n  );\n  border-radius: 20px;\n}\n"],"names":[],"sourceRoot":""}

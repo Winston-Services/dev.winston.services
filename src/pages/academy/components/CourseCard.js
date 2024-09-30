@@ -11,6 +11,7 @@ import {
   courseSelector,
   setLectureEdit,
   lectureEditSelector,
+  setCourseEdit,
 } from './../../../store/academy';
 import LectureCard from './LectureCard';
 
@@ -21,17 +22,24 @@ function CourseCard({ editMode }) {
     editMode ? courseEditSelector : courseSelector
   );
   const lectures = useSelector(lectureEditSelector);
-  console.log('course card courseData', courseData, lectures);
+  // console.log('course card courseData', courseData, lectures);
 
-  const moveCard = React.useCallback((dragIndex, hoverIndex) => {
-    let updatedLectures = update(lectures, {
-      $splice: [
-        [dragIndex, 1],
-        [hoverIndex, 0, lectures[dragIndex]],
-      ],
-    });
-    dispatch(setLectureEdit(updatedLectures));
-  }, [dispatch, lectures]);
+  const moveCard = React.useCallback(
+    (dragIndex, hoverIndex) => {
+      let updatedLectures = update(lectures, {
+        $splice: [
+          [dragIndex, 1],
+          [hoverIndex, 0, lectures[dragIndex]],
+        ],
+      });
+      dispatch(setLectureEdit(updatedLectures));
+      dispatch(setCourseEdit({
+        ...courseData,
+        lectures: updatedLectures,
+      }));
+    },
+    [dispatch, lectures, courseData]
+  );
 
   React.useEffect(() => {
     // console.log('lectures', lectures);

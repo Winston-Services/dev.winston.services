@@ -25,23 +25,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { uuid } from '../../../components/common/CommonFunction';
-import { setLectureEdit, lectureEditSelector, setLessonEdit } from '../../../store/academy';
+import {
+  setLectureEdit,
+  lectureEditSelector,
+  setLessonEdit,
+  courseEditSelector,
+  setCourseEdit,
+} from '../../../store/academy';
 
 export default function LessonCard({
   lesson,
-  lectureId,
   lessonIndex,
   lectureIndex,
   lessonLength,
 }) {
-  console.log(
-    'lesson card',
-    lesson,
-    lectureId,
-    lessonIndex,
-    lectureIndex,
-    lessonLength
-  );
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [editLesson, setEditLesson] = React.useState({
@@ -49,6 +46,7 @@ export default function LessonCard({
     lectureIndex: -1,
     name: '',
   });
+  const courseEdit = useSelector(courseEditSelector);
   const lectureEdit = useSelector(lectureEditSelector);
   const lecture = lectureEdit[lectureIndex];
 
@@ -103,6 +101,12 @@ export default function LessonCard({
                   const newLectures = [...lectureEdit];
                   newLectures[lectureIndex] = newLecture;
                   dispatch(setLectureEdit(newLectures));
+                  dispatch(
+                    setCourseEdit({
+                      ...courseEdit,
+                      lectures: newLectures,
+                    })
+                  );
                   setEditLesson({
                     ...editLesson,
                     lessonIndex: -1,
@@ -166,6 +170,12 @@ export default function LessonCard({
                     const newLectures = [...lectureEdit];
                     newLectures[lectureIndex] = newLecture;
                     dispatch(setLectureEdit(newLectures));
+                    dispatch(
+                      setCourseEdit({
+                        ...courseEdit,
+                        lectures: newLectures,
+                      })
+                    );
                   }}
                 />
               }
@@ -206,6 +216,12 @@ export default function LessonCard({
                 const newLectures = [...lectureEdit];
                 newLectures[lectureIndex] = newLecture;
                 dispatch(setLectureEdit(newLectures));
+                dispatch(
+                  setCourseEdit({
+                    ...courseEdit,
+                    lectures: newLectures,
+                  })
+                );
               }}
             >
               <ContentCopy
@@ -241,6 +257,12 @@ export default function LessonCard({
                   const newLectures = [...lectureEdit];
                   newLectures[lectureIndex] = newLecture;
                   dispatch(setLectureEdit(newLectures));
+                  dispatch(
+                    setCourseEdit({
+                      ...courseEdit,
+                      lectures: newLectures,
+                    })
+                  );
                 }}
               >
                 <Delete
@@ -271,6 +293,12 @@ export default function LessonCard({
                 const newLectures = [...lectureEdit];
                 newLectures[lectureIndex] = newLecture;
                 dispatch(setLectureEdit(newLectures));
+                dispatch(
+                  setCourseEdit({
+                    ...courseEdit,
+                    lectures: newLectures,
+                  })
+                );
               }}
             >
               <AddBox
@@ -302,31 +330,12 @@ export default function LessonCard({
                 newLectures.splice(lectureIndex + 1, 0, lectureCopy);
                 // console.log('newLectures', newLectures);
                 dispatch(setLectureEdit(newLectures));
-                /*
-                lessonLength - 1 === lessonIndex
-                  ? dispatch(
-                      addCategory({
-                        lectureIndex,
-                        lectureData: {
-                          id: uuid(),
-                          name: 'Untitled category',
-                          lesson: [
-                            {
-                              id: uuid(),
-                              name: 'Untitled lesson',
-                              isRequired: false,
-                            },
-                          ],
-                        },
-                      })
-                    )
-                  : dispatch(
-                      splitCategory({
-                        lectureIndex,
-                        lessonIndex,
-                      })
-                    );
-                    */
+                dispatch(
+                  setCourseEdit({
+                    ...courseEdit,
+                    lectures: newLectures,
+                  })
+                );
               }}
             >
               <Queue

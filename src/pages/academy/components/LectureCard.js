@@ -19,7 +19,12 @@ import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { uuid } from '../../../components/common/CommonFunction';
-import { setLectureEdit, lectureEditSelector } from '../../../store/academy';
+import {
+  setLectureEdit,
+  lectureEditSelector,
+  setCourseEdit,
+  courseEditSelector,
+} from '../../../store/academy';
 import LessonCard from './LessonCard';
 
 export default function LectureCard({
@@ -31,6 +36,7 @@ export default function LectureCard({
 }) {
   const dispatch = useDispatch();
   const lectureEdit = useSelector(lectureEditSelector);
+  const courseData = useSelector(courseEditSelector);
   const [editLecture, setEditLecture] = React.useState({
     id: -1,
     name: '',
@@ -83,25 +89,7 @@ export default function LectureCard({
   preview(drop(ref));
 
   const renderLessonCards = (lessons) => {
-    if (!lessons)
-      return [{
-        id: uuid(),
-        name: 'New Lesson',
-        content: '',
-        quiz: [],
-        lessonIndex: 0,
-        lectureId: lecture.id,
-      }].map((lesson, lessonIndex) => (
-        <LessonCard
-          key={lessonIndex}
-          lesson={lesson}
-          lessonIndex={lessonIndex}
-          lectureIndex={lectureIndex}
-          lessonLength={lecture.lesson.length}
-          lectureId={lecture.id}
-        />
-      ));
-    return lessons.map((lesson, lessonIndex) => (
+    return lessons?.map((lesson, lessonIndex) => (
       <LessonCard
         key={lessonIndex}
         lesson={lesson}
@@ -112,6 +100,7 @@ export default function LectureCard({
       />
     ));
   };
+
   return (
     <div ref={ref} style={{ opacity }} data-handler-id={handlerId}>
       <Grid display="flex" flexDirection={'column'} gap={1}>
@@ -149,26 +138,33 @@ export default function LectureCard({
               >
                 <IconButton
                   onClick={() => {
-                    // update the global state
-                    // console.log('update lecture', editLecture);
+                    // update the lecture state
                     let updatedLectures = [...lectureEdit];
+                    // find the lecture to update
                     const lectureToUpdate = updatedLectures.find(
                       (l) => l.id === id
                     );
-                    // console.log('lectureToUpdate', lectureToUpdate);
+                    // create the lecture update
                     const lectureUpdate = {
                       ...lectureToUpdate,
                       name: editLecture.name,
                     };
+                    // update the lecture
                     updatedLectures = updatedLectures.map((l) => {
                       if (l.id === id) {
                         return lectureUpdate;
                       }
                       return l;
                     });
-                    // console.log('updatedLectures', updatedLectures);
-                    // console.log('lecture update', lectureUpdate);
+                    // update the lecture state
                     dispatch(setLectureEdit(updatedLectures));
+                    // update the course state
+                    dispatch(
+                      setCourseEdit({
+                        ...courseData,
+                        lectures: updatedLectures,
+                      })
+                    );
                     // reset the local state
                     setEditLecture({
                       id: -1,
@@ -214,6 +210,12 @@ export default function LectureCard({
                     );
                     console.log('lecturesUpdated', lecturesUpdated);
                     dispatch(setLectureEdit(lecturesUpdated));
+                    dispatch(
+                      setCourseEdit({
+                        ...courseData,
+                        lectures: lecturesUpdated,
+                      })
+                    );
                   }}
                 >
                   <Delete
@@ -238,6 +240,12 @@ export default function LectureCard({
                   newLectures.splice(lectureIndex + 1, 0, lectureCopy);
                   // console.log('newLectures', newLectures);
                   dispatch(setLectureEdit(newLectures));
+                  dispatch(
+                    setCourseEdit({
+                      ...courseData,
+                      lectures: newLectures,
+                    })
+                  );
                 }}
               >
                 <ContentCopy
