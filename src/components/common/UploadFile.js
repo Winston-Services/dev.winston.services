@@ -33,6 +33,9 @@ function UploadFile(props) {
         }}
         sx={{ fontSize: 30, color: 'red' }}
         {...field}
+        onClick={() => {
+          helpers.setValue('');
+        }}
       >
         <Cancel />
       </IconButton>

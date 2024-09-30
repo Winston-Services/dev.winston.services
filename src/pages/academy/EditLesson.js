@@ -11,6 +11,7 @@ import {
   PlayArrow,
   TextFields,
   AddPhotoAlternate,
+  Image,
 } from '@mui/icons-material';
 import {
   Container,
@@ -36,6 +37,7 @@ import * as Yup from 'yup';
 
 import AutoCompleteMultiple from '../../components/common/AutoCompleteMultiple';
 import TextField from '../../components/common/TextField';
+import UploadFile from '../../components/common/UploadFile';
 import {
   courseEditSelector,
   lectureEditSelector,
@@ -47,10 +49,9 @@ import {
   setCourseEdit,
 } from '../../store/academy';
 import { uuid } from './../../components/common/CommonFunction';
-// import ImageSliderCard from './components/ImageSliderCard';
+import ImageSliderCard from './components/ImageSliderCard';
 import TextEditor from './components/TextEditor';
-//import VideoCard from './components/VideoCard';
-
+import VideoCard from './components/VideoCard';
 const FORM_VALIDATION = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -70,18 +71,40 @@ const FORM_VALIDATION = Yup.object().shape({
   completed: Yup.boolean(),
 });
 
-const RenderContentComponent = ({
-  item,
-  index,
-  type,
-  moveCard,
-}) => {
+const RenderContentComponent = ({ item, index, type, moveCard }) => {
   // console.log('render', item);
   switch (type) {
+    case 'image':
+      return (
+        <Grid container width="100%" my={2}>
+          <Grid item xs={12}>
+            <UploadFile
+              name={`content[${index}].content`}
+              title="Upload image"
+              subtitle="You can upload maximum 200kb"
+              height="320px"
+            />
+          </Grid>
+        </Grid>
+      );
     case 'video':
-      return null;
+      return (
+        <VideoCard
+          name={`content[${index}].content`}
+          videoIndex={index}
+          item={item}
+        />
+      );
     case 'slider':
-      return null;
+      return (
+        <DndProvider backend={HTML5Backend}>
+          <ImageSliderCard
+            name={`content[${index}].content`}
+            sliderIndex={index}
+            item={item}
+          />
+        </DndProvider>
+      );
     case 'wysiwyg':
       return (
         <TextEditor
@@ -133,7 +156,7 @@ function EditLesson() {
   }
 
   const handleSumbit = (values) => {
-    // console.log('Running handleSumbit ', values);
+    console.log('Running handleSumbit ', values);
     dispatch(setLessonEdit(values));
     // console.log('arrayfirst', values, lessonData);
     const lectureUpdate = lectureData.map((lecture) => {
@@ -340,6 +363,23 @@ function EditLesson() {
                           </IconButton>
                           {!icon ? (
                             <>
+                              <Button
+                                sx={{ height: '50px' }}
+                                startIcon={<Image />}
+                                variant="outlined"
+                                onClick={() => {
+                                  insert(lessonData.content.length, {
+                                    id: uuid(),
+                                    type: 'image',
+                                    content: '',
+                                    config: null,
+                                  });
+                                  form.submitForm();
+                                  setIcon(true);
+                                }}
+                              >
+                                Add image
+                              </Button>
                               <Button
                                 sx={{ height: '50px' }}
                                 startIcon={<PlayArrow />}

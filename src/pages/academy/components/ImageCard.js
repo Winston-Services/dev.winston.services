@@ -20,7 +20,7 @@ function ImageCard({ item, itemIndex, removeImageItem, moveCard, id }) {
       }
       const dragIndex = item.itemIndex;
       const hoverIndex = itemIndex;
-      console.log(dragIndex, hoverIndex);
+      // console.log(dragIndex, hoverIndex);
       if (dragIndex === hoverIndex) {
         return;
       }
@@ -39,7 +39,7 @@ function ImageCard({ item, itemIndex, removeImageItem, moveCard, id }) {
       item.itemIndex = hoverIndex;
     },
   });
-  const [{ isDragging }, drag] = useDrag({
+  const [{ isDragging }, drag, preview] = useDrag({
     type: 'card',
     item: () => {
       console.log(id, itemIndex);
@@ -50,7 +50,8 @@ function ImageCard({ item, itemIndex, removeImageItem, moveCard, id }) {
     }),
   });
   const opacity = isDragging ? '0' : '1';
-  drag(drop(ref));
+  
+  preview(drag(drop(ref)));
 
   return (
     <div ref={ref} style={{ opacity }} data-handler-id={handlerId}>

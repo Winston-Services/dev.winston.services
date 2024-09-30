@@ -176,14 +176,27 @@ const initialState = {
             content: [
               {
                 id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
                 type: 'video',
-                content: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                content: '',
                 config: null,
               },
               {
                 id: uuid(),
                 type: 'wysiwyg',
-                content: 'This is the content of the lesson',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: '',
                 config: null,
               },
               {
@@ -192,7 +205,11 @@ const initialState = {
                 content: [
                   {
                     id: uuid(),
-                    image: 'https://picsum.photos/260/300?random=1',
+                    name: 'https://picsum.photos/260/300?random=1',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=2',
                   },
                 ],
                 config: null,

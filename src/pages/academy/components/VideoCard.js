@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  ArrowDownward,
   ContentCopy,
   VisibilityOff,
   Delete,
@@ -15,22 +16,74 @@ import {
   FormHelperText,
   Tooltip,
 } from '@mui/material';
+import { ErrorMessage, useField } from 'formik';
 import { PropTypes } from 'prop-types';
+// import { useSelector, useDispatch } from 'react-redux';
+
+// import { uuid } from '../../../components/common/CommonFunction';
 
 import { uuid } from '../../../components/common/CommonFunction';
 import UploadVideoImage from './../../../assets/upload_video_icon.png';
+// import { lessonSelector, deleteVideoCard } from './../../../store/academy';
 
 function VideoCard(props) {
-  const { item, update, insert, remove } = props;
-  // console.log('props', item, update, insert, videoIndex, remove);
+  const [field, meta, helpers] = useField(props);
+
+  // console.log('props', props);
   let file;
+
   const [isShow, setIsShow] = React.useState(true);
-  const [edit, setEdit] = React.useState(false);
-  const [video, setVideo] = React.useState(item.url || false);
+
+  // const courseData = useSelector(courseSelector);
+  // const lessonData = useSelector(lessonSelector);
+  // console.log('lessonData', lessonData);
+
+  // courseData.category.map((category) => {
+  //   category.lesson.map((lesson) => {
+  //     lesson.content.map((content) => {
+  //       console.log('content', content.id);
+  //     });
+  //   });
+  // });
+
+  // const dispatch = useDispatch();
 
   return (
     <>
       <Grid container justifyContent={'end'} mt={2}>
+        {field.value ? (
+          <Tooltip placement="top" arrow={true} title={'Edit video'}>
+            <IconButton>
+              <label htmlFor={props.name} style={{ cursor: 'pointer' }}>
+                <BorderColor
+                  sx={{
+                    color: '#C4C4C4',
+                    width: '18px',
+                    height: '18px',
+                  }}
+                />
+              </label>
+            </IconButton>
+          </Tooltip>
+        ) : null}
+
+        <Tooltip placement="top" arrow={true} title={'Download content'}>
+          <IconButton
+            onClick={() => {
+              console.log('field.value', field.value);
+            }}
+          >
+            <a href={field.value} download>
+              <ArrowDownward
+                sx={{
+                  color: '#C4C4C4',
+                  height: '20px',
+                  width: '20px',
+                }}
+              />
+            </a>
+          </IconButton>
+        </Tooltip>
         {isShow ? (
           <Tooltip placement="top" arrow={true} title={'Hide content'}>
             <IconButton
@@ -64,27 +117,17 @@ function VideoCard(props) {
             </IconButton>
           </Tooltip>
         )}
-        {!edit ? (
-          <Tooltip placement="top" arrow={true} title={'Edit video'}>
-            <IconButton onClick={() => setEdit(true)}>
-              <label htmlFor={props.name} style={{ cursor: 'pointer' }}>
-                <BorderColor
-                  sx={{
-                    color: '#C4C4C4',
-                    width: '18px',
-                    height: '18px',
-                  }}
-                />
-              </label>
-            </IconButton>
-          </Tooltip>
-        ) : null}
-
         <Tooltip placement="top" arrow={true} title={'Copy content'}>
           <IconButton
             onClick={() => {
-              // props.insert(props.videoIndex, { ...props.item, id: uuid() });
-              insert({ ...item, id: uuid() });
+              props.insert(props.videoIndex, { ...props.item, id: uuid() });
+              // console.log('props', props);
+              // dispatch(
+              //   addVideoCard({
+              //     id: lessonSelectorData.id,
+              //     data: { ...lessonSelectorData.content, id: uuid() },
+              //   })
+              // );
             }}
           >
             <ContentCopy
@@ -99,7 +142,19 @@ function VideoCard(props) {
         <Tooltip placement="top" arrow={true} title={'Delete content'}>
           <IconButton
             onClick={() => {
-              remove(item);
+              // const index = field.findIndex(
+              //   (value) => value.id === deletingImageId
+              // );
+              // itemsImage.splice(index, 1);
+              // field.value.splice(index, 1);
+              props.remove(props.videoIndex);
+              // dispatch(
+              //   deleteVideoCard({
+              //     category_id: lessonData.categoryId,
+              //     lesson_id: lessonData.id,
+              //     contentId: props.videoIndex,
+              //   })
+              // );
             }}
           >
             <Delete
@@ -115,58 +170,45 @@ function VideoCard(props) {
 
       {isShow ? (
         <>
-          {video && !edit ? (
+          {field.value ? (
             <video width={'100%'} height="auto" controls>
               {/* <source src={URL.createObjectURL(field.value)} type="video/mp4" /> */}
-              <source src={video} type="video/mp4" />
+              <source src={field.value} type="video/mp4" />
             </video>
-          ) : null}
-
-          {edit ? (
-            <>
-              <label htmlFor={item.id}>
-                <Card
-                  elevation={0}
-                  className="dottedBorder"
-                  sx={{
-                    mt: 1,
-                    textAlign: 'center',
-                    pt: 5,
-                    pb: 3.4,
-                    position: 'relative',
-                    cursor: 'pointer',
-                  }}
-                  onClick={() => {
-                    let el = document.getElementById(item.id);
-                    console.log('el', el, item.id);
-                    if (el) {
-                      el.click();
-                    }
-                  }}
-                >
-                  <img src={UploadVideoImage} alt="" />
-                  <Typography variant="subtitle1">Upload a video</Typography>
-                  <Typography variant="subtitle2" sx={{ color: '#C4C4C4' }}>
-                    You can upload maximum 100mb video
-                  </Typography>
-                </Card>
-              </label>
-
-              <input
-                id={item.id}
-                type="file"
-                accept="video/*"
-                hidden
-                onChange={(event) => {
-                  event.preventDefault();
-                  file = URL.createObjectURL(event.target.files[0]);
-                  setVideo(file);
-                  setEdit(false);
-                  update({ ...item, url: file });
+          ) : (
+            <label htmlFor={props.name}>
+              <Card
+                elevation={0}
+                className="dottedBorder"
+                sx={{
+                  mt: 1,
+                  textAlign: 'center',
+                  pt: 5,
+                  pb: 3.4,
+                  position: 'relative',
+                  cursor: 'pointer',
                 }}
-              />
-            </>
-          ) : null}
+              >
+                <img src={UploadVideoImage} alt="" />
+                <Typography variant="subtitle1">Upload a video</Typography>
+                <Typography variant="subtitle2" sx={{ color: '#C4C4C4' }}>
+                  You can upload maximum 100mb video
+                </Typography>
+              </Card>
+            </label>
+          )}
+          <input
+            id={props.name}
+            type="file"
+            accept="video/*"
+            hidden
+            onChange={(event) => {
+              // helpers.setValue(event.target.files[0]);
+              file = URL.createObjectURL(event.target.files[0]);
+              helpers.setValue(file);
+              // console.log('file', file);
+            }}
+          />
         </>
       ) : (
         <></>
@@ -174,12 +216,12 @@ function VideoCard(props) {
 
       <Grid container ml={2}>
         <FormHelperText error={true}>
-          {/* {<ErrorMessage name={props.name} />} */}
+          <ErrorMessage name={props.name} />
         </FormHelperText>
       </Grid>
-      {/* {meta.touched && meta.error ? (
+      {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
-      ) : null} */}
+      ) : null}
     </>
   );
 }
@@ -190,7 +232,6 @@ VideoCard.propTypes = {
   remove: PropTypes.func,
   insert: PropTypes.func,
   item: PropTypes.object,
-  update: PropTypes.func,
 };
 
 export default VideoCard;
