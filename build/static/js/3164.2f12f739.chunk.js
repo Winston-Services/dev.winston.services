@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwinston=self.webpackChunkwinston||[]).push([[3164],{33164:(n,s,e)=>{e.r(s),e.d(s,{default:()=>r});var t=e(65043),c=e(46946),u=e(80077),f=e(86971),i=e(22587),l=e(70579);const r=function(){const n=(0,u.wA)();return(0,t.useEffect)((()=>{n((0,i.Yl)("landing"))}),[n]),(0,l.jsx)(c.A,{children:(0,l.jsx)(f.sv,{})})}}}]);
+//# sourceMappingURL=3164.2f12f739.chunk.js.map
