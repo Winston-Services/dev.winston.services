@@ -47,7 +47,7 @@ function AcademyCard({ item }) {
           width="100%"
           height="260px"
           sx={{ objectFit: 'cover', cursor: 'pointer' }}
-          image={item.image}
+          image={item.thumbnail}
           alt={item.title}
         />
 
