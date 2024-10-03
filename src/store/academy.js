@@ -148,7 +148,7 @@ const initialState = {
     price: 0,
     currencySymbol: '$',
     duration: '',
-    rating: '',
+    rating: [],
     reviews: [],
     viewers: 0,
     thumbnail: '',
