@@ -11,6 +11,7 @@ import {
   Link,
   Chip,
   Divider,
+  Button,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -24,10 +25,79 @@ import AcademySlider from './components/AcademySlider';
 function AcademyDetails() {
   const navigate = useNavigate();
   const { courseId } = useParams();
-  const  courses  = useSelector(coursesSelector);
+  const courses = useSelector(coursesSelector);
   // console.log(courses, courseId);
   const course = courses.find((item) => item.id === courseId);
-  // console.log('course', course);
+  if (!course)
+    return (
+      <Container>
+        <Grid container spacing={4} justifyContent={'center'}>
+          <Grid item md={6}>
+            <Typography variant="h4">Course not found</Typography>
+            <Typography variant="subtitle1">
+              The course you are looking for does not exist.
+            </Typography>
+            <Button variant="contained" onClick={() => navigate('/academy')}>
+              Go to courses
+            </Button>
+          </Grid>
+        </Grid>
+      </Container>
+    );
+
+  const renderRating = () => {
+    if (!course) return null;
+    const rating =
+      course?.rating.reduce((acc, rating) => acc + rating.stars, 0) || 0;
+    const reviews = course?.reviews.length || 0;
+    return (
+      <Grid item display="flex" alignItems={'center'}>
+        <StarIcon sx={{ color: '#FFD215' }} />
+        <Typography variant="subtitle2" ml={0.7}>
+          {rating} ({reviews} reviews)
+        </Typography>
+      </Grid>
+    );
+  };
+
+  const renderDuration = () => {
+    if (!course) return null;
+    const duration = course?.duration || 0;
+    return (
+      <Grid item display="flex" alignItems={'center'}>
+        <AccessTimeIcon />
+        <Typography variant="subtitle2" ml={0.7}>
+          {duration} hr(s)
+        </Typography>
+      </Grid>
+    );
+  };
+
+  const renderViews = () => {
+    if (!course) return null;
+    const viewers = course?.viewers + 1 || 1;
+    return (
+      <Grid item display="flex" alignItems={'center'}>
+        <VisibilityIcon />
+        <Typography variant="subtitle2" ml={0.7}>
+          {viewers} viewers
+        </Typography>
+      </Grid>
+    );
+  };
+
+  const renderThumbnail = () => {
+    return course ? (
+      <img
+        src={course?.thumbnail}
+        alt={course?.title}
+        width={560.99}
+        height={341}
+      />
+    ) : (
+      <img src={CourseImage} alt={course?.title} />
+    );
+  };
   return (
     <Container>
       <Grid container spacing={4}>
@@ -67,45 +137,29 @@ function AcademyDetails() {
               /
             </Typography>
             <Typography variant="subtitle1" color="#FFD215" fontWeight={'700'}>
-              Crypto Payments Explained
+              {course?.title}
             </Typography>
           </Grid>
           <Grid my={2}>
             <Typography variant="h3" color="#FFD215">
-              Complete crypto payment master class
+              {course?.description}
             </Typography>
           </Grid>
-          <Typography variant="subtitle2">
-            Learn to Crypto like a Pro with Crypto. Start with Crypto
-            Programming Basics and progress to a Crypto payment explained.
-          </Typography>
+          <Typography variant="subtitle2">{course?.summary}</Typography>
           <Grid container gap={1.1} my={2.5}>
-            <Chip color="primary" label="Programming" />
-            <Chip color="primary" label="Development" />
+            {course?.skills.map((skill) => (
+              <Chip color="primary" label={skill} key={skill} />
+            ))}
           </Grid>
           <Grid container gap={1.1} my={2.5}>
-            <Chip color="secondary" label="Blockchain" />
-            <Chip color="secondary" label="Economics" />
+            {course?.tags.map((tag) => (
+              <Chip color="secondary" label={tag} key={tag} />
+            ))}
           </Grid>
           <Grid container gap={2}>
-            <Grid item display="flex" alignItems={'center'}>
-              <StarIcon sx={{ color: '#FFD215' }} />
-              <Typography variant="subtitle2" ml={0.7}>
-                4.7 (120 reviews)
-              </Typography>
-            </Grid>
-            <Grid item display="flex" alignItems={'center'}>
-              <AccessTimeIcon />
-              <Typography variant="subtitle2" ml={0.7}>
-                2 hour 15 min
-              </Typography>
-            </Grid>
-            <Grid item display="flex" alignItems={'center'}>
-              <VisibilityIcon />
-              <Typography variant="subtitle2" ml={0.7}>
-                251 viewers
-              </Typography>
-            </Grid>
+            {renderRating()}
+            {renderDuration()}
+            {renderViews()}
           </Grid>
           <Grid container mt={1.9}>
             <Typography mr={0.5}>Created by :</Typography>
@@ -113,12 +167,12 @@ function AcademyDetails() {
               sx={{ color: '#FFD215', cursor: 'pointer' }}
               onClick={() => navigate('/academy/teacher-profile')}
             >
-              Hattie H. Moore{' '}
+              {course?.teacher.name}
             </Typography>
           </Grid>
         </Grid>
         <Grid item md={6}>
-          <img src={CourseImage} alt="img" height="341px" width="100%" />
+          {renderThumbnail()}
         </Grid>
       </Grid>
       <Grid
@@ -135,13 +189,13 @@ function AcademyDetails() {
           <Grid item display={'flex'} alignItems="center">
             <CircleIcon sx={{ fontSize: '6px' }} />
             <Typography variant="subtitle1" ml={1}>
-              84 lectures
+              {course?.lectures.length} lectures
             </Typography>
           </Grid>
           <Grid item display={'flex'} alignItems="center">
             <CircleIcon sx={{ fontSize: '6px' }} />
             <Typography variant="subtitle1" ml={1}>
-              2h 15m total length
+              {course?.duration} hr(s) total length
             </Typography>
           </Grid>
         </Grid>

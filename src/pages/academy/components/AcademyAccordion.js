@@ -23,7 +23,7 @@ function AcademyAccordion({ course }) {
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-  console.log('course', course);
+  // console.log('course', course);
   const data = course.map((item) => ({
     title: item.name,
     content: item.lesson.map((lesson) => ({

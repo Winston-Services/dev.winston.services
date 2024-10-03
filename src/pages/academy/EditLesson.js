@@ -28,7 +28,6 @@ import {
   Tooltip,
 } from '@mui/material';
 import { FieldArray, Form, Formik } from 'formik';
-import PropTypes from 'prop-types';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,7 +36,6 @@ import * as Yup from 'yup';
 
 import AutoCompleteMultiple from '../../components/common/AutoCompleteMultiple';
 import TextField from '../../components/common/TextField';
-import UploadFile from '../../components/common/UploadFile';
 import {
   courseEditSelector,
   lectureEditSelector,
@@ -47,11 +45,11 @@ import {
   setLectureEdit,
   setLessonEdit,
   setCourseEdit,
+  addCourse,
 } from '../../store/academy';
 import { uuid } from './../../components/common/CommonFunction';
-import ImageSliderCard from './components/ImageSliderCard';
-import TextEditor from './components/TextEditor';
-import VideoCard from './components/VideoCard';
+import LessonContentCard from './components/common/LessonContentCard';
+
 const FORM_VALIDATION = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -71,61 +69,6 @@ const FORM_VALIDATION = Yup.object().shape({
   completed: Yup.boolean(),
 });
 
-const RenderContentComponent = ({ item, index, type, moveCard }) => {
-  // console.log('render', item);
-  switch (type) {
-    case 'image':
-      return (
-        <Grid container width="100%" my={2}>
-          <Grid item xs={12}>
-            <UploadFile
-              name={`content[${index}].content`}
-              title="Upload image"
-              subtitle="You can upload maximum 200kb"
-              height="320px"
-            />
-          </Grid>
-        </Grid>
-      );
-    case 'video':
-      return (
-        <VideoCard
-          name={`content[${index}].content`}
-          videoIndex={index}
-          item={item}
-        />
-      );
-    case 'slider':
-      return (
-        <DndProvider backend={HTML5Backend}>
-          <ImageSliderCard
-            name={`content[${index}].content`}
-            sliderIndex={index}
-            item={item}
-          />
-        </DndProvider>
-      );
-    case 'wysiwyg':
-      return (
-        <TextEditor
-          name={`content[${index}].content`}
-          editorIndex={index}
-          item={item}
-          moveCard={moveCard}
-        />
-      );
-    default:
-      return <></>;
-  }
-};
-
-RenderContentComponent.propTypes = {
-  item: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
-  type: PropTypes.string.isRequired,
-  moveCard: PropTypes.func.isRequired,
-};
-
 function EditLesson() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -137,12 +80,9 @@ function EditLesson() {
   const [expanded, setExpanded] = React.useState(true);
   const [icon, setIcon] = React.useState(true);
 
+  // This method is set the lesson and expand the accordion.
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
-  };
-
-  const moveCard = (id, index) => {
-    console.log('moveCard', id, index);
   };
 
   React.useEffect(() => {
@@ -156,7 +96,7 @@ function EditLesson() {
   }
 
   const handleSumbit = (values) => {
-    console.log('Running handleSumbit ', values);
+    // console.log('Running handleSumbit ', values);
     dispatch(setLessonEdit(values));
     // console.log('arrayfirst', values, lessonData);
     const lectureUpdate = lectureData.map((lecture) => {
@@ -190,11 +130,15 @@ function EditLesson() {
       >
         <Typography variant="h5">{courseData.title}</Typography>
         <Grid display="flex" gap={3}>
-          <Link variant="subtitle2">Preview</Link>
+          <Link variant="subtitle2" onClick={() => navigate('/academy/preview-course')}>Preview</Link>
           <Link type="submit" variant="subtitle2">
             Save
           </Link>
-          <Link variant="subtitle2">Submit for review</Link>
+          <Link variant="subtitle2" onClick={() => navigate('/academy/publish-course')}>Publish</Link>
+          <Link variant="subtitle2" onClick={() => {
+            dispatch(addCourse(courseData));
+
+          }}>Test</Link>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
@@ -332,20 +276,13 @@ function EditLesson() {
                 <Divider />
                 <FieldArray
                   name="content"
-                  render={({ form, insert }) => {
+                  render={(props) => {
+                    // eslint-disable-next-line react/prop-types
+                    const { form, insert } = props;
                     return (
                       <div>
                         <DndProvider backend={HTML5Backend}>
-                          {lessonData.content.map((item, index) => (
-                            <RenderContentComponent
-                              key={item.id}
-                              name={`content[${index}].content`}
-                              item={item}
-                              index={index}
-                              type={item.type}
-                              moveCard={moveCard}
-                            />
-                          ))}
+                          <LessonContentCard {...props} />
                         </DndProvider>
                         <Grid container gap={2} alignItems="end">
                           <IconButton
@@ -374,6 +311,7 @@ function EditLesson() {
                                     content: '',
                                     config: null,
                                   });
+                                  // eslint-disable-next-line react/prop-types
                                   form.submitForm();
                                   setIcon(true);
                                 }}
@@ -391,6 +329,7 @@ function EditLesson() {
                                     content: '',
                                     config: null,
                                   });
+                                  // eslint-disable-next-line react/prop-types
                                   form.submitForm();
                                   setIcon(true);
                                 }}
@@ -408,6 +347,7 @@ function EditLesson() {
                                     content: 'Replace this content.',
                                     config: null,
                                   });
+                                  // eslint-disable-next-line react/prop-types
                                   form.submitForm();
                                   setIcon(true);
                                 }}
@@ -425,6 +365,7 @@ function EditLesson() {
                                     content: [{ id: uuid(), image: '' }],
                                     config: null,
                                   });
+                                  // eslint-disable-next-line react/prop-types
                                   form.submitForm();
                                   setIcon(true);
                                 }}

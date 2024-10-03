@@ -42,11 +42,13 @@ function ImageCard({ item, itemIndex, removeImageItem, moveCard, id }) {
   const [{ isDragging }, drag, preview] = useDrag({
     type: 'card',
     item: () => {
-      console.log(id, itemIndex);
+      // console.log(id, itemIndex);
+
       return { id, itemIndex };
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
+      handlerId: monitor.getHandlerId(),
     }),
   });
   const opacity = isDragging ? '0' : '1';
@@ -70,7 +72,7 @@ function ImageCard({ item, itemIndex, removeImageItem, moveCard, id }) {
               sx={{ color: 'red' }}
               onClick={() => {
                 removeImageItem(item.id);
-                console.log(item.id);
+                // console.log(item.id);
               }}
             >
               <Cancel />

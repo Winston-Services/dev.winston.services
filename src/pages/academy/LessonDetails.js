@@ -16,20 +16,19 @@ import {
   Divider,
   LinearProgress,
   Button,
+  Skeleton,
 } from '@mui/material/';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 
 import { coursesSelector } from '../../store/academy';
-import LessonDetailsImage from './../../assets/lesson_details.svg';
-import Image1 from './../../assets/news_image_1.png';
-import Image2 from './../../assets/news_image_2.png';
+// import LessonDetailsImage from './../../assets/lesson_details.svg';
 import AcademyAccordion from './components/AcademyAccordion';
-import RatingPage from './RatingPage';
+// import RatingPage from './RatingPage';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
+/*
 const data = [
   {
     title: 'Analysis patterns may be classified into several categories:',
@@ -77,16 +76,7 @@ const data1 = [
     ],
   },
 ];
-
-const imageData = [
-  {
-    image: Image1,
-  },
-  {
-    image: Image2,
-  },
-];
-
+*/
 const settings = {
   arrows: false,
   dots: false,
@@ -94,6 +84,8 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
 };
 /*
 const courses = [
@@ -320,19 +312,18 @@ const courses = [
 function LessonDetails() {
   const { lessonId } = useParams();
   const courses = useSelector(coursesSelector);
-  const course = courses.find((course) => 
-    course.lectures.some((lecture) => lecture.lesson.some((lesson) => lesson.id === lessonId))
+  const course = courses.find((course) =>
+    course.lectures.some((lecture) =>
+      lecture.lesson.some((lesson) => lesson.id === lessonId)
+    )
   );
-  
+  const lecture = course?.lectures.find((lecture) =>
+    lecture.lesson.some((lesson) => lesson.id === lessonId)
+  );
+  const lesson = lecture?.lesson.find((lesson) => lesson.id === lessonId);
+
   console.log(course);
-  const slider = React.useRef();
-  const prevHandle = () => {
-    slider.current.slickPrev();
-  };
-  const nextHandle = () => {
-    slider.current.slickNext();
-  };
-  
+
   const quizData = [
     {
       question: 'What is the capital of France?',
@@ -341,6 +332,156 @@ function LessonDetails() {
     },
   ];
   const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (!course) {
+      navigate('/academy');
+    }
+    if (!lecture) {
+      navigate(`/academy/details/${course.id}`);
+    }
+    if (!lesson) {
+      navigate(`/academy/details/${course.id}/${lecture.id}`);
+    }
+  }, [course, navigate, lecture, lesson]);
+
+  if (!course) {
+    return (
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Skeleton variant="rectangular" width="100%" height={'45vh'} />
+          </Grid>
+        </Grid>
+      </Container>
+    );
+  }
+  const SliderContent = (content) => {
+    const { content: contentData, ...props } = content;
+    const slider = React.useRef();
+    const prevHandle = () => {
+      slider.current.slickPrev();
+    };
+    const nextHandle = () => {
+      slider.current.slickNext();
+    };
+    //console.log(contentData);
+    const imageData = contentData.map((item) => {
+      return {
+        image: item.name,
+      };
+    });
+    // console.log(imageData);
+    return (
+      <Grid
+        container
+        display={'flex'}
+        justifyContent="space-between"
+        {...props}
+        sx={{
+          mt: 3,
+          mb: 3,
+        }}
+      >
+        <Grid item md={1} display="flex" alignItems={'center'}>
+          <Card sx={{ px: 2, py: 1.5 }} onClick={() => prevHandle()}>
+            <ArrowBackIosNew sx={{ mt: 0.5 }} />
+          </Card>
+        </Grid>
+        <Grid item md={9.1}>
+          <Slider ref={slider} {...settings}>
+            {imageData.map((item, index) => {
+              return (
+                <Grid key={index}>
+                  <img
+                    src={item.image}
+                    alt=""
+                    width={'100%'}
+                    height="255px"
+                    style={{ borderRadius: '10px' }}
+                  />
+                </Grid>
+              );
+            })}
+          </Slider>
+        </Grid>
+        <Grid item md={1} display="flex" alignItems={'center'}>
+          <Card sx={{ px: 2, py: 1.5 }} onClick={() => nextHandle()}>
+            <ArrowForwardIos sx={{ mt: 0.5 }} />
+          </Card>
+        </Grid>
+      </Grid>
+    );
+  };
+
+  const renderContent = (content) => {
+    return content.map((item, index) => {
+      switch (item.type) {
+        case 'video':
+          return (
+            <Grid
+              container
+              display={'flex'}
+              justifyContent="space-between"
+              key={index}
+              sx={{
+                mt: 2,
+              }}
+            >
+              <Grid item md={12} display="flex" alignItems={'center'}>
+                <video width={'100%'} height="auto" controls>
+                  {/* <source src={URL.createObjectURL(field.value)} type="video/mp4" /> */}
+                  <source src={item.content} />
+                </video>
+              </Grid>
+            </Grid>
+          );
+        case 'image':
+          return (
+            <Grid
+              container
+              display={'flex'}
+              justifyContent="center"
+              key={index}
+              sx={{
+                mt: 2,
+              }}
+            >
+              <Grid item md={12} display="flex" alignItems={'center'}>
+                <img
+                  src={item.content}
+                  alt={`content-image-${index}`}
+                  width="100%"
+                  height="320px"
+                  style={{ borderRadius: '20px', objectFit: 'cover' }}
+                />
+              </Grid>
+            </Grid>
+          );
+        case 'wysiwyg':
+          return (
+            <Grid
+              container
+              key={index}
+              sx={{
+                mt: 2,
+              }}
+            >
+              <Grid item md={12} dangerouslySetInnerHTML={{ __html: item.content }} />
+            </Grid>
+          );
+        case 'slider':
+          return <SliderContent content={item.content} key={index} />;
+        default:
+          return (
+            <Grid key={index}>
+              <span>Content Card.</span>
+            </Grid>
+          );
+      }
+    });
+  };
+
   return (
     <Container>
       <Grid container spacing={3}>
@@ -355,7 +496,11 @@ function LessonDetails() {
             <Divider />
             <Grid p={3}>
               <Typography variant="h5">
-                Complete crypto payment master class
+                {course ? (
+                  course.title
+                ) : (
+                  <Skeleton variant="text" width="100%" height={20} />
+                )}
               </Typography>
               <Grid my={3}>
                 <Grid container justifyContent="space-between">
@@ -380,82 +525,49 @@ function LessonDetails() {
           </Card>
         </Grid>
         <Grid item xs={12} md={7.5}>
-          <Typography variant="h4">
-            Complete crypto payment master class
+          <Typography variant="h3">
+            {course ? (
+              course.title
+            ) : (
+              <Skeleton variant="text" width="100%" height={20} />
+            )}
           </Typography>
-          {data.map((item, index) => {
-            return (
-              <Grid key={index}>
-                <Typography variant="h5" mt={3}>
-                  {item.title}
-                </Typography>
-                <ul style={{ paddingLeft: 20 }}>
-                  {item.description.map((listItem, listIndex) => {
-                    return (
-                      <div key={listIndex}>
-                        <li key={listIndex}>{listItem.list}</li>
-                        <br />
-                      </div>
-                    );
-                  })}
-                </ul>
-              </Grid>
-            );
-          })}
-          <Grid>
-            <img src={LessonDetailsImage} alt="" width={'100%'} />
-          </Grid>
-          {data1.map((item, index) => {
-            return (
-              <Grid key={index}>
-                <Typography variant="h5" mt={3}>
-                  {item.title}
-                </Typography>
-                <ul style={{ paddingLeft: 20 }}>
-                  {item.description.map((listItem, listIndex) => {
-                    return (
-                      <div key={listIndex}>
-                        <li key={listIndex}>{listItem.list}</li>
-                        <br />
-                      </div>
-                    );
-                  })}
-                </ul>
-              </Grid>
-            );
-          })}
-
-          <Grid container display={'flex'} justifyContent="space-between">
-            <Grid item md={1} display="flex" alignItems={'center'}>
-              <Card sx={{ px: 2, py: 1.5 }} onClick={() => prevHandle()}>
-                <ArrowBackIosNew sx={{ mt: 0.5 }} />
-              </Card>
-            </Grid>
-            <Grid item md={9.1}>
-              <Slider ref={slider} {...settings}>
-                {imageData.map((item, index) => {
-                  return (
-                    <Grid key={index}>
-                      <img
-                        src={item.image}
-                        alt=""
-                        width={'100%'}
-                        height="255px"
-                        style={{ borderRadius: '10px' }}
-                      />
-                    </Grid>
-                  );
-                })}
-              </Slider>
-            </Grid>
-            <Grid item md={1} display="flex" alignItems={'center'}>
-              <Card sx={{ px: 2, py: 1.5 }} onClick={() => nextHandle()}>
-                <ArrowForwardIos sx={{ mt: 0.5 }} />
-              </Card>
-            </Grid>
-          </Grid>
-
-          {/* <div style={{ position: 'relative' }}>{renderArrows()}</div> */}
+          <Typography variant="h4" mt={3}>
+            {course ? (
+              course.description
+            ) : (
+              <Skeleton variant="text" width="100%" height={20} />
+            )}
+          </Typography>
+          <Typography variant="h5" mt={2}>
+            {course ? (
+              course.summary
+            ) : (
+              <Skeleton variant="text" width="100%" height={20} />
+            )}
+          </Typography>
+          <Typography variant="h6" mt={3}>
+            {lecture ? (
+              lecture.name
+            ) : (
+              <Skeleton variant="text" width="100%" height={20} />
+            )}
+          </Typography>
+          <Typography variant="h6" mt={2}>
+            {lesson ? (
+              lesson.name
+            ) : (
+              <Skeleton variant="text" width="100%" height={20} />
+            )}
+          </Typography>
+          <Typography variant="body1" mt={3} mb={3}>
+            {lesson ? (
+              lesson.summary
+            ) : (
+              <Skeleton variant="text" width="100%" height={20} />
+            )}
+          </Typography>
+          {renderContent(lesson.content)}
           <Grid container direction="column" mt={5}>
             <Typography variant="h4" mb={3}>
               Quiz
@@ -502,7 +614,7 @@ function LessonDetails() {
           </Grid>
           <Grid container justifyContent={'space-between'} mt={5}>
             <Grid item xs={12}>
-              <RatingPage />
+              {/* <RatingPage /> */}
             </Grid>
           </Grid>
           <Grid container justifyContent={'space-between'} mt={5}>

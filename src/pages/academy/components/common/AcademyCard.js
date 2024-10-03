@@ -28,6 +28,7 @@ const difficultyLevelIcons = {
 
 function AcademyCard({ item }) {
   const navigate = useNavigate();
+  const rating = item.rating.reduce((acc, rating) => acc + rating.stars, 0) || 0;
   return (
     <Card elevation={0} sx={{ position: 'relative', height: '100%' }}>
       <CardActionArea
@@ -47,7 +48,7 @@ function AcademyCard({ item }) {
           height="260px"
           sx={{ objectFit: 'cover', cursor: 'pointer' }}
           image={item.image}
-          alt="green iguana"
+          alt={item.title}
         />
 
         <Box
@@ -152,7 +153,7 @@ function AcademyCard({ item }) {
                   sx={{ width: '20px', height: '20px', color: '#FFD215' }}
                 />
                 <Typography variant="subtitle2">
-                  {item.rating} reviews
+                  {rating} reviews
                 </Typography>
               </Grid>
             </Grid>
