@@ -293,10 +293,10 @@ function AddLectures() {
           ...courseData,
         }}
         validationSchema={FORM_VALIDATION}
-        onSubmit={(values) => {
-          console.log('lectures', lectures);
-          console.log('courseData', courseData);
-          console.log('values', values);
+        onSubmit={() => {
+          // console.log('lectures', lectures);
+          // console.log('courseData', courseData);
+          // console.log('values', values);
           dispatch(
             setCourseEdit({
               ...courseData,

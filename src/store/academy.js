@@ -16,8 +16,8 @@ const courses = [
     step1: 'In person, informally',
     step2: 'I am a beginner',
     step3: 'Not at the moment',
-    title: 'Complete crypto payment master class',
-    description: 'Learn to Crypto like a Pro with Crypto.',
+    title: 'Winston Academy - Master Class',
+    description: 'Learn to earn with Winston Crypto',
     difficultyLevel: 'Beginner',
     price: 0,
     currencySymbol: '$',
@@ -31,30 +31,38 @@ const courses = [
     reviews: [
       {
         id: uuid(),
-        review: 'A comprehensive guide to understanding and implementing crypto payments in your applications.',
+        review:
+          'A comprehensive guide to understanding and implementing crypto payments in your applications.',
       },
     ],
     viewers: 99,
     thumbnail: 'https://picsum.photos/561/341?random=1',
     skills: ['Programming'],
     tags: ['Blockchain'],
-    summary:
-      'A comprehensive guide to understanding and implementing crypto payments in your applications. Start with Crypto Programming Basics and progress to a Crypto payment explained.',
+    summary:'A comprehensive guide to Winston Academy\'s learn to earn program. Learn at your own pace and earn crypto.',
     discountPrice: '19.99',
     lectures: [
       {
         id: uuid(),
-        name: 'Introduction to Crypto',
+        name: 'Introduction to Winston',
         lesson: [
           {
             id: uuid(),
-            name: 'What is Crypto?',
-            summary: 'Learn the basics of crypto and how it works.',
-            skills: ['Programming'],
-            tags: ['Blockchain'],
+            name: 'Meet Winston.',
+            summary:
+              'Winston is your personal assistant to all things blockchain.',
+            skills: [],
+            tags: ['Blockchain', 'Crypto Currency'],
             isRequired: true,
             duration: '10',
             content: [
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>Learn to earn with Winston by your side. From learning the basics of blockchain to earning crypto by teaching others. Winston Academy is your source to learn to earn.</p>\n',
+                config: null,
+              },
               {
                 id: uuid(),
                 type: 'image',
@@ -63,15 +71,73 @@ const courses = [
               },
               {
                 id: uuid(),
+                type: 'video',
+                content:
+                  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [
+              {
+                id: uuid(),
+                question: '',
+                options: [],
+                correctAnswer: '',
+              },
+            ],
+            answers: [
+              {
+                id: uuid(),
+                question: 0,
+                answer: '',
+                correct: false,
+              },
+            ],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Your first lesson',
+            summary:
+              'Once you start to your journey, you will be able to access your first lesson and start learning to earn.',
+            skills: [],
+            tags: ['Blockchain', 'Crypto Currency'],
+            isRequired: true,
+            duration: '10',
+            content: [
+              {
+                id: uuid(),
                 type: 'wysiwyg',
                 content:
-                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                  '<h1>Winston Academy</h1>\n<p>Learn to earn with Winston by your side. From learning the basics of blockchain to earning crypto by teaching others. Winston Academy is your source to learn to earn.</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
                 config: null,
               },
               {
                 id: uuid(),
                 type: 'video',
-                content: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+                content:
+                  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
                 config: null,
               },
               {
@@ -112,7 +178,7 @@ const courses = [
       },
     ],
     teacher: {
-      name: 'John Doe',
+      name: '@dreamingrainbow',
       image: 'https://picsum.photos/260/300?random=1',
     },
     progress: 0,
@@ -121,6 +187,2841 @@ const courses = [
     isReviewed: false,
     isApproved: false,
     isPublished: false,
+    isRejected: false,
+    isSaved: true,
+  },
+  {
+    id: uuid(),
+    step1: 'In person, informally',
+    step2: 'I am a beginner',
+    step3: 'Not at the moment',
+    title: 'A chance encounter.',
+    description: 'A chance encounter with Winston can change your life.',
+    difficultyLevel: '',
+    price: 0,
+    currencySymbol: '$',
+    duration: '',
+    rating: [],
+    reviews: [],
+    viewers: 0,
+    thumbnail: '',
+    skills: [],
+    tags: ['NFTs', 'AI', 'Blockchain'],
+    summary: 'A chance encounter with Winston can change your life. Education is key to a better future.',
+    discountPrice: '',
+    lectures: [
+      {
+        id: uuid(),
+        name: 'Lecture 1',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Introduction to Winston',
+            summary: 'Start your adventure with Winston. Learn all about blockchain, crypto currency, and more.',
+            skills: [],
+            tags: ['Blockchain', 'Crypto Currency'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Your second lesson',
+            summary: 'Once you start to your journey, you will be able to access your first lesson and start learning to earn.',
+            skills: [],
+            tags: ['Blockchain', 'Crypto Currency'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Your third lesson',
+            summary: 'Your now well on your way to becoming a blockchain expert.',
+            skills: [],
+            tags: ['Blockchain', 'Crypto Currency'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Lecture 2',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Lecture 3',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+    ],
+    teacher: {
+      name: '@dreamingrainbow',
+      image: 'https://picsum.photos/260/300?random=7',
+    },
+    progress: 0,
+    isTemplate: false,
+    isSubmitted: true,
+    isReviewed: false,
+    isApproved: false,
+    isPublished: true,
+    isRejected: false,
+    isSaved: true,
+  },
+  {
+    id: uuid(),
+    step1: 'In person, informally',
+    step2: 'I am a beginner',
+    step3: 'Not at the moment',
+    title: '',
+    description: '',
+    difficultyLevel: '',
+    price: 0,
+    currencySymbol: '$',
+    duration: '',
+    rating: [],
+    reviews: [],
+    viewers: 0,
+    thumbnail: '',
+    skills: [],
+    tags: [],
+    summary: '',
+    discountPrice: '',
+    lectures: [
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+    ],
+    teacher: {
+      name: '@dreamingrainbow',
+      image: 'https://picsum.photos/260/300?random=7',
+    },
+    progress: 0,
+    isTemplate: false,
+    isSubmitted: true,
+    isReviewed: false,
+    isApproved: false,
+    isPublished: true,
+    isRejected: false,
+    isSaved: true,
+  },
+  {
+    id: uuid(),
+    step1: 'In person, informally',
+    step2: 'I am a beginner',
+    step3: 'Not at the moment',
+    title: '',
+    description: '',
+    difficultyLevel: '',
+    price: 0,
+    currencySymbol: '$',
+    duration: '',
+    rating: [],
+    reviews: [],
+    viewers: 0,
+    thumbnail: '',
+    skills: [],
+    tags: [],
+    summary: '',
+    discountPrice: '',
+    lectures: [
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+    ],
+    teacher: {
+      name: '@dreamingrainbow',
+      image: 'https://picsum.photos/260/300?random=7',
+    },
+    progress: 0,
+    isTemplate: false,
+    isSubmitted: true,
+    isReviewed: false,
+    isApproved: false,
+    isPublished: true,
+    isRejected: false,
+    isSaved: true,
+  },
+  {
+    id: uuid(),
+    step1: 'In person, informally',
+    step2: 'I am a beginner',
+    step3: 'Not at the moment',
+    title: '',
+    description: '',
+    difficultyLevel: '',
+    price: 0,
+    currencySymbol: '$',
+    duration: '',
+    rating: [],
+    reviews: [],
+    viewers: 0,
+    thumbnail: '',
+    skills: [],
+    tags: [],
+    summary: '',
+    discountPrice: '',
+    lectures: [
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+    ],
+    teacher: {
+      name: '@dreamingrainbow',
+      image: 'https://picsum.photos/260/300?random=7',
+    },
+    progress: 0,
+    isTemplate: false,
+    isSubmitted: true,
+    isReviewed: false,
+    isApproved: false,
+    isPublished: true,
+    isRejected: false,
+    isSaved: true,
+  },
+  {
+    id: uuid(),
+    step1: 'In person, informally',
+    step2: 'I am a beginner',
+    step3: 'Not at the moment',
+    title: '',
+    description: '',
+    difficultyLevel: '',
+    price: 0,
+    currencySymbol: '$',
+    duration: '',
+    rating: [],
+    reviews: [],
+    viewers: 0,
+    thumbnail: '',
+    skills: [],
+    tags: [],
+    summary: '',
+    discountPrice: '',
+    lectures: [
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+
+      {
+        id: uuid(),
+        name: 'Example Lecture',
+        lesson: [
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+          {
+            id: uuid(),
+            name: 'Example Lesson',
+            summary: 'Example Lesson Summary',
+            skills: ['Example Skill'],
+            tags: ['Example Tag'],
+            isRequired: false,
+            duration: '',
+            content: [
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=1',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'wysiwyg',
+                content:
+                  '<h1>Winston Academy</h1>\n<p>This is the content of the lesson</p>\n',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'image',
+                content: 'https://picsum.photos/260/300?random=2',
+                config: null,
+              },
+              {
+                id: uuid(),
+                type: 'slider',
+                content: [
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=3',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=4',
+                  },
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=5',
+                  },
+
+                  {
+                    id: uuid(),
+                    name: 'https://picsum.photos/260/300?random=6',
+                  },
+                ],
+                config: null,
+              },
+            ],
+            quiz: [],
+            answers: [],
+            completed: false,
+          },
+        ],
+      },
+    ],
+    teacher: {
+      name: '@dreamingrainbow',
+      image: 'https://picsum.photos/260/300?random=7',
+    },
+    progress: 0,
+    isTemplate: false,
+    isSubmitted: true,
+    isReviewed: false,
+    isApproved: false,
+    isPublished: true,
     isRejected: false,
     isSaved: true,
   },

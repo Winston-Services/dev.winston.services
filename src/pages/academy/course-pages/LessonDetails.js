@@ -22,61 +22,13 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 
-import { coursesSelector } from '../../store/academy';
+import { coursesSelector } from '../../../store/academy';
 // import LessonDetailsImage from './../../assets/lesson_details.svg';
-import AcademyAccordion from './components/AcademyAccordion';
+import AcademyAccordion from '../components/AcademyAccordion';
 // import RatingPage from './RatingPage';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-/*
-const data = [
-  {
-    title: 'Analysis patterns may be classified into several categories:',
-    description: [
-      {
-        list: 'The vocabulary category consists of patterns related to a problem description from the point of view of a user.',
-      },
-      {
-        list: 'The error category covers general error distribution patterns. These patterns are related to error and failure messages, either explicitly stating an error or indirectly via an error code, abnormal function return value, or status values in the failure range.',
-      },
-      {
-        list: 'We also consider whole traces (here we ignore trace or log message contents and treat all messages statistically), their large-scale structure (about the coarse grain structure of software traces and logs where the division unit is often a component or some high-level functionality), activity patterns related to various software activities we see in logs and traces (most of them involve time dependency), patterns related to individual trace message structure, patterns related to collections of messages (called blocks), and, finally, patterns related to several traces and logs as a collection of artifacts from software incident (called trace sets).',
-      },
-      {
-        list: 'There are also memory, text, code, and data categories.',
-      },
-    ],
-  },
-];
-const data1 = [
-  {
-    title: 'Analysis patterns may be classified into several categories:',
-    description: [
-      {
-        list: 'The vocabulary category consists of patterns related to a problem description from the point of view of a user.',
-      },
-      {
-        list: 'The error category covers general error distribution patterns. These patterns are related to error and failure messages, either explicitly stating an error or indirectly via an error code, abnormal function return value, or status values in the failure range.',
-      },
-      {
-        list: 'We also consider whole traces (here we ignore trace or log message contents and treat all messages statistically), their large-scale structure (about the coarse grain structure of software traces and logs where the division unit is often a component or some high-level functionality), activity patterns related to various software activities we see in logs and traces (most of them involve time dependency), patterns related to individual trace message structure, patterns related to collections of messages (called blocks), and, finally, patterns related to several traces and logs as a collection of artifacts from software incident (called trace sets).',
-      },
-      {
-        list: 'There are also memory, text, code, and data categories.',
-      },
-      {
-        list: 'The error category covers general error distribution patterns. These patterns are related to error and failure messages, either explicitly stating an error or indirectly via an error code, abnormal function return value, or status values in the failure range.',
-      },
-      {
-        list: 'We also consider whole traces (here we ignore trace or log message contents and treat all messages statistically), their large-scale structure (about the coarse grain structure of software traces and logs where the division unit is often a component or some high-level functionality), activity patterns related to various software activities we see in logs and traces (most of them involve time dependency), patterns related to individual trace message structure, patterns related to collections of messages (called blocks), and, finally, patterns related to several traces and logs as a collection of artifacts from software incident (called trace sets).',
-      },
-      {
-        list: 'There are also memory, text, code, and data categories.',
-      },
-    ],
-  },
-];
-*/
+
 const settings = {
   arrows: false,
   dots: false,

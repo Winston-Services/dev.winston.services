@@ -9,16 +9,8 @@ import {
   TextField,
   Rating,
 } from '@mui/material';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
-import { courseSelector } from '../../store/academy';
-function RatingPage({ lessonId }) {
-  const { course } = useSelector(courseSelector);
-  if (lessonId) {
-    const lesson = course.lessons.find((lesson) => lesson.id === lessonId);
-    console.log(lesson);
-  }
+function RatingPage() {
 
   return (
     <Container>
@@ -61,9 +53,5 @@ function RatingPage({ lessonId }) {
     </Container>
   );
 }
-
-RatingPage.propTypes = {
-  lessonId: PropTypes.string,
-};
 
 export default RatingPage;

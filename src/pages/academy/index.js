@@ -3,15 +3,15 @@ import React from 'react';
 import { useRoutes, Navigate } from 'react-router-dom';
 
 const Academy = React.lazy(() => import('./Academy'));
-const AcademyDetails = React.lazy(() => import('./AcademyDetails'));
+const AcademyDetails = React.lazy(() => import('./course-pages/AcademyDetails'));
 const Rating = React.lazy(() => import('./RatingPage'));
 const TeacherProfile = React.lazy(() => import('./TeacherProfile'));
 const AddCourse = React.lazy(() => import('./course-editor/AddCourse'));
 const CreateCourse = React.lazy(() => import('./course-editor/CreateCourse'));
 const AddLectures = React.lazy(() => import('./course-editor/AddLectures'));
 const Courses = React.lazy(() => import('./Courses'));
-const LessonDetails = React.lazy(() => import('./LessonDetails'));
-const EditLesson = React.lazy(() => import('./EditLesson'));
+const LessonDetails = React.lazy(() => import('./course-pages/LessonDetails'));
+const EditLesson = React.lazy(() => import('./course-editor/EditLesson'));
 const SuccessUpload = React.lazy(() => import('./SuccessUpload'));
 const AllCourseList = React.lazy(() => import('./AllCourseList'));
 import './index.css';

@@ -186,8 +186,9 @@ export default function LessonCard({
             <IconButton
               // onClick={() => navigate('/academy/add-lecture/edit-lesson/')}
               onClick={() => {
-                navigate('/academy/edit-lesson');
                 dispatch(setLessonEdit(lesson));
+                navigate('/academy/edit-lesson');
+
               }}
             >
               <Edit

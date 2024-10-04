@@ -34,8 +34,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
 
-import AutoCompleteMultiple from '../../components/common/AutoCompleteMultiple';
-import TextField from '../../components/common/TextField';
+import AutoCompleteMultiple from '../../../components/common/AutoCompleteMultiple';
+import { uuid } from '../../../components/common/CommonFunction';
+import TextField from '../../../components/common/TextField';
 import {
   courseEditSelector,
   lectureEditSelector,
@@ -46,9 +47,11 @@ import {
   setLessonEdit,
   setCourseEdit,
   addCourse,
-} from '../../store/academy';
-import { uuid } from './../../components/common/CommonFunction';
-import LessonContentCard from './components/common/LessonContentCard';
+  setActiveCourse,
+  setActiveLecture,
+  setActiveLesson,
+} from '../../../store/academy';
+import LessonContentCard from '../components/common/LessonContentCard';
 
 const FORM_VALIDATION = Yup.object().shape({
   name: Yup.string()
@@ -77,6 +80,7 @@ function EditLesson() {
   const courseData = useSelector(courseEditSelector);
   const lectureData = useSelector(lectureEditSelector);
   const lessonData = useSelector(lessonEditSelector);
+
   const [expanded, setExpanded] = React.useState(true);
   const [icon, setIcon] = React.useState(true);
 
@@ -97,9 +101,14 @@ function EditLesson() {
 
   const handleSumbit = (values) => {
     // console.log('Running handleSumbit ', values);
+    // values.id is the lesson id
     dispatch(setLessonEdit(values));
-    // console.log('arrayfirst', values, lessonData);
+    let lessonId = values.id;
+    let lectureIndex = lectureData.findIndex((lecture) => lecture.lesson.find((lesson) => lesson.id === lessonId));
+    let lectureId = lectureData[lectureIndex].id;
+    
     const lectureUpdate = lectureData.map((lecture) => {
+      if(lecture.id === lectureId){
       const lectureUpdated = {
         ...lecture,
         lesson: lecture.lesson.map((lesson) => {
@@ -110,6 +119,8 @@ function EditLesson() {
         }),
       };
       return lectureUpdated;
+    }
+    return lecture;
     });
     dispatch(setLectureEdit(lectureUpdate));
     const courseUpdate = {
@@ -117,6 +128,7 @@ function EditLesson() {
       lectures: lectureUpdate,
     };
     dispatch(setCourseEdit(courseUpdate));
+    
   };
 
   return (
@@ -130,15 +142,36 @@ function EditLesson() {
       >
         <Typography variant="h5">{courseData.title}</Typography>
         <Grid display="flex" gap={3}>
-          <Link variant="subtitle2" onClick={() => navigate('/academy/preview-course')}>Preview</Link>
+          <Link
+            variant="subtitle2"
+            onClick={() => {
+              dispatch(setActiveCourse(courseData));
+              dispatch(setActiveLecture(lectureData));
+              dispatch(setActiveLesson(lessonData));
+              navigate('/academy/details/{COURSE_ID}'.replace('{COURSE_ID}', courseData.id ));
+            }}
+          >
+            Preview
+          </Link>
           <Link type="submit" variant="subtitle2">
             Save
           </Link>
-          <Link variant="subtitle2" onClick={() => navigate('/academy/publish-course')}>Publish</Link>
-          <Link variant="subtitle2" onClick={() => {
-            dispatch(addCourse(courseData));
-
-          }}>Test</Link>
+          {/*<Link variant="subtitle2" onClick={() => navigate('/academy/publish-course')}>Publish</Link>*/}
+          <Link
+            variant="subtitle2"
+            onClick={() => {
+              dispatch(addCourse(courseData));
+              dispatch(setActiveCourse(courseData));
+              dispatch(setActiveLecture(lectureData));
+              dispatch(setActiveLesson(lessonData));
+              dispatch(setCourseEdit(null));
+              dispatch(setLectureEdit(null));
+              dispatch(setLessonEdit(null));
+              navigate('/academy/details/{COURSE_ID}'.replace('{COURSE_ID}', courseData.id ));
+            }}
+          >
+            Publish
+          </Link>
         </Grid>
       </Grid>
       <Grid container spacing={3}>
@@ -383,7 +416,7 @@ function EditLesson() {
                 />
               </Card>
               <Button type="submit" variant="outlined" sx={{ mt: 2 }}>
-                Save Lesson
+                Save
               </Button>
             </Form>
           </Formik>

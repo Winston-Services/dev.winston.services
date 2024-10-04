@@ -17,10 +17,10 @@ import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // import AcademyDetailsImage from '../../assets/academy_details_image.svg';
-import { coursesSelector } from '../../store/academy';
-import CourseImage from './../../assets/course.png';
-import AcademyAccordion from './components/AcademyAccordion';
-import AcademySlider from './components/AcademySlider';
+import CourseImage from '../../../assets/course.png';
+import { coursesSelector } from '../../../store/academy';
+import AcademyAccordion from '../components/AcademyAccordion';
+import AcademySlider from '../components/AcademySlider';
 
 function AcademyDetails() {
   const navigate = useNavigate();
@@ -98,6 +98,7 @@ function AcademyDetails() {
       <img src={CourseImage} alt={course?.title} />
     );
   };
+  
   return (
     <Container>
       <Grid container spacing={4}>
