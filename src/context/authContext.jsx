@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from 'react-router';
 import { Navigate } from 'react-router-dom';
 
 import { setUserWallet, userInfoSelector } from '../store/user';
-// import { isElectron } from '../utils/commonFunctions';
+import { isElectron } from '../utils/commonFunctions';
 
 const oldToken = false;
 // const oldToken = localStorage.getItem('token')
@@ -118,7 +118,7 @@ export function AuthProvider({ children }) {
   };
 
   React.useEffect(() => {
-    if (!connected) {
+    if (!connected && !isElectron()) {
       connection.current = new WebSocket('https://ws.winston.services:7557/ws');
       communicate(connection.current);
     }

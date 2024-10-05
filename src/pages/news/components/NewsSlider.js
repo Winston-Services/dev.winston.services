@@ -1,15 +1,18 @@
 import React from 'react';
 
-import { Grid, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+
+import { Grid } from '@mui/material';
+import { useSelector } from 'react-redux';
 import Slider from 'react-slick/lib/slider';
 
+import { topNewsSelector } from '../../../store/news';
 import Image1 from './../../../assets/news_image_1.png';
 import Image2 from './../../../assets/news_image_2.png';
 import NewsSliderCard from './NewsSliderCard';
 
 function NewsSlider() {
-  const navigate = useNavigate();
+  const newsData = useSelector(topNewsSelector);
+  /*
   const newsData = [
     {
       image: Image1,
@@ -23,6 +26,7 @@ function NewsSlider() {
       description: 'The Non-Fungible Token Bible',
     },
   ];
+  */
   const settings = {
     dots: false,
     infinite: true,
@@ -39,35 +43,26 @@ function NewsSlider() {
           {newsData.map((item, index) => {
             return (
               <div key={index}>
-                <NewsSliderCard item={item} />
+                <NewsSliderCard
+                  item={{
+                    ...item,
+                    description: item.description.substring(0, 100),
+                    image: item.image === 'ImageData1' ? Image1 : Image2,
+                  }}
+                />
               </div>
             );
           })}
         </Slider>
       </Grid>
       <Grid item xs={12} sm={6} md={4} sx={{ my: { xs: 2, sm: 0 } }}>
-        <Grid
-          onClick={() => {
-            navigate('/news/news-details');
+        <NewsSliderCard
+          item={{
+            ...newsData[0],
+            description: '',
+            image: Image2,
           }}
-          sx={{ cursor: 'pointer' }}
-        >
-          <img
-            src={Image2}
-            style={{
-              width: '100%',
-              height: '260px',
-              borderRadius: '20px',
-              objectFit: 'cover',
-            }}
-          ></img>
-          <Grid my={1.5}>
-            <Typography variant="subtitle1">March 18,2022</Typography>
-          </Grid>
-          <Grid my={1.5}>
-            <Typography variant="h5">The Non-Fungible Token Bible</Typography>
-          </Grid>
-        </Grid>
+        />
       </Grid>
     </Grid>
   );

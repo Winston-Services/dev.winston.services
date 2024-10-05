@@ -274,7 +274,7 @@ function LessonDetails() {
   );
   const lesson = lecture?.lesson.find((lesson) => lesson.id === lessonId);
 
-  console.log(course);
+  // console.log(course);
 
   const quizData = [
     {
@@ -283,6 +283,7 @@ function LessonDetails() {
       correctAnswer: 'Paris',
     },
   ];
+  
   const navigate = useNavigate();
 
   React.useEffect(() => {

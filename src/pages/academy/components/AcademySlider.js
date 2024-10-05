@@ -9,7 +9,7 @@ const settings = {
   className: 'slider variable-width',
   arrows: true,
   dots: false,
-  infinite: false,
+  infinite: true,
   speed: 500,
   autoplay: true,
   autoplaySpeed: 5000,

@@ -69,6 +69,11 @@ export default function LandingFooter() {
           name: 'Issues',
           href: 'https://github.com/Winston-Services/dev.winston.services/issues',
         },
+        
+        {
+          name: 'Demo Cart',
+          href: 'https://demo-shop.winston.services',
+        },
       ],
     },
     {

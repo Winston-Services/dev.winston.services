@@ -18,6 +18,7 @@ import { ReactComponent as ShareIcon } from './../../assets/share_icon.svg';
 
 function NewsDetails() {
   const navigate = useNavigate();
+  
   return (
     <Container>
       <Grid

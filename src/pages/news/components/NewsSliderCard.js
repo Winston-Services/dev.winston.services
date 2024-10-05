@@ -23,7 +23,10 @@ function NewsSliderCard({ item }) {
         }}
       ></img>
       <Grid my={1.5}>
-        <Typography variant="subtitle1">{item.date}</Typography>
+        <Grid container justifyContent="space-between">
+          <Typography variant="h5">{item.title}</Typography>
+          <Typography variant="subtitle1">{item.date}</Typography>
+        </Grid>
       </Grid>
       <Grid>
         <Typography variant="h5">{item.description}</Typography>

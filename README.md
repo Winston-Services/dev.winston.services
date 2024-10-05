@@ -7,6 +7,9 @@ Winston is a comprehensive platform designed to assist users with various aspect
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [WebApp Build](#webapp-build)
+- [Electron Build](#electron-build)
+- [Ionic Build](#ionic-build)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -47,6 +50,52 @@ To get started with Winston, follow these steps:
 ## Usage
 Once the development server is running, you can access the application at `http://localhost:3000`.
 
+## WebApp Build
+To build the Winston application for the web, run the following command:
+```bash
+npm run build
+```
+
+## Electron Build
+To build the Winston application for various platforms using Electron, follow these steps:
+
+### Build for macOS
+1. Ensure you are on a macOS machine.
+2. Run the following command to build the application for macOS:
+   ```bash
+   npm run electron:package:mac
+   ```
+
+### Build for Windows
+1. Ensure you are on a Windows machine.
+2. Run the following command to build the application for Windows:
+   ```bash
+   npm run electron:package:win
+   ```
+
+### Build for Linux
+1. Ensure you are on a Linux machine.
+2. Run the following command to build the application for Linux:
+   ```bash
+   npm run electron:package:linux
+   ```
+
+## Ionic Build
+
+### Build for Android
+1. Ensure you have the necessary Android SDK and environment set up.
+2. Run the following command to build the application for Android:
+   ```bash
+   npm run ionic:build:android
+   ```
+
+### Build for iOS
+1. Ensure you have the necessary iOS SDK and environment set up.
+2. Run the following command to build the application for iOS:
+   ```bash
+   npm run ionic:build:ios
+   ```
+
 ### Navigation
 - **Academy**: `/academy`
 - **Marketplace**: `/marketplace`
@@ -75,7 +124,7 @@ We welcome contributions from the community. To contribute, follow these steps:
 This project is licensed under the ISC License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For any questions or support, please reach out to us at [admin@winston.services](mailto:admin@winston.services).
+For any questions or support, please reach out to us at [admin@winston.services](mailto:admin@winston.services) or the founder at [michaeladennis@yahoo.com](mailto:michaeladennis@yahoo.com).
 
 ## Links
 - [Homepage](https://dev.winston.services)

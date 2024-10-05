@@ -30,7 +30,7 @@ function ProductCard({ item }) {
           component="img"
           height="300px"
           image={item.image}
-          alt="green iguana"
+          alt={item.name}
         />
         <Button
           fullWidth
@@ -101,7 +101,7 @@ function ProductCard({ item }) {
             <AvatarGroup>
               {item.donners.map((donner) => (
                 <Avatar
-                  className="borderNone"
+                  // className="borderNone"
                   key={donner.name}
                   alt={donner.name}
                   src={donner.avatar}

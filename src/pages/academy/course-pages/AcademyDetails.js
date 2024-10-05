@@ -13,37 +13,28 @@ import {
   Divider,
   Button,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // import AcademyDetailsImage from '../../assets/academy_details_image.svg';
 import CourseImage from '../../../assets/course.png';
-import { coursesSelector } from '../../../store/academy';
+import {
+  coursesSelector,
+  courseSelector,
+  setActiveCourse,
+} from '../../../store/academy';
 import AcademyAccordion from '../components/AcademyAccordion';
 import AcademySlider from '../components/AcademySlider';
 
 function AcademyDetails() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { courseId } = useParams();
   const courses = useSelector(coursesSelector);
+  const activeCourse = useSelector(courseSelector);
+
   // console.log(courses, courseId);
   const course = courses.find((item) => item.id === courseId);
-  if (!course)
-    return (
-      <Container>
-        <Grid container spacing={4} justifyContent={'center'}>
-          <Grid item md={6}>
-            <Typography variant="h4">Course not found</Typography>
-            <Typography variant="subtitle1">
-              The course you are looking for does not exist.
-            </Typography>
-            <Button variant="contained" onClick={() => navigate('/academy')}>
-              Go to courses
-            </Button>
-          </Grid>
-        </Grid>
-      </Container>
-    );
 
   const renderRating = () => {
     if (!course) return null;
@@ -98,7 +89,50 @@ function AcademyDetails() {
       <img src={CourseImage} alt={course?.title} />
     );
   };
-  
+
+  React.useEffect(() => {
+    if (course && !activeCourse) {
+      dispatch(setActiveCourse(course));
+    }
+    return () => {
+      return false;
+    };
+  }, [course, dispatch, activeCourse]);
+
+  if (!course) {
+    return (
+      <Container>
+        <Grid container spacing={4} justifyContent={'center'}>
+          <Grid item md={6}>
+            <Typography variant="h4">Course not found</Typography>
+            <Typography variant="subtitle1">
+              The course you are looking for does not exist.
+            </Typography>
+            <Button
+              variant="contained"
+              onClick={() => navigate('/academy/all-courses')}
+            >
+              Go to courses
+            </Button>
+          </Grid>
+        </Grid>
+      </Container>
+    );
+  }
+
+  if (!activeCourse) {
+    return (
+      <Container>
+        <Grid container spacing={4}>
+          <Grid item md={12} display={'flex'} justifyContent={'center'}>
+            <Typography variant="h4">Loading...</Typography>
+            {/* Todo : Add Skeleton of Course page. */}
+          </Grid>
+        </Grid>
+      </Container>
+    );
+  }
+
   return (
     <Container>
       <Grid container spacing={4}>
@@ -138,22 +172,22 @@ function AcademyDetails() {
               /
             </Typography>
             <Typography variant="subtitle1" color="#FFD215" fontWeight={'700'}>
-              {course?.title}
+              {activeCourse?.title}
             </Typography>
           </Grid>
           <Grid my={2}>
             <Typography variant="h3" color="#FFD215">
-              {course?.description}
+              {activeCourse?.description}
             </Typography>
           </Grid>
-          <Typography variant="subtitle2">{course?.summary}</Typography>
+          <Typography variant="subtitle2">{activeCourse?.summary}</Typography>
           <Grid container gap={1.1} my={2.5}>
-            {course?.skills.map((skill) => (
+            {activeCourse?.skills.map((skill) => (
               <Chip color="primary" label={skill} key={skill} />
             ))}
           </Grid>
           <Grid container gap={1.1} my={2.5}>
-            {course?.tags.map((tag) => (
+            {activeCourse?.tags.map((tag) => (
               <Chip color="secondary" label={tag} key={tag} />
             ))}
           </Grid>
@@ -168,7 +202,7 @@ function AcademyDetails() {
               sx={{ color: '#FFD215', cursor: 'pointer' }}
               onClick={() => navigate('/academy/teacher-profile')}
             >
-              {course?.teacher.name}
+              {activeCourse?.teacher.name}
             </Typography>
           </Grid>
         </Grid>
@@ -190,19 +224,19 @@ function AcademyDetails() {
           <Grid item display={'flex'} alignItems="center">
             <CircleIcon sx={{ fontSize: '6px' }} />
             <Typography variant="subtitle1" ml={1}>
-              {course?.lectures.length} lectures
+              {activeCourse?.lectures.length} lectures
             </Typography>
           </Grid>
           <Grid item display={'flex'} alignItems="center">
             <CircleIcon sx={{ fontSize: '6px' }} />
             <Typography variant="subtitle1" ml={1}>
-              {course?.duration} hr(s) total length
+              {activeCourse?.duration} hr(s) total length
             </Typography>
           </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <AcademyAccordion course={course?.lectures || []} />
+        <AcademyAccordion course={activeCourse?.lectures || []} />
       </Grid>
       <Grid item xs={12}>
         <Divider sx={{ height: '20px' }} />

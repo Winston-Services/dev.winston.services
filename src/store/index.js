@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import academy from './academy';
 import apiInstance from './createApiInstance';
+import news from './news';
 import sideBar from './sideBar';
 import themeColors from './themeColors';
 import user from './user';
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   themeColors,
   wizard,
   academy,
+  news,
   [apiInstance.reducerPath]: apiInstance.reducer,
 });
 const reducer = (state, action) => {

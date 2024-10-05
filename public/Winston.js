@@ -1,7 +1,7 @@
-const { WebSocketServer } = require('ws');
+const WebSocket = require('ws');
 
 class Winston {
-  constructor({ root = '127.0.0.1', address = 'n/a', db }) {
+  constructor({ root = 'localhost', address = 'n/a', db }) {
     this.db = db;
     this.root = root;
     this.address = address;
@@ -37,7 +37,9 @@ class Winston {
         );
       },
     };
-    this.server = new WebSocketServer({ port: 7557 });
+    this.server = new WebSocket.Server({ port: 8558 });
+    this.clientRelay = new WebSocket('https://ws.winston.services:7557/ws');
+    this.clientRelaySocketId = null;
     this.rateLimit = new Map();
     this.limit = 1000;
     this.server.on('connection', async (socket) => {
@@ -81,8 +83,31 @@ class Winston {
         )
       );
     });
+    this.clientRelay.on('open', () => {
+      this.clientRelaySocketId = Math.random().toString(36).substring(2, 15);
+      this.server.clients.forEach((client) => {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(JSON.stringify({
+            OP_CODE: 'CLIENT_RELAY_ID',
+            clientRelaySocketId: this.clientRelaySocketId,
+          }, false, 2));
+        }
+      });
+      console.log('Client Relay Connection Opened.');
+    });
+    this.clientRelay.on('message', (message) => {
+      this.server.clients.forEach((client) => {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(message);
+        }
+      });
+      console.log(message.toString());
+    });
+    this.clientRelay.on('close', this.close);
+    this.clientRelay.on('error', this.error);
   }
   error(msg) {
+    console.log('Error in Winston.js');
     console.error(msg);
   }
   message(socket) {
@@ -128,6 +153,7 @@ class Winston {
           client.send(message);
         }
       });
+      this.clientRelay.send(message);
     };
   }
   close() {

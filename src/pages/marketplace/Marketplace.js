@@ -13,6 +13,10 @@ import {
   Switch,
 } from '@mui/material';
 
+import donner1 from '../../assets/donner1.svg';
+import donner2 from '../../assets/donner2.svg';
+import donner3 from '../../assets/donner3.svg';
+import donner4 from '../../assets/donner4.svg';
 import NftMarketPlace1 from '../../assets/nft_marketplace_1.png';
 import NftMarketPlace2 from '../../assets/nft_marketplace_2.png';
 import NftMarketPlace3 from '../../assets/nft_marketplace_3.png';
@@ -29,6 +33,24 @@ const items = [
     price: 59,
     startBid: 15,
     endBidIn: 5,
+    donners: [
+      {
+        name: 'Donner 1',
+        avatar: donner1,
+      },
+      {
+        name: 'Donner 2',
+        avatar: donner2,
+      },
+      {
+        name: 'Donner 3',
+        avatar: donner3,
+      },
+      {
+        name: 'Donner 4',
+        avatar: donner4,
+      },
+    ],
   },
   {
     image: NftMarketPlace2,
@@ -37,6 +59,24 @@ const items = [
     price: 59,
     startBid: 15,
     endBidIn: 5,
+    donners: [
+      {
+        name: 'Donner 1',
+        avatar: donner1,
+      },
+      {
+        name: 'Donner 2',
+        avatar: donner2,
+      },
+      {
+        name: 'Donner 3',
+        avatar: donner3,
+      },
+      {
+        name: 'Donner 4',
+        avatar: donner4,
+      },
+    ],
   },
   {
     image: NftMarketPlace3,
@@ -45,6 +85,24 @@ const items = [
     price: 59,
     startBid: 15,
     endBidIn: 5,
+    donners: [
+      {
+        name: 'Donner 1',
+        avatar: donner1,
+      },
+      {
+        name: 'Donner 2',
+        avatar: donner2,
+      },
+      {
+        name: 'Donner 3',
+        avatar: donner3,
+      },
+      {
+        name: 'Donner 4',
+        avatar: donner4,
+      },
+    ],
   },
   {
     image: NftMarketPlace4,
@@ -53,6 +111,24 @@ const items = [
     price: 59,
     startBid: 15,
     endBidIn: 5,
+    donners: [
+      {
+        name: 'Donner 1',
+        avatar: donner1,
+      },
+      {
+        name: 'Donner 2',
+        avatar: donner2,
+      },
+      {
+        name: 'Donner 3',
+        avatar: donner3,
+      },
+      {
+        name: 'Donner 4',
+        avatar: donner4,
+      },
+    ],
   },
   {
     image: NftMarketPlace5,
@@ -61,6 +137,24 @@ const items = [
     price: 59,
     startBid: 15,
     endBidIn: 5,
+    donners: [
+      {
+        name: 'Donner 1',
+        avatar: donner1,
+      },
+      {
+        name: 'Donner 2',
+        avatar: donner2,
+      },
+      {
+        name: 'Donner 3',
+        avatar: donner3,
+      },
+      {
+        name: 'Donner 4',
+        avatar: donner4,
+      },
+    ],
   },
   {
     image: NftMarketPlace1,
@@ -69,6 +163,24 @@ const items = [
     price: 59,
     startBid: 15,
     endBidIn: 5,
+    donners: [
+      {
+        name: 'Donner 1',
+        avatar: donner1,
+      },
+      {
+        name: 'Donner 2',
+        avatar: donner2,
+      },
+      {
+        name: 'Donner 3',
+        avatar: donner3,
+      },
+      {
+        name: 'Donner 4',
+        avatar: donner4,
+      },
+    ],
   },
 ];
 
