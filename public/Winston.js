@@ -38,7 +38,7 @@ class Winston {
       },
     };
     this.server = new WebSocket.Server({ port: 8558 });
-    this.clientRelay = new WebSocket('https://ws.winston.services:7557/ws');
+    this.clientRelay = new WebSocket('https://winston.services/ws');
     this.clientRelaySocketId = null;
     this.rateLimit = new Map();
     this.limit = 1000;
