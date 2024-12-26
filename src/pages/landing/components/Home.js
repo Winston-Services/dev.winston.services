@@ -1,10 +1,12 @@
 import React from 'react';
 
 import { Grid, Typography, Box, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import CryptoLandingImage from './../../../components/crypto-landing-image/index';
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <Grid
       container
@@ -32,7 +34,12 @@ export default function Home() {
           </Typography>
         </div>
         <Box sx={{ justifyContent: 'center', display: 'flex' }}>
-          <Button variant="contained" color="secondary" sx={{ mt: 3 }}>
+          <Button
+            variant="contained"
+            color="secondary"
+            sx={{ mt: 3 }}
+            onClick={() => navigate('/sign-up')}
+          >
             Get Started
           </Button>
         </Box>

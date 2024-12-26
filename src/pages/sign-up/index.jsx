@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { LoadingButton } from '@mui/lab';
-import { Typography, Button, Box, Link, TextField } from '@mui/material';
+import { Typography, Button, Box, Link, TextField, Alert } from '@mui/material';
 import fileDownload from 'js-file-download';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,6 +17,7 @@ function SignUp() {
   };
 
   const downloadFile = () => {
+    setSaveToBrowser(true);
     fileDownload(created.wallet.walletPrivateKey, 'Wallet.pem');
   };
 
@@ -32,27 +33,24 @@ function SignUp() {
     return (
       <>
         <Box>
-          <Typography variant="h3">Your new wallet</Typography>
-          <Typography variant="h2" sx={{ mt: 2 }}>
-            Created
+          <Box sx={{ mb: 3 }}>
+            <Alert severity="success">
+              Your account has been created. You can now login to the platform.
+            </Alert>
+          </Box>
+          <Typography variant="h5">Welcome to the Winston Community</Typography>
+          <Typography variant="h4" sx={{ mt: 2 }} gutterBottom>
+            Account Created
           </Typography>
-          <Typography variant="subtitle2" sx={{ my: 6 }}>
-            Your wallet is the key to accessing the platform. We want you to
-            experience a new way to access the platform with a more secure way
-            then before.
+          <Alert severity="warning">
+            KEEP YOUR PRIVATE KEY SAFE AND SECURE.
+          </Alert>
+          <Typography variant="subtitle2" sx={{ my: 3 }}>
+            This key is your only access to unlocking your account. Please keep
+            it safe.
           </Typography>
-          <TextField
-            fullWidth
-            variant="outlined"
-            label={'Password'}
-            required
-            placeholder={'Enter your password'}
-            // error={state.errors ? true : false}
-            // color={state.errors ? 'red' : ''}
-            // helperText={state.errors}
-          />
 
-          <Box component="div" sx={{ mt: 5 }}>
+          <Box component="div" sx={{ mt: 3 }}>
             <LoadingButton
               variant="outlined"
               sx={{ mr: { xs: 2, md: 3 } }}
@@ -66,6 +64,7 @@ function SignUp() {
               color="secondary"
               // startIcon={<LockIcon />}
               onClick={downloadFile}
+              size="large"
             >
               Download Key
             </Button>
@@ -78,13 +77,13 @@ function SignUp() {
                 onClick={() => navigate('/sign-in')}
                 sx={{ ml: 1 }}
               >
-                Click here to login
+                Click here to sign in
               </Link>
             </Typography>
           )}
-          <Typography variant="subtitle2" sx={{ my: 6 }}>
-            Note : Don&apos;t lose your wallet key! you want to store your
-            private key in safe place for accessing your wallet
+          <Typography variant="subtitle2" sx={{ my: 2 }}>
+            Note : You want to store your private key in a safe place for
+            accessing the platforms features.
           </Typography>
         </Box>
       </>
@@ -93,13 +92,25 @@ function SignUp() {
     return (
       <>
         <Box>
-          <Typography variant="h3">Create your new</Typography>
-          <Typography variant="h2" sx={{ mt: 2, mb: 6 }}>
-            Wallet
+          <Typography variant="h5">Join the Winston Community</Typography>
+          <Typography variant="h4" sx={{ mt: 2, mb: 6 }}>
+            Create your account.
           </Typography>
+
           <TextField
             variant="outlined"
+            label={'Email'}
+            type="email"
+            required
+            fullWidth
+            placeholder={'Enter your email'}
+          />
+
+          <TextField
+            sx={{ mt: 3 }}
+            variant="outlined"
             label={'Password'}
+            type="password"
             required
             fullWidth
             placeholder={'Enter your password'}
@@ -107,9 +118,10 @@ function SignUp() {
             // helperText={'Your invalid password'}
           />
           <TextField
-            sx={{ mt: 5 }}
+            sx={{ mt: 3 }}
             variant="outlined"
             label={'Confirm Password'}
+            type="password"
             placeholder={'Enter your confirm password'}
             fullWidth
             required
@@ -117,23 +129,23 @@ function SignUp() {
             // color={state.errors ? 'red' : ''}
             // helperText={state.errors}
           />
-          <Box component="div" sx={{ mt: 5 }}>
+          <Box component="div" sx={{ mt: 3 }}>
             <Button
               variant="contained"
               color="secondary"
               onClick={createWallet}
             >
-              Create your wallet
+              Create your account
             </Button>
           </Box>
           <Typography sx={{ mt: 5 }}>
-            Already have an wallet?
+            Already have an account?
             <Link
               underline="none"
               onClick={() => navigate('/sign-in')}
               sx={{ ml: 1 }}
             >
-              Login to your wallet
+              Login to your account
             </Link>
           </Typography>
         </Box>

@@ -35,12 +35,12 @@ function SignInLayout() {
               onClick={() => {
                 navigate('/');
               }}
-              sx={{ mb: 8, mt: 14, height: '72px', cursor: 'pointer' }}
+              sx={{ mb: 6, mt: 14, height: '72px', cursor: 'pointer' }}
             />
-            <Box minHeight={'500px'}>
+            <Box >
               <Outlet />
             </Box>
-            <Grid container spacing={2} sx={{ my: 5 }}>
+            <Grid container spacing={2} sx={{ my: 3 }}>
               <Grid item height={60} width={60}>
                 <DiscordLink />
               </Grid>

@@ -39,6 +39,10 @@ const menuList = [
     key: 'services',
   },
   {
+    name: 'More',
+    key: 'more',
+  },
+  {
     name: 'Documentation',
     key: 'documentation',
     href: 'https://docs.winston.services',

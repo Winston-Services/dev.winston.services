@@ -165,8 +165,8 @@ export default function LandingFooter() {
   const navigate = useNavigate();
   
   return (
-    <Container maxWidth="lg">
-      <Grid container sx={{ mt: 3 }}>
+    <Container maxWidth="xl"  id="more">
+      <Grid container sx={{ mt: 8, pt: 8 }}>
         <Grid item xs={12} md={4} container>
           <Grid item xs={3}>
             <Box src={winston} component="img" sx={{ width: '100%' }} />

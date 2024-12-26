@@ -71,6 +71,7 @@ function SignIn() {
       navigate('/dashboard');
     }
   };
+
   const handleUploadClick = (event) => {
     event.preventDefault();
     hiddenFileInput.current.firstChild.click();
@@ -78,13 +79,12 @@ function SignIn() {
 
   return (
     <Box>
-      <Typography variant="h3">Sign in to</Typography>
-      <Typography variant="h2" sx={{ mt: 2 }}>
-        Your Wallet
+      <Typography variant="h5">Sign in to</Typography>
+      <Typography variant="h4" sx={{ mt: 2 }}>
+        Your Account
       </Typography>
       <Typography variant="subtitle2" sx={{ my: 6 }}>
-        Note : Don&apos;t lose your wallet key! You have to store your private
-        key in safe place for accessing your wallet.
+        Note : Don&apos;t lose your private key! Always keep it in a safe place.
       </Typography>
       <TextField
         fullWidth
@@ -111,7 +111,7 @@ function SignIn() {
           // startIcon={<LockIcon />}
           onClick={handleUploadClick}
         >
-          Private Key
+          Use Key 
         </Button>
         <Input
           onChange={handleUploadFile}
@@ -122,13 +122,13 @@ function SignIn() {
         />
       </Box>
       <Typography sx={{ mt: 5 }}>
-        Don’t have an wallet?
+        Don’t have an account?
         <Link
           underline="none"
           onClick={() => navigate('/sign-up')}
           sx={{ ml: 1 }}
         >
-          Let’s create your wallet
+          Let’s create your account!
         </Link>
       </Typography>
     </Box>
