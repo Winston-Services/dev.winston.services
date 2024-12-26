@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import { Close, Menu as MenuIcon } from '@mui/icons-material';
 import {
   AppBar,
@@ -28,20 +27,21 @@ const menuList = [
     key: 'home',
   },
   {
-    name: 'Services',
-    key: 'services',
-  },
-  {
     name: 'Discord',
     key: 'discord',
   },
   {
-    name: 'Create Your Own Blockchain',
-    key: 'createBlockchain',
-  },
-  {
     name: 'Academy',
     key: 'academy',
+  },
+  {
+    name: 'Services',
+    key: 'services',
+  },
+  {
+    name: 'Documentation',
+    key: 'documentation',
+    href: 'https://docs.winston.services',
   },
 ];
 const defaultActive =
@@ -111,20 +111,36 @@ export default function LandingTopNav() {
                 justifyContent={'flex-end'}
                 alignItems="center"
               >
-                {menuList.map((menu) => (
-                  <Link
-                    key={menu.key}
-                    onClick={() => handleChange(menu.key)}
-                    sx={{ mx: 2 }}
-                    color={'nav'}
-                    underline={'none'}
-                    className={
-                      value === menu.key ? 'nav-link active' : 'nav-link'
-                    }
-                  >
-                    {menu.name}
-                  </Link>
-                ))}
+                {menuList.map((menu) =>
+                  menu.href ? (
+                    <Link
+                      key={menu.key}
+                      href={menu.href}
+                      sx={{ mx: 2 }}
+                      color={'nav'}
+                      underline={'none'}
+                      className={
+                        value === menu.key ? 'nav-link active' : 'nav-link'
+                      }
+                      target="_blank"
+                    >
+                      {menu.name}
+                    </Link>
+                  ) : (
+                    <Link
+                      key={menu.key}
+                      onClick={() => handleChange(menu.key)}
+                      sx={{ mx: 2 }}
+                      color={'nav'}
+                      underline={'none'}
+                      className={
+                        value === menu.key ? 'nav-link active' : 'nav-link'
+                      }
+                    >
+                      {menu.name}
+                    </Link>
+                  )
+                )}
                 {/* <Tabs
                   value={value}
                   onChange={handleChange}
@@ -140,7 +156,7 @@ export default function LandingTopNav() {
                   ))}
                 </Tabs> */}
               </Grid>
-               <Grid
+              <Grid
                 sx={{ display: { xs: 'none', md: 'flex' } }}
                 item
                 alignItems={'center'}
@@ -148,9 +164,11 @@ export default function LandingTopNav() {
                 <Button
                   variant="outlined"
                   sx={{ ml: 3 }}
-                  onClick={() => navigate(auth?.authenticated  ? '/dashboard' : '/sign-in')}
+                  onClick={() =>
+                    navigate(auth?.authenticated ? '/dashboard' : '/sign-in')
+                  }
                 >
-                  {auth?.authenticated  ? 'Dashboard' : 'Sign In'}
+                  {auth?.authenticated ? 'Dashboard' : 'Sign In'}
                 </Button>
               </Grid>
               <Grid

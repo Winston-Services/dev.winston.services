@@ -3,7 +3,9 @@ import React, { useEffect } from 'react';
 import { Box, Container } from '@mui/material';
 
 import Academy from './components/Academy';
+/* eslint-disable */
 import CreateYourOwnBlockchain from './components/CreateYourOwnBlockchain';
+/* eslint-enable */
 import Discord from './components/Discord';
 import Home from './components/Home';
 import Services from './components/Services';
@@ -22,30 +24,32 @@ export default function Landing() {
   return (
     <Box>
       <Box component={'div'} id="home">
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Home />
         </Container>
       </Box>
-      <Box component={'div'} id="services">
-        <Container maxWidth="lg">
-          <Services />
-        </Container>
-      </Box>
       <Box component={'div'} className="blueSectionLandingBg" id="discord">
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Discord />
         </Container>
       </Box>
-      <Box component={'div'} id="createBlockchain">
-        <Container maxWidth="lg">
-          <CreateYourOwnBlockchain />
-        </Container>
-      </Box>
-      <Box component={'div'} className={'blueSectionLandingBg'} id="academy">
-        <Container maxWidth="lg">
+      <Box component={'div'} className={'blueSectionLandingBg'} id="academy" >
+        <Container maxWidth="xl">
           <Academy />
         </Container>
       </Box>
+      <Box component={'div'} id="services">
+        <Container maxWidth="xl">
+          <Services />
+        </Container>
+      </Box>
+      {/*
+      <Box component={'div'} id="createBlockchain">
+        <Container maxWidth="xl">
+          <CreateYourOwnBlockchain />
+        </Container>
+      </Box>
+      */}
     </Box>
   );
 }

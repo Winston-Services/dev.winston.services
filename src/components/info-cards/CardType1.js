@@ -24,7 +24,7 @@ export default function CardType1({ item, index, setOpen }) {
       <Card elevation={0} className="blueGradientBG" onClick={handleClick}>
         <CardActionArea sx={{ py: 5, height: '100%' }}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <img src={item.icon} />
+            <img src={item.icon} {...item.iconProps}/>
           </Box>
           <CardContent onClick={() => setOpen(index)}>
             <Typography

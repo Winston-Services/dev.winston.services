@@ -11,7 +11,8 @@ export default function Academy() {
     <Grid
       container
       alignItems={'center'}
-      sx={{ mt: 0, flexDirection: { sm: 'column', md: 'row' } }}
+      sx={{ py: 16, flexDirection: { sm: 'column', md: 'row' } }}
+      
     >
       <Grid item xs={12} container spacing={3} sx={{ mb: 8 }}>
         <Grid item md={6} xs={12}>

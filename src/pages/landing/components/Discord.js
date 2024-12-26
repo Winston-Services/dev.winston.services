@@ -1,52 +1,105 @@
 import React from 'react';
 
+/* eslint-disable */
 import { Grid, Typography, Button, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import WinstonRobot from './../../../assets/discord_winston_robot.svg';
 import DiscordAnimationImage from './../../../components/discord-animation/index';
+/* eslint-enable */
 
 export default function Discord() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Typography id="discordTitle" variant="h2" sx={{ my: 3 }}>
-          Discord
-        </Typography>
-        <Typography textAlign="left" sx={{ mb: 6, fontSize: 'xx-large' }}>
-          Join Our Thriving Blockchain Community! Step into a world where
-          decentralized finance is accessible to everyone. We are eager to
-          welcome you and help you start your journey in DeFi. Our dynamic
-          community is ready to support you as you embark on your new
-          adventure. Our enthusiastic community is here to guide you on your
-          path to DeFi success. Embrace decentralized finance with a community
-          that’s passionate about making it accessible to all. Your DeFi journey
-          begins here with us. Become a Member of Our Blossoming Blockchain
-          Family! Dive into decentralized finance with the support of our
-          energetic community. We’re excited to help you start your DeFi
-          journey.
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Button
-          variant="outlined"
-          sx={{
-            mr: { xs: 2, md: 3 },
-            mb: 3,
-            width: { xs: '100%', sm: 'auto' },
-          }}
-          onClick={() =>
-            window.open(
-              'https://discord.gg/rickle-897546129108008960',
-              '_blank'
-            )
-          }
-        >
-          Join us on discord
-        </Button>
-      </Grid>
+    <Grid container sx={{ my: 25 }}>
       <Grid item xs={12} container spacing={5} sx={{ mb: 10 }}>
+        <Grid
+          item
+          md={6}
+          xs={12}
+          sx={{
+            order: { xs: 4, md: 3 },
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '100px',
+          }}
+        >
+          <Box
+            sx={{
+              maxWidth: '500px',
+              width: '100%',
+              height: 'auto',
+            }}
+          >
+            <DiscordAnimationImage />
+          </Box>
+        </Grid>
+        <Grid
+          item
+          md={6}
+          xs={12}
+          justifyContent="center"
+          flexDirection={'column'}
+          display="flex"
+          sx={{ order: { xs: 3, md: 4 } }}
+        >
+          <Typography id="discordTitle" variant="h2" sx={{ my: 3 }}>
+            Discord
+          </Typography>
+          <Typography
+            textAlign="left"
+            sx={{ mt: 3, fontSize: 'xx-large' }}
+            variant="h4"
+          >
+            Join Our Thriving Blockchain Community!
+          </Typography>
+
+          <Typography variant="h5" sx={{ my: 3 }}>
+            Step into a world where decentralized finance is accessible to
+            everyone.
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 3 }}>
+            We are eager to welcome you and help you start your journey in DeFi.
+            Our dynamic community is ready to support you as you embark on your
+            new adventure. Our enthusiastic community is here to guide you on
+            your path to DeFi success. Embrace decentralized finance with a
+            community that’s passionate about making it accessible to all.
+          </Typography>
+          <Button
+            variant="contained"
+            color="secondary"
+            size="large"
+            sx={{ width: '50%', textTransform: 'none', alignSelf: 'center' }}
+            onClick={() =>
+              window.open(
+                'https://discord.gg/rickle-897546129108008960',
+                '_blank'
+              )
+            }
+          >
+            Join Our Discord Community
+          </Button>
+        </Grid>
+
+        {/*
+        <Grid item md={6} xs={12}>
+          <Box
+            component="img"
+            src={WinstonRobot}
+            sx={{ width: '100%', height: 'auto' }}
+          />
+          
+        </Grid>
+*/}
+
+        {/*
+  <Grid item xs={12}>
+        
+      </Grid>
+  */}
+
+        {/*
         <Grid
           item
           md={6}
@@ -90,16 +143,9 @@ export default function Discord() {
             </Button>
           </Box>
         </Grid>
-        <Grid item md={6} xs={12}>
-          <Box
-            component="img"
-            src={WinstonRobot}
-            sx={{ width: '100%', height: 'auto' }}
-          />
-        </Grid>
-        <Grid item md={6} xs={12} sx={{ order: { xs: 4, md: 3 } }}>
-          <DiscordAnimationImage />
-        </Grid>
+*/}
+
+        {/*
         <Grid
           item
           md={6}
@@ -141,6 +187,7 @@ export default function Discord() {
             </Button>
           </Box>
         </Grid>
+        */}
       </Grid>
     </Grid>
   );

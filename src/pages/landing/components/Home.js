@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, Typography, Box } from '@mui/material';
+import { Grid, Typography, Box, Button } from '@mui/material';
 
 import CryptoLandingImage from './../../../components/crypto-landing-image/index';
 
@@ -9,46 +9,33 @@ export default function Home() {
     <Grid
       container
       alignItems={'center'}
-      sx={{ mt: 15, flexDirection: { sm: 'column', md: 'row' } }}
+      sx={{ my: 15, flexDirection: { sm: 'column', md: 'row' } }}
     >
       <Grid item md={5.5}>
         <Typography
           id="homeTitle"
           variant="h2"
           fontWeight={'700'}
+          fontFamily={'Cookie'}
           sx={{ mt: 4 }}
         >
-          Crypto
+          Winston Crypto
         </Typography>
-        <div style={{ textAlign: 'left'}}>
-          <Typography
-            sx={{
-              mt: 3,
-              fontSize: 'xx-large',
-            }}
-          >
+        <div style={{ textAlign: 'left' }}>
+          <Typography variant="h4" sx={{ mt: 4 }}>
             Ever find yourself struggling to understand blockchain and
             cryptocurrency?
           </Typography>
-          <Typography
-            sx={{
-              fontSize: 'xx-large',
-            }}
-          >
-            Let Winston Services help you find answers to your most pressing
-            questions about blockchain and cryptocurrency.
-          </Typography>
-
-          <Typography
-            sx={{
-              mb: { lg: 20, md: 15, xs: 8 },
-              fontSize: 'xx-large',
-            }}
-          >
-            Winston Services offers a full line of features and services to help
-            you along your journey in this new Decentralized Financial World.
+          <Typography variant="h4" sx={{ mt: 4 }}>
+            Let Winston help you find answers to your most pressing questions
+            about blockchain and cryptocurrency.
           </Typography>
         </div>
+        <Box sx={{ justifyContent: 'center', display: 'flex' }}>
+          <Button variant="contained" color="secondary" sx={{ mt: 3 }}>
+            Get Started
+          </Button>
+        </Box>
       </Grid>
       <Grid item md={0.5}></Grid>
       <Grid item xs={12} md={6}>

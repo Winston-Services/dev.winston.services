@@ -11,7 +11,7 @@ export default function CreateYourOwnBlockchain() {
     <Grid
       container
       alignItems={'center'}
-      sx={{ mt: 0, flexDirection: { sm: 'column', md: 'row' } }}
+      sx={{ pt: 16, flexDirection: { sm: 'column', md: 'row' } }}
     >
       <Grid item xs={12} container spacing={5} sx={{ mb: 15 }}>
         <Grid
@@ -47,11 +47,13 @@ export default function CreateYourOwnBlockchain() {
           </Box>
         </Grid>
         <Grid item md={6} xs={12}>
-          <Box
-            component="img"
-            src={CreateYourOwnBlock}
-            sx={{ width: '100%', height: 'auto' }}
-          />
+          <Box sx={{ maxWidth: '500px', width: '100%', height: 'auto' }}>
+            <Box
+              component="img"
+              src={CreateYourOwnBlock}
+              sx={{ width: '100%', height: 'auto' }}
+            />
+          </Box>
         </Grid>
       </Grid>
     </Grid>
