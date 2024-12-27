@@ -9,11 +9,13 @@ import CareTakers4 from './../../assets/board_of_care_takers_4.png';
 import OurTeam1 from './../../assets/our_team1.png';
 import OurTeam2 from './../../assets/our_team2.png';
 import OurTeam3 from './../../assets/our_team3.png';
+/*
 import OurTeam4 from './../../assets/our_team4.png';
 import OurTeam5 from './../../assets/our_team5.png';
 import OurTeam6 from './../../assets/our_team6.png';
 import OurTeam7 from './../../assets/our_team7.png';
 import OurTeam8 from './../../assets/our_team8.png';
+*/
 import DiscordLink from './../../components/DiscordLink';
 import TwitterLink from './../../components/TwitterLink';
 import YoutubeLink from './../../components/YoutubeLink';
@@ -21,69 +23,35 @@ import YoutubeLink from './../../components/YoutubeLink';
 const teamData = [
   {
     image: OurTeam1,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
+    name: 'Michael D.',
+    designation: 'Founder',
   },
   {
     image: OurTeam2,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
+    name: 'Brent G.',
+    designation: 'Founder',
   },
   {
     image: OurTeam3,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
-  },
-  {
-    image: OurTeam4,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
-  },
-  {
-    image: OurTeam5,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
-  },
-  {
-    image: OurTeam6,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
-  },
-  {
-    image: OurTeam7,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
-  },
-  {
-    image: OurTeam8,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
+    name: 'Mike E.',
+    designation: 'Founder',
   },
 ];
 
 const boardOfCaretakers = [
   {
     image: CareTakers1,
-    name: 'Michael Dennis',
-    designation: 'Chief managing officer',
+    name: 'Michael D.',
+    designation: 'Founder',
     about1:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+      'Michael is a proven entrepreneur with a track record of success in the technology and finance industries. He has a deep understanding of the blockchain space and has been involved in the development of several successful projects.',
     about2:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+      'The founder of Winston, and visionary behind the project. Michael\'s vision is to create a decentralized platform that empowers individuals and communities to take control of their financial future.',
   },
   {
     image: CareTakers2,
-    name: 'Robert D. Obrien',
-    designation: 'Chief managing officer',
-    about1:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
-    about2:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
-  },
-  {
-    image: CareTakers3,
-    name: 'Jenny A. Taylor',
-    designation: 'Chief managing officer',
+    name: 'Brent G.',
+    designation: 'Founder',
     about1:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
     about2:
@@ -91,8 +59,17 @@ const boardOfCaretakers = [
   },
   {
     image: CareTakers4,
-    name: 'Daniel J. Carr',
-    designation: 'Chief managing officer',
+    name: 'Melkanea',
+    designation: 'Caretaker',
+    about1:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+    about2:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
+  },
+  {
+    image: CareTakers3,
+    name: 'ReedOne',
+    designation: 'Caretaker',
     about1:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
     about2:
@@ -104,7 +81,7 @@ function index() {
   return (
     <Container>
       <Typography variant="h3" textAlign="center">
-        Board of care takers
+        Board of Care Takers
       </Typography>
       {boardOfCaretakers.map((item, index) => (
         <Grid key={item.name} sx={{ mt: { xs: 4, md: 6 } }}>
@@ -159,7 +136,15 @@ function index() {
       >
         Core team
       </Typography>
-      <Grid container spacing={{ xs: 2, md: 3 }}>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        sx={{
+          flexDirection: { sx: 'column', md: 'row' },
+          justifyContent: { xs: 'start', md: 'center' },
+          alignItems: { xs: 'start', md: 'center' },
+        }}
+      >
         {teamData.map((item, index) => (
           <Grid item key={item.name + index} xs={12} sm={6} md={4} lg={3}>
             <Card

@@ -119,7 +119,7 @@ export function AuthProvider({ children }) {
 
   React.useEffect(() => {
     if (!connected && !isElectron()) {
-      connection.current = new WebSocket('https://ws.winston.services:7557/ws');
+      connection.current = new WebSocket('https://winston.services/ws');
       communicate(connection.current);
     }
     return () => {

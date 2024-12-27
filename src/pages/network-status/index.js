@@ -7,34 +7,34 @@ import NetworkStatusAccordion from './components/NetworkStatusAccordion';
 function NetworkStatus() {
   const data = [
     {
-      title: 'API',
-      subTitle: 'In Development',
-    },
-    {
-      title: 'Alchemy API',
-      subTitle: 'In Development',
-    },
-    {
       title: 'Website',
-      subTitle: 'In Development',
+      subTitle: 'Build v1.0.0',
+    },
+    {
+      title: 'REST API',
+      subTitle: 'Build v1.0.0',
+    },
+    {
+      title: 'Websocket Server',
+      subTitle: 'Build v1.0.0',
+    },
+    {
+      title: 'Desktop Application',
+      subTitle: 'Build v1.0.0',
     },
     {
       title: 'Mobile Application',
-      subTitle: 'In Development',
+      subTitle: 'Build v1.0.0',
     },
     {
-      title: 'Support Services',
-      subTitle: 'In Development',
-    },
-    {
-      title: 'Emails',
-      subTitle: 'Operational',
+      title: 'Support',
+      subTitle: 'Discord Only',
     },
   ];
   return (
     <Container>
       <Grid textAlign="center">
-        <Typography variant="h3">Network Status</Typography>
+        <Typography variant="h3">Status of Winston Services</Typography>
       </Grid>
       <Grid container justifyContent="center" spacing={3} mt={4}>
         {data.map((item, index) => {

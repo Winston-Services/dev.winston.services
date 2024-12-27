@@ -1,6 +1,13 @@
 import React from 'react';
 
-import { Button, Container, Grid, Typography, Card } from '@mui/material';
+import {
+  Button,
+  Container,
+  Grid,
+  Typography,
+  Card,
+  Box,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import AhwaImage from './../../assets/ahwa_icon.svg';
@@ -10,6 +17,7 @@ import WinstonApp from './../../components/common/WinstonApp';
 // import './index.css';
 import TrendingNfts from './components/TrendingNfts';
 
+const Holding = React.lazy(() => import('../holding'));
 
 function Assets() {
   const navigate = useNavigate();
@@ -97,6 +105,8 @@ function Assets() {
           <TrendingNfts />
         </Card>
       </Container>
+      <Box sx={{ mt: 10 }} />
+      <Holding />
       <WinstonApp />
     </>
   );

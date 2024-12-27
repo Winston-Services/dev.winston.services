@@ -84,6 +84,10 @@ function NewsTab() {
         <Tab label="Business" {...a11yProps(1)} />
         <Tab label="Markets" {...a11yProps(2)} />
         <Tab label="Technology" {...a11yProps(3)} />
+        <Tab label="Science" {...a11yProps(4)} />
+        <Tab label="Social" {...a11yProps(5)} />
+        <Tab label="Sports" {...a11yProps(6)} />
+        <Tab label="Entertainment" {...a11yProps(7)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <NewsTabData data={AllNewsData} />
@@ -96,6 +100,18 @@ function NewsTab() {
       </TabPanel>
       <TabPanel value={value} index={3}>
         <NewsTabData data={AllNewsData.filter((item) => item.category === 'Technology')} />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <NewsTabData data={AllNewsData.filter((item) => item.category === 'Science')} />
+      </TabPanel>
+      <TabPanel value={value} index={5}>
+        <NewsTabData data={AllNewsData.filter((item) => item.category === 'Social')} />
+      </TabPanel>
+      <TabPanel value={value} index={6}>
+        <NewsTabData data={AllNewsData.filter((item) => item.category === 'Sports')} />
+      </TabPanel>
+      <TabPanel value={value} index={7}>
+        <NewsTabData data={AllNewsData.filter((item) => item.category === 'Entertainment')} />
       </TabPanel>
     </Box>
   );

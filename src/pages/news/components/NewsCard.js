@@ -12,7 +12,7 @@ function NewsCard({ item }) {
       display={'flex'}
       spacing={2}
       onClick={() => {
-        navigate('/news/news-details');
+        navigate(`/news/article/${item.id}`);
       }}
       sx={{ cursor: 'pointer' }}
     >
@@ -39,7 +39,7 @@ function NewsCard({ item }) {
         </Typography>
         <Typography variant="subtitle1">{item.description}</Typography>
         <Grid item display={'flex'} sx={{ gap: { xs: 1, md: 2.5 }, mb: 1 }}>
-          <Typography variant="body2">{item.infoTag}</Typography>
+          <Typography variant="body2">{item.author}</Typography>
           <Typography variant="body2">{item.infoTime}</Typography>
           <Typography variant="body2">{item.infoTitle}</Typography>
           <Typography variant="body2">{item.infoSubTitle}</Typography>

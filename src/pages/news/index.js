@@ -16,7 +16,13 @@ function NewsRouting() {
           element: <News />,
         },
         {
-          path: '/news-details',
+          index: true,
+          path: '/article/*',
+          element: <NewsDetails />,
+        },
+        {
+          index: true,
+          path: '/report-the-news',
           element: <NewsDetails />,
         },
       ],

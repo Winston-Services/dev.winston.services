@@ -9,7 +9,7 @@ function NewsSliderCard({ item }) {
   return (
     <Grid
       onClick={() => {
-        navigate('/news/news-details');
+        navigate(`/news/article/${item.id}`);
       }}
       sx={{ cursor: 'pointer' }}
     >

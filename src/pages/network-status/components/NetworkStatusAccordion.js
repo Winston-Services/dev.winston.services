@@ -21,11 +21,11 @@ function NetworkStatusAccordion() {
       content: [
         {
           title: 'Node',
-          subTitle: 'Operational',
+          subTitle: '1',
         },
         {
-          title: 'Client',
-          subTitle: 'Operational',
+          title: 'Clients',
+          subTitle: '1',
         },
       ],
     },
@@ -33,16 +33,36 @@ function NetworkStatusAccordion() {
       title: 'Winston Dapp',
       content: [
         {
-          title: 'Web Site',
-          subTitle: 'Build v1.0.0',
+          title: 'Winston Academy',
+          subTitle: 'In Development',
         },
         {
-          title: 'Web App',
-          subTitle: 'Build v1.0.0',
+          title: 'Winston Voting',
+          subTitle: 'In Development',
         },
         {
-          title: 'Desktop',
-          subTitle: 'Build v1.0.0',
+          title: 'Winston Swap',
+          subTitle: 'In Development',
+        },
+        {
+          title: 'Winston Crowd Funding',
+          subTitle: 'In Development',
+        },
+        {
+          title: 'Winston NFT Marketplace',
+          subTitle: 'In Development',
+        },
+        {
+          title: 'Winston Staking',
+          subTitle: 'In Development',
+        },
+        {
+          title: 'Winston Bingo',
+          subTitle: 'In Development',
+        },
+        {
+          title: 'Winston Lottery',
+          subTitle: 'In Development',
         },
       ],
     },
@@ -50,65 +70,38 @@ function NetworkStatusAccordion() {
       title: 'Winston Services',
       content: [
         {
-          title: 'Fish4Fun Discord Game',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Winston Discord Bot',
-          subTitle: 'Operational',
-        },
-        {
           title: 'Winston Shopping Cart',
+          subTitle: 'Demo',
+        },
+        {
+          title: 'Fish4Fun',
           subTitle: 'Operational',
         },
         {
-          title: 'Winston Crowd Funding',
+          title: 'Winston on Discord',
           subTitle: 'Operational',
         },
-        {
-          title: 'Winston NFT Marketplace',
-          subTitle: 'Degraded Performance',
-        },
-        {
-          title: 'Winston Swap',
-          subTitle: 'Degraded Performance',
-        },
-        {
-          title: 'Winston Academy',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Winston Staking',
-          subTitle: 'Operational',
-        },
+        
       ],
     },
     {
-      title: 'Pay',
+      title: 'Powered By Winston',
       content: [
         {
-          title: 'Pay Your Friends',
-          subTitle: 'Operational',
+          title: 'Winston Wallet',
+          subTitle: 'In Development',
         },
         {
-          title: 'Giftcard',
-          subTitle: 'Operational',
+          title: 'Billing Services',
+          subTitle: 'In Development',
         },
         {
-          title: 'Airtime',
-          subTitle: 'Operational',
+          title: 'Merchant Services',
+          subTitle: 'In Development',
         },
         {
-          title: 'Checkout, Invoice, Subscriptions',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Refunds',
-          subTitle: 'Operational',
-        },
-        {
-          title: 'Merchant Dashboard',
-          subTitle: 'Operational',
+          title: 'Card Services',
+          subTitle: 'In Development',
         },
       ],
     },

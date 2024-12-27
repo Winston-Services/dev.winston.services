@@ -3,52 +3,56 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   topNews: [
     {
+      id: 1,
       category: 'Business',
       image: 'ImageData1',
       title:
         'The Non-Fungible Token Bible Everything you need to know about NFTs',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      author: 'Jordan Lyanchev-CryptoPotato',
       infoTime: '2 hrs ago',
       infoTitle: 'Goldman Sachs',
       infoSubTitle: 'Goldman Sachs',
       date: 'March 18, 2022',
     },
     {
+      id: 2,
       category: 'Business',
       image: 'ImageData2',
       title:
         'The Non-Fungible Token Bible Everything you need to know about NFTs',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      author: 'Jordan Lyanchev-CryptoPotato',
       infoTime: '2 hrs ago',
       infoTitle: 'Goldman Sachs',
       infoSubTitle: 'Goldman Sachs',
       date: 'March 18, 2022',
     },
     {
+      id: 3,
       category: 'Markets',
       image: 'ImageData1',
       title:
         'The Non-Fungible Token Bible Everything you need to know about NFTs',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      author: 'Jordan Lyanchev-CryptoPotato',
       infoTime: '2 hrs ago',
       infoTitle: 'Goldman Sachs',
       infoSubTitle: 'Goldman Sachs',
       date: 'March 18, 2022',
     },
     {
+      id: 4,
       category: 'Technology',
       image: 'ImageData1',
       title:
         'The Non-Fungible Token Bible Everything you need to know about NFTs',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      author: 'Jordan Lyanchev-CryptoPotato',
       infoTime: '2 hrs ago',
       infoTitle: 'Goldman Sachs',
       infoSubTitle: 'Goldman Sachs',
@@ -57,52 +61,56 @@ const initialState = {
   ],
   currentNews: [
     {
+      id: 1,
       category: 'Business',
       image: 'ImageData1',
       title:
         'The Non-Fungible Token Bible Everything you need to know about NFTs',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      author: 'Jordan Lyanchev-CryptoPotato',
       infoTime: '2 hrs ago',
       infoTitle: 'Goldman Sachs',
       infoSubTitle: 'Goldman Sachs',
       date: 'March 18, 2022',
     },
     {
+      id: 2,
       category: 'Business',
       image: 'ImageData2',
       title:
         'The Non-Fungible Token Bible Everything you need to know about NFTs',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      author: 'Jordan Lyanchev-CryptoPotato',
       infoTime: '3 hrs ago',
       infoTitle: 'Goldman Sachs',
       infoSubTitle: 'Goldman Sachs',
       date: 'March 18, 2022',
     },
     {
+      id: 3,
       category: 'Markets',
       image: 'ImageData3',
       title:
         'The Non-Fungible Token Bible Everything you need to know about NFTs',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      author: 'Jordan Lyanchev-CryptoPotato',
       infoTime: '3 hrs ago',
       infoTitle: 'Goldman Sachs',
       infoSubTitle: 'Goldman Sachs',
       date: 'March 18, 2022',
     },
     {
+      id: 4,
       category: 'Technology',
       image: 'ImageData4',
       title:
         'The Non-Fungible Token Bible Everything you need to know about NFTs',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-      infoTag: 'Jordan Lyanchev-CryptoPotato',
+      author: 'Jordan Lyanchev-CryptoPotato',
       infoTime: '3 hrs ago',
       infoTitle: 'Goldman Sachs',
       infoSubTitle: 'Goldman Sachs',
@@ -110,13 +118,14 @@ const initialState = {
     },
   ],
   currentArticle: {
+    id: 1,
     category: 'Business',
     image: 'ImageData1',
     title:
       'The Non-Fungible Token Bible Everything you need to know about NFTs',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Libero vitae cursus velit sed id. Id laoreet volutpat lorem nibh lacinia dictumst volutpat facilisi. Urna, purus pretium cursus quis sit venenatis lobortis adipiscing quam. Integer id ac etiam odio at nec viverra.',
-    infoTag: 'Jordan Lyanchev-CryptoPotato',
+    author: 'Jordan Lyanchev-CryptoPotato',
     infoTime: '2 hrs ago',
   },
 };

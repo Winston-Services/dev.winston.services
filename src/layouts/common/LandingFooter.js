@@ -14,6 +14,35 @@ export default function LandingFooter() {
   const auth = useAuth();
   const footerMenu = [
     {
+      name: 'Community',
+      menuItems: [
+        {
+          name: auth?.authenticated ? 'Dashboard' : 'Sign In',
+          url: auth?.authenticated ? '/dashboard' : '/sign-in',
+        },
+        {
+          name: 'News',
+          url: '/news',
+        },
+        {
+          name: 'Meet the team',
+          url: '/our-team',
+        },
+        {
+          name: 'Discord',
+          href: 'https://discord.gg/rickle-897546129108008960',
+        },
+        {
+          name: 'Twitter',
+          href: 'https://x.com/Rickle_Token',
+        },
+        {
+          name: 'Github',
+          href: 'https://github.com/Winston-Services',
+        },
+      ],
+    },
+    {
       name: 'Services',
       menuItems: [
         {
@@ -51,90 +80,52 @@ export default function LandingFooter() {
       ],
     },
     {
-      name: 'Integrations',
+      name: 'Support',
       menuItems: [
         {
-          name: 'Discord',
-          href: 'https://discord.gg/rickle-897546129108008960',
-        },
-        {
-          name: 'Twitter',
-          href: 'https://x.com/Rickle_Token',
-        },
-        {
-          name: 'Github',
-          href: 'https://github.com/Winston-Services',
-        },
-        {
-          name: 'Issues',
-          href: 'https://github.com/Winston-Services/dev.winston.services/issues',
-        },
-        
-        {
-          name: 'Demo Cart',
-          href: 'https://demo-shop.winston.services',
-        },
-      ],
-    },
-    {
-      name: 'Connect',
-      menuItems: [
-        {
-          name: auth?.authenticated ? 'Dashboard' : 'Sign In',
-          url:  auth?.authenticated ? '/dashboard' :'/sign-in',
-        },
-        {
-          name: 'Feedback',
-          url: '/feedback',
-        },
-        {
-          name: 'Contact',
-          url: '/contact-us',
-        },
-        {
-          name: 'Wiki',
-          url: '/wiki',
+          name: 'Network Status',
+          url: '/network-status',
         },
         {
           name: 'Support',
           url: '/support',
         },
         {
-          name: 'Developers',
-          url: '/developers',
+          name: 'Feedback',
+          url: '/feedback',
+        },
+        {
+          name: 'Issues',
+          href: 'https://github.com/Winston-Services/dev.winston.services/issues',
+        },
+        {
+          name: 'Documentation',
+          href: 'https://docs.winston.services',
         },
       ],
     },
     {
-      name: 'About',
+      name: 'Resources',
       menuItems: [
         {
-          name: 'News',
-          url: '/news',
+          name: 'Contact',
+          url: '/contact-us',
         },
         {
-          name: 'Meet the team',
-          url: '/our-team',
-        },
-        {
-          name: 'Assets',
-          url: '/assets',
-        },
-        {
-          name: 'Currencies',
-          url: '/currencies',
-        },
-        {
-          name: 'Network status',
-          url: '/network-status',
+          name: 'Developers',
+          url: '/developers',
         },
         {
           name: 'Supported Coins',
           url: '/supported-coins',
         },
         {
-          name: 'Documentation',
-          href: 'https://docs.winston.services',
+          name: 'Assets',
+          url: '/assets',
+        },
+        {
+          name: 'Demo Cart',
+          href: 'https://demo-shop.winston.services',
         },
       ],
     },
@@ -146,6 +137,10 @@ export default function LandingFooter() {
           url: '/whitepapers',
         },
         {
+          name: 'Investors',
+          url: '/our-investors',
+        },
+        {
           name: 'Terms of Service',
           url: null,
         },
@@ -153,19 +148,14 @@ export default function LandingFooter() {
           name: 'Privacy Policy',
           url: null,
         },
-        {
-          name: 'Investors',
-          url: '/our-investors',
-        },
       ],
     },
   ];
 
-
   const navigate = useNavigate();
-  
+
   return (
-    <Container maxWidth="xl"  id="more">
+    <Container maxWidth="xl" id="more">
       <Grid container sx={{ mt: 8, pt: 8 }}>
         <Grid item xs={12} md={4} container>
           <Grid item xs={3}>
