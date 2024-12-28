@@ -137,8 +137,8 @@ export default function LandingFooter() {
           url: '/whitepapers',
         },
         {
-          name: 'Investors',
-          url: '/our-investors',
+          name: 'Contributors',
+          url: '/our-contributors',
         },
         {
           name: 'Terms of Service',

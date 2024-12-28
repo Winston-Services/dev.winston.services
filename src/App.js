@@ -28,7 +28,7 @@ const Staking = React.lazy(() => import('./pages/staking-page/Staking'));
 const Swapping = React.lazy(() => import('./pages/swapping'));
 const SupportedCoins = React.lazy(() => import('./pages/supported-coins'));
 const Team = React.lazy(() => import('./pages/team'));
-const Investors = React.lazy(() => import('./pages/investors'));
+const Contributors = React.lazy(() => import('./pages/contributors'));
 const Burning = React.lazy(() => import('./pages/burning'));
 const ContactUs = React.lazy(() => import('./pages/contact-us'));
 const FeedbackRouting = React.lazy(() => import('./pages/feedback'));
@@ -170,8 +170,8 @@ export default function App() {
           element: getRouteWrapper(<Team />, false),
         },
         {
-          path: '/our-investors',
-          element: getRouteWrapper(<Investors />, false),
+          path: '/our-contributors',
+          element: getRouteWrapper(<Contributors />, false),
         },
         {
           path: '/burning',

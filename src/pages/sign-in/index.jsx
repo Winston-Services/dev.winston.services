@@ -87,6 +87,19 @@ function SignIn() {
         Note : Don&apos;t lose your private key! Always keep it in a safe place.
       </Typography>
       <TextField
+        type="text"
+        fullWidth
+        variant="outlined"
+        label={'Username'}
+        required
+        placeholder={'Enter your username'}
+        error={error.errors}
+        color={error.errors ? 'red' : ''}
+        helperText={error.errors}
+        sx={{ mb: 2 }}
+      />
+      <TextField
+        type="password"
         fullWidth
         variant="outlined"
         label={'Password'}
@@ -103,7 +116,7 @@ function SignIn() {
           sx={{ mr: { xs: 1, md: 3 } }}
           onClick={loadKeyFromLocalStorage}
         >
-          Browser Login
+          Sign In
         </Button>
         <Button
           variant="contained"

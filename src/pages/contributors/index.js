@@ -2,20 +2,21 @@ import React from 'react';
 
 import { Card, Container, Grid, Typography } from '@mui/material';
 
+import DiscordLink from '../../components/DiscordLink';
+import TwitterLink from '../../components/TwitterLink';
+import YoutubeLink from '../../components/YoutubeLink';
 import OurTeam1 from './../../assets/our_team1.png';
 import OurTeam2 from './../../assets/our_team2.png';
 import OurTeam3 from './../../assets/our_team3.png';
 import OurTeam4 from './../../assets/our_team4.png';
-import DiscordLink from './../../components/DiscordLink';
-import TwitterLink from './../../components/TwitterLink';
-import YoutubeLink from './../../components/YoutubeLink';
+
 
 function index() {
-  const investorsData = [
+  const contributorsData = [
     {
       image: OurTeam1,
       name: 'Michael Dennis',
-      designation: 'Chief managing officer',
+      designation: 'Founder',
       about:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
       links: {
@@ -66,7 +67,7 @@ function index() {
   return (
     <Container>
       <Typography variant="h3" textAlign={'center'}>
-        Our investors
+        Our Contributors
       </Typography>
 
       <Grid
@@ -98,7 +99,7 @@ function index() {
       </Grid>
 
       <Grid container spacing={{ xs: 2.5, md: 4 }}>
-        {investorsData.map((item, index) => (
+        {contributorsData.map((item, index) => (
           <Grid item key={item.name + index} xs={12} sm={6}>
             <Card
               elevation={0}
