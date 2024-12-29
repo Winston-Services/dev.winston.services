@@ -21,7 +21,6 @@ import {
   Typography,
   Grid,
   Button,
-  Stack,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useSelector, useDispatch } from 'react-redux';
@@ -30,6 +29,7 @@ import { useNavigate } from 'react-router-dom';
 import logoLight from '../../assets/logo.svg';
 import logoDark from '../../assets/logo_dark.svg';
 import useAuth from '../../context/authContext';
+import useUser from '../../hooks/useUser';
 import { sideBarStateSelector, toggleSideBar } from '../../store/sideBar';
 import { themeModeSelector, toggleTheme } from '../../store/themeColors';
 import { stringAvatar } from '../../utils/commonFunctions';
@@ -56,12 +56,13 @@ function NotificationBadge(props) {
 
 function TopNav() {
   const auth = useAuth();
+  const user = useUser();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isSideBarOpen = useSelector(sideBarStateSelector);
   const themeMode = useSelector(themeModeSelector);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event) => {
@@ -113,6 +114,12 @@ function TopNav() {
         </IconButton>
         Profile
       </MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Academy</MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Swap</MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Liquidity</MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Market Place</MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Crowd Funding</MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Workshop</MenuItem>
       <MenuItem onClick={() => auth.removeAuth()}>
         <IconButton
           aria-label="account of current user"
@@ -124,6 +131,8 @@ function TopNav() {
         </IconButton>
         Logout
       </MenuItem>
+      <MenuItem>Feedback</MenuItem>
+      <MenuItem>Issues</MenuItem>
     </Menu>
   );
 
@@ -144,36 +153,31 @@ function TopNav() {
         </IconButton>
         <img
           src={themeMode === 'dark' ? logoLight : logoDark}
-          style={{ cursor: 'pointer', height: '35px' }}
+          style={{ cursor: 'pointer', height: '35px', marginRight: '36px' }}
           onClick={() => {
             navigate('/');
           }}
         />
-        <Stack
-          sx={{
-            display: { xs: 'none', md: 'none', lg: 'inline-flex' },
-            flexDirection: 'row',
-            ml: 6,
-          }}
-        >
+        <Box sx={{ display: { xs: 'none', lg: 'inline-flex' } }}>
+          <MenuItem>Chat</MenuItem>
+          <MenuItem>Academy</MenuItem>
           <MenuItem>Swap</MenuItem>
           <MenuItem>Liquidity</MenuItem>
           <MenuItem>Market Place</MenuItem>
           <MenuItem>Crowd Funding</MenuItem>
           <MenuItem>Workshop</MenuItem>
-          <MenuItem>Academy</MenuItem>
-        </Stack>
+        </Box>
         <Box sx={{ flexGrow: 1 }}></Box>
         <Box>
           <IconButton
-            sx={{ display: { xs: 'none', md: 'inline-flex' }, mr: 2 }}
+            sx={{ display: { xs: 'none',  xl: 'inline-flex' }, mr: 2 }}
             onClick={() => dispatch(toggleTheme('dashboard'))}
             color="inherit"
           >
             {themeMode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
           <IconButton
-            sx={{ display: { xs: 'none', md: 'inline-flex' }, mr: 2 }}
+            sx={{ display: { xs: 'none',  xl: 'inline-flex' }, mr: 2 }}
             aria-label="show 0 new notifications"
             color="inherit"
           >
@@ -194,10 +198,10 @@ function TopNav() {
             >
               <Grid
                 item
-                sx={{ display: { xs: 'none', sm: 'none', md: 'auto' } }}
+                sx={{ display: { xs: 'none', md: 'flex' } }}
                 alignItems="flex-start"
               >
-                <Avatar {...stringAvatar('Michael Dennis')} />
+                <Avatar {...stringAvatar('Guest User')} />
               </Grid>
               <Grid
                 item
@@ -214,14 +218,14 @@ function TopNav() {
                   color="text.primary"
                   style={{ textTransform: 'none' }}
                 >
-                  {'Michael Dennis'}
+                  {user.info.name}
                 </Typography>
                 <Typography
                   color="text.secondary"
                   variant="subtitle2"
                   style={{ textTransform: 'none' }}
                 >
-                  {'Founder'}
+                  {user.info.role}
                 </Typography>
               </Grid>
               <Grid color="text.primary" item xs="auto" alignItems="center">

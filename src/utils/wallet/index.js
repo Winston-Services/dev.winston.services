@@ -4,14 +4,20 @@ var qrCode = require('qrcode-npm');
 const HEADER_BANNER = '-----BEGIN PUBLIC KEY-----';
 const FOOTER_BANNER = '-----END PUBLIC KEY-----';
 export default class Wallet {
-  constructor() {
+  constructor(password = undefined) {
     this.key = new NodeRSA();
+    this.password = password;
     return this;
   }
 
   generateKeyPair() {
-    this.key.generateKeyPair(512);
-    this.walletPrivateKey = this.key.exportKey('pkcs8-private-pem');
+    this.key.generateKeyPair(4096);
+    if (this.password) {
+      this.walletPrivateKey = this.key.encryptPrivate(this.key.exportKey('pkcs8-private-pem'), this.password, 'pkcs8-private-pem');
+    } else {
+      this.walletPrivateKey = this.key.exportKey('pkcs8-private-pem');
+    }
+
     this.walletPublicKey = (() => {
       const a = this.key.exportKey('pkcs8-public-pem').split('\n');
       a.shift();
@@ -71,8 +77,6 @@ export default class Wallet {
     receiver,
     txPreviousHash,
     message = 'A message from me to you!',
-    // eslint-disable-next-line no-unused-vars
-    stake = []
   ) {
     const trx = {
       sender: this.walletPublicKey,

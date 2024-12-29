@@ -13,20 +13,37 @@ function ThankYou() {
         <Grid item md={8} textAlign={'center'}>
           <Typography variant="h3">Amazing!</Typography>
           <Typography variant="subtitle1">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Thanks for your feedback!
           </Typography>
-          <Grid textAlign={'center'} mt={12} mb={8}>
+          <Typography variant="subtitle1">
+            We strive to create the best product for
+            you.
+          </Typography>
+          <Typography variant="subtitle2">
+            Your feedback is important to us and we will use it to improve
+            our product.
+          </Typography>
+          <Grid textAlign={'center'} mt={6} mb={8}>
             <img src={ThankYouIcon}></img>
           </Grid>
           <Grid mt={5} display="flex" justifyContent="center" gap={2}>
             <Button
               variant="contained"
-              color="secondary"
+              color="primary"
               onClick={() => {
-                navigate('/');
+                navigate('/sign-in');
               }}
             >
-              Back to home page
+              Sign In
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                window.open('https://discord.gg/rickle-897546129108008960', '_blank');
+              }}
+            >
+              Join Discord
             </Button>
           </Grid>
         </Grid>

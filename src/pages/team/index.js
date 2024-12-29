@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Container, Grid, Typography, Card } from '@mui/material';
+import { Container, Grid, Typography, Card, Avatar } from '@mui/material';
 
-import CareTakers1 from './../../assets/board_of_care_takers_1.png';
 import CareTakers2 from './../../assets/board_of_care_takers_2.png';
 import CareTakers3 from './../../assets/board_of_care_takers_3.png';
 import CareTakers4 from './../../assets/board_of_care_takers_4.png';
-import OurTeam1 from './../../assets/our_team1.png';
+import CareTakers1 from './../../assets/drb_ai_gen.png';
+import OurTeam1 from './../../assets/drb_ai_gen.png';
 import OurTeam2 from './../../assets/our_team2.png';
 import OurTeam3 from './../../assets/our_team3.png';
 /*
@@ -24,24 +24,24 @@ const teamData = [
   {
     image: OurTeam1,
     name: 'Michael D.',
-    designation: 'Founder',
+    designation: 'Founder | Blockchain Expert',
   },
   {
     image: OurTeam2,
     name: 'Brent G.',
-    designation: 'Founder',
+    designation: 'Founder | Payments Expert',
   },
   {
     image: OurTeam3,
     name: 'Mike E.',
-    designation: 'Founder',
+    designation: 'Founder | Communications Expert',
   },
 ];
 
 const boardOfCaretakers = [
   {
     image: CareTakers1,
-    name: 'Michael D.',
+    name: 'Michael D. (AKA) @dreamingrainbow',
     designation: 'Founder',
     about1:
       'Michael is a proven entrepreneur with a track record of success in the technology and finance industries. He has a deep understanding of the blockchain space and has been involved in the development of several successful projects.',
@@ -50,7 +50,7 @@ const boardOfCaretakers = [
   },
   {
     image: CareTakers2,
-    name: 'Brent G.',
+    name: 'Brent G. (AKA) @PaymentsDesigner',
     designation: 'Founder',
     about1:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
@@ -59,7 +59,7 @@ const boardOfCaretakers = [
   },
   {
     image: CareTakers4,
-    name: 'Melkanea',
+    name: 'Melkanea (AKA) @Melkanea',
     designation: 'Caretaker',
     about1:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
@@ -68,7 +68,7 @@ const boardOfCaretakers = [
   },
   {
     image: CareTakers3,
-    name: 'ReedOne',
+    name: 'ReedOne (AKA) @ReedOne',
     designation: 'Caretaker',
     about1:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fringilla odio non aenean a lobortis. Nunc semper quisque dictum faucibus neque nisl. Imperdiet nullam dolor odio lobortis sagittis integer. Amet, in vitae, lacus, at mattis quis ut sed.',
@@ -96,7 +96,7 @@ function index() {
             }
           >
             <Grid item xs={12} sm={6} md={4}>
-              <img src={item.image} style={{ width: '100%' }} />
+              <img src={item.image} style={{ width: '100%', objectFit: 'cover', height: 'calc(100% - 10px)', objectPosition: 'center top 15px' }} />
             </Grid>
             <Grid item md={8} sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
               <Typography variant="h4">{item.name}</Typography>
@@ -134,7 +134,7 @@ function index() {
         mt={12}
         sx={{ mb: { xs: 2.5, md: 6.25 } }}
       >
-        Core team
+        Founders
       </Typography>
       <Grid
         container
@@ -158,13 +158,15 @@ function index() {
               }}
             >
               <Grid className="gradient-border">
-                <img
-                  src={item.image}
-                  style={{
+                <Avatar
+                  sx={{
+                    width: 100,
+                    height: 100,
                     border: '8px solid #31256c',
                     borderRadius: '100px',
                   }}
-                />
+                  src={item.image}
+                ></Avatar>
               </Grid>
               <Grid>
                 <Typography variant="h6" textAlign={'center'}>

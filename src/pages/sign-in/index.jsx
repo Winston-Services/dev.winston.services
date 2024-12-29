@@ -1,80 +1,68 @@
 import React, { useState } from 'react';
 
+
 import {
   Typography,
   Button,
-  Input,
   Box,
   Link,
-  TextField,
+  Alert,
   // Grid,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
 
+import { Form } from '../../components/common/Form';
+import TextField from '../../components/common/TextField';
 import useAuth from '../../context/authContext';
-import Wallet from './../../utils/wallet';
-// import { useDispatch } from 'react-redux';
-// import { setUserWallet } from '../../store/user';
+import useApi from '../../hooks/useApi';
+
+const validationSchema = yup.object().shape({
+  email: yup.string().email('Invalid email').required('Email is required'),
+  password: yup.string().required('Password is required').min(8, 'Password must be at least 8 characters long')
+  .matches(/[A-Z]/, 'Password must have at least one uppercase letter')
+  .matches(/[0-9]/, 'Password must have at least one number')
+  .matches(
+    /[\^$*.[\]{}()?\-"!@#%&/,><':;|_~`]/,
+    'Password must have at least one special character'
+  ),
+});
 
 function SignIn() {
   const navigate = useNavigate();
+
+  const [loginMutation, { isLoading: loginLoading }] =
+    useApi().endpoints.login.useMutation();
+
   const auth = useAuth();
-  const [error, setError] = useState({});
-  const hiddenFileInput = React.useRef(null);
-  // const dispatch = useDispatch();
-  const login = (privateKey) => {
-    let tempWallet = new Wallet();
-    if (privateKey !== null) {
-      if (privateKey.substr(0, 27) !== '-----BEGIN PRIVATE KEY-----') {
-        return { error: 'Invalid Private Key, please try again.' };
-      }
-      try {
-        tempWallet.setPrivateKey(privateKey);
-      } catch (error) {
-        return { error };
-      }
-      if (tempWallet.key.isPrivate()) {
-        return { wallet: tempWallet };
-      } else {
-        return { error: 'Failed to load key.' };
-      }
-    } else {
-      return { error: 'Invalid Browser Key' };
-    }
-  };
+  const [error, setError] = useState(null);
 
-  const handleUploadFile = (event) => {
-    const fileUploaded = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsBinaryString(fileUploaded);
-    reader.onload = () => {
-      const privateKey = reader.result;
-      const loginResults = login(privateKey);
-      if ('error' in loginResults) {
-        setError(loginResults.error);
-      } else {
-        // dispatch(setUserWallet(loginResults.wallet));
-        auth.setAuth(loginResults.wallet);
+  const handleSubmit = (values) => {
+    setError(null);
+    if (loginLoading) {
+      return;
+    }
+    return loginMutation(values).then((res) => {
+      // console.log('res', values, res);
+      if (res.error) {
+        setError('Unable to login');
+        return;
+      }
+      const { email, token, success, message } = res.data.data;
+      // console.log('success',  res.data.data.success);
+      if (success) {
+        auth.setAuth({ email, token });
         navigate('/dashboard');
+        return;
+      } else {
+        console.log('error', res.data);
+        setError(message);
       }
-    };
-  };
-
-  const loadKeyFromLocalStorage = (e) => {
-    e.preventDefault();
-    const loginResults = login(localStorage.getItem('privateKey'));
-    if ('error' in loginResults) {
-      setError(loginResults.error);
-    } else {
-      // dispatch(setUserWallet(loginResults.wallet));
-      auth.setAuth(loginResults.wallet);
-      navigate('/dashboard');
-    }
-  };
-
-  const handleUploadClick = (event) => {
-    event.preventDefault();
-    hiddenFileInput.current.firstChild.click();
+    })
+    .catch((err) => {
+      console.log('err', err);
+      setError(err.error);
+    });
   };
 
   return (
@@ -83,57 +71,53 @@ function SignIn() {
       <Typography variant="h4" sx={{ mt: 2 }}>
         Your Account
       </Typography>
-      <Typography variant="subtitle2" sx={{ my: 6 }}>
-        Note : Don&apos;t lose your private key! Always keep it in a safe place.
-      </Typography>
-      <TextField
-        type="text"
-        fullWidth
-        variant="outlined"
-        label={'Username'}
-        required
-        placeholder={'Enter your username'}
-        error={error.errors}
-        color={error.errors ? 'red' : ''}
-        helperText={error.errors}
-        sx={{ mb: 2 }}
-      />
-      <TextField
-        type="password"
-        fullWidth
-        variant="outlined"
-        label={'Password'}
-        required
-        placeholder={'Enter your password'}
-        error={error.errors}
-        color={error.errors ? 'red' : ''}
-        helperText={error.errors}
-      />
 
-      <Box component="div" sx={{ mt: 5 }}>
-        <Button
+      {error && <Alert severity="error">{error}</Alert>}
+
+      <Typography variant="subtitle2" sx={{ my: 6 }}>
+        Note : Don&apos;t share your password with anyone.
+      </Typography>
+      <Form
+        validationSchema={validationSchema}
+        initialValues={{
+          email: '',
+          password: '',
+        }}
+        onSubmit={handleSubmit}
+      >
+        <TextField
+          name="email"
+          type="email"
+          fullWidth
           variant="outlined"
-          sx={{ mr: { xs: 1, md: 3 } }}
-          onClick={loadKeyFromLocalStorage}
-        >
-          Sign In
-        </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          // startIcon={<LockIcon />}
-          onClick={handleUploadClick}
-        >
-          Use Key 
-        </Button>
-        <Input
-          onChange={handleUploadFile}
-          name="privateKeyFile"
-          ref={hiddenFileInput}
-          type="file"
-          sx={{ display: 'none' }}
+          label={'Email'}
+          required
+          placeholder={'Enter your email address'}
+          sx={{ mb: 2 }}
         />
-      </Box>
+        <TextField
+          name="password"
+          type="password"
+          fullWidth
+          variant="outlined"
+          label={'Password'}
+          required
+          placeholder={'Enter your password'}
+        />
+
+        <Box component="div" sx={{ mt: 5 }}>
+          <Button
+            variant="outlined"
+            sx={{ mr: { xs: 1, md: 3 } }}
+            type="submit"
+            disabled={loginLoading}
+
+          >
+            Sign In
+          </Button>
+        </Box>
+      </Form>
+
       <Typography sx={{ mt: 5 }}>
         Don’t have an account?
         <Link

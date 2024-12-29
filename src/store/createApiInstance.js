@@ -16,6 +16,115 @@ export const createApiInstance = createApi({
     //   return headers;
     // },
   }),
-  endpoints: () => ({}),
+  endpoints: (builder) => ({
+    createUser: builder.mutation({
+      query: (data) => ({
+        url: '/user/register',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    login: builder.mutation({
+      query: (data) => ({
+        url: '/auth/login',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    logout: builder.mutation({
+      query: () => ({
+        url: '/auth/logout',
+        method: 'POST',
+      }),
+    }),
+    refreshToken: builder.mutation({
+      query: (token) => ({
+        url: '/auth/refresh-token',
+        method: 'POST',
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
+    getRpcNetworks: builder.query({
+      query: () => ({
+        url: '/chain',
+        method: 'GET',
+      }),
+    }),
+    getToken: builder.query({
+      query: (token) => ({
+        url: `/token/${token}`,
+        method: 'GET',
+      }),
+    }),
+    getTokens: builder.query({
+      query: () => ({
+        url: '/token/tokens',
+        method: 'GET',
+      }),
+    }),
+    addToken: builder.mutation({
+      query: (data, token) => ({
+        url: '/token',
+        method: 'POST',
+        body: data,
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
+    updateToken: builder.mutation({
+      query: (data, token) => ({
+        url: '/token',
+        method: 'PUT',
+        body: data,
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
+    deleteToken: builder.mutation({
+      query: (data, token) => ({
+        url: '/token',
+        method: 'DELETE',
+        body: data,
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
+    getUsers: builder.query({
+      query: (token) => ({
+        url: '/user/users',
+        method: 'GET',
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
+    getUser: builder.query({
+      query: (userId, token) => ({
+        url: `/user/${userId}`,
+        method: 'GET',
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
+    getProfile: builder.query({
+      query: (profileId) => ({
+        url: `/user/profile/${profileId}`,
+        method: 'GET',
+      }),
+    }),
+    getUserWallets: builder.query({
+      query: (profileId) => ({
+        url: `/user/wallets/${profileId}`,
+        method: 'GET',
+      }),
+    }),
+  }),
 });
+
 export default createApiInstance;

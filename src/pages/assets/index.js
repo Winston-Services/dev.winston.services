@@ -99,7 +99,7 @@ function Assets() {
         <Card elevation={0} sx={{ p: 0, mt: 10, height: 380 }}>
           <Grid item xs={12} px={3} pt={3}>
             <Typography variant="h6" mb={5}>
-              Winston trending Assets
+              Trending Assets
             </Typography>
           </Grid>
           <TrendingNfts />

@@ -1,10 +1,19 @@
 import React from 'react';
 
-import { Box, Container, Grid, Stack, Typography, Link } from '@mui/material';
+import {
+  Box,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  Link,
+  useTheme,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import useAuth from '../../context/authContext';
 import logo from './../../assets/logo_footer.svg';
+import logoDark from './../../assets/logo_footer_dark.svg';
 import winston from './../../assets/winston_ahwa_footer.svg';
 import DiscordLink from './../../components/DiscordLink';
 import TwitterLink from './../../components/TwitterLink';
@@ -12,6 +21,7 @@ import YoutubeLink from './../../components/YoutubeLink';
 
 export default function LandingFooter() {
   const auth = useAuth();
+  const theme = useTheme();
   const footerMenu = [
     {
       name: 'Community',
@@ -163,8 +173,8 @@ export default function LandingFooter() {
           </Grid>
           <Grid item xs={9}>
             <Box
-              src={logo}
               component="img"
+              src={theme.palette.mode === 'dark' ? logo : logoDark}
               sx={{
                 width: '100%',
                 maxWidth: '311.77px',
@@ -177,8 +187,8 @@ export default function LandingFooter() {
               sx={{ gap: { xs: 1, sm: 2.5 } }}
               display="flex"
               justifyContent="start"
-              ml={6}
-              mt={3.5}
+              ml={{ xs: 2, sm: 6 }}
+              mt={{ xs: 1.5, sm: 3.5 }}
             >
               <Grid
                 sx={{
@@ -186,7 +196,12 @@ export default function LandingFooter() {
                   width: { xs: 50 },
                 }}
               >
-                <DiscordLink />
+                <DiscordLink
+                  style={{
+                    backgroundColor:
+                      theme.palette.mode === 'dark' ? undefined : '#493799',
+                  }}
+                />
               </Grid>
               <Grid
                 sx={{
@@ -194,7 +209,12 @@ export default function LandingFooter() {
                   width: { xs: 50 },
                 }}
               >
-                <TwitterLink />
+                <TwitterLink
+                  style={{
+                    backgroundColor:
+                      theme.palette.mode === 'dark' ? undefined : '#493799',
+                  }}
+                />
               </Grid>
               <Grid
                 sx={{
@@ -202,7 +222,12 @@ export default function LandingFooter() {
                   width: { xs: 50 },
                 }}
               >
-                <YoutubeLink />
+                <YoutubeLink
+                  style={{
+                    backgroundColor:
+                      theme.palette.mode === 'dark' ? undefined : '#493799',
+                  }}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -212,8 +237,8 @@ export default function LandingFooter() {
           {footerMenu.map((menu) => (
             <Grid
               item
-              xs={6}
-              sm={4}
+              xs={12}
+              sm={6}
               md={12 / footerMenu.length}
               key={menu.name}
             >
@@ -234,7 +259,6 @@ export default function LandingFooter() {
                     key={menuItem.name}
                     component="a"
                     variant="body2"
-                    color="primary"
                     onClick={
                       menuItem.url
                         ? () => {
@@ -244,6 +268,30 @@ export default function LandingFooter() {
                     }
                     href={menuItem.href ? menuItem.href : undefined}
                     target={menuItem.href ? '_blank' : undefined}
+                    sx={(theme) => ({
+                      color: theme.palette.mode === 'dark' ? 'white' : 'black',
+                      '&:hover': {
+                        color:
+                          theme.palette.mode === 'dark' ? 'white' : 'black',
+                      },
+                      '&:active': {
+                        color:
+                          theme.palette.mode === 'dark' ? 'white' : 'black',
+                      },
+                      '&:focus': {
+                        color:
+                          theme.palette.mode === 'dark' ? 'white' : 'black',
+                      },
+                      '&:visited': {
+                        color:
+                          theme.palette.mode === 'dark' ? 'white' : 'black',
+                      },
+                      '&:link': {
+                        color:
+                          theme.palette.mode === 'dark' ? 'white' : 'black',
+                      },
+                      cursor: 'pointer',
+                    })}
                   >
                     {menuItem.name}
                   </Link>
@@ -260,9 +308,7 @@ export default function LandingFooter() {
           md={6}
           sx={{ textAlign: { xs: 'center', md: 'left' } }}
         >
-          <Typography variant="subtitle1">
-            Powered by : Winston Services
-          </Typography>
+          <Typography variant="subtitle1">Powered by : Winston</Typography>
         </Grid>
         <Grid
           item
@@ -274,8 +320,28 @@ export default function LandingFooter() {
             href={'./assets/pdf/MADComputerConsultingLLC-AOO.pdf'}
             variant="subtitle1"
             target="_blank"
+            sx={{
+              textDecoration: 'none',
+              textUnderlineOffset: '5px',
+              '&:hover': {
+                color: theme.palette.mode === 'dark' ? 'white' : 'black',
+              },
+              '&:active': {
+                color: theme.palette.mode === 'dark' ? 'white' : 'black',
+              },
+              '&:focus': {
+                color: theme.palette.mode === 'dark' ? 'white' : 'black',
+              },
+              '&:visited': {
+                color: theme.palette.mode === 'dark' ? 'white' : 'black',
+              },
+              '&:link': {
+                color: theme.palette.mode === 'dark' ? 'white' : 'black',
+              },
+              cursor: 'pointer',
+            }}
           >
-            Copyright © 2022 M.A.D. Computer Consulting LLC{' '}
+            Copyright © 2022-2025 M.A.D. Computer Consulting LLC{' '}
           </Link>
         </Grid>
       </Grid>

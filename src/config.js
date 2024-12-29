@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-undef
-const { HOST, REACT_APP_FOOTER_TITLE, REACT_APP_FOOTER_DESCRIPTION } =
+const { REACT_APP_FOOTER_TITLE, REACT_APP_FOOTER_DESCRIPTION } =
   process.env;
 
 const config = {
-  baseUrl: HOST,
+  baseUrl: 'https://winston.services/api/v1',
   footerTitle: REACT_APP_FOOTER_TITLE,
   footerDescription: REACT_APP_FOOTER_DESCRIPTION,
   //discordLink:'https://discord.com/api/oauth2/authorize?client_id=594415583638847488&scope=bot&permissions=8',

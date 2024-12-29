@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router';
 import { Navigate } from 'react-router-dom';
 
-import { setUserWallet, userInfoSelector } from '../store/user';
+import { userInfoSelector, setUserInfo } from '../store/user';
 import { isElectron } from '../utils/commonFunctions';
 
 const oldToken = false;
@@ -27,8 +27,16 @@ export function AuthProvider({ children }) {
   };
   const addAuth = (wallet) => {
     // localStorage.setItem('token', JSON.stringify(wallet));
-    dispatch(setUserWallet(wallet));
-    setAuth(wallet);
+    dispatch(
+      setUserInfo({
+        authLoading: false,
+        email: wallet.email,
+        token: wallet.token,
+        name: 'Guest User',
+        role: 'Guest',
+      })
+    );
+    setAuth(true);
   };
   const [connected, setConnected] = React.useState(false);
   let connection = React.useRef();
@@ -78,7 +86,7 @@ export function AuthProvider({ children }) {
   const communicate = (connection) => {
     //set websocket connection states.
     setConnected(true);
-    
+
     const rateLimit = (func, limit) => {
       let lastCall = 0;
       return (...args) => {
@@ -129,7 +137,14 @@ export function AuthProvider({ children }) {
     };
   });
 
-  const value = { authenticated: auth, setAuth: addAuth, removeAuth, get connection() { return connection.current } };
+  const value = {
+    authenticated: auth,
+    setAuth: addAuth,
+    removeAuth,
+    get connection() {
+      return connection.current;
+    },
+  };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 AuthProvider.propTypes = {

@@ -330,6 +330,39 @@ const data = [
 
 function Currencies() {
   const navigate = useNavigate();
+
+  /* eslint-disable */
+  const renderCreateCurrency = () => {
+    return (
+      <Paper elevation={0}>
+        <Container>
+          <Grid container spacing={5} my={10}>
+            <Grid item xs={12} md={7} my={10}>
+              <Typography variant="h3">Upload your own currencies</Typography>
+              <Typography variant="subtitle1" mt={4} mb={15}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo
+                consequat ultricies adipiscing nisi nunc, sit feugiat euismod.
+                Cras eget malesuada risus ante. Vitae egestas tristique nisi,
+                eget mauris interdum.
+              </Typography>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => navigate('/currencies/upload-currency')}
+              >
+                Upload your own Currencies
+              </Button>
+            </Grid>
+            <Grid item md={5} xs={12} display={'flex'} alignItems={'flex-end'}>
+              <img src={CurrenciesImage} alt="currencies-image" width="100%" />
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+    );
+  };
+  /* eslint-enable */
+
   return (
     <>
       <Container>
@@ -356,31 +389,6 @@ function Currencies() {
           })}
         </Grid>
       </Container>
-      <Paper elevation={0}>
-        <Container>
-          <Grid container spacing={5} my={10}>
-            <Grid item xs={12} md={7} my={10}>
-              <Typography variant="h3">Upload your own currencies</Typography>
-              <Typography variant="subtitle1" mt={4} mb={15}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo
-                consequat ultricies adipiscing nisi nunc, sit feugiat euismod.
-                Cras eget malesuada risus ante. Vitae egestas tristique nisi,
-                eget mauris interdum.
-              </Typography>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => navigate('/currencies/upload-currency')}
-              >
-                Upload your own Currencies
-              </Button>
-            </Grid>
-            <Grid item md={5} xs={12} display={'flex'} alignItems={'flex-end'}>
-              <img src={CurrenciesImage} alt="currencies-image" width="100%" />
-            </Grid>
-          </Grid>
-        </Container>
-      </Paper>
     </>
   );
 }

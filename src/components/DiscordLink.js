@@ -5,10 +5,11 @@ import { IconButton } from '@mui/material';
 import config from '../config';
 import { ReactComponent as Discord } from './../assets/discord_brands.svg';
 
-function DiscordLink() {
+
+function DiscordLink(props) {
   return (
-    <IconButton href={config.discordLink} target={'_blank'}>
-      <Discord width={'100%'} height={'100%'} />
+    <IconButton href={config.discordLink} target={'_blank'} {...props}>
+      <Discord width={'100%'} height={'100%'}  />
     </IconButton>
   );
 }

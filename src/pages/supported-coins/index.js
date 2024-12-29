@@ -3,6 +3,8 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 
+import Currencies from '../currencies/Currencies';
+
 const SupportedCoins = () => {
   const data = [
     {
@@ -85,6 +87,9 @@ const SupportedCoins = () => {
               </Grid>
             );
           })}
+        </Grid>
+        <Grid container item lg={12} display={'flex'} rowSpacing={8}>
+          <Currencies />
         </Grid>
       </Grid>
     </Container>

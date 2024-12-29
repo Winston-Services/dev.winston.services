@@ -2,6 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   info: {
+    authLoading: false,
+    email: '',
+    token: '',
     name: 'Michael Dennis',
     role: 'Founder',
   },
@@ -22,7 +25,7 @@ const initialState = {
   account: {
     perMessageEncryption: false,
   },
-  wallet: {},
+  wallets: [],
 };
 
 export const userSlice = createSlice({
@@ -33,30 +36,53 @@ export const userSlice = createSlice({
       state.info = action.payload;
       return state;
     },
-    setUserWallet: (state, action) => {
-      state.wallet = action.payload;
+    setUserWallets: (state, action) => {
+      state.wallets = action.payload;
       return state;
     },
-
     setUserAccount: (state, action) => {
       state.account = action.payload;
       return state;
     },
-
     addUserAccount: (state, action) => {
       const accounts = [...state.accounts];
       accounts.push(action.payload);
       state.accounts = accounts;
       return state;
     },
+    removeUserAccount: (state, action) => {
+      const accounts = [...state.accounts];
+      accounts.splice(action.payload, 1);
+      state.accounts = accounts;
+      return state;
+    },
+    addUserWallet: (state, action) => {
+      const wallets = [...state.wallets];
+      wallets.push(action.payload);
+      state.wallets = wallets;
+      return state;
+    },
+    removeUserWallet: (state, action) => {
+      const wallets = [...state.wallets];
+      wallets.splice(action.payload, 1);
+      state.wallets = wallets;
+      return state;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setUserInfo, setUserWallet, setUserAccount, addUserAccount } =
-  userSlice.actions;
+export const {
+  setUserInfo,
+  setUserWallets,
+  setUserAccount,
+  addUserAccount,
+  addUserWallet,
+  removeUserAccount,
+  removeUserWallet,
+} = userSlice.actions;
 export const userInfoSelector = (state) => state.user.info;
-export const userWalletSelector = (state) => state.user.wallet;
+export const userWalletsSelector = (state) => state.user.wallets;
 export const userAccountsSelector = (state) => state.user.accounts;
 export const userAccountSelector = (state) => state.user.account;
 export const userPerMessageEncryptionSelector = (state) =>
