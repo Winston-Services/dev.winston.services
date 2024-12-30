@@ -14,7 +14,6 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import useUser from '../../hooks/useUser';
 import {
   openMenu,
   sideBarItemSelector,
@@ -73,10 +72,6 @@ export default function SideBar() {
   const navigate = useNavigate();
   const isSideBarOpen = useSelector(sideBarStateSelector);
   const sideBarItem = useSelector(sideBarItemSelector);
-  const user = useUser();
-
-  console.log(user);
-
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleListItemClick = (event, index) => {
@@ -91,7 +86,7 @@ export default function SideBar() {
     <Drawer variant="permanent" open={isSideBarOpen}>
       {sideBarItem.map((menuItem, index) => (
         <React.Fragment key={menuItem.key}>
-          <Box sx={{ pb: 1, }}>
+          <Box sx={{ pb: 1 }}>
             {isSideBarOpen && menuItem.attr?.primary ? (
               <ListItemButton
                 selected={selectedIndex === index}

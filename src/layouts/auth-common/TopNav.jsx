@@ -159,7 +159,7 @@ function TopNav() {
           }}
         />
         <Box sx={{ display: { xs: 'none', lg: 'inline-flex' } }}>
-          <MenuItem>Chat</MenuItem>
+          <MenuItem onClick={() => navigate('/dashboard/messages')}>Chat</MenuItem>
           <MenuItem>Academy</MenuItem>
           <MenuItem>Swap</MenuItem>
           <MenuItem>Liquidity</MenuItem>
