@@ -1,7 +1,7 @@
 import React from 'react';
 
+import Close from '@mui/icons-material/Close';
 import {
-  //CircularProgress,
   Grid,
   Paper,
   Typography,
@@ -14,18 +14,22 @@ import {
   CardContent,
   Tooltip,
   Divider,
+  IconButton,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as yup from 'yup';
 
+import DropDown from '../../components/common/DropDown';
 import Form from '../../components/common/Form';
 import AddressSection from '../../components/common/forms/AddressSection';
 import NameSection from '../../components/common/forms/NameSection';
 import PhoneTextField from '../../components/common/PhoneTextField';
 import TextField from '../../components/common/TextField';
+import UploadFile from '../../components/common/UploadFile';
 import useAuth from '../../context/authContext';
 import useUser from '../../hooks/useUser';
+
 const AccountCreated = React.lazy(() => import('./AccountCreated'));
 const BalanceChart = React.lazy(() => import('./BalanceChart'));
 const BotPlanBarChart = React.lazy(() => import('./BotPlanBarChart'));
@@ -47,93 +51,171 @@ const profileValidationSchema = yup.object().shape({
   phone: yup.string(),
   city: yup.string(),
   state: yup.string(),
-  zip: yup.string(),
+  postalCode: yup.string(),
   country: yup.string(),
+  avatar: yup.mixed(),
 });
 
-const CreateProfile = (props) => {
-  const { item, setInProgress } = props;
+const CreateProfile = ({ inProgress, setInProgress, handleCompleteItem }) => {
+  const { row, item } = inProgress;
+  const [avatarFile, setAvatarFile] = React.useState(null);
+
   const handleSubmit = (values) => {
+    setInProgress(false);
+    handleCompleteItem(row, item);
     console.log(values);
   };
 
   const handleClose = () => {
     setInProgress(false);
   };
+
   return (
     <Paper elevation={0} sx={{ padding: 1, marginTop: 1 }}>
-      <Typography variant="h4">
-        <strong>In Progress</strong> : {item.title}
-      </Typography>
-
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          alignItems: 'center',
-          gap: 1,
+      <Form
+        initialValues={{
+          username: '',
+          firstName: '',
+          lastName: '',
+          middleName: '',
+          title: '',
+          address1: '',
+          address2: '',
+          phone: '',
+          city: '',
+          state: '',
+          zip: '',
+          country: '',
+          avatar: avatarFile,
+        }}
+        validationSchema={profileValidationSchema}
+        onSubmit={(values) => {
+          console.log(values);
+          handleSubmit(values);
         }}
       >
-        <Form
-          initialValues={{
-            username: '',
-            firstName: '',
-            lastName: '',
-            middleName: '',
-            title: '',
-            address1: '',
-            address2: '',
-            phone: '',
-            city: '',
-            state: '',
-            zip: '',
-            country: '',
+        <Typography variant="h4">
+          <strong>In Progress</strong> : {item.title}
+        </Typography>
+
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+            alignContent: 'center',
+            gap: 1,
           }}
-          validationSchema={profileValidationSchema}
-          onSubmit={handleSubmit}
         >
           <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
-          <TextField label="Username" name="username" size="small" />
-          <Divider sx={{ marginBottom: 1 }} />
-          <NameSection />
-          <Divider sx={{ marginBottom: 1 }} />
-          <AddressSection />
-          <PhoneTextField />
-          <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
-        </Form>
-      </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
-        <Button onClick={handleClose} variant="contained" color="error">
-          Close
-        </Button>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 1,
+              alignItems: 'center',
+            }}
+          >
+            <Box
+              sx={{
+                border: '1px dashed gray',
+                padding: '10px',
+                width: '100%',
+                maxWidth: '400px',
+                height: '100%',
+              }}
+            >
+              <UploadFile
+                name="avatar"
+                height="100%"
+                width="100%"
+                setAvatarFile={setAvatarFile}
+                value={avatarFile}
+              />
+            </Box>
 
-        <Button onClick={handleClose} variant="contained" color="success">
-          Save
-        </Button>
-      </Box>
+            <Box>
+              <TextField label="Username" name="username" size="small" />
+              <Divider sx={{ marginBottom: 1 }} />
+              <NameSection />
+              <Divider sx={{ marginBottom: 1 }} />
+              <AddressSection />
+              <PhoneTextField />
+            </Box>
+          </Box>
+          <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
+        </Box>
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+          <Button onClick={handleClose} variant="contained" color="error">
+            Close
+          </Button>
+
+          <Button type="submit" variant="contained" color="success">
+            Save
+          </Button>
+        </Box>
+      </Form>
     </Paper>
   );
 };
 
 CreateProfile.propTypes = {
-  item: PropTypes.object.isRequired,
   setInProgress: PropTypes.func.isRequired,
   inProgress: PropTypes.object.isRequired,
+  handleCompleteItem: PropTypes.func.isRequired,
 };
 
-const CreateWallet = () => {
-  return null;
+const CreateWallet = ({ inProgress, setInProgress, handleCompleteItem }) => {
+  const { row, item } = inProgress;
+  const handleClose = () => {
+    setInProgress(false);
+  };
+
+  const handleSubmit = () => {
+    setInProgress(false);
+    handleCompleteItem(row, item);
+  };
+
+  return (
+    <Box>
+      <Typography variant="h4">Create Wallet</Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+        <Typography variant="body1">
+          Create a wallet to start trading on the blockchain.
+        </Typography>
+      </Box>
+      <Button variant="contained" color="error" onClick={handleClose}>
+        Close
+      </Button>
+      <Button variant="contained" color="success" onClick={handleSubmit}>
+        Create Wallet
+      </Button>
+    </Box>
+  );
+};
+
+CreateWallet.propTypes = {
+  setInProgress: PropTypes.func.isRequired,
+  inProgress: PropTypes.object.isRequired,
+  handleCompleteItem: PropTypes.func.isRequired,
 };
 
 const LinkWallet = () => {
   return null;
 };
 
-const JoinCommunity = ({ item, setInProgress }) => {
+const JoinCommunity = ({ inProgress, setInProgress, handleCompleteItem }) => {
+  const { row, item } = inProgress;
   const handleClose = () => {
     setInProgress(false);
   };
+
+  const handleSubmit = () => {
+    setInProgress(false);
+    handleCompleteItem(row, item);
+  };
+
   return (
     <Paper elevation={0} sx={{ padding: 1, marginTop: 1 }}>
       <Typography variant="h4">
@@ -154,7 +236,10 @@ const JoinCommunity = ({ item, setInProgress }) => {
             variant="contained"
             color="success"
             onClick={() => {
-              window.open('https://discord.gg/rickle-897546129108008960', '_blank');
+              window.open(
+                'https://discord.gg/rickle-897546129108008960',
+                '_blank'
+              );
             }}
           >
             Join our Discord
@@ -183,20 +268,24 @@ const JoinCommunity = ({ item, setInProgress }) => {
         <Button onClick={handleClose} variant="contained" color="error">
           Close
         </Button>
+        <Button variant="contained" color="success" onClick={handleSubmit}>
+          Complete
+        </Button>
       </Box>
     </Paper>
   );
 };
 
 JoinCommunity.propTypes = {
-  item: PropTypes.object.isRequired,
   setInProgress: PropTypes.func.isRequired,
   inProgress: PropTypes.object.isRequired,
+  handleCompleteItem: PropTypes.func.isRequired,
 };
 
 const EarnRoles = () => {
   return null;
 };
+
 const LinkDiscord = () => {
   return null;
 };
@@ -215,9 +304,170 @@ const SponsorStudent = () => {
 const ActiveCourses = () => {
   return null;
 };
-const SwapAssets = () => {
-  return null;
+
+const SwapAssets = ({ inProgress, setInProgress, handleCompleteItem }) => {
+  const { row, item } = inProgress;
+  
+  const FORM_VALIDATION = yup.object().shape({
+    network: yup.string().required('Network is required'),
+    token: yup.string().required('Token is required'),
+    address: yup.string().required('Address is required'),
+    amount: yup.string().required('Amount is required'),
+  });
+  
+  const [initialValues1] = React.useState({
+    network: 'Network',
+    token: '',
+    address: '',
+    amount: '',
+  });
+  
+  const [initialValues2] = React.useState({
+    network: 'Network',
+    token: '',
+    address: '',
+    amount: '',
+  });
+
+  const handleClose = () => {
+    setInProgress(false);
+  };
+
+  /* eslint-disable */
+  const handleSubmit = () => {
+    setInProgress(false);
+    handleCompleteItem(row, item);
+  };
+  /* eslint-enable */
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [inProgress]);
+
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, marginTop: 1 }}>
+      <Grid item>
+        <Typography variant="h3">
+          Swap Across Winston{' '}
+          <span style={{ float: 'right' }}>
+            <IconButton onClick={handleClose}>
+              <Close />
+            </IconButton>
+          </span>
+        </Typography>
+      </Grid>
+      <Grid item container spacing={4}>
+        <Grid item sm={12} lg={6}>
+          <Card sx={{ p: 4 }}>
+            <Form
+              initialValues={{
+                ...initialValues1,
+              }}
+              validationSchema={FORM_VALIDATION}
+              onSubmit={(values) => {
+                console.log(values);
+              }}
+            >
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <Typography variant="h5">Swap From</Typography>
+                </Grid>
+                <Grid item xs={12} sx={{ mt: { xs: 3, sm: 1.5, md: 0 } }}>
+                  <DropDown
+                    label="Network"
+                    name="network"
+                    options={['Network']}
+                    placeholder="Network"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    name="token"
+                    fullWidth
+                    label="Token"
+                    helperText="Token is required"
+                    placeholder="Token"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    name="amount"
+                    fullWidth
+                    label="Amount"
+                    helperText="Amount is required"
+                    placeholder="Amount"
+                  />
+                </Grid>
+                <Grid item xs={12} textAlign={'center'}>
+                  <Button type="submit" variant="contained" color="secondary">
+                    Approve
+                  </Button>
+                </Grid>
+              </Grid>
+            </Form>
+          </Card>
+        </Grid>
+        <Grid item sm={12} lg={6}>
+          <Card sx={{ p: 4 }}>
+            <Form
+              initialValues={{
+                ...initialValues2,
+              }}
+              validationSchema={FORM_VALIDATION}
+              onSubmit={(values) => {
+                console.log(values);
+              }}
+            >
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <Typography variant="h5">Swap To</Typography>
+                </Grid>
+                <Grid item xs={12} sx={{ mt: { xs: 3, sm: 1.5, md: 0 } }}>
+                  <DropDown
+                    label="Network"
+                    name="network"
+                    options={['Network']}
+                    placeholder="Network"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    name="token"
+                    fullWidth
+                    label="Token"
+                    helperText="Token is required"
+                    placeholder="Token"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    name="amount"
+                    fullWidth
+                    label="Amount"
+                    helperText="Amount is required"
+                    placeholder="Amount"
+                  />
+                </Grid>
+                <Grid item xs={12} textAlign={'center'}>
+                  <Button type="submit" variant="contained" color="secondary">
+                    Approve
+                  </Button>
+                </Grid>
+              </Grid>
+            </Form>
+          </Card>
+        </Grid>
+      </Grid>
+    </Box>
+  );
 };
+
+SwapAssets.propTypes = {
+  setInProgress: PropTypes.func.isRequired,
+  inProgress: PropTypes.object.isRequired,
+  handleCompleteItem: PropTypes.func.isRequired,
+};
+
 const LiquidityStaking = () => {
   return null;
 };
@@ -231,129 +481,87 @@ const SwagStore = () => {
   return null;
 };
 
-const InProgress = ({ inProgress, setInProgress }) => {
+const InProgress = ({ inProgress, setInProgress, handleCompleteItem }) => {
   const { item } = inProgress;
 
   switch (item.title) {
     case 'Create Your Profile':
       return (
         <CreateProfile
-          item={item}
           setInProgress={setInProgress}
           inProgress={inProgress}
+          handleCompleteItem={handleCompleteItem}
         />
       );
     case 'Create A Wallet':
       return (
         <CreateWallet
-          item={item}
           setInProgress={setInProgress}
           inProgress={inProgress}
+          handleCompleteItem={handleCompleteItem}
         />
       );
     case 'Link A Wallet':
       return (
-        <LinkWallet
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <LinkWallet setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Join Our Community':
       return (
         <JoinCommunity
-          item={item}
           setInProgress={setInProgress}
           inProgress={inProgress}
+          handleCompleteItem={handleCompleteItem}
         />
       );
     case 'Earn Roles':
       return (
-        <EarnRoles
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <EarnRoles setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Learn to Earn':
       return (
-        <WinstonAcademy
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <WinstonAcademy setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Start Teaching':
       return (
         <WinstonEducator
-          item={item}
           setInProgress={setInProgress}
           inProgress={inProgress}
         />
       );
     case 'Sponsor a Course':
       return (
-        <SponsorCourse
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <SponsorCourse setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Sponsor a Student':
       return (
-        <SponsorStudent
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <SponsorStudent setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Active Courses':
       return (
-        <ActiveCourses
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <ActiveCourses setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Swap Assets':
       return (
-        <SwapAssets
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <SwapAssets setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Liquidity Staking':
       return (
         <LiquidityStaking
-          item={item}
           setInProgress={setInProgress}
           inProgress={inProgress}
         />
       );
     case 'NFT Marketplace':
       return (
-        <NFTMarketplace
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <NFTMarketplace setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Crowd Fund':
       return (
-        <CrowdFund
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <CrowdFund setInProgress={setInProgress} inProgress={inProgress} />
       );
     case 'Swag Store':
       return (
-        <SwagStore
-          item={item}
-          setInProgress={setInProgress}
-          inProgress={inProgress}
-        />
+        <SwagStore setInProgress={setInProgress} inProgress={inProgress} />
       );
     default:
       return null;
@@ -363,6 +571,7 @@ const InProgress = ({ inProgress, setInProgress }) => {
 InProgress.propTypes = {
   inProgress: PropTypes.object.isRequired,
   setInProgress: PropTypes.func.isRequired,
+  handleCompleteItem: PropTypes.func.isRequired,
 };
 
 export default function Dashboard() {
@@ -594,6 +803,14 @@ export default function Dashboard() {
         updatedItems[row][itemIndex].dismiss =
           !updatedItems[row][itemIndex].dismiss;
       }
+      return updatedItems;
+    });
+  };
+
+  const handleCompleteItem = (row, item) => {
+    setItems((prevItems) => {
+      const updatedItems = { ...prevItems };
+      updatedItems[row].find((i) => i.title === item.title).completed = true;
       return updatedItems;
     });
   };
@@ -832,7 +1049,11 @@ export default function Dashboard() {
           }, [])}
 
         {inProgress && (
-          <InProgress inProgress={inProgress} setInProgress={setInProgress} />
+          <InProgress
+            inProgress={inProgress}
+            setInProgress={setInProgress}
+            handleCompleteItem={handleCompleteItem}
+          />
         )}
 
         {user.accounts.length < 0 && (

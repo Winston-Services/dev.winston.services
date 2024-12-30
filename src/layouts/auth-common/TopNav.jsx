@@ -160,12 +160,12 @@ function TopNav() {
         />
         <Box sx={{ display: { xs: 'none', lg: 'inline-flex' } }}>
           <MenuItem onClick={() => navigate('/dashboard/messages')}>Chat</MenuItem>
-          <MenuItem>Academy</MenuItem>
-          <MenuItem>Swap</MenuItem>
-          <MenuItem>Liquidity</MenuItem>
-          <MenuItem>Market Place</MenuItem>
-          <MenuItem>Crowd Funding</MenuItem>
-          <MenuItem>Workshop</MenuItem>
+          <MenuItem onClick={() => navigate('/academy')}>Academy</MenuItem>
+          <MenuItem onClick={() => navigate('/swap')}>Swap</MenuItem>
+          <MenuItem onClick={() => navigate('/swap/liquidity')}>Liquidity</MenuItem>
+          <MenuItem onClick={() => navigate('/marketplace')}>Market Place</MenuItem>
+          <MenuItem onClick={() => navigate('/community-funding')}>Community Funding</MenuItem>
+          <MenuItem onClick={() => navigate('/wizard')}>Workshop</MenuItem>
         </Box>
         <Box sx={{ flexGrow: 1 }}></Box>
         <Box>

@@ -84,8 +84,8 @@ export default function LandingFooter() {
           url: '/burning',
         },
         {
-          name: 'Swapping',
-          url: '/swapping',
+          name: 'Winston Swap',
+          url: '/swap',
         },
       ],
     },

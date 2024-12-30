@@ -158,7 +158,7 @@ export default function App() {
           element: getRouteWrapper(<Staking />, false),
         },
         {
-          path: '/swapping',
+          path: '/swap',
           element: getRouteWrapper(<Swapping />, false),
         },
         {
