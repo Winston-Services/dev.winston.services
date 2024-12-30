@@ -143,6 +143,10 @@ export default function LandingFooter() {
       name: 'Legal',
       menuItems: [
         {
+          name: 'Public Notice',
+          url: '/public-notice',
+        },
+        {
           name: 'Whitepapers',
           url: '/whitepapers',
         },

@@ -3,6 +3,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import academy from './academy';
 import apiInstance from './createApiInstance';
 import news from './news';
+import publicNotice from './publicNotice';
 import sideBar from './sideBar';
 import themeColors from './themeColors';
 import user from './user';
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   wizard,
   academy,
   news,
+  publicNotice,
   [apiInstance.reducerPath]: apiInstance.reducer,
 });
 const reducer = (state, action) => {

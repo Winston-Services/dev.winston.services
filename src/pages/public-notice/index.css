@@ -1,0 +1,67 @@
+.slides .slick-prev,
+.slides .slick-next {
+  position: absolute;
+  z-index: 1;
+}
+
+.slides {
+  position: absolute;
+}
+
+.slides .slick-prev,
+.slides .slick-next {
+  position: absolute;
+  z-index: 1;
+}
+
+button[class='slick-arrow slick-prev'] {
+  left: 0;
+  top: 38%;
+  margin: 0 10px;
+  z-index: 1;
+}
+
+button[class='slick-arrow slick-next'] {
+  right: 0;
+  top: 38%;
+  margin: 0 10px;
+  z-index: 1;
+}
+
+button[class='slick-arrow slick-prev'] {
+  height: 20px;
+  width: 20px;
+}
+
+.MuiTabs-indicator {
+  background: linear-gradient(
+    90deg,
+    rgb(234, 122, 143) 0.64%,
+    rgb(228, 82, 200) 99.36%
+  );
+}
+
+.css-13xfq8m-MuiTabPanel-root {
+  padding: 0;
+  margin-top: 20px;
+}
+
+/* .blurImage {
+  height: 500px;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  border-radius: 20px;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+}
+
+.overImage {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 3;
+} */

@@ -47,6 +47,7 @@ const Holding = React.lazy(() => import('./pages/holding'));
 const CampaignRouting = React.lazy(() => import('./pages/campaign'));
 const Campaign = React.lazy(() => import('./pages/campaign/Campaign'));
 const Ico = React.lazy(() => import('./pages/ico'));
+const PublicNoticeRouting = React.lazy(() => import('./pages/public-notice'));
 import { isElectron } from './utils/commonFunctions';
 
 export default function App() {
@@ -108,9 +109,7 @@ export default function App() {
     },
     {
       path: '*',
-      element: (
-        <Navigate to={auth?.authenticated ? '/dashboard' : '/'} />
-      ),
+      element: <Navigate to={auth?.authenticated ? '/dashboard' : '/'} />,
     },
   ];
 
@@ -208,6 +207,10 @@ export default function App() {
         {
           path: '/news/*',
           element: getRouteWrapper(<NewsRouting />, false),
+        },
+        {
+          path: '/public-notice/*',
+          element: getRouteWrapper(<PublicNoticeRouting />, false),
         },
         {
           path: '/network-status',
