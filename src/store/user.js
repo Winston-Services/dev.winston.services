@@ -5,8 +5,8 @@ const initialState = {
     authLoading: false,
     email: '',
     token: '',
-    name: 'Michael Dennis',
-    role: 'Founder',
+    name: 'Guest User',
+    role: 'Guest',
   },
   accounts: [
     {
@@ -24,6 +24,20 @@ const initialState = {
   ],
   account: {
     perMessageEncryption: false,
+  },
+  profile: {
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    username: '',
+    phone: '',
+    address1: '',
+    address2: '',
+    address3: '',
+    city: '',
+    state: '',
+    postalCode: '',
+    country: '',
   },
   wallets: [],
 };

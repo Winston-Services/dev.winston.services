@@ -9,35 +9,34 @@ import { Navigate } from 'react-router-dom';
 import { userInfoSelector, setUserInfo } from '../store/user';
 import { isElectron } from '../utils/commonFunctions';
 
-const oldToken = false;
-// const oldToken = localStorage.getItem('token')
-//   ? JSON.parse(localStorage.getItem('token'))
-//   : false;
-const AuthContext = React.createContext(oldToken);
+const AuthContext = React.createContext(localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : false);
 
 export function AuthProvider({ children }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [auth, setAuth] = useState(oldToken);
+  const [auth, setAuth] = useState(false);
+
   const removeAuth = () => {
+    localStorage.removeItem('token');
     dispatch({ type: 'logout' });
-    // localStorage.removeItem('token');
     setAuth(false);
     navigate('/sign-in');
   };
+
   const addAuth = (wallet) => {
-    // localStorage.setItem('token', JSON.stringify(wallet));
+    localStorage.setItem('token', JSON.stringify({authenticated: true, ...wallet}));
     dispatch(
       setUserInfo({
         authLoading: false,
         email: wallet.email,
         token: wallet.token,
-        name: 'Guest User',
-        role: 'Guest',
+        name: 'Michael Dennis',
+        role: 'Founder',
       })
     );
-    setAuth(true);
+    setAuth({ authenticated: true, ...wallet });
   };
+  
   const [connected, setConnected] = React.useState(false);
   let connection = React.useRef();
 
@@ -125,10 +124,19 @@ export function AuthProvider({ children }) {
     };
   };
 
+  const refreshAuth = (wallet) => {
+    console.log('refreshAuth', wallet);
+    addAuth(wallet);
+  };
+
   React.useEffect(() => {
     if (!connected && !isElectron()) {
-      connection.current = new WebSocket('https://winston.services/ws');
-      communicate(connection.current);
+      try {
+        connection.current = new WebSocket('https://winston.services/ws');
+        communicate(connection.current);
+      } catch (error) {
+        console.error(error);
+      }
     }
     return () => {
       if (connected) {
@@ -138,9 +146,10 @@ export function AuthProvider({ children }) {
   });
 
   const value = {
-    authenticated: auth,
+    authenticated: auth?.authenticated || false,
     setAuth: addAuth,
     removeAuth,
+    refreshAuth,
     get connection() {
       return connection.current;
     },

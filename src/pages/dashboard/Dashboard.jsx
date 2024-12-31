@@ -39,6 +39,7 @@ const RecentTransactions = React.lazy(() => import('./RecentTransactions'));
 const ServerPlanBarChart = React.lazy(() => import('./ServerPlanBarChart'));
 const TopUsers = React.lazy(() => import('./TopUsers'));
 const Footer = React.lazy(() => import('../../layouts/common/LandingFooter'));
+const Wallet = React.lazy(() => import('./Wallets/Wallet'));
 
 const profileValidationSchema = yup.object().shape({
   username: yup.string(),
@@ -84,7 +85,7 @@ const CreateProfile = ({ inProgress, setInProgress, handleCompleteItem }) => {
           phone: '',
           city: '',
           state: '',
-          zip: '',
+          postalCode: '',
           country: '',
           avatar: avatarFile,
         }}
@@ -185,6 +186,19 @@ const CreateWallet = ({ inProgress, setInProgress, handleCompleteItem }) => {
           Create a wallet to start trading on the blockchain.
         </Typography>
       </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 1,
+          margin: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignContent: 'center',
+        }}
+      >
+        <Wallet />
+      </Box>
       <Button variant="contained" color="error" onClick={handleClose}>
         Close
       </Button>
@@ -282,13 +296,66 @@ JoinCommunity.propTypes = {
   handleCompleteItem: PropTypes.func.isRequired,
 };
 
-const EarnRoles = () => {
-  return null;
+const LinkDiscord = ({ inProgress, setInProgress, handleCompleteItem }) => {
+  const { row, item } = inProgress;
+  const user = useUser();
+
+  const handleClose = () => {
+    setInProgress(false);
+  };
+
+  const handleSubmit = () => {
+    setInProgress(false);
+    handleCompleteItem(row, item);
+  };
+
+  return (
+    <Paper elevation={0} sx={{ padding: 1, marginTop: 1 }}>
+      <Typography variant="h4">
+        <strong>In Progress</strong> : {item.title}
+      </Typography>
+
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-evenly',
+          gap: 1,
+        }}
+      >
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          <Typography variant="h4">Link Discord</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            <Typography variant="body1">
+              Enter the code below in discord to link your account.
+            </Typography>
+            <Typography variant="body1">
+              Enter the code below in discord to link your account.
+            </Typography>
+            <Typography variant="body1" sx={{ fontFamily: 'monospace' }}>
+              {user.info.token}
+            </Typography>
+          </Box>
+        </Box>
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
+          <Button onClick={handleClose} variant="contained" color="error">
+            Close
+          </Button>
+          <Button variant="contained" color="success" onClick={handleSubmit}>
+            Complete
+          </Button>
+        </Box>
+      </Box>
+    </Paper>
+  );
 };
 
-const LinkDiscord = () => {
-  return null;
+LinkDiscord.propTypes = {
+  setInProgress: PropTypes.func.isRequired,
+  inProgress: PropTypes.object.isRequired,
+  handleCompleteItem: PropTypes.func.isRequired,
 };
+
 const WinstonAcademy = () => {
   return null;
 };
@@ -307,21 +374,21 @@ const ActiveCourses = () => {
 
 const SwapAssets = ({ inProgress, setInProgress, handleCompleteItem }) => {
   const { row, item } = inProgress;
-  
+
   const FORM_VALIDATION = yup.object().shape({
     network: yup.string().required('Network is required'),
     token: yup.string().required('Token is required'),
     address: yup.string().required('Address is required'),
     amount: yup.string().required('Amount is required'),
   });
-  
+
   const [initialValues1] = React.useState({
     network: 'Network',
     token: '',
     address: '',
     amount: '',
   });
-  
+
   const [initialValues2] = React.useState({
     network: 'Network',
     token: '',
@@ -345,7 +412,9 @@ const SwapAssets = ({ inProgress, setInProgress, handleCompleteItem }) => {
   }, [inProgress]);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, marginTop: 1 }}>
+    <Box
+      sx={{ display: 'flex', flexDirection: 'column', gap: 1, marginTop: 1 }}
+    >
       <Grid item>
         <Typography variant="h3">
           Swap Across Winston{' '}
@@ -493,6 +562,7 @@ const InProgress = ({ inProgress, setInProgress, handleCompleteItem }) => {
           handleCompleteItem={handleCompleteItem}
         />
       );
+
     case 'Create A Wallet':
       return (
         <CreateWallet
@@ -515,7 +585,11 @@ const InProgress = ({ inProgress, setInProgress, handleCompleteItem }) => {
       );
     case 'Earn Roles':
       return (
-        <EarnRoles setInProgress={setInProgress} inProgress={inProgress} />
+        <LinkDiscord
+          setInProgress={setInProgress}
+          inProgress={inProgress}
+          handleCompleteItem={handleCompleteItem}
+        />
       );
     case 'Learn to Earn':
       return (

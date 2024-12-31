@@ -5,7 +5,7 @@ import { useRoutes } from 'react-router-dom';
 import './index.css';
 const News = React.lazy(() => import('./News'));
 const NewsDetails = React.lazy(() => import('./NewsDetails'));
-
+const ReportTheNews = React.lazy(() => import('./ReportTheNews'));
 function NewsRouting() {
   const routes = [
     {
@@ -16,13 +16,11 @@ function NewsRouting() {
           element: <News />,
         },
         {
-          index: true,
-          path: '/article/*',
-          element: <NewsDetails />,
+          path: '/report-the-news',
+          element: <ReportTheNews />,
         },
         {
-          index: true,
-          path: '/report-the-news',
+          path: '/article/*',
           element: <NewsDetails />,
         },
       ],

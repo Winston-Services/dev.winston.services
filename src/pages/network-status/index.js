@@ -27,14 +27,14 @@ function NetworkStatus() {
       subTitle: 'Build v1.0.0',
     },
     {
-      title: 'Support',
+      title: 'Bot Application',
       subTitle: 'Discord Only',
     },
   ];
   return (
     <Container>
       <Grid textAlign="center">
-        <Typography variant="h3">Status of Winston Services</Typography>
+        <Typography variant="h3">Status of Winston</Typography>
       </Grid>
       <Grid container justifyContent="center" spacing={3} mt={4}>
         {data.map((item, index) => {

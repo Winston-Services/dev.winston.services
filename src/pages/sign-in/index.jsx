@@ -65,6 +65,18 @@ function SignIn() {
     });
   };
 
+  React.useEffect(() => {
+    if(!auth?.authenticated){
+      // console.log('auth', auth);
+      const token = localStorage.getItem('token');
+      if (token) {
+        // console.log('token', token);
+        auth.refreshAuth(JSON.parse(token));
+        navigate('/dashboard');
+      }
+    }
+  }, [auth]);
+
   return (
     <Box>
       <Typography variant="h5">Sign in to</Typography>

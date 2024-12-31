@@ -62,7 +62,6 @@ function TopNav() {
   const isSideBarOpen = useSelector(sideBarStateSelector);
   const themeMode = useSelector(themeModeSelector);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  
   const isMenuOpen = Boolean(anchorEl);
 
   const handleProfileMenuOpen = (event) => {
@@ -201,7 +200,7 @@ function TopNav() {
                 sx={{ display: { xs: 'none', md: 'flex' } }}
                 alignItems="flex-start"
               >
-                <Avatar {...stringAvatar('Guest User')} />
+                <Avatar {...stringAvatar(user.info.name)} />
               </Grid>
               <Grid
                 item

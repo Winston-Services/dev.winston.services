@@ -8,10 +8,13 @@ import {
   Box,
   TextField,
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import NewsSlider from './components/NewsSlider';
 import NewsTab from './components/NewsTab';
+
 function News() {
+  const navigate = useNavigate();
   const [openSearchNews, setOpenSearchNews] = useState(false);
 
   const renderSearchNews = () => {
@@ -62,7 +65,12 @@ function News() {
           </>
         )}
 
-        <Button variant="contained" color="primary" style={{ float: 'right' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ float: 'right' }}
+          onClick={() => navigate('/news/report-the-news')}
+        >
           Report the News
         </Button>
       </Box>

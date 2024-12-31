@@ -25,7 +25,7 @@ function Assets() {
     <>
       <Container>
         <Typography variant="h3" textAlign={'center'}>
-          Create, Buy and hold 100+ of assets
+          Create, Trade and hold 100+ of assets
         </Typography>
         <Grid textAlign={'center'} mt={4}>
           <Button
