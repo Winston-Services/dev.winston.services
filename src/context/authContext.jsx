@@ -12,6 +12,7 @@ import {
   setUserInfo,
   setUserOauthAccounts,
   setUserProfile,
+  logout,
 } from '../store/user';
 import { isElectron } from '../utils/commonFunctions';
 
@@ -23,7 +24,6 @@ const AuthContext = React.createContext(
 
 export function AuthProvider({ children }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const api = useApi();
   const [verifyToken] = api.endpoints.verifyToken.useLazyQuery();
   // const [getUser] = api.endpoints.getMe.useLazyQuery();
@@ -31,16 +31,16 @@ export function AuthProvider({ children }) {
 
   const removeAuth = () => {
     localStorage.removeItem('token');
-    dispatch({ type: 'logout' });
+    dispatch(logout());
     setAuth(false);
-    navigate('/sign-in');
+    window.location.href = '/';
   };
 
   const addAuth = async (wallet) => {
     localStorage.removeItem('token');
     const res = await verifyToken(wallet.token).unwrap();
     if (res.message === 'Success') {
-      console.log('res', res);
+      // console.log('res', res);
       localStorage.setItem(
         'token',
         JSON.stringify({ authenticated: true, ...wallet })
@@ -100,7 +100,7 @@ export function AuthProvider({ children }) {
     switch (data.OP_CODE) {
       case 'CONNECT':
         // user connected.
-        console.log(message);
+        // console.log(message);
         break;
       case 'REGISTER':
         console.log(message);
@@ -218,7 +218,9 @@ export function AuthRedirect({ children, authenticatedRoute = true }) {
   const location = useLocation();
   const navigate = useNavigate();
   const [authLoading, setAuthLoading] = useState(false);
-  const [authenticated, setAuthenticated] = useState(auth?.authenticated || false);
+  const [authenticated, setAuthenticated] = useState(
+    auth?.authenticated || false
+  );
 
   const handleAuthentication = async (token) => {
     try {
@@ -239,13 +241,22 @@ export function AuthRedirect({ children, authenticatedRoute = true }) {
   };
 
   React.useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!auth?.authenticated && !authLoading && token) {
-      setAuthLoading(true);
-      handleAuthentication(token);
+    if (authenticatedRoute && !authenticated) {
+      if (!authLoading) {
+        const token = localStorage.getItem('token');
+        if (token) {
+          handleAuthentication(token);
+          setAuthLoading(true);
+        } else {
+          setAuthLoading(false);
+        }
+      }
     }
-    return () => setAuthLoading(false);
-  }, [auth, authLoading]);
+    if (auth?.authenticated) {
+      setAuthenticated(auth?.authenticated);
+      setAuthLoading(false);
+    }
+  }, [auth, authLoading, authenticatedRoute]);
 
   if (authLoading) {
     return (

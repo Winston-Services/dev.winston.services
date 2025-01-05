@@ -8,20 +8,7 @@ const initialState = {
     name: 'Guest User',
     role: 'Guest',
   },
-  accounts: [
-    {
-      network: 'bitcoin',
-      link: '/dashboard/wallets/btc',
-      lastBalance: 0n,
-      keys: [
-        {
-          a: '',
-          b: '',
-          address: '',
-        },
-      ],
-    },
-  ],
+  accounts: [],
   account: {
     perMessageEncryption: false,
   },
@@ -137,6 +124,84 @@ export const userSlice = createSlice({
       state.wallets = wallets;
       return state;
     },
+    logout: () => {
+      localStorage.removeItem('token');
+      return {
+        info: {
+          authLoading: false,
+          email: '',
+          token: '',
+          name: 'Guest User',
+          role: 'Guest',
+        },
+        accounts: [],
+        account: {
+          perMessageEncryption: false,
+        },
+        oauthAccounts: {
+          discord: {
+            id: '',
+            username: '',
+          },
+          google: {
+            id: '',
+            username: '',
+          },
+          github: {
+            id: '',
+            username: '',
+          },
+          twitter: {
+            id: '',
+            username: '',
+          },
+          apple: {
+            id: '',
+            username: '',
+          },
+          facebook: {
+            id: '',
+            username: '',
+          },
+          linkedin: {
+            id: '',
+            username: '',
+          },
+          twitch: {
+            id: '',
+            username: '',
+          },
+          spotify: {
+            id: '',
+            username: '',
+          },
+          steam: {
+            id: '',
+            username: '',
+          },
+          microsoft: {
+            id: '',
+            username: '',
+          },
+        },
+        profile: {
+          firstName: '',
+          middleName: '',
+          lastName: '',
+          username: '',
+          phone: '',
+          address1: '',
+          address2: '',
+          address3: '',
+          city: '',
+          state: '',
+          postalCode: '',
+          country: '',
+          roles: [],
+        },
+        wallets: [],
+      };
+    },
   },
 });
 
@@ -151,6 +216,7 @@ export const {
   addUserWallet,
   removeUserAccount,
   removeUserWallet,
+  logout,
 } = userSlice.actions;
 export const userInfoSelector = (state) => state.user.info;
 export const userWalletsSelector = (state) => state.user.wallets;

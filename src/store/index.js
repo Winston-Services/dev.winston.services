@@ -20,9 +20,6 @@ const rootReducer = combineReducers({
   [apiInstance.reducerPath]: apiInstance.reducer,
 });
 const reducer = (state, action) => {
-  if (action.type === 'logout') {
-    state = { themeColors: state.themeColors };
-  }
   return rootReducer(state, action);
 };
 export const store = configureStore({
