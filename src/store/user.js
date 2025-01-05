@@ -25,6 +25,52 @@ const initialState = {
   account: {
     perMessageEncryption: false,
   },
+  oauthAccounts: {
+    discord: {
+      id: '',
+      username: '',
+    },
+    google: {
+      id: '',
+      username: '',
+    },
+    github: {
+      id: '',
+      username: '',
+    },
+    twitter: {
+      id: '',
+      username: '',
+    },
+    apple: {
+      id: '',
+      username: '',
+    },
+    facebook: {
+      id: '',
+      username: '',
+    },
+    linkedin: {
+      id: '',
+      username: '',
+    },
+    twitch: {
+      id: '',
+      username: '',
+    },
+    spotify: {
+      id: '',
+      username: '',
+    },
+    steam: {
+      id: '',
+      username: '',
+    },
+    microsoft: {
+      id: '',
+      username: '',
+    },
+  },
   profile: {
     firstName: '',
     middleName: '',
@@ -38,6 +84,7 @@ const initialState = {
     state: '',
     postalCode: '',
     country: '',
+    roles: [],
   },
   wallets: [],
 };
@@ -48,6 +95,14 @@ export const userSlice = createSlice({
   reducers: {
     setUserInfo: (state, action) => {
       state.info = action.payload;
+      return state;
+    },
+    setUserOauthAccounts: (state, action) => {
+      state.oauthAccounts = action.payload;
+      return state;
+    },
+    setUserProfile: (state, action) => {
+      state.profile = action.payload;
       return state;
     },
     setUserWallets: (state, action) => {
@@ -88,6 +143,8 @@ export const userSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const {
   setUserInfo,
+  setUserOauthAccounts,
+  setUserProfile,
   setUserWallets,
   setUserAccount,
   addUserAccount,
@@ -101,5 +158,7 @@ export const userAccountsSelector = (state) => state.user.accounts;
 export const userAccountSelector = (state) => state.user.account;
 export const userPerMessageEncryptionSelector = (state) =>
   state.user.account.perMessageEncryption;
+export const userOauthAccountsSelector = (state) => state.user.oauthAccounts;
+export const userProfileSelector = (state) => state.user.profile;
 const user = userSlice.reducer;
 export default user;

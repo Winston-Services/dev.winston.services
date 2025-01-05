@@ -7,6 +7,7 @@ import ThankYouIcon from './../../assets/thank-you-icon.svg';
 
 function ThankYou() {
   const navigate = useNavigate();
+  // const { rating, message } = useLocation().state;
   return (
     <Container>
       <Grid container display={'flex'} justifyContent="center">

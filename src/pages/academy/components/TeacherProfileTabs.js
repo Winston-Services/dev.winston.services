@@ -20,7 +20,7 @@ const academyData = [
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
-    rating: '4.7',
+    rating: [{ stars: 4.7 }],
   },
   {
     image: AcademyImage,
@@ -30,7 +30,7 @@ const academyData = [
     difficultyLevel: 'Intermediate',
     difficultyLevelIcon: IntermediateIcon,
     duration: '2 hour 15 min',
-    rating: '4.7',
+    rating: [{ stars: 4.7 }],
   },
   {
     image: AcademyImage,
@@ -40,7 +40,7 @@ const academyData = [
     difficultyLevel: 'Expert',
     difficultyLevelIcon: ExpertIcon,
     duration: '2 hour 15 min',
-    rating: '4.7',
+    rating: [{ stars: 4.7 }],
   },
   {
     image: AcademyImage,
@@ -50,7 +50,7 @@ const academyData = [
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
-    rating: '4.7',
+    rating: [{ stars: 4.7 }],
   },
   {
     image: AcademyImage,
@@ -60,7 +60,7 @@ const academyData = [
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
-    rating: '4.7',
+    rating: [{ stars: 4.7 }],
   },
   {
     image: AcademyImage,
@@ -70,7 +70,7 @@ const academyData = [
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     duration: '2 hour 15 min',
-    rating: '4.7',
+    rating: [{ stars: 4.7 }],
   },
 ];
 
@@ -81,6 +81,7 @@ const courseData = [
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     rewardPoint: 80,
+    rating: [{ stars: 4.7 }],
   },
   {
     image: AcademyImage,
@@ -88,6 +89,7 @@ const courseData = [
     difficultyLevel: 'Beginner',
     difficultyLevelIcon: BeginnerIcon,
     rewardPoint: 80,
+    rating: [{ stars: 4.7 }],
   },
   {
     image: AcademyImage,
@@ -95,6 +97,7 @@ const courseData = [
     difficultyLevel: 'Intermediate',
     difficultyLevelIcon: IntermediateIcon,
     rewardPoint: 80,
+    rating: [{ stars: 4.7 }],
   },
   {
     image: AcademyImage,
@@ -102,6 +105,7 @@ const courseData = [
     difficultyLevel: 'Expert',
     difficultyLevelIcon: ExpertIcon,
     rewardPoint: 80,
+    rating: [{ stars: 4.7 }],
   },
 ];
 

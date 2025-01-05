@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
 
+import { Box } from '@mui/material';
 import { CircularProgress } from '@mui/material';
 import { PropTypes } from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router';
 import { Navigate } from 'react-router-dom';
 
-import { userInfoSelector, setUserInfo } from '../store/user';
+import useApi from '../hooks/useApi';
+import {
+  setUserInfo,
+  setUserOauthAccounts,
+  setUserProfile,
+} from '../store/user';
 import { isElectron } from '../utils/commonFunctions';
 
-const AuthContext = React.createContext(localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')) : false);
+const AuthContext = React.createContext(
+  localStorage.getItem('token')
+    ? JSON.parse(localStorage.getItem('token'))
+    : false
+);
 
 export function AuthProvider({ children }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const api = useApi();
+  const [verifyToken] = api.endpoints.verifyToken.useLazyQuery();
+  // const [getUser] = api.endpoints.getMe.useLazyQuery();
   const [auth, setAuth] = useState(false);
 
   const removeAuth = () => {
@@ -23,20 +36,56 @@ export function AuthProvider({ children }) {
     navigate('/sign-in');
   };
 
-  const addAuth = (wallet) => {
-    localStorage.setItem('token', JSON.stringify({authenticated: true, ...wallet}));
-    dispatch(
-      setUserInfo({
-        authLoading: false,
-        email: wallet.email,
-        token: wallet.token,
-        name: 'Michael Dennis',
-        role: 'Founder',
-      })
-    );
-    setAuth({ authenticated: true, ...wallet });
+  const addAuth = async (wallet) => {
+    localStorage.removeItem('token');
+    const res = await verifyToken(wallet.token).unwrap();
+    if (res.message === 'Success') {
+      console.log('res', res);
+      localStorage.setItem(
+        'token',
+        JSON.stringify({ authenticated: true, ...wallet })
+      );
+      dispatch(setUserOauthAccounts(res.data.user.oauthAccounts));
+      dispatch(
+        setUserProfile({
+          firstName: res.data.user.profile.firstName,
+          middleName: res.data.user.profile.middleName,
+          lastName: res.data.user.profile.lastName,
+          username: res.data.user.profile.username,
+          phone: res.data.user.profile.phone,
+          address1: res.data.user.profile.address1,
+          address2: res.data.user.profile.address2,
+          address3: res.data.user.profile.address3,
+          city: res.data.user.profile.city,
+          state: res.data.user.profile.state,
+          postalCode: res.data.user.profile.zip,
+          country: res.data.user.profile.country,
+          roles: res.data.user.profile.roles,
+        })
+      );
+      dispatch(
+        setUserInfo({
+          authLoading: false,
+          id: res.data.user._id,
+          email: wallet.email,
+          token: wallet.token,
+          isVerified: res.data.user.isVerified,
+          isAdmin: res.data.user.isAdmin,
+          isBanned: res.data.user.isBanned,
+          wallets: res.data.user.wallets,
+          isSubscribed: res.data.user.isSubscribed,
+          createdAt: res.data.user.createdAt,
+          updatedAt: res.data.user.updatedAt,
+          name: 'Michael Dennis',
+          role: res.data.user.profile.roles[0],
+        })
+      );
+      setAuth({ authenticated: true, ...wallet });
+      return true;
+    }
+    return false;
   };
-  
+
   const [connected, setConnected] = React.useState(false);
   let connection = React.useRef();
 
@@ -125,8 +174,8 @@ export function AuthProvider({ children }) {
   };
 
   const refreshAuth = (wallet) => {
-    console.log('refreshAuth', wallet);
-    addAuth(wallet);
+    // console.log('refreshAuth', wallet);
+    return addAuth(wallet);
   };
 
   React.useEffect(() => {
@@ -165,22 +214,62 @@ export default function useAuth() {
 }
 
 export function AuthRedirect({ children, authenticatedRoute = true }) {
-  let auth = useAuth();
-  let location = useLocation();
-  const user = useSelector(userInfoSelector);
+  const auth = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [authLoading, setAuthLoading] = useState(false);
+  const [authenticated, setAuthenticated] = useState(auth?.authenticated || false);
 
-  if (user?.authLoading) {
-    return <CircularProgress />;
+  const handleAuthentication = async (token) => {
+    try {
+      const res = await auth.refreshAuth(JSON.parse(token));
+      if (res) {
+        setAuthenticated(true);
+        const { from } = location.state || { from: { pathname: '/dashboard' } };
+        navigate(from.pathname !== '/sign-in' ? from : '/dashboard');
+      } else {
+        throw new Error('Authentication failed');
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
+      navigate('/sign-in');
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!auth?.authenticated && !authLoading && token) {
+      setAuthLoading(true);
+      handleAuthentication(token);
+    }
+    return () => setAuthLoading(false);
+  }, [auth, authLoading]);
+
+  if (authLoading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
   }
-  if (!auth?.authenticated && authenticatedRoute) {
+
+  if (!authenticated && authenticatedRoute) {
     return <Navigate to="/sign-in" state={{ from: location }} />;
   }
 
-  /*
-  else if (auth?.authenticated && authenticatedRoute) {
-    return <Navigate to="/dashboard" state={{ from: location }} />;
+  if (authenticated && location.pathname === '/sign-in') {
+    return <Navigate to="/dashboard" />;
   }
-*/
+
   return children;
 }
 

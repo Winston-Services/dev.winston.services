@@ -4,18 +4,9 @@ import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 import leftSignature from './../../assets/leftSign.png';
+import rightSignature from './../../assets/rightSign.png';
 import { userInfoSelector } from './../../store/user';
 
-const leftSign = {
-  image: leftSignature,
-  name: 'Michael dennis left',
-  position: '(President Director)',
-};
-const rightSign = {
-  image: leftSignature,
-  name: 'Michael dennis',
-  position: '(Board of Director)',
-};
 const nth = function (d) {
   if (d > 3 && d < 21) return 'th';
   switch (d % 10) {
@@ -55,6 +46,16 @@ export default function Certificate() {
     'Saturday',
   ];
   const today = new Date();
+  const leftSign = {
+    image: leftSignature,
+    name: 'Michael Dennis',
+    position: '(Board of Educators)',
+  };
+  const rightSign = {
+    image: rightSignature,
+    name: 'Michael Dennis',
+    position: '(Board of Educators)',
+  };
   const certificateFor =
     'NFT Fundamentals (Buy, Create And Sell Nfts) Course training.';
   return (

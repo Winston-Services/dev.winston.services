@@ -1,76 +1,42 @@
 import React from 'react';
 
-import { Grid, Typography } from '@mui/material';
-import Container from '@mui/material/Container';
+import { Grid, Typography, Container } from '@mui/material';
 
+import useApi from '../../hooks/useApi';
 import Currencies from '../currencies/Currencies';
 
 const SupportedCoins = () => {
-  const data = [
-    {
-      image: './assets/icons/btc.svg',
-      title: 'CRYPTOCURRENCY',
-      subTitle: 'cryptoCurrency ',
-    },
-    {
-      image: './assets/icons/ltc.png',
-      title: 'LTC',
-      subTitle: 'Litecoin ',
-    },
-    {
-      image: './assets/icons/bci.png',
-      title: 'BCI',
-      subTitle: 'Bitcoin Interest',
-    },
-    {
-      image: './assets/icons/bhy.jpg',
-      title: 'BHY',
-      subTitle: 'BHY',
-    },
-    {
-      image: './assets/icons/dash.png',
-      title: 'DASH',
-      subTitle: 'Dash',
-    },
-    {
-      image: './assets/icons/doge.png',
-      title: 'DOGE',
-      subTitle: 'doge',
-    },
-    {
-      image: './assets/icons/sys.png',
-      title: 'SYS',
-      subTitle: 'syscoin',
-    },
-    {
-      image: './assets/icons/shopify.png',
-      title: 'SHOPIFY ',
-      subTitle: 'shopify',
-    },
-    {
-      image: './assets/icons/quickbooks.jpg',
-      title: 'QUICKBOOKS',
-      subTitle: 'quickbooks',
-    },
-    {
-      image: './assets/icons/opencart.jpg',
-      title: 'OOPENCART',
-      subTitle: 'opencart',
-    },
-    {
-      image: './assets/icons/mstr.png',
-      title: 'MSTR',
-      subTitle: 'mstr',
-    },
-  ];
+  const [supportedCoins, setSupportedCoins] = React.useState([]);
+  const [getTokens, { isLoading, error }] =
+    useApi().endpoints.getTokens.useLazyQuery();
+
+  React.useEffect(() => {
+    if (isLoading) return;
+    getTokens()
+      .unwrap()
+      .then((data) => {
+        setSupportedCoins(
+          data.data.map((item) => ({
+            subTitle: item.symbol,
+            title: item.name,
+            image: item.icon,
+            item,
+          }))
+        );
+        console.log(data.data);
+      });
+  }, []);
+
   return (
     <Container>
       <Grid container spacing={12} justifyContent={'center'}>
         <Grid item>
-          <Typography variant={'h3'}>Supported Coins</Typography>
+          <Typography variant={'h3'}>Project Tokens</Typography>
         </Grid>
         <Grid container item lg={12} display={'flex'} rowSpacing={8}>
-          {data.map((item, id) => {
+          {isLoading && <Typography>Loading...</Typography>}
+          {error && <Typography>Error fetching supported coins</Typography>}
+          {supportedCoins.map((item, id) => {
             return (
               <Grid
                 key={id}

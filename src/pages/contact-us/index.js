@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Container, Grid, Typography, Button } from '@mui/material';
+import { Container, Grid, Typography, Button, Alert } from '@mui/material';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
+import useApi from '../../hooks/useApi';
 import ContactUsIcon from './../../assets/contact_us.svg';
 import TextField from './../../components/common/TextField';
 
@@ -18,6 +19,21 @@ const FORM_VALIDATION = Yup.object().shape({
 });
 
 function ContactUs() {
+  const [hasError, setHasError] = React.useState(false);
+  const [postContactUs, { isLoading, error }] =
+    useApi().endpoints.postContactUs.useMutation();
+
+  const handleSubmit = async (values, actions) => {
+    if (isLoading) return;
+    try {
+      await postContactUs(values);
+      actions.resetForm();
+    } catch (error) {
+      setHasError(true);
+      console.log(error);
+    }
+  };
+
   return (
     <Container>
       <Typography variant="h3">Contact us</Typography>
@@ -35,6 +51,11 @@ function ContactUs() {
           <Typography variant="subtitle2">
             by filling this form we will contact you soon
           </Typography>
+          {hasError && (
+            <Alert severity="error">
+              Something went wrong <br /> {error.message}
+            </Alert>
+          )}
           <Grid mt={{ xs: 3, sm: 5 }}>
             <Formik
               initialValues={{
@@ -43,8 +64,9 @@ function ContactUs() {
                 message: '',
               }}
               validationSchema={FORM_VALIDATION}
-              onSubmit={(values) => {
+              onSubmit={(values, actions) => {
                 console.log(values);
+                handleSubmit(values, actions);
               }}
             >
               <Form>
@@ -78,8 +100,9 @@ function ContactUs() {
                       variant="contained"
                       color="secondary"
                       sx={{ width: { xs: '100%', sm: 'auto' } }}
+                      disabled={isLoading}
                     >
-                      Submit your query
+                      Send
                     </Button>
                   </Grid>
                 </Grid>

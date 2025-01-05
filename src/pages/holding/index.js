@@ -22,14 +22,6 @@ const columns = [
     headerName: 'Token balance',
   },
   {
-    id: 'price',
-    headerName: 'Price',
-  },
-  {
-    id: 'holdingValue',
-    headerName: 'Holding value USD',
-  },
-  {
     id: 'decimals',
     headerName: 'Decimals',
   },
@@ -70,7 +62,7 @@ const useBalance = (initialTokens) => {
         'function decimals() view returns (uint8)',
         'function symbol() view returns (string)',
       ];
-
+      
       const tokenData = [];
       for (const tokenAddress of tokens) {
         await new Promise(resolve => setTimeout(resolve, 200));
@@ -88,7 +80,7 @@ const useBalance = (initialTokens) => {
           name,
         });
       }
-
+      
       setBalances(tokenData);
       setIsLoading(false);
     },
@@ -129,11 +121,11 @@ function TrustWalletSection({ walletAddress, walletName, tokenList }) {
         id: index,
         coinName: balance.name,
         TokenBalance: formatUnits(balance.balance, balance.decimals),
-        price: '--',
-        holdingValue: 0,
         decimals: balance.decimals.toString(),
         contractAddress: balance.contractAddress,
-        more: <Typography>More</Typography>,
+        more: <Typography onClick={() => {
+          window.open(`https://debank.com/profile/${balance.tokenAddress}`, '_blank');
+        }}>More</Typography>,
       }))
     );
   }, [balances]);
@@ -170,24 +162,20 @@ function Holding() {
   const trustHotWalletAddress = '0xf9b9ee3b0301b511cd5aa4b8d039f63df19c615a';
   const winstonContractAddress = '0x75578ebbefe274f240b8e1b5859ca34f342157d9';
   const tokenList1 = [
-    '0x75578ebbefe274f240b8e1b5859ca34f342157d9', // WIN
     '0x55d398326f99059fF775485246999027B3197955', // USDT
-    '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c', // BTCB
-    '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82', // CAKE
-    '0xeca15e1bbff172d545dd6325f3bae7b737906737', // RKL
     '0x181d5cec845973e64bccf9848412948be8a3883e', // WAC
     '0x3A81caafeeDCF2D743Be893858cDa5AcDBF88c11', // AHWA
-    '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d', // USDC
     '0xB2a13cE9f3dFEb5F38F2211FbF3dE91D72CdABDD', // Cake/RKL LP
+    '0x157197baf3E455548987dF50f87846EA17F7B7Ab', // WBNB/WIN LP
+    '0xD8cB5C5baAc62c1e0E79246AeC4DCD52136B599C', // USDC/WAC LP
+    '0xBb22D416AC55E8D07d9fE78dA3cC9919A1c357ce', // RKL/WIN LP
   ];
 
   const tokenList2 = [
     '0x75578ebbefe274f240b8e1b5859ca34f342157d9', // WIN
     '0x55d398326f99059fF775485246999027B3197955', // USDT
-    '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82', // CAKE
-    '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c', // BTCB
     '0xeca15e1bbff172d545dd6325f3bae7b737906737', // RKL
     '0x181d5cec845973e64bccf9848412948be8a3883e', // WAC
     '0x3A81caafeeDCF2D743Be893858cDa5AcDBF88c11', // AHWA
@@ -207,22 +195,15 @@ function Holding() {
     '0xBb22D416AC55E8D07d9fE78dA3cC9919A1c357ce', // RKL/WIN LP
   ];
   const tokenList3 = [
-    '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c', // BTCB
     '0x75578ebbefe274f240b8e1b5859ca34f342157d9', // WIN
+    '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c', // BTCB
     '0xeca15e1bbff172d545dd6325f3bae7b737906737', // RKL
     '0x181d5cec845973e64bccf9848412948be8a3883e', // WAC
-    '0x3A81caafeeDCF2D743Be893858cDa5AcDBF88c11', // AHWA
     '0xB2a13cE9f3dFEb5F38F2211FbF3dE91D72CdABDD', // Cake/RKL LP
     '0x4C24b7a71E7576d6623F62bb83AF63F31230dDFc', // Useless/Rkl LP
-    '0x50fB90305D77AdFB3d7473C1661Fb157C6a4eeD4', // USD/WIN LP
-    '0x656Fb87cda1F25e8181b0415ef65dd6D439165e4', // BTCB/RKL LP
     '0xe01d99478B8a159b957d75455C01104734E05eE1', // USD/RKL LP
-    '0x252853aa8a9509a1c0ad5170B67d25328e3Ef648', // USDC/WIN LP
     '0x9E49C98Bd667A8b06Fff26ddFCbB9e5DBc0eCD60', // WBNB/WIN LP
-    '0xC087C78AbaC4A0E900a327444193dBF9BA69058E', // USDC/BUSD LP
     '0x157197baf3E455548987dF50f87846EA17F7B7Ab', // WBNB/WIN LP
-    '0xD8cB5C5baAc62c1e0E79246AeC4DCD52136B599C', // USDC/WAC LP
-    '0x8820dF1B7f854773a694daB3D30247f6814c64aA', // BTCB/WIN LP
     '0xBb22D416AC55E8D07d9fE78dA3cC9919A1c357ce', // RKL/WIN LP
   ];
   return (

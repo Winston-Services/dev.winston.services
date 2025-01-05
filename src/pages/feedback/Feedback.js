@@ -7,12 +7,13 @@ import {
   SentimentVeryDissatisfied,
   SentimentVerySatisfied,
 } from '@mui/icons-material';
-import { Typography, Container, Grid, Rating, Button } from '@mui/material';
+import { Typography, Container, Grid, Rating, Button, Alert } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
 
+import useApi from '../../hooks/useApi';
 import TextField from './../../components/common/TextField';
 
 const customIcons = {
@@ -53,10 +54,25 @@ const FORM_VALIDATION = Yup.object().shape({
 
 function Feedback() {
   const navigate = useNavigate();
+  const [postFeedback, { isLoading, error }] = useApi().endpoints.postFeedback.useMutation();
   const [initialValues, setInitialValues] = React.useState({
     message: '',
-    rating: 2,
+    rating: 3,
   });
+
+  const [hasError, setHasError] = React.useState(false);
+
+  const handleSubmit = async (values) => {
+    console.log(values);
+    if (isLoading) return;
+    try {
+      await postFeedback(values);
+      navigate('/feedback/thankyou', { replace: true, state: { ...values } });
+    } catch (error) {
+      setHasError(true);
+      console.log(error);
+    }
+  };
   return (
     <Container>
       <Formik
@@ -66,12 +82,13 @@ function Feedback() {
         validationSchema={FORM_VALIDATION}
         onSubmit={(values) => {
           console.log(values);
-          navigate('/feedback/thankyou');
+          handleSubmit(values);
         }}
       >
         {(props) => {
           return (
             <Form>
+              {hasError && <Alert severity="error">Something went wrong <br/> {error.message}</Alert>}
               <Grid item textAlign={'center'}>
                 <Typography variant="h3">
                   Feel free to drop us your feedback.

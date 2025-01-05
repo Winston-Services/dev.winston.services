@@ -7,6 +7,8 @@ import {
   Brightness7,
   ExitToApp,
   Menu as MenuIcon,
+  Feedback,
+  BugReport,
   KeyboardArrowDown,
 } from '@mui/icons-material';
 import {
@@ -115,9 +117,15 @@ function TopNav() {
       </MenuItem>
       <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Academy</MenuItem>
       <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Swap</MenuItem>
-      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Liquidity</MenuItem>
-      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Market Place</MenuItem>
-      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Crowd Funding</MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>
+        Liquidity
+      </MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>
+        Market Place
+      </MenuItem>
+      <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>
+        Crowd Funding
+      </MenuItem>
       <MenuItem sx={{ display: { xs: 'flex', md: 'none' } }}>Workshop</MenuItem>
       <MenuItem onClick={() => auth.removeAuth()}>
         <IconButton
@@ -130,8 +138,25 @@ function TopNav() {
         </IconButton>
         Logout
       </MenuItem>
-      <MenuItem>Feedback</MenuItem>
-      <MenuItem>Issues</MenuItem>
+      <MenuItem>
+        <IconButton
+          aria-label="user feedback"
+          aria-controls="primary-user-feedback"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <Feedback />
+        </IconButton>
+        Feedback
+      </MenuItem>
+      <MenuItem><IconButton
+          aria-label="issues"
+          aria-controls="primary-user-issues"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <BugReport />
+        </IconButton>Issues</MenuItem>
     </Menu>
   );
 
@@ -158,25 +183,33 @@ function TopNav() {
           }}
         />
         <Box sx={{ display: { xs: 'none', lg: 'inline-flex' } }}>
-          <MenuItem onClick={() => navigate('/dashboard/messages')}>Chat</MenuItem>
+          <MenuItem onClick={() => navigate('/dashboard/messages')}>
+            Chat
+          </MenuItem>
           <MenuItem onClick={() => navigate('/academy')}>Academy</MenuItem>
           <MenuItem onClick={() => navigate('/swap')}>Swap</MenuItem>
-          <MenuItem onClick={() => navigate('/swap/liquidity')}>Liquidity</MenuItem>
-          <MenuItem onClick={() => navigate('/marketplace')}>Market Place</MenuItem>
-          <MenuItem onClick={() => navigate('/community-funding')}>Community Funding</MenuItem>
+          <MenuItem onClick={() => navigate('/swap/liquidity')}>
+            Liquidity
+          </MenuItem>
+          <MenuItem onClick={() => navigate('/marketplace')}>
+            Market Place
+          </MenuItem>
+          <MenuItem onClick={() => navigate('/community-funding')}>
+            Community Funding
+          </MenuItem>
           <MenuItem onClick={() => navigate('/wizard')}>Workshop</MenuItem>
         </Box>
         <Box sx={{ flexGrow: 1 }}></Box>
         <Box>
           <IconButton
-            sx={{ display: { xs: 'none',  xl: 'inline-flex' }, mr: 2 }}
+            sx={{ display: { xs: 'none', xl: 'inline-flex' }, mr: 2 }}
             onClick={() => dispatch(toggleTheme('dashboard'))}
             color="inherit"
           >
             {themeMode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
           <IconButton
-            sx={{ display: { xs: 'none',  xl: 'inline-flex' }, mr: 2 }}
+            sx={{ display: { xs: 'none', xl: 'inline-flex' }, mr: 2 }}
             aria-label="show 0 new notifications"
             color="inherit"
           >

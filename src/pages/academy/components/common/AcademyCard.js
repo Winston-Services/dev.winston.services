@@ -28,7 +28,7 @@ const difficultyLevelIcons = {
 
 function AcademyCard({ item }) {
   const navigate = useNavigate();
-  const rating = item.rating.reduce((acc, rating) => acc + rating.stars, 0) || 0;
+  const rating = item.rating?.reduce((acc, rating) => acc + rating.stars, 0) || 0;
   return (
     <Card elevation={0} sx={{ position: 'relative', height: '100%' }}>
       <CardActionArea

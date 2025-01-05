@@ -46,6 +46,15 @@ export const createApiInstance = createApi({
         },
       }),
     }),
+    verifyToken: builder.query({
+      query: (token) => ({
+        url: '/auth/verify-token',
+        method: 'GET',
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
     getRpcNetworks: builder.query({
       query: () => ({
         url: '/chain',
@@ -122,6 +131,29 @@ export const createApiInstance = createApi({
       query: (profileId) => ({
         url: `/user/wallets/${profileId}`,
         method: 'GET',
+      }),
+    }),
+    postFeedback: builder.mutation({
+      query: (data) => ({
+        url: '/feedback',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    postContactUs: builder.mutation({
+      query: (data) => ({
+        url: '/contact-us',
+        method: 'POST',
+        body: data,
+      }),
+    }),
+    getMe: builder.query({
+      query: (token) => ({
+        url: '/user/users/me',
+        method: 'GET',
+        headers: {
+          Authorization: `${token}`,
+        },
       }),
     }),
   }),

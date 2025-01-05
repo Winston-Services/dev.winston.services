@@ -30,9 +30,9 @@ const validationSchema = yup.object().shape({
 
 function SignIn() {
   const navigate = useNavigate();
-
+  const api = useApi();
   const [loginMutation, { isLoading: loginLoading }] =
-    useApi().endpoints.login.useMutation();
+    api.endpoints.login.useMutation();
 
   const auth = useAuth();
   const [error, setError] = useState(null);
@@ -42,17 +42,21 @@ function SignIn() {
     if (loginLoading) {
       return;
     }
-    return loginMutation(values).then((res) => {
-      // console.log('res', values, res);
+    return loginMutation(values).unwrap().then(async (res) => {
       if (res.error) {
         setError('Unable to login');
         return;
       }
-      const { email, token, success, message } = res.data.data;
-      // console.log('success',  res.data.data.success);
-      if (success) {
-        auth.setAuth({ email, token });
-        navigate('/dashboard');
+      const { data, message } = res;
+      // console.log('res', data);
+      const { email, token } = data;
+      // console.log('success',  message);
+      if (message === 'Success') {
+        if (await auth.setAuth({ email, token })) {
+          navigate('/dashboard');
+        } else {
+          setError('Unable to login');
+        }
         return;
       } else {
         console.log('error', res.data);
@@ -64,18 +68,6 @@ function SignIn() {
       setError(err.error);
     });
   };
-
-  React.useEffect(() => {
-    if(!auth?.authenticated){
-      // console.log('auth', auth);
-      const token = localStorage.getItem('token');
-      if (token) {
-        // console.log('token', token);
-        auth.refreshAuth(JSON.parse(token));
-        navigate('/dashboard');
-      }
-    }
-  }, [auth]);
 
   return (
     <Box>

@@ -8,323 +8,38 @@ import CurrenciesImage from './../../assets/currencies_image.png';
 const data = [
   {
     image: './assets/icons/btc.svg',
-    title: 'Cardano',
-    subTitle: 'ADA',
+    title: 'Bitcoin',
+    subTitle: 'BTC',
   },
   {
-    image: './assets/icons/btc.svg',
-    title: 'DigByte',
-    subTitle: 'DGB',
+    image: './assets/icons/busd.svg',
+    title: 'BUSD',
+    subTitle: 'BUSD',
   },
   {
-    image: './assets/icons/btc.svg',
-    title: 'Komodo',
-    subTitle: 'KMD',
+    image: './assets/icons/dash.png',
+    title: 'Dash',
+    subTitle: 'DASH',
   },
   {
-    image: './assets/icons/btc.svg',
-    title: 'Alias',
-    subTitle: 'ALIAS',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Divi',
-    subTitle: 'DIVI',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'LBRY Credits',
-    subTitle: 'LBC',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Avalanche',
-    subTitle: 'ACAX',
-  },
-  {
-    image: './assets/icons/btc.svg',
+    image: './assets/icons/doge.png',
     title: 'Dogecoin',
     subTitle: 'DOGE',
   },
   {
-    image: './assets/icons/btc.svg',
+    image: './assets/icons/eth.png',
+    title: 'Ethereum',
+    subTitle: 'ETH',
+  },
+  {
+    image: './assets/icons/ltc.png',
     title: 'Litecoin',
     subTitle: 'LTC',
   },
   {
-    image: './assets/icons/btc.svg',
-    title: 'Banano',
-    subTitle: 'BAN',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'DeValut',
-    subTitle: 'DVT',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Terra',
-    subTitle: 'LUNA',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Bitcoin Cash',
-    subTitle: 'BCH',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'NestEgg Coin',
-    subTitle: 'EGG',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Marketlist',
-    subTitle: 'MARTK',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Blockidcoin',
-    subTitle: 'BID',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'EOS',
-    subTitle: 'EOS',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Cardano',
-    subTitle: 'ADA',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'DigByte',
-    subTitle: 'DGB',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Komodo',
-    subTitle: 'KMD',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Alias',
-    subTitle: 'ALIAS',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Divi',
-    subTitle: 'DIVI',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'LBRY Credits',
-    subTitle: 'LBC',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Avalanche',
-    subTitle: 'ACAX',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Dogecoin',
-    subTitle: 'DOGE',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Litecoin',
-    subTitle: 'LTC',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Banano',
-    subTitle: 'BAN',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'DeValut',
-    subTitle: 'DVT',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Terra',
-    subTitle: 'LUNA',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Bitcoin Cash',
-    subTitle: 'BCH',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'NestEgg Coin',
-    subTitle: 'EGG',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Marketlist',
-    subTitle: 'MARTK',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Blockidcoin',
-    subTitle: 'BID',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'EOS',
-    subTitle: 'EOS',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Cardano',
-    subTitle: 'ADA',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'DigByte',
-    subTitle: 'DGB',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Komodo',
-    subTitle: 'KMD',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Alias',
-    subTitle: 'ALIAS',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Divi',
-    subTitle: 'DIVI',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'LBRY Credits',
-    subTitle: 'LBC',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Avalanche',
-    subTitle: 'ACAX',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Dogecoin',
-    subTitle: 'DOGE',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Litecoin',
-    subTitle: 'LTC',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Banano',
-    subTitle: 'BAN',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'DeValut',
-    subTitle: 'DVT',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Terra',
-    subTitle: 'LUNA',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Bitcoin Cash',
-    subTitle: 'BCH',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'NestEgg Coin',
-    subTitle: 'EGG',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Marketlist',
-    subTitle: 'MARTK',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Blockidcoin',
-    subTitle: 'BID',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'EOS',
-    subTitle: 'EOS',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Cardano',
-    subTitle: 'ADA',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'DigByte',
-    subTitle: 'DGB',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Komodo',
-    subTitle: 'KMD',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Alias',
-    subTitle: 'ALIAS',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Divi',
-    subTitle: 'DIVI',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'LBRY Credits',
-    subTitle: 'LBC',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Avalanche',
-    subTitle: 'ACAX',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Dogecoin',
-    subTitle: 'DOGE',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Litecoin',
-    subTitle: 'LTC',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Banano',
-    subTitle: 'BAN',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'DeValut',
-    subTitle: 'DVT',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Terra',
-    subTitle: 'LUNA',
-  },
-  {
-    image: './assets/icons/btc.svg',
-    title: 'Bitcoin Cash',
-    subTitle: 'BCH',
+    image: './assets/icons/wbnb.svg',
+    title: 'WBNB',
+    subTitle: 'WBNB',
   },
 ];
 
@@ -367,7 +82,7 @@ function Currencies() {
     <>
       <Container>
         <Typography variant="h3" textAlign={'center'}>
-          Currencies
+          What&apos;s on Winston
         </Typography>
         <Grid container rowSpacing={6} mt={0}>
           {data.map((item, index) => {
