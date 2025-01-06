@@ -26,8 +26,10 @@ export function AuthProvider({ children }) {
   const dispatch = useDispatch();
   const api = useApi();
   const [verifyToken] = api.endpoints.verifyToken.useLazyQuery();
+  const [refreshToken] = api.endpoints.refreshToken.useMutation();
   // const [getUser] = api.endpoints.getMe.useLazyQuery();
   const [auth, setAuth] = useState(false);
+  const refreshTimer = React.useRef(null);
 
   const removeAuth = () => {
     localStorage.removeItem('token');
@@ -41,46 +43,88 @@ export function AuthProvider({ children }) {
     const res = await verifyToken(wallet.token).unwrap();
     if (res.message === 'Success') {
       // console.log('res', res);
+      if (refreshTimer.current) {
+        clearTimeout(refreshTimer.current);
+      }
+      let updatedWallet = wallet;
+      if (res.data.user.token.expiresAt) {
+        const expiresAt = new Date(res.data.user.token.expiresAt);
+        const now = new Date();
+        const timeDiff = expiresAt - now;
+        const timeDiffInMinutes = Math.floor(timeDiff / (1000 * 60));
+        if (timeDiffInMinutes < 10) {
+          const { data, error } = await refreshToken(wallet.token).unwrap();
+          if (error) {
+            console.error('Error refreshing token:', error);
+            return false;
+          } else {
+            updatedWallet.token = data.token;
+          }
+        }
+      }
+
       localStorage.setItem(
         'token',
-        JSON.stringify({ authenticated: true, ...wallet })
+        JSON.stringify({ authenticated: true, ...updatedWallet })
       );
       dispatch(setUserOauthAccounts(res.data.user.oauthAccounts));
       dispatch(
         setUserProfile({
-          firstName: res.data.user.profile.firstName,
-          middleName: res.data.user.profile.middleName,
-          lastName: res.data.user.profile.lastName,
-          username: res.data.user.profile.username,
-          phone: res.data.user.profile.phone,
-          address1: res.data.user.profile.address1,
-          address2: res.data.user.profile.address2,
-          address3: res.data.user.profile.address3,
-          city: res.data.user.profile.city,
-          state: res.data.user.profile.state,
-          postalCode: res.data.user.profile.zip,
-          country: res.data.user.profile.country,
-          roles: res.data.user.profile.roles,
+          firstName: res.data.user.profile?.name?.first || '',
+          middleName: res.data.user.profile?.name?.middle || '',
+          lastName: res.data.user.profile?.name?.last || '',
+          username: res.data.user.profile?.username || '',
+          phone: res.data.user.profile?.phone || '',
+          address1: res.data.user.profile?.address1 || '',
+          address2: res.data.user.profile?.address2 || '',
+          address3: res.data.user.profile?.address3 || '',
+          city: res.data.user.profile?.city || '',
+          state: res.data.user.profile?.state || '',
+          postalCode: res.data.user.profile?.zip || '',
+          country: res.data.user.profile?.country || '',
+          roles: res.data.user.profile?.roles || ['Guest'],
+          banner: res.data.user.profile?.banner || '',
+          avatar: res.data.user.profile?.avatar || '',
+          bio: res.data.user.profile?.bio || '',
+          likes: res.data.user.profile?.likes || 0,
+          views: res.data.user.profile?.views || 0,
+          shares: res.data.user.profile?.shares || 0,
         })
       );
+      let name;
+      if (
+        res.data.user?.profile?.name?.first &&
+        res.data.user?.profile?.name?.last
+      ) {
+        name = `${res.data.user?.profile?.name?.first} ${res.data.user?.profile?.name?.last}`;
+      } else {
+        name = 'Guest User';
+      }
       dispatch(
         setUserInfo({
           authLoading: false,
           id: res.data.user._id,
-          email: wallet.email,
-          token: wallet.token,
+          email: updatedWallet.email,
+          token: updatedWallet.token,
           isVerified: res.data.user.isVerified,
           isAdmin: res.data.user.isAdmin,
+          isAhwaHolder: res.data.user.isAhwaHolder,
           isBanned: res.data.user.isBanned,
           wallets: res.data.user.wallets,
+          accounts: res.data.user.accounts,
           isSubscribed: res.data.user.isSubscribed,
           createdAt: res.data.user.createdAt,
           updatedAt: res.data.user.updatedAt,
-          name: 'Michael Dennis',
+          name: name,
           role: res.data.user.profile.roles[0],
         })
       );
-      setAuth({ authenticated: true, ...wallet });
+      setAuth({ authenticated: true, ...updatedWallet });
+
+      refreshTimer.current = setTimeout(() => {
+        refreshAuth(updatedWallet);
+      }, 1000 * 60 * 10); // 10 minutes
+
       return true;
     }
     return false;

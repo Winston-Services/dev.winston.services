@@ -115,14 +115,14 @@ function Academy() {
               />
             </Grid>
           </Grid>
-          <Grid item xl={4}>
+          <Grid item xs={12} md={4}>
             <Filter
               toggleDrawer={toggleDrawer}
               openDrawer={openDrawer}
               filterPanels={filterPanels}
             />
           </Grid>
-          <Grid item xl={8}>
+          <Grid item xs={12} md={8}>
             <Grid container spacing={3}>
               {searchData && searchData.length !== 0 ? (
                 searchData.map((item, index) => (

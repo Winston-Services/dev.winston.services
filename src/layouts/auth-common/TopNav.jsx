@@ -149,14 +149,17 @@ function TopNav() {
         </IconButton>
         Feedback
       </MenuItem>
-      <MenuItem><IconButton
+      <MenuItem>
+        <IconButton
           aria-label="issues"
           aria-controls="primary-user-issues"
           aria-haspopup="true"
           color="inherit"
         >
           <BugReport />
-        </IconButton>Issues</MenuItem>
+        </IconButton>
+        Issues
+      </MenuItem>
     </Menu>
   );
 
@@ -230,10 +233,27 @@ function TopNav() {
             >
               <Grid
                 item
-                sx={{ display: { xs: 'none', md: 'flex' } }}
-                alignItems="flex-start"
+                sx={{
+                  display: { xs: 'none', md: 'flex' },
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  alignSelf: 'center',
+                }}
               >
-                <Avatar {...stringAvatar(user.info.name)} />
+                <Avatar
+                  {...stringAvatar(user.info.name)}
+                  sx={() => {
+                    const isAdmin = user.info.isAdmin;
+                    const isAhwaHolder = user.info.isAhwaHolder;
+                    const isVerified = user.info.isVerified;
+                    return {
+                      border: isAdmin ? '1px solid red' : '1px solid #e0e0e0',
+                      outline: isAhwaHolder ? '2px solid brown' : '2px solid #e0e0e0',
+                      boxShadow: isVerified ? '0 0 0 4px yellow' : '0 0 0 4px #e0e0e0',
+                      alignSelf: 'center',
+                    };
+                  }}
+                />
               </Grid>
               <Grid
                 item

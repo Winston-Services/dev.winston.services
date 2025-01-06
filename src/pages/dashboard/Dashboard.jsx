@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+import { useMediaQuery } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import useUser from '../../hooks/useUser';
+import { toggleSideBar } from '../../store/sideBar';
 
 const AdminDashboard = React.lazy(() => import('./AdminDashboard'));
 const AccountCreated = React.lazy(() => import('./AccountCreated'));
@@ -72,6 +75,13 @@ CoinCard.propTypes = {
 
 
 export default function Dashboard() {
+  const dispatch = useDispatch();
+  const isMobile = useMediaQuery(theme => theme.breakpoints.down('sm'));
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(toggleSideBar());
+    }
+  }, [isMobile, dispatch]);
   const user = useUser();
   const coinData = {
     ahwa: {

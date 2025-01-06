@@ -24,8 +24,8 @@ import CommonTable from '../../components/common/Table';
 
 const columns = [
   {
-    id: 'videoTitle',
-    headerName: 'Video title',
+    id: 'courseTitle',
+    headerName: 'Course Title',
   },
   {
     id: 'for',
@@ -44,42 +44,42 @@ const columns = [
 const rows = [
   {
     id: 1,
-    videoTitle: 'Learn how to design NFT cards',
+    courseTitle: 'Learn how to design NFT cards',
     for: 'Beginner',
     uploadDate: '01/04/2023',
     status: 'Rejected',
   },
   {
     id: 2,
-    videoTitle: 'Learn how to design NFT cards1',
+    courseTitle: 'Learn how to design NFT cards1',
     for: 'Basics',
     uploadDate: '02/04/2023',
     status: 'Approved',
   },
   {
     id: 3,
-    videoTitle: 'Learn how to design NFT cards2',
+    courseTitle: 'Learn how to design NFT cards2',
     for: 'Intermediary',
     uploadDate: '03/04/2023',
-    status: 'Approved',
+    status: 'Pending',
   },
   {
     id: 4,
-    videoTitle: 'Learn how to design NFT cards3',
-    for: 'Intermediary',
+    courseTitle: 'Learn how to design NFT cards3',
+    for: 'Expert',
     uploadDate: '04/05/2022',
     status: 'Rejected',
   },
   {
     id: 5,
-    videoTitle: 'Learn how to design NFT cards4',
+    courseTitle: 'Learn how to design NFT cards4',
     for: 'Beginner',
     uploadDate: '05/05/2022',
     status: 'Approved',
   },
   {
     id: 6,
-    videoTitle: 'Learn how to design NFT cards5',
+    courseTitle: 'Learn how to design NFT cards5',
     for: 'Intermediary',
     uploadDate: '06/05/2022',
     status: 'Approved',
@@ -122,7 +122,7 @@ function AllCourseList() {
         setSearchData(
           searchInput
             ? rows.filter((row) => {
-                return row.videoTitle
+                return row.courseTitle
                   .toLowerCase()
                   .includes(searchInput.toLowerCase());
               })
@@ -216,7 +216,7 @@ function AllCourseList() {
                           alignItems="center"
                         >
                           <PlayCircleFilled />
-                          {row.videoTitle}
+                          {row.courseTitle}
                         </Grid>
                       </TableCell>
                       <TableCell>{row.for}</TableCell>
@@ -225,7 +225,11 @@ function AllCourseList() {
                         <Typography
                           sx={{
                             color:
-                              row.status === 'Rejected' ? '#F84335' : '#23B000',
+                              row.status === 'Rejected'
+                                ? '#F84335'
+                                : row.status === 'Pending'
+                                ? '#FFC107'
+                                : '#23B000',
                           }}
                         >
                           {row.status}

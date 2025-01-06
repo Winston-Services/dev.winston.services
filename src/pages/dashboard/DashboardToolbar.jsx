@@ -15,7 +15,7 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
   const user = useUser();
   const isAdmin = user?.info?.isAdmin || false;
   return (
-    <Toolbar sx={{ '& > *': { mr: 2 } }}>
+    <Toolbar sx={{ '& > *': { mr: 2 }, display: 'flex', flexWrap: 'wrap' }}>
       <ButtonGroup size="small">
         <Tooltip title="Ahwa Proposals">
           <Button
@@ -149,19 +149,6 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
             />{' '}
           </Button>
         </Tooltip>
-        <Tooltip title="Add Token">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => handleToggleToolbar('addToken')}
-          >
-            <img
-              src="./assets/icons/toolbar/CoinIcon.png"
-              alt="coin"
-              style={{ width: 24, height: 24 }}
-            />{' '}
-          </Button>
-        </Tooltip>
       </ButtonGroup>
 
       <ButtonGroup size="small">
@@ -266,6 +253,19 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
               onClick={() => handleToggleToolbar('addUser')}
             >
               <Icon>person_add</Icon>
+            </Button>
+          </Tooltip>
+          <Tooltip title="List Token">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleToggleToolbar('addToken')}
+            >
+              <img
+                src="./assets/icons/toolbar/CoinIcon.png"
+                alt="coin"
+                style={{ width: 24, height: 24 }}
+              />{' '}
             </Button>
           </Tooltip>
           <Tooltip title="View Domains">

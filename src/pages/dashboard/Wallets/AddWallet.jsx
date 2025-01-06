@@ -4,71 +4,474 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import Icon from '@mui/material/Icon';
+import Step from '@mui/material/Step';
+import StepContent from '@mui/material/StepContent';
+import StepLabel from '@mui/material/StepLabel';
+import Stepper from '@mui/material/Stepper';
+import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+export const AddWallet = ({ handleClose }) => {
+  const navigate = useNavigate();
+  const [wallets, setWallets] = React.useState([]);
+  // const [wallet, setWallet] = React.useState({});
+  const [addWallet, setAddWallet] = React.useState(false);
+  const [activeStep, setActiveStep] = React.useState(0);
+  const [custodialType, setCustodialType] = React.useState('custodial');
+  const [blockchainType, setBlockchainType] = React.useState('evm');
 
-export const AddWallet = () => {
-  return (
-    <Box>
-      <Tooltip title="Select A Blockchain">
-        <Button>
-          Blockchain
-        </Button>
-      </Tooltip>
-      <Typography variant="h5">Add Wallet</Typography>
-      <Typography variant="caption">
-        Let&apos;s start your journey with Winston. Create your first wallet and
-        start earning rewards. We support multiple blockchains. Learn more about
-        each network in the academy.
-        <br />
-        <br />
-        <Button variant="contained" color="primary">
-          Learn More
-        </Button>
-      </Typography>
-      <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
-      <Typography variant="body1">
-        Select the blockchain you want to create a wallet for. Don&apos;t worry
-        you can always create another on a different network at any time.
-      </Typography>
-      <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
-      <Alert severity="info">
-        <AlertTitle>
-          We do not store your private keys. We only store your public keys.
-        </AlertTitle>
-      </Alert>
+  const handleAddWallet = (wallet) => {
+    setWallets([...wallets, { ...wallet, custodialType, blockchainType }]);
+  };
+
+  const handleRemoveWallet = (wallet) => {
+    setWallets(wallets.filter((w) => w.id !== wallet.id));
+  };
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  if (!addWallet && wallets.length > 0) {
+    return (
       <Box>
-        <Typography variant="subtitle1">Wallet Type</Typography>
-        <Select
-          labelId="blockchain-select-label"
-          id="blockchain-select"
-          defaultValue="evm"
-          label="Blockchain"
-        >
-          <MenuItem value="evm">EVM</MenuItem>
-          <MenuItem value="bitcoin">Bitcoin</MenuItem>
-          <MenuItem value="litecoin">Litecoin</MenuItem>
-          <MenuItem value="dash">Dash</MenuItem>
-          <MenuItem value="doge">Doge</MenuItem>
-        </Select>
+        <Toolbar>
+          <Tooltip title="Add a wallet">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => setAddWallet(true)}
+            >
+              <Icon>add</Icon>
+            </Button>
+          </Tooltip>
+          <Tooltip title="Remove a wallet">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleRemoveWallet}
+            >
+              <Icon>delete</Icon>
+            </Button>
+          </Tooltip>
+        </Toolbar>
+        <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
+        {wallets.map((wallet, index) => (
+          <Box key={index}>
+            <Typography variant="subtitle1">Wallet Type</Typography>
+            {wallet.custodialType === 'custodial' && (
+              <Typography variant="body1">
+                You have selected a custodial wallet. This means that Winston
+                will manage your wallet for you, and you will not have access to
+                your private keys.
+              </Typography>
+            )}
+            {wallet.custodialType === 'non-custodial' && (
+              <Typography variant="body1">
+                You have selected a non-custodial wallet. This means that you
+                will have full control over your wallet, and need to manage your
+                own keys.
+              </Typography>
+            )}
+          </Box>
+        ))}
       </Box>
+    );
+  } else {
+    return (
+      <Box>
+        <Typography variant="h5">Add Wallet</Typography>
 
-      <Alert severity="info">
-        <AlertTitle>Not Sure ?</AlertTitle>
-        We recommend you create an EVM wallet. Since it is the most versatile
-        blockchain wallet covering many blockchain networks including Etherum,
-        Binance Smart Chain, Polygon Arbitrum etc.
-        <br />
-        <br />
-        <Button variant="contained" color="primary">
-          Learn More
-        </Button>
-      </Alert>
-    </Box>
-  );
+        {wallets.length > 0 ? (
+          <Typography variant="body2">
+            You have a wallet. You can add another one or remove the existing
+            one.
+          </Typography>
+        ) : (
+          <Typography variant="body2">
+            Let&apos;s start your journey with Winston. Create a wallet and
+            start earning rewards. We support multiple blockchains. Learn more
+            about each network in the academy.
+            <br />
+            <br />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => navigate('/academy')}
+              sx={{ textTransform: 'none' }}
+              size="small"
+            >
+              Learn More
+            </Button>
+          </Typography>
+        )}
+
+        <Stepper activeStep={activeStep} orientation="vertical">
+          <Step key="custodial">
+            <StepLabel>
+              <Typography variant="h6">
+                Choose a <strong>Custodial</strong> or{' '}
+                <strong>Non-Custodial</strong> wallet
+              </Typography>
+            </StepLabel>
+            <StepContent>
+              <Typography>
+                Select whether you want a custodial or non-custodial wallet.
+                <br />
+                Custodial wallets are managed by a third-party like Winston,
+                while non-custodial wallets give you full control over your
+                keys.
+              </Typography>
+              <Box sx={{ mt: 2 }}>
+                <Box display="flex" justifyContent="space-around">
+                  <Card
+                    sx={{ maxWidth: 345, cursor: 'pointer' }}
+                    onClick={() => {
+                      setCustodialType('custodial');
+                      handleNext();
+                    }}
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image="../Logo512.png"
+                        sx={{ objectFit: 'contain' }}
+                        alt="Custodial Wallet"
+                      />
+                      <CardContent>
+                        <Alert severity="warning">
+                          <AlertTitle>
+                            We store your private keys and keep them safe.
+                          </AlertTitle>
+                        </Alert>
+                        <Typography gutterBottom variant="h5" component="div">
+                          Custodial
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Managed by a third-party service.
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                  <Card
+                    sx={{ maxWidth: 345, cursor: 'pointer' }}
+                    onClick={() => {
+                      setCustodialType('non-custodial');
+                      handleNext();
+                    }}
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image="../Logo512.png"
+                        sx={{ objectFit: 'contain' }}
+                        alt="Non-Custodial Wallet"
+                      />
+                      <CardContent>
+                        <Alert severity="info">
+                          <AlertTitle>
+                            We <strong>do not</strong> store your private keys. We only store
+                            your public keys.
+                          </AlertTitle>
+                        </Alert>
+                        <Typography gutterBottom variant="h5" component="div">
+                          Non-Custodial
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          You have full control over your keys.
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Box>
+              </Box>
+              <Button
+                onClick={handleClose}
+                sx={{ mt: 1, mr: 1, textTransform: 'none' }}
+                variant="contained"
+                color="primary"
+                fullWidth
+              >
+                Close
+              </Button>
+            </StepContent>
+          </Step>
+          <Step key="blockchain">
+            <StepLabel>
+              <Typography variant="h6">Choose the blockchain</Typography>
+            </StepLabel>
+            <StepContent>
+              <Typography>
+                Choose the blockchain you want to create a wallet for.
+                Don&apos;t worry, you can always create another on a different
+                network at any time.
+              </Typography>
+
+              <Alert severity="info">
+                <AlertTitle>Not Sure ?</AlertTitle>
+                We recommend you create an EVM wallet. Since it is the most
+                versatile blockchain wallet covering many blockchain networks
+                including Etherum, Binance Smart Chain, Polygon Arbitrum etc.
+                <br />
+                <br />
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ textTransform: 'none' }}
+                  size="small"
+                  onClick={() => navigate('/academy')}
+                >
+                  Learn More
+                </Button>
+              </Alert>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: { xs: 'column', md: 'row' },
+                  gap: 2,
+                }}
+              >
+                <Card
+                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  onClick={() => {
+                    setBlockchainType('evm');
+                    handleNext();
+                  }}
+                >
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        EVM
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Ethereum and compatible networks.
+                      </Typography>
+                    </CardContent>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image="../assets/icons/eth.png"
+                      sx={{ objectFit: 'contain', padding: 1 }}
+                      alt="Bitcoin"
+                    />
+                  </CardActionArea>
+                </Card>
+                <Card
+                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  onClick={() => {
+                    setBlockchainType('bitcoin');
+                    handleNext();
+                  }}
+                >
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Bitcoin
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Original cryptocurrency.
+                      </Typography>
+                    </CardContent>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image="../assets/icons/btc.svg"
+                      sx={{ objectFit: 'contain', padding: 1 }}
+                      alt="Bitcoin"
+                    />
+                  </CardActionArea>
+                </Card>
+                <Card
+                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  onClick={() => {
+                    setBlockchainType('litecoin');
+                    handleNext();
+                  }}
+                >
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Litecoin
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Known for its fast processing.
+                      </Typography>
+                    </CardContent>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image="../assets/icons/ltc.png"
+                      sx={{ objectFit: 'contain', padding: 1 }}
+                      alt="Litecoin"
+                    />
+                  </CardActionArea>
+                </Card>
+                <Card
+                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  onClick={() => {
+                    setBlockchainType('dash');
+                    handleNext();
+                  }}
+                >
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Dash
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Focused on privacy and fast transactions.
+                      </Typography>
+                    </CardContent>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image="../assets/icons/dash.png"
+                      sx={{ objectFit: 'contain', padding: 1 }}
+                      alt="Dash"
+                    />
+                  </CardActionArea>
+                </Card>
+                <Card
+                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  onClick={() => {
+                    setBlockchainType('doge');
+                    handleNext();
+                  }}
+                >
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        Doge
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Popularized as a meme, now a significant crypto.
+                      </Typography>
+                    </CardContent>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image="../assets/icons/doge.png"
+                      sx={{ objectFit: 'contain', padding: 1 }}
+                      alt="Doge"
+                    />
+                  </CardActionArea>
+                </Card>
+              </Box>
+              <Box display="flex" justifyContent="space-between">
+                <Button
+                  onClick={handleBack}
+                  sx={{ mt: 1, mr: 1, textTransform: 'none' }}
+                  variant="contained"
+                  color="warning"
+                >
+                  Back
+                </Button>
+                <Button
+                  onClick={handleClose}
+                  sx={{ mt: 1, mr: 1, textTransform: 'none' }}
+                  variant="contained"
+                  color="primary"
+                >
+                  Close
+                </Button>
+              </Box>
+            </StepContent>
+          </Step>
+          <Step key="generate">
+            <StepLabel>
+              <Typography variant="h6">Generate a wallet address</Typography>
+            </StepLabel>
+            <StepContent>
+              {custodialType === 'custodial' && (
+                <Typography>
+                  You have selected a custodial wallet. This means that Winston
+                  will manage your wallet for you, and you will not have access
+                  to your private keys.
+                </Typography>
+              )}
+              {custodialType === 'non-custodial' && (
+                <Typography>
+                  You have selected a non-custodial wallet. This means that you
+                  will have full control over your wallet, and need to manage
+                  your own keys.
+                </Typography>
+              )}
+              {blockchainType === 'evm' && (
+                <Typography>Let&apos;s generate your EVM wallet.</Typography>
+              )}
+              {blockchainType === 'bitcoin' && (
+                <Typography>
+                  Let&apos;s generate your Bitcoin wallet.
+                </Typography>
+              )}
+              {blockchainType === 'litecoin' && (
+                <Typography>
+                  Let&apos;s generate your Litecoin wallet.
+                </Typography>
+              )}
+              {blockchainType === 'dash' && (
+                <Typography>Let&apos;s generate your Dash wallet.</Typography>
+              )}
+              {blockchainType === 'doge' && (
+                <Typography>Let&apos;s generate your Doge wallet.</Typography>
+              )}
+
+              <Box display="flex" justifyContent="space-between">
+                <Box>
+                  <Button
+                    onClick={handleBack}
+                    sx={{ mt: 1, mr: 1, textTransform: 'none' }}
+                    variant="contained"
+                    color="warning"
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    onClick={handleClose}
+                    sx={{ mt: 1, mr: 1, textTransform: 'none' }}
+                    variant="contained"
+                    color="primary"
+                  >
+                    Close
+                  </Button>
+                </Box>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    handleAddWallet();
+                    setActiveStep(0);
+                    setAddWallet(false);
+                  }}
+                  sx={{ textTransform: 'none' }}
+                >
+                  Done
+                </Button>
+              </Box>
+            </StepContent>
+          </Step>
+        </Stepper>
+      </Box>
+    );
+  }
+};
+
+AddWallet.propTypes = {
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default AddWallet;

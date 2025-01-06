@@ -15,10 +15,12 @@ import NameSection from '../../../components/common/forms/NameSection';
 import PhoneTextField from '../../../components/common/PhoneTextField';
 import TextField from '../../../components/common/TextField';
 import UploadFile from '../../../components/common/UploadFile';
-
+import useUser from '../../../hooks/useUser';
 export const Profile = ({ handleClose }) => {
+  const user = useUser(); 
+  console.log(user);
   const [open, setOpen] = React.useState(false);
-  const [user, setUser] = React.useState({
+  const [profile, setProfile] = React.useState({
     name: {
       first: '',
       middle: '',
@@ -41,6 +43,7 @@ export const Profile = ({ handleClose }) => {
     bio: '',
   });
 
+  console.log(profile);
   const profileValidationSchema = yup.object().shape({
     username: yup.string(),
     firstName: yup.string(),
@@ -62,7 +65,7 @@ export const Profile = ({ handleClose }) => {
 
   const handleSubmit = (values) => {
     console.log(values);
-    setUser({
+    setProfile({
       name: {
         first: values.firstName,
         middle: values.middleName,

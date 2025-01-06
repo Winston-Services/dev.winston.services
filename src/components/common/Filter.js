@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { ExpandMore } from '@mui/icons-material';
-import CloseIcon from '@mui/icons-material/Close';
 import {
   Typography,
   Button,
   Badge,
-  IconButton,
   Grid,
   Box,
   Drawer,
@@ -36,15 +34,9 @@ function Filter({ toggleDrawer, openDrawer, filterPanels }) {
             justifyContent={'space-between'}
           >
             <Typography variant="h6">Filter</Typography>
-            <IconButton
-              sx={{ display: { xs: 'flex', md: 'none' } }}
-              aria-label="close"
-              onClick={toggleDrawer}
-            >
-              <CloseIcon />
-            </IconButton>
           </Box>
         </CardContent>
+        
         {filterPanels.map((accordionData) => (
           <Accordion
             disableGutters
@@ -77,7 +69,7 @@ function Filter({ toggleDrawer, openDrawer, filterPanels }) {
         <CardContent sx={{ p: 4 }}>
           <Box display="flex" justifyContent="center" alignItems={'center'}>
             <Button variant="contained" color="secondary" sx={{ mr: 2 }}>
-              Apply Filter
+              Apply
             </Button>
             <Button variant="outlined">Clear</Button>
           </Box>
@@ -96,7 +88,10 @@ function Filter({ toggleDrawer, openDrawer, filterPanels }) {
       >
         {list()}
       </Drawer>
-      <Card elevation={0} sx={{ display: { xs: 'none', md: 'block' } }}>
+      <Card
+        elevation={0}
+        sx={{ mb: { xs: 2, md: 0 } }}
+      >
         {filter()}
       </Card>
     </div>

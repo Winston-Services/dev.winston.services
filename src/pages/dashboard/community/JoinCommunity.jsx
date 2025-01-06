@@ -3,30 +3,12 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
-export const JoinCommunity = ({
-  inProgress,
-  setInProgress,
-  handleCompleteItem,
-}) => {
-  const { row, item } = inProgress;
-  const handleClose = () => {
-    setInProgress(false);
-  };
-
-  const handleSubmit = () => {
-    setInProgress(false);
-    handleCompleteItem(row, item);
-  };
-
+export const JoinCommunity = ({ handleClose }) => {
+  
   return (
     <Paper elevation={0} sx={{ padding: 1, marginTop: 1 }}>
-      <Typography variant="h4">
-        <strong>In Progress</strong> : {item.title}
-      </Typography>
-
       <Box
         sx={{
           display: 'flex',
@@ -73,18 +55,13 @@ export const JoinCommunity = ({
         <Button onClick={handleClose} variant="contained" color="error">
           Close
         </Button>
-        <Button variant="contained" color="success" onClick={handleSubmit}>
-          Complete
-        </Button>
       </Box>
     </Paper>
   );
 };
 
 JoinCommunity.propTypes = {
-  setInProgress: PropTypes.func.isRequired,
-  inProgress: PropTypes.object.isRequired,
-  handleCompleteItem: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default JoinCommunity;

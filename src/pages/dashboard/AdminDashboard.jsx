@@ -9,57 +9,59 @@ import useToolbar from '../../hooks/useToolbar';
 import ActiveCourses from '../dashboard/academy/ActiveCourses';
 import AddDomain from './admin/domains/AddDomain';
 import ViewDomains from './admin/domains/ViewDomains';
-import AddRole from './admin/roles/AddRole';
-import SetDailyKey from './admin/system/SetDailyKey';
 import AddToken from './admin/tokens/AddToken';
 import AddUser from './admin/users/AddUser';
 import ViewUsers from './admin/users/ViewUsers';
+import AdminSettings from './AdminSettings';
+import AhwaProposals from './AhwaProposals';
+import Community from './community/JoinCommunity';
 import DashboardToolbar from './DashboardToolbar';
+import LinkDiscord from './Integrations/discord/LinkDiscord';
 import Profile from './Profile';
 import SwagStore from './SwagStore';
 import ViewTokens from './Tokens';
 import AddWallet from './Wallets/AddWallet';
 
-
-const FakeComponent = () => {
-  return <div>Fake Component</div>;
+const NewsArticles = () => {
+  return <div>News Articles</div>;
+};
+const BannedUsers = () => {
+  return <div>Banned Users</div>;
+};
+const SwapTokens = () => {
+  return <div>Swap Tokens</div>;
+};
+const Faucet = () => {
+  return <div>Faucet</div>;
 };
 
-const AdminSettings = () => {
-  return (
-    <Box>
-      <Typography variant="h6">Admin Settings</Typography>
-      <SetDailyKey />
-      <AddRole />
-    </Box>
-  );
+const GiftCard = () => {
+  return <div>Gift Card</div>;
 };
-
-const NewsArticles = FakeComponent;
-
-const BannedUsers = FakeComponent;
-
-const SwapTokens = FakeComponent;
-
-const Faucet = FakeComponent;
-
-const Community = FakeComponent;
-
-const LinkDiscord = FakeComponent;
-
-const GiftCard = FakeComponent;
-
-
-const Courses = FakeComponent;
-const Lectures = FakeComponent;
-const ActiveLectures = FakeComponent;
-const Lessons = FakeComponent;
-const ActiveLessons = FakeComponent;
-const CompletedCourses = FakeComponent;
-const CompletedLessons = FakeComponent;
-const CompletedLectures = FakeComponent;
-const AhwaProposals = FakeComponent;
-
+const Courses = () => {
+  return <div>Courses</div>;
+};
+const Lectures = () => {
+  return <div>Lectures</div>;
+};
+const ActiveLectures = () => {
+  return <div>Active Lectures</div>;
+};
+const Lessons = () => {
+  return <div>Lessons</div>;
+};
+const ActiveLessons = () => {
+  return <div>Active Lessons</div>;
+};
+const CompletedCourses = () => {
+  return <div>Completed Courses</div>;
+};
+const CompletedLessons = () => {
+  return <div>Completed Lessons</div>;
+};
+const CompletedLectures = () => {
+  return <div>Completed Lectures</div>;
+};
 
 
 export const AdminDashboard = () => {

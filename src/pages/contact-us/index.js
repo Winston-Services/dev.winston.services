@@ -20,6 +20,7 @@ const FORM_VALIDATION = Yup.object().shape({
 
 function ContactUs() {
   const [hasError, setHasError] = React.useState(false);
+  const [submitted, setSubmitted] = React.useState(false);
   const [postContactUs, { isLoading, error }] =
     useApi().endpoints.postContactUs.useMutation();
 
@@ -28,6 +29,7 @@ function ContactUs() {
     try {
       await postContactUs(values);
       actions.resetForm();
+      setSubmitted(true);
     } catch (error) {
       setHasError(true);
       console.log(error);
@@ -44,72 +46,84 @@ function ContactUs() {
         flexDirection={{ xs: 'column-reverse', md: 'row' }}
         alignItems="center"
       >
-        <Grid item xs={12} md={6} width="100%">
-          <Typography variant="h5" mt={5}>
-            Quick query form
-          </Typography>
-          <Typography variant="subtitle2">
-            by filling this form we will contact you soon
-          </Typography>
-          {hasError && (
-            <Alert severity="error">
-              Something went wrong <br /> {error.message}
-            </Alert>
-          )}
-          <Grid mt={{ xs: 3, sm: 5 }}>
-            <Formik
-              initialValues={{
-                name: '',
-                email: '',
-                message: '',
-              }}
-              validationSchema={FORM_VALIDATION}
-              onSubmit={(values, actions) => {
-                console.log(values);
-                handleSubmit(values, actions);
-              }}
-            >
-              <Form>
-                <Grid display={'flex'} flexDirection={'column'} gap={2}>
-                  <TextField
-                    fullWidth
-                    name="name"
-                    variant="outlined"
-                    label="Your Name"
-                    placeholder="Enter your name"
-                  />
-                  <TextField
-                    fullWidth
-                    name="email"
-                    variant="outlined"
-                    label={'Email Id'}
-                    placeholder={'Enter your email ID'}
-                  />
-                  <TextField
-                    fullWidth
-                    name="message"
-                    variant="outlined"
-                    multiline={true}
-                    rows={4}
-                    label={'Message'}
-                    placeholder={'Type you Query Here'}
-                  />
-                  <Grid mt={{ xs: 3, sm: 5 }}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="secondary"
-                      sx={{ width: { xs: '100%', sm: 'auto' } }}
-                      disabled={isLoading}
-                    >
-                      Send
-                    </Button>
+        {!submitted && (
+          <Grid item xs={12} md={6} width="100%">
+            <Typography variant="h5" mt={5}>
+              Contact Us
+            </Typography>
+            <Typography variant="subtitle2">
+              by filling this form we will contact you via email
+            </Typography>
+            {hasError && (
+              <Alert severity="error">
+                Something went wrong <br /> {error.message}
+              </Alert>
+            )}
+            <Grid mt={{ xs: 3, sm: 5 }}>
+              <Formik
+                initialValues={{
+                  name: '',
+                  email: '',
+                  message: '',
+                }}
+                validationSchema={FORM_VALIDATION}
+                onSubmit={(values, actions) => {
+                  console.log(values);
+                  handleSubmit(values, actions);
+                }}
+              >
+                <Form>
+                  <Grid display={'flex'} flexDirection={'column'} gap={2}>
+                    <TextField
+                      fullWidth
+                      name="name"
+                      variant="outlined"
+                      label="Your Name"
+                      placeholder="Enter your name"
+                    />
+                    <TextField
+                      fullWidth
+                      name="email"
+                      variant="outlined"
+                      label={'Email'}
+                      type="email"
+                      placeholder={'Enter your email ID'}
+                    />
+                    <TextField
+                      fullWidth
+                      name="message"
+                      variant="outlined"
+                      multiline={true}
+                      rows={4}
+                      label={'Message'}
+                      placeholder={'Type your message here'}
+                    />
+
+                    <Grid mt={{ xs: 3, sm: 5 }}>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="secondary"
+                        sx={{ width: { xs: '100%', sm: 'auto' } }}
+                        disabled={isLoading}
+                      >
+                        Send
+                      </Button>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </Form>
-            </Formik>
+                </Form>
+              </Formik>
+            </Grid>
           </Grid>
-        </Grid>
+        )}
+        {submitted && (
+          <Grid item xs={12} md={6}>
+            <Typography variant="h5">Thank you for contacting us</Typography>
+            <Typography variant="subtitle2">
+              We will contact you soon via email
+            </Typography>
+          </Grid>
+        )}
         <Grid item xs={12} md={6}>
           <img src={ContactUsIcon} style={{ width: '100%' }} />
         </Grid>

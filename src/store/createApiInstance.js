@@ -32,9 +32,12 @@ export const createApiInstance = createApi({
       }),
     }),
     logout: builder.mutation({
-      query: () => ({
+      query: (token) => ({
         url: '/auth/logout',
         method: 'POST',
+        headers: {
+          Authorization: `${token}`,
+        },
       }),
     }),
     refreshToken: builder.mutation({
@@ -150,6 +153,25 @@ export const createApiInstance = createApi({
     getMe: builder.query({
       query: (token) => ({
         url: '/user/users/me',
+        method: 'GET',
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
+    addRole: builder.mutation({
+      query: ({ data, token }) => ({
+        url: '/admin/role',
+        method: 'POST',
+        headers: {
+          Authorization: `${token}`,
+        },
+        body: data,
+      }),
+    }),
+    getRoles: builder.query({
+      query: (token) => ({
+        url: '/admin/roles',
         method: 'GET',
         headers: {
           Authorization: `${token}`,

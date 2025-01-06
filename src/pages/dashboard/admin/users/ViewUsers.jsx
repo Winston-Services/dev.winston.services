@@ -1,11 +1,16 @@
 import React from 'react';
 
+import Block from '@mui/icons-material/Block';
+import Delete from '@mui/icons-material/Delete';
+import Edit from '@mui/icons-material/Edit';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Verified from '@mui/icons-material/Verified';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
 import Icon from '@mui/material/Icon';
@@ -14,6 +19,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
@@ -24,6 +30,59 @@ const UserProfileCard = ({ user }) => {
   return (
     <AccordionDetails>
       <Grid container spacing={2} sx={{ width: '100%' }}>
+        <Grid item xs={12}>
+          <Toolbar>
+            <Button
+              startIcon={<Edit />}
+              variant="contained"
+              color="primary"
+              sx={{ textTransform: 'none' }}
+            >
+              Edit
+            </Button>
+            <Button
+              startIcon={<Delete />}
+              variant="contained"
+              color="error"
+              sx={{ textTransform: 'none' }}
+            >
+              Delete
+            </Button>
+            <Button
+              startIcon={<Block />}
+              variant="contained"
+              color="error"
+              sx={{ textTransform: 'none' }}
+            >
+              Ban
+            </Button>
+
+            <Button
+              startIcon={<Verified />}
+              variant="contained"
+              color="success"
+              sx={{ textTransform: 'none' }}
+            >
+              Make Admin
+            </Button>
+            <Button
+              startIcon={<Verified />}
+              variant="contained"
+              color="success"
+              sx={{ textTransform: 'none' }}
+            >
+              Manual Verify
+            </Button>
+            <Button
+              startIcon={<Verified />}
+              variant="contained"
+              color="info"
+              sx={{ textTransform: 'none' }}
+            >
+              Assign Role
+            </Button>
+          </Toolbar>
+        </Grid>
         <Grid item xs={12} md={6}>
           <Box
             sx={{
@@ -34,7 +93,7 @@ const UserProfileCard = ({ user }) => {
             <Typography variant="subtitle1">
               Username: {user?.profile?.username}
             </Typography>
-            
+
             <Typography variant="subtitle1">Bio: {user?.bio}</Typography>
             <Box>
               <Typography>Roles</Typography>
