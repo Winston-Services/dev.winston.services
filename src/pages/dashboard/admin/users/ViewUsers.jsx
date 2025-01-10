@@ -29,7 +29,13 @@ import useUser from '../../../../hooks/useUser';
 const UserProfileCard = ({ user }) => {
   return (
     <AccordionDetails>
-      <Grid container spacing={2} sx={{ width: '100%' }}>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          width: '100%',
+        }}
+      >
         <Grid item xs={12}>
           <Toolbar>
             <Button
@@ -162,8 +168,15 @@ export const ViewUsers = ({ handleClose }) => {
       </Typography>
 
       {data?.data?.users?.map((user) => (
-        <Accordion key={user._id} sx={{ width: '100%' }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Accordion
+          key={user._id}
+          sx={{
+            width: '100%',
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+          >
             <Table size="small" sx={{ width: '100%', m: 0, p: 0 }}>
               <TableHead>
                 <TableRow sx={{ m: 0, p: 0 }}>

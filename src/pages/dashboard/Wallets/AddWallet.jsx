@@ -8,17 +8,250 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Chip from '@mui/material/Chip';
+import CircularProgress from '@mui/material/CircularProgress';
 import Divider from '@mui/material/Divider';
 import Icon from '@mui/material/Icon';
 import Step from '@mui/material/Step';
 import StepContent from '@mui/material/StepContent';
 import StepLabel from '@mui/material/StepLabel';
 import Stepper from '@mui/material/Stepper';
+import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import * as ethers from 'ethers';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+
+import useApi from '../../../hooks/useApi';
+import useUser from '../../../hooks/useUser';
+
+const GenerateEvmWallet = ({ custodialType, handleClose, handleAddWallet }) => {
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const [success, setSuccess] = React.useState(false);
+  const [wallet, setWallet] = React.useState(null);
+  const [publicKey, setPublicKey] = React.useState('');
+  const [privateKey, setPrivateKey] = React.useState('');
+  const [seedPhrase, setSeedPhrase] = React.useState([]);
+  const [passphrase, setPassphrase] = React.useState('');
+
+  const generateWallet = async () => {
+    if (!passphrase) {
+      setError('Passphrase is required');
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    setSuccess(false);
+    try {
+      const _wallet = ethers.Wallet.createRandom();
+      const passphraseUint8Array = new TextEncoder().encode(passphrase);
+      const encryptedJson = await _wallet.encrypt(passphraseUint8Array);
+      setWallet(encryptedJson);
+      setPublicKey(_wallet.address);
+      setPrivateKey(_wallet.privateKey);
+      setSeedPhrase(_wallet.mnemonic.phrase.split(' '));
+      setSuccess(true);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
+
+  const handlePassphraseChange = (event) => {
+    setPassphrase(event.target.value);
+  };
+
+  const handleDownloadWallet = async (encrypted) => {
+    let _wallet;
+    if (encrypted) {
+      _wallet = await ethers.Wallet.fromEncryptedJson(wallet, passphrase);
+    } else {
+      _wallet = ethers.Wallet.createRandom();
+    }
+    const blob = new Blob([JSON.stringify(_wallet)], {
+      type: 'application/json',
+    });
+    const href = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = href;
+    link.download = 'wallet.json';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+  };
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text);
+  };
+
+  if (custodialType === 'custodial') {
+    return (
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Typography variant="h6">Add a Wallet</Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Typography>
+            Custodial wallets are managed by a third-party like Winston.
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: 2,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleClose}
+            sx={{ textTransform: 'none' }}
+          >
+            Close
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleAddWallet}
+            sx={{ textTransform: 'none' }}
+            disabled={loading}
+          >
+            Add A Wallet
+          </Button>
+        </Box>
+      </Box>
+    );
+  }
+
+  return (
+    <>
+      {loading && <CircularProgress />}
+      {error && <Alert severity="error">{error}</Alert>}
+      {success && (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+            width: '100%',
+          }}
+        >
+          <Alert severity="success">
+            <AlertTitle>Success</AlertTitle>
+            Your wallet has been generated successfully.
+          </Alert>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 2,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Box sx={{ maxWidth: '80%', width: '100%' }}>
+              <Box sx={{ flex: 1 }}>
+                <Tooltip title="Copy to clipboard" placement="top" arrow>
+                  <fieldset onClick={() => handleCopy(publicKey)}>
+                    <legend>
+                      <Typography>Public Key</Typography>
+                    </legend>
+                    <Typography>{publicKey}</Typography>
+                  </fieldset>
+                </Tooltip>
+              </Box>
+              <Box sx={{ flex: 1 }}>
+                <Tooltip title="Copy to clipboard" arrow>
+                  <fieldset onClick={() => handleCopy(privateKey)}>
+                    <legend>
+                      <Typography>Private Key</Typography>
+                    </legend>
+                    <Typography>{privateKey}</Typography>
+                  </fieldset>
+                </Tooltip>
+                <Divider sx={{ marginTop: 1, marginBottom: 1 }} />
+                <Tooltip title="Copy to clipboard" arrow>
+                  <fieldset onClick={() => handleCopy(seedPhrase)}>
+                    <legend>
+                      <Typography>Seed Phrase</Typography>
+                    </legend>
+                    <Box>
+                      {seedPhrase.map((word, index) => (
+                        <Chip key={index} label={word} />
+                      ))}
+                    </Box>
+                  </fieldset>
+                </Tooltip>
+              </Box>
+            </Box>
+          </Box>
+
+          <Divider sx={{ marginTop: 1, marginBottom: 1 }} />
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 2,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleDownloadWallet}
+              sx={{ textTransform: 'none' }}
+            >
+              Download Encrypted Wallet
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleDownloadWallet(false)}
+              sx={{ textTransform: 'none' }}
+            >
+              Download Non-Encrypted Wallet
+            </Button>
+          </Box>
+        </Box>
+      )}
+
+      {!success && !wallet && (
+        <Box>
+          <TextField
+            label="Passphrase"
+            value={passphrase}
+            onChange={handlePassphraseChange}
+          />
+          <Button variant="contained" color="primary" onClick={generateWallet}>
+            Generate Wallet
+          </Button>
+        </Box>
+      )}
+    </>
+  );
+};
+
+GenerateEvmWallet.propTypes = {
+  custodialType: PropTypes.string.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleAddWallet: PropTypes.func.isRequired,
+};
+
 export const AddWallet = ({ handleClose }) => {
   const navigate = useNavigate();
   const [wallets, setWallets] = React.useState([]);
@@ -27,9 +260,20 @@ export const AddWallet = ({ handleClose }) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [custodialType, setCustodialType] = React.useState('custodial');
   const [blockchainType, setBlockchainType] = React.useState('evm');
+  const api = useApi();
+  const user = useUser();
+  const [addWalletMutation] = api.endpoints.addWallet.useMutation();
 
   const handleAddWallet = (wallet) => {
     setWallets([...wallets, { ...wallet, custodialType, blockchainType }]);
+    addWalletMutation(
+      {
+        address: wallet.address,
+        custodialType,
+        blockchainType,
+      },
+      user.token
+    );
   };
 
   const handleRemoveWallet = (wallet) => {
@@ -100,10 +344,12 @@ export const AddWallet = ({ handleClose }) => {
             one.
           </Typography>
         ) : (
-          <Typography variant="body2">
-            Let&apos;s start your journey with Winston. Create a wallet and
-            start earning rewards. We support multiple blockchains. Learn more
-            about each network in the academy.
+          <>
+            <Typography variant="body2">
+              Let&apos;s start your journey with Winston. Create a wallet and
+              start earning rewards. We support multiple blockchains. Learn more
+              about each network in the academy.
+            </Typography>
             <br />
             <br />
             <Button
@@ -115,7 +361,7 @@ export const AddWallet = ({ handleClose }) => {
             >
               Learn More
             </Button>
-          </Typography>
+          </>
         )}
 
         <Stepper activeStep={activeStep} orientation="vertical">
@@ -135,9 +381,13 @@ export const AddWallet = ({ handleClose }) => {
                 keys.
               </Typography>
               <Box sx={{ mt: 2 }}>
-                <Box display="flex" justifyContent="space-around">
+                <Box
+                  display="flex"
+                  justifyContent="space-around"
+                  flexDirection={{ xs: 'column', md: 'row' }}
+                >
                   <Card
-                    sx={{ maxWidth: 345, cursor: 'pointer' }}
+                    sx={{ width: '100%', maxWidth: 345, cursor: 'pointer' }}
                     onClick={() => {
                       setCustodialType('custodial');
                       handleNext();
@@ -154,7 +404,8 @@ export const AddWallet = ({ handleClose }) => {
                       <CardContent>
                         <Alert severity="warning">
                           <AlertTitle>
-                            We store your private keys and keep them safe.
+                            We store your private keys and keep them safe you
+                            just need to sign in.
                           </AlertTitle>
                         </Alert>
                         <Typography gutterBottom variant="h5" component="div">
@@ -167,7 +418,7 @@ export const AddWallet = ({ handleClose }) => {
                     </CardActionArea>
                   </Card>
                   <Card
-                    sx={{ maxWidth: 345, cursor: 'pointer' }}
+                    sx={{ width: '100%', maxWidth: 345, cursor: 'pointer' }}
                     onClick={() => {
                       setCustodialType('non-custodial');
                       handleNext();
@@ -184,8 +435,9 @@ export const AddWallet = ({ handleClose }) => {
                       <CardContent>
                         <Alert severity="info">
                           <AlertTitle>
-                            We <strong>do not</strong> store your private keys. We only store
-                            your public keys.
+                            We <strong>do not</strong> store your private keys.
+                            We only store your public keys. Your private keys
+                            are encrypted and stored on your device.
                           </AlertTitle>
                         </Alert>
                         <Typography gutterBottom variant="h5" component="div">
@@ -246,7 +498,7 @@ export const AddWallet = ({ handleClose }) => {
                 }}
               >
                 <Card
-                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  sx={{ width: '100%', maxWidth: 345, cursor: 'pointer' }}
                   onClick={() => {
                     setBlockchainType('evm');
                     handleNext();
@@ -271,7 +523,7 @@ export const AddWallet = ({ handleClose }) => {
                   </CardActionArea>
                 </Card>
                 <Card
-                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  sx={{ width: '100%', maxWidth: 345, cursor: 'pointer' }}
                   onClick={() => {
                     setBlockchainType('bitcoin');
                     handleNext();
@@ -296,7 +548,7 @@ export const AddWallet = ({ handleClose }) => {
                   </CardActionArea>
                 </Card>
                 <Card
-                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  sx={{ width: '100%', maxWidth: 345, cursor: 'pointer' }}
                   onClick={() => {
                     setBlockchainType('litecoin');
                     handleNext();
@@ -321,7 +573,7 @@ export const AddWallet = ({ handleClose }) => {
                   </CardActionArea>
                 </Card>
                 <Card
-                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  sx={{ width: '100%', maxWidth: 345, cursor: 'pointer' }}
                   onClick={() => {
                     setBlockchainType('dash');
                     handleNext();
@@ -346,7 +598,7 @@ export const AddWallet = ({ handleClose }) => {
                   </CardActionArea>
                 </Card>
                 <Card
-                  sx={{ maxWidth: 345, cursor: 'pointer' }}
+                  sx={{ width: '100%', maxWidth: 345, cursor: 'pointer' }}
                   onClick={() => {
                     setBlockchainType('doge');
                     handleNext();
@@ -411,7 +663,14 @@ export const AddWallet = ({ handleClose }) => {
                 </Typography>
               )}
               {blockchainType === 'evm' && (
-                <Typography>Let&apos;s generate your EVM wallet.</Typography>
+                <>
+                  <Typography>Let&apos;s create your EVM wallet.</Typography>
+                  <GenerateEvmWallet
+                    custodialType={custodialType}
+                    handleClose={handleClose}
+                    handleAddWallet={handleAddWallet}
+                  />
+                </>
               )}
               {blockchainType === 'bitcoin' && (
                 <Typography>

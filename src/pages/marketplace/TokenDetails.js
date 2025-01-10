@@ -13,10 +13,10 @@ import {
   Collapse,
   Box,
 } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
-import ProductImage from '../../assets/product_image.png';
 import TokenDetailsTable from './components/TokenDetailsTable';
-
+import ProductImage from '../../assets/product_image.png';
 
 const nftDetails = [
   ['Background', 'Purple'],
@@ -29,6 +29,7 @@ const nftDetails = [
 ];
 
 function TokenDetails() {
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   return (
     <Container>
@@ -38,7 +39,7 @@ function TokenDetails() {
 
           <Grid display={'flex'} mt={7}>
             <Typography variant="subtitle1" sx={{ width: '250px' }}>
-              Owner
+              {t('Owner')}
             </Typography>
             <Link variant="subtitle1">
               cro1f7umg64a0hzqdevg3z8wfnm4f3lm3q4p5yljez

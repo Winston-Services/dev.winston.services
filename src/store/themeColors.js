@@ -42,8 +42,8 @@ const publicPageColors = {
     type: 'dark',
     mode: 'dark',
     winston: {
-      main: 'linear-gradient(92.44deg, #EA7A8F 3.93%, #E452C8 98.71%)',
-      reverseMain: 'linear-gradient(92.44deg, #E452C8 3.93%, #EA7A8F 98.71%)',
+      main: '#EA7A8F',
+      reverseMain: '#EA7A8F',
       dark: '#EA7A8F',
       light: '#E452C8',
       yellow: '#FFD215',

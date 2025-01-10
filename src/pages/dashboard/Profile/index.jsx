@@ -15,9 +15,13 @@ import NameSection from '../../../components/common/forms/NameSection';
 import PhoneTextField from '../../../components/common/PhoneTextField';
 import TextField from '../../../components/common/TextField';
 import UploadFile from '../../../components/common/UploadFile';
+import useApi from '../../../hooks/useApi';
 import useUser from '../../../hooks/useUser';
+
 export const Profile = ({ handleClose }) => {
-  const user = useUser(); 
+  const user = useUser();
+  const api = useApi();
+  const [getMeProfile] = api.endpoints.getMeProfile.useLazyQuery();
   console.log(user);
   const [open, setOpen] = React.useState(false);
   const [profile, setProfile] = React.useState({
@@ -43,7 +47,6 @@ export const Profile = ({ handleClose }) => {
     bio: '',
   });
 
-  console.log(profile);
   const profileValidationSchema = yup.object().shape({
     username: yup.string(),
     firstName: yup.string(),
@@ -62,9 +65,39 @@ export const Profile = ({ handleClose }) => {
   });
 
   const [avatarFile, setAvatarFile] = React.useState(null);
+  const [bannerFile, setBannerFile] = React.useState(null);
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     console.log(values);
+    const response = await getMeProfile(
+      {
+        username: values.username,
+        name: {
+          title: values.title,
+          first: values.firstName,
+          middle: values.middleName,
+          last: values.lastName,
+        },
+        address: {
+          line1: values.address1,
+          line2: values.address2,
+          line3: values.address3 || '',
+          city: values.city,
+          state: values.state,
+          zip: values.zip,
+          country: values.country,
+        },
+        phone: {
+          countryCode: values.phone.split(' ')[0],
+          number: values.phone.split(' ')[1],
+        },
+        avatar: avatarFile,
+        banner: bannerFile,
+        bio: values.bio,
+      },
+      user.token
+    ).unwrap();
+    console.log(response);
     setProfile({
       name: {
         first: values.firstName,
@@ -111,12 +144,28 @@ export const Profile = ({ handleClose }) => {
           country: '',
           bio: '',
           avatar: avatarFile,
+          banner: bannerFile,
         }}
         validationSchema={profileValidationSchema}
         onSubmit={handleSubmit}
       >
         <Typography variant="h4">Edit Profile</Typography>
-
+        <Box
+          sx={{
+            padding: '10px',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <Typography variant="h6">Profile Banner</Typography>
+          <UploadFile
+            name="banner"
+            height="200px"
+            width="100%"
+            setAvatarFile={setBannerFile}
+            value={bannerFile}
+          />
+        </Box>
         <Box
           sx={{
             display: 'flex',
@@ -131,20 +180,24 @@ export const Profile = ({ handleClose }) => {
           <Box
             sx={{
               display: 'flex',
-              flexDirection: 'row',
+              flexDirection: { xs: 'column', md: 'row' },
               gap: 1,
+              justifyContent: 'space-around',
               alignItems: 'center',
+              flexGrow: 1,
             }}
           >
             <Box
               sx={{
-                border: '1px dashed gray',
                 padding: '10px',
                 width: '100%',
-                maxWidth: '400px',
                 height: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignContent: 'center',
               }}
             >
+              <Typography variant="h6">Profile Avatar</Typography>
               <UploadFile
                 name="avatar"
                 height="100%"
@@ -153,9 +206,10 @@ export const Profile = ({ handleClose }) => {
                 value={avatarFile}
               />
             </Box>
-
-            <Box>
+            <Box sx={{ width: '100%' }}>
+              <Typography variant="h6">Profile Details</Typography>
               <TextField label="Username" name="username" size="small" />
+              <Divider sx={{ marginBottom: 1 }} />
               <TextField label="Bio" name="bio" size="small" />
               <Divider sx={{ marginBottom: 1 }} />
               <NameSection />
@@ -201,6 +255,11 @@ export const Profile = ({ handleClose }) => {
             alignContent: 'center',
             gap: 1,
             p: 1,
+            backgroundImage: 'url("./assets/user_profile_cover.png")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            borderRadius: 2,
           }}
         >
           <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
@@ -217,22 +276,37 @@ export const Profile = ({ handleClose }) => {
                 padding: '10px',
                 width: '33%',
                 maxWidth: '400px',
-                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignContent: 'center',
               }}
             >
               <Avatar
                 alt="user avatar"
-                sx={{ width: '100%', height: '100%' }}
+                sx={{ height: 'auto', width: '100%' }}
               />
             </Box>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            <Box
+              sx={(theme) => ({
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 1,
+                backgroundColor: theme.palette.background.paper,
+                opacity: 0.8,
+                width: '100%',
+                p: 2,
+                borderRadius: 2,
+              })}
+            >
               <Typography variant="h6">
-                <strong>Username:</strong> {user?.username}
+                <strong>Username:</strong> {profile?.username}
               </Typography>
               <Divider sx={{ marginBottom: 1 }} />
               <Typography variant="h6">
-                <strong>Bio:</strong> {user?.bio}
+                <strong>Bio:</strong> {profile?.bio}
               </Typography>
               <Divider sx={{ marginBottom: 1 }} />
               <Typography variant="h6">
@@ -260,10 +334,7 @@ export const Profile = ({ handleClose }) => {
               <Typography variant="h6">
                 <strong>Phone:</strong>
               </Typography>
-              <Typography
-                variant="body2"
-                sx={{ ml: 2, p: 1, width: '100%' }}
-              >
+              <Typography variant="body2" sx={{ ml: 2, p: 1, width: '100%' }}>
                 {user?.phone?.countryCode} {user?.phone?.number}
               </Typography>
             </Box>

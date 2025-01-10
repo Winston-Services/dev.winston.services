@@ -14,11 +14,11 @@ import PropTypes from 'prop-types';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
-import { uuid } from '../../../../components/common/CommonFunction';
-import UploadFile from '../../../../components/common/UploadFile';
 import ImageSliderCard from './../ImageSliderCard';
 import TextEditor from './../TextEditor';
 import VideoCard from './../VideoCard';
+import { uuid } from '../../../../components/common/CommonFunction';
+import UploadFile from '../../../../components/common/UploadFile';
 
 function ContentCard(props) {
   const [field] = useField(props);

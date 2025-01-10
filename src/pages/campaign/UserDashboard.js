@@ -12,9 +12,9 @@ import {
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
 
+import UserDashboardTabs from './components/UserDashboardTabs';
 import user_profile from '../../assets/user_profile.png';
 import user_profile_cover from '../../assets/user_profile_cover.png';
-import UserDashboardTabs from './components/UserDashboardTabs';
 
 const userData = [
   {

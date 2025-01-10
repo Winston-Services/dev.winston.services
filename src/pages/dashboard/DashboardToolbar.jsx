@@ -16,7 +16,7 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
   const isAdmin = user?.info?.isAdmin || false;
   return (
     <Toolbar sx={{ '& > *': { mr: 2 }, display: 'flex', flexWrap: 'wrap' }}>
-      <ButtonGroup size="small">
+      <ButtonGroup size="small" sx={{ marginY: 1 }}>
         <Tooltip title="Ahwa Proposals">
           <Button
             variant="contained"
@@ -27,7 +27,7 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
           </Button>
         </Tooltip>
       </ButtonGroup>
-      <ButtonGroup size="small">
+      <ButtonGroup size="small" sx={{ marginY: 1 }}>
         <Tooltip title="Community" color="info">
           <Button
             variant="contained"
@@ -95,7 +95,7 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
           </Button>
         </Tooltip>
       </ButtonGroup>
-      <ButtonGroup size="small">
+      <ButtonGroup size="small" sx={{ marginY: 1 }}>
         <Tooltip title="View Tokens">
           <Button
             variant="contained"
@@ -151,7 +151,7 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
         </Tooltip>
       </ButtonGroup>
 
-      <ButtonGroup size="small">
+      <ButtonGroup size="small" sx={{ marginY: 1 }}>
         <Tooltip title="Winston Academy">
           <Button
             variant="contained"
@@ -205,7 +205,7 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
           </Button>
         </Tooltip>
       </ButtonGroup>
-      <ButtonGroup size="small">
+      <ButtonGroup size="small" sx={{ marginY: 1 }}>
         <Tooltip title="View the News">
           <Button
             variant="contained"
@@ -236,7 +236,7 @@ export const DashboardToolbar = ({ handleToggleToolbar }) => {
       </ButtonGroup>
 
       {isAdmin && (
-        <ButtonGroup size="small" sx={{ border: '1px solid red' }}>
+        <ButtonGroup size="small" sx={{ border: '1px solid red', marginY: 1 }}>
           <Tooltip title="View Users">
             <Button
               variant="contained"

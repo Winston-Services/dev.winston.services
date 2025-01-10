@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import academy from './academy';
 import apiInstance from './createApiInstance';
+import i18nSlice from './i18n';
 import news from './news';
 import publicNotice from './publicNotice';
 import sideBar from './sideBar';
@@ -17,8 +18,10 @@ const rootReducer = combineReducers({
   academy,
   news,
   publicNotice,
+  i18n: i18nSlice,
   [apiInstance.reducerPath]: apiInstance.reducer,
 });
+
 const reducer = (state, action) => {
   return rootReducer(state, action);
 };

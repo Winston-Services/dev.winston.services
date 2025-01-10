@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { CircularProgress, Box } from '@mui/material';
+import { SnackbarProvider } from 'notistack';
 import { useNavigate } from 'react-router';
 import { Navigate, useRoutes } from 'react-router-dom';
 
@@ -271,13 +272,16 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <>
+      <SnackbarProvider
+        maxSnack={3}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
         <ScrollToTop />
         {
           /*useRoutes(isElectron() ? routes : routes.concat(publicRoutes))*/
           useRoutes(routes.concat(publicRoutes))
         }
-      </>
+      </SnackbarProvider>
     </AuthProvider>
   );
 }

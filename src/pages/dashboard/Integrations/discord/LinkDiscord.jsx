@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { Paper, Typography, Box, Button, Alert } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
 import useUser from '../../../../hooks/useUser';
@@ -10,10 +15,6 @@ export const LinkDiscord = ({ handleClose }) => {
 
   return (
     <Paper elevation={0} sx={{ padding: 1, marginTop: 1 }}>
-      <Typography variant="h4">
-        <strong>In Progress</strong> : Link Discord
-      </Typography>
-
       <Box
         sx={{
           display: 'flex',
@@ -36,9 +37,27 @@ export const LinkDiscord = ({ handleClose }) => {
               This will automatically log you out of your Winston account if
               successful. You will need to log in again.
             </Alert>
-            <Typography variant="body1" sx={{ fontFamily: 'monospace' }}>
-              {user.info.token}
-            </Typography>
+            <fieldset>
+              <legend>Access Code</legend>
+              <Tooltip title="Click or Tap to Copy" placement="top" arrow>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontFamily: 'monospace',
+                    cursor: 'pointer',
+                    '&:hover': {
+                      backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    },
+                  }}
+                  component="pre"
+                  onClick={() => {
+                    navigator.clipboard.writeText(user.info.token);
+                  }}
+                >
+                  {user.info.token}
+                </Typography>
+              </Tooltip>
+            </fieldset>
           </Box>
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-import { Box } from '@mui/material';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Box } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router';
@@ -266,23 +265,28 @@ export function AuthRedirect({ children, authenticatedRoute = true }) {
     auth?.authenticated || false
   );
 
-  const handleAuthentication = async (token) => {
-    try {
-      const res = await auth.refreshAuth(JSON.parse(token));
-      if (res) {
-        setAuthenticated(true);
-        const { from } = location.state || { from: { pathname: '/dashboard' } };
-        navigate(from.pathname !== '/sign-in' ? from : '/dashboard');
-      } else {
-        throw new Error('Authentication failed');
+  const handleAuthentication = React.useCallback(
+    async (token) => {
+      try {
+        const res = await auth.refreshAuth(JSON.parse(token));
+        if (res) {
+          setAuthenticated(true);
+          const { from } = location.state || {
+            from: { pathname: '/dashboard' },
+          };
+          navigate(from.pathname !== '/sign-in' ? from : '/dashboard');
+        } else {
+          throw new Error('Authentication failed');
+        }
+      } catch (error) {
+        console.error('Authentication error:', error);
+        navigate('/sign-in');
+      } finally {
+        setAuthLoading(false);
       }
-    } catch (error) {
-      console.error('Authentication error:', error);
-      navigate('/sign-in');
-    } finally {
-      setAuthLoading(false);
-    }
-  };
+    },
+    [auth, setAuthenticated, setAuthLoading, navigate, location]
+  );
 
   React.useEffect(() => {
     if (authenticatedRoute && !authenticated) {
@@ -300,7 +304,13 @@ export function AuthRedirect({ children, authenticatedRoute = true }) {
       setAuthenticated(auth?.authenticated);
       setAuthLoading(false);
     }
-  }, [auth, authLoading, authenticatedRoute]);
+  }, [
+    auth,
+    authLoading,
+    authenticatedRoute,
+    handleAuthentication,
+    authenticated,
+  ]);
 
   if (authLoading) {
     return (

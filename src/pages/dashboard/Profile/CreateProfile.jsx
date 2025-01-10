@@ -33,7 +33,11 @@ const profileValidationSchema = yup.object().shape({
   avatar: yup.mixed(),
 });
 
-export const CreateProfile = ({ inProgress, setInProgress, handleCompleteItem }) => {
+export const CreateProfile = ({
+  inProgress,
+  setInProgress,
+  handleCompleteItem,
+}) => {
   const { row, item } = inProgress;
   const [avatarFile, setAvatarFile] = React.useState(null);
 
@@ -85,6 +89,24 @@ export const CreateProfile = ({ inProgress, setInProgress, handleCompleteItem })
             gap: 1,
           }}
         >
+          <Typography variant="h6">Profile Banner</Typography>
+          <Box
+            sx={{
+              border: '1px dashed gray',
+              padding: '10px',
+              width: '100%',
+              maxWidth: '400px',
+              height: '100%',
+            }}
+          >
+            <UploadFile
+              name="avatar"
+              height="400px"
+              width="100%"
+              setAvatarFile={setAvatarFile}
+              value={avatarFile}
+            />
+          </Box>
           <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
           <Box
             sx={{

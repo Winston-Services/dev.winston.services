@@ -18,6 +18,7 @@ import { PropTypes } from 'prop-types';
 import { useDrag, useDrop } from 'react-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 
+import LessonCard from './LessonCard';
 import { uuid } from '../../../components/common/CommonFunction';
 import {
   setLectureEdit,
@@ -25,7 +26,6 @@ import {
   setCourseEdit,
   courseEditSelector,
 } from '../../../store/academy';
-import LessonCard from './LessonCard';
 
 export default function LectureCard({
   lecture,

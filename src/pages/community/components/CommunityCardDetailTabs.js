@@ -4,8 +4,8 @@ import { Box, Tab, Tabs, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 // import { useSelector } from 'react-redux';
 
-import HistoryImage from '../../../assets/history_image.png';
 import TabCard from './TabCard';
+import HistoryImage from '../../../assets/history_image.png';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

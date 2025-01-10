@@ -12,10 +12,6 @@ function DropDown2({ options, handleChange, placeholder = '' }) {
     setValue(event.target.value);
   };
 
-  React.useEffect(() => {
-    console.log(value);
-  }, [value]);
-
   return (
     <FormControl>
       <Select

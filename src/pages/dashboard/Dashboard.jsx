@@ -121,7 +121,6 @@ export default function Dashboard() {
   return (
     <Grid
       container
-      spacing={3}
       sx={{
         minHeight: 'calc(100vh - 123px)',
         height: '100%',

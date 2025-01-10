@@ -10,13 +10,13 @@ import {
   InputAdornment,
 } from '@mui/material';
 
+import TokenTable from './TokenTable';
 import BinanceSmartChain from '../../assets/binance_smart_chain.svg';
 import coinDrop from '../../assets/coinDrop.png';
 import EthereumSmall from '../../assets/ethereum_small.svg';
 import Litecoin from '../../assets/litecoin.svg';
 import { debounce } from '../../components/common/CommonFunction';
 import Table from '../../components/common/Table';
-import TokenTable from './TokenTable';
 
 const rows = [
   {

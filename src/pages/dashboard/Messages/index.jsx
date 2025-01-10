@@ -10,8 +10,15 @@ import {
   Typography,
   Tabs,
   Tab,
+  Icon,
   Box,
   CardActions,
+  Toolbar,
+  Tooltip,
+  IconButton,
+  ButtonGroup,
+  Divider,
+  Paper,
 } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import PropTypes from 'prop-types';
@@ -34,16 +41,18 @@ function MessageList({ messages, handleDeleteMessage, handleSaveMessage }) {
   return (
     <List ref={listRef} style={{ maxHeight: '400px', overflow: 'auto' }}>
       {messages.map((msg, index) => (
-        <ListItem key={index}>
+        <ListItem key={index} sx={{ padding: 0.75 }}>
           <Card variant="outlined" style={{ width: '100%' }}>
-            {!msg.saved && <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleSaveMessage(msg)}
-              style={{ float: 'right', marginRight: '8px' }}
-            >
-              Save
-            </Button>}
+            {!msg.saved && (
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handleSaveMessage(msg)}
+                style={{ float: 'right', marginRight: '8px' }}
+              >
+                Save
+              </Button>
+            )}
             <Button
               variant="contained"
               color="secondary"
@@ -63,11 +72,15 @@ function MessageList({ messages, handleDeleteMessage, handleSaveMessage }) {
                 <strong>Date:</strong> {msg.date}
               </Typography>
             </CardContent>
-              <CardActions>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {msg.saved ? <em>Saved</em> : <em>This message will self destruct in 30s</em>}
-                </Typography>
-              </CardActions>
+            <CardActions>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {msg.saved ? (
+                  <em>Saved</em>
+                ) : (
+                  <em>This message will self destruct in 30s</em>
+                )}
+              </Typography>
+            </CardActions>
           </Card>
         </ListItem>
       ))}
@@ -98,7 +111,7 @@ function TabPanel(props) {
       aria-labelledby={`tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={3}>{children}</Box>}
+      {value === index && children}
     </div>
   );
 }
@@ -214,7 +227,7 @@ export default function Messages() {
   const handleDeleteMessage = React.useCallback((index, force = false) => {
     setMessages((prevMessages) => {
       const newMessages = [...prevMessages];
-      if (force || newMessages[index] && !newMessages[index].saved) {
+      if (force || (newMessages[index] && !newMessages[index].saved)) {
         // console.log('Deleting message at index', index);
         newMessages.splice(index, 1);
         return newMessages;
@@ -252,7 +265,7 @@ export default function Messages() {
         data: newMessage,
       })
     );
-    
+
     setMessages((prevMessages) => {
       const newMessages = [...prevMessages, newMessage];
       if (!timeoutRef.current) {
@@ -270,7 +283,6 @@ export default function Messages() {
       'aria-controls': `tabpanel-${index}`,
     };
   }
-
 
   function handleSaveMessage(message) {
     setMessages((prevMessages) =>
@@ -302,66 +314,251 @@ export default function Messages() {
   }, [messages, removeFirst]);
 
   return (
-    <div>
-      <Grid container spacing={1}>
-        <Grid item xs={12}>
-          <h2>Message Log</h2>
-          <Tabs
-            value={channel}
-            onChange={(e, v) => handleChannelChange(v)}
-            textColor="inherit"
-            indicatorColor="primary"
+    <Paper
+      elevation={3}
+      sx={{ height: 'calc(100vh - 135px)', padding: 0, marginRight: '6px' }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 0.05,
+          height: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            bgcolor: 'background.default',
+            opacity: 0.8,
+          }}
+        >
+          <Toolbar
+            variant="dense"
+            orientation="vertical"
+            sx={{
+              paddingRight: '2px !important',
+              paddingLeft: '2px !important',
+              paddingTop: '6px !important',
+              height: '100%',
+              justifyContent: 'flex-start',
+            }}
           >
-            {channels.map((ch) => (
-              <Tab key={ch} label={ch} value={ch} {...a11yProps(0)} />
-            ))}
-          </Tabs>
-          {channels.map((ch) => (
-            <TabPanel key={ch} value={channel} index={ch}>
-              <MessageList
-                messages={messages.filter((msg) => msg.channel === ch)}
-                handleDeleteMessage={handleDeleteMessage}
-                handleSaveMessage={handleSaveMessage}
-              />
-            </TabPanel>
-          ))}
-        </Grid>
-        <Grid item xs={12}>
-          <h2>Send Message</h2>
-          <form
-            onSubmit={handleSendMessage}
-            style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}
-          >
-            <TextField
-              id="recipient"
-              name="recipient"
-              label="Recipient"
-              variant="outlined"
-              fullWidth
-              value={recipient}
-              onChange={(e) => setRecipient(e.target.value)}
-              autoComplete="off"
-            />
-            <TextField
-              id="message"
-              name="message"
-              label="Message"
-              variant="outlined"
-              multiline
-              rows={4}
-              fullWidth
-              required
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              autoComplete="off"
-            />
+            <ButtonGroup
+              orientation="vertical"
+              size="small"
+              sx={{ height: '100%' }}
+            >
+              <IconButton>
+                <Icon>contacts</Icon>
+              </IconButton>
+              <IconButton>
+                <Icon>add</Icon>
+              </IconButton>
+            </ButtonGroup>
+          </Toolbar>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <Grid container spacing={0.25} sx={{ padding: 0.25, height: '100%' }}>
+            <Grid
+              item
+              xs={12}
+              sx={{ bgcolor: 'background.default', opacity: 0.8 }}
+            >
+              <Toolbar
+                variant="dense"
+                orientation="horizontal"
+                sx={{
+                  paddingRight: '0px !important',
+                  paddingLeft: '0px !important',
+                }}
+              >
+                <ButtonGroup orientation="horizontal" size="small">
+                  <Tooltip title="Contacts" arrow placement="bottom">
+                    <IconButton>
+                      <Icon>contacts</Icon>
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Menu" arrow placement="bottom">
+                    <IconButton>
+                      <Icon>menu</Icon>
+                    </IconButton>
+                  </Tooltip>
+                </ButtonGroup>{' '}
+                <Tabs
+                  value={channel}
+                  onChange={(e, v) => handleChannelChange(v)}
+                  textColor="inherit"
+                  indicatorColor="primary"
+                >
+                  {channels.map((ch) => (
+                    <Tab key={ch} label={ch} value={ch} {...a11yProps(0)} />
+                  ))}
+                </Tabs>
+              </Toolbar>
+            </Grid>
+            <Grid item xs={12} sx={{ height: '100%' }}>
+              <Box
+                sx={{
+                  padding: 1,
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  flexGrow: 1,
+                }}
+              >
+                <Typography variant="h6">General Chat (Public)</Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    height: 'calc(100% - 110px)',
+                  }}
+                >
+                  <Box sx={{ padding: 0, width: '240px' }}>
+                    <fieldset style={{ height: '100%', overflow: 'hidden' }}>
+                      <legend>Channels</legend>
+                      <Toolbar
+                        variant="dense"
+                        orientation="vertical"
+                        sx={{
+                          paddingRight: '1px !important',
+                          paddingLeft: '1px !important',
+                          paddingTop: '3px !important',
+                        }}
+                      >
+                        <ButtonGroup
+                          orientation="vertical"
+                          size="small"
+                          fullWidth
+                          sx={{ padding: 0 }}
+                        >
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            size="small"
+                            startIcon={<Icon>contacts</Icon>}
+                            fullWidth
+                          >
+                            Channel Name
+                          </Button>
+                          <Button
+                            variant="contained"
+                            color="primary"
+                            size="small"
+                            startIcon={<Icon>add</Icon>}
+                            fullWidth
+                          >
+                            Channel Name
+                          </Button>
+                        </ButtonGroup>
+                      </Toolbar>
+                    </fieldset>
+                  </Box>
+                  <Divider orientation="vertical" flexItem />
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: '100%',
+                      width: '100%',
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        padding: 0,
+                        width: '100%',
+                        height: '100%',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {channels.map((ch) => (
+                        <TabPanel
+                          key={ch}
+                          value={channel}
+                          index={ch}
+                          style={{ maxHeight: 'calc(100% - 230px)' }}
+                        >
+                          <MessageList
+                            messages={messages.filter(
+                              (msg) => msg.channel === ch
+                            )}
+                            handleDeleteMessage={handleDeleteMessage}
+                            handleSaveMessage={handleSaveMessage}
+                          />
+                        </TabPanel>
+                      ))}
+                    </Box>
+                    <Box
+                      sx={{
+                        padding: 1,
+                      }}
+                    >
+                      <Divider sx={{ marginTop: '6px', marginBottom: '6px' }} />
+                      <Typography variant="h6">Send Message</Typography>
+                      <Box
+                        sx={{
+                          padding: 1,
+                        }}
+                      >
+                        <form
+                          onSubmit={handleSendMessage}
+                          style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '6px',
+                          }}
+                        >
+                          <TextField
+                            id="recipient"
+                            name="recipient"
+                            label="Recipient"
+                            variant="outlined"
+                            fullWidth
+                            value={recipient}
+                            onChange={(e) => setRecipient(e.target.value)}
+                            autoComplete="off"
+                            size="small"
+                          />
+                          <TextField
+                            id="message"
+                            name="message"
+                            label="Message"
+                            variant="outlined"
+                            multiline
+                            rows={2}
+                            fullWidth
+                            required
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            autoComplete="off"
+                          />
 
-            <Button type="submit" variant="contained" color="primary">
-              Send
-            </Button>
-          </form>
-        </Grid>
-      </Grid>
-    </div>
+                          <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                          >
+                            Send
+                          </Button>
+                        </form>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Paper>
   );
 }

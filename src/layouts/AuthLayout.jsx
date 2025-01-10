@@ -26,7 +26,7 @@ function Layout() {
           maxWidth="false"
           style={{
             marginTop: '86px',
-            padding: '30px',
+            padding: 1,
             transition: 'max-width  225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms',
             maxWidth: `calc(100% - ${isSideBarOpen ? '240px' : '86px'})`,
           }}

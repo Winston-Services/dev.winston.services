@@ -16,7 +16,55 @@ const initialState = {
         },
       ],
     },
-    
+    {
+      key: 'wallets',
+      icon: 'account_balance_wallet',
+      attr: {
+        primary: 'Wallets',
+        open: false,
+      },
+      items: [
+        {
+          attr: { primary: 'BTC' },
+          image: '../assets/icons/btc.svg',
+          link: '/dashboard/wallets/btc',
+        },
+        { attr: { primary: 'BHY' }, image: '../assets/icons/bhy.jpg' },
+        { attr: { primary: 'LTC' }, image: '../assets/icons/ltc.png' },
+        { attr: { primary: 'DASH' }, image: '../assets/icons/dash.png' },
+        { attr: { primary: 'DOGE' }, image: '../assets/icons/doge.png' },
+        { attr: { primary: 'MSTR' }, image: '../assets/icons/mstr.png' },
+        { attr: { primary: 'ETH' }, image: '../assets/icons/eth.png' },
+        { attr: { primary: 'SYS' }, image: '../assets/icons/sys.png' },
+      ],
+    },
+    {
+      key: 'settings',
+      icon: 'settings',
+      attr: {
+        primary: 'Settings',
+        secondaryVisible: true,
+        secondary: 'Networks, Preferences, Theme',
+        open: false,
+      },
+      items: [
+        {
+          attr: { primary: 'Networks' },
+          icon: 'extension',
+          link: '/dashboard/settings/networks',
+        },
+        {
+          attr: { primary: 'Preferences' },
+          icon: 'settings',
+          link: '/dashboard/settings/preferences',
+        },
+        {
+          attr: { primary: 'Theme' },
+          icon: 'palette',
+          link: '/dashboard/settings/theme',
+        },
+      ],
+    },
   ],
 };
 
@@ -41,7 +89,9 @@ export const sideBarSlice = createSlice({
       return state;
     },
     removeSideBarItem: (state, action) => {
-      state.sideBarItem = state.sideBarItem.filter((item) => item.key !== action.payload);
+      state.sideBarItem = state.sideBarItem.filter(
+        (item) => item.key !== action.payload
+      );
       return state;
     },
     addSubMenu: (state, action) => {
@@ -49,16 +99,23 @@ export const sideBarSlice = createSlice({
       return state;
     },
     removeSubMenu: (state, action) => {
-      state.sideBarItem[action.payload.index].items = state.sideBarItem[action.payload.index].items.filter(
-        (item) => item.key !== action.payload.itemKey,
-      );
+      state.sideBarItem[action.payload.index].items = state.sideBarItem[
+        action.payload.index
+      ].items.filter((item) => item.key !== action.payload.itemKey);
       return state;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { toggleSideBar, openMenu, addSideBarItem, removeSideBarItem, addSubMenu, removeSubMenu } = sideBarSlice.actions;
+export const {
+  toggleSideBar,
+  openMenu,
+  addSideBarItem,
+  removeSideBarItem,
+  addSubMenu,
+  removeSubMenu,
+} = sideBarSlice.actions;
 export const sideBarStateSelector = (state) => state.sideBar.isSideBarOpen;
 export const sideBarItemSelector = (state) => state.sideBar.sideBarItem;
 const sideBar = sideBarSlice.reducer;
