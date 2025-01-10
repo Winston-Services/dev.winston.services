@@ -231,16 +231,12 @@ function createWindow() {
 // Setup a local proxy to adjust the paths of requested files when loading
 // them from the local production bundle (e.g.: local fonts, etc...).
 function setupLocalFilesNormalizerProxy() {
-  protocol.registerHttpProtocol(
-    'file',
-    (request, callback) => {
-      const url = request.url.substr(8);
-      callback({ path: path.normalize(`${__dirname}/${url}`) });
-    },
-    (error) => {
-      if (error) console.error('Failed to register protocol');
-    }
-  );
+  protocol.registerFileProtocol('file', (request, callback) => {
+    const url = new URL(request.url).pathname;
+    callback({ path: path.normalize(path.join(__dirname, url)) });
+  }).catch((error) => {
+    console.error('Failed to register file protocol', error);
+  });
 }
 
 // This method will be called when Electron has finished its initialization and
@@ -271,7 +267,13 @@ app.on('window-all-closed', function () {
 // If your app has no need to navigate or only needs to navigate to known pages,
 // it is a good idea to limit navigation outright to that known scope,
 // disallowing any other kinds of navigation.
-const allowedNavigationDestinations = ['http://localhost', 'http://127.0.0.1'];
+const allowedNavigationDestinations = [
+  'http://localhost',
+  'http://127.0.0.1',
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'httpS://dev.winston.services',
+];
 app.on('web-contents-created', (event, contents) => {
   contents.on('will-navigate', (event, navigationUrl) => {
     const parsedUrl = new URL(navigationUrl);

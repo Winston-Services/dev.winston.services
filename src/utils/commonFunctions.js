@@ -1,3 +1,5 @@
+import process from 'process';
+
 /* eslint-disable no-undef */
 export function isElectron() {
   // Renderer process
@@ -11,7 +13,7 @@ export function isElectron() {
 
   // Main process
   if (
-    process.type === 'renderer' &&
+    process &&
     typeof process !== 'undefined' &&
     typeof process.versions === 'object' &&
     !!process.versions.electron
