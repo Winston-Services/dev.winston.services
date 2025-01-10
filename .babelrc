@@ -1,0 +1,22 @@
+{
+    "presets": [
+        "@babel/preset-react",
+        "@babel/preset-env",
+        "@babel/preset-typescript"
+    ],
+    "plugins": [
+        "@babel/plugin-transform-class-properties",
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-transform-async-to-generator",
+        "@babel/plugin-transform-modules-commonjs",
+        "@babel/plugin-syntax-jsx",
+        "@babel/plugin-transform-object-rest-spread",
+        "@babel/plugin-transform-optional-chaining",
+        "@babel/plugin-transform-nullish-coalescing-operator",
+        "@babel/plugin-transform-numeric-separator",
+        "@babel/plugin-transform-optional-catch-binding",
+        "@babel/plugin-transform-logical-assignment-operators",
+        "@babel/plugin-transform-private-methods",
+        "@babel/plugin-proposal-throw-expressions"
+    ]
+}

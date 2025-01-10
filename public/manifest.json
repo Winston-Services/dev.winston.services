@@ -23,7 +23,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "https://dev.winston.services/",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",

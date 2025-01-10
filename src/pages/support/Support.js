@@ -8,7 +8,7 @@ import {
   Assignment,
   School,
   Help,
-} from '@mui/icons-material/';
+} from '@mui/icons-material';
 import { Container, Grid, Link, Paper, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 

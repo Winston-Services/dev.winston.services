@@ -7,17 +7,17 @@ const url = require('url');
 const { app, BrowserWindow, protocol, Menu, shell } = require('electron');
 const { Level } = require('level');
 
-const { Winston } = require('./Winston');
+// const { Winston } = require('./Winston');
 
 // Create a database
 const db = new Level('wallet.db', { valueEncoding: 'json' });
-
+/*
 const winstonAppInstance = new Winston({
   root: '127.0.0.1',
   address: 'n/a',
   db,
 });
-
+*/
 // Create the native browser window.
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -271,7 +271,7 @@ app.on('window-all-closed', function () {
 // If your app has no need to navigate or only needs to navigate to known pages,
 // it is a good idea to limit navigation outright to that known scope,
 // disallowing any other kinds of navigation.
-const allowedNavigationDestinations = 'http://localhost';
+const allowedNavigationDestinations = ['http://localhost', 'http://127.0.0.1'];
 app.on('web-contents-created', (event, contents) => {
   contents.on('will-navigate', (event, navigationUrl) => {
     const parsedUrl = new URL(navigationUrl);

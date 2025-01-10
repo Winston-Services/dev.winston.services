@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter, HashRouter } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import './index.css';
 
 const rootNode = document.getElementById('root');
-ReactDOM.render(
+ReactDOM.createRoot(rootNode).render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeLoader>
@@ -29,8 +29,7 @@ ReactDOM.render(
         )}
       </ThemeLoader>
     </Provider>
-  </React.StrictMode>,
-  rootNode
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

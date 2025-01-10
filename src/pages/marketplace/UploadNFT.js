@@ -11,9 +11,11 @@ import {
   Modal,
   capitalize,
 } from '@mui/material';
+/*
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+*/
 import { Form, Formik, ErrorMessage } from 'formik';
 import { PropTypes } from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -211,7 +213,7 @@ function UploadNFT() {
                     multiline={true}
                     rows={8}
                   />
-                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  {/*<LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
                       label="Sale date"
                       format="MM-dd-y"
@@ -227,7 +229,7 @@ function UploadNFT() {
                         <TextField name="date" autoComplete="off" {...params} />
                       )}
                     />
-                  </LocalizationProvider>
+                  </LocalizationProvider>*/}
                   <Grid item>
                     <Typography mb={1} variant="subtitle1">
                       Collection

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ExpandMoreOutlined, ArrowRight } from '@mui/icons-material/';
+import { ExpandMoreOutlined, ArrowRight } from '@mui/icons-material';
 import { Button, Container, Grid, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 

@@ -120,9 +120,12 @@ export function AuthProvider({ children }) {
       );
       setAuth({ authenticated: true, ...updatedWallet });
 
-      refreshTimer.current = setTimeout(() => {
-        refreshAuth(updatedWallet);
-      }, 1000 * 60 * 10); // 10 minutes
+      refreshTimer.current = setTimeout(
+        () => {
+          refreshAuth(updatedWallet);
+        },
+        1000 * 60 * 10
+      ); // 10 minutes
 
       return true;
     }
@@ -222,12 +225,14 @@ export function AuthProvider({ children }) {
   };
 
   React.useEffect(() => {
-    if (!connected && !isElectron()) {
-      try {
-        connection.current = new WebSocket('https://winston.services/ws');
-        communicate(connection.current);
-      } catch (error) {
-        console.error(error);
+    if (auth?.authenticated) {
+      if (!connected && !isElectron()) {
+        try {
+          connection.current = new WebSocket('https://winston.services/ws');
+          communicate(connection.current);
+        } catch (error) {
+          console.error(error);
+        }
       }
     }
     return () => {

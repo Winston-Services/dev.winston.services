@@ -11,7 +11,7 @@ export function isElectron() {
 
   // Main process
   if (
-    process &&
+    process.type === 'renderer' &&
     typeof process !== 'undefined' &&
     typeof process.versions === 'object' &&
     !!process.versions.electron
