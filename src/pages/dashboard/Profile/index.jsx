@@ -21,30 +21,33 @@ import useUser from '../../../hooks/useUser';
 export const Profile = ({ handleClose }) => {
   const user = useUser();
   const api = useApi();
-  const [getMeProfile] = api.endpoints.getMeProfile.useLazyQuery();
-  console.log(user);
+  const [setMeProfile] = api.endpoints.setMeProfile.useMutation();
+  // console.log(user.profile.phone);
   const [open, setOpen] = React.useState(false);
   const [profile, setProfile] = React.useState({
     name: {
-      first: '',
-      middle: '',
-      last: '',
-      title: '',
+      first: user.profile.name?.first || '',
+      middle: user.profile.name?.middle || '',
+      last: user.profile.name?.last || '',
+      title: user.profile.name?.title || '',
     },
-    username: '',
-    email: '',
-    phone: '',
+    username: user.profile.username || '',
+    phone: user.profile.phone
+      ? user.profile.phone.countryCode && user.profile.phone.number
+        ? `${user.profile.phone.countryCode} ${user.profile.phone.number}`
+        : ''
+      : '',
     address: {
-      line1: '',
-      line2: '',
-      line3: '',
-      city: '',
-      state: '',
-      zip: '',
-      country: '',
+      line1: user.profile.address?.line1 || '',
+      line2: user.profile.address?.line2 || '',
+      line3: user.profile.address?.line3 || '',
+      city: user.profile.address?.city || '',
+      state: user.profile.address?.state || '',
+      zip: user.profile.address?.zip || '',
+      country: user.profile.address?.country || '',
     },
-    avatar: '',
-    bio: '',
+    avatar: user.profile.avatar || '',
+    bio: user.profile.bio || '',
   });
 
   const profileValidationSchema = yup.object().shape({
@@ -60,7 +63,6 @@ export const Profile = ({ handleClose }) => {
     state: yup.string(),
     postalCode: yup.string(),
     country: yup.string(),
-    avatar: yup.mixed(),
     bio: yup.string(),
   });
 
@@ -68,9 +70,9 @@ export const Profile = ({ handleClose }) => {
   const [bannerFile, setBannerFile] = React.useState(null);
 
   const handleSubmit = async (values) => {
-    console.log(values);
-    const response = await getMeProfile(
-      {
+    // console.log(values);
+    const response = await setMeProfile({
+      data: {
         username: values.username,
         name: {
           title: values.title,
@@ -89,14 +91,14 @@ export const Profile = ({ handleClose }) => {
         },
         phone: {
           countryCode: values.phone.split(' ')[0],
-          number: values.phone.split(' ')[1],
+          number: values.phone.split(' ').slice(1).join(' '),
         },
-        avatar: avatarFile,
-        banner: bannerFile,
+        avatar: values.avatar,
+        banner: values.banner,
         bio: values.bio,
       },
-      user.token
-    ).unwrap();
+      token: user.info.token,
+    }).unwrap();
     console.log(response);
     setProfile({
       name: {
@@ -107,10 +109,7 @@ export const Profile = ({ handleClose }) => {
       },
       username: values.username,
       email: values.email,
-      phone: {
-        countryCode: values.phone.split(' ')[0],
-        number: values.phone.split(' ')[1],
-      },
+      phone: values.phone,
       address: {
         line1: values.address1,
         line2: values.address2,
@@ -123,26 +122,28 @@ export const Profile = ({ handleClose }) => {
       avatar: avatarFile,
       bio: values.bio,
     });
-    handleClose();
+    setOpen(false);
   };
 
   const renderEditProfile = () => {
     return (
       <Form
         initialValues={{
-          username: '',
-          firstName: '',
-          lastName: '',
-          middleName: '',
-          title: '',
-          address1: '',
-          address2: '',
-          phone: '',
-          city: '',
-          state: '',
-          postalCode: '',
-          country: '',
-          bio: '',
+          username: profile.username,
+          firstName: profile.name.first,
+          lastName: profile.name.last,
+          middleName: profile.name.middle,
+          title: profile.name.title,
+          address1: profile.address.line1,
+          address2: profile.address.line2,
+          phone: profile.phone
+            ? `${profile.phone.countryCode} ${profile.phone.number}`
+            : '',
+          city: profile.address.city,
+          state: profile.address.state,
+          postalCode: profile.address.zip,
+          country: profile.address.country,
+          bio: profile.bio,
           avatar: avatarFile,
           banner: bannerFile,
         }}
@@ -236,6 +237,7 @@ export const Profile = ({ handleClose }) => {
   if (open) {
     return renderEditProfile();
   }
+
   return (
     <Box sx={{ width: '100%' }}>
       <Typography variant="h4">
@@ -284,6 +286,7 @@ export const Profile = ({ handleClose }) => {
               }}
             >
               <Avatar
+                src={profile?.avatar}
                 alt="user avatar"
                 sx={{ height: 'auto', width: '100%' }}
               />
@@ -310,8 +313,9 @@ export const Profile = ({ handleClose }) => {
               </Typography>
               <Divider sx={{ marginBottom: 1 }} />
               <Typography variant="h6">
-                <strong>Name:</strong> {user?.name?.title} {user?.name?.first}{' '}
-                {user?.name?.middle} {user?.name?.last}
+                <strong>Name:</strong> {user?.profile?.title}{' '}
+                {user?.profile?.firstName} {user?.profile?.middleName}{' '}
+                {user?.profile?.lastName}
               </Typography>
               <Divider sx={{ marginBottom: 1 }} />
               <Typography variant="h6">
@@ -322,20 +326,21 @@ export const Profile = ({ handleClose }) => {
                 component="address"
                 sx={{ ml: 2, p: 1, width: '100%' }}
               >
-                {user?.address?.line1} {user?.address?.line2}{' '}
-                {user?.address?.line3}
+                {user?.profile?.address1} {user?.profile?.address2}{' '}
+                {user?.profile?.address3}
                 <br />
-                {user?.address?.city}, {user?.address?.state}{' '}
-                {user?.address?.zip}
+                {user?.profile?.city}, {user?.profile?.state}{' '}
+                {user?.profile?.postalCode}
                 <br />
-                {user?.address?.country}
+                {user?.profile?.country}
               </Typography>
               <Divider sx={{ marginBottom: 1 }} />
               <Typography variant="h6">
                 <strong>Phone:</strong>
               </Typography>
               <Typography variant="body2" sx={{ ml: 2, p: 1, width: '100%' }}>
-                {user?.phone?.countryCode} {user?.phone?.number}
+                {user?.profile?.phone?.countryCode}{' '}
+                {user?.profile?.phone?.number}
               </Typography>
             </Box>
           </Box>

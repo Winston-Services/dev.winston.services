@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -16,6 +17,7 @@ import {
   addUserWallet,
   removeUserAccount,
   removeUserWallet,
+  setUserProfile,
 } from '../store/user';
 
 const useUser = () => {
@@ -54,6 +56,25 @@ const useUser = () => {
     dispatch(removeUserWallet(index));
   };
 
+  const setProfile = (profile) => {
+    dispatch(setUserProfile(profile));
+  };
+
+  React.useEffect(() => {
+    if (info) {
+      setUser(info);
+    }
+    if (profile) {
+      setProfile(profile);
+    }
+    if (accounts) {
+      accounts.forEach(account => addAccount(account));
+    }
+    if (account) {
+      setAccount(account);
+    }
+  }, [info, profile, accounts, account, setUser, setProfile, addAccount, setAccount]);
+
   return {
     info,
     profile,
@@ -67,6 +88,7 @@ const useUser = () => {
     addWallet,
     removeAccount,
     removeWallet,
+    setProfile,
     setFirstRunCompleted,
     setFirstRunStep,
     setFirstRun,

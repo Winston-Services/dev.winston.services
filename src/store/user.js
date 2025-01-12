@@ -7,8 +7,18 @@ const db = new Level('./user', { valueEncoding: 'json' });
 const initialState = {
   info: {
     authLoading: false,
+    id: '',
     email: '',
     token: '',
+    isVerified: false,
+    isAdmin: false,
+    isAhwaHolder: false,
+    isBanned: false,
+    isStudent: false,
+    isTeacher: false,
+    isSubscribed: false,
+    createdAt: null,
+    updatedAt: null,
     name: 'Guest User',
     role: 'Guest',
   },
@@ -79,6 +89,9 @@ const initialState = {
     postalCode: '',
     country: '',
     roles: [],
+    avatar: null,
+    banner: null,
+    bio: '',
   },
   wallets: [],
 };

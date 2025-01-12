@@ -12,6 +12,7 @@ import {
   setUserOauthAccounts,
   setUserProfile,
   logout,
+  setUserAccount,
 } from '../store/user';
 import { isElectron } from '../utils/commonFunctions';
 
@@ -66,28 +67,45 @@ export function AuthProvider({ children }) {
         'token',
         JSON.stringify({ authenticated: true, ...updatedWallet })
       );
-      dispatch(setUserOauthAccounts(res.data.user.oauthAccounts));
+
+      const {
+        oauthAccounts,
+        profile,
+        isVerified,
+        isAdmin,
+        isBanned,
+        wallets,
+        createdAt,
+        updatedAt,
+        isSubscribed,
+        isAhwaHolder,
+        isStudent,
+        isTeacher,
+      } = res.data.user;
+
+      dispatch(setUserOauthAccounts(oauthAccounts));
+
       dispatch(
         setUserProfile({
-          firstName: res.data.user.profile?.name?.first || '',
-          middleName: res.data.user.profile?.name?.middle || '',
-          lastName: res.data.user.profile?.name?.last || '',
-          username: res.data.user.profile?.username || '',
-          phone: res.data.user.profile?.phone || '',
-          address1: res.data.user.profile?.address1 || '',
-          address2: res.data.user.profile?.address2 || '',
-          address3: res.data.user.profile?.address3 || '',
-          city: res.data.user.profile?.city || '',
-          state: res.data.user.profile?.state || '',
-          postalCode: res.data.user.profile?.zip || '',
-          country: res.data.user.profile?.country || '',
-          roles: res.data.user.profile?.roles || ['Guest'],
-          banner: res.data.user.profile?.banner || '',
-          avatar: res.data.user.profile?.avatar || '',
-          bio: res.data.user.profile?.bio || '',
-          likes: res.data.user.profile?.likes || 0,
-          views: res.data.user.profile?.views || 0,
-          shares: res.data.user.profile?.shares || 0,
+          firstName: profile?.name?.first || '',
+          middleName: profile?.name?.middle || '',
+          lastName: profile?.name?.last || '',
+          username: profile?.username || '',
+          phone: profile?.phone || '',
+          address1: profile?.address?.line1 || '',
+          address2: profile?.address?.line2 || '',
+          address3: profile?.address?.line3 || '',
+          city: profile?.address?.city || '',
+          state: profile?.address?.state || '',
+          postalCode: profile?.address?.zip || '',
+          country: profile?.address?.country || '',
+          roles: profile?.roles || ['Guest'],
+          banner: profile?.banner || '',
+          avatar: profile?.avatar || '',
+          bio: profile?.bio || '',
+          likes: profile?.likes || 0,
+          views: profile?.views || 0,
+          shares: profile?.shares || 0,
         })
       );
       let name;
@@ -105,17 +123,25 @@ export function AuthProvider({ children }) {
           id: res.data.user._id,
           email: updatedWallet.email,
           token: updatedWallet.token,
-          isVerified: res.data.user.isVerified,
-          isAdmin: res.data.user.isAdmin,
-          isAhwaHolder: res.data.user.isAhwaHolder,
-          isBanned: res.data.user.isBanned,
-          wallets: res.data.user.wallets,
-          accounts: res.data.user.accounts,
-          isSubscribed: res.data.user.isSubscribed,
-          createdAt: res.data.user.createdAt,
-          updatedAt: res.data.user.updatedAt,
+          isVerified: isVerified || false,
+          isAdmin: isAdmin || false,
+          isAhwaHolder: isAhwaHolder || false,
+          isBanned: isBanned || false,
+          isStudent: isStudent || false,
+          isTeacher: isTeacher || false,
+          wallets: wallets || [],
+          accounts: [],
+          isSubscribed: isSubscribed || false,
+          createdAt: createdAt || null,
+          updatedAt: updatedAt || null,
           name: name,
-          role: res.data.user.profile.roles[0],
+          role: profile.roles[0] || 'Guest',
+        })
+      );
+      dispatch(
+        setUserAccount({
+          firstRun: createdAt !== updatedAt ? false : true,
+          firstRunCompleted: createdAt !== updatedAt ? true : false,
         })
       );
       setAuth({ authenticated: true, ...updatedWallet });

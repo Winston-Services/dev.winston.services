@@ -2,6 +2,8 @@ import React from 'react';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
@@ -28,7 +30,16 @@ export const CreateWallet = ({ handleClose }) => {
           alignContent: 'center',
         }}
       >
-        Add Wallet Module Here.
+        <Card>
+          <CardContent>
+            <Typography variant="body1">Create a new wallet</Typography>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent>
+            <Typography variant="body1">Import an existing wallet</Typography>
+          </CardContent>
+        </Card>
       </Box>
       <Box
         sx={{ display: 'flex', flexDirection: 'row', gap: 1, float: 'right' }}

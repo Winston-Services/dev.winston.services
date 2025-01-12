@@ -160,13 +160,22 @@ export const createApiInstance = createApi({
       }),
     }),
     getMeProfile: builder.query({
-      query: (data, token) => ({
-        url: '/user/users/me/profile',
+      query: (token) => ({
+        url: '/user/users/me',
+        method: 'GET',
+        headers: {
+          Authorization: `${token}`,
+        },
+      }),
+    }),
+    setMeProfile: builder.mutation({
+      query: ({ data, token }) => ({
+        url: '/user/users/me',
         method: 'POST',
         headers: {
           Authorization: `${token}`,
         },
-        body: data,
+        body: { profile: data },
       }),
     }),
     addWallet: builder.mutation({

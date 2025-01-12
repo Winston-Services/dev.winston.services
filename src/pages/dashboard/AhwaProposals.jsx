@@ -7,6 +7,8 @@ import {
   Grid,
   Card,
   TextField,
+  Collapse,
+  Button,
   InputAdornment,
   TableContainer,
   TableHead,
@@ -93,7 +95,7 @@ function AhwaProposals() {
   const [SortingValue, setSortingValue] = React.useState('');
   const handleSorting = (e) => {
     setSortingValue(e.target.value);
-    console.log(e.target.value, SortingValue);
+    // console.log(e.target.value, SortingValue);
     switch (e.target.value) {
       case 'newestFirst':
         setSearchData(SortbyNewestFirst(searchData));
@@ -126,12 +128,16 @@ function AhwaProposals() {
     <Container>
       <Grid container justifyContent={'space-between'} alignItems="center">
         <Typography variant="h5">Ahwa Proposals</Typography>
+
         <Grid display={'flex'} alignItems={'baseline'}>
+          <Button variant="contained" color="primary">
+            Create Proposal
+          </Button>
           <TextField
             autoComplete="off"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
-            
+            size="small"
             variant="outlined"
             hiddenLabel
             placeholder="Search "
@@ -150,11 +156,11 @@ function AhwaProposals() {
               onChange={handleSorting}
               displayEmpty
               inputProps={{ 'aria-label': 'Without label' }}
+              size="small"
               sx={{
                 background:
                   'linear-gradient(92.44deg, #EA7A8F 3.93%, #E452C8 98.71%)',
                 borderRadius: '5px',
-                height: '47px',
                 width: '154px',
                 border: 'none',
               }}
@@ -188,13 +194,17 @@ function AhwaProposals() {
                     <TableRow
                       hover
                       key={row.id}
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                      sx={{
+                        '&:last-child td, &:last-child th': { border: 0 },
+                      }}
                     >
                       <TableCell>
                         <Grid
                           container
-                          width="560px"
-                          gap={1.5}
+                          sx={{
+                            width: { xs: '260px', md: '360px', lg: '560px' },
+                            gap: '1.5',
+                          }}
                           alignItems="center"
                         >
                           <PlayCircleFilled />
@@ -209,10 +219,10 @@ function AhwaProposals() {
                               row.status === 'Rejected'
                                 ? '#F84335'
                                 : row.status === 'OnGoing'
-                                ? '#FFC107'
-                                : row.status === 'Approved'
-                                ? '#23B000'
-                                : '#23B000',
+                                  ? '#FFC107'
+                                  : row.status === 'Approved'
+                                    ? '#23B000'
+                                    : '#23B000',
                           }}
                         >
                           {row.status}

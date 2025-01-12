@@ -179,7 +179,7 @@ export default function Dashboard() {
             </Typography>
             <Divider sx={{ width: '100%', mt: .25, borderColor: 'transparent' }} />
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
-              {user.profile.roles.map((role) => (
+              {user.profile?.roles?.map((role) => (
                 <Chip label={role} key={role} size="small" />
               ))}
             </Box>
@@ -284,8 +284,8 @@ export default function Dashboard() {
                 <Typography variant="h6">Your Profile</Typography>
               </StepLabel>
               <StepContent>
-                <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
+                  <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column' }}>
                     <Box sx={{ maxWidth: '400px', minWidth: '122px' }}>
                       <img
                         src="/winston_ahwa_footer.svg"
