@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid, Typography, Box, Button } from '@mui/material';
+import { Grid2 as Grid, Typography, Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import CryptoLandingImage from './../../../components/crypto-landing-image/index';
@@ -13,7 +13,7 @@ export default function Home() {
       alignItems={'center'}
       sx={{ my: 15, flexDirection: { sm: 'column', md: 'row' } }}
     >
-      <Grid item md={5.5}>
+      <Grid size={5.5}>
         <Typography
           id="homeTitle"
           variant="h2"
@@ -44,8 +44,8 @@ export default function Home() {
           </Button>
         </Box>
       </Grid>
-      <Grid item md={0.5}></Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={0.5}></Grid>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Box
           className="cryptoContainer"
           sx={{
