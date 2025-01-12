@@ -5,9 +5,13 @@ import {
   userWalletsSelector,
   userAccountsSelector,
   userAccountSelector,
+  userProfileSelector,
   setUserInfo,
   setUserWallets,
   setUserAccount,
+  setFirstRunCompleted,
+  setFirstRunStep,
+  setFirstRun,
   addUserAccount,
   addUserWallet,
   removeUserAccount,
@@ -20,6 +24,7 @@ const useUser = () => {
   const wallets = useSelector(userWalletsSelector);
   const accounts = useSelector(userAccountsSelector);
   const account = useSelector(userAccountSelector);
+  const profile = useSelector(userProfileSelector);
 
   const setUser = (user) => {
     dispatch(setUserInfo(user));
@@ -51,6 +56,7 @@ const useUser = () => {
 
   return {
     info,
+    profile,
     wallets,
     accounts,
     account,
@@ -61,6 +67,9 @@ const useUser = () => {
     addWallet,
     removeAccount,
     removeWallet,
+    setFirstRunCompleted,
+    setFirstRunStep,
+    setFirstRun,
   };
 };
 

@@ -30,139 +30,132 @@ const profileValidationSchema = yup.object().shape({
   state: yup.string(),
   postalCode: yup.string(),
   country: yup.string(),
-  avatar: yup.mixed(),
 });
 
-export const CreateProfile = ({
-  inProgress,
-  setInProgress,
-  handleCompleteItem,
-}) => {
-  const { row, item } = inProgress;
+export const CreateProfile = ({ handleClose }) => {
+  const [bannerFile, setBannerFile] = React.useState(null);
   const [avatarFile, setAvatarFile] = React.useState(null);
 
-  const handleSubmit = (values) => {
-    setInProgress(false);
-    handleCompleteItem(row, item);
-    console.log(values);
+  const initialValues = {
+    username: '',
+    firstName: '',
+    lastName: '',
+    middleName: '',
+    title: '',
+    address1: '',
+    address2: '',
+    phone: '',
+    city: '',
+    state: '',
+    postalCode: '',
+    country: '',
+    avatar: avatarFile,
+    banner: bannerFile,
   };
-
-  const handleClose = () => {
-    setInProgress(false);
-  };
-
   return (
-    <Paper elevation={0} sx={{ padding: 1, marginTop: 1 }}>
-      <Form
-        initialValues={{
-          username: '',
-          firstName: '',
-          lastName: '',
-          middleName: '',
-          title: '',
-          address1: '',
-          address2: '',
-          phone: '',
-          city: '',
-          state: '',
-          postalCode: '',
-          country: '',
-          avatar: avatarFile,
-        }}
-        validationSchema={profileValidationSchema}
-        onSubmit={(values) => {
-          console.log(values);
-          handleSubmit(values);
+    <Form
+      initialValues={initialValues}
+      validationSchema={profileValidationSchema}
+      onSubmit={(values) => {
+        console.log(values);
+        handleClose();
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+          alignContent: 'center',
+          gap: 1,
         }}
       >
-        <Typography variant="h4">
-          <strong>In Progress</strong> : {item.title}
+        <Box
+          sx={{
+            padding: '10px',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <Typography variant="h6">Profile Banner</Typography>
+          <UploadFile
+            name="avatar"
+            height="200px"
+            width="100%"
+            setAvatarFile={setBannerFile}
+            value={bannerFile}
+          />
+        </Box>
+        <Typography variant="caption">
+          You may choose to upload a custom image for your profile banner. This
+          image will appear on your profile page and within the dashboard,
+          enhancing your profile's visual appeal.
         </Typography>
-
+        <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            alignContent: 'center',
             gap: 1,
+            alignItems: 'center',
           }}
         >
-          <Typography variant="h6">Profile Banner</Typography>
           <Box
             sx={{
-              border: '1px dashed gray',
               padding: '10px',
               width: '100%',
               maxWidth: '400px',
               height: '100%',
             }}
           >
+            <Typography variant="h6">Profile Avatar</Typography>
             <UploadFile
               name="avatar"
-              height="400px"
+              height="100%"
               width="100%"
               setAvatarFile={setAvatarFile}
               value={avatarFile}
             />
+            <Typography variant="caption">
+              You may choose to upload a custom image for your profile avatar.
+              This image will appear on your profile page and within the
+              dashboard, also enhancing your profile's visual appeal.
+            </Typography>
           </Box>
-          <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              gap: 1,
-              alignItems: 'center',
-            }}
-          >
-            <Box
-              sx={{
-                border: '1px dashed gray',
-                padding: '10px',
-                width: '100%',
-                maxWidth: '400px',
-                height: '100%',
-              }}
-            >
-              <UploadFile
-                name="avatar"
-                height="100%"
-                width="100%"
-                setAvatarFile={setAvatarFile}
-                value={avatarFile}
-              />
-            </Box>
 
-            <Box>
-              <TextField label="Username" name="username" size="small" />
-              <Divider sx={{ marginBottom: 1 }} />
-              <NameSection />
-              <Divider sx={{ marginBottom: 1 }} />
-              <AddressSection />
-              <PhoneTextField />
-            </Box>
+          <Box>
+            <Typography variant="h6">Profile Info</Typography>
+            <TextField label="Username" name="username" size="small" />
+            <Divider sx={{ marginBottom: 1 }} />
+            <NameSection />
+            <Divider sx={{ marginBottom: 1 }} />
+            <AddressSection />
+            <PhoneTextField />
+            <Typography variant="caption">
+              Update your profile anytime, but initially set atleast your username to avoid being seen as a guest.
+            </Typography>
           </Box>
-          <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
         </Box>
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
-          <Button onClick={handleClose} variant="contained" color="error">
-            Close
-          </Button>
+        <Divider sx={{ marginBottom: 1, marginTop: 1 }} />
+      </Box>
+      <Box
+        sx={{ display: 'flex', flexDirection: 'row', gap: 1, float: 'right' }}
+      >
+        <Button onClick={() => handleClose()} variant="contained" color="error">
+          Close
+        </Button>
 
-          <Button type="submit" variant="contained" color="success">
-            Save
-          </Button>
-        </Box>
-      </Form>
-    </Paper>
+        <Button type="submit" variant="contained" color="success">
+          Save
+        </Button>
+      </Box>
+    </Form>
   );
 };
 
 CreateProfile.propTypes = {
-  setInProgress: PropTypes.func.isRequired,
-  inProgress: PropTypes.object.isRequired,
-  handleCompleteItem: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default CreateProfile;

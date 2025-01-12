@@ -1,4 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Level } from 'level';
+
+// Create a LevelDB instance
+const db = new Level('./user', { valueEncoding: 'json' });
 
 const initialState = {
   info: {
@@ -11,6 +15,9 @@ const initialState = {
   accounts: [],
   account: {
     perMessageEncryption: false,
+    firstRun: true,
+    firstRunCompleted: false,
+    firstRunStep: 0,
   },
   oauthAccounts: {
     discord: {
@@ -82,125 +89,56 @@ export const userSlice = createSlice({
   reducers: {
     setUserInfo: (state, action) => {
       state.info = action.payload;
-      return state;
+      db.put('userInfo', state.info);
     },
     setUserOauthAccounts: (state, action) => {
       state.oauthAccounts = action.payload;
-      return state;
+      db.put('userOauthAccounts', state.oauthAccounts);
     },
     setUserProfile: (state, action) => {
       state.profile = action.payload;
-      return state;
+      db.put('userProfile', state.profile);
     },
     setUserWallets: (state, action) => {
       state.wallets = action.payload;
-      return state;
+      db.put('userWallets', state.wallets);
     },
     setUserAccount: (state, action) => {
       state.account = action.payload;
-      return state;
+      db.put('userAccount', state.account);
     },
     addUserAccount: (state, action) => {
-      const accounts = [...state.accounts];
-      accounts.push(action.payload);
-      state.accounts = accounts;
-      return state;
+      state.accounts.push(action.payload);
+      db.put('userAccounts', state.accounts);
     },
     removeUserAccount: (state, action) => {
-      const accounts = [...state.accounts];
-      accounts.splice(action.payload, 1);
-      state.accounts = accounts;
-      return state;
+      state.accounts.splice(action.payload, 1);
+      db.put('userAccounts', state.accounts);
     },
     addUserWallet: (state, action) => {
-      const wallets = [...state.wallets];
-      wallets.push(action.payload);
-      state.wallets = wallets;
-      return state;
+      state.wallets.push(action.payload);
+      db.put('userWallets', state.wallets);
     },
     removeUserWallet: (state, action) => {
-      const wallets = [...state.wallets];
-      wallets.splice(action.payload, 1);
-      state.wallets = wallets;
-      return state;
+      state.wallets.splice(action.payload, 1);
+      db.put('userWallets', state.wallets);
     },
     logout: () => {
       localStorage.removeItem('token');
-      return {
-        info: {
-          authLoading: false,
-          email: '',
-          token: '',
-          name: 'Guest User',
-          role: 'Guest',
-        },
-        accounts: [],
-        account: {
-          perMessageEncryption: false,
-        },
-        oauthAccounts: {
-          discord: {
-            id: '',
-            username: '',
-          },
-          google: {
-            id: '',
-            username: '',
-          },
-          github: {
-            id: '',
-            username: '',
-          },
-          twitter: {
-            id: '',
-            username: '',
-          },
-          apple: {
-            id: '',
-            username: '',
-          },
-          facebook: {
-            id: '',
-            username: '',
-          },
-          linkedin: {
-            id: '',
-            username: '',
-          },
-          twitch: {
-            id: '',
-            username: '',
-          },
-          spotify: {
-            id: '',
-            username: '',
-          },
-          steam: {
-            id: '',
-            username: '',
-          },
-          microsoft: {
-            id: '',
-            username: '',
-          },
-        },
-        profile: {
-          firstName: '',
-          middleName: '',
-          lastName: '',
-          username: '',
-          phone: '',
-          address1: '',
-          address2: '',
-          address3: '',
-          city: '',
-          state: '',
-          postalCode: '',
-          country: '',
-          roles: [],
-        },
-        wallets: [],
-      };
+      db.clear();
+      return initialState;
+    },
+    setFirstRunCompleted: (state, action) => {
+      state.account.firstRunCompleted = action.payload;
+      db.put('userAccount', state.account);
+    },
+    setFirstRunStep: (state, action) => {
+      state.account.firstRunStep = action.payload;
+      db.put('userAccount', state.account);
+    },
+    setFirstRun: (state, action) => {
+      state.account.firstRun = action.payload;
+      db.put('userAccount', state.account);
     },
   },
 });
@@ -212,6 +150,9 @@ export const {
   setUserProfile,
   setUserWallets,
   setUserAccount,
+  setFirstRunCompleted,
+  setFirstRunStep,
+  setFirstRun,
   addUserAccount,
   addUserWallet,
   removeUserAccount,
