@@ -8,7 +8,7 @@ import { ReactComponent as Twitter } from './../assets/twitter_brands.svg';
 function TwitterLink(props) {
   return (
     <IconButton href={config.twitterLink} target={'_blank'} {...props}>
-      <Twitter width={'100%'} height={'100%'} />
+      <Twitter />
     </IconButton>
   );
 }

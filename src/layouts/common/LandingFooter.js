@@ -15,9 +15,9 @@ import useAuth from '../../context/authContext';
 import logo from './../../assets/logo_footer.svg';
 import logoDark from './../../assets/logo_footer_dark.svg';
 import winston from './../../assets/winston_ahwa_footer.svg';
-// import DiscordLink from './../../components/DiscordLink';
-// import TwitterLink from './../../components/TwitterLink';
-// import YoutubeLink from './../../components/YoutubeLink';
+import DiscordLink from './../../components/DiscordLink';
+import TwitterLink from './../../components/TwitterLink';
+import YoutubeLink from './../../components/YoutubeLink';
 
 export default function LandingFooter() {
   const auth = useAuth();
@@ -200,12 +200,12 @@ export default function LandingFooter() {
                   width: { xs: 50 },
                 }}
               >
-                {/*<DiscordLink
+                <DiscordLink
                   style={{
                     backgroundColor:
                       theme.palette.mode === 'dark' ? undefined : '#493799',
                   }}
-                />*/}
+                />
               </Grid>
               <Grid
                 sx={{
@@ -213,12 +213,12 @@ export default function LandingFooter() {
                   width: { xs: 50 },
                 }}
               >
-                {/*<TwitterLink
+                <TwitterLink
                   style={{
                     backgroundColor:
                       theme.palette.mode === 'dark' ? undefined : '#493799',
                   }}
-                />*/}
+                />
               </Grid>
               <Grid
                 sx={{
@@ -226,12 +226,12 @@ export default function LandingFooter() {
                   width: { xs: 50 },
                 }}
               >
-                {/*<YoutubeLink
+                <YoutubeLink
                   style={{
                     backgroundColor:
                       theme.palette.mode === 'dark' ? undefined : '#493799',
                   }}
-                />*/}
+                />
               </Grid>
             </Grid>
           </Grid>

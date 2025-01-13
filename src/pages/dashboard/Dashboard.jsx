@@ -32,8 +32,10 @@ const AdminDashboard = React.lazy(() => import('./AdminDashboard'));
 const AccountCreated = React.lazy(() => import('./AccountCreated'));
 const BalanceChart = React.lazy(() => import('./BalanceChart'));
 const BotPlanBarChart = React.lazy(() => import('./BotPlanBarChart'));
+const FinancialChart = React.lazy(() => import('../../components/common/charts/FinancialChart'));
 const InOutAreaChart = React.lazy(() => import('./InOutAreaChart'));
 const MonthlyTranChart = React.lazy(() => import('./MonthlyTranChart'));
+const PieChart = React.lazy(() => import('../../components/common/charts/PieChart'));
 const RecentTransactions = React.lazy(() => import('./RecentTransactions'));
 const ServerPlanBarChart = React.lazy(() => import('./ServerPlanBarChart'));
 const TopUsers = React.lazy(() => import('./TopUsers'));
@@ -177,7 +179,9 @@ export default function Dashboard() {
             <Typography variant="caption" fontFamily="Cookie">
               Your personal assistant to all things blockchain.
             </Typography>
-            <Divider sx={{ width: '100%', mt: .25, borderColor: 'transparent' }} />
+            <Divider
+              sx={{ width: '100%', mt: 0.25, borderColor: 'transparent' }}
+            />
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
               {user.profile?.roles?.map((role) => (
                 <Chip label={role} key={role} size="small" />
@@ -284,8 +288,18 @@ export default function Dashboard() {
                 <Typography variant="h6">Your Profile</Typography>
               </StepLabel>
               <StepContent>
-                <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
-                  <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: { xs: 'column', md: 'row' },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: { xs: 'none', md: 'flex' },
+                      flexDirection: 'column',
+                    }}
+                  >
                     <Box sx={{ maxWidth: '400px', minWidth: '122px' }}>
                       <img
                         src="/winston_ahwa_footer.svg"
@@ -714,6 +728,9 @@ export default function Dashboard() {
         )}
 
         {!user.account.firstRun && <AdminDashboard />}
+
+        <FinancialChart />
+        <PieChart />
 
         {user.accounts.length < 0 && (
           <Grid item xs={12} md={12} lg={12}>

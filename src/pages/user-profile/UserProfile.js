@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import { Facebook, Instagram, Twitter, Verified } from '@mui/icons-material';
 import {
@@ -16,24 +17,8 @@ import user_profile from '../../assets/user_profile.png';
 import user_profile_cover from '../../assets/user_profile_cover.png';
 import UserProfileTabs from '../marketplace/components/UserProfileTabs';
 
-const userData = [
-  {
-    name: 'Likes',
-    number: '131.8K',
-  },
-  {
-    name: 'Views',
-    number: '2.6M',
-  },
-  {
-    name: 'Created',
-    number: '21K',
-  },
-  {
-    name: 'Minted',
-    number: '21.1K',
-  },
-];
+import useUser from '../../hooks/useUser';
+import useApi from '../../hooks/useApi';
 
 const ReadMore = ({ children }) => {
   const text = children;
@@ -44,7 +29,11 @@ const ReadMore = ({ children }) => {
   return (
     <Typography>
       {isReadMore ? text.slice(0, 280) + '... ' : text}
-      <Link variant="" onClick={() => toggleReadMore()}>
+      <Link
+        variant="body2"
+        onClick={() => toggleReadMore()}
+        sx={{ ml: 1, cursor: 'pointer' }}
+      >
         {isReadMore ? 'Read more' : 'Show less'}
       </Link>
     </Typography>
@@ -55,10 +44,66 @@ ReadMore.propTypes = {
 };
 
 function UserProfile() {
+  const user = useUser();
+  const api = useApi();
+  const [getUserProfile] = api.endpoints.getUserProfile.useLazyQuery();
+  const [userProfile, setUserProfile] = React.useState(null);
+  const [userProfileLoading, setUserProfileLoading] = React.useState(false);
+  const [userProfileError, setUserProfileError] = React.useState(null);
+  const [userData, setUserData] = React.useState([]);
+  const { userId } = useParams();
+
+  React.useEffect(() => {
+    if (userProfileLoading) return;
+    setUserProfileLoading(true);
+    const fetchUserProfile = async () => {
+      if (!userId && !user.profile.username) {
+        setUserProfileLoading(false);
+        return;
+      };
+      try {
+        const res = await getUserProfile(userId ? userId : user.profile.username);
+        console.log(res.data);
+        const { likes, views, shares } = res.data.data.profile;
+        setUserData([
+          {
+            name: 'Likes',
+            number: likes.length <= 1000 ? likes : `${Math.round(likes / 1000)}k`
+          },
+          {
+            name: 'Views',
+            number: views.length <= 1000 ? views : `${Math.round(views / 1000)}k`
+          },
+          {
+            name: 'Shares',
+            number: shares.length <= 1000 ? shares : `${Math.round(shares / 1000)}k`
+          },
+        ]);
+        setUserProfile(res.data.data.profile);
+        setUserProfileLoading(false);
+      } catch (error) {
+        console.log(error);
+        setUserProfileError(error);
+        setUserProfileLoading(false);
+      }
+    };
+    fetchUserProfile();
+  }, [getUserProfile, userId, user.info.email]); // Added dependencies to useEffect
+
+  if (userProfileLoading) {
+    return <div>Loading...</div>;
+  }
+  if (userProfileError) {
+    return <div>Error: {userProfileError.message}</div>;
+  }
+  if (!userProfile) {
+    return <div>The username or profile was not found</div>;
+  }
+  // console.log(userProfile);
   return (
     <Grid container item xs={12} sx={{ mt: { xs: '-40px', sm: '-80px' } }}>
       <img
-        src={user_profile_cover}
+        src={userProfile.banner ? userProfile.banner : user_profile_cover}
         style={{
           width: '100%',
           height: '338px',
@@ -89,7 +134,7 @@ function UserProfile() {
               }}
             >
               <img
-                src={user_profile}
+                src={userProfile.avatar ? userProfile.avatar : user_profile}
                 style={{
                   border: '10px solid #271d5a',
                   borderRadius: '50%',
@@ -100,11 +145,11 @@ function UserProfile() {
             </Grid>
             <Grid item m={3}>
               <Typography variant="h4" fontWeight={800}>
-                Winston Art
+                {userProfile.username}
               </Typography>
               <Grid display="flex" alignItems="center">
                 <Typography variant="h6" sx={{ mr: 2 }}>
-                  winston_art
+                  {userProfile.bio}
                 </Typography>
                 <Verified sx={{ color: '#3D96FF' }} />
               </Grid>

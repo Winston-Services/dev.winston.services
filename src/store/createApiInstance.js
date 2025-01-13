@@ -207,6 +207,12 @@ export const createApiInstance = createApi({
         },
       }),
     }),
+    getUserProfile: builder.query({
+      query: (userId) => ({
+        url: `/user/profile/${userId}`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 

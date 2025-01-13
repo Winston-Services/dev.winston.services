@@ -37,6 +37,25 @@ const GenerateEvmWallet = ({ custodialType, handleClose, handleAddWallet }) => {
   const [seedPhrase, setSeedPhrase] = React.useState([]);
   const [passphrase, setPassphrase] = React.useState('');
 
+  const importEncryptedEVMWallet = async (encryptedWallet) => {
+    const _wallet = await ethers.Wallet.fromEncryptedJson(
+      encryptedWallet,
+      passphrase
+    );
+    setWallet(_wallet);
+    setPublicKey(_wallet.address);
+    setPrivateKey(_wallet.privateKey);
+    setSeedPhrase(_wallet.mnemonic.phrase.split(' '));
+  };
+
+  const importNonEncryptedEVMWallet = async (nonEncryptedWallet) => {
+    const _wallet = await ethers.Wallet.fromJson(nonEncryptedWallet);
+    setWallet(_wallet);
+    setPublicKey(_wallet.address);
+    setPrivateKey(_wallet.privateKey);
+    setSeedPhrase(_wallet.mnemonic.phrase.split(' '));
+  };
+
   const generateWallet = async () => {
     if (!passphrase) {
       setError('Passphrase is required');
@@ -70,7 +89,7 @@ const GenerateEvmWallet = ({ custodialType, handleClose, handleAddWallet }) => {
     if (encrypted) {
       _wallet = await ethers.Wallet.fromEncryptedJson(wallet, passphrase);
     } else {
-      _wallet = ethers.Wallet.createRandom();
+      _wallet = wallet;
     }
     const blob = new Blob([JSON.stringify(_wallet)], {
       type: 'application/json',
@@ -231,15 +250,59 @@ const GenerateEvmWallet = ({ custodialType, handleClose, handleAddWallet }) => {
       )}
 
       {!success && !wallet && (
-        <Box>
-          <TextField
-            label="Passphrase"
-            value={passphrase}
-            onChange={handlePassphraseChange}
-          />
-          <Button variant="contained" color="primary" onClick={generateWallet}>
-            Generate Wallet
-          </Button>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: 2,
+          }}
+        >
+          <Box
+            sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}
+          >
+            <TextField
+              label="Passphrase"
+              value={passphrase}
+              onChange={handlePassphraseChange}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={generateWallet}
+              sx={{ textTransform: 'none' }}
+            >
+              Generate A New Wallet
+            </Button>
+          </Box>
+          <Box
+            sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}
+          >
+            <TextField
+              label="Passphrase"
+              value={passphrase}
+              onChange={handlePassphraseChange}
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={generateWallet}
+              sx={{ textTransform: 'none' }}
+            >
+              Import an Encrypted JSON Wallet
+            </Button>
+          </Box>
+          <Box
+            sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={generateWallet}
+              sx={{ textTransform: 'none' }}
+            >
+              Import a JSON Wallet
+            </Button>
+          </Box>
         </Box>
       )}
     </>

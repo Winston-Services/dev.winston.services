@@ -28,8 +28,6 @@ export const AddToken = () => {
             initialValues={{
               chainId: '',
               name: '',
-              symbol: '',
-              decimals: '',
               token: '',
               type: 'ERC20',
               banner: '',
@@ -38,24 +36,16 @@ export const AddToken = () => {
               tags: [],
               category: '',
               verified: false,
-              icon: '',
-              enable: true,
             }}
             validationSchema={yup.object().shape({
               chainId: yup.string().required('Chain ID is required'),
-              name: yup.string().required('Name is required'),
-              symbol: yup.string().required('Symbol is required'),
-              decimals: yup.number().required('Decimals is required'),
               token: yup.string().required('Token Address is required'),
               type: yup.string().required('Type is required'),
-              banner: yup.mixed(),
               website: yup.string(),
               description: yup.string(),
               tags: yup.array(),
               category: yup.string(),
               verified: yup.boolean(),
-              icon: yup.mixed().required('Icon is required'),
-              enable: yup.boolean(),
             })}
             onSubmit={handleSubmit}
           >
@@ -76,16 +66,7 @@ export const AddToken = () => {
                   <TextField fullWidth name="chainId" label="Chain ID" />
                 </Grid>
                 <Grid item xs={12}>
-                  <TextField fullWidth name="name" label="Name" />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField fullWidth name="symbol" label="Symbol" />
-                </Grid>
-                <Grid item xs={12}>
                   <TextField fullWidth name="token" label="Token Address" />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField fullWidth name="decimals" label="Decimals" />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField fullWidth name="type" label="Type" />

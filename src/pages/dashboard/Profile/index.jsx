@@ -33,10 +33,7 @@ export const Profile = ({ handleClose }) => {
     },
     username: user.profile.username || '',
     phone: user.profile.phone
-      ? user.profile.phone.countryCode && user.profile.phone.number
-        ? `${user.profile.phone.countryCode} ${user.profile.phone.number}`
-        : ''
-      : '',
+      ,
     address: {
       line1: user.profile.address?.line1 || '',
       line2: user.profile.address?.line2 || '',

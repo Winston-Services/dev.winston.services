@@ -18,6 +18,7 @@ function UserProfileRouting() {
       children: [
         {
           index: true,
+          path: '/:userId?',
           element: <UserProfile />,
         },
         {
