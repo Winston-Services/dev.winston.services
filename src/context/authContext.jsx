@@ -138,10 +138,15 @@ export function AuthProvider({ children }) {
           role: profile.roles[0] || 'Guest',
         })
       );
+
+      let firstRun = createdAt !== updatedAt ? false : true;
+      let firstRunCompleted = createdAt !== updatedAt ? true : false;
+      firstRun = true;
+      firstRunCompleted = false;
       dispatch(
         setUserAccount({
-          firstRun: createdAt !== updatedAt ? false : true,
-          firstRunCompleted: createdAt !== updatedAt ? true : false,
+          firstRun: firstRun,
+          firstRunCompleted: firstRunCompleted,
         })
       );
       setAuth({ authenticated: true, ...updatedWallet });
