@@ -19,6 +19,8 @@ const MarketplaceRouting = React.lazy(() => import('./pages/marketplace'));
 const AcademyRouting = React.lazy(() => import('./pages/academy'));
 const SignIn = React.lazy(() => import('./pages/sign-in'));
 const SignUp = React.lazy(() => import('./pages/sign-up'));
+const VerifyEmail = React.lazy(() => import('./pages/verify-email'));
+const ResetPassword = React.lazy(() => import('./pages/reset-password'));
 const Landing = React.lazy(() => import('./pages/landing'));
 const WhiteLabelWinston = React.lazy(() =>
   import('./pages/white-label-winston')
@@ -98,6 +100,14 @@ export default function App() {
         {
           path: '/sign-up',
           element: getRouteWrapper(<SignUp />, false),
+        },
+        {
+          path: '/verify-email',
+          element: getRouteWrapper(<VerifyEmail />, false),
+        },
+        {
+          path: '/reset-password',
+          element: getRouteWrapper(<ResetPassword />, false),
         },
       ],
     },
