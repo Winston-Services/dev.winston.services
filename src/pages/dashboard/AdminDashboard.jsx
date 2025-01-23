@@ -21,6 +21,9 @@ import Profile from './Profile';
 import SwagStore from './SwagStore';
 import ViewTokens from './Tokens';
 import AddWallet from './Wallets/AddWallet';
+import ActiveLectures from './WinstonAcademy/ActiveLectures';
+import ActiveLessons from './WinstonAcademy/ActiveLessons';
+import CompletedCourses from './WinstonAcademy/CompletedCourses';
 
 const NewsArticles = () => {
   return <div>News Articles</div>;
@@ -44,21 +47,15 @@ const Courses = () => {
 const Lectures = () => {
   return <div>Lectures</div>;
 };
-const ActiveLectures = () => {
-  return <div>Active Lectures</div>;
-};
+
 const Lessons = () => {
   return <div>Lessons</div>;
 };
-const ActiveLessons = () => {
-  return <div>Active Lessons</div>;
-};
-const CompletedCourses = () => {
-  return <div>Completed Courses</div>;
-};
+
 const CompletedLessons = () => {
   return <div>Completed Lessons</div>;
 };
+
 const CompletedLectures = () => {
   return <div>Completed Lectures</div>;
 };

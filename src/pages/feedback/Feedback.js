@@ -63,7 +63,7 @@ function Feedback() {
   const [hasError, setHasError] = React.useState(false);
 
   const handleSubmit = async (values) => {
-    console.log(values);
+    // console.log(values);
     if (isLoading) return;
     try {
       await postFeedback(values);
@@ -81,7 +81,7 @@ function Feedback() {
         }}
         validationSchema={FORM_VALIDATION}
         onSubmit={(values) => {
-          console.log(values);
+          // console.log(values);
           handleSubmit(values);
         }}
       >

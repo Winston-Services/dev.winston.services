@@ -11,36 +11,37 @@ import {
 
 const users = [
   {
-    image: './assets/user.png',
-    name: 'Michael Dennis',
-    designation: 'Project Manager',
+    image: './assets/icons/rickle.svg',
+    name: 'Rickle',
+    designation: 'ERC20',
     rank: '1',
   },
   {
-    image: './assets/user.png',
-    name: 'Michael Dennis',
-    designation: 'Project Manager',
+    image: './assets/icons/rickle.svg',
+    name: 'Winston',
+    designation: 'Winston',
     rank: '2',
   },
   {
-    image: './assets/user.png',
-    name: 'Michael Dennis',
-    designation: 'Project Manager',
+    image: './assets/icons/rickle.svg',
+    name: 'Winston',
+    designation: 'Winston',
     rank: '3',
   },
   {
-    image: './assets/user.png',
-    name: 'Michael Dennis',
-    designation: 'Project Manager',
+    image: './assets/icons/rickle.svg',
+    name: 'Winston',
+    designation: 'Winston',
     rank: '4',
   },
   {
-    image: './assets/user.png',
-    name: 'Michael Dennis',
-    designation: 'Project Manager',
+    image: './assets/icons/rickle.svg',
+    name: 'Winston',
+    designation: 'Winston',
     rank: '5',
   },
 ];
+
 export default function TopUsers() {
   function ordinal_suffix_of(i) {
     var j = i % 10,
@@ -59,7 +60,7 @@ export default function TopUsers() {
   return (
     <Grid>
       <Grid display="flex" justifyContent={'space-between'}>
-        <Typography variant="h6">Top 10 user rank</Typography>
+        <Typography variant="h6">Top 5 token rank</Typography>
         <Typography variant="subtitle1">View All</Typography>
       </Grid>
       <List>
@@ -76,7 +77,7 @@ export default function TopUsers() {
               }
             >
               <ListItemIcon>
-                <img src={'./assets/user.png'} height="36" width="36" />
+                <img src={user.image} height="36" width="36" />
               </ListItemIcon>
               <ListItemText primary={user.name} secondary={user.designation} />
             </ListItem>

@@ -3,13 +3,13 @@ import React from "react";
 import CommonChart from "./CommonChart";
 
 const PieChart = ({
-  series = [44, 55, 13, 43, 22, 33],
-  labels = ["Team A", "Team B", "Team C", "Team D", "Team E", "Team F"]
+  series = [300000000, 198000000, 2500000, 1000000, 120000000, 15000000],
+  labels = ["ETH", "BSC", "POLY", "ARB", "GNO", "One"]
 }) => {
   return (
     <CommonChart
       series={series}
-      height={"450px"}
+      height={"420px"}
       type="pie"
       otherData={{
         labels,

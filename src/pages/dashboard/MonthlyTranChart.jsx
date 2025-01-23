@@ -13,51 +13,63 @@ import {
 const data = [
   {
     month: 'Jan',
-    uv: 90,
+    in: 90,
+    out: 5,
   },
   {
     month: 'Feb',
-    uv: 65,
+    in: 65,
+    out: 7,
   },
   {
     month: 'Mar',
-    uv: 95,
+    in: 95,
+    out: 32,
   },
   {
     month: 'Apr',
-    uv: 60,
+    in: 60,
+    out: 10,
   },
   {
     month: 'May',
-    uv: 30,
+    in: 30,
+    out: 3,
   },
   {
     month: 'Jun',
-    uv: 50,
+    in: 50,
+    out: 40,
   },
   {
     month: 'Jul',
-    uv: 30,
+    in: 30,
+    out: 14,
   },
   {
     month: 'Aug',
-    uv: 35,
+    in: 35,
+    out: 4,
   },
   {
     month: 'Sep',
-    uv: 75,
+    in: 75,
+    out: 0,
   },
   {
     month: 'Oct',
-    uv: 45,
+    in: 45,
+    out: 3,
   },
   {
     month: 'Nov',
-    uv: 65,
+    in: 65,
+    out: 10,
   },
   {
     month: 'Dec',
-    uv: 72,
+    in: 72,
+    out: 3,
   },
 ];
 
@@ -78,7 +90,13 @@ function MonthlyTranChart() {
         <XAxis dataKey={'month'} stroke={color} />
         <YAxis tick={false} width={10} stroke={color} />
         <Area
-          dataKey="uv"
+          dataKey="in"
+          stroke={color}
+          fillOpacity={0.5}
+          fill="url(#colorTran)"
+        />
+        <Area
+          dataKey="out"
           stroke={color}
           fillOpacity={0.5}
           fill="url(#colorTran)"

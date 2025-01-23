@@ -45,6 +45,7 @@ export const Profile = ({ handleClose }) => {
     },
     avatar: user.profile.avatar || '',
     bio: user.profile.bio || '',
+    tagLine: user.profile.tagLine || '',
   });
 
   const profileValidationSchema = yup.object().shape({
@@ -61,6 +62,7 @@ export const Profile = ({ handleClose }) => {
     postalCode: yup.string(),
     country: yup.string(),
     bio: yup.string(),
+    tagLine: yup.string(),
   });
 
   const [avatarFile, setAvatarFile] = React.useState(null);
@@ -93,6 +95,7 @@ export const Profile = ({ handleClose }) => {
         avatar: values.avatar,
         banner: values.banner,
         bio: values.bio,
+        tagLine: values.tagLine,
       },
       token: user.info.token,
     }).unwrap();
@@ -118,6 +121,7 @@ export const Profile = ({ handleClose }) => {
       },
       avatar: avatarFile,
       bio: values.bio,
+      tagLine: values.tagLine,
     });
     setOpen(false);
   };
@@ -141,6 +145,7 @@ export const Profile = ({ handleClose }) => {
           postalCode: profile.address.zip,
           country: profile.address.country,
           bio: profile.bio,
+          tagLine: profile.tagLine,
           avatar: avatarFile,
           banner: bannerFile,
         }}
@@ -203,12 +208,14 @@ export const Profile = ({ handleClose }) => {
                 setAvatarFile={setAvatarFile}
                 value={avatarFile}
               />
+              <Divider sx={{ marginBottom: 1 }} />
+              <TextField label="Bio" name="bio" size="small" multiline rows={5} />
             </Box>
             <Box sx={{ width: '100%' }}>
               <Typography variant="h6">Profile Details</Typography>
               <TextField label="Username" name="username" size="small" />
               <Divider sx={{ marginBottom: 1 }} />
-              <TextField label="Bio" name="bio" size="small" />
+              <TextField label="Tag Line" name="tagLine" size="small" />
               <Divider sx={{ marginBottom: 1 }} />
               <NameSection />
               <Divider sx={{ marginBottom: 1 }} />
@@ -287,6 +294,10 @@ export const Profile = ({ handleClose }) => {
                 alt="user avatar"
                 sx={{ height: 'auto', width: '100%' }}
               />
+              <Divider sx={{ marginBottom: 1 }} />
+              <Typography variant="h6">
+                <strong>Bio:</strong> {profile?.bio}
+              </Typography>
             </Box>
 
             <Box
@@ -305,8 +316,8 @@ export const Profile = ({ handleClose }) => {
                 <strong>Username:</strong> {profile?.username}
               </Typography>
               <Divider sx={{ marginBottom: 1 }} />
-              <Typography variant="h6">
-                <strong>Bio:</strong> {profile?.bio}
+              <Typography variant="body2">
+                <strong>Tag Line:</strong> {profile?.tagLine}
               </Typography>
               <Divider sx={{ marginBottom: 1 }} />
               <Typography variant="h6">

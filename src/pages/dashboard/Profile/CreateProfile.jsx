@@ -119,7 +119,8 @@ export const CreateProfile = ({ handleClose }) => {
             value={bannerFile}
           />
         </Box>
-        <TextField name="bio" label="Bio" multiline rows={4} />
+        <TextField name="tagLine" label="Tag Line" size="small" multiline rows={2} variant="outlined" />
+        <TextField name="bio" label="Bio" size="small" multiline rows={4} variant="outlined" />
         <Typography variant="caption">
           You may choose to upload a custom image for your profile banner. This
           image will appear on your profile page and within the dashboard,

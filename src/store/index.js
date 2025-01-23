@@ -9,6 +9,8 @@ import sideBar from './sideBar';
 import themeColors from './themeColors';
 import user from './user';
 import wizard from './wizard';
+import networks from './networks';
+import dex from './dex';
 
 const rootReducer = combineReducers({
   user,
@@ -20,6 +22,8 @@ const rootReducer = combineReducers({
   publicNotice,
   i18n: i18nSlice,
   [apiInstance.reducerPath]: apiInstance.reducer,
+  networks,
+  dex,
 });
 
 const reducer = (state, action) => {

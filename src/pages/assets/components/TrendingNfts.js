@@ -15,37 +15,42 @@ const columns = [
   { id: 'marketCap', headerName: 'Market Cap' },
 ];
 
-const rows = [
-  {
-    id: '1',
-    name: 'Rickle',
-    lastPrice: '1306.25358',
-    oneDayChange: '+2.25%',
-    marketCap: '$71,083M',
-  },
-  {
-    id: '2',
-    name: 'Winston',
-    lastPrice: '1306.25358',
-    oneDayChange: '+2.25%',
-    marketCap: '$71,083M',
-  },
-  {
-    id: '3',
-    name: 'Ahwa',
-    lastPrice: '1306.25358',
-    oneDayChange: '+2.25%',
-    marketCap: '$71,083M',
-  },
-  {
-    id: '4',
-    name: 'New Coin',
-    lastPrice: '1306.25358',
-    oneDayChange: '+2.25%',
-    marketCap: '$71,083M',
-  },
-];
 export default function TrendingNfts() {
+  const rows = [
+    {
+      id: '1',
+      name: 'Rickle',
+      symbol: 'rkl',
+      lastPrice: '$0.0015',
+      oneDayChange: '+2.25%',
+      marketCap: '$2.4M',
+    },
+    {
+      id: '2',
+      name: 'Winston',
+      symbol: 'win',
+      lastPrice: '$0.0025',
+      oneDayChange: '+2.25%',
+      marketCap: '$200k',
+    },
+    {
+      id: '3',
+      name: 'Ahwa',
+      symbol: 'AHWA',
+      lastPrice: '$6.25358',
+      oneDayChange: '+2.25%',
+      marketCap: 'n/a',
+    },
+    {
+      id: '4',
+      name: 'Winston Academy Coin',
+      symbol: 'WAC',
+      lastPrice: '$0.00016',
+      oneDayChange: '+2.25%',
+      marketCap: '$16B',
+    },
+  ];
+
   return (
     <Grid height={'100%'}>
       <Table columns={columns} rows={rows} />

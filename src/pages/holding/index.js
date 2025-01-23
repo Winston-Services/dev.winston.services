@@ -98,7 +98,7 @@ const useBalance = (initialTokens) => {
   };
 };
 
-function TrustWalletSection({ walletAddress, walletName, tokenList }) {
+function WalletSection({ walletAddress, walletName, tokenList }) {
   const { balances, fetchTokens, setAddress, isLoading, error, setTokens } = useBalance();
 
   const [rows, setRows] = React.useState([]);
@@ -150,7 +150,7 @@ function TrustWalletSection({ walletAddress, walletName, tokenList }) {
   );
 }
 
-TrustWalletSection.propTypes = {
+WalletSection.propTypes = {
   walletAddress: PropTypes.string.isRequired,
   walletName: PropTypes.string.isRequired,
   tokenList: PropTypes.array.isRequired,
@@ -161,6 +161,8 @@ function Holding() {
   const trustMultisigAddress = '0x40e4Da770530E960AE671634d14625F29e3dDb12';
   const trustHotWalletAddress = '0xf9b9ee3b0301b511cd5aa4b8d039f63df19c615a';
   const winstonContractAddress = '0x75578ebbefe274f240b8e1b5859ca34f342157d9';
+
+  // Multisig Trust Holdings
   const tokenList1 = [
     '0x55d398326f99059fF775485246999027B3197955', // USDT
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82', // CAKE
@@ -172,6 +174,7 @@ function Holding() {
     '0xBb22D416AC55E8D07d9fE78dA3cC9919A1c357ce', // RKL/WIN LP
   ];
 
+  // Caretaker Hot Wallet
   const tokenList2 = [
     '0x75578ebbefe274f240b8e1b5859ca34f342157d9', // WIN
     '0x55d398326f99059fF775485246999027B3197955', // USDT
@@ -194,6 +197,8 @@ function Holding() {
     '0x8820dF1B7f854773a694daB3D30247f6814c64aA', // BTCB/WIN LP
     '0xBb22D416AC55E8D07d9fE78dA3cC9919A1c357ce', // RKL/WIN LP
   ];
+
+  // Winston Contract
   const tokenList3 = [
     '0x75578ebbefe274f240b8e1b5859ca34f342157d9', // WIN
     '0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c', // BTCB
@@ -206,21 +211,22 @@ function Holding() {
     '0x157197baf3E455548987dF50f87846EA17F7B7Ab', // WBNB/WIN LP
     '0xBb22D416AC55E8D07d9fE78dA3cC9919A1c357ce', // RKL/WIN LP
   ];
+
   return (
     <Container>
-      <TrustWalletSection
+      <WalletSection
         walletAddress={trustMultisigAddress}
         walletName="Multisig Trust Holdings"
         tokenList={tokenList1}
       />
       <Divider sx={{ mt: 5, mb: 5 }} />
-      <TrustWalletSection
+      <WalletSection
         walletAddress={trustHotWalletAddress}
         walletName="Caretaker Hot Wallet"
         tokenList={tokenList2}
       />
       <Divider sx={{ mt: 5, mb: 5 }} />
-      <TrustWalletSection
+      <WalletSection
         walletAddress={winstonContractAddress}
         walletName="Winston Contract"
         tokenList={tokenList3}

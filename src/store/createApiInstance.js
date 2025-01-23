@@ -5,6 +5,7 @@ import config from '../config';
 
 // initialize an empty api service that we'll inject endpoints into later as needed
 export const createApiInstance = createApi({
+  reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: config.baseUrl,
     // prepareHeaders: (headers, { getState }) => {

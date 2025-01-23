@@ -35,20 +35,12 @@ export default function LandingFooter() {
           url: '/news',
         },
         {
-          name: 'Meet the team',
-          url: '/our-team',
+          name: 'Projects',
+          url: '/projects',
         },
         {
-          name: 'Discord',
-          href: 'https://discord.gg/rickle-897546129108008960',
-        },
-        {
-          name: 'Twitter',
-          href: 'https://x.com/Rickle_Token',
-        },
-        {
-          name: 'Github',
-          href: 'https://github.com/Winston-Services',
+          name: 'Funding',
+          url: '/community-funding',
         },
       ],
     },
@@ -64,13 +56,23 @@ export default function LandingFooter() {
           url: '/marketplace',
         },
         {
+          name: 'Supported Coins',
+          url: '/supported-coins',
+        },
+        {
+          name: 'Demo Cart',
+          href: 'https://demo-shop.winston.services',
+        },
+
+        {
+          name: 'Whitepapers',
+          url: '/whitepapers',
+        },
+        {
           name: 'Workshop',
           url: '/wizard',
         },
-        {
-          name: 'Funding',
-          url: '/community-funding',
-        },
+        /*
         {
           name: 'Faucet',
           url: '/faucet',
@@ -83,10 +85,15 @@ export default function LandingFooter() {
           name: 'Burning',
           url: '/burning',
         },
+        */
         {
-          name: 'Winston Swap',
-          url: '/swap',
+          name: 'Supported Networks',
+          url: '/networks',
         },
+        {
+         name: 'Winston Swap',
+         url: '/swap',
+       },
       ],
     },
     {
@@ -97,12 +104,8 @@ export default function LandingFooter() {
           url: '/network-status',
         },
         {
-          name: 'Support',
+          name: 'FAQ',
           url: '/support',
-        },
-        {
-          name: 'Feedback',
-          url: '/feedback',
         },
         {
           name: 'Issues',
@@ -112,30 +115,30 @@ export default function LandingFooter() {
           name: 'Documentation',
           href: 'https://docs.winston.services',
         },
+        {
+          name: 'Developers',
+          url: '/developers',
+        },
       ],
     },
     {
       name: 'Resources',
       menuItems: [
         {
-          name: 'Contact',
+          name: 'Public Notice',
+          url: '/public-notice',
+        },
+        {
+          name: 'Feedback',
+          url: '/feedback',
+        },
+        {
+          name: 'Contact Us',
           url: '/contact-us',
-        },
-        {
-          name: 'Developers',
-          url: '/developers',
-        },
-        {
-          name: 'Supported Coins',
-          url: '/supported-coins',
         },
         {
           name: 'Assets',
           url: '/assets',
-        },
-        {
-          name: 'Demo Cart',
-          href: 'https://demo-shop.winston.services',
         },
       ],
     },
@@ -143,12 +146,8 @@ export default function LandingFooter() {
       name: 'Legal',
       menuItems: [
         {
-          name: 'Public Notice',
-          url: '/public-notice',
-        },
-        {
-          name: 'Whitepapers',
-          url: '/whitepapers',
+          name: 'Meet the team',
+          url: '/our-team',
         },
         {
           name: 'Contributors',

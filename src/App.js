@@ -51,6 +51,7 @@ const CampaignRouting = React.lazy(() => import('./pages/campaign'));
 const Campaign = React.lazy(() => import('./pages/campaign/Campaign'));
 const Ico = React.lazy(() => import('./pages/ico'));
 const PublicNoticeRouting = React.lazy(() => import('./pages/public-notice'));
+const Networks = React.lazy(() => import('./pages/networks'));
 import { isElectron } from './utils/commonFunctions';
 
 export default function App() {
@@ -254,6 +255,10 @@ export default function App() {
         {
           path: '/ico',
           element: getRouteWrapper(<Ico />, false),
+        },
+        {
+          path: '/networks',
+          element: getRouteWrapper(<Networks />, false),
         },
       ],
     },

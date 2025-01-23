@@ -27,7 +27,7 @@ i18n
     fallbackLng: 'en',
     debug: true,
     backend: {
-      loadPath: './translations/locales/{{lng}}/{{ns}}.json', // URL to fetch translations
+      loadPath: './api/v1/translations/locales/{{lng}}/{{ns}}.json', // URL to fetch translations
     },
     keySeparator: false, // we do not use keys in form messages.welcome
     interpolation: {

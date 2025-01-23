@@ -8,15 +8,37 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 
 export const CreateWallet = ({ handleClose }) => {
+  const [action, setAction] = React.useState();
+
   const handleSubmit = () => {
     handleClose();
   };
+
+  const handleImport = () => {
+    setAction('import');
+    handleClose();
+  };
+
+  const handleCreate = () => {
+    setAction('create');
+    handleClose();
+  };
+
+  if (action === 'import') {
+    return <ImportWallet />;
+  }
+
+  if (action === 'create') {
+    return <CreateWallet />;
+  }
+
   return (
     <Box>
       <Typography variant="h4">Create Wallet</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
         <Typography variant="body1">
-          Create a wallet to start trading on the blockchain.
+          Your wallet is your gateway to the blockchain. You can use it to
+          interact with smart contracts, decentralized applications, and more.
         </Typography>
       </Box>
       <Box
@@ -33,23 +55,19 @@ export const CreateWallet = ({ handleClose }) => {
         <Card>
           <CardContent>
             <Typography variant="body1">Create a new wallet</Typography>
+            <Button variant="contained" color="primary" onClick={handleCreate}>
+              Create
+            </Button>
           </CardContent>
         </Card>
         <Card>
           <CardContent>
             <Typography variant="body1">Import an existing wallet</Typography>
+            <Button variant="contained" color="primary" onClick={handleImport}>
+              Import
+            </Button>
           </CardContent>
         </Card>
-      </Box>
-      <Box
-        sx={{ display: 'flex', flexDirection: 'row', gap: 1, float: 'right' }}
-      >
-        <Button variant="contained" color="error" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="contained" color="success" onClick={handleSubmit}>
-          Create Wallet
-        </Button>
       </Box>
     </Box>
   );

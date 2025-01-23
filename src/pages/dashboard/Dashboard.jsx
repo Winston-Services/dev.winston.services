@@ -32,15 +32,19 @@ const AdminDashboard = React.lazy(() => import('./AdminDashboard'));
 const AccountCreated = React.lazy(() => import('./AccountCreated'));
 const BalanceChart = React.lazy(() => import('./BalanceChart'));
 const BotPlanBarChart = React.lazy(() => import('./BotPlanBarChart'));
-const FinancialChart = React.lazy(() => import('../../components/common/charts/FinancialChart'));
+const FinancialChart = React.lazy(
+  () => import('../../components/common/charts/FinancialChart')
+);
 const InOutAreaChart = React.lazy(() => import('./InOutAreaChart'));
 const MonthlyTranChart = React.lazy(() => import('./MonthlyTranChart'));
-const PieChart = React.lazy(() => import('../../components/common/charts/PieChart'));
+const PieChart = React.lazy(
+  () => import('../../components/common/charts/PieChart')
+);
 const RecentTransactions = React.lazy(() => import('./RecentTransactions'));
 const ServerPlanBarChart = React.lazy(() => import('./ServerPlanBarChart'));
 const TopUsers = React.lazy(() => import('./TopUsers'));
 const Footer = React.lazy(() => import('../../layouts/common/LandingFooter'));
-
+const WinstonTradeBots = React.lazy(() => import('./TradeBots'));
 const CoinCard = ({ coin }) => {
   return (
     <Paper
@@ -196,6 +200,7 @@ export default function Dashboard() {
               alignItems: 'center',
               gap: 1,
               width: '100%',
+              mb: 2,
             }}
           >
             {Object.values(coinData).map((coin) => (
@@ -429,7 +434,12 @@ export default function Dashboard() {
                           borderColor: 'transparent',
                         }}
                       />
-                      <CreateWallet handleClose={() => {}} />
+                      <CreateWallet
+                        handleClose={() => {
+                          setActiveStep(3);
+                          dispatch(user.setFirstRunStep(3));
+                        }}
+                      />
                       <Divider
                         sx={{
                           width: '100%',
@@ -437,26 +447,6 @@ export default function Dashboard() {
                           borderColor: 'transparent',
                         }}
                       />
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          gap: 1,
-                          float: 'right',
-                        }}
-                      >
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          sx={{ mt: 2, float: 'right', textTransform: 'none' }}
-                          onClick={() => {
-                            setActiveStep(3);
-                            dispatch(user.setFirstRunStep(3));
-                          }}
-                        >
-                          Next
-                        </Button>
-                      </Box>
                     </Paper>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -726,22 +716,27 @@ export default function Dashboard() {
             </Step>
           </Stepper>
         )}
-
         {!user.account.firstRun && <AdminDashboard />}
-
-        <FinancialChart />
-        <PieChart />
-
-        {user.accounts.length < 0 && (
-          <Grid item xs={12} md={12} lg={12}>
-            <Paper elevation={0} sx={{ height: '230px', p: 2.5 }}>
-              <Typography variant="h6">Balances</Typography>
-              <BalanceChart />
+        <WinstonTradeBots />
+        <Grid item xs={12} md={12} lg={12}>
+          <Paper elevation={0} sx={{ height: '230px', p: 2.5, mb: 2 }}>
+            <Typography variant="h6">Balances</Typography>
+            <BalanceChart />
+          </Paper>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={8} lg={8}>
+            <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
+              <FinancialChart />
             </Paper>
           </Grid>
-        )}
 
-        {user.accounts.length < 0 && (
+          <Grid item xs={12} md={4} lg={4}>
+            <Paper elevation={0} sx={{ height: '420px', p: 2 }}>
+              <PieChart />
+            </Paper>
+          </Grid>
+
           <Grid item xs={12} md={8} lg={8}>
             <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
               <Typography variant="h6">Recent Transactions</Typography>
@@ -750,17 +745,13 @@ export default function Dashboard() {
               </Grid>
             </Paper>
           </Grid>
-        )}
 
-        {user.accounts.length < 0 && (
           <Grid item xs={12} md={4} lg={4}>
             <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
               <TopUsers />
             </Paper>
           </Grid>
-        )}
 
-        {user.accounts.length < 0 && (
           <Grid item xs={12} md={5} lg={5}>
             <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
               <Typography variant="h6">Bot plan subscriptions</Typography>
@@ -769,9 +760,7 @@ export default function Dashboard() {
               </Grid>
             </Paper>
           </Grid>
-        )}
 
-        {user.accounts.length < 0 && (
           <Grid item sm={12} md={7} lg={7}>
             <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
               <Typography variant="h6">Recent transactions</Typography>
@@ -780,9 +769,7 @@ export default function Dashboard() {
               </Grid>
             </Paper>
           </Grid>
-        )}
 
-        {user.accounts.length < 0 && (
           <Grid item xs={12} md={7} lg={7}>
             <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
               <Typography variant="h6">In Out</Typography>
@@ -791,9 +778,7 @@ export default function Dashboard() {
               </Grid>
             </Paper>
           </Grid>
-        )}
 
-        {user.accounts.length < 0 && (
           <Grid item xs={12} md={5} lg={5}>
             <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
               <Typography variant="h6">Server plan subscriptions</Typography>
@@ -802,17 +787,13 @@ export default function Dashboard() {
               </Grid>
             </Paper>
           </Grid>
-        )}
 
-        {user.accounts.length < 0 && (
           <Grid item xs={12} md={4} lg={4}>
             <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
               <AccountCreated />
             </Paper>
           </Grid>
-        )}
 
-        {user.accounts.length < 0 && (
           <Grid item xs={12} md={8} lg={8}>
             <Paper elevation={0} sx={{ height: '425px', p: 2.5 }}>
               <Typography variant="h6">Monthly subscriptions</Typography>
@@ -821,7 +802,7 @@ export default function Dashboard() {
               </Grid>
             </Paper>
           </Grid>
-        )}
+        </Grid>
       </Paper>
       <Box sx={{ height: '100px' }} />
       <Footer />
