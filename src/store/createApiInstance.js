@@ -78,7 +78,7 @@ export const createApiInstance = createApi({
       }),
     }),
     addToken: builder.mutation({
-      query: (data, token) => ({
+      query: ({ data, token }) => ({
         url: '/token',
         method: 'POST',
         body: data,

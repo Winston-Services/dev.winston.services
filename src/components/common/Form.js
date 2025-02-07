@@ -12,7 +12,7 @@ function Form({ initialValues, validationSchema, onSubmit, children }) {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      <FormikForm>{children}</FormikForm>
+      <FormikForm >{children}</FormikForm>
     </Formik>
   );
 }
