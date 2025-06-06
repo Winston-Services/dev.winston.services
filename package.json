@@ -168,6 +168,6 @@
     "url": "^0.11.4",
     "vm-browserify": "^1.1.2",
     "wait-on": "^8.0.2",
-    "webpack-dev-server": "^5.2.0"
+    "webpack-dev-server": "^5.2.1"
   }
 }
