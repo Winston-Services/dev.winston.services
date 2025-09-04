@@ -151,7 +151,7 @@
     "cross-env": "^7.0.3",
     "crypto-browserify": "^3.12.1",
     "date-fns": "^4.1.0",
-    "electron": "^33.3.1",
+    "electron": "^35.7.5",
     "electron-builder": "^25.1.8",
     "electron-is-dev": "^3.0.1",
     "electronmon": "^2.0.3",
